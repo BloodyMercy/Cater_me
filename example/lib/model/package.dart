@@ -1,0 +1,22 @@
+import 'package:CaterMe/model/packages.dart';
+
+class Packages {
+  int id=0;
+  String name='';
+  List<Package> items=[];
+
+
+Packages();
+  Packages.fromJson(Map<dynamic, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    if (json['items'] != null) {
+      items = <Package>[];
+      json['items'].forEach((v) {
+        items.add(new Package.fromJson(v));
+      });
+    }
+  }
+
+
+}
