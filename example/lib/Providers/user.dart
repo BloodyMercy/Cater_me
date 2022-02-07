@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:CaterMe/Services/auth/serviceslogin.dart';
+import 'package:CaterMe/Services/personal_info_service.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/Users.dart';
+import 'package:CaterMe/model/personal_info.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -44,8 +46,14 @@ class UserProvider with ChangeNotifier {
   TextEditingController bio = TextEditingController();
 
   TextEditingController loyatlypoint = TextEditingController();
+  String _birthDate="";
 
 
+  String get birthDate => _birthDate;
+
+  set birthDate(String value) {
+    _birthDate = value;
+  }
 
   Status _status=Status.walkingpage;
 
@@ -57,6 +65,17 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  PersonalInfoModel _personalInfo=PersonalInfoModel();
+
+  getPersonalInfo() async{
+    _personalInfo=  await PersonalInfoService().getAllInfo();
+    name.text=_personalInfo.name;
+    email.text=_personalInfo.email;
+    phoneNumber.text=_personalInfo.phoneNumber;
+    birthDate=_personalInfo.birthDate;
+
+    notifyListeners();
+  }
   String _messagelogin = "";
   String _messageSignUp = "";
 

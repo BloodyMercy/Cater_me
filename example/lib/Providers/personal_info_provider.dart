@@ -14,6 +14,7 @@ class PersonalInfoProvider extends ChangeNotifier{
 
   getPersonalInfo() async{
     _personalInfo = await _personalInfoService.getAllInfo();
+
     notifyListeners();
   }
 }
