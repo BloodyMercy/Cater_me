@@ -124,7 +124,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(value: OccasionProvider()),
           ChangeNotifierProvider.value(value: OrderProvider()),
           ChangeNotifierProvider.value(value: OrderCaterProvider()),
-         // ChangeNotifierProvider.value(value: CuisineProvider()),
+
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
