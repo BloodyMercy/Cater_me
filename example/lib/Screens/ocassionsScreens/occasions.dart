@@ -21,21 +21,7 @@ class _OcasionsState extends State<Ocasions> {
 
     return SafeArea(
       child: Scaffold(
-        appBar:  AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            'Occasions',
-            style: Theme.of(context).textTheme.headline1,
-          ),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
+
         body: Container(
             color: Colors.white,
             child: Column(

@@ -25,15 +25,12 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   static const routeName = '/home_page';
 
-
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   bool isSearch = false;
-
-
 
   @override
   void initState() {
@@ -68,14 +65,27 @@ class _HomePageState extends State<HomePage> {
     package.loading = true;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
+          // appBar: AppBar(
+          //   automaticallyImplyLeading: false,
+          //   elevation: 0,
+          //   shape: const RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.vertical(
+          //       bottom: Radius.circular(15),
+          //     ),
+          //   ),
+          //   centerTitle: true,
+          //   title: Text(
+          //     'Home',
+          //     style: Theme.of(context).textTheme.headline1,
+          //   ),
+          //   backgroundColor: Theme.of(context).primaryColor,
+          // ),
           body: !isSearch
               ? RefreshIndicator(
                   onRefresh: refreshdata,
@@ -118,9 +128,9 @@ class _HomePageState extends State<HomePage> {
                                               232, 232, 232, 1),
                                           hintText: 'Search',
                                           prefixIcon: const Icon(Icons.search),
-                                          prefixIconColor: Colors.black,
+                                          prefixIconColor:  Theme.of(context).primaryColor,
                                           hintStyle: TextStyle(
-                                              color: Colors.grey[850],
+                                              color: Theme.of(context).primaryColor,
                                               fontSize: 16,
                                               fontFamily: 'Segoe UI'),
                                         ),
@@ -138,27 +148,39 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             );
                                           },
-                                          icon: Icon(Icons.chat)),
+                                          icon: Icon(
+                                            Icons.chat,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          )),
                                       IconButton(
-                                          onPressed: () {
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    MyFavorites(),
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(Icons.favorite)),
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MyFavorites(),
+                                            ),
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.favorite,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
                                       IconButton(
-                                          onPressed: () {
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Notifications(),
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(Icons.notifications)),
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Notifications(),
+                                            ),
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.notifications,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 )
@@ -464,15 +486,14 @@ class _HomePageState extends State<HomePage> {
                                   .contains(controllersearch.text.toLowerCase())
                               ? Center(
                                   child: GestureDetector(
-                                      onTap: (){
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                AdsitemDetail(package.listItems[index]),
-
-                                          ),
-                                        );
-                                      },
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => AdsitemDetail(
+                                              package.listItems[index]),
+                                        ),
+                                      );
+                                    },
                                     child: Card(
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(

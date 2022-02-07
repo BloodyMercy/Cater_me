@@ -44,7 +44,7 @@ class AuthModelSignin {
       respons.fields.addAll({
         'Email': username,
         'Password': password,
-        'DeviceToken': token!
+        'DeviceToken': token,
       });
       // final response = await http.post(Uri.parse("${ApiLink.login}"),///${ApiLink.login}
       //     body: data,

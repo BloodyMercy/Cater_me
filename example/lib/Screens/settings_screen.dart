@@ -81,21 +81,7 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
 
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(15),
-              ),
-            ),
-            centerTitle: true,
-            title: Text(
-              'Settings',
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            backgroundColor: Theme.of(context).primaryColor,
-          ),
+
           body: SingleChildScrollView(
             child: Container(
               height: mediaQuery.size.height,

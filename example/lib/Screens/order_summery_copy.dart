@@ -141,6 +141,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               child: CartItemCard(details.itemOrders[i] , i),
                             ),
                           ),
+
                         ],
                       );
 
@@ -149,8 +150,122 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                     }),
               ),
               Column(
+
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          // return  await showDialog(
+                          //   context: context,
+                          //   builder: (context) =>
+                          //       setupAlertDialoadContainer()
+                          // );
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: SingleChildScrollView(
+                                    child: Container(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.close,
+                                                    color: Theme.of(context).primaryColor,
+                                                  ),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.check,
+                                                      color: Theme.of(context).primaryColor,
+                                                    ))
+                                              ],
+                                            ),
+                                            Text(
+                                              'Choose the friends you want to share the order with.',
+                                              style: TextStyle(
+                                                  color: Theme.of(context).primaryColor,
+                                                  fontFamily: 'BerlinSansFB'),
+                                            ),
+                                            SizedBox(
+                                              height: mediaQuery.size.height * 0.02,
+                                            ),
+                                            SizedBox(
+                                              height: mediaQuery.size.height * 0.06,
+                                              child: TextField(
+                                                autofocus: false,
+                                                onTap: () {
+                                                  setState(() {
+                                                    isSearch = true;
+                                                  });
+                                                },
+                                                decoration: InputDecoration(
+                                                  enabledBorder: OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                          color: Color.fromRGBO(
+                                                              232, 232, 232, 1)),
+                                                      borderRadius:
+                                                      BorderRadius.circular(10)),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Theme.of(context)
+                                                              .primaryColor)),
+                                                  filled: true,
+                                                  fillColor: const Color.fromRGBO(
+                                                      232, 232, 232, 1),
+                                                  hintText: 'Search',
+                                                  prefixIcon: const Icon(Icons.search),
+                                                  prefixIconColor: Colors.black,
+                                                  hintStyle: TextStyle(
+                                                      color: Colors.grey[850],
+                                                      fontSize: 16,
+                                                      fontFamily: 'BerlinSansFB'),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                  ),
+                                  content: setupAlertDialoadContainer(context),
+                                );
+                              });
+                        },
+                        child: const Text(
+                          "Share Bill",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'BerlinSansFB'),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: (mediaQuery.size.width * 0.030),
+                            vertical: (mediaQuery.size.height * 0.01),
+                          ),
+                          primary: Theme.of(context).primaryColor,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
                   Text("You cant't cancel or edit your order once submitted!"),
                   SizedBox(
                     height: 10,
@@ -169,113 +284,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
                         Text('*(VAT included 15.0%: ${details.tax} SAR)',style: TextStyle(fontWeight: FontWeight.bold,),),
-                        ElevatedButton(
-                          onPressed: () {
-                            // return  await showDialog(
-                            //   context: context,
-                            //   builder: (context) =>
-                            //       setupAlertDialoadContainer()
-                            // );
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: SingleChildScrollView(
-                                      child: Container(
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    icon: Icon(
-                                                      Icons.close,
-                                                      color: Theme.of(context).primaryColor,
-                                                    ),
-                                                  ),
-                                                  IconButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      icon: Icon(
-                                                        Icons.check,
-                                                        color: Theme.of(context).primaryColor,
-                                                      ))
-                                                ],
-                                              ),
-                                              Text(
-                                                'Choose the friends you want to share the order with.',
-                                                style: TextStyle(
-                                                    color: Theme.of(context).primaryColor,
-                                                    fontFamily: 'BerlinSansFB'),
-                                              ),
-                                              SizedBox(
-                                                height: mediaQuery.size.height * 0.02,
-                                              ),
-                                              SizedBox(
-                                                height: mediaQuery.size.height * 0.06,
-                                                child: TextField(
-                                                  autofocus: false,
-                                                  onTap: () {
-                                                    setState(() {
-                                                      isSearch = true;
-                                                    });
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    enabledBorder: OutlineInputBorder(
-                                                        borderSide: const BorderSide(
-                                                            color: Color.fromRGBO(
-                                                                232, 232, 232, 1)),
-                                                        borderRadius:
-                                                        BorderRadius.circular(10)),
-                                                    focusedBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: Theme.of(context)
-                                                                .primaryColor)),
-                                                    filled: true,
-                                                    fillColor: const Color.fromRGBO(
-                                                        232, 232, 232, 1),
-                                                    hintText: 'Search',
-                                                    prefixIcon: const Icon(Icons.search),
-                                                    prefixIconColor: Colors.black,
-                                                    hintStyle: TextStyle(
-                                                        color: Colors.grey[850],
-                                                        fontSize: 16,
-                                                        fontFamily: 'BerlinSansFB'),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          )),
-                                    ),
-                                    content: setupAlertDialoadContainer(context),
-                                  );
-                                });
-                          },
-                          child: const Text(
-                            "Share Bill",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'BerlinSansFB'),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: (mediaQuery.size.width * 0.030),
-                              vertical: (mediaQuery.size.height * 0.01),
-                            ),
-                            primary: Theme.of(context).primaryColor,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                            ),
-                          ),
-                        ),
+
                       ],
                     ),
                   ),

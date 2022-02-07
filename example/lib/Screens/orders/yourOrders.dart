@@ -47,21 +47,7 @@ return;
     final orders=Provider.of<OrderProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
-        appBar:  AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(15),
-          ),
-        ),
-        centerTitle: true,
-        title: Text(
-          'Your Orders',
-          style: Theme.of(context).textTheme.headline1,
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
+
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
           child: Padding(

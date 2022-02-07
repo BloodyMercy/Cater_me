@@ -141,7 +141,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'BerlinSansFB'),
               // Style of the appBar text and the buttons
               headline2: TextStyle(
-                  color: Colors.black,
+                  color:Color(0xFF3F5521),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'BerlinSansFB'),

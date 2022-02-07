@@ -76,8 +76,8 @@ class _NavigationBarState extends State<Navigationbar> {
           children: _widgetOptions,
         ),
         floatingActionButton: SizedBox(
-          height: 60,
-          width: 60,
+          height: 55,
+          width: 55,
           child: FittedBox(
             child: FloatingActionButton(
               elevation: 0,
@@ -95,13 +95,13 @@ class _NavigationBarState extends State<Navigationbar> {
                 );
               },
               child: Container(
-                  height: 45,
-                  width: 45,
+                  height:40,
+                  width: 40,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       color: Theme.of(context).primaryColor),
                   child: const Icon(Icons.add_rounded,
-                      color: Colors.white, size: 35)),
+                      color:Color.fromRGBO(253, 202, 29, 1), size: 35)),
             ),
           ),
         ),
@@ -114,20 +114,20 @@ class _NavigationBarState extends State<Navigationbar> {
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             iconSize: 30,
-            selectedItemColor: Theme.of(context).primaryColor,
-            unselectedItemColor: Colors.grey,
+            selectedItemColor:Color.fromRGBO(253, 202, 29, 1),
+            unselectedItemColor:  Theme.of(context).primaryColor,
             items: [
               const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
                 ),
-                label: '',
+                label: 'Home',
               ),
               const BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.calendar_today_outlined,
+                  Icons.calendar_today_rounded,
                 ),
-                label: '',
+                label: 'Ocasions',
               ),
               BottomNavigationBarItem(
                 icon: Stack(
@@ -147,13 +147,13 @@ class _NavigationBarState extends State<Navigationbar> {
                     ])),*/
                   ],
                 ),
-                label: '',
+                label: 'Orders',
               ),
               const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
                 ),
-                label: '',
+                label: 'Settings',
               ),
             ],
             currentIndex: widget._selectedIndex,

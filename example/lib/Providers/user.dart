@@ -89,8 +89,8 @@ class UserProvider with ChangeNotifier {
   UserProvider.statusfunction() {
 
 getdata();
-email.text="patour_aboulpete1@gmail.com";
-password.text="P@ssw0rd";
+// email.text="patour_aboulpete1@gmail.com";
+// password.text="P@ssw0rd";
 
 
 

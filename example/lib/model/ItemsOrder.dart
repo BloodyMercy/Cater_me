@@ -42,7 +42,7 @@ int tax = 0;
     data['description'] = description;
     data['price'] = price;
     if (itemDetails != null) {
-      data['itemDetails'] = itemDetails!.map((v) => v.toJson()).toList();
+      data['itemDetails'] = itemDetails.map((v) => v.toJson()).toList();
     }
     return data;
   }

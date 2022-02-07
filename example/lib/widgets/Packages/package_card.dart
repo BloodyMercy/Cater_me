@@ -66,7 +66,7 @@ class _PackageCardState extends State<PackageCard> {
           Container(
               decoration: BoxDecoration(
                 border: Border.all(style: BorderStyle.none),
-                color: Color.fromRGBO(0, 0, 0, 0.5),
+                color: Color(0xFF3F5521),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20)),
