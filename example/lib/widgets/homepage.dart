@@ -287,7 +287,7 @@ class _HomePageState extends State<HomePage> {
                                                           onPressed: () {
                                                             Navigator.of(
                                                                     context)
-                                                                .pushReplacement(
+                                                                .push(
                                                               MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>

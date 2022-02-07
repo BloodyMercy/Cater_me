@@ -220,11 +220,11 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                  icon:
-                                      const Icon(Icons.person_outline_outlined),
-                                  onPressed: () {},
-                                ),
+                                prefixIcon:Icon(Icons.person_outline_outlined),
+
+
+
+
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -253,10 +253,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                  icon: const Icon(Icons.mail_outline),
-                                  onPressed: () {},
-                                ),
+                                prefixIcon: Icon(
+                                   Icons.mail_outline),
+
+
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -319,15 +319,54 @@ class _SignupScreenState extends State<SignupScreen> {
                               obscureText: passObscure,
                             ),
                             SizedBox(height: screenHeight * 0.015),
+
+                            TextFormField(
+                              autovalidateMode:
+                              AutovalidateMode.onUserInteraction,
+                              onChanged: (value) => password = value,
+                              decoration: InputDecoration(
+                                errorStyle: const TextStyle(fontSize: 10),
+                                prefixIcon: IconButton(
+                                  icon: Icon(
+                                    passObscure
+                                        ? Icons.lock_outlined
+                                        : Icons.lock_open_outlined,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      passObscure = !passObscure;
+                                    });
+                                  },
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                contentPadding: EdgeInsets.only(
+                                    left: screenHeight * 0.03,
+                                    bottom: screenHeight * 0.025,
+                                    top: screenHeight * 0.025),
+                                hintText: 'ConfirmPassword',
+                                hintStyle:
+                                Theme.of(context).textTheme.headline4,
+                              ),
+                              controller: authProvider.confirmpassword,
+                              validator: validatePass,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: passObscure,
+                            ),
+                            SizedBox(height: screenHeight * 0.015),
                             TextFormField(
                               onSaved: (value) => mobile = value,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                  icon: const Icon(Icons.phone),
-                                  onPressed: () {},
-                                ),
+                                prefixIcon: Icon(
+                                   Icons.phone),
+
+
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
