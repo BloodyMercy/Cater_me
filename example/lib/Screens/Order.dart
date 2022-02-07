@@ -116,9 +116,18 @@ class _OrderState extends State<Order> {
     await address.getRegular();
   }
 
+  clearAlldata() {
+    final clearData = Provider.of<AdressProvider>(context, listen: false);
+    clearData.clearAllData();
+
+    return;
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    final addresses = Provider.of<AdressProvider>(context, listen: true);
+    // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
     final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
@@ -160,6 +169,9 @@ class _OrderState extends State<Order> {
                       ),
                       TextButton(
                         onPressed: () {
+                          orderProvider.spets = 1;
+
+                          clearAlldata();
                           // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
                           // _serpres.cleardata();
                            Navigator.of(context).pop();

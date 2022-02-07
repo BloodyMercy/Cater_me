@@ -78,6 +78,16 @@ List<String> _listcityname=[];
   TextEditingController numberofguestcontroller=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
 
+
+  clearAllData(){
+    eventnamecontroller.text = '';
+    evendatecontroller.text = '';
+    numberofguestcontroller.text = '';
+    typeofeventcontroller.text = '';
+
+    notifyListeners();
+  }
+
 //  String _cou
 
   List<City> get listcity => _listcity;
