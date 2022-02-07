@@ -23,10 +23,10 @@ class _PackageCardState extends State<PackageCard> {
   getData()async{
     final pack=Provider.of<PackagesProvider>(context,listen: false);
     await pack.getpacakgesby(pack.packages.id);
-    setState(() {
-      loading=false;
-    });
-  }
+  //   setState(() {
+  //     loading=false;
+  //   });
+   }
   @override
   void initState() {
     getData();
