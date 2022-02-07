@@ -204,21 +204,21 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                         SizedBox(
                                           width: mediaQuery.size.width * 0.03,
                                         ),
-                                        Icon(Icons.person),
+                                        Icon(Icons.person,color: Color(0xFF3F5521),),
                                         SizedBox(
                                           width: mediaQuery.size.width * 0.05,
                                         ),
                                         Text(
                                           "Personal Info",
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Color(0xFF3F5521),
                                               fontSize: 25,
                                               fontFamily: 'BerlinSansFB'),
                                         ),
                                       ],
                                     ),
                                     Row(children: [
-                                      Icon(Icons.arrow_forward),
+                                      Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
@@ -255,14 +255,14 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                     Text(
                                       "Addresses",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Color(0xFF3F5521),
                                           fontSize: 25,
                                           fontFamily: 'BerlinSansFB'),
                                     ),
                                   ],
                                 ),
                                 Row(children: [
-                                  Icon(Icons.arrow_forward),
+                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
                                   SizedBox(
                                     width: mediaQuery.size.width * 0.03,
                                   ),
@@ -289,21 +289,21 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(Icons.info_outline),
+                                    Icon(Icons.info_outline,color: Color(0xFF3F5521),),
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
                                       "Account Info",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Color(0xFF3F5521),
                                           fontSize: 25,
                                           fontFamily: 'BerlinSansFB'),
                                     ),
                                   ],
                                 ),
                                 Row(children: [
-                                  Icon(Icons.arrow_forward),
+                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
                                   SizedBox(
                                     width: mediaQuery.size.width * 0.03,
                                   ),
@@ -330,21 +330,21 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(Icons.email),
+                                    Icon(Icons.email,color:Color(0xFF3F5521),),
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
                                       "Contact Us",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Color(0xFF3F5521),
                                           fontSize: 25,
                                           fontFamily: 'BerlinSansFB'),
                                     ),
                                   ],
                                 ),
                                 Row(children: [
-                                  Icon(Icons.arrow_forward),
+                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
                                   SizedBox(
                                     width: mediaQuery.size.width * 0.03,
                                   ),
@@ -371,21 +371,21 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(Icons.person_add),
+                                    Icon(Icons.person_add,color: Color(0xFF3F5521),),
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
                                       "Add Friends",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Color(0xFF3F5521),
                                           fontSize: 25,
                                           fontFamily: 'BerlinSansFB'),
                                     ),
                                   ],
                                 ),
                                 Row(children: [
-                                  Icon(Icons.arrow_forward),
+                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
                                   SizedBox(
                                     width: mediaQuery.size.width * 0.03,
                                   ),
@@ -410,7 +410,7 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                     },
                     child: Text(
                       "Log Out",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
