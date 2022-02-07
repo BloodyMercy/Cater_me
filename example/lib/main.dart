@@ -10,6 +10,8 @@ import 'package:CaterMe/Screens/intro_screen.dart';
 import 'package:CaterMe/Screens/order_summery_1.dart';
 import 'package:CaterMe/Screens/splash_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/services.dart';
 
@@ -32,10 +34,11 @@ import 'package:flutter/material.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  //await Firebase.initializeApp();
-  //FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  // FirebaseMessaging messaging = FirebaseMessaging.instance;
   // NotificationSettings settings = await messaging.requestPermission(
   //   alert: true,
   //   announcement: false,
@@ -45,7 +48,7 @@ void main() async{
   //   provisional: false,
   //   sound: true,
   // );
-
+  //
   // if (settings.authorizationStatus == AuthorizationStatus.authorized) {
   //   print('User granted permission');
   // } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {

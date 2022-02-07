@@ -12,6 +12,7 @@ import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:CaterMe/widgets/my_favorites_card.dart';
 import 'package:CaterMe/Screens/notifications.dart';
+import 'package:badges/badges.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -130,23 +131,13 @@ class _NavigationBarState extends State<Navigationbar> {
                 label: 'Ocasions',
               ),
               BottomNavigationBarItem(
-                icon: Stack(
-                  children: const [
-                    Icon(
-                      Icons.backpack,
-                    ),
-                    /*Positioned(
-                    top: -1.0,
-                    right: -1.0,
-                    child: Stack(children: [
-                     new Icon(
-                        Icons.brightness_1,
-                        color: Colors.red,
-                        size: 12,
-                      )
-                    ])),*/
-                  ],
-                ),
+                icon:   Badge(
+                    badgeColor: Color.fromRGBO(253, 202, 29, 1),
+                   // badgeContent:Text("3"),
+                    child: Icon(
+                      Icons.calendar_today_rounded,
+                      color: Theme.of(context).primaryColor,
+                    )),
                 label: 'Orders',
               ),
               const BottomNavigationBarItem(

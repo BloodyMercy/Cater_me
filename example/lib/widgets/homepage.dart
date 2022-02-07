@@ -17,6 +17,7 @@ import 'package:CaterMe/widgets/items_details.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:CaterMe/widgets/Packages/packages_card.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -176,10 +177,14 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                        icon: Icon(
+                                          icon:
+                                        Badge(
+                                          badgeColor: Color.fromRGBO(253, 202, 29, 1),
+                                          badgeContent:Text("3"),
+                                        child: Icon(
                                           Icons.notifications,
                                           color: Theme.of(context).primaryColor,
-                                        ),
+                                        )),
                                       ),
                                     ],
                                   ),
