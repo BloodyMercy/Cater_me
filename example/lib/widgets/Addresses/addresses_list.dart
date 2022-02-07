@@ -43,14 +43,16 @@ class _AddressesListState extends State<AddressesList> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Radio(
+
                           toggleable: true,
-                          groupValue: _value,
+                          groupValue: orderprovider.valueIndex,
                           value: index,
                           onChanged: (value) {
 
 
                             setState(() {
                               _value=index;
+                              orderprovider.valueIndex=index;
                             });
                             orderprovider.value = widget.address[index];
                           },

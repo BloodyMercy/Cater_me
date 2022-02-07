@@ -49,7 +49,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     Icon(
                       Icons.check_circle,
                       color:
-                          reg ? Theme.of(context).primaryColor : Colors.black12,
+                      orderProvider.serviceId==1 ? Theme.of(context).primaryColor : Colors.black12,
                       size: 30,
                     ),
                     Container(
@@ -77,7 +77,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     Icon(
                       Icons.check_circle,
                       color:
-                          dab ? Theme.of(context).primaryColor : Colors.black12,
+                      orderProvider.serviceId==2? Theme.of(context).primaryColor : Colors.black12,
                       size: 30,
                     ),
                     Container(

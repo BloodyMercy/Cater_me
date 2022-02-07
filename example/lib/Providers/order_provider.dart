@@ -86,4 +86,14 @@ Address get value => _value;
   set serviceId(int value) {
     _serviceId = value;
   }
+
+  int _valueIndex = 0;
+
+  int get valueIndex => _valueIndex;
+
+  set valueIndex(int value) {
+    _valueIndex = value;
+  }
+
+
 }

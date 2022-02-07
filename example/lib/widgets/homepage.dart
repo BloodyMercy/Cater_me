@@ -2,13 +2,18 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/addOns.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/cuisins_screen.dart';
+import 'package:CaterMe/Screens/food_details_screen.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/data/food_details.dart';
+import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/model/item.dart';
 import 'package:CaterMe/model/packages.dart';
+import 'package:CaterMe/widgets/Packages/package_add_details.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
+import 'package:CaterMe/widgets/items_details.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:CaterMe/widgets/Packages/packages_card.dart';
@@ -20,12 +25,15 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   static const routeName = '/home_page';
 
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   bool isSearch = false;
+
+
 
   @override
   void initState() {
@@ -55,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     await package.getallpacakges(context);
 
     for (int i = 0; i < package.listItems.length; i++) {
-      listitemssearch.add(package.listItems[i].itemName!.toLowerCase());
+      listitemssearch.add(package.listItems[i].title.toLowerCase());
     }
     package.loading = true;
   }
@@ -455,32 +463,43 @@ class _HomePageState extends State<HomePage> {
                           return listitemssearch[index]
                                   .contains(controllersearch.text.toLowerCase())
                               ? Center(
-                                  child: Card(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
+                                  child: GestureDetector(
+                                      onTap: (){
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AdsitemDetail(package.listItems[index]),
+
+                                          ),
+                                        );
+                                      },
+                                    child: Card(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    child: Container(
-                                      // width: mediaQuery.size.width*0.8 ,
-                                      height: mediaQuery.size.height * 0.1,
-                                      child: Row(
-                                        children: [
-                                          Image.network(
-                                            package.listItems[index].itemImage!,
-                                            height: 100,
-                                            width: 100,
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Text(
-                                            '${package.listItems[index].itemName}',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline2,
-                                          ),
-                                        ],
+                                      child: Container(
+                                        // width: mediaQuery.size.width*0.8 ,
+                                        height: mediaQuery.size.height * 0.1,
+                                        child: Row(
+                                          children: [
+                                            Image.network(
+                                              package.listItems[index].image,
+                                              height: 100,
+                                              width: 100,
+                                            ),
+                                            SizedBox(
+                                              width: 50,
+                                            ),
+                                            Text(
+                                              '${package.listItems[index].title}',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline2,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

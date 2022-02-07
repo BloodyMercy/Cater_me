@@ -207,11 +207,10 @@ class _OrderState extends State<Order> {
                             onTap: (int value){
 
 
-                              orderProvider.spets=value;
 
-                              if(orderProvider.spets==2) {
-                                if (orderProvider.serviceId==0
-                                ) {
+
+                              if(orderProvider.spets==1) {
+                                if (orderProvider.value.id==0) {
                                   _key.currentState!
                                       .showSnackBar(
                                     SnackBar(
@@ -221,10 +220,38 @@ class _OrderState extends State<Order> {
                                   );
                                 }
                                 else{
-                                  orderProvider.spets++;
+                                  orderProvider.spets=value;
                                 }
                               }
-                              if(orderProvider.spets==3) {
+                              if(orderProvider.spets==2) {
+                                // if (address
+                                //     .eventnamecontroller
+                                //     .text ==
+                                //     "" ||
+                                //     address.evendatecontroller
+                                //         .text ==
+                                //         "" ||
+                                //     address
+                                //         .numberofguestcontroller
+                                //         .text ==
+                                //         "" ||
+                                //     address
+                                //         .typeofeventcontroller
+                                //         .text == "") {
+                              if( orderProvider.serviceId==0){
+                                  _key.currentState!
+                                      .showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          "please fill the empty fields "),
+                                    ),
+                                  );
+                                }
+                                else{
+                                  orderProvider.spets=value;
+                                }
+                              }
+                              if(orderProvider.spets==3){
                                 if (address
                                     .eventnamecontroller
                                     .text ==
@@ -238,31 +265,32 @@ class _OrderState extends State<Order> {
                                         "" ||
                                     address
                                         .typeofeventcontroller
-                                        .text == "") {
-                                  _key.currentState!
-                                      .showSnackBar(
-                                    SnackBar(
+                                        .text == "")
+                                      {
+                                      if( orderProvider.serviceId==0){
+                                      _key.currentState!
+                                          .showSnackBar(
+                                      SnackBar(
                                       content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
-                                }
-                                else{
-                                  orderProvider.spets++;
-                                }
-                              }
-                              if(orderProvider.spets==4){
+                                      "please fill the empty fields "),
+                                      ),
+                                      );
+                                      }else{
+                                        orderProvider.spets=value;
+                                        setState(() {
+                                          //  orderProvider.spets=value;
+
+                                          _controller.animateTo(
+                                            0,
+                                            duration: Duration(milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
+                                        });
+                                      }
+                                      }
 
 
-                                setState(() {
-                                //  orderProvider.spets=value;
 
-                                  _controller.animateTo(
-                                    0,
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.linear,
-                                  );
-                                });
                               }
                               if(orderProvider.spets==5){
 
@@ -276,6 +304,8 @@ class _OrderState extends State<Order> {
                                     curve: Curves.linear,
                                   );
                                 });
+                              }else{
+                                orderProvider.spets=value;
                               }
                               if(orderProvider.spets==6){
 
@@ -289,6 +319,8 @@ class _OrderState extends State<Order> {
                                     curve: Curves.linear,
                                   );
                                 });
+                              }else{
+                                orderProvider.spets=value;
                               }
                               if(orderProvider.spets==7){
 
@@ -302,6 +334,8 @@ class _OrderState extends State<Order> {
                                     curve: Curves.linear,
                                   );
                                 });
+                              }else{
+                                orderProvider.spets=value;
                               }
 
 
@@ -309,9 +343,9 @@ class _OrderState extends State<Order> {
 
 
 
-setState(() {
-
-});
+// setState(() {
+//
+// });
 
 
                             },
@@ -388,7 +422,7 @@ setState(() {
                                orderProvider.spets++;
                                 }
                               }
-                              if(orderProvider.spets==2) {
+                          else    if(orderProvider.spets==2) {
                                 if (orderProvider.serviceId==0
                                 ) {
                                   _key.currentState!
@@ -408,7 +442,7 @@ setState(() {
 
 
 
-                              if(orderProvider.spets==3) {
+                     else         if(orderProvider.spets==3) {
                                 if (address
                                     .eventnamecontroller
                                     .text ==
@@ -436,116 +470,12 @@ setState(() {
                                 }
                               }
 
+                           //   if(orderProvider.spets==4||orderProvider.spets==5||orderProvider.spets==6) {
+                              else
+                                orderProvider.spets++;
+                          //    }
 
 
-                              if(orderProvider.spets==5) {
-                                if (address
-                                    .eventnamecontroller
-                                    .text ==
-                                    "" ||
-                                    address.evendatecontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .numberofguestcontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .typeofeventcontroller
-                                        .text == "") {
-                                  _key.currentState!
-                                      .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
-                                }
-                                else{
-                                 orderProvider.spets++;
-                                }
-                              }
-                              if(orderProvider.spets==6) {
-                                if (address
-                                    .eventnamecontroller
-                                    .text ==
-                                    "" ||
-                                    address.evendatecontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .numberofguestcontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .typeofeventcontroller
-                                        .text == "") {
-                                  _key.currentState!
-                                      .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
-                                }
-                                else{
-                                  orderProvider.spets++;
-                                }
-                              }
-                              if(orderProvider.spets==7) {
-                                if (address
-                                    .eventnamecontroller
-                                    .text ==
-                                    "" ||
-                                    address.evendatecontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .numberofguestcontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .typeofeventcontroller
-                                        .text == "") {
-                                  _key.currentState!
-                                      .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
-                                }
-                                else{
-                                  orderProvider.spets++;
-                                }
-                              }
-                              if(orderProvider.spets==8) {
-                                if (address
-                                    .eventnamecontroller
-                                    .text ==
-                                    "" ||
-                                    address.evendatecontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .numberofguestcontroller
-                                        .text ==
-                                        "" ||
-                                    address
-                                        .typeofeventcontroller
-                                        .text == "") {
-                                  _key.currentState!
-                                      .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
-                                }
-                                else{
-                                  orderProvider.spets++;
-                                }
-                              }
 
 
                             },

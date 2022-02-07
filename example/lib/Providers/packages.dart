@@ -37,15 +37,15 @@ List<Package> get allpackagesorder => _allpackagesorder;
 List<AddOn> _allons=[];
 List<AddOn> _allonsorder=[];
 Map<String, dynamic> _alldata={};
-List<Item> _listItems=[];
+List<AddOn> _listItems=[];
 
-List<Item> get listItems => _listItems;
+List<AddOn> get listItems => _listItems;
 
-  set listItems(List<Item> value) {
+  set listItems(List<AddOn> value) {
     _listItems = value;
   }
 
-List<AddOn> get allonsorder => _allonsorder;
+  List<AddOn> get allonsorder => _allonsorder;
 
   set allonsorder(List<AddOn> value) {
     _allonsorder = value;
@@ -126,8 +126,8 @@ loading=false;
       _cuisins = Cuisines.fromJson(_alldata['cuisine']);
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
-       _listItems = List<Item>.from(
-          _alldata['dropDown'].map((model) => Item.fromJson(model)));
+       _listItems = List<AddOn>.from(
+          _alldata['dropDown'].map((model) => AddOn.fromJson(model)));
     }
 
 loading=true;
