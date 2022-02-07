@@ -38,7 +38,7 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
     getdata();
   }
 
-   File? image;
+  File? image;
 
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
@@ -81,366 +81,399 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
 
     return SafeArea(
       child: Scaffold(
-
           body: SingleChildScrollView(
-            child: Container(
-              height: mediaQuery.size.height,
-              color: Colors.white,
-              child: Column(
-                children: [
-                  GestureDetector(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Center(
-                        child: CircleAvatar(
-                          minRadius: 16,
-                          maxRadius: screenHeight * 0.1,
-                          backgroundImage:
-                              image == null ? null : NetworkImage(imageprof),
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      showModalBottomSheet(
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20))),
-                          context: context,
-                          builder: (context) {
-                            return Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ListTile(
-                                  leading: const Icon(
-                                    Icons.camera,
-                                    color: Color.fromRGBO(63, 85, 33, 1),
-                                  ),
-                                  title: const Text(
-                                    'Camera',
-                                    style: TextStyle(
-                                      fontFamily: 'BerlinSansFB',
-                                      fontSize: 16,
-                                      color: Color.fromRGBO(63, 85, 33, 1),
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    PickImage(ImageSource.camera);
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  leading: const Icon(
-                                    Icons.image,
-                                    color: Color.fromRGBO(63, 85, 33, 1),
-                                  ),
-                                  title: const Text(
-                                    'Gallery',
-                                    style: TextStyle(
-                                      fontFamily: 'BerlinSansFB',
-                                      fontSize: 16,
-                                      color: Color.fromRGBO(63, 85, 33, 1),
-                                    ),
-                                  ),
-                                  onTap: () async{
-                                  await PickImage(ImageSource.gallery);
-
-                               String a=   await  updateImage.updateProfile(image!);
-                               if(a!="") {
-                                 setState(() {
-                                   imageprof = a;
-                                 });
-                               }
-
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          });
-                    },
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.01,
-                  ),
-                  showname != ''
-                      ? Text(
-                          '${showname}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        )
-                      : Container(),
-                  phoneNumb != ''
-                      ? Text('${phoneNumb}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20))
-                      : Container(),
-
-                  SizedBox(
-                    height: screenHeight * 0.05,
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.4,
-                    child: ListView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => PersonalInfo(),
-                                ),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: mediaQuery.size.width * 0.03,
-                                        ),
-                                        Icon(Icons.person,color: Color(0xFF3F5521),),
-                                        SizedBox(
-                                          width: mediaQuery.size.width * 0.05,
-                                        ),
-                                        Text(
-                                          "Personal Info",
-                                          style: TextStyle(
-                                              color: Color(0xFF3F5521),
-                                              fontSize: 25,
-                                              fontFamily: 'BerlinSansFB'),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(children: [
-                                      Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
-                                      SizedBox(
-                                        width: mediaQuery.size.width * 0.03,
-                                      ),
-                                    ]),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      AddAddressSettingsScreen(),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.03,
-                                    ),
-                                    Icon(Icons.maps_home_work_outlined),
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.05,
-                                    ),
-                                    Text(
-                                      "Addresses",
-                                      style: TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontSize: 25,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
-                                  ],
-                                ),
-                                Row(children: [
-                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
-                                  SizedBox(
-                                    width: mediaQuery.size.width * 0.03,
-                                  ),
-                                ]),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => AccountInfo(),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.03,
-                                    ),
-                                    Icon(Icons.info_outline,color: Color(0xFF3F5521),),
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.05,
-                                    ),
-                                    Text(
-                                      "Account Info",
-                                      style: TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontSize: 25,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
-                                  ],
-                                ),
-                                Row(children: [
-                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
-                                  SizedBox(
-                                    width: mediaQuery.size.width * 0.03,
-                                  ),
-                                ]),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => ContactUsScreen(),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.03,
-                                    ),
-                                    Icon(Icons.email,color:Color(0xFF3F5521),),
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.05,
-                                    ),
-                                    Text(
-                                      "Contact Us",
-                                      style: TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontSize: 25,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
-                                  ],
-                                ),
-                                Row(children: [
-                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
-                                  SizedBox(
-                                    width: mediaQuery.size.width * 0.03,
-                                  ),
-                                ]),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => AddFriendScreen(),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.03,
-                                    ),
-                                    Icon(Icons.person_add,color: Color(0xFF3F5521),),
-                                    SizedBox(
-                                      width: mediaQuery.size.width * 0.05,
-                                    ),
-                                    Text(
-                                      "Add Friends",
-                                      style: TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontSize: 25,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
-                                  ],
-                                ),
-                                Row(children: [
-                                  Icon(Icons.arrow_forward,color: Color(0xFF3F5521),),
-                                  SizedBox(
-                                    width: mediaQuery.size.width * 0.03,
-                                  ),
-                                ]),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+        child: Container(
+          height: mediaQuery.size.height,
+          color: Colors.white,
+          child: Column(
+            children: [
+              GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Center(
+                    child: CircleAvatar(
+                      minRadius: 16,
+                      maxRadius: screenHeight * 0.1,
+                      backgroundImage:
+                          image == null ? null : NetworkImage(imageprof),
                     ),
                   ),
-                  SizedBox(
-                    height: screenHeight * 0.03,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => LogOutScreen(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "Log Out",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: mediaQuery.size.width * 0.05,
-                      ),
-                      primary: Colors.red,
-                    ),
-                  )
-                  //   ElevatedButton(onPressed:  () {
-                  //   Navigator.of(context).pushReplacement(
-                  //     MaterialPageRoute(
-                  //       builder: (context) => PersonalInfo(),
-                  //     ),
-                  //   );
-                  // }, child:  Text("Personal Info", style: TextStyle(color: Colors.black, fontSize: 25, fontFamily:  'BerlinSansFB'),),
-                  // style: ElevatedButton.styleFrom(
-                  //   textStyle: TextStyle(),
-                  //         padding:  EdgeInsets.symmetric(
-                  //           vertical: 20,
-                  //          horizontal: mediaQuery.size.width*0.33,
-                  //         ),
+                ),
+                onTap: () {
+                  showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
+                      context: context,
+                      builder: (context) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTile(
+                              leading: const Icon(
+                                Icons.camera,
+                                color: Color.fromRGBO(63, 85, 33, 1),
+                              ),
+                              title: const Text(
+                                'Camera',
+                                style: TextStyle(
+                                  fontFamily: 'BerlinSansFB',
+                                  fontSize: 16,
+                                  color: Color.fromRGBO(63, 85, 33, 1),
+                                ),
+                              ),
+                              onTap: () {
+                                PickImage(ImageSource.camera);
+                                Navigator.pop(context);
+                              },
+                            ),
+                            ListTile(
+                              leading: const Icon(
+                                Icons.image,
+                                color: Color.fromRGBO(63, 85, 33, 1),
+                              ),
+                              title: const Text(
+                                'Gallery',
+                                style: TextStyle(
+                                  fontFamily: 'BerlinSansFB',
+                                  fontSize: 16,
+                                  color: Color.fromRGBO(63, 85, 33, 1),
+                                ),
+                              ),
+                              onTap: () async {
+                                await PickImage(ImageSource.gallery);
 
-                  //         primary: Colors.white,
-                  //       ),
-                  // )
-                ],
+                                String a =
+                                    await updateImage.updateProfile(image!);
+                                if (a != "") {
+                                  setState(() {
+                                    imageprof = a;
+                                  });
+                                }
+
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      });
+                },
               ),
-            ),
-          )
+              SizedBox(
+                height: screenHeight * 0.01,
+              ),
+              showname != ''
+                  ? Text(
+                      '${showname}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color(0xFF3F5521),
+                      ),
+                    )
+                  : Container(),
+              phoneNumb != ''
+                  ? Text(
+                      '${phoneNumb}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color(0xFF3F5521),
+                      ),
+                    )
+                  : Container(),
+
+              SizedBox(
+                height: screenHeight * 0.05,
+              ),
+              SizedBox(
+                height: screenHeight * 0.4,
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => PersonalInfo(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: mediaQuery.size.width * 0.03,
+                                    ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Color(0xFF3F5521),
+                                    ),
+                                    SizedBox(
+                                      width: mediaQuery.size.width * 0.05,
+                                    ),
+                                    Text(
+                                      "Personal Info",
+                                      style: TextStyle(
+                                          color: Color(0xFF3F5521),
+                                          fontSize: 25,
+                                          fontFamily: 'BerlinSansFB'),
+                                    ),
+                                  ],
+                                ),
+                                Row(children: [
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    color: Color(0xFF3F5521),
+                                  ),
+                                  SizedBox(
+                                    width: mediaQuery.size.width * 0.03,
+                                  ),
+                                ]),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AddAddressSettingsScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.03,
+                                ),
+                                Icon(Icons.maps_home_work_outlined),
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.05,
+                                ),
+                                Text(
+                                  "Addresses",
+                                  style: TextStyle(
+                                      color: Color(0xFF3F5521),
+                                      fontSize: 25,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ],
+                            ),
+                            Row(children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Color(0xFF3F5521),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.03,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AccountInfo(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.03,
+                                ),
+                                Icon(
+                                  Icons.info_outline,
+                                  color: Color(0xFF3F5521),
+                                ),
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.05,
+                                ),
+                                Text(
+                                  "Account Info",
+                                  style: TextStyle(
+                                      color: Color(0xFF3F5521),
+                                      fontSize: 25,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ],
+                            ),
+                            Row(children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Color(0xFF3F5521),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.03,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ContactUsScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.03,
+                                ),
+                                Icon(
+                                  Icons.email,
+                                  color: Color(0xFF3F5521),
+                                ),
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.05,
+                                ),
+                                Text(
+                                  "Contact Us",
+                                  style: TextStyle(
+                                      color: Color(0xFF3F5521),
+                                      fontSize: 25,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ],
+                            ),
+                            Row(children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Color(0xFF3F5521),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.03,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AddFriendScreen(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.03,
+                                ),
+                                Icon(
+                                  Icons.person_add,
+                                  color: Color(0xFF3F5521),
+                                ),
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.05,
+                                ),
+                                Text(
+                                  "Add Friends",
+                                  style: TextStyle(
+                                      color: Color(0xFF3F5521),
+                                      fontSize: 25,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ],
+                            ),
+                            Row(children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Color(0xFF3F5521),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.03,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: screenHeight * 0.03,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => LogOutScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Log Out",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: mediaQuery.size.width * 0.05,
+                  ),
+                  primary: Color(0xFF3F5521),
+                ),
+              )
+              //   ElevatedButton(onPressed:  () {
+              //   Navigator.of(context).pushReplacement(
+              //     MaterialPageRoute(
+              //       builder: (context) => PersonalInfo(),
+              //     ),
+              //   );
+              // }, child:  Text("Personal Info", style: TextStyle(color: Colors.black, fontSize: 25, fontFamily:  'BerlinSansFB'),),
+              // style: ElevatedButton.styleFrom(
+              //   textStyle: TextStyle(),
+              //         padding:  EdgeInsets.symmetric(
+              //           vertical: 20,
+              //          horizontal: mediaQuery.size.width*0.33,
+              //         ),
+
+              //         primary: Colors.white,
+              //       ),
+              // )
+            ],
+          ),
+        ),
+      )
 
           // DefaultTabController(
           //   length: 3,
