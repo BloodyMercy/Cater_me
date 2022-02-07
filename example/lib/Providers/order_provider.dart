@@ -113,7 +113,7 @@ Address get value => _value;
     _serviceId = value;
   }
 
-  int _valueIndex = 0;
+  int _valueIndex = -1;
 
   int get valueIndex => _valueIndex;
 
