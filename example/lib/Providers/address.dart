@@ -79,6 +79,8 @@ List<String> _listcityname=[];
   TextEditingController typeofeventcontroller=TextEditingController();
 
 
+
+
   clearAllData(){
     eventnamecontroller.text = '';
     evendatecontroller.text = '';

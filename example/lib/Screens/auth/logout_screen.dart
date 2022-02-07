@@ -119,7 +119,8 @@ class _LogOutScreenState extends State<LogOutScreen> {
                                 height: screenHeight * 0.06,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   TextButton(
                                     onPressed: () {
@@ -136,14 +137,17 @@ class _LogOutScreenState extends State<LogOutScreen> {
                                   ),
                                   TextButton(
                                     onPressed: () async {
-                                      final SharedPreferences sharedPreferences =
+                                      final SharedPreferences
+                                          sharedPreferences =
                                           await SharedPreferences.getInstance();
                                       sharedPreferences.remove('email');
+                                      sharedPreferences.remove('password');
 
                                       Navigator.of(ctx).pushAndRemoveUntil(
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const LoginScreen()),
+                                            builder: (context) =>
+                                                const LoginScreen(),
+                                          ),
                                           (route) => false);
                                     },
                                     child: const Text(

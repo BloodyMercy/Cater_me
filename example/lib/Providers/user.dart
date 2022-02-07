@@ -89,8 +89,8 @@ class UserProvider with ChangeNotifier {
   UserProvider.statusfunction() {
 
 getdata();
-email.text="patourtohme9@gmail.com";
-password.text="Peter69@";
+email.text="patour_aboulpete1@gmail.com";
+password.text="P@ssw0rd";
 
 
 
@@ -153,7 +153,7 @@ password.text="Peter69@";
   }
 
   Future<bool> signUp( File image,String b) async {
-   //  SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
 
     try {
       notifyListeners();
@@ -180,4 +180,28 @@ password.text="Peter69@";
       return false;
     }
   }
+
+  Future<String> updateProfile( File image) async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    try {
+      //notifyListeners();
+      ErrorMessage u = await AuthModelSignin.updateProfile(
+          image
+      );
+
+      _messageSignUp = u.message;
+
+      notifyListeners();
+      return u.message;
+    } catch (error) {
+      print(error);
+      _messageSignUp = "error try again later from provider";
+
+      notifyListeners();
+      return "";
+    }
+  }
+
+
 }

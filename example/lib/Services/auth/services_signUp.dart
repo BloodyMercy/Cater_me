@@ -34,10 +34,10 @@ class AuthModelSignUp {
 
         // open a bytestream
       if(image!=null) {
-        var stream = new http.ByteStream(image.openRead());
-        stream.cast();
+      //  var stream = new http.ByteStream(image.openRead());
+     //   stream.cast();
         // get file length
-        var length = await image.length();
+       // var length = await image.length();
 
         // string to uri
         //  var uri = Uri.parse("http://ip:8082/composer/predict");
@@ -46,11 +46,11 @@ class AuthModelSignUp {
         //  var request = new http.MultipartRequest("POST", uri);
 
         // multipart that takes file
-        var multipartFile = new http.MultipartFile('file', stream, length,
-            filename: basename(image.path));
+
 
         // add file to multipart
-        respons.files.add(multipartFile);
+        respons.files.add(await http.MultipartFile.fromPath('FormFile', image.path));
+
 
         // send
         //var response = await respons.send();
@@ -70,6 +70,12 @@ class AuthModelSignUp {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         prefs.setString("token", responseData['token']);
+
+        SharedPreferences image = await SharedPreferences.getInstance();
+        image.setString('imageUrl', responseData['imageUrl']);
+
+        SharedPreferences email = await SharedPreferences.getInstance();
+        email.setString('email', responseData['email']);
 
         // users = Users.fromJson(responseData);
         ErrorMessage em = ErrorMessage();
