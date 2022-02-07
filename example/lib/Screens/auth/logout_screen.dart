@@ -15,7 +15,7 @@ class LogOutScreen extends StatefulWidget {
 class _LogOutScreenState extends State<LogOutScreen> {
   @override
   Widget build(BuildContext context) {
-    final textfields = Provider.of<UserProvider>(context, listen: true);
+    final user = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     var qPortrait = MediaQuery.of(context).orientation;
@@ -145,8 +145,7 @@ class _LogOutScreenState extends State<LogOutScreen> {
                                           await SharedPreferences.getInstance();
                                       sharedPreferences.remove('Email');
                                       sharedPreferences.remove('Password');
-                                      textfields.email.clear();
-                                      textfields.password.clear();
+                                      user.clearAllTextController();
 
                                       sharedPreferences.clear();
 

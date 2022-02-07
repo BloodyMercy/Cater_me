@@ -72,4 +72,43 @@ print(e);
     }
     return msg;
   }
+  Future<ErrorMessage> resetPassword(String oldPassword,String newPassword,String confirmPassword) async{
+    ErrorMessage msg=ErrorMessage();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.MultipartRequest('POST', Uri.parse(ApiLink.ResetPassword));
+      request.headers.addAll(headers);
+      request.fields.addAll({
+        'oldPassword': oldPassword,
+        'newPassword': newPassword,
+        'confirmPassword': confirmPassword,
+      });
+
+
+      // open a bytestream
+
+      http.StreamedResponse responses = await request.send();
+      // responses.stream.transform(utf8.decoder).listen((value) {
+      //   print(value);
+      // });
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+
+        msg.response=true;
+        return msg;
+
+      } else {
+        print(response.reasonPhrase);
+        msg.response=false;
+        return msg;
+      }
+
+    }catch(e){
+      print(e);
+    }
+    return msg;
+  }
 }

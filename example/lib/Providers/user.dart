@@ -21,6 +21,7 @@ enum Status {
 }
 
 class UserProvider with ChangeNotifier {
+  TextEditingController oldPassword = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController insta = TextEditingController();
   TextEditingController facebook = TextEditingController();
@@ -224,4 +225,44 @@ password.text="Peter69@";
       print(error);
     }
   }
+  Future ResetPassword()async{
+    try{
+      notifyListeners();
+      ErrorMessage msg = await PersonalInfoService().resetPassword(oldPassword.text.toString(), password1.text.toString(), confirmpassword.text.toString());
+
+      notifyListeners();
+      return msg.response;
+    }catch(error){
+      print(error);
+    }
+  }
+  clearAllTextController(){
+    oldPassword.clear();
+    email.clear();
+    insta.clear();
+    facebook.clear();
+    confirmpassword.clear();
+    password.clear();
+    password1.clear();
+    name.clear();
+    phoneNumber.clear();
+    birthday.clear();
+    gender.clear();
+    zipcode.clear();
+    cityname.clear();
+    apartment.clear();
+    street.clear();
+
+    shopnumber.clear();
+    buldingname.clear();
+    floornumber.clear();
+    district.clear();
+
+    shopname.clear();
+    specialist.clear();
+    bio.clear();
+
+    loyatlypoint.clear();
+  }
+
 }
