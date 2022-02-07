@@ -68,59 +68,54 @@ class _DetailsOrderState extends State<DetailsOrder> {
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: refreshOrderData,
-          child: Column(
-            children: [
-              loading?Center(child: CircularProgressIndicator()):Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("This id is:${widget.id}"),
-                    SizedBox(height: 20,),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+          child: loading?Center(child: CircularProgressIndicator()):Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("This id is:${widget.id}"),
+                SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
 
-                      child: Column(
+                  child: Column(
 
-                        children: [
-                          ListView.builder(
+                    children: [
+                      ListView.builder(
 
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context,index){
-                            return  Column(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context,index){
+                        return  Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("${order.orderList[index].item} x ${order.orderList[index].quantity}"),
-                                    Text("\$ ${order.orderList[index].finalPrice}"),
+                                Text("${order.orderList[index].item} x ${order.orderList[index].quantity}"),
+                                Text("\$ ${order.orderList[index].finalPrice}"),
 
-                                  ],
-                                ),
-                                const SizedBox(height: 10,)
                               ],
-                            );
-                          },
-                          itemCount: order.orderList.length,
-                          ),
-                          const SizedBox(height: 10,),
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Final Price"),
-                              Text("\$ ${finalPrice}"),
-                            ],
-                          ),
-
+                            ),
+                            const SizedBox(height: 10,)
+                          ],
+                        );
+                      },
+                      itemCount: order.orderList.length,
+                      ),
+                      const SizedBox(height: 10,),
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Final Price"),
+                          Text("\$ ${finalPrice}"),
                         ],
                       ),
-                    ),
 
-                  ],
+                    ],
+                  ),
                 ),
 
-              ),
+              ],
+            ),
 
-            ],
           ),
           
         ),

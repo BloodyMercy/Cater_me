@@ -72,7 +72,7 @@ return;
                   child: ListView.builder(itemBuilder: (context,index){
                     return  GestureDetector(
                       onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (builder)=>OrderId(orders.listOrder[index].id!)));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (builder)=>OrderId(orders.listOrder[index].id!,0)));
                       },
                       child: Card(child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),

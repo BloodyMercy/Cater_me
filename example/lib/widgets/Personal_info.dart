@@ -1,7 +1,10 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
+import 'package:CaterMe/Providers/personal_info_provider.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key? key}) : super(key: key);
@@ -11,7 +14,21 @@ class PersonalInfo extends StatefulWidget {
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+  bool loading = true;
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  getData() async{
+    final personalInfo= await Provider.of<PersonalInfoProvider>(context,listen: false);
+    await personalInfo.getPersonalInfo();
+    setState(() {
+      loading=false;
+    });
+
+  }
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState!.validate()) {
@@ -53,6 +70,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
+    final personalInfoProvider= Provider.of<PersonalInfoProvider>(context,listen: true);
+    final user=Provider.of<UserProvider>(context,listen: true);
+    // personalInfoProvider.personalInfo.name=user.name.text;
     var _mediaQuery =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
@@ -81,13 +101,18 @@ class _PersonalInfoState extends State<PersonalInfo> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SingleChildScrollView(
+        body:loading?Center(child: CircularProgressIndicator(),) : SingleChildScrollView(
           child: Form(
             key: formkey,
             child: Column(
               children: [
                 SizedBox(height: _mediaQuery * 0.06),
+                Text(personalInfoProvider.personalInfo.name),
+                SizedBox(height: _mediaQuery * 0.06),
+                Text(personalInfoProvider.personalInfo.email),
+                SizedBox(height: _mediaQuery * 0.06),
                 TextFormField(
+                  controller: user.name,
                   decoration: InputDecoration(
                     labelText: 'Full Name',
                     labelStyle: Theme.of(context).textTheme.headline4,

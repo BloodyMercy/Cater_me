@@ -4,7 +4,8 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 class OrderId extends StatefulWidget {
   int id;
-  OrderId(this.id);
+  int screen;
+  OrderId(this.id,this.screen);
 
   @override
   _OrderIdState createState() => _OrderIdState();
@@ -14,7 +15,7 @@ class _OrderIdState extends State<OrderId> {
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      widget.screen = index;
     });
   }
 
@@ -23,11 +24,11 @@ class _OrderIdState extends State<OrderId> {
     List<Widget> _screen=[DetailsOrder(widget.id),TrackingOrder(widget.id)];
     return Scaffold(
       appBar: AppBar(title: Text("Order Info"),),
-      body:SafeArea(child: _screen[_selectedIndex]),
+      body:SafeArea(child: _screen[widget.screen]),
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: colorCustom.shade100,
           selectedItemColor: colorCustom,
-          currentIndex: _selectedIndex,
+          currentIndex: widget.screen,
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.list),

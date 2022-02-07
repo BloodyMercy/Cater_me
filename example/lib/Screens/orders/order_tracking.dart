@@ -15,9 +15,13 @@ class TrackingOrder extends StatefulWidget {
 }
 
 class _TrackingOrderState extends State<TrackingOrder> {
+  bool loading=true;
   getData() async{
     final orderStatus = Provider.of<OrderStatusProvider>(context, listen: false);
     await orderStatus.getOrderStatus(widget.id);
+    setState(() {
+      loading=false;
+    });
   }
   @override
   void initState() {
@@ -31,7 +35,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
     final orderStatus=Provider.of<OrderStatusProvider>(context, listen: true);
 
     return Scaffold(
-      body: SafeArea(child: Column(
+      body: SafeArea(child:loading ? Center(child: CircularProgressIndicator(),):Column(
         children: [
 
           orderStatus.orderStatus.statusId==1?OrderReceived():Container(),
@@ -39,7 +43,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
          orderStatus.orderStatus.statusId==3?OrderOnTheWay():Container(),
          orderStatus.orderStatus.statusId==4?OrderDelivered():Container(),
 
-          CustomStepperOrder(text: ["text","text"],selected: 1,),
+          // CustomStepperOrder(text: ["text","text"],selected: 1,),
 
 
         ],

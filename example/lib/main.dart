@@ -4,13 +4,13 @@ import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Providers/personal_info_provider.dart';
 
 import 'package:CaterMe/Screens/intro_screen.dart';
 import 'package:CaterMe/Screens/order_summery_1.dart';
 import 'package:CaterMe/Screens/splash_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
@@ -113,6 +113,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          ChangeNotifierProvider.value(value:PersonalInfoProvider()),
           ChangeNotifierProvider.value(value:OrderStatusProvider()),
            ChangeNotifierProvider.value(value:OrderByIdProvider()),
           ChangeNotifierProvider.value(value: NotificationProvider()),

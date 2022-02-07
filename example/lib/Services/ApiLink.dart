@@ -37,6 +37,7 @@ class ApiLink{
  static String GetItemByCuisine=host+"Orders/GetItemByCuisine/";
  static String GetItemByadd=host+"Orders/GetItemByAddons/";
  static String Createfriends=host+"Friends/CreateFriend";
+ static String GetPersonalInfo=host+"Accounts/GetUser";
 
 
 
