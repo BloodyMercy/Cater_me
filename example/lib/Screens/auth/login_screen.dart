@@ -243,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             child: Text(
                               'Log In',
-                              style: Theme.of(context).textTheme.headline1,
+                              style: TextStyle(color: Colors.white)
                             ),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(

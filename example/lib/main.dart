@@ -138,7 +138,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: colorCustom,
             textTheme: const TextTheme(
               headline1: TextStyle(
-                  color: Color(0xFF3F5521),
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'BerlinSansFB'),
