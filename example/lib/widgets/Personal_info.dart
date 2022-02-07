@@ -14,6 +14,7 @@ class PersonalInfo extends StatefulWidget {
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
+  bool loadingButton=false;
   @override
   void initState() {
     getData();
@@ -28,6 +29,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
       loading=false;
     });
   }
+
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState!.validate()) {
@@ -127,6 +129,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     ),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: MultiValidator([
+                      EmailValidator(errorText: "Please enter email"),
                       RequiredValidator(errorText: 'Required *'),
                     ]),
                     keyboardType: TextInputType.emailAddress,
@@ -194,9 +197,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     ),
                   ),
                   SizedBox(height: _mediaQuery * 0.07),
-                  ElevatedButton(
-                    onPressed: () {
+                 loadingButton?CircularProgressIndicator(): ElevatedButton(
+                    onPressed: () async{
+                      setState(() {
+                        loadingButton=true;
+                      });
                       validate();
+                  var update=  await  user.updateInfo();
+                    if(update){
+
+                      Navigator.of(context).pop();
+                      setState(() {
+                        loadingButton=false;
+                      });
+                    }else{
+                      setState(() {
+                        loadingButton=false;
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Cannot Update Info'),
+                      ));
+                    }
                     },
                     child: Text(
                       'SUBMIT',

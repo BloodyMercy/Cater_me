@@ -78,6 +78,7 @@ class UserProvider with ChangeNotifier {
   }
   String _messagelogin = "";
   String _messageSignUp = "";
+  String _messageUpdateInfo = "";
 
   String get messagelogin => _messagelogin;
 
@@ -89,8 +90,8 @@ class UserProvider with ChangeNotifier {
   UserProvider.statusfunction() {
 
 getdata();
-email.text="patour_aboulpete1@gmail.com";
-password.text="P@ssw0rd";
+email.text="patourtohme9@gmail.com";
+password.text="Peter69@";
 
 
 
@@ -204,4 +205,21 @@ password.text="P@ssw0rd";
   }
 
 
+
+  Future updateInfo()async{
+    try{
+      notifyListeners();
+      ErrorMessage msg = await PersonalInfoService().updateInfo(
+        name.text.toString(),
+        email.text.toString(),
+        phoneNumber.text.toString(),
+        _birthDate
+      );
+      _messageUpdateInfo = msg.message;
+      notifyListeners();
+      return msg.response;
+    }catch(error){
+      print(error);
+    }
+  }
 }
