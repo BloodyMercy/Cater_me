@@ -51,6 +51,32 @@ class OrderCaterProvider extends ChangeNotifier{
     totale= subTotal+subTotal*tax/100;
     notifyListeners();
   }
+ removeItems(ItemOrders item){
+    _itemOrders.remove(item);
+    subTotal=subTotal-item.totalprice;
+    totale= subTotal+subTotal*tax/100;
+    notifyListeners();
+  }
+modifyItems(int count,int index){
+
+    _itemOrders[index].quantity=count;
+    subTotal=subTotal- _itemOrders[index].totalprice;
+    _itemOrders[index].totalprice=count*_itemOrders[index].price;
+   // _itemOrders.remove(item);
+    subTotal=subTotal+(count*_itemOrders[index].price);
+    totale= subTotal+subTotal*tax/100;
+    notifyListeners();
+  }
+  modifyItemsmoins(int count,int index){
+
+    _itemOrders[index].quantity=count;
+    subTotal=subTotal- _itemOrders[index].totalprice;
+    _itemOrders[index].totalprice=count*_itemOrders[index].price;
+    // _itemOrders.remove(item);
+    subTotal=subTotal+(count*_itemOrders[index].price);
+    totale= subTotal+subTotal*tax/100;
+    notifyListeners();
+  }
 
   addfriendlist(FriendModel addedfriendlist){
     _listFriend.add(addedfriendlist);

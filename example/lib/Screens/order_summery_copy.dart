@@ -135,6 +135,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                // _cartP.RemoveFromCart(widget.data[index]);
 
                                 //   });
+                                details.removeItems(details.itemOrders[i]);
+
                               },
                               child: CartItemCard(details.itemOrders[i] , i),
                             ),
@@ -161,6 +163,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                   SizedBox(
                     height: 10,
                   ),
+                  Text('*(VAT included ${details.tax} %:)',style: TextStyle(fontWeight: FontWeight.bold,),),
                   Padding(
                     padding: const EdgeInsets.only(right: 23.0),
                     child: Row(

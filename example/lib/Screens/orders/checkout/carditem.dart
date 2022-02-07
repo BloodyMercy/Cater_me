@@ -33,7 +33,7 @@ class _CartItemCardState extends State<CartItemCard> {
   }
   @override
   Widget build(BuildContext context) {
-//final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
+final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
 
 
     return Container(
@@ -134,8 +134,12 @@ class _CartItemCardState extends State<CartItemCard> {
 
                                         setState(() {
                                           _itemCount--;
+                                          widget.cart.quantity=_itemCount;
                                           //_cartP.modifyquantity(_itemCount, widget.index);
                                         } );
+                                        _cartP.itemOrders[widget.index]=widget.cart;
+                                        _cartP.modifyItemsmoins(_itemCount, widget.index);
+
                                       }
 
 
@@ -164,7 +168,7 @@ class _CartItemCardState extends State<CartItemCard> {
                           width: 15,
                         ),
                         Text(
-                          _itemCount.toString(),
+                          _itemCount.toString() ,
                           style:  TextStyle(
                             color: Color(0xFF3F5521),
                           ),
@@ -187,15 +191,21 @@ class _CartItemCardState extends State<CartItemCard> {
                                 size: 18,
                               ),
                               onPressed: (){
-                                setState(() {
+                               // setState(() {
                                  // if(widget.cart.status!="Package") {
                                    // if(_itemCount <int.parse(widget.cart.)){
 
-                                      _itemCount++;
+                                 setState(() {
+    _itemCount++;
+    widget.cart.quantity=_itemCount;
+    //_cartP.modifyquantity(_itemCount, widget.index);
+    } );
+
+    _cartP.modifyItems(_itemCount, widget.index);
                                       //_cartP.modifyquantity(_itemCount, widget.index);
                                    // }
-                                });
-                              }
+                                }
+
                           ),
                         )
                       ],

@@ -218,6 +218,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                     a.itemDetails = widget.food.itemDetails;
                                     a.title = widget.food.title;
                                     a.quantity = count;
+                                    a.price=widget.food.price;
                                     a.totalprice = count * widget.food.price;
                                     orderprovider.addItems(a);
                                     Navigator.of(context).pop(false);
