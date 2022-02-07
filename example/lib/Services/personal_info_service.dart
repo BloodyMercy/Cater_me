@@ -1,3 +1,4 @@
+import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/personal_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -25,5 +26,50 @@ class PersonalInfoService {
     } catch (e) {
       return PersonalInfoModel();
     }
+  }
+
+  Future<ErrorMessage> updateInfo(String name,String email,String phoneNumber,String birthDate)async{
+    PersonalInfoModel personalInfo=PersonalInfoModel();
+    ErrorMessage msg=ErrorMessage();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.MultipartRequest('POST', Uri.parse(ApiLink.UpdatePersonalInfo));
+      request.headers.addAll(headers);
+      request.fields.addAll({
+        'name': name,
+        'phoneNumber': phoneNumber,
+        'email': email,
+        'birthDate': birthDate
+      });
+
+
+      // open a bytestream
+
+      http.StreamedResponse responses = await request.send();
+      // responses.stream.transform(utf8.decoder).listen((value) {
+      //   print(value);
+      // });
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseData = json.decode(response.body);
+        //  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        personalInfo =   PersonalInfoModel.fromJson(responseData);
+       msg.response=true;
+        return msg;
+
+      } else {
+        print(response.reasonPhrase);
+        msg.response=false;
+        return msg;
+      }
+
+    }catch(e){
+print(e);
+    }
+    return msg;
   }
 }
