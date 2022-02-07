@@ -259,7 +259,7 @@ class _OrderSummery1State extends State<OrderSummery1> {
                 ),
               ),
               SizedBox(
-                height: mediaQuery.size.height * 0.02,
+                height: mediaQuery.size.height * 0.02,//thid one
               ),
               ElevatedButton(
                 onPressed: () {
