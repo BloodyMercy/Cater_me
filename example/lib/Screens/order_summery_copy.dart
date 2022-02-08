@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/model/friend_model.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ bool loading=false;
 
     return (await showDialog(
             context: context,
-            builder: (context) => setupAlertDialoadContainer(context))) ??
+            builder: (context) => setupAlertDialoadContainer(context,frnd.listFriends))) ??
         false;
   }
 
