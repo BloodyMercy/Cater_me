@@ -1,16 +1,10 @@
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/addOns.dart';
+
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/cuisins_screen.dart';
-import 'package:CaterMe/Screens/food_details_screen.dart';
+
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
-import 'package:CaterMe/data/food_details.dart';
-import 'package:CaterMe/model/food.dart';
-import 'package:CaterMe/model/item.dart';
-import 'package:CaterMe/model/packages.dart';
-import 'package:CaterMe/widgets/Packages/package_add_details.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
 import 'package:CaterMe/widgets/items_details.dart';
@@ -50,7 +44,6 @@ class _HomePageState extends State<HomePage> {
     await package.cleardata();
     await package.getallpacakges(context);
 
-
     return;
   }
 
@@ -60,7 +53,6 @@ class _HomePageState extends State<HomePage> {
     final package = Provider.of<PackagesProvider>(context, listen: false);
     package.loading = false;
     await package.getallpacakges(context);
-
 
     for (int i = 0; i < package.listItems.length; i++) {
       listitemssearch.add(package.listItems[i].title.toLowerCase());
@@ -131,9 +123,11 @@ class _HomePageState extends State<HomePage> {
                                               232, 232, 232, 1),
                                           hintText: 'Search',
                                           prefixIcon: const Icon(Icons.search),
-                                          prefixIconColor:  Theme.of(context).primaryColor,
+                                          prefixIconColor:
+                                              Theme.of(context).primaryColor,
                                           hintStyle: TextStyle(
-                                              color: Theme.of(context).primaryColor,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
                                               fontSize: 16,
                                               fontFamily: 'Segoe UI'),
                                         ),
@@ -179,14 +173,15 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                          icon:
-                                        Badge(
-                                          badgeColor: Color.fromRGBO(253, 202, 29, 1),
-                                          badgeContent:Text("3"),
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Theme.of(context).primaryColor,
-                                        )),
+                                        icon: Badge(
+                                            badgeColor:
+                                                Color.fromRGBO(253, 202, 29, 1),
+                                            badgeContent: Text("3"),
+                                            child: Icon(
+                                              Icons.notifications,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                            )),
                                       ),
                                     ],
                                   ),
@@ -211,8 +206,7 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                         left: (mediaQuery.size.width * 0.04),
-                                         top: mediaQuery.size.height * 0.05
-                                     ),
+                                        top: mediaQuery.size.height * 0.05),
                                     child: Text(
                                       'Upcoming occasions',
                                       style:
@@ -236,14 +230,13 @@ class _HomePageState extends State<HomePage> {
                                       0))
                                   ? Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              mediaQuery.size.width * 0.01,
-
-                                          ),
+                                        horizontal:
+                                            mediaQuery.size.width * 0.01,
+                                      ),
                                       child: Column(children: [
                                         SizedBox(
                                           width: mediaQuery.size.width * 0.97,
-                                         // height: mediaQuery.size.height * 0.15,
+                                          // height: mediaQuery.size.height * 0.15,
                                           child: Card(
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
@@ -363,9 +356,7 @@ class _HomePageState extends State<HomePage> {
                                       ]),
                                     )
                                   : Container(),
-
-                                  Center(
-                                      child: OccasionCard(Axis.horizontal)),
+                              Center(child: OccasionCard(Axis.horizontal)),
                             ]),
                             Container(
                               child: Column(children: [

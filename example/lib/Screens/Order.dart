@@ -392,7 +392,7 @@ class _OrderState extends State<Order> {
                   ),
 
 
-                orderProvider.spets!=7?  Expanded(
+                Expanded(
 
                     child: Container(
                       height: MediaQuery.of(context).size.height/9,
@@ -500,7 +500,7 @@ class _OrderState extends State<Order> {
                             // ),
                           ),
                     ])),
-                  ):Container(),
+                  ),
                 ],
               ),
             ),

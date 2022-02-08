@@ -44,6 +44,10 @@ bool loading=false;
         false;
   }
 
+
+  bool isSearch = false;
+
+
   Widget setupAlertDialoadContainer(context,List<FriendModel> l) {
     final frnd=Provider.of<FriendsProvider >(context,listen:true);
     return SingleChildScrollView(
@@ -96,18 +100,12 @@ bool loading=false;
     );
   }
 
-  bool isSearch = false;
+  bool issearch = false;
 
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final frnd=Provider.of<FriendsProvider >(context,listen:true);
-
-
-
-
-
-
     return Scaffold(
       body: SafeArea(
         child: Column(children:[
