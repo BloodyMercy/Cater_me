@@ -28,9 +28,19 @@ bool loading=false;
     getData();
   //  _isChecked = List<bool>.filled(15, false);
   }
+  List<String> listFriendssearch = [];
+
+
   getData()async{
     final occasion=Provider.of<FriendsProvider >(context,listen: false);
     await occasion.getAllFriends();
+    for(int i=0;i<occasion.listFriends.length;i++)
+      {
+        listFriendssearch.add(occasion.listFriends[i].name);
+
+
+      }
+   // controllersearch.text="p";
     setState(() {
       loading=false;
     });
@@ -64,7 +74,9 @@ bool loading=false;
               shrinkWrap: true,
               itemCount:frnd.listFriends.length,
               itemBuilder: (BuildContext context, int index) {
-                return CheckboxListTile(
+                return
+                  listFriendssearch[index].contains(controllersearch.text.toLowerCase())?
+                  CheckboxListTile(
                   activeColor: Theme.of(context).primaryColor,
                   value: details.choosebillFriend.contains(frnd.listFriends[index]),
                   onChanged: (val) {
@@ -92,7 +104,8 @@ bool loading=false;
                       ),
                     ),
                   ),
-                );
+                ):Container();
+
               },
             ),
           ),
@@ -102,7 +115,7 @@ bool loading=false;
   }
 
   bool issearch = false;
-
+  TextEditingController controllersearch = TextEditingController();
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
@@ -274,6 +287,7 @@ bool loading=false;
                                              fontFamily:
                                              'BerlinSansFB'),
                                        ),
+                                       controller: controllersearch,
                                      ),
                                    ),
                                  ],
@@ -297,11 +311,150 @@ bool loading=false;
                ),
              ],
            ) ,),
+
+
+           SliverToBoxAdapter(child:Container(
+             child: Column(
+               children: [
+                 Row(
+                   mainAxisAlignment:
+                   MainAxisAlignment
+                       .spaceBetween,
+                   children: [
+                     IconButton(
+                       onPressed: () {
+                         Navigator.pop(context);
+                       },
+                       icon: Icon(
+                         Icons.close,
+                         color: Theme.of(context)
+                             .primaryColor,
+                       ),
+                     ),
+                     IconButton(
+                         onPressed: () {
+                           Navigator.pop(context);
+                         },
+                         icon: Icon(
+                           Icons.check,
+                           color: Theme.of(context)
+                               .primaryColor,
+                         ))
+                   ],
+                 ),
+                 Text(
+                   'Choose the friends you want to share the order with.',
+                   style: TextStyle(
+                       color: Theme.of(context)
+                           .primaryColor,
+                       fontFamily: 'BerlinSansFB'),
+                 ),
+                 SizedBox(
+                   height: mediaQuery.size.height *
+                       0.02,
+                 ),
+                 SizedBox(
+                   height: mediaQuery.size.height *
+                       0.06,
+                   child: TextField(
+                     autofocus: false,
+                     onTap: () {
+                       setState(() {
+                         isSearch = true;
+                       });
+                     },
+                     decoration: InputDecoration(
+                       enabledBorder:
+                       OutlineInputBorder(
+                           borderSide:
+                           const BorderSide(
+                               color: Color
+                                   .fromRGBO(
+                                   232,
+                                   232,
+                                   232,
+                                   1)),
+                           borderRadius:
+                           BorderRadius
+                               .circular(
+                               10)),
+                       focusedBorder: OutlineInputBorder(
+                           borderSide: BorderSide(
+                               color: Theme.of(
+                                   context)
+                                   .primaryColor)),
+                       filled: true,
+                       fillColor:
+                       const Color.fromRGBO(
+                           232, 232, 232, 1),
+                       hintText: 'Search',
+                       prefixIcon: const Icon(
+                           Icons.search),
+                       prefixIconColor:
+                       Colors.black,
+                       hintStyle: TextStyle(
+                           color: Colors.grey[850],
+                           fontSize: 16,
+                           fontFamily:
+                           'BerlinSansFB'),
+                     ),
+                     controller: controllersearch,
+                   ),
+                 ),
+               ],
+             ),
+           )),
+           SliverList(
+           delegate: SliverChildBuilderDelegate(
+
+    (BuildContext context, int index) {
+               return
+                 listFriendssearch[index].contains(controllersearch.text.toLowerCase())?
+                 CheckboxListTile(
+                   activeColor: Theme.of(context).primaryColor,
+                   value: details.choosebillFriend.contains(frnd.listFriends[index]),
+                   onChanged: (val) {
+                     if(val==true)
+                       details.addfriend(frnd.listFriends[index]);
+                     else
+                       details.removefriend(frnd.listFriends[index]);
+                   },
+                   title: Card(
+                     child: Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: [
+                           CircleAvatar(
+                             radius: 25.0,
+                             child: ClipRRect(
+                               child: Image.network(
+                                   frnd.listFriends[index].image),
+                               borderRadius: BorderRadius.circular(50.0),
+                             ),
+                           ),
+                           Text(   frnd.listFriends[index].name),
+                         ],
+                       ),
+                     ),
+                   ),
+                 ):Container();
+
+             },
+             childCount:  frnd.listFriends.length,
+           )
+
+
+           ),
+
+
+
             SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       details.addcontroller(new TextEditingController());
                   //  final item = ;
+
                   return    ListTile(
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(details.choosebillFriend[index].image),
