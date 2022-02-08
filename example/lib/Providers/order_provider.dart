@@ -9,7 +9,19 @@ class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];
   List<FriendModel> _listFriend=[];
   List<FriendModel> _choosebillFriend=[];
+  List<TextEditingController> _controllers = [];
 
+  List<TextEditingController> get controllers => _controllers;
+
+  set controllers(List<TextEditingController> value) {
+    _controllers = value;
+  }
+
+
+  addcontroller(TextEditingController t){
+    controllers.add(t);
+    notifyListeners();
+  }
   List<FriendModel> get choosebillFriend => _choosebillFriend;
 
   set choosebillFriend(List<FriendModel> value) {

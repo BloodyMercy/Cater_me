@@ -18,6 +18,7 @@ class OrderSummeryCopy extends StatefulWidget {
 
 class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   ScrollController _scrollController = ScrollController();
+
   @override
  // List<bool> _isChecked = List<bool>.filled(15, false);
 bool loading=false;
@@ -299,6 +300,7 @@ bool loading=false;
             SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
+                      details.addcontroller(new TextEditingController());
                   //  final item = ;
                   return    ListTile(
                       leading: CircleAvatar(
@@ -309,6 +311,7 @@ bool loading=false;
                           height: 100,
                           width: 100,
                           child: TextField(
+
                             decoration: InputDecoration(
                               labelText:"Price" ,
                               fillColor: Color(0xFF3F5521),
@@ -319,7 +322,7 @@ bool loading=false;
                               ),
                             ),
                             keyboardType: TextInputType.number,
-
+controller:details.controllers[index],
                           ))); // you can add your unavailable item here
                 },
                 childCount:details.choosebillFriend.length ,
@@ -369,7 +372,7 @@ bool loading=false;
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      Text(
-                       '*(VAT included 15.0%: ${details.tax} SAR)',
+                       '*(VAT included ${details.tax} %:  SAR)',
                        style: TextStyle(
                          fontWeight: FontWeight.bold,
                        ),
