@@ -8,6 +8,14 @@ import 'package:flutter/cupertino.dart';
 class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];
   List<FriendModel> _listFriend=[];
+  List<FriendModel> _choosebillFriend=[];
+
+  List<FriendModel> get choosebillFriend => _choosebillFriend;
+
+  set choosebillFriend(List<FriendModel> value) {
+    _choosebillFriend = value;
+  }
+
   double _subTotal = 0;
   double _totale = 0;
   int _tax =3;
@@ -51,6 +59,24 @@ class OrderCaterProvider extends ChangeNotifier{
     totale= subTotal+subTotal*tax/100;
     notifyListeners();
   }
+
+  addfriend(FriendModel item){
+    _choosebillFriend.add(item);
+
+    notifyListeners();
+  }
+ removefriend(FriendModel item){
+    _choosebillFriend.remove(item);
+
+    notifyListeners();
+  }
+  addprice(int index,double price){
+
+    _choosebillFriend[index].price=price;
+    notifyListeners();
+
+  }
+
  removeItems(ItemOrders item){
     _itemOrders.remove(item);
     subTotal=subTotal-item.totalprice;

@@ -301,18 +301,17 @@ bool loading=false;
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                   //  final item = ;
-                  if (index > 2) return null;
                   return    ListTile(
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(''),
                       ),
-                      title: Text('Name'),
+                      title: Text(details.choosebillFriend[index].name),
                       trailing: SizedBox(
                           height: 100,
                           width: 100,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: 'Price',
+                              labelText: details.choosebillFriend[index].price.toString(),
                               fillColor: Color(0xFF3F5521),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -323,7 +322,7 @@ bool loading=false;
                             keyboardType: TextInputType.number,
                           ))); // you can add your unavailable item here
                 },
-                childCount: 2,
+                childCount:details.choosebillFriend.length ,
               ),
             ),
            SliverToBoxAdapter(child:  Column(
