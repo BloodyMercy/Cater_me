@@ -472,12 +472,7 @@ class _HomePageState extends State<HomePage> {
                       height: mediaQuery.size.height / 1.2,
                       child: ListView.builder(
                         padding: const EdgeInsets.all(25),
-                        // gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                        //   maxCrossAxisExtent: 200,
-                        //   childAspectRatio: 2.9 / 3,
-                        //   crossAxisSpacing: 8,
-                        //   mainAxisSpacing: 5,
-                        // ),
+
                         itemCount: package.listItems.length,
                         itemBuilder: (BuildContext context, int index) {
                           return listitemssearch[index]
