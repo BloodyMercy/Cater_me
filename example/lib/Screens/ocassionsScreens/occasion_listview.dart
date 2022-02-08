@@ -19,9 +19,7 @@ class _OccasionListViewState extends State<OccasionListView> {
   getData()async{
     final occasion=Provider.of<PackagesProvider>(context,listen: false);
     await occasion.getalloccasions();
-    setState(() {
-      loading=false;
-    });
+
   }
   @override
   void initState() {

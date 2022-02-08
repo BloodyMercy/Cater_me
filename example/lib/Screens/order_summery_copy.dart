@@ -19,13 +19,13 @@ class OrderSummeryCopy extends StatefulWidget {
 class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   ScrollController _scrollController = ScrollController();
   @override
-  List<bool> _isChecked = List<bool>.filled(15, false);
+ // List<bool> _isChecked = List<bool>.filled(15, false);
 bool loading=false;
   @override
   void initState() {
     super.initState();
     getData();
-    _isChecked = List<bool>.filled(15, false);
+  //  _isChecked = List<bool>.filled(15, false);
   }
   getData()async{
     final occasion=Provider.of<FriendsProvider >(context,listen: false);
@@ -50,6 +50,7 @@ bool loading=false;
 
   Widget setupAlertDialoadContainer(context,List<FriendModel> l) {
     final frnd=Provider.of<FriendsProvider >(context,listen:true);
+    final details = Provider.of<OrderCaterProvider>(context, listen: true);
     return SingleChildScrollView(
       child:  Column(
         mainAxisSize: MainAxisSize.min,
@@ -60,17 +61,16 @@ bool loading=false;
             width: 400.0, // Change as per your requirement
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount:l.length,
+              itemCount:frnd.listFriends.length,
               itemBuilder: (BuildContext context, int index) {
                 return CheckboxListTile(
                   activeColor: Theme.of(context).primaryColor,
-                  value: _isChecked[index],
+                  value: details.choosebillFriend.contains(frnd.listFriends[index]),
                   onChanged: (val) {
-                    setState(() {
-                      setState(() {
-                        _isChecked[index] = val!;
-                      });
-                    });
+                    if(val==true)
+                  details.addfriend(frnd.listFriends[index]);
+                    else
+                      details.removefriend(frnd.listFriends[index]);
                   },
                   title: Card(
                     child: Padding(
@@ -109,29 +109,30 @@ bool loading=false;
     return Scaffold(
       body: SafeArea(
         child: Column(children:[
-          Text(
-          'Receipt',
-          style: TextStyle(
-              color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-        ),
-          Text(
-            'All prices include VAT',
-            style: TextStyle(
-                color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 20,
-          ),
+        //   Text(
+        //   'Receipt',
+        //   style: TextStyle(
+        //       color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+        // ),
+        //   Text(
+        //     'All prices include VAT',
+        //     style: TextStyle(
+        //         color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+        //   ),
+        //   SizedBox(
+        //     height: 20,
+        //   ),
 
 
        Expanded(
          child: CustomScrollView(slivers: <Widget>[
 
-            SliverList(
+         details.itemOrders.length==0? SliverToBoxAdapter(child:Center(child:Text("no items added")))  : SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int i) {
                   final item = details.itemOrders[i];
                   if (i> details.itemOrders.length) return null;
+                ;
                   return Column(
                     children: [
                       Padding(
@@ -301,7 +302,7 @@ bool loading=false;
                   //  final item = ;
                   return    ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(''),
+                        backgroundImage: NetworkImage(details.choosebillFriend[index].image),
                       ),
                       title: Text(details.choosebillFriend[index].name),
                       trailing: SizedBox(
@@ -309,7 +310,7 @@ bool loading=false;
                           width: 100,
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: details.choosebillFriend[index].price.toString(),
+                              labelText:"Price" ,
                               fillColor: Color(0xFF3F5521),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -318,6 +319,7 @@ bool loading=false;
                               ),
                             ),
                             keyboardType: TextInputType.number,
+
                           ))); // you can add your unavailable item here
                 },
                 childCount:details.choosebillFriend.length ,
