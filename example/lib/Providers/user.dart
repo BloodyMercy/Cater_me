@@ -48,6 +48,24 @@ class UserProvider with ChangeNotifier {
 
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
+  String _imageUrl="";
+
+  String get imageUrl => _imageUrl;
+
+  set imageUrl(String value) {
+    _imageUrl = value;
+  }
+
+  bool _loading=false;
+
+
+  bool get loading => _loading;
+
+  set loading(bool value) {
+    _loading = value;
+  }
+
+
 
 
   String get birthDate => _birthDate;
@@ -74,7 +92,7 @@ class UserProvider with ChangeNotifier {
     email.text=_personalInfo.email;
     phoneNumber.text=_personalInfo.phoneNumber;
     birthDate=_personalInfo.birthDate;
-
+    imageUrl=_personalInfo.imageUrl;
     notifyListeners();
   }
   String _messagelogin = "";
@@ -186,15 +204,16 @@ password.text="Peter69@";
   }
 
   Future<String> updateProfile( File image) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
     try {
       //notifyListeners();
       ErrorMessage u = await AuthModelSignin.updateProfile(
           image
       );
+imageUrl=u.message;
 
-      _messageSignUp = u.message;
+  //    mess = u.message;
 
       notifyListeners();
       return u.message;
@@ -202,7 +221,7 @@ password.text="Peter69@";
       print(error);
       _messageSignUp = "error try again later from provider";
 
-      notifyListeners();
+   //  notifyListeners();
       return "";
     }
   }

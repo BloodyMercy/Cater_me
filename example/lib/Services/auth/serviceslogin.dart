@@ -158,10 +158,8 @@ class AuthModelSignin {
         Map<String, dynamic> responseData = json.decode(response.body);
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        prefs.setString("token", responseData['token']);
-
-        SharedPreferences image = await SharedPreferences.getInstance();
-        image.setString('imageUrl', responseData['imageUrl']);
+        // prefs.setString("token", responseData['token']);
+        prefs.setString('imageUrl', responseData['imageUrl']);
 
 
         // users = Users.fromJson(responseData);
