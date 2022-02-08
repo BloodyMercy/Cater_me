@@ -392,11 +392,11 @@ class _OrderState extends State<Order> {
                   ),
 
 
-                  Expanded(
+                orderProvider.spets!=7?  Expanded(
 
                     child: Container(
                       height: MediaQuery.of(context).size.height/9,
-                      color: Colors.white,
+                     // color: Colors.yellow,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -486,21 +486,21 @@ class _OrderState extends State<Order> {
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.fromLTRB(
-                                width * 0.1,
-                                screenHeight * 0.03,
-                                width * 0.1,
-                                screenHeight * 0.03,
-                              ),
-                              onPrimary:
-                                  const Color.fromRGBO(255, 255, 255, 1),
-                              primary: const Color.fromRGBO(63, 85, 33, 1),
-
-                            ),
+                            // style: ElevatedButton.styleFrom(
+                            //   padding: EdgeInsets.fromLTRB(
+                            //     width * 0.1,
+                            //     screenHeight * 0.03,
+                            //     width * 0.1,
+                            //     screenHeight * 0.03,
+                            //   ),
+                            //   onPrimary:
+                            //       const Color.fromRGBO(255, 255, 255, 1),
+                            //   primary: const Color.fromRGBO(63, 85, 33, 1),
+                            //
+                            // ),
                           ),
                     ])),
-                  ),
+                  ):Container(),
                 ],
               ),
             ),

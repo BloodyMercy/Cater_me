@@ -295,10 +295,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   fillColor: Color(0xFF3F5521),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
-                                        color: Color(0xFF3F5521), width: 1.0),
-                                    borderRadius: BorderRadius.circular(10.0),
+                                        color: Color(0xFF3F5521), width: 2.0),
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
-
                                 ),
                                 keyboardType: TextInputType.number,
                               ))),
