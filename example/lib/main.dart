@@ -24,15 +24,11 @@ import 'Providers/occasion.dart';
 import 'Providers/packages.dart';
 import 'Providers/user.dart';
 
-
-
 import 'Screens/order_summery_copy.dart';
 import 'colors/colors.dart';
 import 'package:flutter/material.dart';
 
-
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
@@ -84,9 +80,9 @@ class _appstateState extends State<appstate> {
               ),
             );
           }
-   // bool a=snapshot.data as bool;
+          // bool a=snapshot.data as bool;
 
-          if ( !true) {
+          if (!true) {
             return Scaffold(
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,6 +93,7 @@ class _appstateState extends State<appstate> {
             switch (authProvider.status) {
               case Status.Unauthenticated:
                 return SplashScreen();
+
               case Status.walkingpage:
                 return IntroScreen();
               case Status.Authenticated:
@@ -116,66 +113,67 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider.value(value:PersonalInfoProvider()),
-          ChangeNotifierProvider.value(value:OrderStatusProvider()),
-           ChangeNotifierProvider.value(value:OrderByIdProvider()),
-          ChangeNotifierProvider.value(value: NotificationProvider()),
-          ChangeNotifierProvider.value(value: FriendsProvider()),
-          ChangeNotifierProvider.value(value: UserProvider.statusfunction()),
-          ChangeNotifierProvider.value(value: PackagesProvider()),
-          ChangeNotifierProvider.value(value: AdressProvider()),
-          ChangeNotifierProvider.value(value: CuisineProvider()),
-          ChangeNotifierProvider.value(value: OccasionProvider()),
-          ChangeNotifierProvider.value(value: OrderProvider()),
-          ChangeNotifierProvider.value(value: OrderCaterProvider()),
-
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Cater Me',
-          theme: ThemeData(
-            primarySwatch: colorCustom,
-            textTheme: const TextTheme(
-              headline1: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
-              // Style of the appBar text and the buttons
-              headline2: TextStyle(
-                  color:Color(0xFF3F5521),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
-              //Style of the food name, price, packages title, addOns title, add NewAddress, cuisines title,
-              //occasion added, ocasion title, succesfully added, order placed
-              headline3: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
-              //homepage smaller fodd addons... , dashboard titles, drawer
-              headline4: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
-              // fullname, email.....
-              headline5: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 45,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
-              // Style of the pop up texts
-              headline6: TextStyle(
-                  color: Colors.black,
-                  fontSize: 17,
-                  // fontWeight: FontWeight.bold,
-                  fontFamily: 'BerlinSansFB'),
+      providers: [
+        ChangeNotifierProvider.value(value: PersonalInfoProvider()),
+        ChangeNotifierProvider.value(value: OrderStatusProvider()),
+        ChangeNotifierProvider.value(value: OrderByIdProvider()),
+        ChangeNotifierProvider.value(value: NotificationProvider()),
+        ChangeNotifierProvider.value(value: FriendsProvider()),
+        ChangeNotifierProvider.value(value: UserProvider.statusfunction()),
+        ChangeNotifierProvider.value(value: PackagesProvider()),
+        ChangeNotifierProvider.value(value: AdressProvider()),
+        ChangeNotifierProvider.value(value: CuisineProvider()),
+        ChangeNotifierProvider.value(value: OccasionProvider()),
+        ChangeNotifierProvider.value(value: OrderProvider()),
+        ChangeNotifierProvider.value(value: OrderCaterProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Cater Me',
+        theme: ThemeData(
+          primarySwatch: colorCustom,
+          textTheme: const TextTheme(
+            headline1: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+            // Style of the appBar text and the buttons
+            headline2: TextStyle(
+                color: Color(0xFF3F5521),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+            //Style of the food name, price, packages title, addOns title, add NewAddress, cuisines title,
+            //occasion added, ocasion title, succesfully added, order placed
+            headline3: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+            //homepage smaller fodd addons... , dashboard titles, drawer
+            headline4: TextStyle(
+                color: Colors.grey,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+            // fullname, email.....
+            headline5: TextStyle(
+              color: Colors.grey,
+              fontSize: 45,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'BerlinSansFB',
             ),
+            // Style of the pop up texts
+            headline6: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                // fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
           ),
-          home:appstate(),
-        ));
+        ),
+        home: appstate(),
+      ),
+    );
   }
 }

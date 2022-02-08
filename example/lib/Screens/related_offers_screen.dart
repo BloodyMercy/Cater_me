@@ -70,7 +70,8 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           child: Card(
                             // clipBehavior: Clip.antiAlias,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                             elevation: 0,
                             child: Image.network(
                                 pack.allpackagesorder[index].image,

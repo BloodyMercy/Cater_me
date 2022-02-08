@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'daberne_screen.dart';
 import 'regular_screen.dart';
@@ -24,7 +25,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
+    final orderProvider =
+        Provider.of<OrderCaterProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SizedBox(
@@ -41,15 +43,16 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     reg = !reg;
                     dab = false;
                   });
-                  orderProvider.serviceId =1;
+                  orderProvider.serviceId = 1;
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Icon(
                       Icons.check_circle,
-                      color:
-                      orderProvider.serviceId==1 ? Theme.of(context).primaryColor : Colors.black12,
+                      color: orderProvider.serviceId == 1
+                          ? Theme.of(context).primaryColor
+                          : Colors.black12,
                       size: 30,
                     ),
                     Container(
@@ -57,8 +60,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                       //     border: Border.all(
                       //       color: reg? Theme.of(context).primaryColor: Colors.white,
                       //     ),),
-                      child: Image.asset('images/REGULAR.png',
-                          height: screenHeight * 0.09),
+                      child: SvgPicture.asset('images/caterme.svg',
+                          height: screenHeight * 0.3),
                     ),
                   ],
                 ),
@@ -76,8 +79,9 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                   children: [
                     Icon(
                       Icons.check_circle,
-                      color:
-                      orderProvider.serviceId==2? Theme.of(context).primaryColor : Colors.black12,
+                      color: orderProvider.serviceId == 2
+                          ? Theme.of(context).primaryColor
+                          : Colors.black12,
                       size: 30,
                     ),
                     Container(
@@ -85,7 +89,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                       //   border: Border.all(
                       //     color: dab? Theme.of(context).primaryColor: Colors.white,
                       //   ),),
-                      child: Image.asset('images/daberne.png',
+                      child: SvgPicture.asset('images/daberni.svg',
                           height: screenHeight * 0.2),
                     ),
                   ],
