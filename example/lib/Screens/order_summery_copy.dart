@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -18,15 +19,23 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   ScrollController _scrollController = ScrollController();
   @override
   List<bool> _isChecked = List<bool>.filled(15, false);
-
+bool loading=false;
   @override
   void initState() {
     super.initState();
+    getData();
     _isChecked = List<bool>.filled(15, false);
   }
-
+  getData()async{
+    final occasion=Provider.of<FriendsProvider >(context,listen: false);
+    await occasion.getAllFriends();
+    setState(() {
+      loading=false;
+    });
+  }
   Future<bool> _onWillPop() async {
-    //UserProvider _user=Provider.of<UserProvider>(context,listen:true);
+
+    final frnd=Provider.of<FriendsProvider >(context,listen:true);
 
     return (await showDialog(
             context: context,
@@ -34,10 +43,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
         false;
   }
 
-  Widget setupAlertDialoadContainer(context) {
-    // final details=Provider.of<OrderCaterProvider>(context,listen: true);
+  Widget setupAlertDialoadContainer(context,List<FriendModel> l) {
+    final frnd=Provider.of<FriendsProvider >(context,listen:true);
     return SingleChildScrollView(
-      child: Column(
+      child:  Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
@@ -46,7 +55,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
             width: 400.0, // Change as per your requirement
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: 15,
+              itemCount:l.length,
               itemBuilder: (BuildContext context, int index) {
                 return CheckboxListTile(
                   activeColor: Theme.of(context).primaryColor,
@@ -68,11 +77,11 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             radius: 25.0,
                             child: ClipRRect(
                               child: Image.network(
-                                  'https://static.wikia.nocookie.net/youtube/images/9/9c/Hecker.jpg/revision/latest/top-crop/width/360/height/360?cb=20211024200708'),
+                                  l[index].image),
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                           ),
-                          Text('List Item $index'),
+                          Text(l[index].name),
                         ],
                       ),
                     ),
@@ -91,6 +100,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
+    final frnd=Provider.of<FriendsProvider >(context,listen:true);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -265,7 +275,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                         ),
                                       ),
                                       content:
-                                          setupAlertDialoadContainer(context),
+                                          setupAlertDialoadContainer(context,frnd.listFriends),
                                     );
                                   });
                             },

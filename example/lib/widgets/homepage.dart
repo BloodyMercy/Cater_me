@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
     await package.cleardata();
     await package.getallpacakges(context);
 
+
     return;
   }
 
@@ -59,6 +60,7 @@ class _HomePageState extends State<HomePage> {
     final package = Provider.of<PackagesProvider>(context, listen: false);
     package.loading = false;
     await package.getallpacakges(context);
+
 
     for (int i = 0; i < package.listItems.length; i++) {
       listitemssearch.add(package.listItems[i].title.toLowerCase());
