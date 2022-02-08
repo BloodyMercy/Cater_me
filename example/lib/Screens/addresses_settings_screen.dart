@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/model/address_model.dart';
+import 'package:CaterMe/widgets/Addresses/address_list_settings.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_list.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
 import 'package:flutter/material.dart';
@@ -108,13 +109,13 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: mediaQuery.size.height*0.05,),
+                SizedBox(height: mediaQuery.size.height*0.02,),
                 SizedBox(
                   height: mediaQuery.size.height*0.7,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        !loading? AddressesList(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
+                        !loading? AddressesListSettings(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
                       ],
                     ),
                   ),
