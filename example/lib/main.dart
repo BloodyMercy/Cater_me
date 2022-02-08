@@ -177,7 +177,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: ConfirmLocation(),
+        home: appstate(),
       ),
     );
   }
