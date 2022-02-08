@@ -102,43 +102,42 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
+          actions: [IconButton(onPressed: () => _startAddNewAddress(context), icon: Icon(Icons.add))],
         ),
         body: Container(
-          height: _mediaQuery,
+          // height: _mediaQuery,
           color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: mediaQuery.size.height*0.02,),
-                SizedBox(
-                  height: mediaQuery.size.height*0.7,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        !loading? AddressesListSettings(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: mediaQuery.size.height*0.1,
-                  width: mediaQuery.size.width * 0.52,
-                  child:
-                  ElevatedButton(onPressed:  () => _startAddNewAddress(context), child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Add An Address", style: TextStyle(color: Color(0xFF3F5521), fontFamily:'BerlinSansFB' , fontSize: 20),),
-                      Icon(Icons.add, color: Color(0xFF3F5521),)
-                    ],),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      primary: Colors.white,
-                    ),
 
+                SizedBox(
+                  // height: mediaQuery.size.height*0.9,
+                  child: Column(
+                    children: [
+                      !loading? AddressesListSettings(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
+                    ],
                   ),
                 ),
+                // SizedBox(
+                //   height: mediaQuery.size.height*0.1,
+                //   width: mediaQuery.size.width * 0.52,
+                //   child:
+                //   ElevatedButton(onPressed:  () => _startAddNewAddress(context), child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       Text("Add An Address", style: TextStyle(color: Color(0xFF3F5521), fontFamily:'BerlinSansFB' , fontSize: 20),),
+                //       Icon(Icons.add, color: Color(0xFF3F5521),)
+                //     ],),
+                //     style: ElevatedButton.styleFrom(
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       primary: Colors.white,
+                //     ),
+                //
+                //   ),
+                // ),
               ],
             ),
           ),

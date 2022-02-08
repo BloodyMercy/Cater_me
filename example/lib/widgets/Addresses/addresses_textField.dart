@@ -14,9 +14,7 @@ class AddressesTextField extends StatefulWidget {
 
 class _AddressesTextFields extends State<AddressesTextField> {
   final contactNameController = TextEditingController();
-
   final emailController = TextEditingController();
-
   final phoneNumberController = TextEditingController();
   final countryController = TextEditingController();
   final cityController = TextEditingController();

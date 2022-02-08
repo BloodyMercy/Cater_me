@@ -27,7 +27,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
-      height: _mediaQuery * 0.65,
+      height: _mediaQuery * 0.9,
       child: widget.address.isEmpty
           ? Center(
           child: Container(
@@ -37,66 +37,34 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
           itemCount: widget.address.length,
           itemBuilder: (ctx, index) {
             return Slidable(
-
               key: UniqueKey(),
               endActionPane: ActionPane(
-                // A motion is a widget used to control how the pane animates.
-                motion: const ScrollMotion(),
-
-                // A pane can dismiss the Slidable.
-                dismissible: DismissiblePane(onDismissed: () async{
-               var delete= await  address.deleteAddress(widget.address[index].id);
-               if(delete=="deleted"){
-                 print("done 1");
-                 widget.address.remove(widget.address[index]);
-                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                   content: Text('Address Deleted'),
-                 ));
-
-
-               }else{
-                 print("not done");
-                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                   content: Text('Address cannot be Deleted'),
-                 ));
-               }
-                }),
-
-                // All actions are defined in the children parameter.
+                motion:  ScrollMotion(),
                 children:  [
-                  IconButton(onPressed: () async{
+                  IconButton(onPressed: (){
+                    address.addresstitlecontroller.text=widget.address[index].title;
+                    address.citycontrollerstring.text=widget.address[index].city;
+                    address.countrycontrollerstring.text="1";
+                    address.streetcontroller.text=widget.address[index].street;
+                    address.buildingcontroller.text=widget.address[index].buildingName;
+                    address.floornumbercontroller.text=widget.address[index].floorNumber.toString();
+
+
+                  }, icon: Icon(Icons.edit,color: Color(0xFF3F5521),)),
+                  IconButton(
+                      onPressed: () async{
                     var delete= await  address.deleteAddress(widget.address[index].id);
                     if(delete=="deleted"){
-                      print("done 1");
                       widget.address.remove(widget.address[index]);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text('Address Deleted'),
                       ));
-
-
                     }else{
-                      print("not done");
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text('Address cannot be Deleted'),
                       ));
                     }
-                  }, icon:Icon(Icons.delete) ),
-                  SlidableAction(
-                    onPressed: delete,
-                    backgroundColor: Color(0xFF3F5521),
-                    foregroundColor: Colors.white,
-                    icon: Icons.edit,
-                    label: 'Edit',
-                  ),
-                  // A SlidableAction can have an icon and/or a label.
-                  SlidableAction(
-                    onPressed: delete,
-                    backgroundColor: Color(0xFFFE4A49),
-                    foregroundColor: Colors.white,
-                    icon: Icons.delete,
-                    label: 'Delete',
-                  ),
-
+                  }, icon:Icon(Icons.delete,color: Colors.red,) ),
                 ],
               ),
 
@@ -111,23 +79,6 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                       SizedBox(
                         width: _mediaQueryWidth*0.01,
                       ),
-                      // Radio(
-                      //   toggleable: true,
-                      //   groupValue: address.valueIndex,
-                      //
-                      //   // groupValue: widget.address.length,
-                      //   value: index,
-                      //   onChanged: (value) {
-                      //     setState(() {
-                      //       _value = index;
-                      //       address.valueIndex = index;
-                      //     });
-                      //     // orderprovider.value = widget.address[index];
-                      //   },
-                      // ),SizedBox(
-                      //   width: _mediaQueryWidth*0.01,
-                      // ),
-
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -171,12 +122,4 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
           }),
     );
   }
-}
-void delete(BuildContext context) async{
-  final address=Provider.of<AdressProvider>(context,listen: false);
-  print("Delete");
-}
-
-void share(BuildContext context) {
-  print("share");
 }

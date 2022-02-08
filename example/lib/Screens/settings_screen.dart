@@ -18,6 +18,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'auth/login_screen.dart';
+
 class TABBar extends StatefulWidget {
   const TABBar({Key? key}) : super(key: key);
 
@@ -88,6 +90,7 @@ setData(String imageUrl) async{
     // final updateImage = Provider.of<UserProvider>(context, listen: true);
     final personalInfo=Provider.of<UserProvider>(context,listen: true);
     var _mediaQueryText = MediaQuery.of(context).size.height;
+    var _mediaWidth = MediaQuery.of(context).size.width;
     final mediaQuery = MediaQuery.of(context);
 
     var screenHeight =
@@ -101,83 +104,182 @@ setData(String imageUrl) async{
           color: Colors.white,
           child: Column(
             children: [
-              GestureDetector(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
-                    child: CircleAvatar(
-                      minRadius: 16,
-                      maxRadius: screenHeight * 0.1,
-                      backgroundImage:
-                      NetworkImage(personalInfo.imageUrl),
-                      //   ,
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        // color: Colors.white,
+                        // child: Text('TestDataTest'),
+                      ),
                     ),
                   ),
-                ),
-                onTap: () {
-                  showModalBottomSheet(
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      context: context,
-                      builder: (context) {
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ListTile(
-                              leading: const Icon(
-                                Icons.camera,
-                                color: Color.fromRGBO(63, 85, 33, 1),
-                              ),
-                              title: const Text(
-                                'Camera',
-                                style: TextStyle(
-                                  fontFamily: 'BerlinSansFB',
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(63, 85, 33, 1),
-                                ),
-                              ),
-                              onTap: () async{
-                                Navigator.pop(context);
-                              await  PickImage(ImageSource.camera);
-                              await personalInfo.updateProfile(image!);
-                              },
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
+                            child: CircleAvatar(
+                              minRadius: 16,
+                              maxRadius: screenHeight * 0.1,
+                              backgroundImage:
+                              NetworkImage(personalInfo.imageUrl),
+                              //   ,
                             ),
-                            ListTile(
-                              leading: const Icon(
-                                Icons.image,
-                                color: Color.fromRGBO(63, 85, 33, 1),
+                          ),
+                        ),
+                        onTap: () {
+                          showModalBottomSheet(
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20))),
+                              context: context,
+                              builder: (context) {
+                                return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ListTile(
+                                      leading: const Icon(
+                                        Icons.camera,
+                                        color: Color.fromRGBO(63, 85, 33, 1),
+                                      ),
+                                      title: const Text(
+                                        'Camera',
+                                        style: TextStyle(
+                                          fontFamily: 'BerlinSansFB',
+                                          fontSize: 16,
+                                          color: Color.fromRGBO(63, 85, 33, 1),
+                                        ),
+                                      ),
+                                      onTap: () async{
+                                        Navigator.pop(context);
+                                      await  PickImage(ImageSource.camera);
+                                      await personalInfo.updateProfile(image!);
+                                      },
+                                    ),
+                                    ListTile(
+                                      leading: const Icon(
+                                        Icons.image,
+                                        color: Color.fromRGBO(63, 85, 33, 1),
+                                      ),
+                                      title: const Text(
+                                        'Gallery',
+                                        style: TextStyle(
+                                          fontFamily: 'BerlinSansFB',
+                                          fontSize: 16,
+                                          color: Color.fromRGBO(63, 85, 33, 1),
+                                        ),
+                                      ),
+                                      onTap: () async {
+                                        Navigator.pop(context);
+                                        await PickImage(ImageSource.gallery);
+                                       // personalInfo.loading=true;
+
+                                            await personalInfo.updateProfile(image!);
+                                    //    personalInfo.notifyListeners();
+                                        // if (a != "") {
+                                        //   setState(() {
+                                        //     imageprof = a;
+                                        //   });
+                                        // }
+
+
+                                        // personalInfo.loading=false;
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
+                        },
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        padding: EdgeInsets.only(right: 10),
+                        child: IconButton(icon:Icon(Icons.logout,color: Color(0xFF3F5521),),onPressed:() async {
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    "Are you sure you want to\nlog out?",
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: "BerlinSansFB",
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(
+                                    height: screenHeight * 0.06,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(ctx).pop();
+                                        },
+                                        child: const Text(
+                                          "Close",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "BerlinSansFB",
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () async {
+                                          final SharedPreferences
+                                          sharedPreferences =
+                                          await SharedPreferences.getInstance();
+                                          sharedPreferences.remove('Email');
+                                          sharedPreferences.remove('Password');
+                                          personalInfo.clearAllTextController();
+
+                                          sharedPreferences.clear();
+
+                                          Navigator.of(ctx).pushAndRemoveUntil(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                const LoginScreen(),
+                                              ),
+                                                  (route) => false);
+                                        },
+                                        child: const Text(
+                                          "LogOut",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "BerlinSansFB",
+                                            color: Color.fromRGBO(234, 77, 71, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              title: const Text(
-                                'Gallery',
-                                style: TextStyle(
-                                  fontFamily: 'BerlinSansFB',
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(63, 85, 33, 1),
-                                ),
-                              ),
-                              onTap: () async {
-                                Navigator.pop(context);
-                                await PickImage(ImageSource.gallery);
-                               // personalInfo.loading=true;
-
-                                    await personalInfo.updateProfile(image!);
-                            //    personalInfo.notifyListeners();
-                                // if (a != "") {
-                                //   setState(() {
-                                //     imageprof = a;
-                                //   });
-                                // }
-
-
-                                // personalInfo.loading=false;
-                              },
                             ),
-                          ],
-                        );
-                      });
-                },
+                          );},),
+                      )
+                      ),
+                    ),
+
+                ],
               ),
               SizedBox(
                 height: screenHeight * 0.01,
@@ -187,22 +289,12 @@ setData(String imageUrl) async{
                 height: screenHeight * 0.01,
               ),
               Text(personalInfo.phoneNumber.text),
-              // phoneNumb != ''
-              //     ? Text(
-              //         '${phoneNumb}',
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.bold,
-              //           fontSize: 20,
-              //           color: Color(0xFF3F5521),
-              //         ),
-              //       )
-              //     : Container(),
+
 
               SizedBox(
                 height: screenHeight * 0.05,
               ),
-              SizedBox(
-                height: screenHeight * 0.4,
+              Expanded(
                 child: ListView(
                   children: [
                     Padding(
@@ -319,14 +411,14 @@ setData(String imageUrl) async{
                                   width: mediaQuery.size.width * 0.03,
                                 ),
                                 Icon(
-                                  Icons.info_outline,
+                                  Icons.vpn_key_sharp,
                                   color: Color(0xFF3F5521),
                                 ),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,
                                 ),
                                 Text(
-                                  "Account Info",
+                                  "Reset Password",
                                   style: TextStyle(
                                       color: Color(0xFF3F5521),
                                       fontSize: 25,
@@ -444,110 +536,11 @@ setData(String imageUrl) async{
                   ],
                 ),
               ),
-              SizedBox(
-                height: screenHeight * 0.03,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => LogOutScreen(),
-                    ),
-                  );
-                },
-                child: Text(
-                  "Log Out",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: mediaQuery.size.width * 0.05,
-                  ),
-                  primary: Color(0xFF3F5521),
-                ),
-              )
-              //   ElevatedButton(onPressed:  () {
-              //   Navigator.of(context).pushReplacement(
-              //     MaterialPageRoute(
-              //       builder: (context) => PersonalInfo(),
-              //     ),
-              //   );
-              // }, child:  Text("Personal Info", style: TextStyle(color: Colors.black, fontSize: 25, fontFamily:  'BerlinSansFB'),),
-              // style: ElevatedButton.styleFrom(
-              //   textStyle: TextStyle(),
-              //         padding:  EdgeInsets.symmetric(
-              //           vertical: 20,
-              //          horizontal: mediaQuery.size.width*0.33,
-              //         ),
 
-              //         primary: Colors.white,
-              //       ),
-              // )
             ],
           ),
         ),
       )
-
-          // DefaultTabController(
-          //   length: 3,
-          //   child: Column(children: [
-          //     SizedBox(
-          //       height: _mediaQueryText * 0.01,
-          //       width: double.infinity,
-          //     ),
-          //     SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-          //     SizedBox(
-          //       height: (MediaQuery.of(context).size.height -
-          //               // appBar.preferredSize.height -
-          //               MediaQuery.of(context).padding.top -
-          //               MediaQuery.of(context).padding.bottom) *
-          //           0.08,
-          //       child: TabB
-          //         // controller: forTab,
-          //         indicatorColor: Colors.transparent,
-          //         indicatorWeight: 4,
-          //         indicatorSize: TabBarIndicatorSize.tab,
-          //         labelColor: Colors.black,
-          //         unselectedLabelColor: Colors.grey,
-          //         labelStyle: const TextStyle(
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //         tabs: const [
-          //           Tab(
-          //             text: 'Personal info',
-          //           ),
-          //           Tab(
-          //             text: 'Addresses',
-          //           ),
-          //           Tab(
-          //             text: 'Account info',
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //     Flexible(
-          //       flex: 5,
-          //       child: Container(
-          //         padding: const EdgeInsets.only(left: 10),
-          //         height: (MediaQuery.of(context).size.height -
-          //                 // appBar.preferredSize.height -
-          //                 MediaQuery.of(context).padding.top -
-          //                 MediaQuery.of(context).padding.bottom) *
-          //             0.9,
-          //         width: double.maxFinite,
-          //         child: TabBarView(
-          //           // controller: forTab,
-          //           children: [
-          //             PersonalInfo(),
-          //             AddAddressScreen(),
-          //             AccountInfo(),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ]),
-          // ),
           ),
     );
   }
