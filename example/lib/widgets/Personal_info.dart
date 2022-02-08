@@ -18,6 +18,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   @override
   void initState() {
     getData();
+
     super.initState();
   }
   bool loading = true;

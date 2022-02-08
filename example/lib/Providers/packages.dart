@@ -151,7 +151,8 @@ loading=true;
 Future<void>  getalloccasions()async {
   loading=false;
 //notifyListeners();
-  _alloccasions=await PackageService.AllOccasions() ;
+  _alloccasions=await PackageService.AllOccasions();
+
   loading=true;
   notifyListeners();
 
