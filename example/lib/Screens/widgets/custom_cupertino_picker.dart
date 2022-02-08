@@ -111,6 +111,9 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           adress.countrycontroller.text = widget
                               .country[widget.selectedValue].id
                               .toString();
+                          adress.countrycontrollerstring.text = widget
+                              .country[widget.selectedValue].name
+                              .toString();
                           adress.getallcity(
                               widget.country[widget.selectedValue].id!);
                           Navigator.of(context).pop();
@@ -121,6 +124,8 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               Provider.of<AdressProvider>(ctx, listen: false);
                           adress.citycontroller.text =
                               widget.city[widget.selectedValue].id.toString();
+                          adress.citycontrollerstring.text =
+                              widget.city[widget.selectedValue].name.toString();
                           Navigator.of(context).pop();
                         }
                         if (widget.label == "Numbers Of Guests") {
@@ -186,12 +191,17 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       adress.numberofguestcontroller.text = widget
                           .numberOfGuests[widget.selectedValue].id
                           .toString();
+                      adress.numberofguestcontrollerstring.text = widget
+                          .numberOfGuests[widget.selectedValue].title
+                          .toString();
                     }
                     if (widget.label == "Type Of Event") {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.typeofeventcontroller.text =
                           widget.events[widget.selectedValue].id.toString();
+                      adress.typeofeventcontrollerstring.text =
+                          widget.events[widget.selectedValue].name.toString();
                     }
 
                     if (widget.label == 'Type of Occasion') {

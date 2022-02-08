@@ -66,7 +66,9 @@ List<String> _listcityname=[];
 
   TextEditingController addresstitlecontroller=TextEditingController();
   TextEditingController countrycontroller=TextEditingController();
+  TextEditingController countrycontrollerstring=TextEditingController();
   TextEditingController citycontroller=TextEditingController();
+  TextEditingController citycontrollerstring=TextEditingController();
   TextEditingController streetcontroller=TextEditingController();
   TextEditingController buildingcontroller=TextEditingController();
   TextEditingController floornumbercontroller=TextEditingController();
@@ -76,7 +78,9 @@ List<String> _listcityname=[];
   TextEditingController eventnamecontroller=TextEditingController();
   TextEditingController evendatecontroller=TextEditingController();
   TextEditingController numberofguestcontroller=TextEditingController();
+  TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
+  TextEditingController typeofeventcontrollerstring=TextEditingController();
 
 
 

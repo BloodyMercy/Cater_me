@@ -118,9 +118,9 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                     label:"Numbers Of Guests",
                     items:address.listnamenumber,
                     numberOfGuests: address.regular.numberOfGuests,
-                    selectedValue: 0,
+                    selectedValue: 1,
                     inputType: TextInputType.number,
-                    controller: address.numberofguestcontroller,
+                    controller: address.numberofguestcontrollerstring,
                   ),
 
                   SizedBox(height: screenHeight * 0.02),
@@ -142,7 +142,7 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                     events: address.regular.events,
                     selectedValue: 0,
                     inputType: TextInputType.number,
-                    controller: address.typeofeventcontroller,
+                    controller: address.typeofeventcontrollerstring,
 
                   ),
                   // SizedBox(height: screenHeight * 0.0125),

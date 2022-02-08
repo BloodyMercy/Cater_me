@@ -21,9 +21,9 @@ class _YourOrdersState extends State<YourOrders>  {
     await orders.getAllOrders();
 
 
-    setState(() {
-      loading=false;
-    });
+    // setState(() {
+    //   loading=false;
+    // });
 return;
   }
 

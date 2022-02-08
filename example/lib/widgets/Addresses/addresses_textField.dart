@@ -84,7 +84,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                               country: adress.listcountry,
                               selectedValue: 0,
                               inputType: TextInputType.number,
-                              controller: TextEditingController(),
+                              controller: adress.countrycontrollerstring,
                             )
                           : Center(
                               child: Container(
@@ -108,7 +108,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                               city: adress.listcity,
                               selectedValue: 0,
                               inputType: TextInputType.number,
-                              controller: TextEditingController(),
+                              controller: adress.citycontrollerstring,
                             )
                           : Center(
                               child: Container(
@@ -197,14 +197,14 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 setState(() {
                                   loadingfinal = false;
                                 });
-                                _scaffoldKey.currentState!.showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      "Add Address Succes",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                );
+                                // _scaffoldKey.currentState!.showSnackBar(
+                                //   SnackBar(
+                                //     content: Text(
+                                //       "Add Address Succes",
+                                //       style: TextStyle(color: Colors.white),
+                                //     ),
+                                //   ),
+                                // );
                                 Navigator.of(context).pop();
                               },
                               child: Text(
