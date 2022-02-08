@@ -33,13 +33,18 @@ bool loading=false;
 
   getData()async{
     final occasion=Provider.of<FriendsProvider >(context,listen: false);
+    if(occasion.listFriends.length==0)
     await occasion.getAllFriends();
+    List<String> l = [];
     for(int i=0;i<occasion.listFriends.length;i++)
       {
-        listFriendssearch.add(occasion.listFriends[i].name);
+        l.add(occasion.listFriends[i].name);
 
 
       }
+    setState(() {
+      listFriendssearch=l;
+    });
    // controllersearch.text="p";
     setState(() {
       loading=false;
@@ -114,7 +119,8 @@ bool loading=false;
     );
   }
 
-  bool issearch = false;
+  bool issearch = true;
+  String searchText="";
   TextEditingController controllersearch = TextEditingController();
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -187,7 +193,7 @@ bool loading=false;
                 childCount: details.itemOrders.length,
               ),
             ),
-           SliverToBoxAdapter(child:     Row(
+           issearch?SliverToBoxAdapter(child:     Row(
              mainAxisAlignment: MainAxisAlignment.end,
              children: [
                TextButton(
@@ -197,107 +203,9 @@ bool loading=false;
                    //   builder: (context) =>
                    //       setupAlertDialoadContainer()
                    // );
-                   showDialog(
-                       context: context,
-                       builder: (BuildContext context) {
-                         return AlertDialog(
-                           title: SingleChildScrollView(
-                             child: Container(
-                               child: Column(
-                                 children: [
-                                   Row(
-                                     mainAxisAlignment:
-                                     MainAxisAlignment
-                                         .spaceBetween,
-                                     children: [
-                                       IconButton(
-                                         onPressed: () {
-                                           Navigator.pop(context);
-                                         },
-                                         icon: Icon(
-                                           Icons.close,
-                                           color: Theme.of(context)
-                                               .primaryColor,
-                                         ),
-                                       ),
-                                       IconButton(
-                                           onPressed: () {
-                                             Navigator.pop(context);
-                                           },
-                                           icon: Icon(
-                                             Icons.check,
-                                             color: Theme.of(context)
-                                                 .primaryColor,
-                                           ))
-                                     ],
-                                   ),
-                                   Text(
-                                     'Choose the friends you want to share the order with.',
-                                     style: TextStyle(
-                                         color: Theme.of(context)
-                                             .primaryColor,
-                                         fontFamily: 'BerlinSansFB'),
-                                   ),
-                                   SizedBox(
-                                     height: mediaQuery.size.height *
-                                         0.02,
-                                   ),
-                                   SizedBox(
-                                     height: mediaQuery.size.height *
-                                         0.06,
-                                     child: TextField(
-                                       autofocus: false,
-                                       onTap: () {
-                                         setState(() {
-                                           isSearch = true;
-                                         });
-                                       },
-                                       decoration: InputDecoration(
-                                         enabledBorder:
-                                         OutlineInputBorder(
-                                             borderSide:
-                                             const BorderSide(
-                                                 color: Color
-                                                     .fromRGBO(
-                                                     232,
-                                                     232,
-                                                     232,
-                                                     1)),
-                                             borderRadius:
-                                             BorderRadius
-                                                 .circular(
-                                                 10)),
-                                         focusedBorder: OutlineInputBorder(
-                                             borderSide: BorderSide(
-                                                 color: Theme.of(
-                                                     context)
-                                                     .primaryColor)),
-                                         filled: true,
-                                         fillColor:
-                                         const Color.fromRGBO(
-                                             232, 232, 232, 1),
-                                         hintText: 'Search',
-                                         prefixIcon: const Icon(
-                                             Icons.search),
-                                         prefixIconColor:
-                                         Colors.black,
-                                         hintStyle: TextStyle(
-                                             color: Colors.grey[850],
-                                             fontSize: 16,
-                                             fontFamily:
-                                             'BerlinSansFB'),
-                                       ),
-                                       controller: controllersearch,
-                                     ),
-                                   ),
-                                 ],
-                               ),
-                             ),
-                           ),
-                           content:
-                           setupAlertDialoadContainer(context,frnd.listFriends),
-                         );
-                       });
+                setState(() {
+                  issearch=!issearch;
+                });
                  },
                  child: const Text(
                    "Share Bill",
@@ -310,10 +218,10 @@ bool loading=false;
                  ),
                ),
              ],
-           ) ,),
+           ) ,):SliverToBoxAdapter(child:Container()),
 
 
-           SliverToBoxAdapter(child:Container(
+         SliverToBoxAdapter(child: !issearch? Container(
              child: Column(
                children: [
                  Row(
@@ -323,7 +231,10 @@ bool loading=false;
                    children: [
                      IconButton(
                        onPressed: () {
-                         Navigator.pop(context);
+                        // Navigator.pop(context);
+                         setState(() {
+                           issearch=true;
+                         });
                        },
                        icon: Icon(
                          Icons.close,
@@ -333,7 +244,11 @@ bool loading=false;
                      ),
                      IconButton(
                          onPressed: () {
-                           Navigator.pop(context);
+                         setState(() {
+                           issearch=true;
+                         });
+                         //  Navigator.pop(context);
+
                          },
                          icon: Icon(
                            Icons.check,
@@ -353,58 +268,55 @@ bool loading=false;
                    height: mediaQuery.size.height *
                        0.02,
                  ),
-                 SizedBox(
-                   height: mediaQuery.size.height *
-                       0.06,
-                   child: TextField(
-                     autofocus: false,
-                     onTap: () {
-                       setState(() {
-                         isSearch = true;
-                       });
-                     },
-                     decoration: InputDecoration(
-                       enabledBorder:
-                       OutlineInputBorder(
-                           borderSide:
-                           const BorderSide(
-                               color: Color
-                                   .fromRGBO(
-                                   232,
-                                   232,
-                                   232,
-                                   1)),
-                           borderRadius:
-                           BorderRadius
-                               .circular(
-                               10)),
-                       focusedBorder: OutlineInputBorder(
-                           borderSide: BorderSide(
-                               color: Theme.of(
-                                   context)
-                                   .primaryColor)),
-                       filled: true,
-                       fillColor:
-                       const Color.fromRGBO(
-                           232, 232, 232, 1),
-                       hintText: 'Search',
-                       prefixIcon: const Icon(
-                           Icons.search),
-                       prefixIconColor:
-                       Colors.black,
-                       hintStyle: TextStyle(
-                           color: Colors.grey[850],
-                           fontSize: 16,
-                           fontFamily:
-                           'BerlinSansFB'),
-                     ),
-                     controller: controllersearch,
-                   ),
-                 ),
+                 // SizedBox(
+                 //   height: mediaQuery.size.height *
+                 //       0.06,
+                 //   child: TextField(
+                 //     autofocus: false,
+                 //     onTap: () {
+                 //     },
+                 //     decoration: InputDecoration(
+                 //       enabledBorder:
+                 //       OutlineInputBorder(
+                 //           borderSide:
+                 //           const BorderSide(
+                 //               color: Color
+                 //                   .fromRGBO(
+                 //                   232,
+                 //                   232,
+                 //                   232,
+                 //                   1)),
+                 //           borderRadius:
+                 //           BorderRadius
+                 //               .circular(
+                 //               10)),
+                 //       focusedBorder: OutlineInputBorder(
+                 //           borderSide: BorderSide(
+                 //               color: Theme.of(
+                 //                   context)
+                 //                   .primaryColor)),
+                 //       filled: true,
+                 //       fillColor:
+                 //       const Color.fromRGBO(
+                 //           232, 232, 232, 1),
+                 //       hintText: 'Search',
+                 //       prefixIcon: const Icon(
+                 //           Icons.search),
+                 //       prefixIconColor:
+                 //       Colors.black,
+                 //       hintStyle: TextStyle(
+                 //           color: Colors.grey[850],
+                 //           fontSize: 16,
+                 //           fontFamily:
+                 //           'BerlinSansFB'),
+                 //     ),
+                 //     controller: controllersearch,
+                 //   ),
+                 // ),
                ],
              ),
-           )),
-           SliverList(
+           ):Container()),
+         !issearch?  SliverList(
            delegate: SliverChildBuilderDelegate(
 
     (BuildContext context, int index) {
@@ -445,11 +357,11 @@ bool loading=false;
            )
 
 
-           ),
+           ):SliverToBoxAdapter(child:Container()),
 
 
 
-            SliverList(
+           issearch? SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       details.addcontroller(new TextEditingController());
@@ -461,8 +373,8 @@ bool loading=false;
                       ),
                       title: Text(details.choosebillFriend[index].name),
                       trailing: SizedBox(
-                          height: 100,
-                          width: 100,
+                          height: mediaQuery.size.height/20,
+                          width: mediaQuery.size.width/5,
                           child: TextField(
 
                             decoration: InputDecoration(
@@ -480,7 +392,7 @@ controller:details.controllers[index],
                 },
                 childCount:details.choosebillFriend.length ,
               ),
-            ),
+            ):SliverToBoxAdapter(child:Container()),
            SliverToBoxAdapter(child:  Column(
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [

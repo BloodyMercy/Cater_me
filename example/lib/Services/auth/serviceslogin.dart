@@ -35,13 +35,15 @@ class AuthModelSignin {
         'POST',
         Uri.parse(ApiLink.login),
       );
-      String? token="";
-        // await    FirebaseMessaging.instance.getToken().then((value) {
-        //   token = value;
-        //   print("the token is $value");
-        // });
+      String token="";
+        await    FirebaseMessaging.instance.getToken().then((value) {
+          token = value.toString();
+          print("the token is $value");
 
-      respons.fields.addAll({
+token=token;
+
+        });
+        respons.fields.addAll({
         'Email': username,
         'Password': password,
         'DeviceToken': token,

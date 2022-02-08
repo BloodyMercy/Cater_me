@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/Users.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
@@ -21,7 +22,16 @@ class AuthModelSignUp {
       File image
   ) async {
     try {
+      String token="";
+      await    FirebaseMessaging.instance.getToken().then((value) {
+        token = value.toString();
+        print("the token is $value");
+
+        token=token;
+
+      });
       var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Register));
+
       respons.fields.addAll({
         'name': name,
         'email': email,
@@ -29,6 +39,7 @@ class AuthModelSignUp {
         'password': password,
         'confirmPassword': comfirmPassword,
         'birthDate': "12-10-2000",
+        'DeviceToken': token,
         // 'gender': gendder,
       });
 

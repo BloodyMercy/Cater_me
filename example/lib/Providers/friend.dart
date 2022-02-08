@@ -18,6 +18,7 @@ class FriendsProvider extends ChangeNotifier {
   }
 
   getAllFriends() async {
+
     _listFriends = await _friendsService.getAllFriends();
 
     notifyListeners();
