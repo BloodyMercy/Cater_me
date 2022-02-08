@@ -209,7 +209,8 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                         left: (mediaQuery.size.width * 0.04),
-                                        top: mediaQuery.size.height * 0.05),
+                                         top: mediaQuery.size.height * 0.05
+                                     ),
                                     child: Text(
                                       'Upcoming occasions',
                                       style:
@@ -235,12 +236,12 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal:
                                               mediaQuery.size.width * 0.01,
-                                          vertical:
-                                              mediaQuery.size.height * 0.01),
+
+                                          ),
                                       child: Column(children: [
                                         SizedBox(
                                           width: mediaQuery.size.width * 0.97,
-                                          height: mediaQuery.size.height * 0.15,
+                                         // height: mediaQuery.size.height * 0.15,
                                           child: Card(
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
@@ -360,10 +361,9 @@ class _HomePageState extends State<HomePage> {
                                       ]),
                                     )
                                   : Container(),
-                              SizedBox(
-                                  height: mediaQuery.size.height * 0.2,
-                                  child: Center(
-                                      child: OccasionCard(Axis.horizontal))),
+
+                                  Center(
+                                      child: OccasionCard(Axis.horizontal)),
                             ]),
                             Container(
                               child: Column(children: [

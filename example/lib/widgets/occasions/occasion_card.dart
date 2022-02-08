@@ -77,7 +77,7 @@ class _OccasionCardState extends State<OccasionCard> {
           ),
         );
     List<OccasionsCard> card = getOccasions(package.occasions);
-    var content =Container(
+    var content = card.length >0?Container(
       height: mediaQuery.size.height*0.2,
         child: ListView.builder(
           scrollDirection: widget.ax,
@@ -104,7 +104,7 @@ class _OccasionCardState extends State<OccasionCard> {
         //         enableInfiniteScroll: false,
         //         viewportFraction: 1,
         //       )
-    ) );
+    ) ):Container();
     return Container(
       // height: mediaQuery.size.height*0.9,
       child: Column(

@@ -61,7 +61,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     await occasion.getAllOccasionType();
-    occasion.yearlureminder = false;
+    // occasion.yearlureminder = false;
     setState(() {
       loading = false;
     });
@@ -73,7 +73,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     super.initState();
   }
 
-  bool yearly = false;
+  // bool yearly = false;
   bool ispressed = false;
   final _scaff = GlobalKey<ScaffoldState>();
   @override
@@ -110,12 +110,10 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SingleChildScrollView(
-          child: loading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Container(
+        body: !loading? SingleChildScrollView(
+          child:
+
+           Container(
               color: Colors.white,
               child: Column(
                 children: [
@@ -200,22 +198,22 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                       ],
                     ),
                   ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      "Yearly reminder",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    Switch.adaptive(
-                      activeColor: Theme.of(context).primaryColor,
-                      value: yearly,
-                      onChanged: (val) {
-                        setState(() {
-                          yearly = val;
-                        });
-                        occa.yearlureminder = val;
-                      },
-                    ),
-                  ]),
+                  // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  //   Text(
+                  //     "Yearly reminder",
+                  //     style: Theme.of(context).textTheme.headline2,
+                  //   ),
+                  //   Switch.adaptive(
+                  //     activeColor: Theme.of(context).primaryColor,
+                  //     value: yearly,
+                  //     onChanged: (val) {
+                  //       setState(() {
+                  //         // yearly = val;
+                  //       });
+                  //       occa.yearlureminder = val;
+                  //     },
+                  //   ),
+                  // ]),
                   SizedBox(
                     height: mediaQuery.size.height * 0.2,
                   ),
@@ -295,6 +293,8 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                   )
                 ],
               )),
+        ): Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     );
