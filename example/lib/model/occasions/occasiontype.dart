@@ -6,7 +6,7 @@ class OccassionType {
 
   OccassionType.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
+    name = json['title'];
   }
 
 }

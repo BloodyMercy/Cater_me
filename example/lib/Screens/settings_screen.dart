@@ -25,17 +25,20 @@ class TABBar extends StatefulWidget {
   _TABBarState createState() => _TABBarState();
 }
 
-class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
-  var firstField = TextEditingController();
-  var thirdField = TextEditingController();
+class _TABBarState extends State<TABBar>  {
 
-  var secondField = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getdata();
+    getPersonalInfo();
+  }
+  getPersonalInfo()async{
+    final personalInfo=await Provider.of<UserProvider>(context,listen: false);
+    personalInfo.loading=true;
+    await personalInfo.getPersonalInfo();
+    personalInfo.loading=false;
   }
 
   File? image;
@@ -43,11 +46,14 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
     try {
+      SharedPreferences pref = await SharedPreferences.getInstance();
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) return 'null';
       final imageTemporary = File(image.path);
+      pref.setString("imageUrl", File(image.path).path);
       setState(() {
         this.image = imageTemporary;
+
       });
       // ignore: nullable_type_in_catch_clause
     } on PlatformException catch (e) {
@@ -58,7 +64,14 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
   String showname = '';
   String phoneNumb = '';
   String imageprof = "";
+  bool loadingImage=false;
+setData(String imageUrl) async{
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  setState(() {
+    imageprof = pref.setString('imageUrl', imageUrl) as String;
+  });
 
+}
   getdata() async {
     SharedPreferences image = await SharedPreferences.getInstance();
     setState(() {
@@ -66,16 +79,18 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
       showname = image.getString('name') ?? '';
       phoneNumb = image.getString('phoneNumber') ?? '';
     });
+    print("image ${imageprof}");
   }
 
   // TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final updateImage = Provider.of<UserProvider>(context, listen: true);
+    // final updateImage = Provider.of<UserProvider>(context, listen: true);
+    final personalInfo=Provider.of<UserProvider>(context,listen: true);
     var _mediaQueryText = MediaQuery.of(context).size.height;
     final mediaQuery = MediaQuery.of(context);
-    TabController forTab = TabController(length: 3, vsync: this);
+
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
@@ -90,12 +105,13 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
               GestureDetector(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
-                  child: Center(
+                  child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
                     child: CircleAvatar(
                       minRadius: 16,
                       maxRadius: screenHeight * 0.1,
                       backgroundImage:
-                          image == null ? null : NetworkImage(imageprof),
+                      NetworkImage(personalInfo.imageUrl),
+                      //   ,
                     ),
                   ),
                 ),
@@ -142,17 +158,20 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
                                 ),
                               ),
                               onTap: () async {
-                                await PickImage(ImageSource.gallery);
-
-                                String a =
-                                    await updateImage.updateProfile(image!);
-                                if (a != "") {
-                                  setState(() {
-                                    imageprof = a;
-                                  });
-                                }
-
                                 Navigator.pop(context);
+                                await PickImage(ImageSource.gallery);
+                               // personalInfo.loading=true;
+
+                                    await personalInfo.updateProfile(image!);
+                            //    personalInfo.notifyListeners();
+                                // if (a != "") {
+                                //   setState(() {
+                                //     imageprof = a;
+                                //   });
+                                // }
+
+
+                                // personalInfo.loading=false;
                               },
                             ),
                           ],
@@ -163,26 +182,21 @@ class _TABBarState extends State<TABBar> with TickerProviderStateMixin {
               SizedBox(
                 height: screenHeight * 0.01,
               ),
-              showname != ''
-                  ? Text(
-                      '${showname}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color(0xFF3F5521),
-                      ),
-                    )
-                  : Container(),
-              phoneNumb != ''
-                  ? Text(
-                      '${phoneNumb}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color(0xFF3F5521),
-                      ),
-                    )
-                  : Container(),
+              Text(personalInfo.name.text),
+              SizedBox(
+                height: screenHeight * 0.01,
+              ),
+              Text(personalInfo.phoneNumber.text),
+              // phoneNumb != ''
+              //     ? Text(
+              //         '${phoneNumb}',
+              //         style: TextStyle(
+              //           fontWeight: FontWeight.bold,
+              //           fontSize: 20,
+              //           color: Color(0xFF3F5521),
+              //         ),
+              //       )
+              //     : Container(),
 
               SizedBox(
                 height: screenHeight * 0.05,

@@ -55,9 +55,7 @@ return;
             child:Container(
               child:  loading?Center(child: CircularProgressIndicator(),):
                Container(
-                  child:
-                  orders.listOrder.length==0?Center(child: Text("No orders yet",style: TextStyle(fontWeight: FontWeight.bold),)) :
-                    ListView.builder(itemBuilder: (context,index){
+                  child: ListView.builder(itemBuilder: (context,index){
                     return GestureDetector(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (builder)=>OrderId(orders.listOrder[index].id!,0)));
@@ -71,14 +69,14 @@ return;
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(orders.listOrder[index].eventName,style: TextStyle(color: Colors.black)),
-                                Text(orders.listOrder[index].orderStatus)
+                                Text(orders.listOrder[index].eventName!,style: TextStyle(color: Colors.black)),
+                                Text(orders.listOrder[index].orderStatus!)
                               ],
                             ),
                             SizedBox(height: 10,),
-                            Text("${orders.listOrder[index].eventDate}"),
+                            Text("${orders.listOrder[index].eventDate!}"),
                             SizedBox(height: 10,),
-                            Text("Address: ${orders.listOrder[index].addressTitle}")
+                            Text("Address: ${orders.listOrder[index].addressTitle!}")
                           ],
                         ),
                       )),
