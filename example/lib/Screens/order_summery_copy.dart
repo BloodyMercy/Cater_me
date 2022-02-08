@@ -102,271 +102,291 @@ bool loading=false;
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final frnd=Provider.of<FriendsProvider >(context,listen:true);
+
+
+
+
+
+
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                'Receipt',
-                style: TextStyle(
-                    color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'All prices include VAT',
-                style: TextStyle(
-                    color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: 600,
-                width: 400,
-                child: ListView(children: [
-                  ListView.builder(
-                      itemCount: details.itemOrders.length,
-                      controller: _scrollController,
-                      shrinkWrap: true,
-                      itemBuilder: (ctx, i) {
-                        return Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10.0),
-                              child:
-                                  // widget.data[index].status=="Package"?Container( child: CartItemCard(widget.data[index] , index),):
-                                  Dismissible(
-                                key: UniqueKey(),
-                                direction: DismissDirection.endToStart,
-                                background: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 20),
-                                  decoration: BoxDecoration(
-                                    color: Color.fromRGBO(232, 232, 232, 1.0),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Spacer(),
-                                      SvgPicture.asset(
-                                          'images/iconphase2/Trash.svg'),
-                                      //  (image: Icons.delete);
-                                    ],
-                                  ),
-                                ),
-                                onDismissed: (direction) {
-                                  //setState(() {
-                                  // _cartP.listcart.removeAt(index);
-                                  // _cartP.RemoveFromCart(widget.data[index]);
+        child: Column(children:[
+          Text(
+          'Receipt',
+          style: TextStyle(
+              color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+        ),
+          Text(
+            'All prices include VAT',
+            style: TextStyle(
+                color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 20,
+          ),
 
-                                  //   });
-                                  details.removeItems(details.itemOrders[i]);
-                                },
-                                child: CartItemCard(details.itemOrders[i], i),
-                              ),
-                            ),
-                          ],
-                        );
-                      }),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+       Expanded(
+         child: CustomScrollView(slivers: <Widget>[
+
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int i) {
+                  final item = details.itemOrders[i];
+                  if (i> details.itemOrders.length) return null;
+                  return Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              // return  await showDialog(
-                              //   context: context,
-                              //   builder: (context) =>
-                              //       setupAlertDialoadContainer()
-                              // );
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: SingleChildScrollView(
-                                        child: Container(
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    icon: Icon(
-                                                      Icons.close,
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                    ),
-                                                  ),
-                                                  IconButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      icon: Icon(
-                                                        Icons.check,
-                                                        color: Theme.of(context)
-                                                            .primaryColor,
-                                                      ))
-                                                ],
-                                              ),
-                                              Text(
-                                                'Choose the friends you want to share the order with.',
-                                                style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    fontFamily: 'BerlinSansFB'),
-                                              ),
-                                              SizedBox(
-                                                height: mediaQuery.size.height *
-                                                    0.02,
-                                              ),
-                                              SizedBox(
-                                                height: mediaQuery.size.height *
-                                                    0.06,
-                                                child: TextField(
-                                                  autofocus: false,
-                                                  onTap: () {
-                                                    setState(() {
-                                                      isSearch = true;
-                                                    });
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                            borderSide:
-                                                                const BorderSide(
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            232,
-                                                                            232,
-                                                                            232,
-                                                                            1)),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10)),
-                                                    focusedBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor)),
-                                                    filled: true,
-                                                    fillColor:
-                                                        const Color.fromRGBO(
-                                                            232, 232, 232, 1),
-                                                    hintText: 'Search',
-                                                    prefixIcon: const Icon(
-                                                        Icons.search),
-                                                    prefixIconColor:
-                                                        Colors.black,
-                                                    hintStyle: TextStyle(
-                                                        color: Colors.grey[850],
-                                                        fontSize: 16,
-                                                        fontFamily:
-                                                            'BerlinSansFB'),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      content:
-                                          setupAlertDialoadContainer(context,frnd.listFriends),
-                                    );
-                                  });
-                            },
-                            child: const Text(
-                              "Share Bill",
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  color: Color(0xFF3F5521),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'BerlinSansFB'),
-                            ),
-                          ),
-                        ],
-                      ),
-                      ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: NetworkImage(''),
-                          ),
-                          title: Text('Name'),
-                          trailing: SizedBox(
-                              height: 100,
-                              width: 100,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: 'Price',
-                                  fillColor: Color(0xFF3F5521),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Color(0xFF3F5521), width: 2.0),
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                ),
-                                keyboardType: TextInputType.number,
-                              ))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                          "You cant't cancel or edit your order once submitted!"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Subtotal: ${details.subTotal}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Totale: ${details.totale}',
-                        style: TextStyle(
-                          color: Color(0xFF3F5521),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '*(VAT included ${details.tax} %:)',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 23.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '*(VAT included 15.0%: ${details.tax} SAR)',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        child:
+                        // widget.data[index].status=="Package"?Container( child: CartItemCard(widget.data[index] , index),):
+                        Dismissible(
+                          key: UniqueKey(),
+                          direction: DismissDirection.endToStart,
+                          background: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(232, 232, 232, 1.0),
                             ),
-                          ],
+                            child: Row(
+                              children: [
+                                Spacer(),
+                                SvgPicture.asset(
+                                    'images/iconphase2/Trash.svg'),
+                                //  (image: Icons.delete);
+                              ],
+                            ),
+                          ),
+                          onDismissed: (direction) {
+                            //setState(() {
+                            // _cartP.listcart.removeAt(index);
+                            // _cartP.RemoveFromCart(widget.data[index]);
+
+                            //   });
+                            details.removeItems(details.itemOrders[i]);
+                          },
+                          child: CartItemCard(details.itemOrders[i], i),
                         ),
                       ),
                     ],
-                  ),
-                ]),
+                  ); // you can add your available item here
+                },
+                childCount: details.itemOrders.length,
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
+           SliverToBoxAdapter(child:     Row(
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: [
+               TextButton(
+                 onPressed: () {
+                   // return  await showDialog(
+                   //   context: context,
+                   //   builder: (context) =>
+                   //       setupAlertDialoadContainer()
+                   // );
+                   showDialog(
+                       context: context,
+                       builder: (BuildContext context) {
+                         return AlertDialog(
+                           title: SingleChildScrollView(
+                             child: Container(
+                               child: Column(
+                                 children: [
+                                   Row(
+                                     mainAxisAlignment:
+                                     MainAxisAlignment
+                                         .spaceBetween,
+                                     children: [
+                                       IconButton(
+                                         onPressed: () {
+                                           Navigator.pop(context);
+                                         },
+                                         icon: Icon(
+                                           Icons.close,
+                                           color: Theme.of(context)
+                                               .primaryColor,
+                                         ),
+                                       ),
+                                       IconButton(
+                                           onPressed: () {
+                                             Navigator.pop(context);
+                                           },
+                                           icon: Icon(
+                                             Icons.check,
+                                             color: Theme.of(context)
+                                                 .primaryColor,
+                                           ))
+                                     ],
+                                   ),
+                                   Text(
+                                     'Choose the friends you want to share the order with.',
+                                     style: TextStyle(
+                                         color: Theme.of(context)
+                                             .primaryColor,
+                                         fontFamily: 'BerlinSansFB'),
+                                   ),
+                                   SizedBox(
+                                     height: mediaQuery.size.height *
+                                         0.02,
+                                   ),
+                                   SizedBox(
+                                     height: mediaQuery.size.height *
+                                         0.06,
+                                     child: TextField(
+                                       autofocus: false,
+                                       onTap: () {
+                                         setState(() {
+                                           isSearch = true;
+                                         });
+                                       },
+                                       decoration: InputDecoration(
+                                         enabledBorder:
+                                         OutlineInputBorder(
+                                             borderSide:
+                                             const BorderSide(
+                                                 color: Color
+                                                     .fromRGBO(
+                                                     232,
+                                                     232,
+                                                     232,
+                                                     1)),
+                                             borderRadius:
+                                             BorderRadius
+                                                 .circular(
+                                                 10)),
+                                         focusedBorder: OutlineInputBorder(
+                                             borderSide: BorderSide(
+                                                 color: Theme.of(
+                                                     context)
+                                                     .primaryColor)),
+                                         filled: true,
+                                         fillColor:
+                                         const Color.fromRGBO(
+                                             232, 232, 232, 1),
+                                         hintText: 'Search',
+                                         prefixIcon: const Icon(
+                                             Icons.search),
+                                         prefixIconColor:
+                                         Colors.black,
+                                         hintStyle: TextStyle(
+                                             color: Colors.grey[850],
+                                             fontSize: 16,
+                                             fontFamily:
+                                             'BerlinSansFB'),
+                                       ),
+                                     ),
+                                   ),
+                                 ],
+                               ),
+                             ),
+                           ),
+                           content:
+                           setupAlertDialoadContainer(context,frnd.listFriends),
+                         );
+                       });
+                 },
+                 child: const Text(
+                   "Share Bill",
+                   style: TextStyle(
+                       decoration: TextDecoration.underline,
+                       color: Color(0xFF3F5521),
+                       fontSize: 20,
+                       fontWeight: FontWeight.bold,
+                       fontFamily: 'BerlinSansFB'),
+                 ),
+               ),
+             ],
+           ) ,),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  //  final item = ;
+                  if (index > 2) return null;
+                  return    ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(''),
+                      ),
+                      title: Text('Name'),
+                      trailing: SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Price',
+                              fillColor: Color(0xFF3F5521),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521), width: 2.0),
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                            ),
+                            keyboardType: TextInputType.number,
+                          ))); // you can add your unavailable item here
+                },
+                childCount: 2,
+              ),
+            ),
+           SliverToBoxAdapter(child:  Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+
+
+               SizedBox(
+                 height: 10,
+               ),
+               Text(
+                   "You cant't cancel or edit your order once submitted!"),
+               SizedBox(
+                 height: 10,
+               ),
+               Text(
+                 'Subtotal: ${details.subTotal}',
+                 style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+               SizedBox(
+                 height: 10,
+               ),
+               Text(
+                 'Totale: ${details.totale}',
+                 style: TextStyle(
+                   color: Color(0xFF3F5521),
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+               SizedBox(
+                 height: 10,
+               ),
+               Text(
+                 '*(VAT included ${details.tax} %:)',
+                 style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+               Padding(
+                 padding: const EdgeInsets.only(right: 23.0),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Text(
+                       '*(VAT included 15.0%: ${details.tax} SAR)',
+                       style: TextStyle(
+                         fontWeight: FontWeight.bold,
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+             ],
+           ))
+
+          ]),
+       ),
+
+
+
+        ])),
     );
   }
 }

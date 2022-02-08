@@ -139,9 +139,15 @@ setData(String imageUrl) async{
                                   color: Color.fromRGBO(63, 85, 33, 1),
                                 ),
                               ),
-                              onTap: () {
-                                PickImage(ImageSource.camera);
-                                Navigator.pop(context);
+                              onTap: () async{
+                               // await PickImage(ImageSource.camera);
+                               //  String a = await updateImage.updateProfile(image!);
+                               //  if (a != "") {
+                               //    setState(() {
+                               //      imageprof = a;
+                               //    });
+                               //  }
+                               //  Navigator.pop(context);
                               },
                             ),
                             ListTile(
