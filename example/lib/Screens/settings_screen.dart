@@ -53,7 +53,6 @@ class _TABBarState extends State<TABBar>  {
       pref.setString("imageUrl", File(image.path).path);
       setState(() {
         this.image = imageTemporary;
-
       });
       // ignore: nullable_type_in_catch_clause
     } on PlatformException catch (e) {
@@ -143,7 +142,6 @@ setData(String imageUrl) async{
                                 Navigator.pop(context);
                               await  PickImage(ImageSource.camera);
                               await personalInfo.updateProfile(image!);
-
                               },
                             ),
                             ListTile(

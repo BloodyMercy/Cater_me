@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
@@ -61,7 +62,31 @@ return address;
   }
 
 
+Future<ErrorMessage> deleteAddress(int id) async{
+   ErrorMessage em=ErrorMessage();
+   try{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     var headers = {
+       'Authorization': 'Bearer ${prefs.getString("token")}'   };
+     var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.DeleteAddress+"/$id"));
+     respons.headers.addAll(headers);
+     http.StreamedResponse responses = await respons.send();
+     var response = await http.Response.fromStream(responses);
+     if(response.statusCode==200){
+       em.message="deleted";
+       return em;
+     }else{
+       em.message="cannot delete";
+       return em;
+     }
 
+   }
+   catch(e){
+     print("error cannot delete");
+   }
+   return ErrorMessage();
+
+}
    Future<List<City>> getAllCity(int id) async{
     List<City> l=[];
     try {
