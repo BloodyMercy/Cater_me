@@ -1,9 +1,17 @@
+import 'dart:convert';
+
+
+import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/friend_model.dart';
 
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];
@@ -16,7 +24,66 @@ class OrderCaterProvider extends ChangeNotifier{
   set controllers(List<TextEditingController> value) {
     _controllers = value;
   }
+  Future<bool>  makeorder(String date,String type,String nb,String token,String idcard)async {
 
+    List<Map<String,dynamic>> mapitem=[];
+    List<Map<String,dynamic>> mapitemf=[];
+    for(int i=0;i<itemOrders.length;i++){
+      
+      mapitem.add({"id":itemOrders[i].id,"quantity":itemOrders[i].quantity});
+    }
+    for(int i=0;i<choosebillFriend.length;i++){
+
+      mapitemf.add({"friendId":choosebillFriend[i].id,"amount":choosebillFriend[i].price});
+    }
+
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request;
+
+        request = http.Request('POST', Uri.parse(ApiLink.makeorder));
+      request.fields.addAll({
+        'AddressId': value.id,
+        'ServiceId': serviceId,
+        "OrderItems":mapitem,
+        "EventDate":date,
+        "EventTypeId":type,
+        "NumberOfGuests":nb,
+        "PaymentFriend":mapitemf,
+        "Token":token,
+        "CardId":idcard,
+
+      });
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+
+      if (response.statusCode == 200) {
+        // List<dynamic> l = json.decode(response.body);
+        // List<AddOn> ld=[];
+        // for(int i=0;i<l.length;i++)
+        //   ld.add(AddOn.fromJson(l[i]));
+
+        // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
+        return true;
+      }
+      else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    }catch(e){
+      return false;
+    }
+    notifyListeners();
+    return true;
+  }
 
   addcontroller(TextEditingController t){
     controllers.add(t);

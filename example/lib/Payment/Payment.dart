@@ -65,35 +65,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                // Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                //   ElevatedButton(
-                //     child: Padding(
-                //         padding: const EdgeInsets.all(12),
-                //         child: Text(
-                //           "Generate Token",
-                //           style: TextStyle(fontSize: 14),
-                //         )),
-                //     onPressed: _generateToken,
-                //   ),
-                //   ElevatedButton(
-                //     child: Padding(
-                //         padding: const EdgeInsets.all(12),
-                //         child: Text(
-                //           "Card Validation",
-                //           style: TextStyle(fontSize: 14),
-                //         )),
-                //     onPressed: _cardValidation,
-                //   )
-                // // ]),
-                // ElevatedButton(
-                //   child: Padding(
-                //       padding: const EdgeInsets.all(12),
-                //       child: Text(
-                //         "Generate Token with Address",
-                //         style: TextStyle(fontSize: 14),
-                //       )),
-                //   onPressed: _generateTokenWithAddress,
-                // )
+                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                  ElevatedButton(
+                    child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          "Generate Token",
+                          style: TextStyle(fontSize: 14),
+                        )),
+                    onPressed: _generateToken,
+                  ),
+                  ElevatedButton(
+                    child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          "Card Validation",
+                          style: TextStyle(fontSize: 14),
+                        )),
+                    onPressed: _cardValidation,
+                  )
+                ]),
+                ElevatedButton(
+                  child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        "Generate Token with Address",
+                        style: TextStyle(fontSize: 14),
+                      )),
+                  onPressed: _generateTokenWithAddress,
+                )
               ]),
               SizedBox(height: 10)
             ],
