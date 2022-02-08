@@ -51,6 +51,8 @@ dependencies:
   credit_card: 0.1.6
   badges: ^2.0.2
   flutter_slidable: ^1.2.0
+  google_maps_flutter: ^2.0.3
+  geolocator:
 
 
 

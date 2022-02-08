@@ -24,6 +24,7 @@ import 'Providers/occasion.dart';
 import 'Providers/packages.dart';
 import 'Providers/user.dart';
 
+import 'Screens/chooseadress/confirm_location_view.dart';
 import 'Screens/order_summery_copy.dart';
 import 'colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,10 @@ class appstate extends StatefulWidget {
 }
 
 class _appstateState extends State<appstate> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     //build context ?
@@ -172,7 +177,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: appstate(),
+        home: ConfirmLocation(),
       ),
     );
   }
