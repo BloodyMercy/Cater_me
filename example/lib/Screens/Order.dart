@@ -384,7 +384,7 @@ class _OrderState extends State<Order> {
                     (orderProvider.spets==5)? CuisinCardoffer(packageProvider.cuisins.id):
                     (orderProvider.spets==6)? AddonsCardoffer(0):
                     //(orderProvider.spets==6)? AddOnOrderScreen():
-                    (orderProvider.spets==8)?OrderSummery1():
+                    (orderProvider.spets==8)?HomeScreen():
                     (orderProvider.spets==7)? OrderSummeryCopy():
                    // (steps==5)? :
 

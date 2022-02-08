@@ -63,9 +63,9 @@ Occasion _occasioncreated=Occasion();
     if(_occasioncreated.id==0)
       return false;
       else {
-      List<Occasion> l = package.occasions;
+      List<Occasion> l = package.alloccasions;
       l.add(_occasioncreated);
-      package.occasions = l;
+      package.alloccasions = l;
       package.notifyListeners();
       notifyListeners();
       return true;

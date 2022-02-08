@@ -6,9 +6,11 @@ import 'package:CaterMe/Screens/addresses_screen_fab.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
 import 'package:CaterMe/Screens/dashboard.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
+import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
+import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:CaterMe/widgets/my_favorites_card.dart';
 import 'package:CaterMe/Screens/notifications.dart';
@@ -19,18 +21,21 @@ import 'package:provider/provider.dart';
 
 class Navigationbar extends StatefulWidget {
   int _selectedIndex;
+
   Navigationbar(this._selectedIndex);
   @override
   _NavigationBarState createState() => _NavigationBarState();
 }
 
 class _NavigationBarState extends State<Navigationbar> {
-  final List<Widget> _widgetOptions = const [
+  final List<Widget> _widgetOptions = [
     HomePage(),
-    Ocasions(),
+    OccasionListView(),
     YourOrders(),
     TABBar()
   ];
+
+
 
   void _onItemTap(int index) {
     setState(() {
