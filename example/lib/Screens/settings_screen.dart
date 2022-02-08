@@ -140,14 +140,10 @@ setData(String imageUrl) async{
                                 ),
                               ),
                               onTap: () async{
-                               // await PickImage(ImageSource.camera);
-                               //  String a = await updateImage.updateProfile(image!);
-                               //  if (a != "") {
-                               //    setState(() {
-                               //      imageprof = a;
-                               //    });
-                               //  }
-                               //  Navigator.pop(context);
+                                Navigator.pop(context);
+                              await  PickImage(ImageSource.camera);
+                              await personalInfo.updateProfile(image!);
+
                               },
                             ),
                             ListTile(
