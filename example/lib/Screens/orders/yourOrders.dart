@@ -55,8 +55,10 @@ return;
             child:Container(
               child:  loading?Center(child: CircularProgressIndicator(),):
                Container(
-                  child: ListView.builder(itemBuilder: (context,index){
-                    return  GestureDetector(
+                  child:
+                  orders.listOrder.length==0?Center(child: Text("No orders yet",style: TextStyle(fontWeight: FontWeight.bold),)) :
+                    ListView.builder(itemBuilder: (context,index){
+                    return GestureDetector(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (builder)=>OrderId(orders.listOrder[index].id!,0)));
                       },
