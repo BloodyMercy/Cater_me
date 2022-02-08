@@ -40,19 +40,18 @@ class _AddressesListState extends State<AddressesList> {
                         vertical: _mediaQuery * 0.04,
                         horizontal: _mediaQuery * 0.01),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        SizedBox(
+                          width: 45,
+                        ),
                         Radio(
-
                           toggleable: true,
                           groupValue: orderprovider.valueIndex,
                           value: index,
                           onChanged: (value) {
-
-
                             setState(() {
-                              _value=index;
-                              orderprovider.valueIndex=index;
+                              _value = index;
+                              orderprovider.valueIndex = index;
                             });
                             orderprovider.value = widget.address[index];
                           },

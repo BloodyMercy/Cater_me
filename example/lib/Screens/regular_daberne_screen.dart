@@ -22,7 +22,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
     reg = false;
     dab = false;
   }
-
+bool loading = true;
   @override
   Widget build(BuildContext context) {
     final orderProvider =
@@ -37,6 +37,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+
               GestureDetector(
                 onTap: () {
                   setState(() {

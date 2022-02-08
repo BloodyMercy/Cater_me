@@ -97,16 +97,13 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                     SizedBox(
                       height: 5,
                     ),
-                    Text.rich(
-                      TextSpan(
-                        text: widget.cart.description,
-                        style:  TextStyle(
-                          fontSize: 10,
-                          color: Color(0xFF3F5521),
-                          fontFamily: 'Ubuntu',
-                        ),
-                      ),
-                    ),
+                   Text(
+                     widget.cart.description,
+                     style:  TextStyle(
+                       fontSize: 10,
+                       color: Color(0xFF3F5521),
+                       fontFamily: 'Ubuntu',
+                     ),),
                     SizedBox(
                       height: 5,
                     ),

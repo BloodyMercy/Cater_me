@@ -51,6 +51,7 @@ int selected=0;
 
 
   bool loadingitems=true;
+  // bool loading = true;
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
@@ -66,6 +67,7 @@ int selected=0;
     );
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
     return
+
 
 
       SingleChildScrollView(

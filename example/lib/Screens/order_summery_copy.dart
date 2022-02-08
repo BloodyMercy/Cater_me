@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/order_provider.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -97,17 +98,22 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
             children: [
               Text(
                 'Receipt',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(
+                    color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
               ),
-              Text('All prices include VAT'),
+              Text(
+                'All prices include VAT',
+                style: TextStyle(
+                    color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+              ),
               SizedBox(
                 height: 20,
               ),
               Container(
-                height: 330,
+                height: 600,
                 width: 400,
-                child: ListView(
-                  children: [ListView.builder(
+                child: ListView(children: [
+                  ListView.builder(
                       itemCount: details.itemOrders.length,
                       controller: _scrollController,
                       shrinkWrap: true,
@@ -149,176 +155,204 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                           ],
                         );
                       }),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                // return  await showDialog(
-                                //   context: context,
-                                //   builder: (context) =>
-                                //       setupAlertDialoadContainer()
-                                // );
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: SingleChildScrollView(
-                                          child: Container(
-                                              child: Column(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              // return  await showDialog(
+                              //   context: context,
+                              //   builder: (context) =>
+                              //       setupAlertDialoadContainer()
+                              // );
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: SingleChildScrollView(
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      IconButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(context);
-                                                        },
-                                                        icon: Icon(
-                                                          Icons.close,
-                                                          color: Theme.of(context)
-                                                              .primaryColor,
-                                                        ),
-                                                      ),
-                                                      IconButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(context);
-                                                          },
-                                                          icon: Icon(
-                                                            Icons.check,
-                                                            color: Theme.of(context)
-                                                                .primaryColor,
-                                                          ))
-                                                    ],
-                                                  ),
-                                                  Text(
-                                                    'Choose the friends you want to share the order with.',
-                                                    style: TextStyle(
-                                                        color: Theme.of(context)
-                                                            .primaryColor,
-                                                        fontFamily: 'BerlinSansFB'),
-                                                  ),
-                                                  SizedBox(
-                                                    height: mediaQuery.size.height * 0.02,
-                                                  ),
-                                                  SizedBox(
-                                                    height: mediaQuery.size.height * 0.06,
-                                                    child: TextField(
-                                                      autofocus: false,
-                                                      onTap: () {
-                                                        setState(() {
-                                                          isSearch = true;
-                                                        });
-                                                      },
-                                                      decoration: InputDecoration(
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide: const BorderSide(
-                                                                color: Color.fromRGBO(
-                                                                    232, 232, 232, 1)),
-                                                            borderRadius:
-                                                            BorderRadius.circular(
-                                                                10)),
-                                                        focusedBorder: OutlineInputBorder(
-                                                            borderSide: BorderSide(
-                                                                color: Theme.of(context)
-                                                                    .primaryColor)),
-                                                        filled: true,
-                                                        fillColor: const Color.fromRGBO(
-                                                            232, 232, 232, 1),
-                                                        hintText: 'Search',
-                                                        prefixIcon:
-                                                        const Icon(Icons.search),
-                                                        prefixIconColor: Colors.black,
-                                                        hintStyle: TextStyle(
-                                                            color: Colors.grey[850],
-                                                            fontSize: 16,
-                                                            fontFamily: 'BerlinSansFB'),
-                                                      ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.close,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
                                                     ),
                                                   ),
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.check,
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                      ))
                                                 ],
-                                              )),
+                                              ),
+                                              Text(
+                                                'Choose the friends you want to share the order with.',
+                                                style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    fontFamily: 'BerlinSansFB'),
+                                              ),
+                                              SizedBox(
+                                                height: mediaQuery.size.height *
+                                                    0.02,
+                                              ),
+                                              SizedBox(
+                                                height: mediaQuery.size.height *
+                                                    0.06,
+                                                child: TextField(
+                                                  autofocus: false,
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isSearch = true;
+                                                    });
+                                                  },
+                                                  decoration: InputDecoration(
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            232,
+                                                                            232,
+                                                                            232,
+                                                                            1)),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                    focusedBorder: OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColor)),
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color.fromRGBO(
+                                                            232, 232, 232, 1),
+                                                    hintText: 'Search',
+                                                    prefixIcon: const Icon(
+                                                        Icons.search),
+                                                    prefixIconColor:
+                                                        Colors.black,
+                                                    hintStyle: TextStyle(
+                                                        color: Colors.grey[850],
+                                                        fontSize: 16,
+                                                        fontFamily:
+                                                            'BerlinSansFB'),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        content: setupAlertDialoadContainer(context),
-                                      );
-                                    });
-                              },
-                              child: const Text(
-                                "Share Bill",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'BerlinSansFB'),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: (mediaQuery.size.width * 0.030),
-                                  vertical: (mediaQuery.size.height * 0.01),
+                                      ),
+                                      content:
+                                          setupAlertDialoadContainer(context),
+                                    );
+                                  });
+                            },
+                            child: const Text(
+                              "Share Bill",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Color(0xFF3F5521),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                            ),
+                          ),
+                        ],
+                      ),
+                      ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(''),
+                          ),
+                          title: Text('Name'),
+                          trailing: SizedBox(
+                              height: 100,
+                              width: 100,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: 'Price',
+                                  fillColor: Color(0xFF3F5521),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFF3F5521), width: 1.0),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+
                                 ),
-                                primary: Theme.of(context).primaryColor,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                ),
+                                keyboardType: TextInputType.number,
+                              ))),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          "You cant't cancel or edit your order once submitted!"),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Subtotal: ${details.subTotal}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Totale: ${details.totale}',
+                        style: TextStyle(
+                          color: Color(0xFF3F5521),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '*(VAT included ${details.tax} %:)',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 23.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '*(VAT included 15.0%: ${details.tax} SAR)',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
-                        Text("You cant't cancel or edit your order once submitted!"),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Subtotal: ${details.subTotal}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Totale: ${details.totale}',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          '*(VAT included ${details.tax} %:)',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 23.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '*(VAT included 15.0%: ${details.tax} SAR)',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-
-                  ]
-                ),
+                      ),
+                    ],
+                  ),
+                ]),
               ),
-
-
             ],
           ),
         ),
