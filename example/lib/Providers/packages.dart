@@ -69,9 +69,16 @@ List<AddOn> get allons => _allons;
   List<Addonall> _addonsall=[];
 
 List<Occasion> _occasions=[];
+List<Occasion> _alloccasions=[];
 List<Package> _listfavorite=[];
 
-List<Package> get listfavorite => _listfavorite;
+List<Occasion> get alloccasions => _alloccasions;
+
+  set alloccasions(List<Occasion> value) {
+    _alloccasions = value;
+  }
+
+  List<Package> get listfavorite => _listfavorite;
 
   set listfavorite(List<Package> value) {
     _listfavorite = value;
@@ -108,6 +115,11 @@ bool get loading => _loading;
     _loading = value;
   }
 
+
+
+
+
+
   Future<void>  getallpacakges(BuildContext c)async {
 loading=false;
 //notifyListeners();
@@ -126,15 +138,28 @@ loading=false;
       _cuisins = Cuisines.fromJson(_alldata['cuisine']);
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
+
        _listItems = List<AddOn>.from(
           _alldata['dropDown'].map((model) => AddOn.fromJson(model)));
     }
 
 loading=true;
     notifyListeners();
-
-
   }
+
+
+Future<void>  getalloccasions()async {
+  loading=false;
+//notifyListeners();
+  _alloccasions=await PackageService.AllOccasions() ;
+  loading=true;
+  notifyListeners();
+
+}
+
+
+
+
 Future<void>  getonid(int id)async {
   loading = false;
   // notifyListeners();

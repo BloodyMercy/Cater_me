@@ -84,7 +84,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
 
 
       body: SingleChildScrollView(
-      child: Container(
+      child: !loading?Container(
         height: screenHeight * 0.95,
         width: MediaQuery.of(context).size.width * 11,
         child: LayoutBuilder(
@@ -361,7 +361,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                   ],
                 ),
         ),
-      ),
+      ):Center(child: CircularProgressIndicator()),
     ),
     );
   }

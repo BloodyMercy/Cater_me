@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/edit_occasion.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/occasions/occasions_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
@@ -20,12 +21,19 @@ class OccasionCard extends StatefulWidget {
 
 class _OccasionCardState extends State<OccasionCard> {
   late int activeIndex;
+  // list
   @override
   void initState() {
     activeIndex = 0;
+    // getdata();
     super.initState();
   }
-
+  // getdata() async {
+  //  final occasion=Provider.of<PackageService>(context,listen: false);
+  //   setState(()async {
+  //     alloccasions=await PackageService.AllOccasions() ;
+  //   });
+  // }
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {

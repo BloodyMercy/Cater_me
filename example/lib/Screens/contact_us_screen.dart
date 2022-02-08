@@ -17,7 +17,7 @@ class ContactUsScreen extends StatelessWidget {
     }
     return false;
   }
-
+bool loading=false;
   @override
   Widget build(BuildContext context) {
     var _mediaQueryText = MediaQuery.of(context).size.height;
@@ -49,7 +49,7 @@ class ContactUsScreen extends StatelessWidget {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SafeArea(
+        body: loading?Center(child: CircularProgressIndicator(),):SafeArea(
           child: SingleChildScrollView(
             child: Form(
               key: formkey,

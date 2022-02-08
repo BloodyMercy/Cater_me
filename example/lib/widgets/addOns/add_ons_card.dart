@@ -60,7 +60,10 @@ class _AddOnsCardState extends State<AddOnsCard> {
               ),
             ],
           ),
-          SizedBox(
+          widget.card.length==0? Padding(
+            padding: const EdgeInsets.only(top: 40.0),
+            child: Text('you don\t have any addons'),
+          ): SizedBox(
               height: mediaQuery.size.height * 0.22,
               width: mediaQuery.size.width,
               child: ListView.builder(

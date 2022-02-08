@@ -32,6 +32,7 @@ class _PackageCardState extends State<PackageCard> {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final pack=Provider.of<PackagesProvider>(context,listen: true);

@@ -62,6 +62,13 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
     getData();
     super.initState();
   }
+  Future frndData() async {
+    final setting = Provider.of<FriendsProvider>(context, listen: false);
+    await getData();
+
+
+    return;
+  }
 
     @override
     Widget build(BuildContext context) {
@@ -98,11 +105,14 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
             ),
             backgroundColor: Theme.of(context).primaryColor,
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-              !loading?  FriendsList(friends.listFriends):Center(child: CircularProgressIndicator(),),
-              ],
+          body:RefreshIndicator(
+            onRefresh: frndData,
+            child: loading?Center(child: CircularProgressIndicator(),): SingleChildScrollView(
+              child: Column(
+                children: [
+                  FriendsList(friends.listFriends)
+                ],
+              ),
             ),
           ),
           floatingActionButton: FloatingActionButton(

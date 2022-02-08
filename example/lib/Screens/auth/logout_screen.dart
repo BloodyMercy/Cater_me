@@ -14,6 +14,7 @@ class LogOutScreen extends StatefulWidget {
 
 class _LogOutScreenState extends State<LogOutScreen> {
   @override
+  bool loading=false;
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
@@ -45,7 +46,7 @@ class _LogOutScreenState extends State<LogOutScreen> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: Padding(
+        body:loading?Center(child: CircularProgressIndicator(),): Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: ColoredBox(
             color: Colors.white,
@@ -99,7 +100,7 @@ class _LogOutScreenState extends State<LogOutScreen> {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.22),
-                Center(
+                loading?Center(child: CircularProgressIndicator(),): Center(
                   child: ElevatedButton(
                     onPressed: () {
                       showDialog(

@@ -55,6 +55,7 @@ class _AccountInfoState extends State<AccountInfo> {
       return null;
     }
   }
+bool loading=false;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +87,7 @@ class _AccountInfoState extends State<AccountInfo> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SingleChildScrollView(
+        body: loading?Center(child: CircularProgressIndicator(),):SingleChildScrollView(
           child: Form(
             key: formkey,
             child: Column(

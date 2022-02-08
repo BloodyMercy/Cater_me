@@ -39,6 +39,7 @@ class ApiLink{
  static String Createfriends=host+"Friends/CreateFriend";
  static String GetPersonalInfo=host+"Accounts/GetUser";
  static String UpdateProfle=host+"Accounts/UpdateProfile";
+ static String Getalloccasions=host+"Occasions/GetAllOccasions";
  static String UpdatePersonalInfo=host+"Accounts/UpdateProfile";
  static String ResetPassword=host+"Accounts/ResetPassword";
 

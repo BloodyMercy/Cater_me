@@ -21,7 +21,7 @@ class _PackagesCardState extends State<PackagesCard> {
     activeIndex = 0;
     super.initState();
   }
-
+bool loading=false;
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _PackagesCardState extends State<PackagesCard> {
     List<PackageCard> card = getPackages();
     return SizedBox(
       width: mediaQuery.size.width * 0.97,
-      child: Card(
+      child:!loading? Card(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),
@@ -79,7 +79,7 @@ class _PackagesCardState extends State<PackagesCard> {
             )
           ],
         ),
-      ),
+      ):Center(child: CircularProgressIndicator()),
     );
   }
 }

@@ -2,8 +2,10 @@
 
 import 'dart:convert';
 
+import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/cuisins.dart';
+import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/package.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:http/http.dart' as http;
@@ -354,6 +356,37 @@ class PackageService{
     }catch(e){
 
       return false;
+    }
+  }
+  static Future<List<Occasion>> AllOccasions() async{
+
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.Request('GET', Uri.parse(ApiLink.Getalloccasions));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+      var responses =await http.Response.fromStream(response);
+
+      if (responses.statusCode == 200) {
+        List<dynamic> responseData = json.decode(responses.body);
+        List<Occasion> posts = List<Occasion>.from(
+          responseData.map(
+                (model) => Occasion.fromJson(model),
+          ),
+        ); //map to list
+        return posts;
+      } else {
+        print(response.reasonPhrase);
+        return [];
+      }
+    } catch (e) {
+      return [];
     }
   }
 
