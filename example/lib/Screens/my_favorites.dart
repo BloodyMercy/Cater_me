@@ -11,22 +11,25 @@ class MyFavorites extends StatefulWidget {
 }
 
 class _MyFavoritesState extends State<MyFavorites> {
-  bool loading=true;
-  getData()async{
-    final package=Provider.of<PackagesProvider>(context,listen: false);
+  bool loading = true;
+
+  getData() async {
+    final package = Provider.of<PackagesProvider>(context, listen: false);
     await package.getAllFavorite();
     setState(() {
-      loading=false;
+      loading = false;
     });
   }
+
   @override
   void initState() {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    final package=Provider.of<PackagesProvider>(context,listen: true);
+    final package = Provider.of<PackagesProvider>(context, listen: true);
 
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
@@ -58,12 +61,17 @@ class _MyFavoritesState extends State<MyFavorites> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Center(
-              child:!loading?
-              package.listfavorite.length==0?Center(child: Text("No Favorite To Dispaly!"),):
-              Column(
-                children: [...getFavorites(package.listfavorite)],
-              ):
-              Center(child: CircularProgressIndicator(),),
+              child: !loading
+                  ? package.listfavorite.length == 0
+                      ? Center(
+                          child: Text("No Favorite To Dispaly!"),
+                        )
+                      : Column(
+                          children: [...getFavorites(package.listfavorite)],
+                        )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    ),
             ),
           ),
         ),

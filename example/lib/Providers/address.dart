@@ -10,19 +10,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-class AdressProvider extends ChangeNotifier{
-
+class AdressProvider extends ChangeNotifier {
   // TextEditingController radioButton = TextEditingController();
 
-
-  AddressService _addressService=AddressService();
-List<Country> _listcountry=[];//<Country>
-  List<City> _listcity=[];
-  List<Address> _listaddress=[];
-  Regular _regular=Regular();
-List<String> _listnamenumber=[];
-List<String> _listnameevent=[];
-Address _addressCreated=Address();
+  AddressService _addressService = AddressService();
+  List<Country> _listcountry = []; //<Country>
+  List<City> _listcity = [];
+  List<Address> _listaddress = [];
+  Regular _regular = Regular();
+  List<String> _listnamenumber = [];
+  List<String> _listnameevent = [];
+  Address _addressCreated = Address();
 
   Address get addressCreated => _addressCreated;
 
@@ -48,8 +46,8 @@ Address _addressCreated=Address();
     _listaddress = value;
   }
 
-  List<String> _listcountryname=[];//<Country>
-List<String> _listcityname=[];
+  List<String> _listcountryname = []; //<Country>
+  List<String> _listcityname = [];
 
   List<String> get listcountryname => _listcountryname;
 
@@ -57,35 +55,29 @@ List<String> _listcityname=[];
     _listcountryname = value;
   }
 
-
   List<Country> get listcountry => _listcountry;
 
   set listcountry(List<Country> value) {
     _listcountry = value;
   }
 
-  TextEditingController addresstitlecontroller=TextEditingController();
-  TextEditingController countrycontroller=TextEditingController();
-  TextEditingController countrycontrollerstring=TextEditingController();
-  TextEditingController citycontroller=TextEditingController();
-  TextEditingController citycontrollerstring=TextEditingController();
-  TextEditingController streetcontroller=TextEditingController();
-  TextEditingController buildingcontroller=TextEditingController();
-  TextEditingController floornumbercontroller=TextEditingController();
+  TextEditingController addresstitlecontroller = TextEditingController();
+  TextEditingController countrycontroller = TextEditingController();
+  TextEditingController countrycontrollerstring = TextEditingController();
+  TextEditingController citycontroller = TextEditingController();
+  TextEditingController citycontrollerstring = TextEditingController();
+  TextEditingController streetcontroller = TextEditingController();
+  TextEditingController buildingcontroller = TextEditingController();
+  TextEditingController floornumbercontroller = TextEditingController();
 
+  TextEditingController eventnamecontroller = TextEditingController();
+  TextEditingController evendatecontroller = TextEditingController();
+  TextEditingController numberofguestcontroller = TextEditingController();
+  TextEditingController numberofguestcontrollerstring = TextEditingController();
+  TextEditingController typeofeventcontroller = TextEditingController();
+  TextEditingController typeofeventcontrollerstring = TextEditingController();
 
-
-  TextEditingController eventnamecontroller=TextEditingController();
-  TextEditingController evendatecontroller=TextEditingController();
-  TextEditingController numberofguestcontroller=TextEditingController();
-  TextEditingController numberofguestcontrollerstring=TextEditingController();
-  TextEditingController typeofeventcontroller=TextEditingController();
-  TextEditingController typeofeventcontrollerstring=TextEditingController();
-
-
-
-
-  clearAllData(){
+  clearAllData() {
     eventnamecontroller.text = '';
     evendatecontroller.text = '';
     numberofguestcontroller.text = '';
@@ -98,7 +90,7 @@ List<String> _listcityname=[];
 
   List<City> get listcity => _listcity;
 
-  set listcity( List<City> value) {
+  set listcity(List<City> value) {
     _listcity = value;
   }
 
@@ -106,62 +98,59 @@ List<String> _listcityname=[];
 
   set listcityname(List<String> value) {
     _listcityname = value;
-
   }
-  createAddress() async {
 
-  _addressCreated=await  _addressService.createAddress(
+  createAddress() async {
+    _addressCreated = await _addressService.createAddress(
         addresstitle: addresstitlecontroller.text,
         country: countrycontroller.text,
         city: citycontroller.text,
         street: streetcontroller.text,
         building: buildingcontroller.text,
-        floor: floornumbercontroller.text
-    );
-  _listaddress.add(_addressCreated);
-  notifyListeners();
+        floor: floornumbercontroller.text);
+    _listaddress.add(_addressCreated);
+    notifyListeners();
   }
 
   getallcity(int id) async {
-     _listcity=await _addressService.getAllCity(id);
-     List<String> l=[];
-    for(int i=0;i<_listcity.length;i++){
+    _listcity = await _addressService.getAllCity(id);
+    List<String> l = [];
+    for (int i = 0; i < _listcity.length; i++) {
       l.add(_listcity[i].name!);
     }
-     _listcityname=l;
+    _listcityname = l;
     notifyListeners();
   }
 
   Future<void> getallcountry() async {
-    _listcountry=await _addressService.getAllCountry();
-    List<String> l=[];
-    for(int i=0;i<_listcountry.length;i++){
+    _listcountry = await _addressService.getAllCountry();
+    List<String> l = [];
+    for (int i = 0; i < _listcountry.length; i++) {
       l.add(_listcountry[i].name!);
     }
-    _listcountryname=l;
+    _listcountryname = l;
     notifyListeners();
   }
 
-
-  getAllAddress()async{
-    _listaddress=await _addressService.getAllAddress();
+  getAllAddress() async {
+    _listaddress = await _addressService.getAllAddress();
     notifyListeners();
   }
 
   getRegular() async {
-_regular=await _addressService.getRegular();
-List<String> _listnamenumberi=[];
-List<String> _listnameeventi=[];
-for(int i=0;i<_regular.numberOfGuests.length;i++){
-  _listnamenumberi.add(_regular.numberOfGuests[i].title!);
-}
-for(int i=0;i<_regular.events.length;i++){
-  _listnameeventi.add(_regular.events[i].name!);
-}
-_listnamenumber=_listnamenumberi;
-_listnameevent=_listnameeventi;
+    _regular = await _addressService.getRegular();
+    List<String> _listnamenumberi = [];
+    List<String> _listnameeventi = [];
+    for (int i = 0; i < _regular.numberOfGuests.length; i++) {
+      _listnamenumberi.add(_regular.numberOfGuests[i].title!);
+    }
+    for (int i = 0; i < _regular.events.length; i++) {
+      _listnameeventi.add(_regular.events[i].name!);
+    }
+    _listnamenumber = _listnamenumberi;
+    _listnameevent = _listnameeventi;
 
-notifyListeners();
+    notifyListeners();
   }
 
   List<String> get listnameevent => _listnameevent;
