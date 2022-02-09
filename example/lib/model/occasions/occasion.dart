@@ -4,16 +4,18 @@ class Occassion {
   int profileId=0;
   String title='';
   int typeId=0;
+  int type=0;
   String date='';
 
   Occassion(
-      this.hasReminder, this.profileId, this.title, this.typeId, this.date,this.name);
+      this.hasReminder, this.profileId, this.title, this.typeId, this.date,this.name,this.type);
 
   Occassion.fromJson(Map<String, dynamic> json) {
     hasReminder = json['hasReminder'];
     profileId = json['profileId'];
     title = json['title'];
     typeId = json['typeId'];
+    type = json['type'];
     date = json['date'];
   }
 

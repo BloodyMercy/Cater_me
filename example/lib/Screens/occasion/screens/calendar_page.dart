@@ -1,3 +1,4 @@
+import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/occasion/widgets/back_button.dart';
 import 'package:CaterMe/Screens/occasion/widgets/calendar_dates.dart';
@@ -57,7 +58,7 @@ class CalendarPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CreateNewTaskPage(),
+                              builder: (context) => AddNewOccasion(),
                             ),
                           );
                         },
