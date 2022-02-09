@@ -48,7 +48,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
         Center(
             child: Text(
           widget.items[i].toString(),
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Color(0xFF3F5521),),
         )),
       );
     }
@@ -86,7 +86,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: colorCustom,
+                  color: Colors.white,
                   border: Border(
                     bottom: BorderSide(
                       color: Color(0xffE6E4EA),
@@ -230,7 +230,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
       margin: EdgeInsets.only(bottom: 15),
       padding: EdgeInsets.all(13),
       decoration: BoxDecoration(
-          color: LightColors.kLightYellow2, //white
+          color: Colors.white, //white
           borderRadius: BorderRadius.all(Radius.circular(5))),
       child: Row(
         children: [
