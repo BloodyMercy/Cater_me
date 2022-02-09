@@ -12,6 +12,7 @@ import 'package:CaterMe/Screens/regular_screen.dart';
 import 'package:CaterMe/Screens/related_offers_screen.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/widgets/Customer_stepper.dart';
+import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -384,7 +385,7 @@ class _OrderState extends State<Order> {
                     (orderProvider.spets==5)? CuisinCardoffer(packageProvider.cuisins.id):
                     (orderProvider.spets==6)? AddonsCardoffer(0):
                     //(orderProvider.spets==6)? AddOnOrderScreen():
-                    (orderProvider.spets==8)?HomeScreen():
+                    (orderProvider.spets==8)?CreditCardsPage():
                     (orderProvider.spets==7)? OrderSummeryCopy():
                    // (steps==5)? :
 
@@ -406,7 +407,7 @@ class _OrderState extends State<Order> {
                               fontFamily: 'BerlinSansFB',
                               fontWeight: FontWeight.bold),),
                         ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async{
                               if(orderProvider.spets==1) {
                                 if (orderProvider.value.id==0
                                    ) {
@@ -470,6 +471,11 @@ class _OrderState extends State<Order> {
                                 }
                               }
 
+                     else if(orderProvider.spets==8){
+
+                                final address = Provider.of<AdressProvider>(context, listen: false);
+                    await   orderProvider.makeorder(address.evendatecontroller.text, address.typeofeventcontroller.text, address.numberofguestcontroller.text, "token", "idcard");
+                              }
                            //   if(orderProvider.spets==4||orderProvider.spets==5||orderProvider.spets==6) {
                               else
                                 orderProvider.spets++;
@@ -479,8 +485,14 @@ class _OrderState extends State<Order> {
 
 
                             },
-                            child: const Text(
-                              'Next',
+                            child:   orderProvider.spets!=8? Text(
+                           'Next',
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BerlinSansFB',
+                                  fontWeight: FontWeight.bold),
+                            ):Text(
+                              'Done',
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
