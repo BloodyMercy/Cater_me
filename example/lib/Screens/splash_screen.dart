@@ -4,7 +4,9 @@ import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 import 'auth/login_screen.dart';
+import 'auth/newlogin/screens/loginScreen.dart';
 
 String finalEmail;
 
@@ -29,7 +31,7 @@ class _SplashScreenState extends State<SplashScreens> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                finalEmail == null ? const LoginScreen() : Navigationbar(0),
+                finalEmail == null ?  LoginScreen() : Navigationbar(0),
           ),
         ),
       );

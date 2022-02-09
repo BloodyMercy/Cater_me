@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/greeting.dart';
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ import 'package:intl/intl.dart';
 import "package:image_picker/image_picker.dart";
 import 'package:provider/provider.dart';
 
-import 'login_screen.dart';
+
+import 'newlogin/screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key key}) : super(key: key);
@@ -579,7 +581,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
+                                builder: (context) =>  LoginScreen(),
                               ),
                             );
                           },

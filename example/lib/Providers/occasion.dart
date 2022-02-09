@@ -1,5 +1,5 @@
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/auth/login_screen.dart';
+
 import 'package:CaterMe/Services/occasion.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasion.dart';

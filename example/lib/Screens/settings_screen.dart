@@ -19,7 +19,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 import 'auth/login_screen.dart';
+import 'auth/newlogin/screens/loginScreen.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class TABBar extends StatefulWidget {
@@ -258,7 +260,7 @@ setData(String imageUrl) async{
                                           Navigator.of(ctx).pushAndRemoveUntil(
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                const LoginScreen(),
+                                                    LoginScreen(),
                                               ),
                                                   (route) => false);
                                         },

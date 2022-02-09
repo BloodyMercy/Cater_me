@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+
 import 'login_screen.dart';
+import 'newlogin/screens/loginScreen.dart';
 
 class ConfirmEmailSent extends StatelessWidget {
   const ConfirmEmailSent({Key key}) : super(key: key);
@@ -32,7 +34,7 @@ class ConfirmEmailSent extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LoginScreen()));
+                        builder: (context) =>  LoginScreen()));
               },
               child: Text(
                 'Done',

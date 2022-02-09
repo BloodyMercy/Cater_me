@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 import 'login_screen.dart';
+import 'newlogin/screens/loginScreen.dart';
 
 class LogOutScreen extends StatefulWidget {
   const LogOutScreen({Key key}) : super(key: key);
@@ -153,7 +155,7 @@ class _LogOutScreenState extends State<LogOutScreen> {
                                       Navigator.of(ctx).pushAndRemoveUntil(
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                const LoginScreen(),
+                                                LoginScreen(),
                                           ),
                                           (route) => false);
                                     },
