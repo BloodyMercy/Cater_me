@@ -40,8 +40,9 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
             return Slidable(
               key: UniqueKey(),
               endActionPane: ActionPane(
-                motion:  ScrollMotion(),
+                motion:  BehindMotion(),
                 children:  [
+                  Spacer(),
                   IconButton(onPressed: (){
                     address.addresstitlecontroller.text=widget.address[index].title;
                     address.citycontrollerstring.text=widget.address[index].city;
