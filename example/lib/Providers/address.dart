@@ -23,6 +23,14 @@ List<Country> _listcountry=[];//<Country>
 List<String> _listnamenumber=[];
 List<String> _listnameevent=[];
 Address _addressCreated=Address();
+bool _loading=false;
+
+  bool get loading => _loading;
+
+  set loading(bool value) {
+    _loading = value;
+  }
+
   int _valueIndex = -1;
 
   int get valueIndex => _valueIndex;
@@ -79,6 +87,8 @@ List<String> _listcityname=[];
   TextEditingController streetcontroller=TextEditingController();
   TextEditingController buildingcontroller=TextEditingController();
   TextEditingController floornumbercontroller=TextEditingController();
+  TextEditingController longtituenumbercontroller=TextEditingController();
+  TextEditingController latitudenumbercontroller=TextEditingController();
 
 
 
@@ -89,7 +99,14 @@ List<String> _listcityname=[];
   TextEditingController typeofeventcontroller=TextEditingController();
   TextEditingController typeofeventcontrollerstring=TextEditingController();
 
-
+clearAddressController(){
+      addresstitlecontroller.clear();
+      streetcontroller.clear();
+      buildingcontroller.clear();
+      floornumbercontroller.clear();
+      latitudenumbercontroller.clear();
+      longtituenumbercontroller.clear();
+}
 Future<String> deleteAddress(int id) async{
 var em= await _addressService.deleteAddress(id);
 notifyListeners();
@@ -128,7 +145,10 @@ return em.message;
         city: citycontroller.text,
         street: streetcontroller.text,
         building: buildingcontroller.text,
-        floor: floornumbercontroller.text
+        floor: floornumbercontroller.text,
+    longitude: longtituenumbercontroller.text,
+    latitude: latitudenumbercontroller.text,
+
     );
   _listaddress.add(_addressCreated);
   notifyListeners();

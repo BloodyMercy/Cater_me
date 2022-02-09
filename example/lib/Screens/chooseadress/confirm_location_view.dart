@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:CaterMe/Providers/address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -28,6 +29,9 @@ bool loading=false;
         new LatLng(currLocation.latitude, currLocation.longitude);
 
       });
+      final address=Provider.of<AdressProvider>(context,listen: false);
+      address.latitudenumbercontroller.text=currentLatLng.latitude.toString();
+      address.longtituenumbercontroller.text=currentLatLng.longitude.toString();
       final GoogleMapController controller = await _controller.future;
 
       controller.animateCamera(CameraUpdate.newCameraPosition(
@@ -96,9 +100,12 @@ bool loading=false;
     ui.FrameInfo fi = await codec.getNextFrame();
     return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!.buffer.asUint8List();
   }
+  bool loadingMap=true;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    final address=Provider.of<AdressProvider>(context,listen: true);
+
 
     return Scaffold(
       backgroundColor:  Color(0xFF3F5521),
@@ -119,11 +126,21 @@ bool loading=false;
         ),
 
 
-        actions: [
+        actions: [address.loading?Center(child: CircularProgressIndicator(color: Colors.white,)):
           IconButton(
             icon:  Icon(Icons.done),
-            onPressed: () {
-            //  Navigator.of(context).pop();
+            onPressed: () async{
+              address.loading=true;
+              address.notifyListeners();
+
+             await address.createAddress();
+              address.loading=false;
+              if( address.addressCreated.id==0){
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+              }else{
+             address.clearAddressController();
+             Navigator.of(context).pop();
+              }
             },
           )
         ],
@@ -150,6 +167,8 @@ bool loading=false;
             onDragEnd: ((newPosition) {
               print(newPosition.latitude);
               print(newPosition.longitude);
+              address.latitudenumbercontroller.text=newPosition.latitude.toString();
+              address.longtituenumbercontroller.text=newPosition.longitude.toString();
             })),
 
             ],

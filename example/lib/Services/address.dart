@@ -17,6 +17,8 @@ class AddressService{
     required String street,
     required String building,
     required String floor,
+   required String longitude,
+   required String latitude,
 }) async {
     Address address=Address();
     try {
@@ -33,7 +35,9 @@ class AddressService{
       'Street': street,
       'BuildingName': building,
       'FloorNumber': floor,
-      'CountryId': country
+      'CountryId': country,
+        'longitude':longitude,
+        'latitude':latitude,
       });
 
       // open a bytestream

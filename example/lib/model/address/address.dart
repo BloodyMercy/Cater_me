@@ -6,6 +6,8 @@ class Address {
   String buildingName = '';
   int floorNumber = 0;
   String title ='';
+  String longitude="";
+  String latitude="";
 
   List<Occations>? occations;
 
@@ -19,6 +21,8 @@ class Address {
     buildingName = json['buildingName'];
     floorNumber = json['floorNumber'];
     title = json['title'];
+    longitude=json['longitude'];
+    latitude=json['latitude'];
     if (json['occations'] != null) {
       occations = <Occations>[];
       json['occations'].forEach((v) {
