@@ -1,3 +1,4 @@
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -56,6 +57,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         appBar: appbar,
         body: SingleChildScrollView(
           child: Container(
+            color: LightColors.kLightYellow,
             child: Column(
               children: [
                 SizedBox(height: screenHeight * 0.12),

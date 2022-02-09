@@ -6,6 +6,8 @@ import 'package:CaterMe/widgets/Frriends/friends_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'occasion/theme/colors/light_colors.dart';
+
 class AddFriendScreen extends StatefulWidget {
   const AddFriendScreen({Key? key}) : super(key: key);
 
@@ -108,10 +110,13 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           body:RefreshIndicator(
             onRefresh: frndData,
             child: loading?Center(child: CircularProgressIndicator(),): SingleChildScrollView(
-              child: Column(
-                children: [
-                  FriendsList(friends.listFriends)
-                ],
+              child: Container(
+                color: LightColors.kLightYellow,
+                child: Column(
+                  children: [
+                    FriendsList(friends.listFriends)
+                  ],
+                ),
               ),
             ),
           ),

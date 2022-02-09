@@ -80,35 +80,38 @@ setState(() {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-            !loading?  AddressesList(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
-              SizedBox(height: _mediaQuery * 0.150),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => RegularDaberneScreen(),
-                    ),
-                  );
-                },
-                child: Text(
-                  'NEXT',
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.fromLTRB(
-                      _mediaQuery * 0.18,
-                      _mediaQuery * 0.02,
-                      _mediaQuery * 0.18,
-                      _mediaQuery * 0.02),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+          child: Container(
+
+            child: Column(
+              children: [
+              !loading?  AddressesList(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
+                SizedBox(height: _mediaQuery * 0.150),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => RegularDaberneScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'NEXT',
+                    style: Theme.of(context).textTheme.headline1,
                   ),
-                  primary: const Color(0xff3F5521),
-                ),
-              )
-            ],
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.fromLTRB(
+                        _mediaQuery * 0.18,
+                        _mediaQuery * 0.02,
+                        _mediaQuery * 0.18,
+                        _mediaQuery * 0.02),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    primary: const Color(0xff3F5521),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

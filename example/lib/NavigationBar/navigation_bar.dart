@@ -9,6 +9,7 @@ import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/Screens/occasion/screens/home_page.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/model/occasion.dart';
@@ -114,11 +115,12 @@ class _NavigationBarState extends State<Navigationbar> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
+          color: LightColors.kLightYellow,
           shape: const CircularNotchedRectangle(),
           notchMargin: 5,
           clipBehavior: Clip.antiAlias,
           child: BottomNavigationBar(
+            backgroundColor:  LightColors.kLightYellow,
             type: BottomNavigationBarType.fixed,
             iconSize: 30,
             selectedItemColor:Color.fromRGBO(253, 202, 29, 1),

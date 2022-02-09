@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/friend.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +63,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
     return Card(
       child: SingleChildScrollView(
         child: Container(
-
+          color: LightColors.kLightYellow,
           child: Padding(
             padding: EdgeInsets.only(
                 right: 10,

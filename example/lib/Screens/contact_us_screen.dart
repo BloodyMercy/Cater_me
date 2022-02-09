@@ -2,6 +2,8 @@ import 'package:CaterMe/Screens/contact_added%20copy.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
+import 'occasion/theme/colors/light_colors.dart';
+
 class ContactUsScreen extends StatelessWidget {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool validate() {
@@ -49,8 +51,10 @@ bool loading=false;
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: loading?Center(child: CircularProgressIndicator(),):SafeArea(
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Container(
+            height: _mediaQueryText*1,
+            color: LightColors.kLightYellow,
             child: Form(
               key: formkey,
               child: Column(

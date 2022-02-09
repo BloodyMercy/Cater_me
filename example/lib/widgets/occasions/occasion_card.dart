@@ -42,6 +42,7 @@ class _OccasionCardState extends State<OccasionCard> {
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(OccasionsCard card, int index) =>
         Container(
+
           child: Column(
             children: [
               card,

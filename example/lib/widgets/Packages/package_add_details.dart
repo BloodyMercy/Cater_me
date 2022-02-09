@@ -3,6 +3,7 @@
 import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/food.dart';
@@ -85,6 +86,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
 
       body: SingleChildScrollView(
       child: !loading?Container(
+
         height: screenHeight * 0.95,
         width: MediaQuery.of(context).size.width * 11,
         child: LayoutBuilder(
@@ -140,7 +142,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                             });
                                           })
                                       : CircularProgressIndicator(
-                                          color: Colors.white,
+                                          color: LightColors.kLightYellow,
                                           strokeWidth: 4.0,
                                         )
                                 ],

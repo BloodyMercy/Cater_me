@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/cuisines.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_list.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
@@ -129,7 +130,7 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
                               child: Text(
                                 '${_cuisinprovider.cuisinsbyid[index].name}',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: LightColors.kLightYellow,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'BerlinSansFB'),

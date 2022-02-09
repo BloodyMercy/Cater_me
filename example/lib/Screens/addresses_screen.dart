@@ -77,6 +77,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     var _mediaQuery = MediaQuery.of(context).size.height;
 
     return Container(
+
       child: Column(
         children: [
           SizedBox(

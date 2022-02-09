@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'auth/login_screen.dart';
+import 'occasion/theme/colors/light_colors.dart';
 
 class TABBar extends StatefulWidget {
   const TABBar({Key? key}) : super(key: key);
@@ -100,8 +101,9 @@ setData(String imageUrl) async{
       child: Scaffold(
           body: SingleChildScrollView(
         child: Container(
+          color: LightColors.kLightYellow,
           height: mediaQuery.size.height,
-          color: Colors.white,
+
           child: Column(
             children: [
 

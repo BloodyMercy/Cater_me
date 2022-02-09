@@ -1,3 +1,4 @@
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class FriendsList extends StatelessWidget {
                 itemCount: friend.length,
                 itemBuilder: (ctx, index) {
                   return Card(
+                    color: LightColors.kLightYellow2,
                     child: Row(
                       children: [
                         Padding(

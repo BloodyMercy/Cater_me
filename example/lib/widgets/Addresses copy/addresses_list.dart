@@ -15,6 +15,7 @@ class AddressesListFAB extends StatelessWidget {
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
+
       height: _mediaQuery * 0.6,
       child: address.isEmpty
           ? Center(
@@ -43,6 +44,7 @@ class AddressesListFAB extends StatelessWidget {
               itemCount: address.length,
               itemBuilder: (ctx, index) {
                 return Card(
+
                   child:
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

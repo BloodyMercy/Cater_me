@@ -5,6 +5,7 @@ import 'package:CaterMe/Screens/cuisins_screen.dart';
 
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
 import 'package:CaterMe/widgets/items_details.dart';
@@ -87,8 +88,8 @@ class _HomePageState extends State<HomePage> {
                   child: SingleChildScrollView(
                     physics: AlwaysScrollableScrollPhysics(),
                     child: ColoredBox(
-                      color: Colors.white,
-                      child: Column(
+                      color:  LightColors.kLightYellow,
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -110,8 +111,7 @@ class _HomePageState extends State<HomePage> {
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                  color: Color.fromRGBO(
-                                                      232, 232, 232, 1)),
+                                                  color: LightColors.kLightYellow2),
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           focusedBorder: OutlineInputBorder(
@@ -119,8 +119,7 @@ class _HomePageState extends State<HomePage> {
                                                   color: Theme.of(context)
                                                       .primaryColor)),
                                           filled: true,
-                                          fillColor: const Color.fromRGBO(
-                                              232, 232, 232, 1),
+                                          fillColor: LightColors.kLightYellow2,
                                           hintText: 'Search',
                                           prefixIcon: const Icon(Icons.search),
                                           prefixIconColor:
@@ -469,6 +468,7 @@ class _HomePageState extends State<HomePage> {
 
                     //items
                     Container(
+                      color: LightColors.kLightYellow,
                       height: mediaQuery.size.height / 1.2,
                       child: ListView.builder(
                         padding: const EdgeInsets.all(25),
@@ -488,6 +488,7 @@ class _HomePageState extends State<HomePage> {
                                       );
                                     },
                                     child: Card(
+                                      color: LightColors.kLightYellow2,
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(20),

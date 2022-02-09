@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/data/food_details.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/package.dart';
@@ -50,12 +51,16 @@ class _PackageCardState extends State<PackageCard> {
         },
 
         child:Container(
+
       width: mediaQuery.size.width * 0.97,
 
+
       decoration: BoxDecoration(
+
           border: Border.all(style: BorderStyle.none),
           borderRadius: BorderRadius.all(Radius.circular(15)),
           image: DecorationImage(
+
               image: NetworkImage(
                 widget.packages.image,
               ),
@@ -80,7 +85,7 @@ class _PackageCardState extends State<PackageCard> {
                 child: Text(
                   widget.packages.title,
                   style: TextStyle(
-                      color: Colors.white,
+                      color:LightColors.kLightYellow,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'BerlinSansFB'),

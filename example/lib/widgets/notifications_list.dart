@@ -43,6 +43,7 @@ class NotificationsList extends StatelessWidget {
     return Column(
       children: notifications.map((e) {
         return Container(
+
           alignment: Alignment.topLeft,
           width: mediaQuery.size.width * 0.87,
           height: mediaQuery.size.height * 0.1,
