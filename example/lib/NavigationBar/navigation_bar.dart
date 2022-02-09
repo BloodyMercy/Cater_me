@@ -8,6 +8,7 @@ import 'package:CaterMe/Screens/dashboard.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/Screens/occasion/screens/home_page.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/model/occasion.dart';
@@ -30,7 +31,7 @@ class Navigationbar extends StatefulWidget {
 class _NavigationBarState extends State<Navigationbar> {
   final List<Widget> _widgetOptions = [
     HomePage(),
-    OccasionListView(),
+    HomePageOc(),
     YourOrders(),
     TABBar()
   ];
