@@ -3,6 +3,8 @@ import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'occasion/theme/colors/light_colors.dart';
+
 class MyFavorites extends StatefulWidget {
   const MyFavorites({Key key}) : super(key: key);
 
@@ -59,18 +61,23 @@ class _MyFavoritesState extends State<MyFavorites> {
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
+          child: Container(
+            color: LightColors.kLightYellow,
             child: Center(
               child: !loading
                   ? package.listfavorite.length == 0
                       ? Center(
                           child: Text("No Favorite To Dispaly!"),
                         )
-                      : Column(
-                          children: [...getFavorites(package.listfavorite)],
-                        )
+                      : SingleChildScrollView(
+                        child: Column(
+                            children: [...getFavorites(package.listfavorite)],
+                          ),
+                      )
                   : Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        color: Color(0xFF3F5521),
+                      ),
                     ),
             ),
           ),

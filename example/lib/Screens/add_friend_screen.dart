@@ -16,15 +16,15 @@ class AddFriendScreen extends StatefulWidget {
 }
 
 class _AddFriendScreenState extends State<AddFriendScreen> {
-
-
   @override
   List<FriendModel> _friend = [];
 
-  void _addNewFriend(// String id,
-      String fullName,
-      String email,
-      String phoneNumber,) {
+  void _addNewFriend(
+    // String id,
+    String fullName,
+    String email,
+    String phoneNumber,
+  ) {
     final newFriend = FriendModel();
 
     setState(() {
@@ -43,93 +43,95 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
         });
   }
 
-    void deleteAddress(String id) {
-      setState(() {
-        _friend.removeWhere(
-              (element) => element.id == id,
-        );
-      });
-    }
+  void deleteAddress(String id) {
+    setState(() {
+      _friend.removeWhere(
+        (element) => element.id == id,
+      );
+    });
+  }
 
-    bool loading = true;
-    getData() async {
-      final friends = Provider.of<FriendsProvider>(context, listen: false);
-      await friends.getAllFriends();
-      setState(() {
-        loading = false;
-      });
-    }
-@override
+  bool loading = true;
+
+  getData() async {
+    final friends = Provider.of<FriendsProvider>(context, listen: false);
+    await friends.getAllFriends();
+    setState(() {
+      loading = false;
+    });
+  }
+
+  @override
   void initState() {
     getData();
     super.initState();
   }
+
   Future frndData() async {
     final setting = Provider.of<FriendsProvider>(context, listen: false);
     await getData();
 
-
     return;
   }
 
-    @override
-    Widget build(BuildContext context) {
-      final friends = Provider.of<FriendsProvider>(context, listen: true);
-      var _mediaQuery = MediaQuery
-          .of(context)
-          .size
-          .height;
-      final mediaQuery = MediaQuery.of(context);
+  @override
+  Widget build(BuildContext context) {
+    final friends = Provider.of<FriendsProvider>(context, listen: true);
+    var _mediaQuery = MediaQuery.of(context).size.height;
+    final mediaQuery = MediaQuery.of(context);
 
-      return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              iconSize: 30,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
             ),
-            elevation: 0,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(15),
-              ),
-            ),
-            centerTitle: true,
-            title: Text(
-              'Add New Friend',
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            backgroundColor: Theme.of(context).primaryColor,
+            iconSize: 30,
           ),
-          body:RefreshIndicator(
-            onRefresh: frndData,
-            child: loading?Center(child: CircularProgressIndicator(),): SingleChildScrollView(
-              child: Container(
-                color: LightColors.kLightYellow,
-                child: Column(
-                  children: [
-                    FriendsList(friends.listFriends)
-                  ],
-                ),
-              ),
+          elevation: 0,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(15),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
-            backgroundColor: Theme
-                .of(context)
-                .primaryColor,
-            onPressed: () => _startAddNewFriend(context),
+          centerTitle: true,
+          title: Text(
+            'Add New Friend',
+            style: Theme.of(context).textTheme.headline1,
           ),
+          backgroundColor: Theme.of(context).primaryColor,
         ),
-      );
-    }
+        body: RefreshIndicator(
+          onRefresh: frndData,
+          child: loading
+              ? Container(
+                  color: LightColors.kLightYellow,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
+                    ),
+                  ),
+                )
+              : SingleChildScrollView(
+                  child: Container(
+                    color: LightColors.kLightYellow,
+                    child: Column(
+                      children: [FriendsList(friends.listFriends)],
+                    ),
+                  ),
+                ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          backgroundColor: Theme.of(context).primaryColor,
+          onPressed: () => _startAddNewFriend(context),
+        ),
+      ),
+    );
   }
-
-
+}

@@ -1,34 +1,103 @@
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class CreditCardsPage extends StatelessWidget {
+
+class CreditCardsPage extends StatefulWidget {
+  @override
+  State<CreditCardsPage> createState() => _CreditCardsPageState();
+}
+
+class _CreditCardsPageState extends State<CreditCardsPage> {
+  int _value = -1;
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
+    return Scaffold(
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+
           children: <Widget>[
-            _buildTitleSection(
-                title: "Payment Details",
-                subTitle: "How would you like to pay ?"),
-            _buildCreditCard(
-                color: Color(0xFF090943),
-                cardExpiration: "08/2022",
-                cardHolder: "HOUSSEM SELMI",
-                cardNumber: "3546 7532 XXXX 9742"),
-            SizedBox(
-              height: 15,
-            ),
-            _buildCreditCard(
-                color: Color(0xFF000000),
-                cardExpiration: "05/2024",
-                cardHolder: "HOUSSEM SELMI",
-                cardNumber: "9874 4785 XXXX 6548"),
-            _buildAddCardButton(
-              icon: Icon(Icons.add),
-              color: Color(0xFF081603),
+            Expanded(
+                child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: _buildTitleSection(
+                      title: "Payment Details",
+                      subTitle: "How would you like to pay ?"),
+                ),
+                SliverList(
+                  delegate:
+                      SliverChildBuilderDelegate((BuildContext context, int i) {
+                    return Container(
+                      child: Row(
+                        children: [
+                          Radio(
+                            toggleable: true,
+                            groupValue:_value,
+                             value: i,
+                            onChanged: (value) {
+                              setState(() {
+                                 _value = i;
+                                // orderprovider.valueIndex = index;
+                              });
+                              // orderprovider.value = widget.address[index];
+                            },
+                          ),
+                          _buildCreditCard(
+                              color: LightColors.kLightYellow2,
+                              cardExpiration: "05/2024",
+                              cardHolder: "HOUSSEM SELMI",
+                              cardNumber: "9874 4785 XXXX 6548"),
+                        ],
+                      ),
+
+                    );
+                  },
+                          childCount: 3
+                      ),
+                ),
+                SliverToBoxAdapter(
+                  child:
+                  _buildAddCardButton(
+                      icon: Icon(Icons.add),
+                      color: LightColors.kLightYellow2),
+                )
+              ],
             )
+
+                //
+                // Container(
+                //   height: 400,
+                //   child: ListView.builder(
+                //     itemCount:3 ,
+                //       itemBuilder: (ctx,index){
+                //     return  Row(
+                //       // mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Radio(
+                //           toggleable: true,
+                //           // groupValue: orderprovider.valueIndex,
+                //           value: index,
+                //           onChanged: (value) {
+                //             setState(() {
+                //               _value = index;
+                //               // orderprovider.valueIndex = index;
+                //             });
+                //             // orderprovider.value = widget.address[index];
+                //           }, groupValue: _value,
+                //         ),
+                //         _buildCreditCard(
+                //             color: LightColors.kLightYellow2,
+                //             cardExpiration: "05/2024",
+                //             cardHolder: "HOUSSEM SELMI",
+                //             cardNumber: "9874 4785 XXXX 6548"),
+                //       ],
+                //     );
+                //   }),
+                // ),
+
+                )
           ],
         ),
       ),
@@ -51,7 +120,7 @@ class CreditCardsPage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8.0, bottom: 16.0),
           child: Text(
             '$subTitle',
-            style: TextStyle(fontSize: 21, color: Colors.black45),
+            style: TextStyle(fontSize: 21, color: Color(0xff3F5521)),
           ),
         )
       ],
@@ -71,7 +140,8 @@ class CreditCardsPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
       ),
       child: Container(
-        height: 200,
+        height: MediaQuery.of(context).size.height * 0.2,
+        width: MediaQuery.of(context).size.width * 0.8,
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +153,7 @@ class CreditCardsPage extends StatelessWidget {
               child: Text(
                 '$cardNumber',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xff3F5521),
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
               ),
@@ -107,12 +177,15 @@ class CreditCardsPage extends StatelessWidget {
   // Build the top row containing logos
   Row _buildLogosBlock() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        Image.asset(
-          "images/contact_less.png",
-          height: 20,
-          width: 18,
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: SvgPicture.asset(
+            "images/caterme.svg",
+            height: 40,
+            width: 18,
+          ),
         ),
         // Image.asset(
         //   "assets/images/mastercard.png",
@@ -131,12 +204,16 @@ class CreditCardsPage extends StatelessWidget {
         Text(
           '$label',
           style: TextStyle(
-              color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
+              color: Color(0xff3F5521),
+              fontSize: 9,
+              fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
           style: TextStyle(
-              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+              color: Color(0xff3F5521),
+              fontSize: 15,
+              fontWeight: FontWeight.bold),
         )
       ],
     );

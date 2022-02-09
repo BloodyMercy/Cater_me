@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 cardHolderName: cardNameHolder,
                 cvvCode: cvv,
                 showBackView: cvvFocused,
-                height: 200,
-                width: 305,
+                height: 180,
+                width: 270,
                 animationDuration: Duration(milliseconds: 1000),
               ),
               Expanded(

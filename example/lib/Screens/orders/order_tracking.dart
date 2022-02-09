@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/CustomStepperOrder.dart';
 import 'package:CaterMe/widgets/order_tracking/order_delivered.dart';
 import 'package:CaterMe/widgets/order_tracking/order_in_the_way.dart';
@@ -42,28 +43,36 @@ class _TrackingOrderState extends State<TrackingOrder> {
     return Scaffold(
       body: SafeArea(
         child: loading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(
+            ? Container(
+            color:LightColors.kLightYellow,
+              child: Center(
+                  child: CircularProgressIndicator(
+                   color: Color(0xFF3F5521),
+                  ),
+                ),
+            )
+            : Container(
+          color: LightColors.kLightYellow,
+              child: Column(
 
-                children: [
-                  orderStatus.orderStatus.statusId == 1
-                      ? OrderReceived()
-                      : Container(),
-                  orderStatus.orderStatus.statusId == 2
-                      ? OrderPreparing()
-                      : Container(),
-                  orderStatus.orderStatus.statusId == 3
-                      ? OrderOnTheWay()
-                      : Container(),
-                  orderStatus.orderStatus.statusId == 4
-                      ? OrderDelivered()
-                      : Container(),
+                  children: [
+                    orderStatus.orderStatus.statusId == 1
+                        ? OrderReceived()
+                        : Container(),
+                    orderStatus.orderStatus.statusId == 2
+                        ? OrderPreparing()
+                        : Container(),
+                    orderStatus.orderStatus.statusId == 3
+                        ? OrderOnTheWay()
+                        : Container(),
+                    orderStatus.orderStatus.statusId == 4
+                        ? OrderDelivered()
+                        : Container(),
 
-                  // CustomStepperOrder(text: ["text","text"],selected: 1,),
-                ],
-              ),
+                    // CustomStepperOrder(text: ["text","text"],selected: 1,),
+                  ],
+                ),
+            ),
       ),
     );
   }

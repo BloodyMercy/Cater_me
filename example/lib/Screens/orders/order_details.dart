@@ -75,12 +75,20 @@ class _DetailsOrderState extends State<DetailsOrder> {
         child: RefreshIndicator(
           onRefresh: refreshOrderData,
           child: loading
-              ? Center(child: CircularProgressIndicator())
+              ? Container(
+                  color: LightColors.kLightYellow,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
+                    ),
+                  ),
+                )
               : Container(
-            color: LightColors.kLightYellow,
-                child: Center(
+                  color: LightColors.kLightYellow,
+                  child: Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: Column(
                         children: [
                           ListView.builder(
@@ -136,7 +144,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                       ),
                     ),
                   ),
-              ),
+                ),
         ),
       ),
     );
