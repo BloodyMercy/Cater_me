@@ -13,7 +13,11 @@ class TaskColumn extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return    Container(
+        color: Colors.transparent,
+        padding: EdgeInsets.symmetric(
+        horizontal: 20.0, vertical: 10.0),
+    child:Column(children:[Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         CircleAvatar(
@@ -43,9 +47,13 @@ class TaskColumn extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: Colors.black45),
             ),
+
           ],
         )
       ],
-    );
+    ),
+
+      SizedBox(height: 20.0),
+    ]));
   }
 }

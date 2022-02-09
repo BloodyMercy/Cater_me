@@ -1,23 +1,14 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/occasion/widgets/active_project_card.dart';
 import 'package:CaterMe/Screens/occasion/widgets/task_column.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'calendar_page.dart';
 
 
-class HomePageOc extends StatelessWidget {
-  Text subheading(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-          color: LightColors.kDarkBlue,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.2),
-    );
-  }
-
+class HomePageOc extends StatefulWidget {
   static CircleAvatar calendarIcon() {
     return CircleAvatar(
       radius: 25.0,
@@ -31,7 +22,40 @@ class HomePageOc extends StatelessWidget {
   }
 
   @override
+  State<HomePageOc> createState() => _HomePageOcState();
+}
+
+class _HomePageOcState extends State<HomePageOc> {
+  Text subheading(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+          color: LightColors.kDarkBlue,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 1.2),
+    );
+  }
+bool loading=false;
+  Future getData() async {
+    final occasion = Provider.of<OccasionProvider>(context, listen: false);
+    await occasion.getallnewoccasion();
+
+    setState(() {
+      loading = false;
+    });
+    return;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final occasion= Provider.of<OccasionProvider>(context,listen:true);
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: LightColors.kLightYellow,
@@ -39,103 +63,80 @@ class HomePageOc extends StatelessWidget {
         child: Column(
           children: <Widget>[
 
+           // subheading('today'),
+             //   SizedBox(height: 5.0),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
+              child: CustomScrollView(slivers: <Widget>[
+
+                SliverToBoxAdapter(child: SizedBox(height: 40),),
+
+
+                SliverToBoxAdapter(child:    Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Container(
-                      color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10.0),
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              subheading('My ocasions'),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CalendarPage()),
-                                  );
-                                },
-                                child: calendarIcon(),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 15.0),
+                    subheading('My ocasions'),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CalendarPage()),
+                        );
+                      },
+                      child: HomePageOc.calendarIcon(),
+                    ),
+                  ],
+                )),
+                SliverToBoxAdapter(child: SizedBox(height: 40),),
+                SliverToBoxAdapter(child: subheading('Today ocasions'),),
+                SliverToBoxAdapter(child: SizedBox(height: 20),),
+
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+
+                          (BuildContext context, int index) {
+                        return
                           TaskColumn(
                             icon: Icons.alarm,
                             iconBackgroundColor: LightColors.kRed,
-                            title: 'Today',
-                            subtitle: 'Birthday peter',
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          TaskColumn(
-                            icon: Icons.blur_circular,
-                            iconBackgroundColor: LightColors.kDarkYellow,
-                            title: 'Today',
-                            subtitle: 'Birthday peter',
-                          ),
+                            title:  occasion.today[index].name,
+                            subtitle: occasion.today[index].date,
 
-                        ],
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          subheading('weekly ocasions'),
-                          SizedBox(height: 5.0),
-                          Row(
-                            children: <Widget>[
-                              ActiveProjectsCard(
-                                cardColor: LightColors.kGreen,
-                                loadingPercent: 0.25,
-                                title: 'birthday ahmad',
-                                subtitle: '1 day ago',
-                              ),
-                              SizedBox(width: 20.0),
-                              ActiveProjectsCard(
-                                cardColor: LightColors.kRed,
-                                loadingPercent: 0.6,
-                                title: 'birthday ahmad',
-                                subtitle: '1 day ago',
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: <Widget>[
-                              ActiveProjectsCard(
-                                cardColor: LightColors.kDarkYellow,
-                                loadingPercent: 0.45,
-                                title: 'birthday ahmad',
-                                subtitle: '1 day ago',
-                              ),
-                              SizedBox(width: 20.0),
-                              ActiveProjectsCard(
-                                cardColor: LightColors.kBlue,
-                                loadingPercent: 0.9,
-                                title: 'birthday ahmad',
-                                subtitle: '1 day ago',
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                          );
+
+                      },
+                      childCount:  occasion.today.length,
+                    )
+
+
                 ),
-              ),
-            ),
+                SliverToBoxAdapter(child: SizedBox(height: 40),),
+                SliverToBoxAdapter(child: subheading('weekly ocasions'),),
+                SliverToBoxAdapter(child: SizedBox(height: 20),),
+
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+
+                          (BuildContext context, int index) {
+                        return
+                          TaskColumn(
+                            icon: Icons.alarm,
+                            iconBackgroundColor: LightColors.kRed,
+                            title: occasion.thisWeek[index].name,
+                            subtitle: occasion.thisWeek[index].date,
+
+                          );
+
+                      },
+                      childCount:  occasion.thisWeek.length,
+                    )
+
+
+                )
+
+              ])),
+
           ],
         ),
       ),

@@ -133,7 +133,7 @@ Occasion _occasioncreated=Occasion();
 
 
 bool loading=false;
-  Future<void>  getallnewoccasion(BuildContext c)async {
+  Future<void>  getallnewoccasion()async {
     loading=false;
 //notifyListeners();
     _alldata=await OccasionService.getallnewoccasions();
@@ -142,9 +142,9 @@ bool loading=false;
     }
 
     else {
-      _today = List<Occasion>.from(_alldata['today'].map((model) => Occasion.fromJson(model)));
-      _thisWeek = List<Occasion>.from(_alldata['thisWeek'].map((model) => Occasion.fromJson(model)));
-      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJson(model)));
+      _today = List<Occasion>.from(_alldata['today'].map((model) => Occasion.fromJsonadd(model)));
+      _thisWeek = List<Occasion>.from(_alldata['thisWeek'].map((model) => Occasion.fromJsonadd(model)));
+      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model)));
 
 
 

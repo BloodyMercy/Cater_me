@@ -1,14 +1,22 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/occasion/widgets/back_button.dart';
 import 'package:CaterMe/Screens/occasion/widgets/calendar_dates.dart';
+import 'package:CaterMe/Screens/occasion/widgets/task_column.dart';
 import 'package:CaterMe/Screens/occasion/widgets/task_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../dates_list.dart';
 import 'create_new_task_page.dart';
 
-class CalendarPage extends StatelessWidget {
+class CalendarPage extends StatefulWidget {
+  @override
+  State<CalendarPage> createState() => _CalendarPageState();
+}
+
+class _CalendarPageState extends State<CalendarPage> {
   Widget _dashedText() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15),
@@ -21,8 +29,27 @@ class CalendarPage extends StatelessWidget {
     );
   }
 
+  bool loading=false;
+
+  Future getData() async {
+    final occasion = Provider.of<OccasionProvider>(context, listen: false);
+    await occasion.getallnewoccasion();
+
+    setState(() {
+      loading = false;
+    });
+    return;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final occasion = Provider.of<OccasionProvider>(context, listen: true);
     return Scaffold(
       backgroundColor: LightColors.kLightYellow,
       body: SafeArea(
@@ -64,7 +91,7 @@ class CalendarPage extends StatelessWidget {
                         },
                         child: Center(
                           child: Text(
-                            'Add ocasions',
+                            'Add occasions',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
@@ -114,55 +141,36 @@ class CalendarPage extends StatelessWidget {
               //   ),
            //   ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
+                  child: CustomScrollView(slivers: <Widget>[
 
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          flex: 5,
-                          child: ListView(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            children: <Widget>[
-                              // _dashedText(),
-                              // TaskContainer(
-                              //   title: 'Project Research',
-                              //   subtitle:
-                              //       'Discuss with the colleagues about the future plan',
-                              //   boxColor: LightColors.kLightYellow2,
-                              // ),
-                              _dashedText(),
-                              TaskContainer(
-                                title: 'Work on Medical App',
-                                subtitle: 'Add medicine tab',
-                                boxColor: LightColors.kLavender,
-                              ),
-                              TaskContainer(
-                                title: 'Call',
-                                subtitle: 'Call to david',
-                                boxColor: LightColors.kPalePink,
-                              ),
-                              TaskContainer(
-                                title: 'Design Meeting',
-                                subtitle:
-                                    'Discuss with designers for new task for the medical app',
-                                boxColor: LightColors.kLightGreen,
-                              ),
-                            ],
-                          ),
+
+
+                    SliverToBoxAdapter(child: SizedBox(height: 20),),
+
+                    SliverList(
+                        delegate: SliverChildBuilderDelegate(
+
+                              (BuildContext context, int index) {
+                            return
+                              TaskColumn(
+                                icon: Icons.alarm,
+                                iconBackgroundColor: LightColors.kRed,
+                                title:  occasion.all[index].name,
+                                subtitle: occasion.all[index].date,
+
+                              );
+
+                          },
+                          childCount:  occasion.all.length,
                         )
-                      ],
+
+
                     ),
-                  ),
-                ),
-              ),
+
+
+
+
+                  ])),
             ],
           ),
         ),
