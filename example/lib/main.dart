@@ -25,6 +25,7 @@ import 'Providers/packages.dart';
 import 'Providers/user.dart';
 
 
+import 'Screens/auth/newlogin/screens/loginScreen.dart';
 import 'Screens/chooseadress/confirm_location_view.dart';
 import 'Screens/occasion/screens/home_page.dart';
 import 'Screens/order_summery_copy.dart';
@@ -179,7 +180,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: appstate(),
+        home: LoginScreen(),
       ),
     );
   }

@@ -117,8 +117,14 @@ bool get loading => _loading;
 
 
 
+String _nbnotification="";
 
 
+String get nbnotification => _nbnotification;
+
+  set nbnotification(String value) {
+    _nbnotification = value;
+  }
 
   Future<void>  getallpacakges(BuildContext c)async {
 loading=false;
@@ -141,6 +147,9 @@ loading=false;
 
        _listItems = List<AddOn>.from(
           _alldata['dropDown'].map((model) => AddOn.fromJson(model)));
+       _nbnotification=_alldata["notificationCount"].toString();
+
+
     }
 
 loading=true;
