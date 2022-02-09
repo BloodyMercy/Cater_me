@@ -1,3 +1,4 @@
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/order_details.dart';
 import 'package:CaterMe/Screens/orders/order_tracking.dart';
 import 'package:CaterMe/colors/colors.dart';
@@ -33,6 +34,7 @@ class _OrderIdState extends State<OrderId> {
       ),
       body: SafeArea(child: _screen[widget.screen]),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor:LightColors.kLightYellow,
           unselectedItemColor: Color(0xFF3F5521),
           selectedItemColor: Color.fromRGBO(253, 202, 29, 1),
           currentIndex: widget.screen,

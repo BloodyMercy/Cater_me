@@ -152,7 +152,7 @@ bool loading=false;
                     (BuildContext context, int i) {
                   final item = details.itemOrders[i];
                   if (i> details.itemOrders.length) return null;
-                ;
+
                   return Column(
                     children: [
                       Padding(

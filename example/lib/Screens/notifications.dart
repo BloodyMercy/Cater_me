@@ -66,11 +66,16 @@ class _NotificationsState extends State<Notifications> {
             backgroundColor: Theme.of(context).primaryColor,
           ),
           body: loading
-              ? Center(
-                  child: CircularProgressIndicator(),
+              ? Container(
+                  color: LightColors.kLightYellow,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
+                    ),
+                  ),
                 )
               : Container(
-            color: LightColors.kLightYellow,
+                  color: LightColors.kLightYellow,
                   child: ListView.builder(
                       itemCount: allNotification.notificationlist.length,
                       itemBuilder: (context, index) {
@@ -88,7 +93,6 @@ class _NotificationsState extends State<Notifications> {
                             child: Padding(
                               padding: const EdgeInsets.all(30.0),
                               child: Row(
-
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(right: 20.0),
@@ -100,7 +104,8 @@ class _NotificationsState extends State<Notifications> {
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(allNotification
                                           .notificationlist[index].title),
@@ -108,7 +113,6 @@ class _NotificationsState extends State<Notifications> {
                                           .notificationlist[index].description),
                                     ],
                                   ),
-
                                 ],
                               ),
                               // child: ListTile(
