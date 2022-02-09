@@ -1,6 +1,7 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/model/add_on.dart';
+import 'package:CaterMe/widgets/addOns/add_on_cards.dart';
 
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
@@ -64,19 +65,22 @@ class _AddOnsState extends State<AddOns> {
     );
     return Scaffold(
       appBar: appBar,
-      body: ColoredBox(
-        color: Colors.white,
-        child: GridView(
-          padding: const EdgeInsets.all(25),
-          children: getAddOns(_cuisin.allons),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 2.9 / 3,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 5,
-          ),
-        ),
-      ),
+      body:ListView.builder(
+        //itemCount: friend.length,
+        itemBuilder: (ctx, index)  {
+          ///TabBarView children length = Number of categories
+          ///Each category have foodList (ListView)
+          return
+                AddOnCards(_cuisin.allons[index]);
+
+
+
+
+          },
+        )
+
+
+
     );
   }
 }
