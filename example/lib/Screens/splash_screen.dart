@@ -8,14 +8,14 @@ import 'auth/login_screen.dart';
 
 String finalEmail;
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+class SplashScreens extends StatefulWidget {
+  const SplashScreens({Key key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreens> {
   @override
   void initState() {
     super.initState();

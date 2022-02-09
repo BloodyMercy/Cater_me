@@ -6,10 +6,12 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/personal_info_provider.dart';
+import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 
 import 'package:CaterMe/Screens/intro_screen.dart';
 import 'package:CaterMe/Screens/order_summery_1.dart';
 import 'package:CaterMe/Screens/splash_screen.dart';
+import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -29,6 +31,7 @@ import 'Providers/user.dart';
 import 'Screens/chooseadress/confirm_location_view.dart';
 import 'Screens/occasion/screens/home_page.dart';
 import 'Screens/order_summery_copy.dart';
+
 import 'colors/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -100,7 +103,7 @@ class _appstateState extends State<appstate> {
           } else {
             switch (authProvider.status) {
               case Status.Unauthenticated:
-                return SplashScreen();
+                return LoginScreen();
 
               case Status.walkingpage:
                 return IntroScreen();
@@ -181,7 +184,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: Navigationbar(0),
+        home: SplashScreen(),
       ),
     );
   }

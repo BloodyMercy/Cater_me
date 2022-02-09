@@ -140,7 +140,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 ),
                 label: 'Ocasions',
               ),
-        package.nbnotification.length>0  ? BottomNavigationBarItem(
+        package.nbnotification!="0"  ? BottomNavigationBarItem(
                 icon:  Badge(
                     badgeColor: Color.fromRGBO(253, 202, 29, 1),
                    // badgeContent:Text("3"),
