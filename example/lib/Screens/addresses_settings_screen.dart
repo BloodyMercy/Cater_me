@@ -111,7 +111,10 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
             IconButton(
-                onPressed: () => _startAddNewAddress(context),
+                onPressed: () {
+                  adress.clearAddressController();
+                  _startAddNewAddress(context);
+                },
                 icon: Icon(Icons.add))
           ],
         ),

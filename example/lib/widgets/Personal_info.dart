@@ -29,7 +29,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   getData() async {
     final personalInfo =
-        await Provider.of<UserProvider>(context, listen: false);
+         Provider.of<UserProvider>(context, listen: false);
     await personalInfo.getPersonalInfo();
     setState(() {
       loading = false;
@@ -50,31 +50,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
     return false;
   }
 
-  // DateTime selectedDate = DateTime.now();
    DateTime _newDate;
 
-  // _datePicker(String date) async {
-  //   _newDate = (await showDatePicker(
-  //     context: context,
-  //     builder: (context, child) => Theme(
-  //         data: ThemeData().copyWith(
-  //           colorScheme: ColorScheme.light(
-  //               primary: Color(0xff3F5521),
-  //               surface: Color(0xff3F5521),
-  //               onPrimary: Colors.black),
-  //         ),
-  //         child: child!),
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime(1930),
-  //     lastDate: DateTime.now(),
-  //     initialEntryMode: DatePickerEntryMode.calendarOnly,
-  //   ));
-  //   setState(() {
-  //     if (_newDate != null) {
-  //       selectedDate = _newDate!;
-  //     }
-  //   });
-  // }
+
 
   @override
   Widget build(BuildContext context) {

@@ -107,17 +107,11 @@ class UserProvider with ChangeNotifier {
   set messageSignUp(String value) => _messageSignUp = value;
 
   UserProvider.statusfunction() {
-
 getdata();
-email.text="patourtohme9@gmail.com";
-password.text="Peter69@";
-// email.text="patour_aboulpete1@gmail.com";
-// password.text="P@ssw0rd";
-
-
-
-
-
+// email.text="patourtohme9@gmail.com";
+// password.text="Peter69@";
+email.text="patour_aboulpete1@gmail.com";
+password.text="P@ssw0rd";
   }
 
 

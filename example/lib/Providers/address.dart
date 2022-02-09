@@ -25,6 +25,7 @@ List<String> _listnameevent=[];
 Address _addressCreated=Address();
 bool _loading=false;
 
+
   bool get loading => _loading;
 
   set loading(bool value) {
@@ -100,6 +101,7 @@ List<String> _listcityname=[];
   TextEditingController typeofeventcontrollerstring=TextEditingController();
 
 clearAddressController(){
+
       addresstitlecontroller.clear();
       streetcontroller.clear();
       buildingcontroller.clear();
@@ -150,17 +152,26 @@ return em.message;
     latitude: latitudenumbercontroller.text,
 
     );
-  _listaddress.add(_addressCreated);
+  _listaddress.insert(0,_addressCreated);
   notifyListeners();
+  }
+  bool _loadingCity=false;
+
+  bool get loadingCity => _loadingCity;
+
+  set loadingCity(bool value) {
+    _loadingCity = value;
   }
 
   getallcity(int id) async {
+    loadingCity=true;
      _listcity=await _addressService.getAllCity(id);
      List<String> l=[];
     for(int i=0;i<_listcity.length;i++){
       l.add(_listcity[i].name);
     }
      _listcityname=l;
+    loadingCity=false;
     notifyListeners();
   }
 
