@@ -45,6 +45,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController shopname = TextEditingController();
   TextEditingController specialist = TextEditingController();
   TextEditingController bio = TextEditingController();
+  TextEditingController emailChat = TextEditingController();
 
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
@@ -117,7 +118,7 @@ password.text="P@ssw0rd";
 
   getdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-
+    emailChat.text=sh.getString('email');
 
 
 

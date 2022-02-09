@@ -31,7 +31,7 @@ class OrderReceived extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: mediaqueryheight * 0.03,),
+            SizedBox(height: mediaqueryheight * 0.015,),
 
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
