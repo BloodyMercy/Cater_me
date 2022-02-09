@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Ocasions extends StatefulWidget {
-  const Ocasions({Key? key}) : super(key: key);
+  const Ocasions({Key key}) : super(key: key);
 
   @override
   State<Ocasions> createState() => _OcasionsState();

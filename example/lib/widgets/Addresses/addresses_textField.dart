@@ -165,7 +165,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 //   loadingfinal = false;
                                 // });
                                 print("Added Failed");
-                                _scaffoldKey.currentState!.showSnackBar(
+                                _scaffoldKey.currentState.showSnackBar(
                                   SnackBar(
                                     content: Text(
                                       "Add Address Failed!",

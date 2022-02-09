@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> initPaymentSDK() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      bool? isSuccess = await FlutterCheckoutPayment.init(key: "{Keys.TEST_KEY}");
+      bool isSuccess = await FlutterCheckoutPayment.init(key: "{Keys.TEST_KEY}");
       //bool isSuccess =  await FlutterCheckoutPayment.init(key: "${Keys.TEST_KEY}", environment: Environment.LIVE);
       print(isSuccess);
       if (mounted) setState(() => _isInit = "true");
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       print("$cardNumber, $cardNameHolder, $expiryMonth, $expiryYear, $cvv");
 
-      CardTokenisationResponse? response = await FlutterCheckoutPayment.generateToken(
+      CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(
           number: number, name: cardNameHolder, expiryMonth: expiryMonth, expiryYear: expiryYear, cvv: cvv);
 
       // Hide loading dialog
@@ -190,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       print("$cardNumber, $cardNameHolder, $expiryMonth, $expiryYear, $cvv");
 
-      CardTokenisationResponse? response = await FlutterCheckoutPayment.generateToken(
+      CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(
           number: number,
           name: cardNameHolder,
           expiryMonth: expiryMonth,
@@ -257,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       print("$cardNumber");
 
-      bool? isValid = await FlutterCheckoutPayment.isCardValid(number: number);
+      bool isValid = await FlutterCheckoutPayment.isCardValid(number: number);
 
       // Hide loading dialog
       Navigator.pop(context);

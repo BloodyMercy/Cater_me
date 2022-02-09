@@ -67,7 +67,7 @@ class IntroScreen extends StatelessWidget {
     ),
   ];
 
-  IntroScreen({Key? key}) : super(key: key);
+  IntroScreen({Key key}) : super(key: key);
 
   void onDone(context) {
     Navigator.pushReplacement(

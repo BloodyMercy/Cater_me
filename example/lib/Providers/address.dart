@@ -158,7 +158,7 @@ return em.message;
      _listcity=await _addressService.getAllCity(id);
      List<String> l=[];
     for(int i=0;i<_listcity.length;i++){
-      l.add(_listcity[i].name!);
+      l.add(_listcity[i].name);
     }
      _listcityname=l;
     notifyListeners();
@@ -168,7 +168,7 @@ return em.message;
     _listcountry=await _addressService.getAllCountry();
     List<String> l=[];
     for(int i=0;i<_listcountry.length;i++){
-      l.add(_listcountry[i].name!);
+      l.add(_listcountry[i].name);
     }
     _listcountryname=l;
     notifyListeners();
@@ -185,10 +185,10 @@ _regular=await _addressService.getRegular();
 List<String> _listnamenumberi=[];
 List<String> _listnameeventi=[];
 for(int i=0;i<_regular.numberOfGuests.length;i++){
-  _listnamenumberi.add(_regular.numberOfGuests[i].title!);
+  _listnamenumberi.add(_regular.numberOfGuests[i].title);
 }
 for(int i=0;i<_regular.events.length;i++){
-  _listnameeventi.add(_regular.events[i].name!);
+  _listnameeventi.add(_regular.events[i].name);
 }
 _listnamenumber=_listnamenumberi;
 _listnameevent=_listnameeventi;

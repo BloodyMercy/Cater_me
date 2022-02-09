@@ -29,8 +29,8 @@ void changeScreenpop(BuildContext context, Widget widget) {
 
 void changeScreenUntilsignup(BuildContext context) async{
 SharedPreferences pref=await SharedPreferences.getInstance();
-String? roleSharedCust=   pref.getString("welcome",);
-String? roleSharedProf=   pref.getString("welcome");
+String roleSharedCust=   pref.getString("welcome",);
+String roleSharedProf=   pref.getString("welcome");
 
 
   //Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>

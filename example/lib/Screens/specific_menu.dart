@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class SpecificMenu extends StatelessWidget {
   Menu menu;
-   SpecificMenu({required this.menu});
+   SpecificMenu({ this.menu});
 
   @override
   Widget build(BuildContext context) {

@@ -6,9 +6,9 @@ class Cuisins {
    String image="";
 int id=0;
   Cuisins(
-      {required this.name,
-      required this.id,
-      required this.image});
+      { this.name,
+       this.id,
+      this.image});
   // AddOn.fromJson(Map<String, dynamic> json) {
   //   category = json['type'];
   //   name = json['name'];

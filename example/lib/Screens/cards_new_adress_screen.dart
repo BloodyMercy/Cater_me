@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'addresses_screen.dart';
 
 class CardsNewAdress extends StatefulWidget {
-  CardsNewAdress({Key? key}) : super(key: key);
+  CardsNewAdress({Key key}) : super(key: key);
 
   @override
   State<CardsNewAdress> createState() => _CardsNewAdressState();

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class MenusCard extends StatelessWidget {
   Food food;
   int index;
-  MenusCard({required this.food, required this.index});
+  MenusCard({ this.food,  this.index});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 
 
 class OrderModel {
-  int? id;
+  int id;
   int profileId=0;
   int addressId=0;
   String addressTitle='';

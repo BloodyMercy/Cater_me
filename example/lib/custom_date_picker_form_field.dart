@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 class CustomDatePickerFormField extends StatefulWidget {
   String label;
   TextEditingController controller = TextEditingController();
-  CustomDatePickerFormField({required this.label , required this.controller});
+  CustomDatePickerFormField({ this.label ,  this.controller});
 
   @override
   State<CustomDatePickerFormField> createState() => _CustomDatePickerFormFieldState();

@@ -11,13 +11,13 @@ import 'package:provider/provider.dart';
 class AddOnsCard extends StatefulWidget {
   final List<AddOnCards> card;
   final int i;
-  AddOnsCard({required this.card, required this.i});
+  AddOnsCard({ this.card, this.i});
   @override
   State<AddOnsCard> createState() => _AddOnsCardState();
 }
 
 class _AddOnsCardState extends State<AddOnsCard> {
-  late int activeIndex;
+  int activeIndex;
   @override
   void initState() {
     activeIndex = 0;

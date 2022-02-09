@@ -7,7 +7,7 @@ class CalendarDates extends StatelessWidget {
   final Color dayColor;
   final Color dateColor;
 
-  CalendarDates({ required this.day, required this.date, required this.dayColor, required this.dateColor});
+  CalendarDates({  this.day,  this.date,  this.dayColor,  this.dateColor});
 
   @override
   Widget build(BuildContext context) {

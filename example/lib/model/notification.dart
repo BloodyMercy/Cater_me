@@ -4,8 +4,8 @@ class Notifications{
   String details;
 
   Notifications({
-    required this.image,
-    required this.title,
-    required this.details,
+     this.image,
+     this.title,
+     this.details,
   });
 }

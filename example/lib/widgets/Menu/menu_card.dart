@@ -8,13 +8,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class MenuCard extends StatefulWidget {
   Menu menu;
-  MenuCard({required this.menu});
+  MenuCard({ this.menu});
   @override
   State<MenuCard> createState() => _MenuCardState();
 }
 
 class _MenuCardState extends State<MenuCard> {
-  late int activeIndex;
+  int activeIndex;
   @override
   void initState() {
     activeIndex = 0;

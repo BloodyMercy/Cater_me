@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class YourOrders extends StatefulWidget {
-  const YourOrders({Key? key}) : super(key: key);
+  const YourOrders({Key key}) : super(key: key);
 
   @override
   _YourOrdersState createState() => _YourOrdersState();
@@ -73,7 +73,7 @@ class _YourOrdersState extends State<YourOrders> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (builder) =>
-                                      OrderId(orders.listOrder[index].id!, 0),
+                                      OrderId(orders.listOrder[index].id, 0),
                                 ),
                               );
                             },

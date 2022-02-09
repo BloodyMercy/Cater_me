@@ -26,7 +26,7 @@ class _AccountInfoState extends State<AccountInfo> {
         print("passwords don't match");
         return false;
       }
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         // ignore: avoid_print
 
         print('Validated');
@@ -40,7 +40,7 @@ class _AccountInfoState extends State<AccountInfo> {
     return false;
   }
 
-  String? validatePass(value) {
+  String validatePass(value) {
     if (value.isEmpty) {
       return 'Required *';
     } else {
@@ -48,7 +48,7 @@ class _AccountInfoState extends State<AccountInfo> {
     }
   }
 
-  String? validateConfirmPass(value) {
+  String validateConfirmPass(value) {
     validatePass(value);
     if (value != newPassController.text) {
       return "Passwords don't match";
@@ -159,7 +159,7 @@ class _AccountInfoState extends State<AccountInfo> {
                           ? CircularProgressIndicator()
                           : ElevatedButton(
                               onPressed: () async {
-                                if (!formkey.currentState!.validate()) {
+                                if (!formkey.currentState.validate()) {
                                   return;
                                 } else {
                                   setState(() {

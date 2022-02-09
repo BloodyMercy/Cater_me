@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class Notifications extends StatefulWidget {
-  const Notifications({Key? key}) : super(key: key);
+  const Notifications({Key key}) : super(key: key);
 
   @override
   State<Notifications> createState() => _NotificationsState();

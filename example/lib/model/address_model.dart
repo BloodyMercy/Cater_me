@@ -10,12 +10,12 @@ class Addresses {
 
   Addresses({
     // required this.image,
-    required this.id,
-    required this.contactName,
-    required this.email,
-    required this.phoneNumber,
-    required this.country,
-    required this.city,
-    required this.addressTitle,
+    this.id,
+    this.contactName,
+     this.email,
+   this.phoneNumber,
+   this.country,
+     this.city,
+     this.addressTitle,
   });
 }

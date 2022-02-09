@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OrderSummery1 extends StatefulWidget {
-  const OrderSummery1({Key? key}) : super(key: key);
+  const OrderSummery1({Key key}) : super(key: key);
 
   @override
   _OrderSummery1State createState() => _OrderSummery1State();
@@ -63,7 +63,7 @@ class _OrderSummery1State extends State<OrderSummery1> {
                   onChanged: (val) {
                     setState(() {
                       setState(() {
-                        _isChecked[index] = val!;
+                        _isChecked[index] = val;
                       });
                     });
                   },

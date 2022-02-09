@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class RelatedOffersScreen extends StatefulWidget {
-  RelatedOffersScreen({Key? key}) : super(key: key);
+  RelatedOffersScreen({Key key}) : super(key: key);
 
   @override
   State<RelatedOffersScreen> createState() => _RelatedOffersScreenState();

@@ -4,8 +4,8 @@ class fakeAddress {
   final String subtitle;
 
   fakeAddress({
-    required this.id,
-    required this.title,
-    required this.subtitle,
+   this.id,
+   this.title,
+ this.subtitle,
   });
 }

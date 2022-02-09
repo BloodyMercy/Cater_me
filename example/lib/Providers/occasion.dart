@@ -76,7 +76,7 @@ Occasion _occasioncreated=Occasion();
     _listoccasiontype = await _occasionService.getAllOcasionType();
     List<String> listname=[];
    for(int i=0;i<_listoccasiontype.length;i++){
-      listname.add(_listoccasiontype[i].name!);
+      listname.add(_listoccasiontype[i].name);
    }
     _listoccasiontypename=listname;
     notifyListeners();

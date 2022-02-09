@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class MyFavoritesCard extends StatelessWidget {
   final Package food;
-  const MyFavoritesCard({required this.food});
+  const MyFavoritesCard({ this.food});
 
   @override
   Widget build(BuildContext context) {

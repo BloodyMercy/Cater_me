@@ -60,7 +60,7 @@ void main() async {
 }
 
 class appstate extends StatefulWidget {
-  const appstate({Key? key}) : super(key: key);
+  const appstate({Key key}) : super(key: key);
 
   @override
   _appstateState createState() => _appstateState();
@@ -114,7 +114,7 @@ class _appstateState extends State<appstate> {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
 
   // This widget is the root of your application.
   @override

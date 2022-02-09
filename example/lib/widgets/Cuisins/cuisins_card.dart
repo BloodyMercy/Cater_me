@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class CuisinsCard extends StatelessWidget {
   Cuisins cuisin;
   int index;
-  CuisinsCard({required this.cuisin, required this.index});
+  CuisinsCard({ this.cuisin,  this.index});
 
   @override
   Widget build(BuildContext context) {

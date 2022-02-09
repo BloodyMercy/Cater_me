@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConfirmPasswordScreen extends StatefulWidget {
-  const ConfirmPasswordScreen({Key? key}) : super(key: key);
+  const ConfirmPasswordScreen({Key key}) : super(key: key);
 
   @override
   State<ConfirmPasswordScreen> createState() => _ConfirmPasswordScreenState();
@@ -15,7 +15,7 @@ class _ConfirmPasswordScreenState extends State<ConfirmPasswordScreen> {
 
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         if (password == confirmPassword) {
           // ignore: avoid_print
 
@@ -31,7 +31,7 @@ class _ConfirmPasswordScreenState extends State<ConfirmPasswordScreen> {
     return false;
   }
 
-  String? validatePass(value) {
+  String validatePass(value) {
     if (value.trim().isEmpty) {
       return "this field is required";
     }

@@ -16,7 +16,7 @@ class EditOccasion extends StatefulWidget {
 class _EditOccasionState extends State<EditOccasion> {
   final typeController = TextEditingController();
   final nameController = TextEditingController();
-  late DateTime? selectedDate = DateTime.parse(widget.occ.date);
+   DateTime selectedDate ;
   void _presentDataPicker() {
     showDatePicker(
       context: context,
@@ -32,7 +32,13 @@ class _EditOccasionState extends State<EditOccasion> {
       });
     });
   }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedDate = DateTime.parse(widget.occ.date);
 
+}
   // late bool yearly;
   //
   //
@@ -104,7 +110,7 @@ class _EditOccasionState extends State<EditOccasion> {
                   children: [
                     Text(selectedDate == null
                         ? "No Date chosen!"
-                        : 'Picked date: ${DateFormat.yMd().format(selectedDate!)}'),
+                        : 'Picked date: ${DateFormat.yMd().format(selectedDate)}'),
                     TextButton(
                       onPressed: _presentDataPicker,
                       child: Text(

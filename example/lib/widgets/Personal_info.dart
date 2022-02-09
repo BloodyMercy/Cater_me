@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class PersonalInfo extends StatefulWidget {
-  const PersonalInfo({Key? key}) : super(key: key);
+  const PersonalInfo({Key key}) : super(key: key);
 
   @override
   State<PersonalInfo> createState() => _PersonalInfoState();
@@ -38,7 +38,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         print('Validated');
         return true;
       } else {
@@ -51,7 +51,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   }
 
   // DateTime selectedDate = DateTime.now();
-  late DateTime? _newDate;
+   DateTime _newDate;
 
   // _datePicker(String date) async {
   //   _newDate = (await showDatePicker(
@@ -196,7 +196,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                                 surface: Color(0xff3F5521),
                                                 onPrimary: Colors.black),
                                           ),
-                                          child: child!),
+                                          child: child),
                                       initialDate: DateTime.now(),
                                       firstDate: DateTime(1930),
                                       lastDate: DateTime.now(),

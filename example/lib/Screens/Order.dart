@@ -98,7 +98,7 @@ class _OrderState extends State<Order> {
     //
     // });
   }
-  late int steps;
+   int steps;
   @override
   initState(){
     super.initState();
@@ -212,7 +212,7 @@ class _OrderState extends State<Order> {
 
                               if(orderProvider.spets==1) {
                                 if (orderProvider.value.id==0) {
-                                  _key.currentState!
+                                  _key.currentState
                                       .showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -240,7 +240,7 @@ class _OrderState extends State<Order> {
                                 //         .typeofeventcontroller
                                 //         .text == "") {
                               if( orderProvider.serviceId==0){
-                                  _key.currentState!
+                                  _key.currentState
                                       .showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -269,7 +269,7 @@ class _OrderState extends State<Order> {
                                         .text == "")
                                       {
                                       if( orderProvider.serviceId==0){
-                                      _key.currentState!
+                                      _key.currentState
                                           .showSnackBar(
                                       SnackBar(
                                       content: Text(
@@ -411,7 +411,7 @@ class _OrderState extends State<Order> {
                               if(orderProvider.spets==1) {
                                 if (orderProvider.value.id==0
                                    ) {
-                                  _key.currentState!
+                                  _key.currentState
                                       .showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -426,7 +426,7 @@ class _OrderState extends State<Order> {
                           else    if(orderProvider.spets==2) {
                                 if (orderProvider.serviceId==0
                                 ) {
-                                  _key.currentState!
+                                  _key.currentState
                                       .showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -458,7 +458,7 @@ class _OrderState extends State<Order> {
                                     address
                                         .typeofeventcontroller
                                         .text == "") {
-                                  _key.currentState!
+                                  _key.currentState
                                       .showSnackBar(
                                     SnackBar(
                                       content: Text(

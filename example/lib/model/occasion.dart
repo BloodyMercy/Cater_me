@@ -3,7 +3,7 @@ class Occasion {
   String type="";
   String date="";
   String name="";
- late bool yearly;
+ bool yearly;
 
   Occasion();
 

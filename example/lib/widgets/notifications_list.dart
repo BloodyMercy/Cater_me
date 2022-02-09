@@ -2,7 +2,7 @@ import 'package:CaterMe/model/notification.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsList extends StatelessWidget {
-  NotificationsList({Key? key}) : super(key: key);
+  NotificationsList({Key key}) : super(key: key);
 
   final List<Notifications> notifications = [
     Notifications(

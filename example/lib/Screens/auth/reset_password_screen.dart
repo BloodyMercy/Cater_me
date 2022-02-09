@@ -5,7 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'confirm_email.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+  const ResetPasswordScreen({Key key}) : super(key: key);
 
   @override
   _ResetPasswordScreenState createState() => _ResetPasswordScreenState();
@@ -13,8 +13,8 @@ class ResetPasswordScreen extends StatefulWidget {
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  String? validate() {
-    if (formkey.currentState!.validate()) {
+  String validate() {
+    if (formkey.currentState.validate()) {
       // ignore: avoid_print
       print('Validated');
       // reset!=null?
@@ -113,7 +113,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       SizedBox(height: screenHeight * 0.4),
                       ElevatedButton(
                         onPressed: () {
-                          if (formkey.currentState!.validate() == false) {
+                          if (formkey.currentState.validate() == false) {
                             // ignore: avoid_print
                             print('Not Validated');
                             // reset!=null?

@@ -152,7 +152,7 @@ password.text="Peter69@";
       ErrorMessage u = await AuthModelSignin.login(
           email.text.toString(), password.text.toString());
 
-      String? token = "";
+      String token = "";
 
       _messagelogin = u.message;
 

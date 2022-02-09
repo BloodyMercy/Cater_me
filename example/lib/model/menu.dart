@@ -1,8 +1,8 @@
 import 'food.dart';
 
 class Menu{
-  late String name;
-  late List<Food> allFood;
+  String name;
+  List<Food> allFood;
 
 
-Menu({required this.name, required this.allFood});}
+Menu({ this.name,  this.allFood});}

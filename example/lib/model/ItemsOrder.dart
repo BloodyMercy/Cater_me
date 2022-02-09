@@ -1,7 +1,7 @@
 import 'package:CaterMe/model/details.dart';
 
 class ItemOrders {
-  late int id;
+   int id;
   String image = "";
 int tax = 0;
   String title = "";

@@ -22,7 +22,7 @@ import 'auth/login_screen.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class TABBar extends StatefulWidget {
-  const TABBar({Key? key}) : super(key: key);
+  const TABBar({Key key}) : super(key: key);
 
   @override
   _TABBarState createState() => _TABBarState();
@@ -44,7 +44,7 @@ class _TABBarState extends State<TABBar>  {
     personalInfo.loading=false;
   }
 
-  File? image;
+  File image;
 
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
@@ -161,7 +161,7 @@ setData(String imageUrl) async{
                                       onTap: () async{
                                         Navigator.pop(context);
                                       await  PickImage(ImageSource.camera);
-                                      await personalInfo.updateProfile(image!);
+                                      await personalInfo.updateProfile(image);
                                       },
                                     ),
                                     ListTile(
@@ -182,7 +182,7 @@ setData(String imageUrl) async{
                                         await PickImage(ImageSource.gallery);
                                        // personalInfo.loading=true;
 
-                                            await personalInfo.updateProfile(image!);
+                                            await personalInfo.updateProfile(image);
                                     //    personalInfo.notifyListeners();
                                         // if (a != "") {
                                         //   setState(() {

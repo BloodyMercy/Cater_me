@@ -16,7 +16,7 @@ class PackagesCard extends StatefulWidget {
 }
 
 class _PackagesCardState extends State<PackagesCard> {
-  late int activeIndex;
+ int activeIndex;
   @override
   void initState() {
     activeIndex = 0;

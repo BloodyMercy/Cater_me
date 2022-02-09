@@ -23,7 +23,7 @@ class CuisinCardoffer extends StatefulWidget {
 }
 
 class _CuisinCardofferState extends State<CuisinCardoffer> {
-  late int activeIndex;
+   int activeIndex;
 
   int selected = 0;
 

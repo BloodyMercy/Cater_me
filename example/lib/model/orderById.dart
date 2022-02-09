@@ -1,6 +1,6 @@
 class OrderByIdModel {
   String item="";
-  int? quantity;
+  int quantity;
   int itemPrice=0;
   String date ="";
   int totalItemPrice=0;

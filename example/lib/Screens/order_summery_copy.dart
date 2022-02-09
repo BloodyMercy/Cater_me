@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'orders/checkout/carditem.dart';
 
 class OrderSummeryCopy extends StatefulWidget {
-  const OrderSummeryCopy({Key? key}) : super(key: key);
+  const OrderSummeryCopy({Key key}) : super(key: key);
 
   @override
   _OrderSummeryCopyState createState() => _OrderSummeryCopyState();

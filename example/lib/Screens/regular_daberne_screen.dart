@@ -13,8 +13,8 @@ class RegularDaberneScreen extends StatefulWidget {
 }
 
 class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
-  late bool reg;
-  late bool dab;
+   bool reg;
+   bool dab;
 
   @override
   void initState() {

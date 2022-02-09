@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({Key? key}) : super(key: key);
+  const AddAddressScreen({Key key}) : super(key: key);
 
   @override
   State<AddAddressScreen> createState() => _AddAddressScreenState();

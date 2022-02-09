@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddAddressScreenFAB extends StatefulWidget {
-  const AddAddressScreenFAB({Key? key}) : super(key: key);
+  const AddAddressScreenFAB({Key key}) : super(key: key);
 
   @override
   State<AddAddressScreenFAB> createState() => _AddAddressScreenStateFAB();

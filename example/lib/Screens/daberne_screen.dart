@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class DaberneScreen extends StatefulWidget {
-  const DaberneScreen({Key? key}) : super(key: key);
+  const DaberneScreen({Key key}) : super(key: key);
 
   @override
   _DaberneScreenState createState() => _DaberneScreenState();
@@ -13,7 +13,7 @@ class _DaberneScreenState extends State<DaberneScreen> {
 
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         print('Validated');
         return true;
       } else {

@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class AddFriendScreen extends StatefulWidget {
-  const AddFriendScreen({Key? key}) : super(key: key);
+  const AddFriendScreen({Key key}) : super(key: key);
 
   @override
   State<AddFriendScreen> createState() => _AddFriendScreenState();

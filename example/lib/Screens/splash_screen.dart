@@ -6,10 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'auth/login_screen.dart';
 
-String? finalEmail;
+String finalEmail;
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();

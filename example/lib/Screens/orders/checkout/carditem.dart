@@ -56,17 +56,17 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                       ),
                       child: Image.network(
                         widget.cart.image,
-                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                        errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
                           return Icon(Icons.do_not_disturb,color:Colors.red);
                         },
-                        loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent? loadingProgress) {
+                        loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent loadingProgress) {
                           if (loadingProgress == null) return child;
                           return Padding(
                             padding: const EdgeInsets.all(25.0),
                             child: Center(
                               child: CircularProgressIndicator(
                                 value: loadingProgress.expectedTotalBytes != null ?
-                                loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
                                     : null,
                               ),
                             ),

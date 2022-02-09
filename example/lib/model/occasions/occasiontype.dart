@@ -1,6 +1,6 @@
 class OccassionType {
-  int? id;
-  String? name;
+  int id;
+  String name;
 
   OccassionType({this.id, this.name});
 

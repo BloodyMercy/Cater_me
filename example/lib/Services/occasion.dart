@@ -9,10 +9,10 @@ import 'ApiLink.dart';
 
 class OccasionService{
   Future createOccasion({
-    required bool hasReminder,
-    required String name,
-    required  int typeId,
-    required String date,
+    bool hasReminder,
+   String name,
+  int typeId,
+    String date,
   })async{
     Occasion occasion=Occasion();
     try {

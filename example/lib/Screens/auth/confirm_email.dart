@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class ConfirmEmailSent extends StatelessWidget {
-  const ConfirmEmailSent({Key? key}) : super(key: key);
+  const ConfirmEmailSent({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

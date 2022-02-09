@@ -8,7 +8,7 @@ class ContactUsScreen extends StatelessWidget {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         print('Validated');
         return true;
       } else {
@@ -133,7 +133,7 @@ bool loading=false;
                   SizedBox(height: _mediaQueryText * 0.05),
                   ElevatedButton(
                     onPressed: () {
-                      if (formkey.currentState!.validate() == false) {
+                      if (formkey.currentState.validate() == false) {
                         // ignore: avoid_print
                         print('Not Validated');
                       } else {

@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AddNewOccasion extends StatefulWidget {
-  const AddNewOccasion({Key? key}) : super(key: key);
+  const AddNewOccasion({Key key}) : super(key: key);
 
   @override
   State<AddNewOccasion> createState() => _AddNewOccasionState();
@@ -18,7 +18,7 @@ class AddNewOccasion extends StatefulWidget {
 
 class _AddNewOccasionState extends State<AddNewOccasion> {
   DateTime selectedDate = DateTime.now();
-  late DateTime? _newDate;
+  DateTime _newDate;
   // void _presentDataPicker() {
   //   showDatePicker(
   //     context: context,
@@ -44,7 +44,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                 surface: Color(0xff3F5521),
                 onPrimary: Colors.black),
           ),
-          child: child!),
+          child: child),
       initialDate: selectedDate,
       firstDate: DateTime(1930),
       lastDate: DateTime.now(),
@@ -52,7 +52,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     ));
     setState(() {
       if (_newDate != null) {
-        selectedDate = _newDate!;
+        selectedDate = _newDate;
       }
     });
   }
@@ -174,7 +174,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                         surface: Color(0xff3F5521),
                                         onPrimary: Colors.black),
                                   ),
-                                  child: child!),
+                                  child: child),
                               initialDate: selectedDate,
                               firstDate: DateTime(1930),
                               lastDate: DateTime.now(),
@@ -184,9 +184,9 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
                             setState(() {
                               if (_newDate != null) {
-                                selectedDate = _newDate!;
+                                selectedDate = _newDate;
                                 occa.datechosencontroller.text =
-                                    _newDate!.toString();
+                                    _newDate.toString();
                               }
                             });
                           },
@@ -228,7 +228,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                         "" ||
                                     occa.nameofoccasioncontroller.text ==
                                         "") {
-                                  _scaff.currentState!.showSnackBar(
+                                  _scaff.currentState.showSnackBar(
                                     SnackBar(
                                       content:
                                           Text("you cant add empty occasion"),
@@ -253,7 +253,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                       setState(() {
                                         ispressed=false;
                                       });
-                                    _scaff.currentState!.showSnackBar(
+                                    _scaff.currentState.showSnackBar(
                                       SnackBar(
                                         content: Text(
                                             "Please fill all the fields"),

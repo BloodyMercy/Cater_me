@@ -10,8 +10,8 @@ class NotificationService {
 
 
   Future<notificationModel> createNotification({
-    required String Title,
-    required String Body,
+     String Title,
+     String Body,
 
   }) async {
     notificationModel NotificationModel=notificationModel();

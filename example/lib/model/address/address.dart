@@ -9,7 +9,7 @@ class Address {
   String longitude="";
   String latitude="";
 
-  List<Occations>? occations;
+  List<Occations> occations;
 
   Address();
 
@@ -26,15 +26,15 @@ class Address {
     if (json['occations'] != null) {
       occations = <Occations>[];
       json['occations'].forEach((v) {
-        occations!.add(new Occations.fromJson(v));
+        occations.add(new Occations.fromJson(v));
       });
     }
   }
 }
 
 class Occations {
-  int? occationId;
-  String? occationName;
+  int occationId;
+  String occationName;
 
   Occations({this.occationId, this.occationName});
 

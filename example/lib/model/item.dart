@@ -1,8 +1,8 @@
 class Item {
-  int? id;
-  String? itemName;
-  String? category;
-  String? itemImage;
+  int id;
+  String itemName;
+  String category;
+  String itemImage;
 
   Item({this.id, this.itemName, this.category});
 

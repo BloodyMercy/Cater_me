@@ -20,7 +20,7 @@ class OccasionCard extends StatefulWidget {
 }
 
 class _OccasionCardState extends State<OccasionCard> {
-  late int activeIndex;
+  int activeIndex;
   // list
   @override
   void initState() {

@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class AddAddressSettingsScreen extends StatefulWidget {
-  const AddAddressSettingsScreen({Key? key}) : super(key: key);
+  const AddAddressSettingsScreen({Key key}) : super(key: key);
 
   @override
   State<AddAddressSettingsScreen> createState() =>

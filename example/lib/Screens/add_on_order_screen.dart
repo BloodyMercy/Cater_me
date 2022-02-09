@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 class AddOnOrderScreen extends StatefulWidget {
 int idons;
-  AddOnOrderScreen(@required this.idons);
+  AddOnOrderScreen(this.idons);
 
   @override
   State<AddOnOrderScreen> createState() => _AddOnOrderScreenState();

@@ -1,5 +1,5 @@
 class OrderByIdStatusModel {
-  int? statusId;
+  int statusId;
 
 
   OrderByIdStatusModel({this.statusId});

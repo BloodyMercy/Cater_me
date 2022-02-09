@@ -1,5 +1,5 @@
 class notificationModel {
-  late int id;
+ int id;
   int orderId = 0;
   String title = '';
   String description = '';

@@ -10,7 +10,7 @@ import 'reset_password_screen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -19,14 +19,14 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  String? password = '', confirmPassword = '', email = '';
+  String password = '', confirmPassword = '', email = '';
   bool passObscure = true;
   bool confObscure = true;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool loading = false;
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         if (password == confirmPassword) {
           // ignore: avoid_print
 
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return false;
   }
 
-  String? validatePass(value) {
+  String validatePass(value) {
     if (value.trim().isEmpty) {
       return "this field is required";
     }
@@ -202,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // sharedPreferences.setString(
                               //     'email', emailController.text);
 
-                              if (formkey.currentState!.validate() == false) {
+                              if (formkey.currentState.validate() == false) {
                                 // ignore: avoid_print
                                 print('Not Validated');
                                 setState(() {
@@ -231,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     loading = false;
                                   });
-                                  _scaffoldKey.currentState!.showSnackBar(
+                                  _scaffoldKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text(
                                           "${authProvider.messagelogin.toString()}"),

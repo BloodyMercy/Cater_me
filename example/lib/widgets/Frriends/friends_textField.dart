@@ -19,7 +19,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         // ignore: avoid_print
         print('Validated');
         return true;
@@ -122,7 +122,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       setState(() {
                         loading = true;
                       });
-                      if (formkey.currentState!.validate() == false) {
+                      if (formkey.currentState.validate() == false) {
                         // ignore: avoid_print
                         print('Not Validated');
                         setState(() {

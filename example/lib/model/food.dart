@@ -1,19 +1,19 @@
 class Food {
-  late String category;
-  late String name;
-  late double price;
-  late String image;
-  late String description;
-  late bool favorite;
+  String category;
+  String name;
+   double price;
+   String image;
+  String description;
+   bool favorite;
 
   Food(
-      {required this.category,
-      required this.name,
-      required this.price,
-      required this.image,
-      required this.description,
-      required this.favorite,
-      required String cuisine});
+      { this.category,
+       this.name,
+       this.price,
+     this.image,
+       this.description,
+      this.favorite,
+     String cuisine});
   // Food.fromJson(Map<String, dynamic> json) {
   //   category = json['type'];
   //   name = json['name'];

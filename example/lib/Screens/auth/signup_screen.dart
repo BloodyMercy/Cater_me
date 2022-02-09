@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({Key key}) : super(key: key);
 
   @override
   _SignupScreenState createState() => _SignupScreenState();
@@ -22,7 +22,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
-  File? image;
+  File image;
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
     try {
@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
     }
   }
 
-  String? password = '',
+  String password = '',
       mobile = '',
       confirmPassword = '',
       email = '',
@@ -48,7 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         if (password == confirmPassword) {
           // ignore: avoid_print
 
@@ -64,7 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return false;
   }
 
-  String? validatePass(value) {
+  String validatePass(value) {
     if (value.trim().isEmpty) {
       return "this field is required";
     }
@@ -78,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return null;
   }
 
-  String? validateMobile(String value) {
+  String validateMobile(String value) {
     if (value.length != 8) {
       return 'Mobile Number must be of 8 digit';
     } else {
@@ -86,13 +86,13 @@ class _SignupScreenState extends State<SignupScreen> {
     }
   }
 
-  String? genderChoose;
+  String genderChoose;
   List<Map<String, dynamic>> listGender = [
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
   ];
   DateTime selectedDate = DateTime.now();
-  late DateTime? _newDate;
+   DateTime _newDate;
   _datePicker() async {
     _newDate = (await showDatePicker(
       context: context,
@@ -103,7 +103,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 surface: Color(0xff3F5521),
                 onPrimary: Colors.black),
           ),
-          child: child!),
+          child: child),
       initialDate: selectedDate,
       firstDate: DateTime(1930),
       lastDate: DateTime.now(),
@@ -111,7 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
     ));
     setState(() {
       if (_newDate != null) {
-        selectedDate = _newDate!;
+        selectedDate = _newDate;
 
       }
     });
@@ -139,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: CircleAvatar(
                       minRadius: 16,
                       maxRadius: screenHeight * 0.1,
-                      backgroundImage: image == null ? null : FileImage(image!),
+                      backgroundImage: image == null ? null : FileImage(image),
                       child: image == null
                           ? Image(
                               image: const AssetImage('images/profile.png'),
@@ -414,7 +414,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 onChanged: (newValue) {
                                   authProvider.gender.text = newValue as String;
                                   setState(() {
-                                    genderChoose = newValue as String?;
+                                    genderChoose = newValue as String;
                                     (value) => value == null
                                         ? 'Please fill in your gender'
                                         : null;
@@ -453,7 +453,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                                   surface: Color(0xff3F5521),
                                                   onPrimary: Colors.black),
                                             ),
-                                            child: child!),
+                                            child: child),
                                         initialDate: selectedDate,
                                         firstDate: DateTime(1930),
                                         lastDate: DateTime.now(),
@@ -462,8 +462,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
                                       setState(() {
                                         if (_newDate != null) {
-                                          selectedDate = _newDate!;
-                                          authProvider.birthday.text=_newDate!.toString() ;
+                                          selectedDate = _newDate;
+                                          authProvider.birthday.text=_newDate.toString() ;
 
                                         }
                                       });
@@ -490,7 +490,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               setState(() {
                                 _loading = true;
                               });
-                              if (formkey.currentState!.validate() == false) {
+                              if (formkey.currentState.validate() == false) {
                                 // ignore: avoid_print
                                 print('Not Validated');
                                 setState(() {
@@ -498,7 +498,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 });
                                 // reset!=null?
                               } else {
-                                if (await authProvider.signUp(image!,DateFormat.yMd().format(selectedDate).toString())) {
+                                if (await authProvider.signUp(image,DateFormat.yMd().format(selectedDate).toString())) {
                                   setState(() {
                                     _loading = false;
                                   });
@@ -512,7 +512,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   setState(() {
                                     _loading = false;
                                   });
-                                  _scaffKey.currentState!.showSnackBar(
+                                  _scaffKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text(
                                           "${authProvider.messageSignUp.toString()}"),

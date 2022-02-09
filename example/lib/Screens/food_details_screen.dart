@@ -11,7 +11,7 @@ class FoodDetailScreen extends StatefulWidget {
   Food food;
 
   FoodDetailScreen({
-    required this.food,
+     this.food,
   });
 
   @override

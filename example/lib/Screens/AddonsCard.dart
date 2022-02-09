@@ -10,7 +10,7 @@ import 'add_on_order_screen.dart';
 class AddonsCard extends StatelessWidget {
   Addonall cuisin;
   int index;
-  AddonsCard({required this.cuisin, required this.index});
+  AddonsCard({ this.cuisin,  this.index});
 
   @override
   Widget build(BuildContext context) {

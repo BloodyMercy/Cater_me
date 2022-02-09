@@ -3,7 +3,7 @@ import 'package:CaterMe/model/details.dart';
 
 class Package {
 
-  late int id;
+int id;
   String image = "";
   int tax = 0;
   String title = "";
@@ -40,7 +40,7 @@ class Package {
     data['description'] = description;
     data['price'] = price;
     if (itemDetails != null) {
-      data['itemDetails'] = itemDetails!.map((v) => v.toJson()).toList();
+      data['itemDetails'] = itemDetails.map((v) => v.toJson()).toList();
     }
     return data;
   }

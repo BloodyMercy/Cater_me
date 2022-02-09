@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 
 class LogOutScreen extends StatefulWidget {
-  const LogOutScreen({Key? key}) : super(key: key);
+  const LogOutScreen({Key key}) : super(key: key);
 
   @override
   _LogOutScreenState createState() => _LogOutScreenState();

@@ -1,5 +1,5 @@
 class Details {
-  int? id;
+  int id;
   String title = '';
   String description = '';
 

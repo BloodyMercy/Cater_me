@@ -54,7 +54,7 @@ bool loading=false;
   bool ready=true;
   LatLng initPosition = LatLng(0, 0);
 
-  checkReady(LatLng? x, LocationPermission? y) {
+  checkReady(LatLng x, LocationPermission y) {
     if (x == initPosition || y == LocationPermission.denied || y == LocationPermission.deniedForever) {
       setState(() {
         ready=true;
@@ -76,8 +76,8 @@ bool loading=false;
       ),
     ));
   }
- late Uint8List myIcon;
-  late BitmapDescriptor mybit;
+ Uint8List myIcon;
+   BitmapDescriptor mybit;
   @override
   initState(){
 
@@ -98,7 +98,7 @@ bool loading=false;
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!.buffer.asUint8List();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
   }
   bool loadingMap=true;
   @override

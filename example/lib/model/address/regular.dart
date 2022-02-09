@@ -43,8 +43,8 @@ class Regular {
 }
 
 class NumberOfGuests {
-  int? id;
-  String? title;
+  int id;
+  String title;
 
   NumberOfGuests({this.id, this.title});
 
@@ -62,8 +62,8 @@ class NumberOfGuests {
 }
 
 class Events {
-  int? id;
-  String? name;
+  int id;
+  String name;
 
   Events({this.id, this.name});
 

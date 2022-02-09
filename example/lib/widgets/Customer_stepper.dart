@@ -25,7 +25,7 @@ class CustomStepper extends StatefulWidget {
   final List<String> text;
   final ScrollController controller;
   int selected;
-  CustomStepper({required this.text,this.selected=0,required this.onTap,required this.controller}){
+  CustomStepper({ this.text,this.selected=0,this.onTap, this.controller}){
     this.selected = this.selected - 1;
   }
 
@@ -62,7 +62,7 @@ class _CustomStepperState extends State<CustomStepper> {
               onTap:(){
                 widget.onTap(i+1);
                 Scrollable.ensureVisible(
-                  keys[i].currentContext!,
+                  keys[i].currentContext,
                   curve: Curves.fastOutSlowIn,
                   duration: kThemeAnimationDuration,
                 );

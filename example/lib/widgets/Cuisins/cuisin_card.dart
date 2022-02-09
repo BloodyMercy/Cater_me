@@ -14,7 +14,7 @@ class CuisinCard extends StatefulWidget {
 }
 
 class _CuisinCardState extends State<CuisinCard> {
-  late int activeIndex;
+   int activeIndex;
 
   // getData()async{
   //   Packages _cuisin=Provider.of<Packages>(context,listen: false);

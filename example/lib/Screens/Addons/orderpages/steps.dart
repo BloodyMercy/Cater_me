@@ -22,7 +22,7 @@ class AddonsCardoffer extends StatefulWidget {
 }
 
 class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
-  late int activeIndex;
+  int activeIndex;
 int selected=0;
   // getData()async{
   //   Packages _cuisin=Provider.of<Packages>(context,listen: false);

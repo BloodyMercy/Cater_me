@@ -23,16 +23,16 @@ class CustomCupertinoPicker extends StatefulWidget {
   TextEditingController controller = TextEditingController();
 
   CustomCupertinoPicker(
-      {required this.label,
-      required this.inputType,
-      required this.items,
+      { this.label,
+       this.inputType,
+       this.items,
       this.city = const [],
       this.country = const [],
       this.numberOfGuests = const [],
       this.events = const [],
       this.listoccasiontype = const [],
       this.selectedValue = 0,
-      required this.controller});
+       this.controller});
 
   @override
   State<CustomCupertinoPicker> createState() => _CustomCupertinoPickerState();
@@ -115,7 +115,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               .country[widget.selectedValue].name
                               .toString();
                           adress.getallcity(
-                              widget.country[widget.selectedValue].id!);
+                              widget.country[widget.selectedValue].id);
                           Navigator.of(context).pop();
                         }
 
@@ -176,7 +176,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       adress.countrycontroller.text =
                           widget.country[widget.selectedValue].id.toString();
                       adress
-                          .getallcity(widget.country[widget.selectedValue].id!);
+                          .getallcity(widget.country[widget.selectedValue].id);
                     }
                     if (widget.label == 'City') {
                       final adress =

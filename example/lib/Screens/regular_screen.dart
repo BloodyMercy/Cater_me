@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../custom_date_picker_form_field.dart';
 
 class ReguarScreen extends StatefulWidget {
-  const ReguarScreen({Key? key}) : super(key: key);
+  const ReguarScreen({Key  key}) : super(key: key);
 
   @override
   _ReguarScreenState createState() => _ReguarScreenState();
@@ -19,7 +19,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool validate() {
     if (formkey.currentState != null) {
-      if (formkey.currentState!.validate()) {
+      if (formkey.currentState.validate()) {
         print('Validated');
         return true;
       } else {

@@ -11,14 +11,14 @@ import 'ApiLink.dart';
 
 class AddressService{
  Future<Address> createAddress({
-    required String addresstitle,
-    required String country,
-    required String city,
-    required String street,
-    required String building,
-    required String floor,
-   required String longitude,
-   required String latitude,
+     String addresstitle,
+     String country,
+     String city,
+     String street,
+     String building,
+     String floor,
+    String longitude,
+    String latitude,
 }) async {
     Address address=Address();
     try {
