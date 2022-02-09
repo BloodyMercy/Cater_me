@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/occasion.dart';
@@ -28,15 +29,17 @@ class _OccasionListViewState extends State<OccasionListView> {
   }
   Future refreshocasionData() async {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
+    final occa = Provider.of<OccasionProvider>(context, listen: false);
 
 
-    occasion.alloccasions.clear();
-    await occasion.getalloccasions();
+    occa.all.clear();
+    await occa.getallnewoccasion();
     return;
   }
   @override
   Widget build(BuildContext context) {
     final occasion=Provider.of<PackagesProvider>(context,listen: true);
+    final occa=Provider.of<OccasionProvider>(context,listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
@@ -46,14 +49,14 @@ class _OccasionListViewState extends State<OccasionListView> {
           children: [
             SizedBox(
               height: _mediaQuery * 0.78,
-              child:occasion.alloccasions.isEmpty
+              child:occa.all.isEmpty
                   ? Center(
                 child: Container(
                   child: Image.asset('images/no addresses yet-02.png'),
                 ),
               )
                   : ListView.builder(
-                  itemCount: occasion.alloccasions.length,
+                  itemCount: occa.all.length,
                   itemBuilder: (ctx, index) {
                     return Card(
                       shape: const RoundedRectangleBorder(
@@ -77,12 +80,12 @@ class _OccasionListViewState extends State<OccasionListView> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '${DateFormat.MMM().format(DateTime.parse(occasion.alloccasions[index].date))}',
+                                      '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                        '${DateFormat.d().format(DateTime.parse(occasion.alloccasions[index].date))}',
+                                        '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
                                         style: const TextStyle(
                                             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
                                   ],
@@ -91,7 +94,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                           SizedBox(
                             width: mediaQuery.size.width * 0.1,),
                           Text(
-                            '${occasion.alloccasions[index].name}',
+                            '${occa.all[index].name}',
                             style: Theme.of(context).textTheme.headline2,
                           ),
                         ],
