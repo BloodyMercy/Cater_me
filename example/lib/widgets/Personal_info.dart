@@ -109,9 +109,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: loading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
+            ? Container(
+            color:LightColors.kLightYellow,
+              child: Center(
+                  child: CircularProgressIndicator(color:Color(0xFF3F5521),),
+                ),
+            )
             : Container(
           color: LightColors.kLightYellow,
                 child: Center(

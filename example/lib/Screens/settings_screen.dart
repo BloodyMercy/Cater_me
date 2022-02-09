@@ -368,7 +368,7 @@ setData(String imageUrl) async{
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.03,
                                 ),
-                                Icon(Icons.maps_home_work_outlined),
+                                Icon(Icons.maps_home_work_outlined,color:Color(0xFF3F5521),),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,
                                 ),

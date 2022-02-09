@@ -6,11 +6,14 @@ import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'occasion/theme/colors/light_colors.dart';
+
 class AddAddressSettingsScreen extends StatefulWidget {
   const AddAddressSettingsScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddAddressSettingsScreen> createState() => _AddAddressSettingsScreenState();
+  State<AddAddressSettingsScreen> createState() =>
+      _AddAddressSettingsScreenState();
 }
 
 class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
@@ -18,14 +21,14 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
   List<Addresses> _address = [];
 
   void _addNewAddress(
-      String contactName,
-      String email,
-      String phoneNumber,
-      String country,
-      String city,
-      String addressTitle,
-      // String id,
-      ) {
+    String contactName,
+    String email,
+    String phoneNumber,
+    String country,
+    String city,
+    String addressTitle,
+    // String id,
+  ) {
     final newAddress = Addresses(
       // image: image,
       contactName: contactName,
@@ -44,10 +47,9 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
   void _startAddNewAddress(BuildContext ctx) {
     showModalBottomSheet(
-      isScrollControlled: true,
+        isScrollControlled: true,
         context: ctx,
         builder: (_) {
-
           return AddressesTextField(_addNewAddress);
         });
   }
@@ -55,27 +57,30 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
   void deleteAddress(String id) {
     setState(() {
       _address.removeWhere(
-            (element) => element.id == id,
+        (element) => element.id == id,
       );
     });
   }
-  bool loading=true;
 
-  getData()async{
-    final adress=Provider.of<AdressProvider>(context,listen: false);
+  bool loading = true;
+
+  getData() async {
+    final adress = Provider.of<AdressProvider>(context, listen: false);
     await adress.getAllAddress();
     setState(() {
-      loading=false;
+      loading = false;
     });
   }
+
   @override
   void initState() {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    final adress=Provider.of<AdressProvider>(context,listen: true);
+    final adress = Provider.of<AdressProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     var _mediaQuery = MediaQuery.of(context).size.height;
 
@@ -104,52 +109,32 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
-          actions: [IconButton(onPressed: () => _startAddNewAddress(context), icon: Icon(Icons.add))],
+          actions: [
+            IconButton(
+                onPressed: () => _startAddNewAddress(context),
+                icon: Icon(Icons.add))
+          ],
         ),
         body: Container(
           // height: _mediaQuery,
-          color: Colors.white,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-
-                SizedBox(
-                  // height: mediaQuery.size.height*0.9,
-                  child: Column(
-                    children: [
-                      !loading? AddressesListSettings(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
-                    ],
+          color: LightColors.kLightYellow,
+          child: !loading
+              ? AddressesListSettings(
+                  adress.listaddress, deleteAddress)
+              : Container(
+                  color: LightColors.kLightYellow,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
+                    ),
                   ),
                 ),
-                // SizedBox(
-                //   height: mediaQuery.size.height*0.1,
-                //   width: mediaQuery.size.width * 0.52,
-                //   child:
-                //   ElevatedButton(onPressed:  () => _startAddNewAddress(context), child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       Text("Add An Address", style: TextStyle(color: Color(0xFF3F5521), fontFamily:'BerlinSansFB' , fontSize: 20),),
-                //       Icon(Icons.add, color: Color(0xFF3F5521),)
-                //     ],),
-                //     style: ElevatedButton.styleFrom(
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(10),
-                //       ),
-                //       primary: Colors.white,
-                //     ),
-                //
-                //   ),
-                // ),
-              ],
-            ),
-          ),
 
           // floatingActionButton: FloatingActionButton(
           //   backgroundColor: Theme.of(context).primaryColor,
           //   child: Icon(Icons.add),
           //   onPressed: () => _startAddNewAddress(context),
           // ),
-
         ),
       ),
     );
