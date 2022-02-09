@@ -1,8 +1,11 @@
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Screens/auth/newlogin/screens/signUpScreen.dart';
 import 'package:CaterMe/Screens/auth/newlogin/widgets/inputTextWidget.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../reset_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen() : super();
@@ -14,8 +17,10 @@ class LoginScreen extends StatefulWidget {
 class _SearchScreenState extends State<LoginScreen> {
   final TextEditingController _pwdController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+
   //final snackBar = SnackBar(content: Text('email ou mot de passe incorrect'));
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -26,34 +31,13 @@ class _SearchScreenState extends State<LoginScreen> {
     bool _floating = false;
 
     final widgetList = [
-      Row(
-        children: [
-          SizedBox(
-            width: 28,
-          ),
-          Text(
-            'Bienvenue',
-            style: TextStyle(
-              fontFamily: 'Segoe UI',
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xff000000),
-              
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
-      SizedBox(
-        height: 12.0,
-      ),
       Form(
           key: _formKey,
           child: Column(
             children: [
               InputTextWidget(
                   controller: _emailController,
-                  labelText: "Adresse Email",
+                  labelText: "Email or Phone number",
                   icon: Icons.email,
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress),
@@ -62,7 +46,7 @@ class _SearchScreenState extends State<LoginScreen> {
               ),
               InputTextWidget(
                   controller: _pwdController,
-                  labelText: "Mots de Passe",
+                  labelText: "Password",
                   icon: Icons.lock,
                   obscureText: true,
                   keyboardType: TextInputType.text),
@@ -73,13 +57,19 @@ class _SearchScreenState extends State<LoginScreen> {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResetPasswordScreen()));
+                        },
                         child: Text(
-                          "Mots de passe oublié ?",
+                          "Forgot Password ?",
                           style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[700]),
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF3F5521),
+                          ),
                         ),
                       ),
                     )),
@@ -92,7 +82,11 @@ class _SearchScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      print("I ove tunisia");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              Navigationbar(0)));
                     }
                     //Get.to(ChoiceScreen());
                   },
@@ -118,7 +112,7 @@ class _SearchScreenState extends State<LoginScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "Sign In",
+                        "Log In",
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
@@ -151,7 +145,9 @@ class _SearchScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(12.0),
                 child: InkWell(
                   onTap: () {
-                    print("facebook tapped");
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Coming Soon!'),
+                    ));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -187,14 +183,15 @@ class _SearchScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(12.0),
                 child: InkWell(
                   onTap: () {
-                    print("google tapped");
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Coming Soon!'),
+                    ));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Image.asset("images/google.png",
-                            fit: BoxFit.cover),
+                        Image.asset("images/google.png", fit: BoxFit.cover),
                         SizedBox(
                           width: 7.0,
                         ),
@@ -225,24 +222,24 @@ class _SearchScreenState extends State<LoginScreen> {
             pinned: _pinned,
             snap: _snap,
             floating: _floating,
-            expandedHeight: coverHeight - 25, //304,
+            expandedHeight: coverHeight - 25,
+            //304,
             backgroundColor: Color(0xFFdccdb4),
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
-              background:
-                  Image.asset("images/logo.png", fit: BoxFit.cover,height: 200,),
+              background: Image.asset(
+                "images/logo.png",
+                fit: BoxFit.cover,
+                height: 200,
+              ),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-
-                      ),
+                  borderRadius: BorderRadius.only(),
                   gradient: LinearGradient(
-                      colors: <Color>[Color(0xFFdccdb4), Color(0xFFd8c3ab)])
-
-                  ),
+                      colors: <Color>[Color(0xFFdccdb4), Color(0xFFd8c3ab)])),
               width: screenWidth,
               height: 25,
               child: Column(
@@ -253,7 +250,6 @@ class _SearchScreenState extends State<LoginScreen> {
                     height: 25,
                     decoration: BoxDecoration(
                       color: Colors.white,
-
                       borderRadius: BorderRadius.only(
                         topLeft: const Radius.circular(30.0),
                         topRight: const Radius.circular(30.0),
@@ -279,21 +275,18 @@ class _SearchScreenState extends State<LoginScreen> {
             child: Center(
                 child: Wrap(
               children: [
-                Text(
-                  "Vous n'avez pas un compte?  ",
-                  style: TextStyle(
-                      color: Colors.grey[600], fontWeight: FontWeight.bold),
-                ),
                 Material(
                     child: InkWell(
                   onTap: () {
-                    print("sign up tapped");
-                   // Get.to(SignUpScreen());
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignUpScreen()));
                   },
                   child: Text(
-                    "Sign Up",
+                    "Create New Account",
                     style: TextStyle(
-                      color: Colors.blue[800],
+                      color: Color(0xFF3F5521),
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
                     ),

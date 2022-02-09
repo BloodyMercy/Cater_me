@@ -10,6 +10,7 @@ class CreditCardsPage extends StatefulWidget {
 
 class _CreditCardsPageState extends State<CreditCardsPage> {
   int _value = -1;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
