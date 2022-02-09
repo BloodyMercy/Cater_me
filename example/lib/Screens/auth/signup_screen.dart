@@ -316,7 +316,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                     Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.password,
-                              validator: validatePass,
+                               validator: (val) {
+                                if (val.isEmpty) {
+                                  return 'Required ';
+                                } else if (val.length < 6) {
+                                  return 'mot de passe doit etre > 6 caractère';
+                                }
+
+                                return null;},
+
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: passObscure,
                             ),
@@ -325,18 +333,18 @@ class _SignupScreenState extends State<SignupScreen> {
                             TextFormField(
                               autovalidateMode:
                               AutovalidateMode.onUserInteraction,
-                              onChanged: (value) => password = value,
+                              onChanged: (value) => confirmPassword = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
                                 prefixIcon: IconButton(
                                   icon: Icon(
-                                    passObscure
+                                    confObscure
                                         ? Icons.lock_outlined
                                         : Icons.lock_open_outlined,
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      passObscure = !passObscure;
+                                      confObscure = !confObscure;
                                     });
                                   },
                                 ),
@@ -355,9 +363,16 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.confirmpassword,
-                              validator: validatePass,
+
+                              validator: (val) {
+                                if (val.isEmpty)
+                                  return 'Confirm Password';
+                                if (val != authProvider.password.text)
+                                  return 'Mot de passe incorrect';
+                                return null;
+                              },
                               keyboardType: TextInputType.visiblePassword,
-                              obscureText: passObscure,
+                              obscureText: confObscure,
                             ),
                             SizedBox(height: screenHeight * 0.015),
                             TextFormField(
