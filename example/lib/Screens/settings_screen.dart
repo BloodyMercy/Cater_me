@@ -9,6 +9,7 @@ import 'package:CaterMe/Screens/contact_us_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
 
 import 'package:CaterMe/widgets/Account_info.dart';
+import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
 
 import 'package:CaterMe/widgets/Personal_info.dart';
 import 'package:flutter/material.dart';
@@ -400,7 +401,7 @@ setData(String imageUrl) async{
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => AccountInfo(),
+                              builder: (context) => CreditCardsSettings(),
                             ),
                           );
                         },
@@ -412,62 +413,12 @@ setData(String imageUrl) async{
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.03,
                                 ),
-                                Icon(
-                                  Icons.vpn_key_sharp,
-                                  color: Color(0xFF3F5521),
-                                ),
+                                Icon(Icons.credit_card_rounded,color:Color(0xFF3F5521),),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,
                                 ),
                                 Text(
-                                  "Reset Password",
-                                  style: TextStyle(
-                                      color: Color(0xFF3F5521),
-                                      fontSize: 25,
-                                      fontFamily: 'BerlinSansFB'),
-                                ),
-                              ],
-                            ),
-                            Row(children: [
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Color(0xFF3F5521),
-                              ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.03,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => ContactUsScreen(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.03,
-                                ),
-                                Icon(
-                                  Icons.email,
-                                  color: Color(0xFF3F5521),
-                                ),
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.05,
-                                ),
-                                Text(
-                                  "Contact Us",
+                                  "My Credit Cards",
                                   style: TextStyle(
                                       color: Color(0xFF3F5521),
                                       fontSize: 25,
@@ -534,7 +485,102 @@ setData(String imageUrl) async{
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AccountInfo(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.03,
+                                ),
+                                Icon(
+                                  Icons.vpn_key_sharp,
+                                  color: Color(0xFF3F5521),
+                                ),
+                                SizedBox(
+                                  width: mediaQuery.size.width * 0.05,
+                                ),
+                                Text(
+                                  "Reset Password",
+                                  style: TextStyle(
+                                      color: Color(0xFF3F5521),
+                                      fontSize: 25,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ],
+                            ),
+                            Row(children: [
+                              Icon(
+                                Icons.arrow_forward,
+                                color: Color(0xFF3F5521),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.03,
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 20),
+                    //   child: GestureDetector(
+                    //     onTap: () {
+                    //       Navigator.of(context).push(
+                    //         MaterialPageRoute(
+                    //           builder: (context) => ContactUsScreen(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             SizedBox(
+                    //               width: mediaQuery.size.width * 0.03,
+                    //             ),
+                    //             Icon(
+                    //               Icons.email,
+                    //               color: Color(0xFF3F5521),
+                    //             ),
+                    //             SizedBox(
+                    //               width: mediaQuery.size.width * 0.05,
+                    //             ),
+                    //             Text(
+                    //               "Contact Us",
+                    //               style: TextStyle(
+                    //                   color: Color(0xFF3F5521),
+                    //                   fontSize: 25,
+                    //                   fontFamily: 'BerlinSansFB'),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //         Row(children: [
+                    //           Icon(
+                    //             Icons.arrow_forward,
+                    //             color: Color(0xFF3F5521),
+                    //           ),
+                    //           SizedBox(
+                    //             width: mediaQuery.size.width * 0.03,
+                    //           ),
+                    //         ]),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+
                   ],
                 ),
               ),

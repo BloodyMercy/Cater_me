@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 
 class AddOns extends StatefulWidget {
 int addOns;
-  AddOns(this.addOns);
+String title;
+
+  AddOns(this.addOns,this.title);
 
   @override
   State<AddOns> createState() => _AddOnsState();
@@ -17,14 +19,15 @@ int addOns;
 class _AddOnsState extends State<AddOns> {
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     getallons();
+    super.initState();
+
   }
   getallons() async{
-
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
+    _cuisin.loading=true;
    await _cuisin.getonid(widget.addOns);
+   _cuisin.loading=false;
   }
   @override
   Widget build(BuildContext context) {
@@ -32,18 +35,15 @@ class _AddOnsState extends State<AddOns> {
     final mediaQuery = MediaQuery.of(context);
     PreferredSize appBar = PreferredSize(
       preferredSize: Size.fromHeight(
-        MediaQuery.of(context).size.height * 0.12,
+        MediaQuery.of(context).size.height * 0.08,
       ),
       child: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.only(top: (mediaQuery.size.width * 0.04)),
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back, color: Colors.white),
-            iconSize: 30,
-          ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          iconSize: 30,
         ),
         elevation: 0,
         shape: const RoundedRectangleBorder(
@@ -52,12 +52,9 @@ class _AddOnsState extends State<AddOns> {
           ),
         ),
         centerTitle: true,
-        title: Padding(
-          padding: EdgeInsets.only(top: (mediaQuery.size.height * 0.04)),
-          child: Text(
-            '',
-            style: Theme.of(context).textTheme.headline1,
-          ),
+        title: Text(
+          '${widget.title}',
+          style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,
       ),
@@ -66,22 +63,21 @@ class _AddOnsState extends State<AddOns> {
       appBar: appBar,
       body: ColoredBox(
         color: Colors.white,
-        child: GridView(
-          padding: const EdgeInsets.all(25),
-          children: getAddOns(_cuisin.allons),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 2.9 / 3,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 5,
+        child:
+        _cuisin.loading?
+        Center(child: CircularProgressIndicator(),)
+            :
+        GridView(
+            padding: const EdgeInsets.all(25),
+            children: getAddOns(_cuisin.allons),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2.9 / 3,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 5,
+            ),
           ),
         ),
-      ),
-
-
-
-
-
-    );
+      );
   }
 }

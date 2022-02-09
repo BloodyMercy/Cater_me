@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/notification_provider.dart';
 import 'package:CaterMe/Providers/order.dart';
@@ -133,6 +134,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: OccasionProvider()),
         ChangeNotifierProvider.value(value: OrderProvider()),
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
+        ChangeNotifierProvider.value(value: CreditCardsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
