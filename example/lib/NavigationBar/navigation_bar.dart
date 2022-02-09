@@ -77,6 +77,8 @@ class _NavigationBarState extends State<Navigationbar> {
     );
   }
   Widget buildbody(BuildContext context) {
+    final package = Provider.of<PackagesProvider>(context, listen: true);
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: IndexedStack(
@@ -138,8 +140,8 @@ class _NavigationBarState extends State<Navigationbar> {
                 ),
                 label: 'Ocasions',
               ),
-              BottomNavigationBarItem(
-                icon:   Badge(
+        package.nbnotification.length>0  ? BottomNavigationBarItem(
+                icon:  Badge(
                     badgeColor: Color.fromRGBO(253, 202, 29, 1),
                    // badgeContent:Text("3"),
                     child: Icon(
@@ -147,7 +149,13 @@ class _NavigationBarState extends State<Navigationbar> {
                       color: Theme.of(context).primaryColor,
                     )),
                 label: 'Orders',
+              ):BottomNavigationBarItem(
+          icon:  Icon(
+                Icons.backpack,
+                color: Theme.of(context).primaryColor,
               ),
+          label: 'Orders',
+        ),
               const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,

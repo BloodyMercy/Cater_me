@@ -60,6 +60,7 @@ dependencies:
   cloud_firestore:
   firebase_storage:
   photo_view:
+  get: ^4.1.4
 
 
 
