@@ -62,6 +62,7 @@ dependencies:
   photo_view:
   get: ^4.1.4
   lottie: ^1.2.1
+  flutter_spinkit:
 
 
 

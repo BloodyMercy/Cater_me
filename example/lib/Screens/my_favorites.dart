@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/widgets/favoriteDetails.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ class MyFavorites extends StatefulWidget {
 
 class _MyFavoritesState extends State<MyFavorites> {
   bool loading = true;
+
 
   getData() async {
     final package = Provider.of<PackagesProvider>(context, listen: false);
@@ -70,9 +72,16 @@ class _MyFavoritesState extends State<MyFavorites> {
                           child: Text("No Favorite To Dispaly!"),
                         )
                       : SingleChildScrollView(
-                        child: Column(
-                            children: [...getFavorites(package.listfavorite)],
-                          ),
+                        child: GestureDetector(
+                          // onTap:( )=> Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             favoriteDetails()));
+                          child: Column(
+                              children: [...getFavorites(package.listfavorite)],
+                            ),
+                        ),
                       )
                   : Center(
                       child: CircularProgressIndicator(

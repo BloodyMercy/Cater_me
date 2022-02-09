@@ -32,111 +32,223 @@ class _AddressesListState extends State<AddressesList> {
               child: Container(
               child: Image.asset('images/no addresses yet-01.png'),
             ))
-          : ListView.builder(
-              itemCount: widget.address.length,
-              itemBuilder: (ctx, index) {
+
+          : Expanded(child: CustomScrollView(
+        slivers: [
+          SliverList(delegate:  SliverChildBuilderDelegate(
+              (BuildContext context, int i){
                 return Card(
-                  color: LightColors.kLightYellow2,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: _mediaQuery * 0.04,
-                        horizontal: _mediaQuery * 0.01),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 45,
-                        ),
-                        Radio(
-                          toggleable: true,
-                          groupValue: orderprovider.valueIndex,
-                          value: index,
-                          onChanged: (value) {
-                            setState(() {
-                              _value = index;
-                              orderprovider.valueIndex = index;
-                            });
-                            orderprovider.value = widget.address[index];
-                          },
-                        ),
+                            color: LightColors.kLightYellow2,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: _mediaQuery * 0.04,
+                                  horizontal: _mediaQuery * 0.01),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 45,
+                                  ),
+                                  Radio(
+                                    toggleable: true,
+                                    groupValue: orderprovider.valueIndex,
+                                    value: i,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _value = i;
+                                        orderprovider.valueIndex = i;
+                                      });
+                                      orderprovider.value = widget.address[i];
+                                    },
+                                  ),
 
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Title: ${widget.address[index].title.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            // Radio(
-                            //   value: 2,
-                            //   groupValue: _value,
-                            //   onChanged: (value) {
-                            //     setState(() {
-                            //       _value = _value;
-                            //     });
-                            //   },
-                            // ),
-                            Text(
-                              "City: ${widget.address[index].city.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            // Radio(
-                            //   value: 3,
-                            //   groupValue: _value,
-                            //   onChanged: (value) {
-                            //     setState(() {
-                            //       _value = _value;
-                            //     });
-                            //   },
-                            // ),
-                            Text(
-                              "Street: ${widget.address[index].street.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            // Radio(
-                            //   value: 4,
-                            //   groupValue: _value,
-                            //   onChanged: (value) {
-                            //     setState(() {
-                            //       _value = _value;
-                            //     });
-                            //   },
-                            // ),
-                            Text(
-                              "Building Name: ${widget.address[index].buildingName.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                            // Radio(
-                            //   value: 5,
-                            //   groupValue: _value,
-                            //   onChanged: (value) {
-                            //     setState(() {
-                            //       _value = _value;
-                            //     });
-                            //   },
-                            // ),
-                            Text(
-                              "Floor Number: ${widget.address[index].floorNumber.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        // Text(
-                        //   'Address Title',
-                        //   style: const TextStyle(
-                        //       fontSize: 20, fontWeight: FontWeight.bold),
-                        // ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Title: ${widget.address[i].title.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold),
+                                      ),
+                                      // Radio(
+                                      //   value: 2,
+                                      //   groupValue: _value,
+                                      //   onChanged: (value) {
+                                      //     setState(() {
+                                      //       _value = _value;
+                                      //     });
+                                      //   },
+                                      // ),
+                                      Text(
+                                        "City: ${widget.address[i].city.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold),
+                                      ),
+                                      // Radio(
+                                      //   value: 3,
+                                      //   groupValue: _value,
+                                      //   onChanged: (value) {
+                                      //     setState(() {
+                                      //       _value = _value;
+                                      //     });
+                                      //   },
+                                      // ),
+                                      Text(
+                                        "Street: ${widget.address[i].street.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold),
+                                      ),
+                                      // Radio(
+                                      //   value: 4,
+                                      //   groupValue: _value,
+                                      //   onChanged: (value) {
+                                      //     setState(() {
+                                      //       _value = _value;
+                                      //     });
+                                      //   },
+                                      // ),
+                                      Text(
+                                        "Building Name: ${widget.address[i].buildingName.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold),
+                                      ),
+                                      // Radio(
+                                      //   value: 5,
+                                      //   groupValue: _value,
+                                      //   onChanged: (value) {
+                                      //     setState(() {
+                                      //       _value = _value;
+                                      //     });
+                                      //   },
+                                      // ),
+                                      Text(
+                                        "Floor Number: ${widget.address[i].floorNumber.toString()}",
+                                        style: const TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  // Text(
+                                  //   'Address Title',
+                                  //   style: const TextStyle(
+                                  //       fontSize: 20, fontWeight: FontWeight.bold),
+                                  // ),
 
-                        // SizedBox(height: _mediaQuery * 0.01),
-                      ],
-                    ),
-                  ),
-                );
-              }),
+                                  // SizedBox(height: _mediaQuery * 0.01),
+                                ],
+                              ),
+                            ),
+                          );
+              }
+          )
+          ),
+
+        ],
+      ))
+          // : ListView.builder(
+          //     itemCount: widget.address.length,
+          //     itemBuilder: (ctx, index) {
+          //       return Card(
+          //         color: LightColors.kLightYellow2,
+          //         child: Padding(
+          //           padding: EdgeInsets.symmetric(
+          //               vertical: _mediaQuery * 0.04,
+          //               horizontal: _mediaQuery * 0.01),
+          //           child: Row(
+          //             children: [
+          //               SizedBox(
+          //                 width: 45,
+          //               ),
+          //               Radio(
+          //                 toggleable: true,
+          //                 groupValue: orderprovider.valueIndex,
+          //                 value: index,
+          //                 onChanged: (value) {
+          //                   setState(() {
+          //                     _value = index;
+          //                     orderprovider.valueIndex = index;
+          //                   });
+          //                   orderprovider.value = widget.address[index];
+          //                 },
+          //               ),
+          //
+          //               Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.start,
+          //                 children: [
+          //                   Text(
+          //                     "Title: ${widget.address[index].title.toString()}",
+          //                     style: const TextStyle(
+          //                         fontSize: 15, fontWeight: FontWeight.bold),
+          //                   ),
+          //                   // Radio(
+          //                   //   value: 2,
+          //                   //   groupValue: _value,
+          //                   //   onChanged: (value) {
+          //                   //     setState(() {
+          //                   //       _value = _value;
+          //                   //     });
+          //                   //   },
+          //                   // ),
+          //                   Text(
+          //                     "City: ${widget.address[index].city.toString()}",
+          //                     style: const TextStyle(
+          //                         fontSize: 15, fontWeight: FontWeight.bold),
+          //                   ),
+          //                   // Radio(
+          //                   //   value: 3,
+          //                   //   groupValue: _value,
+          //                   //   onChanged: (value) {
+          //                   //     setState(() {
+          //                   //       _value = _value;
+          //                   //     });
+          //                   //   },
+          //                   // ),
+          //                   Text(
+          //                     "Street: ${widget.address[index].street.toString()}",
+          //                     style: const TextStyle(
+          //                         fontSize: 15, fontWeight: FontWeight.bold),
+          //                   ),
+          //                   // Radio(
+          //                   //   value: 4,
+          //                   //   groupValue: _value,
+          //                   //   onChanged: (value) {
+          //                   //     setState(() {
+          //                   //       _value = _value;
+          //                   //     });
+          //                   //   },
+          //                   // ),
+          //                   Text(
+          //                     "Building Name: ${widget.address[index].buildingName.toString()}",
+          //                     style: const TextStyle(
+          //                         fontSize: 15, fontWeight: FontWeight.bold),
+          //                   ),
+          //                   // Radio(
+          //                   //   value: 5,
+          //                   //   groupValue: _value,
+          //                   //   onChanged: (value) {
+          //                   //     setState(() {
+          //                   //       _value = _value;
+          //                   //     });
+          //                   //   },
+          //                   // ),
+          //                   Text(
+          //                     "Floor Number: ${widget.address[index].floorNumber.toString()}",
+          //                     style: const TextStyle(
+          //                         fontSize: 15, fontWeight: FontWeight.bold),
+          //                   ),
+          //                 ],
+          //               ),
+          //               // Text(
+          //               //   'Address Title',
+          //               //   style: const TextStyle(
+          //               //       fontSize: 20, fontWeight: FontWeight.bold),
+          //               // ),
+          //
+          //               // SizedBox(height: _mediaQuery * 0.01),
+          //             ],
+          //           ),
+          //         ),
+          //       );
+          //     }),
     );
   }
 }

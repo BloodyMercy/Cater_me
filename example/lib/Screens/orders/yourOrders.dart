@@ -78,6 +78,7 @@ class _YourOrdersState extends State<YourOrders> {
                               );
                             },
                             child: Card(
+                              elevation: 5,
                               color: LightColors.kLightYellow2,
                                 child: Padding(
                               padding: const EdgeInsets.symmetric(

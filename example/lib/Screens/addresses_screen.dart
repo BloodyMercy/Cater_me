@@ -57,73 +57,91 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       );
     });
   }
-  bool loading=true;
 
-  getData()async{
-    final adress=Provider.of<AdressProvider>(context,listen: false);
+  bool loading = true;
+
+  getData() async {
+    final adress = Provider.of<AdressProvider>(context, listen: false);
     await adress.getAllAddress();
     setState(() {
-      loading=false;
+      loading = false;
     });
   }
+
   @override
   void initState() {
     getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    final adress=Provider.of<AdressProvider>(context,listen: true);
+    final adress = Provider.of<AdressProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     var _mediaQuery = MediaQuery.of(context).size.height;
 
     return Container(
-color: LightColors.kLightYellow,
+      color: LightColors.kLightYellow,
       child: Column(
         children: [
           SizedBox(
-              height: mediaQuery.size.height*0.53,
+            height: mediaQuery.size.height * 0.53,
             child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    !loading? AddressesList(adress.listaddress, deleteAddress):Container(
-                      color: LightColors.kLightYellow,
-                        child: Center(child: CircularProgressIndicator(color: Color(0xFF3F5521),),)),
-                  ],
-                ),
+              child: Column(
+                children: [
+                  !loading
+                      ? AddressesList(adress.listaddress, deleteAddress)
+                      : Container(
+                          color: LightColors.kLightYellow,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: Color(0xFF3F5521),
+                            ),
+                          )),
+                ],
               ),
-          ),
-          SizedBox(
-            height: mediaQuery.size.height*0.1,
-            width: mediaQuery.size.width * 0.52,
-            child:
-          Padding(
-            padding:  EdgeInsets.only(top:mediaQuery.size.height*0.01),
-            child: ElevatedButton(onPressed:  () => _startAddNewAddress(context), child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Text("Add An Address", style: TextStyle(color: Color(0xFF3F5521), fontFamily:'BerlinSansFB' , fontSize: 20),),
-              Icon(Icons.add, color: Color(0xFF3F5521),)
-            ],),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                primary: Colors.white,
-             ),
-
             ),
           ),
+          SizedBox(
+            height: mediaQuery.size.height * 0.1,
+            width: mediaQuery.size.width * 0.52,
+            child: Padding(
+              padding: EdgeInsets.only(top: mediaQuery.size.height * 0.01),
+              child: ElevatedButton(
+                onPressed: () => _startAddNewAddress(context),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Add An Address",
+                      style: TextStyle(
+                          color: Color(0xFF3F5521),
+                          fontFamily: 'BerlinSansFB',
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.add,
+                      color: Color(0xFF3F5521),
+                    )
+                  ],
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  primary: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),
 
-        // floatingActionButton: FloatingActionButton(
-        //   backgroundColor: Theme.of(context).primaryColor,
-        //   child: Icon(Icons.add),
-        //   onPressed: () => _startAddNewAddress(context),
-        // ),
-
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   child: Icon(Icons.add),
+      //   onPressed: () => _startAddNewAddress(context),
+      // ),
     );
   }
 }

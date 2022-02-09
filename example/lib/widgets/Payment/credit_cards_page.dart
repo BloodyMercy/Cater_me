@@ -1,8 +1,9 @@
 import 'package:CaterMe/Payment/Payment.dart';
+import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
   @override
@@ -16,12 +17,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cc = Provider.of<CreditCardsProvider>(context, listen: true);
     return Scaffold(
       body: SafeArea(
         child: Container(
           color: LightColors.kLightYellow,
           child: Column(
-
             children: <Widget>[
               Expanded(
                   child: CustomScrollView(
@@ -32,18 +33,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         subTitle: "How would you like to pay ?"),
                   ),
                   SliverList(
-                    delegate:
-                        SliverChildBuilderDelegate((BuildContext context, int i) {
-                      return addcard? Container(
+                    delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int i) {
+                      return Container(
                         child: Row(
                           children: [
                             Radio(
                               toggleable: true,
-                              groupValue:_value,
-                               value: i,
+                              groupValue: _value,
+                              value: i,
                               onChanged: (value) {
                                 setState(() {
-                                   _value = i;
+                                  _value = i;
                                   // orderprovider.valueIndex = index;
                                 });
                                 // orderprovider.value = widget.address[index];
@@ -56,11 +57,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                 cardNumber: "9874 4785 XXXX 6548"),
                           ],
                         ),
-
-                      ):HomeScreen();
-                    },
-                            childCount: 0
-                        ),
+                      );
+                    }, childCount: 5),
                   ),
                   // SliverToBoxAdapter(
                   //   child:
@@ -135,10 +133,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   // Build the credit card widget
   Card _buildCreditCard(
-      { Color color,
+      {Color color,
       String cardNumber,
       String cardHolder,
-     String cardExpiration}) {
+      String cardExpiration}) {
     return Card(
       elevation: 4.0,
       color: color,
@@ -180,30 +178,28 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     );
   }
 
+  Object _cardType(String type) {
+    if (type == "MASTERCARD") return SvgPicture.asset('images/master_card.svg');
+    if (type == "VISA") return SvgPicture.asset('images/visa_card.svg');
+    return null;
+  }
+
   // Build the top row containing logos
   Row _buildLogosBlock() {
+    final cc = Provider.of<CreditCardsProvider>(context, listen: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 10.0),
-          child: SvgPicture.asset(
-            "images/caterme.svg",
-            height: 40,
-            width: 18,
-          ),
+          child: SvgPicture.asset(_cardType(cc.type)),
         ),
-        // Image.asset(
-        //   "assets/images/mastercard.png",
-        //   height: 50,
-        //   width: 50,
-        // ),
       ],
     );
   }
 
 // Build Column containing the cardholder and expiration information
-  Column _buildDetailsBlock({ String label,  String value}) {
+  Column _buildDetailsBlock({String label, String value}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -227,7 +223,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
 // Build the FloatingActionButton
   Container _buildAddCardButton({
-   Icon icon,
+    Icon icon,
     Color color,
   }) {
     return Container(

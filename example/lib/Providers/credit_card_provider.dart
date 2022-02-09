@@ -7,6 +7,13 @@ class CreditCardsProvider extends ChangeNotifier{
   List<CreditCardsModel> _list=[];
   bool _loading=false;
   int _valueIndex=-1;
+  String _type = '';
+
+  String get type => _type;
+
+  set type(String value) {
+    _type = value;
+  }
 
   int get valueIndex => _valueIndex;
 

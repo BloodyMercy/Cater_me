@@ -59,12 +59,6 @@ class _DetailsOrderState extends State<DetailsOrder> {
     super.dispose();
   }
 
-  Color _getColorByEvent(String event) {
-    if (event == "Approved") return Colors.green;
-    if (event == "Rejected") return Colors.red;
-    return Colors.blue;
-  }
-
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
@@ -83,68 +77,56 @@ class _DetailsOrderState extends State<DetailsOrder> {
                     ),
                   ),
                 )
-              : Container(
-                  color: LightColors.kLightYellow,
-                  child: Center(
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      child: Column(
-                        children: [
-                          ListView.builder(
+              : Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Card(
+                        elevation: 5,
+                        child: Container(
+                          child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "${order.orderList[index].item} x ${order.orderList[index].quantity}",
-                                        style: TextStyle(
-                                            color: Color(0xFF3F5521),
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "\$ ${order.orderList[index].finalPrice}",
-                                        style: TextStyle(
-                                            color: Color(0xFF3F5521),
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 25,
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "${order.orderList[index].item} x ${order.orderList[index].quantity}",
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.03,
+                                        ),
+                                        Text(
+                                          "\$ ${order.orderList[index].finalPrice.toDouble().toStringAsFixed(2)}",
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               );
                             },
                             itemCount: order.orderList.length,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Tax",
-                                style: TextStyle(
-                                    color: Color(0xFF3F5521),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "\$ ${finaltax}",
-                                style: TextStyle(
-                                    color: Color(0xFF3F5521),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ),
+                    ]),
+              ),
         ),
       ),
     );
