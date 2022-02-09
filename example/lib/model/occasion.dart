@@ -17,7 +17,7 @@ Occasion.fromJson(Map<String, dynamic> json) {
     id = json['typeid'];
     date = json['date'];
     name = json['title'];
-    type = json['typeId'];
+    type = json['typeId'].toString();
 
   }
 }

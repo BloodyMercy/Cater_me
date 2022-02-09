@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 
 import 'package:CaterMe/Screens/add_new_occasion.dart';
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getalldata();
+    getData();
   }
 
   bool loading = false;
@@ -60,6 +62,18 @@ class _HomePageState extends State<HomePage> {
     }
     package.loading = true;
   }
+
+  Future getData() async {
+    final occasion = Provider.of<OccasionProvider>(context, listen: false);
+    await occasion.getallnewoccasion();
+
+    setState(() {
+      loading = false;
+    });
+    return;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

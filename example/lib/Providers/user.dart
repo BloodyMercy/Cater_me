@@ -45,6 +45,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController shopname = TextEditingController();
   TextEditingController specialist = TextEditingController();
   TextEditingController bio = TextEditingController();
+  TextEditingController emailChat = TextEditingController();
 
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
@@ -107,23 +108,17 @@ class UserProvider with ChangeNotifier {
   set messageSignUp(String value) => _messageSignUp = value;
 
   UserProvider.statusfunction() {
-
 getdata();
-email.text="patourtohme9@gmail.com";
-password.text="Peter69@";
-// email.text="patour_aboulpete1@gmail.com";
-// password.text="P@ssw0rd";
-
-
-
-
-
+// email.text="patourtohme9@gmail.com";
+// password.text="Peter69@";
+email.text="patour_aboulpete1@gmail.com";
+password.text="P@ssw0rd";
   }
 
 
   getdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-
+    emailChat.text=sh.getString('email');
 
 
 

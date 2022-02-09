@@ -129,10 +129,34 @@ setData(String imageUrl) async{
                           padding: const EdgeInsets.only(top: 20.0),
                           child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
                             child: CircleAvatar(
+                              backgroundColor: Colors.transparent,
                               minRadius: 16,
                               maxRadius: screenHeight * 0.1,
+                              // child: ClipOval(
+                              //
+                              //   child: Image.network(
+                              //
+                              //     personalInfo.imageUrl,
+                              //     // fit: BoxFit.fitHeight,
+                              //     loadingBuilder: (BuildContext context, Widget child,
+                              //         ImageChunkEvent loadingProgress) {
+                              //       if (loadingProgress == null) {
+                              //         return child;
+                              //       }
+                              //       return Center(
+                              //         child: CircularProgressIndicator(
+                              //           value: loadingProgress.expectedTotalBytes != null
+                              //               ? loadingProgress.cumulativeBytesLoaded /
+                              //               loadingProgress.expectedTotalBytes
+                              //               : null,
+                              //         ),
+                              //       );
+                              //     },
+                              //   ),
+                              // ),
                               backgroundImage:
                               NetworkImage(personalInfo.imageUrl),
+
                               //   ,
                             ),
                           ),
@@ -286,14 +310,38 @@ setData(String imageUrl) async{
 
                 ],
               ),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          // child: Image.network(
+          //   personalInfo.imageUrl,
+          //   loadingBuilder: (BuildContext context, Widget child,
+          //       ImageChunkEvent loadingProgress) {
+          //     if (loadingProgress == null) {
+          //       return child;
+          //     }
+          //     return Center(
+          //       child: CircularProgressIndicator(
+          //         value: loadingProgress.expectedTotalBytes != null
+          //             ? loadingProgress.cumulativeBytesLoaded /
+          //             loadingProgress.expectedTotalBytes
+          //             : null,
+          //       ),
+          //     );
+          //   },
+          // ),
+        ),
               SizedBox(
                 height: screenHeight * 0.01,
               ),
-              Text(personalInfo.name.text),
+              Text(personalInfo.name.text,style: TextStyle(fontWeight: FontWeight.bold),),
               SizedBox(
                 height: screenHeight * 0.01,
               ),
-              Text(personalInfo.phoneNumber.text),
+              Text(personalInfo.phoneNumber.text,style: TextStyle(fontWeight: FontWeight.bold)),
 
 
               SizedBox(

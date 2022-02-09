@@ -74,6 +74,7 @@ token=token;
 
     //    SharedPreferences phoneNumber = await SharedPreferences.getInstance();
         prefs.setString('phoneNumber', responseData['phoneNumber']);
+        prefs.setString('email', responseData['email']);
         prefs.commit();
 
         // p.getString("userid")

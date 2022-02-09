@@ -1,7 +1,9 @@
 import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -24,11 +26,13 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
   void initState() {
     getAllData();
     super.initState();
-  }
+  }final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final _creditCards=Provider.of<CreditCardsProvider>(context,listen: true);
     return Scaffold(
+      key: _scaffoldKey,
+
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -54,20 +58,33 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(onPressed: (){
+
             Navigator.of(context).push(
               MaterialPageRoute(builder: (_)=>HomeScreen())
             );
           }, icon: Icon(Icons.add))
         ],
       ),
-
-      body: SafeArea(
-        child: Column(
+        // _creditCards.list.length==0?Center(child: Container(
+        //   margin: const EdgeInsets.only(top: 24.0),
+        //   alignment: Alignment.center,
+        //   child: FloatingActionButton(
+        //     elevation: 2.0,
+        //     onPressed: () {
+        //       print("Add a credit card");
+        //     },
+        //     backgroundColor: colorCustom,
+        //     mini: false,
+        //     child: Icon(Icons.add),
+        //   ),
+        // ),)
+      body:_creditCards.loading?Center(child: CircularProgressIndicator(),): SafeArea(
+        child:  Column(
 
           children: <Widget>[
 
             Expanded(
-                child:_creditCards.loading?Center(child: CircularProgressIndicator(),): CustomScrollView(
+                child: CustomScrollView(
                   slivers: [
                     SliverToBoxAdapter(
                       child: _buildTitleSection(
@@ -79,24 +96,88 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                       SliverChildBuilderDelegate((BuildContext context, int i) {
                         return  Container(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Radio(
-                                toggleable: true,
-                                groupValue:_creditCards.valueIndex,
-                                value: i,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _creditCards.valueIndex = i;
-                                    // orderprovider.valueIndex = index;
-                                  });
-                                  // orderprovider.value = widget.address[index];
-                                },
-                              ),
                               _buildCreditCard(
                                   color: LightColors.kLightYellow2,
                                   cardExpiration: _creditCards.list[i].expiryDate,
                                   cardHolder: _creditCards.list[i].ownerName,
                                   cardNumber: "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}"),
+                              _creditCards.loadingDelete? Center(
+                                child: CircularProgressIndicator(),).alignment: IconButton(
+                                  onPressed: () {
+                                    _creditCards.valueIndex = i;
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text('Delete Credit Card'),
+                                        content: Text('Are you sure you want to delete this card'),
+                                        actions: [
+                                          Row(
+                                            mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                            children: [  ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+
+                                                },
+                                                child: Text('NO')),
+                                              ElevatedButton(
+                                                  onPressed: () async{
+                                                    _creditCards.loading=true;
+                                                    _creditCards.notifyListeners();
+                                                    Navigator.pop(context);
+
+                                                    var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
+                                                    if(delete=="deleted"){
+                                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                          content: Text('Address Deleted')
+                                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                      //   content: Text('Address Deleted'),
+                                                      ));
+                                                    }else{
+                                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                          content: Text('Address cannot be deleted')
+                                                        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                        //   content: Text('Address Deleted'),
+                                                      ));
+                                                    }
+
+
+                                                   await _creditCards.getAllCards();
+                                                    _creditCards.loading=false;
+                                                    _creditCards.notifyListeners();
+                                                  },
+                                                  child: Text('Yes')),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    );
+
+
+
+
+
+
+                                  }, icon:Icon(Icons.delete,color: Colors.red) ),
+
+                          // Slidable(
+                          //   key: UniqueKey(),
+                          //   endActionPane: ActionPane(
+                          //     motion:  BehindMotion(),
+                          //     children:  [
+                          //       Spacer(),
+                          //
+                          //
+                          //     ],
+                          //   ),
+                          //   child: Row(
+                          //     children: [
+                          //
+                          //     ],
+                          //   ),
+                          //
+                          // )
                             ],
                           ),
 

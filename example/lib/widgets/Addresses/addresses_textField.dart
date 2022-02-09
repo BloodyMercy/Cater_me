@@ -66,15 +66,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       controller: adress.addresstitlecontroller,
                     ),
                     SizedBox(height: _mediaQueryText * 0.03),
-                    // TextField(
-                    //   decoration: const InputDecoration(
-                    //     labelText: 'Country',
-                    //     contentPadding: EdgeInsets.only(left: 20),
-                    //   ),
-                    //   onSubmitted: (_) => submitData(),
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   controller: adress.countrycontroller,
-                    // ),
+
                     adress.listcountry.length != 0
                         ? CustomCupertinoPicker(
                             label: 'Country',
@@ -84,22 +76,11 @@ class _AddressesTextFields extends State<AddressesTextField> {
                             inputType: TextInputType.number,
                             controller: adress.countrycontrollerstring,
                           )
-                        : Center(
-                            child: Container(
-                            child: Text("No Country to Dispaly"),
-                          )),
+                        : Center(child: CircularProgressIndicator(),),
                     SizedBox(height: _mediaQueryText * 0.03),
-                    // TextField(
-                    //   decoration: const InputDecoration(
-                    //     labelText: 'City',
-                    //     contentPadding: EdgeInsets.only(left: 20),
-                    //   ),
-                    //   onSubmitted: (_) => submitData(),
-                    //   keyboardType: TextInputType.phone,
-                    //   controller: adress.phonenumbercontroller,
-                    // ),
 
-                    adress.listcity.length != 0
+
+                    adress.listcity.length!=0
                         ? CustomCupertinoPicker(
                             label: 'City',
                             items: adress.listcityname,
@@ -108,10 +89,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                             inputType: TextInputType.number,
                             controller: adress.citycontrollerstring,
                           )
-                        : Center(
-                            child: Container(
-                            child: Text("No City to Dispaly"),
-                          )),
+                        : Center(),
                     SizedBox(height: _mediaQueryText * 0.03),
                     TextField(
                       decoration: const InputDecoration(

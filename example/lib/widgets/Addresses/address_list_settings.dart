@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
+import 'addresses_textField.dart';
+
 class AddressesListSettings extends StatefulWidget {
   final List<Address> address;
   Function deleteAddress;
@@ -40,16 +42,24 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
             return Slidable(
               key: UniqueKey(),
               endActionPane: ActionPane(
-                motion:  ScrollMotion(),
+                motion:  BehindMotion(),
                 children:  [
+                  Spacer(),
                   IconButton(onPressed: (){
+
                     address.addresstitlecontroller.text=widget.address[index].title;
                     address.citycontrollerstring.text=widget.address[index].city;
-                    address.countrycontrollerstring.text="1";
+                    // address.countrycontrollerstring.text=;
                     address.streetcontroller.text=widget.address[index].street;
                     address.buildingcontroller.text=widget.address[index].buildingName;
                     address.floornumbercontroller.text=widget.address[index].floorNumber.toString();
-
+                    print(address.addresstitlecontroller.text);
+                    showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: ctx,
+                        builder: (_) {
+                          return AddressesTextField((){});
+                        });
 
                   }, icon: Icon(Icons.edit,color: Color(0xFF3F5521),)),
                   IconButton(
