@@ -44,6 +44,8 @@ class ApiLink{
  static String ResetPassword=host+"Accounts/ResetPassword";
  static String DeleteAddress=host+"Addresses/DeleteAddress";
  static String makeorder=host+"Orders/PlaceOrder";
+ static String GetAllCreditCards=host+"Checkout/GetAllCreditCards";
+ static String DeleteCreditCards=host+"Checkout/DeleteCreditCard";
 
 
 

@@ -53,7 +53,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => AddOns(package.addonsall[widget.i].id),),
+                          builder: (context) => AddOns(package.addonsall[widget.i].id,package.addonsall[widget.i].name)),
 
                       );
                     }),

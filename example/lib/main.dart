@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/notification_provider.dart';
 import 'package:CaterMe/Providers/order.dart';
@@ -25,7 +26,6 @@ import 'Providers/packages.dart';
 import 'Providers/user.dart';
 
 
-import 'Screens/auth/newlogin/screens/loginScreen.dart';
 import 'Screens/chooseadress/confirm_location_view.dart';
 import 'Screens/occasion/screens/home_page.dart';
 import 'Screens/order_summery_copy.dart';
@@ -134,6 +134,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: OccasionProvider()),
         ChangeNotifierProvider.value(value: OrderProvider()),
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
+        ChangeNotifierProvider.value(value: CreditCardsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -180,7 +181,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: LoginScreen(),
+        home: appstate(),
       ),
     );
   }

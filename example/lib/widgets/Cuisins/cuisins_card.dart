@@ -19,9 +19,9 @@ class CuisinsCard extends StatelessWidget {
         GestureDetector(
 
           onTap: () {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => AddOns(cuisin.id),
+            builder: (context) => AddOns(cuisin.id,cuisin.name),
           ),
         );
           },

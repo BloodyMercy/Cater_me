@@ -171,10 +171,10 @@ Future<void>  getalloccasions()async {
 
 
 Future<void>  getonid(int id)async {
-  loading = false;
-  // notifyListeners();
+
+
   _allons = await PackageService.getOnsbyid(id);
-  loading = true;
+
   //         Cuisines.fromJson(_alldata['cuisine']);
   // _addonsall = List<Addonall>.from(
   //     _alldata['addons'].map((model) => Addonall.fromJson(model)));

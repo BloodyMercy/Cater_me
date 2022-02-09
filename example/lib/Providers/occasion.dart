@@ -1,9 +1,11 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Services/occasion.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasion.dart';
 import 'package:CaterMe/model/occasions/occasiontype.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,6 +42,46 @@ Occasion _occasioncreated=Occasion();
 
   List<Occassion> get listoccasion => _listoccasion;
 
+
+
+
+
+  OccasionService get occasionService => _occasionService;
+
+  set occasionService(OccasionService value) {
+    _occasionService = value;
+  }
+
+
+
+
+  List<Occasion> _today=[];
+  List<Occasion> get today => _today;
+
+  set today(List<Occasion> value) {
+    _today = value;
+  }
+  List<Occasion> _thisWeek=[];
+  List<Occasion> get thisWeek => _thisWeek;
+
+  set thisWeek(List<Occasion> value) {
+    _thisWeek = value;
+  }
+
+  List<Occasion> _all=[];
+  List<Occasion> get all => _all;
+
+  set all(List<Occasion> value) {
+    _all = value;
+  }
+  Map<String, dynamic> _alldata={};
+
+
+  Map<String, dynamic> get alldata => _alldata;
+
+  set alldata(Map<String, dynamic> value) {
+    _alldata = value;
+  }
 
   TextEditingController nameofoccasioncontroller = TextEditingController();
   TextEditingController typeofoccasioncontroller = TextEditingController();
@@ -88,4 +130,29 @@ Occasion _occasioncreated=Occasion();
    typeofoccasioncontroller.text="";
      datechosencontroller.text="";
   }
+
+
+bool loading=false;
+  Future<void>  getallnewoccasion()async {
+    loading=false;
+//notifyListeners();
+    _alldata=await OccasionService.getallnewoccasions();
+    if(_alldata.length==0){
+
+    }
+
+    else {
+      _today = List<Occasion>.from(_alldata['today'].map((model) => Occasion.fromJsonadd(model)));
+      _thisWeek = List<Occasion>.from(_alldata['thisWeek'].map((model) => Occasion.fromJsonadd(model)));
+      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model)));
+
+
+
+    }
+
+    loading=true;
+    notifyListeners();
+  }
+
+
 }

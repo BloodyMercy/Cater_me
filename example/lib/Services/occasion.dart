@@ -94,4 +94,48 @@ class OccasionService{
       return [];
     }
   }
+
+  //newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+  static Future<Map<String, dynamic>> getallnewoccasions() async{
+    List<Occasion> l=[];
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.Request('GET', Uri.parse(ApiLink.Getalloccasions));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+      if (response.statusCode == 200) {
+
+        Map<String, dynamic> responseData = json.decode(response.body);
+
+        //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
+
+
+        return responseData;
+
+      }
+      else if (response.statusCode == 401) {
+        return {"status":"1"};
+
+      }
+      else {
+        print(response.reasonPhrase);
+        return {};
+      }
+
+
+
+    }catch(e){
+
+      return {};
+    }
+  }
 }
