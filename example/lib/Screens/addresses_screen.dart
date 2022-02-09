@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_list.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
@@ -77,7 +78,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     var _mediaQuery = MediaQuery.of(context).size.height;
 
     return Container(
-
+color: LightColors.kLightYellow,
       child: Column(
         children: [
           SizedBox(
@@ -85,7 +86,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    !loading? AddressesList(adress.listaddress, deleteAddress):Center(child: CircularProgressIndicator(),),
+                    !loading? AddressesList(adress.listaddress, deleteAddress):Container(
+                      color: LightColors.kLightYellow,
+                        child: Center(child: CircularProgressIndicator(color: Color(0xFF3F5521),),)),
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class _AddressesListState extends State<AddressesList> {
               itemCount: widget.address.length,
               itemBuilder: (ctx, index) {
                 return Card(
+                  color: LightColors.kLightYellow2,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: _mediaQuery * 0.04,

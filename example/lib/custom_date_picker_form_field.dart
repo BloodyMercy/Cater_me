@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:intl/intl.dart';
+
+import 'Screens/occasion/theme/colors/light_colors.dart';
 class CustomDatePickerFormField extends StatefulWidget {
   String label;
   TextEditingController controller = TextEditingController();
@@ -42,9 +44,9 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
         showTitle: false,
-          backgroundColor: Color(0xFF3F5521),
+          backgroundColor:LightColors.kLightYellow2,
         itemTextStyle: TextStyle(
-            color: Colors.white
+            color:Color(0xFF3F5521),
         ),
       ),
 
@@ -75,7 +77,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
       margin: EdgeInsets.only(bottom: 15),
       padding: EdgeInsets.all(13),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: LightColors.kLightYellow2,
           borderRadius: BorderRadius.all(Radius.circular(5))
       ),
       child: Row(

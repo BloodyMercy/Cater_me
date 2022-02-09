@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'daberne_screen.dart';
+import 'occasion/theme/colors/light_colors.dart';
 import 'regular_screen.dart';
 
 class RegularDaberneScreen extends StatefulWidget {
@@ -29,7 +30,8 @@ bool loading = true;
         Provider.of<OrderCaterProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    return SizedBox(
+    return Container(
+      color: LightColors.kLightYellow,
       height: screenHeight * 1,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),

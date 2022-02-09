@@ -9,6 +9,8 @@ import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'occasion/theme/colors/light_colors.dart';
+
 class RelatedOffersScreen extends StatefulWidget {
   RelatedOffersScreen({Key key}) : super(key: key);
 
@@ -57,7 +59,8 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
     return Column(
       children: [
-        SizedBox(
+        Container(
+          color: LightColors.kLightYellow,
             height: screenHeight * 0.63,
             child: !pack.allpackagesorder.isEmpty
                 ? ListView.separated(

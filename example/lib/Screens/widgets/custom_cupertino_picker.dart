@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/occasion.dart';
+import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
@@ -97,10 +98,11 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     CupertinoButton(
+
                       child: Text(
                         "Pick " + widget.label.toLowerCase(),
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w300),
+                            color: Color(0xFF3F5521), fontWeight: FontWeight.w300),
                       ),
                       onPressed: () {
                         if (widget.label == 'Country') {
@@ -161,7 +163,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
               Container(
                 height: 250,
                 child: CupertinoPicker(
-                  backgroundColor: colorCustom,
+                  backgroundColor: LightColors.kLightYellow2,
                   onSelectedItemChanged: (value) {
                     setState(() {
                       widget.selectedValue = value;
@@ -228,7 +230,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
       margin: EdgeInsets.only(bottom: 15),
       padding: EdgeInsets.all(13),
       decoration: BoxDecoration(
-          color: Colors.white, //white
+          color: LightColors.kLightYellow2, //white
           borderRadius: BorderRadius.all(Radius.circular(5))),
       child: Row(
         children: [

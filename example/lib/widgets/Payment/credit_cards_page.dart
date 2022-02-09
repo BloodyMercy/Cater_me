@@ -1,3 +1,4 @@
+import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,95 +12,99 @@ class CreditCardsPage extends StatefulWidget {
 class _CreditCardsPageState extends State<CreditCardsPage> {
   int _value = -1;
   int selectedIndex = -1;
+  bool addcard = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Container(
+          color: LightColors.kLightYellow,
+          child: Column(
 
-          children: <Widget>[
-            Expanded(
-                child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: _buildTitleSection(
-                      title: "Payment Details",
-                      subTitle: "How would you like to pay ?"),
-                ),
-                SliverList(
-                  delegate:
-                      SliverChildBuilderDelegate((BuildContext context, int i) {
-                    return Container(
-                      child: Row(
-                        children: [
-                          Radio(
-                            toggleable: true,
-                            groupValue:_value,
-                             value: i,
-                            onChanged: (value) {
-                              setState(() {
-                                 _value = i;
-                                // orderprovider.valueIndex = index;
-                              });
-                              // orderprovider.value = widget.address[index];
-                            },
-                          ),
-                          _buildCreditCard(
-                              color: LightColors.kLightYellow2,
-                              cardExpiration: "05/2024",
-                              cardHolder: "HOUSSEM SELMI",
-                              cardNumber: "9874 4785 XXXX 6548"),
-                        ],
-                      ),
+            children: <Widget>[
+              Expanded(
+                  child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: _buildTitleSection(
+                        title: "Payment Details",
+                        subTitle: "How would you like to pay ?"),
+                  ),
+                  SliverList(
+                    delegate:
+                        SliverChildBuilderDelegate((BuildContext context, int i) {
+                      return addcard? Container(
+                        child: Row(
+                          children: [
+                            Radio(
+                              toggleable: true,
+                              groupValue:_value,
+                               value: i,
+                              onChanged: (value) {
+                                setState(() {
+                                   _value = i;
+                                  // orderprovider.valueIndex = index;
+                                });
+                                // orderprovider.value = widget.address[index];
+                              },
+                            ),
+                            _buildCreditCard(
+                                color: LightColors.kLightYellow2,
+                                cardExpiration: "05/2024",
+                                cardHolder: "HOUSSEM SELMI",
+                                cardNumber: "9874 4785 XXXX 6548"),
+                          ],
+                        ),
 
-                    );
-                  },
-                          childCount: 3
-                      ),
-                ),
-                SliverToBoxAdapter(
-                  child:
-                  _buildAddCardButton(
-                      icon: Icon(Icons.add),
-                      color: LightColors.kLightYellow2),
-                )
-              ],
-            )
+                      ):HomeScreen();
+                    },
+                            childCount: 0
+                        ),
+                  ),
+                  // SliverToBoxAdapter(
+                  //   child:
+                  //   _buildAddCardButton(
+                  //       icon: Icon(Icons.add),
+                  //       color: LightColors.kLightYellow2),
+                  // )
+                ],
+              )
 
-                //
-                // Container(
-                //   height: 400,
-                //   child: ListView.builder(
-                //     itemCount:3 ,
-                //       itemBuilder: (ctx,index){
-                //     return  Row(
-                //       // mainAxisAlignment: MainAxisAlignment.center,
-                //       children: [
-                //         Radio(
-                //           toggleable: true,
-                //           // groupValue: orderprovider.valueIndex,
-                //           value: index,
-                //           onChanged: (value) {
-                //             setState(() {
-                //               _value = index;
-                //               // orderprovider.valueIndex = index;
-                //             });
-                //             // orderprovider.value = widget.address[index];
-                //           }, groupValue: _value,
-                //         ),
-                //         _buildCreditCard(
-                //             color: LightColors.kLightYellow2,
-                //             cardExpiration: "05/2024",
-                //             cardHolder: "HOUSSEM SELMI",
-                //             cardNumber: "9874 4785 XXXX 6548"),
-                //       ],
-                //     );
-                //   }),
-                // ),
+                  //
+                  // Container(
+                  //   height: 400,
+                  //   child: ListView.builder(
+                  //     itemCount:3 ,
+                  //       itemBuilder: (ctx,index){
+                  //     return  Row(
+                  //       // mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Radio(
+                  //           toggleable: true,
+                  //           // groupValue: orderprovider.valueIndex,
+                  //           value: index,
+                  //           onChanged: (value) {
+                  //             setState(() {
+                  //               _value = index;
+                  //               // orderprovider.valueIndex = index;
+                  //             });
+                  //             // orderprovider.value = widget.address[index];
+                  //           }, groupValue: _value,
+                  //         ),
+                  //         _buildCreditCard(
+                  //             color: LightColors.kLightYellow2,
+                  //             cardExpiration: "05/2024",
+                  //             cardHolder: "HOUSSEM SELMI",
+                  //             cardNumber: "9874 4785 XXXX 6548"),
+                  //       ],
+                  //     );
+                  //   }),
+                  // ),
 
-                )
-          ],
+                  )
+            ],
+          ),
         ),
       ),
     );

@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../custom_date_picker_form_field.dart';
+import 'occasion/theme/colors/light_colors.dart';
 
 class ReguarScreen extends StatefulWidget {
   const ReguarScreen({Key  key}) : super(key: key);
@@ -47,7 +48,8 @@ getData()async{
   Widget build(BuildContext context) {
 final address=Provider.of<AdressProvider>(context,listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
-    return  SizedBox(
+    return  Container(
+      color: LightColors.kLightYellow,
       height: screenHeight * 1,
       child: Padding(
         padding:
@@ -98,12 +100,14 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                   // ),
 
                   Container(
+
                     height: MediaQuery.of(context).size.height/8,
 
                     child:CustomDatePickerFormField(
 
                       label: "Event Date",
                       controller: address.evendatecontroller,
+
                     ),
                   ),
                   // SizedBox(height: screenHeight * 0.02),

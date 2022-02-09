@@ -73,94 +73,102 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
         );
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
     return SingleChildScrollView(
-        child: Column(children: [
+        child: Container(
+
+          color: LightColors.kLightYellow,
+          child: Column(children: [
       _cuisinprovider.cuisinsbyid.length != 0
-          ? Container(
-              height: 50,
-              width: 400,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: _cuisinprovider.cuisinsbyid.length,
-                itemBuilder: (context, index) {
-                  //  final cards = card[i];
-                  return Container(
-                    child: GestureDetector(
-                      onTap: () async {
-                        setState(() {
-                          loadingitems = true;
-                          selected = index;
-                        });
-                        await _cuisin.getonidorder(
-                            _cuisinprovider.cuisinsbyid[index].id,
-                            orderprov.serviceId,
-                            true);
-                        setState(() {
-                          loadingitems = false;
-                        });
-                        //
-                        // Navigator.of(context).pushReplacement(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => AddOns(cuisin.id),
-                        //   ),
-                        // );
-                      },
-                      child: Card(
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: (index == selected)
-                                    ? Color.fromRGBO(253, 202, 29, 0.8)
-                                    : Color(0xFF3F5521),
-                                border: Border.all(style: BorderStyle.none),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                image: DecorationImage(
-                                    opacity: 0.5,
-                                    image: NetworkImage(
-                                      _cuisinprovider.cuisinsbyid[index].image,
-                                    ),
-                                    fit: BoxFit.fill)),
-                            width: mediaQuery.size.height * 0.15,
-                            height: mediaQuery.size.height / 8,
-                            child: Center(
-                              child: Text(
-                                '${_cuisinprovider.cuisinsbyid[index].name}',
-                                style: TextStyle(
-                                    color: LightColors.kLightYellow,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'BerlinSansFB'),
+            ? Container(
+
+                height: 50,
+                width: 400,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _cuisinprovider.cuisinsbyid.length,
+                  itemBuilder: (context, index) {
+                    //  final cards = card[i];
+                    return Container(
+
+                      child: GestureDetector(
+                        onTap: () async {
+                          setState(() {
+                            loadingitems = true;
+                            selected = index;
+                          });
+                          await _cuisin.getonidorder(
+                              _cuisinprovider.cuisinsbyid[index].id,
+                              orderprov.serviceId,
+                              true);
+                          setState(() {
+                            loadingitems = false;
+                          });
+                          //
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => AddOns(cuisin.id),
+                          //   ),
+                          // );
+                        },
+                        child: Card(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
                               ),
                             ),
-                          )),
-                    ),
-                  );
-                },
-              ))
-          : Center(child: Text("No Cuisines To Dispaly")),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: (index == selected)
+                                      ? Color.fromRGBO(253, 202, 29, 0.8)
+                                      : Color(0xFF3F5521),
+                                  border: Border.all(style: BorderStyle.none),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  image: DecorationImage(
+                                      opacity: 0.5,
+                                      image: NetworkImage(
+                                        _cuisinprovider.cuisinsbyid[index].image,
+                                      ),
+                                      fit: BoxFit.fill)),
+                              width: mediaQuery.size.height * 0.15,
+                              height: mediaQuery.size.height / 8,
+                              child: Center(
+                                child: Text(
+                                  '${_cuisinprovider.cuisinsbyid[index].name}',
+                                  style: TextStyle(
+                                      color: LightColors.kLightYellow,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BerlinSansFB'),
+                                ),
+                              ),
+                            )),
+                      ),
+                    );
+                  },
+                ))
+            : Center(child: Text("No Cuisines To Dispaly")),
       !loadingitems
-          ? Container(
-              height: 500,
-              //ß  width:300,
+            ? Container(
+                height: 500,
+                //ß  width:300,
 
-              child: GridView(
-                padding: const EdgeInsets.all(25),
-                children: getAddOnOrder(_cuisin.allonsorder),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 2.9 / 3,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 5,
+                child: GridView(
+                  padding: const EdgeInsets.all(25),
+                  children: getAddOnOrder(_cuisin.allonsorder),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 2.9 / 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 5,
+                  ),
+                ))
+            : Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xFF3F5521),
                 ),
-              ))
-          : Center(
-              child: CircularProgressIndicator(),
-            )
-    ]));
+              )
+    ]),
+        ));
 
     // listview.builder(
 
