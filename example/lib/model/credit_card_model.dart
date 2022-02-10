@@ -1,18 +1,13 @@
 class CreditCardsModel {
   int id=0;
-  String cardId;
-  String expiryDate;
-  String ownerName;
-  String cardNumber;
-  String type;
+  String cardId="";
+  String expiryDate="";
+  String ownerName="";
+  String cardNumber="";
+  String type="";
 
   CreditCardsModel(
-      this.id,
-        this.cardId,
-        this.expiryDate,
-        this.ownerName,
-        this.cardNumber,
-        this.type);
+   );
 
   CreditCardsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

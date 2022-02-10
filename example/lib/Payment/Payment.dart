@@ -1,12 +1,16 @@
 
 import 'dart:async';
 
+import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:credit_card/credit_card_form.dart';
 import 'package:credit_card/credit_card_model.dart';
 import 'package:credit_card/credit_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_checkout_payment/flutter_checkout_payment.dart';
+
+import 'package:provider/provider.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -27,11 +31,22 @@ class _HomeScreenState extends State<HomeScreen> {
     initPaymentSDK();
   }
 
+  paymentsdk() async{
+   bool a= await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53");
+
+   print(a);
+  bool b=  await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53", environment: Environment.LIVE);
+    print(b);
+   CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(number: "4242424242424242", name: "name", expiryMonth: "05", expiryYear: "21", cvv: "100");
+   print(response.token);
+  // print(response.token);
+  }
+
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPaymentSDK() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      bool isSuccess = await FlutterCheckoutPayment.init(key: "{Keys.TEST_KEY}");
+      bool isSuccess = await FlutterCheckoutPayment.init(key: "pk_test_3d1705b5-c273-44c2-a8f3-ed737498c04e");
       //bool isSuccess =  await FlutterCheckoutPayment.init(key: "${Keys.TEST_KEY}", environment: Environment.LIVE);
       print(isSuccess);
       if (mounted) setState(() => _isInit = "true");
@@ -70,31 +85,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          "Generate Token",
+                          "add to my cards",
                           style: TextStyle(fontSize: 14),
                         )),
                     onPressed: _generateToken,
                   ),
-                  ElevatedButton(
-                    child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Text(
-                          "Card Validation",
-                          style: TextStyle(fontSize: 14),
-                        )),
-                    onPressed: _cardValidation,
-                  )
+
                 ]),
-                ElevatedButton(
-                  child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        "Generate Token with Address",
-                        style: TextStyle(fontSize: 14),
-                      )),
-                  onPressed: _generateTokenWithAddress,
-                )
-              ]),
+
+                ]),
               SizedBox(height: 10)
             ],
           ),
@@ -138,18 +137,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Hide loading dialog
       Navigator.pop(context);
+      final address = Provider.of<OrderCaterProvider>(context, listen: false);
+
+CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token);
+if(card.id==0){
+
+
+  showDialog(
+    context: this.context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("error "),
+        content: Text("try again"),
+        actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
+      );
+    },
+  );
+
+
+}
+
+else {
+  Navigator.pop(context);
+}
+
 
       // Show result dialog
-      showDialog(
-        context: this.context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Token"),
-            content: Text("${response?.token}"),
-            actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
-          );
-        },
-      );
+      // showDialog(
+      //   context: this.context,
+      //   builder: (BuildContext context) {
+      //     return AlertDialog(
+      //       title: Text("Token"),
+      //       content: Text("${response?.token}"),
+      //       actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
+      //     );
+      //   },
+      // );
     } catch (ex) {
       // Hide loading dialog
       Navigator.pop(context);

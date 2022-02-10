@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:CaterMe/chat/constants/firestore_constants.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/Users.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -77,6 +79,7 @@ class AuthModelSignUp {
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
+        final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
         Map<String, dynamic> responseData = json.decode(response.body);
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -87,6 +90,25 @@ class AuthModelSignUp {
 
         SharedPreferences email = await SharedPreferences.getInstance();
         email.setString('email', responseData['email']);
+
+        // final QuerySnapshot result = await firebaseFirestore.collection(FirestoreConstants.pathUserCollection)
+        //     .where(FirestoreConstants.id, isEqualTo: responseData['email'])
+        //     .get();
+        // final List<DocumentSnapshot> documents = result.docs;
+        // if (documents.length == 0) {
+        //   // Writing data to server because here is a new user
+        //   firebaseFirestore.collection(FirestoreConstants.pathUserCollection).doc(responseData['email']).set({
+        //     FirestoreConstants.nickname: responseData['name'],
+        //     FirestoreConstants.photoUrl: responseData['imageUrl'],
+        //     FirestoreConstants.id: responseData['email'],
+        //     'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+        //     FirestoreConstants.chattingWith: null
+        //   });
+        //
+        //   // Write data to local storage
+        //
+        // }
+
 
         // users = Users.fromJson(responseData);
         ErrorMessage em = ErrorMessage();
