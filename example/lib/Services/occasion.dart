@@ -9,7 +9,8 @@ import 'ApiLink.dart';
 
 class OccasionService{
   Future createOccasion({
-    bool hasReminder,
+    int id,
+    // bool hasReminder,
    String name,
   int typeId,
     String date,
@@ -23,11 +24,11 @@ class OccasionService{
       var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.CreateOccasions));
       respons.headers.addAll(headers);
       respons.fields.addAll({
-        // 'Id': "0",
-        'Name': '${name}',
-        'TypeId': "${typeId}",
-        'Date': '${date}',
-        'HasReminder': "${hasReminder}",
+        'profileId': id.toString(),
+        'Title': name,
+        'TypeId': typeId.toString(),
+        'date': date,
+       // 'HasReminder': "${hasReminder}",
       });
 
       // open a bytestream
@@ -41,7 +42,7 @@ class OccasionService{
         Map<String, dynamic> responseData = json.decode(response.body);
         //  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        occasion = Occasion.fromJson(responseData);
+        occasion = Occasion.fromJsonadd(responseData);
         return occasion;
 
       } else {
