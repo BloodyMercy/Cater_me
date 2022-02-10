@@ -85,7 +85,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       child: Column(
         children: [
           SizedBox(
-            height: mediaQuery.size.height * 0.53,
+            height: mediaQuery.size.height * 0.6,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -102,38 +102,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: mediaQuery.size.height * 0.1,
-            width: mediaQuery.size.width * 0.52,
-            child: Padding(
-              padding: EdgeInsets.only(top: mediaQuery.size.height * 0.01),
-              child: ElevatedButton(
-                onPressed: () => _startAddNewAddress(context),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Add An Address",
-                      style: TextStyle(
-                          color: Color(0xFF3F5521),
-                          fontFamily: 'BerlinSansFB',
-                          fontSize: 20),
-                    ),
-                    Icon(
-                      Icons.add,
-                      color: Color(0xFF3F5521),
-                    )
-                  ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  primary: Colors.white,
-                ),
-              ),
-            ),
-          ),
+
         ],
       ),
 

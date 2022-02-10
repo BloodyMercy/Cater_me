@@ -34,31 +34,33 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   ),
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int i) {
-                      return Container(
-                        child: Row(
-                          children: [
-                            Radio(
-                              toggleable: true,
-                              groupValue: _value,
-                              value: i,
-                              onChanged: (value) {
-                                setState(() {
-                                  _value = i;
-                                  // orderprovider.valueIndex = index;
-                                });
-                                // orderprovider.value = widget.address[index];
-                              },
-                            ),
-                            _buildCreditCard(
-                                color: LightColors.kLightYellow2,
-                                cardExpiration: "05/2024",
-                                cardHolder: "HOUSSEM SELMI",
-                                cardNumber: "9874 4785 XXXX 6548"),
-                          ],
-                        ),
-                      );
-                    }, childCount: 5),
+                      (BuildContext context, int i) {
+                        return Container(
+                          child: Row(
+                            children: [
+                              Radio(
+                                toggleable: true,
+                                groupValue: _value,
+                                value: i,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _value = i;
+                                    // orderprovider.valueIndex = index;
+                                  });
+                                  // orderprovider.value = widget.address[index];
+                                },
+                              ),
+                              _buildCreditCard(
+                                  color: LightColors.kLightYellow2,
+                                  cardExpiration: "05/2024",
+                                  cardHolder: "HOUSSEM SELMI",
+                                  cardNumber: "9874 4785 XXXX 6548"),
+                            ],
+                          ),
+                        );
+                      },
+                      childCount: 5,
+                    ),
                   ),
                   // SliverToBoxAdapter(
                   //   child:
@@ -192,7 +194,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 10.0),
-          child: SvgPicture.asset(_cardType(cc.type)),
+          // child: SvgPicture.asset(_cardType(cc.type)),
         ),
       ],
     );
