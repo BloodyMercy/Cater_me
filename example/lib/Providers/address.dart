@@ -6,6 +6,8 @@ import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
+import 'package:CaterMe/model/friend_model.dart';
+import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -18,6 +20,7 @@ class AdressProvider extends ChangeNotifier{
   AddressService _addressService=AddressService();
 List<Country> _listcountry=[];//<Country>
   List<City> _listcity=[];
+  List<FriendModel>Friends =[];
   List<Address> _listaddress=[];
   Regular _regular=Regular();
 List<String> _listnamenumber=[];
@@ -26,6 +29,15 @@ Address _addressCreated=Address();
   Address _addressUpdated=Address();
 
   Address get addressUpdated => _addressUpdated;
+
+  FriendModel _value=FriendModel() ;
+
+
+  FriendModel get value => _value;
+
+  set value(FriendModel value) {
+    _value = value;
+  }
 
   set addressUpdated(Address value) {
     _addressUpdated = value;
@@ -104,6 +116,7 @@ List<String> _listcityname=[];
   TextEditingController eventnamecontroller=TextEditingController();
   TextEditingController evendatecontroller=TextEditingController();
   TextEditingController numberofguestcontroller=TextEditingController();
+  TextEditingController DailyDatecontroller=TextEditingController();
   TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
   TextEditingController typeofeventcontrollerstring=TextEditingController();
@@ -126,6 +139,7 @@ return em.message;
 
   clearAllData(){
     eventnamecontroller.text = '';
+    DailyDatecontroller.text='';
     evendatecontroller.text = '';
     numberofguestcontroller.text = '';
     typeofeventcontroller.text = '';
@@ -255,5 +269,31 @@ notifyListeners();
 
   set listnameevent(List<String> value) {
     _listnameevent = value;
+  }
+
+
+
+
+  AddressService get addressService => _addressService;
+
+  set addressService(AddressService value) {
+    _addressService = value;
+  }
+
+
+
+ static int _value2Index = -1;
+
+  int get value2Index => _value2Index;
+
+  set value2Index(int value) {
+    _value2Index = value;
+  }
+  static int _value1Index = -1;
+
+  int get value1Index => _value1Index;
+
+  set value1Index(int value) {
+    value1Index = value;
   }
 }

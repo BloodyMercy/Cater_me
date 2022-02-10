@@ -133,6 +133,7 @@ class _OrderState extends State<Order> {
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
     final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
+
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
@@ -212,6 +213,33 @@ class _OrderState extends State<Order> {
 
 
                               if(orderProvider.spets==1) {
+
+                                  if (orderProvider.value.id==0
+                                  ) {
+                                    _key.currentState
+                                        .showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            "please choose an address "),
+                                      ),
+                                    );
+                                    // orderProvider.spets==1;
+                                  }
+
+                                // if (orderProvider.value.id==0) {
+                                //   _key.currentState
+                                //       .showSnackBar(
+                                //     SnackBar(
+                                //       content: Text(
+                                //           "please choose one from the following offers "),
+                                //     ),
+                                //   );
+                                // }
+                                else{
+                                  orderProvider.spets=value;
+                                }
+                              }
+                              if(orderProvider.spets==2) {
                                 if (orderProvider.value.id==0) {
                                   _key.currentState
                                       .showSnackBar(
@@ -220,34 +248,7 @@ class _OrderState extends State<Order> {
                                           "please choose one from the following offers "),
                                     ),
                                   );
-                                }
-                                else{
-                                  orderProvider.spets=value;
-                                }
-                              }
-                              if(orderProvider.spets==2) {
-                                // if (address
-                                //     .eventnamecontroller
-                                //     .text ==
-                                //     "" ||
-                                //     address.evendatecontroller
-                                //         .text ==
-                                //         "" ||
-                                //     address
-                                //         .numberofguestcontroller
-                                //         .text ==
-                                //         "" ||
-                                //     address
-                                //         .typeofeventcontroller
-                                //         .text == "") {
-                              if( orderProvider.serviceId==0){
-                                  _key.currentState
-                                      .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "please fill the empty fields "),
-                                    ),
-                                  );
+                                  // orderProvider.spets=0;
                                 }
                                 else{
                                   orderProvider.spets=value;
@@ -269,15 +270,17 @@ class _OrderState extends State<Order> {
                                         .typeofeventcontroller
                                         .text == "")
                                       {
-                                      if( orderProvider.serviceId==0){
-                                      _key.currentState
-                                          .showSnackBar(
+                                      // orderProvider.spets=0;
+                                      // if( orderProvider.serviceId==0){
+                                      // _key.currentState
+                                      //     .showSnackBar(
                                       SnackBar(
                                       content: Text(
                                       "please fill the empty fields "),
-                                      ),
                                       );
-                                      }else{
+                                      // );
+                                      }
+                                      else{
                                         orderProvider.spets=value;
                                         setState(() {
                                           //  orderProvider.spets=value;
@@ -293,7 +296,7 @@ class _OrderState extends State<Order> {
 
 
 
-                              }
+
                               if(orderProvider.spets==5){
 
 
@@ -381,7 +384,7 @@ class _OrderState extends State<Order> {
                     child:
                     (orderProvider.spets==1)? AddAddressScreen():
                     (orderProvider.spets==2)? RegularDaberneScreen():
-                    (orderProvider.spets==3)? ReguarScreen():
+                    (orderProvider.spets==3)? ReguarScreen(addresses.Friends):
                     (orderProvider.spets==4)? RelatedOffersScreen():
                     (orderProvider.spets==5)? CuisinCardoffer(packageProvider.cuisins.id):
                     (orderProvider.spets==6)? AddonsCardoffer(0):
