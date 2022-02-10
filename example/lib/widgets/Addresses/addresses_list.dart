@@ -177,7 +177,7 @@ class _AddressesListState extends State<AddressesList> {
                       ),
                     ),
                     SliverToBoxAdapter(
-                      child: ElevatedButton(
+                      child: TextButton(
                       onPressed: () => _startAddNewAddress(context),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -185,9 +185,10 @@ class _AddressesListState extends State<AddressesList> {
                           Text(
                             "Add An Address",
                             style: TextStyle(
+                              decoration: TextDecoration.underline,
                                 color: Color(0xFF3F5521),
                                 fontFamily: 'BerlinSansFB',
-                                fontSize: 20),
+                                fontSize: 17),
                           ),
                           Icon(
                             Icons.add,

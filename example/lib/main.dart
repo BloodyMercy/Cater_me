@@ -1,3 +1,4 @@
+import 'package:CaterMe/Payment/OrderSucc.dart';
 import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
@@ -199,7 +200,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:  SplashScreen(),
+        home:  AppointmentSuccess(),
       ),
     );
   }
