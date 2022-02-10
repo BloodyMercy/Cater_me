@@ -7,6 +7,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/notifications_list.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'occasion/theme/colors/light_colors.dart';
@@ -101,38 +102,37 @@ class _NotificationsState extends State<Notifications> {
                             color: LightColors.kLightYellow2,
                             elevation: 5,
                             child: Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: Row(
+                              padding: const EdgeInsets.fromLTRB(30, 10, 30, 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20.0),
-                                    child: CircleAvatar(
-                                      minRadius: 16,
-                                      maxRadius: screenHeight * 0.04,
-                                      backgroundImage:
-                                          AssetImage('images/food33.jpg'),
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  allNotification.notificationlist[index].seen ? FaIcon(FontAwesomeIcons.checkDouble,color: colorCustom,):Container(),
+                                  Row(
                                     children: [
-                                      Text(allNotification
-                                          .notificationlist[index].title),
-                                      Text(allNotification
-                                          .notificationlist[index].description),
-                                     
-                                  
-                                    ]
-                                      
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        allNotification.notificationlist[index].seen ? Icon(Icons.circle,color: colorCustom,):Container(),
-                                      ],
-                                    ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 20.0),
+                                        child: CircleAvatar(
+                                          minRadius: 16,
+                                          maxRadius: screenHeight * 0.04,
+                                          backgroundImage:
+                                              AssetImage('images/food33.jpg'),
+                                        ),
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(allNotification
+                                              .notificationlist[index].title),
+                                          Text(allNotification
+                                              .notificationlist[index].description),
+
+
+                                        ]
+
+                                      ),
+
+                                    ],
                                   ),
                                 ],
                               ),
