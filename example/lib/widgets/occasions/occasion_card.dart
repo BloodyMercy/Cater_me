@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/edit_occasion.dart';
@@ -37,8 +38,8 @@ class _OccasionCardState extends State<OccasionCard> {
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
-    final package=Provider.of<PackagesProvider>(context,listen:true);
-    List<Occasion> occc=getOccasionsToday(package.occasions);
+    final occasion=Provider.of<OccasionProvider>(context,listen:true);
+    List<Occasion> occc=getOccasionsToday(occasion.today);
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(OccasionsCard card, int index) =>
         Container(
@@ -58,7 +59,7 @@ class _OccasionCardState extends State<OccasionCard> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      EditOccasion(occc[index]),
+                                      EditOccasion(occasion.all[index]),
                                 ),
                               );
                             },
@@ -77,7 +78,7 @@ class _OccasionCardState extends State<OccasionCard> {
             ],
           ),
         );
-    List<OccasionsCard> card = getOccasions(package.occasions);
+    List<OccasionsCard> card = getOccasions(occasion.today);
     var content = card.length >0?Container(
       height: mediaQuery.size.height*0.2,
         child: ListView.builder(

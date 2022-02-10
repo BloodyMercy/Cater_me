@@ -96,8 +96,9 @@ Occasion _occasioncreated=Occasion();
 
   Future<bool> createOccasions(BuildContext context) async {
     final package=Provider.of<PackagesProvider>(context,listen:false);
+    final occa=Provider.of<OccasionProvider>(context,listen:false);
     _occasioncreated = await _occasionService.createOccasion(
-        hasReminder: _yearlureminder,
+        // hasReminder: _yearlureminder,
         name: nameofoccasioncontroller.text,
         typeId: int.parse(typeofoccasioncontroller.text),
         date: datechosencontroller.text,
@@ -105,10 +106,13 @@ Occasion _occasioncreated=Occasion();
     if(_occasioncreated.id==0)
       return false;
       else {
-      List<Occasion> l = package.alloccasions;
+      List<Occasion> l = occa.all;
+         // package.alloccasions;
       l.add(_occasioncreated);
-      package.alloccasions = l;
-      package.notifyListeners();
+      // package.alloccasions = l;
+      // package.notifyListeners();
+      occa.all=l;
+      occa.notifyListeners();
       notifyListeners();
       return true;
     }

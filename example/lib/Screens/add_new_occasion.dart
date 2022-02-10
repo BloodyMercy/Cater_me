@@ -61,6 +61,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     await occasion.getAllOccasionType();
+    await occasion.getallnewoccasion();
     // occasion.yearlureminder = false;
     setState(() {
       loading = false;
@@ -78,8 +79,8 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
   final _scaff = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    final package = Provider.of<PackagesProvider>(context, listen: true);
-    final occa = Provider.of<OccasionProvider>(context, listen: true);
+    // final package = Provider.of<PackagesProvider>(context, listen: true);
+    final occasion = Provider.of<OccasionProvider>(context, listen: true);
 
     // List<Occasion> occasion = occasionSS;
     final mediaQuery = MediaQuery.of(context);
@@ -119,7 +120,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                 children: [
                   SizedBox(height: mediaQuery.size.height * 0.07),
                   TextFormField(
-                    controller: occa.nameofoccasioncontroller,
+                    controller: occasion.nameofoccasioncontroller,
                     decoration: InputDecoration(
                       labelText: 'Name Of Occasion',
                       labelStyle: Theme.of(context).textTheme.headline4,
@@ -138,14 +139,14 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                   //   ),
                   // ),
 
-                  occa.listoccasiontype.length != 0
+                  occasion.listoccasiontype.length != 0
                       ? CustomCupertinoPicker(
                           label: 'Type of Occasion',
-                          items: occa.listoccasiontypename,
-                          listoccasiontype: occa.listoccasiontype,
+                          items: occasion.listoccasiontypename,
+                          listoccasiontype: occasion.listoccasiontype,
                           selectedValue: 0,
                           inputType: TextInputType.number,
-                          controller: occa.typeofoccasioncontroller,
+                          controller: occasion.typeofoccasioncontroller,
                         )
                       : Center(
                           child: Container(
@@ -185,7 +186,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                             setState(() {
                               if (_newDate != null) {
                                 selectedDate = _newDate;
-                                occa.datechosencontroller.text =
+                                occasion.datechosencontroller.text =
                                     _newDate.toString();
                               }
                             });
@@ -223,10 +224,10 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                       !ispressed
                           ? ElevatedButton(
                               onPressed: () async {
-                                if (occa.datechosencontroller.text == "" ||
-                                    occa.typeofoccasioncontroller.text ==
+                                if (occasion.datechosencontroller.text == "" ||
+                                    occasion.typeofoccasioncontroller.text ==
                                         "" ||
-                                    occa.nameofoccasioncontroller.text ==
+                                    occasion.nameofoccasioncontroller.text ==
                                         "") {
                                   _scaff.currentState.showSnackBar(
                                     SnackBar(
@@ -244,10 +245,10 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                   //     date: selectedDate.toString(),
                                   //     yearly: yearly) as Occassion;
                                   //  package.occasions.add(n);
-                                  occa.datechosencontroller.text =
+                                  occasion.datechosencontroller.text =
                                       '${DateFormat.yMd().format(selectedDate)}';
                                   bool a =
-                                      await occa.createOccasions(context);
+                                      await occasion.createOccasions(context);
                                   if (!a)
                                     {
                                       setState(() {
@@ -261,7 +262,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
                                     );  }
                                   else {
-                                    occa.cleardata();
+                                    occasion.cleardata();
                                     setState(() {
                                       ispressed = false;
                                     });
