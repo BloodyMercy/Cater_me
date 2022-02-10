@@ -64,6 +64,7 @@ dependencies:
   get: ^4.1.4
   lottie: ^1.2.1
   flutter_local_notifications: 5.0.0+4
+  font_awesome_flutter:
 
 
 
