@@ -3,6 +3,7 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/orders/mainOrderId.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/notifications_list.dart';
 import 'package:flutter/material.dart';
@@ -120,8 +121,18 @@ class _NotificationsState extends State<Notifications> {
                                           .notificationlist[index].title),
                                       Text(allNotification
                                           .notificationlist[index].description),
-                                     allNotification.notificationlist[index].seen ? Text("seen"):Text("not seen"),
-                                    ],
+                                     
+                                  
+                                    ]
+                                      
+                                  ),
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        allNotification.notificationlist[index].seen ? Icon(Icons.circle,color: colorCustom,):Container(),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

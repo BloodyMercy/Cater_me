@@ -23,7 +23,7 @@ class CuisinCardoffer extends StatefulWidget {
 }
 
 class _CuisinCardofferState extends State<CuisinCardoffer> {
-   int activeIndex;
+  int activeIndex;
 
   int selected = 0;
 
@@ -56,7 +56,6 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
   bool loadingitems = true;
   bool loading = true;
 
-
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
@@ -74,12 +73,10 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
     return SingleChildScrollView(
         child: Container(
-
-          color: LightColors.kLightYellow,
-          child: Column(children: [
-      _cuisinprovider.cuisinsbyid.length != 0
+      color: LightColors.kLightYellow,
+      child: Column(children: [
+        _cuisinprovider.cuisinsbyid.length != 0
             ? Container(
-
                 height: 50,
                 width: 400,
                 child: ListView.builder(
@@ -88,7 +85,6 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
                   itemBuilder: (context, index) {
                     //  final cards = card[i];
                     return Container(
-
                       child: GestureDetector(
                         onTap: () async {
                           setState(() {
@@ -126,7 +122,8 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
                                   image: DecorationImage(
                                       opacity: 0.5,
                                       image: NetworkImage(
-                                        _cuisinprovider.cuisinsbyid[index].image,
+                                        _cuisinprovider
+                                            .cuisinsbyid[index].image,
                                       ),
                                       fit: BoxFit.fill)),
                               width: mediaQuery.size.height * 0.15,
@@ -145,9 +142,10 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
                       ),
                     );
                   },
-                ))
+                ),
+              )
             : Center(child: Text("No Cuisines To Dispaly")),
-      !loadingitems
+        !loadingitems
             ? Container(
                 height: 500,
                 //ß  width:300,
@@ -167,8 +165,8 @@ class _CuisinCardofferState extends State<CuisinCardoffer> {
                   color: Color(0xFF3F5521),
                 ),
               )
-    ]),
-        ));
+      ]),
+    ));
 
     // listview.builder(
 

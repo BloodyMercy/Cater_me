@@ -57,7 +57,24 @@ class _AddressesListState extends State<AddressesList> {
         });
   }
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+//getdata();
+
+  }
+  getdata(){
+    final orderprovider =
+    Provider.of<OrderCaterProvider>(context, listen: false);
+
+_value=orderprovider.valueIndex;
+print(_value);
+
+  }
+  @override
   Widget build(BuildContext context) {
+
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
@@ -88,11 +105,11 @@ class _AddressesListState extends State<AddressesList> {
                                   ),
                                   Radio(
                                     toggleable: true,
-                                    groupValue: orderprovider.valueIndex,
+                                    groupValue:_value,
                                     value: i,
                                     onChanged: (value) {
                                       setState(() {
-                                        _value = i;
+                                         _value = i;
                                         orderprovider.valueIndex = i;
                                       });
                                       orderprovider.value = widget.address[i];
