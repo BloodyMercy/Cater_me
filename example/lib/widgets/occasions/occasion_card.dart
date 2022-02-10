@@ -2,28 +2,26 @@ import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/edit_occasion.dart';
-
+import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/occasions/occasions_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 class OccasionCard extends StatefulWidget {
   Axis ax;
-
   OccasionCard(this.ax);
-
   @override
   State<OccasionCard> createState() => _OccasionCardState();
 }
 
 class _OccasionCardState extends State<OccasionCard> {
   int activeIndex;
-
   // list
   @override
   void initState() {
@@ -31,7 +29,6 @@ class _OccasionCardState extends State<OccasionCard> {
     // getdata();
     super.initState();
   }
-
   // getdata() async {
   //  final occasion=Provider.of<PackageService>(context,listen: false);
   //   setState(()async {
@@ -41,12 +38,14 @@ class _OccasionCardState extends State<OccasionCard> {
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
-    final package = Provider.of<PackagesProvider>(context, listen: true);
-
-    final occasion = Provider.of<OccasionProvider>(context, listen: true);
-    List<Occasion> occc = getOccasionsToday(occasion.today);
+    // final occasion=Provider.of<OccasionProvider>(context,listen:true);
+    final package=Provider.of<PackagesProvider>(context,listen:true);
+    // List<Occasion> occc=getOccasionsToday(occasion.today);
+    List<Occasion> occa=getOccasionsToday(package.occasions);
     final mediaQuery = MediaQuery.of(context);
-    Widget buildCards(OccasionsCard card, int index) => Container(
+    Widget buildCards(OccasionsCard card, int index) =>
+        Container(
+
           child: Column(
             children: [
               card,
@@ -62,7 +61,7 @@ class _OccasionCardState extends State<OccasionCard> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      EditOccasion(occasion.all[index]),
+                                      EditOccasion(occa[index]),
                                 ),
                               );
                             },
@@ -81,43 +80,42 @@ class _OccasionCardState extends State<OccasionCard> {
             ],
           ),
         );
-    List<OccasionsCard> card = getOccasions(occasion.today);
-    var content = card.length > 0
-        ? Container(
-            height: mediaQuery.size.height * 0.2,
-            child: ListView.builder(
-              scrollDirection: widget.ax,
-              itemCount: card.length,
-              itemBuilder: (BuildContext context, int index) {
-                final cards = card[index];
-                return buildCards(cards, index);
-              },
+    List<OccasionsCard> card = getOccasions(package.occasions);
+    var content = card.length >0?Container(
+      height: mediaQuery.size.height*0.2,
+        child: ListView.builder(
+          scrollDirection: widget.ax,
+        itemCount: card.length, itemBuilder: (BuildContext context, int index) {
+      final cards = card[index];
+      return buildCards(cards, index);
+    },
 
-              // options: widget.ax == Axis.vertical
-              //     ? CarouselOptions(
-              //         scrollDirection: widget.ax,
-              //         height: mediaQuery.size.height * 0.45,
-              //         pageSnapping: false,
-              //         autoPlay: false,
-              //         enableInfiniteScroll: false,
-              //         viewportFraction: 0.4,
-              //       )
-              //     : CarouselOptions(
-              //         scrollDirection: widget.ax,
-              //         pageSnapping: false,
-              //         height: mediaQuery.size.height * 0.2,
-              //         autoPlay: false,
-              //         autoPlayCurve: Curves.fastOutSlowIn,
-              //         enableInfiniteScroll: false,
-              //         viewportFraction: 1,
-              //       )
-            ))
-        : Container();
+        // options: widget.ax == Axis.vertical
+        //     ? CarouselOptions(
+        //         scrollDirection: widget.ax,
+        //         height: mediaQuery.size.height * 0.45,
+        //         pageSnapping: false,
+        //         autoPlay: false,
+        //         enableInfiniteScroll: false,
+        //         viewportFraction: 0.4,
+        //       )
+        //     : CarouselOptions(
+        //         scrollDirection: widget.ax,
+        //         pageSnapping: false,
+        //         height: mediaQuery.size.height * 0.2,
+        //         autoPlay: false,
+        //         autoPlayCurve: Curves.fastOutSlowIn,
+        //         enableInfiniteScroll: false,
+        //         viewportFraction: 1,
+        //       )
+    ) ):Container();
     return Container(
       // height: mediaQuery.size.height*0.9,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+
           widget.ax == Axis.vertical
               ? SizedBox(
                   height: mediaQuery.size.height * 0.65,
@@ -154,7 +152,7 @@ class _OccasionCardState extends State<OccasionCard> {
                             horizontal: (mediaQuery.size.width * 0.05),
                             vertical: (mediaQuery.size.height * 0.01),
                           ),
-                          primary: Colors.white,
+                          primary:  Colors.white,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
