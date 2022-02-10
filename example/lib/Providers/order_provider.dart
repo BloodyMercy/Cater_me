@@ -38,7 +38,7 @@ class OrderCaterProvider extends ChangeNotifier{
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request;
 
-      request = http.Request('POST', Uri.parse(ApiLink.AddCreditCards));
+      request = http.MultipartRequest('POST', Uri.parse(ApiLink.AddCreditCards));
       request.fields.addAll({
         'token':a ,
 
