@@ -14,6 +14,7 @@ class AddressesTextField extends StatefulWidget {
 }
 
 class _AddressesTextFields extends State<AddressesTextField> {
+
   final contactNameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
@@ -39,6 +40,11 @@ class _AddressesTextFields extends State<AddressesTextField> {
   }
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  // @override
+  // void dispose() {
+  //   _scaffoldKey.currentState.removeCurrentSnackBar();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

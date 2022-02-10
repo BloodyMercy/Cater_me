@@ -22,6 +22,7 @@ class AddressesListSettings extends StatefulWidget {
 class _AddressesListSettingsState extends State<AddressesListSettings> {
   int _value = -1;
 
+
   @override
   Widget build(BuildContext context) {
     final orderprovider =
@@ -30,6 +31,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
+
       height: _mediaQuery * 0.9,
       child: widget.address.isEmpty
           ? Center(
@@ -69,9 +71,8 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                     var delete= await  address.deleteAddress(widget.address[index].id);
                     if(delete=="deleted"){
                       widget.address.remove(widget.address[index]);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Address Deleted'),
-                      ));
+                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Address Deleted')));
                     }else{
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text('Address cannot be Deleted'),
