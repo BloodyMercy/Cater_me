@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/notification_provider.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
+import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/notifications_list.dart';
@@ -42,6 +43,7 @@ class _NotificationsState extends State<Notifications> {
     final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
     final allNotification =
         Provider.of<NotificationProvider>(context, listen: true);
+    final package=Provider.of<PackagesProvider>(context,listen: false);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
@@ -87,6 +89,11 @@ class _NotificationsState extends State<Notifications> {
                               ),
                             );
                             allNotification.markAsRead(allNotification.notificationlist[index].id);
+                            if(allNotification.notificationlist[index].seen){
+                            var i= int.parse(package.nbnotification);
+                             i--;
+                            package.nbnotification = i.toString();
+                            }
 
                           },
                           child: Card(

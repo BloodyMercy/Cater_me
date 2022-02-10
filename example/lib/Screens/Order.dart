@@ -48,7 +48,7 @@ class _OrderState extends State<Order> {
 
   Future<bool> _onWillPop() async {
     //UserProvider _user=Provider.of<UserProvider>(context,listen:true);
-
+final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
     return (await showDialog(
       context: context,
       builder: (context) => new AlertDialog(
@@ -65,7 +65,7 @@ class _OrderState extends State<Order> {
               onPressed: () {
                 // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
                 // _serpres.cleardata();
-                Navigator.of(context).pop();
+
                 Navigator.of(context).pop();
               } ,
               child: new Text("yes")),
