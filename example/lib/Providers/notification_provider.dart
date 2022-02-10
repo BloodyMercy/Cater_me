@@ -36,4 +36,8 @@ class NotificationProvider  extends ChangeNotifier{
   set body(String value) {
     _body = value;
   }
+  markAsRead(int id) async{
+    await _notificationService.markAsRead(id);
+    notifyListeners();
+  }
 }

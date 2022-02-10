@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/notification_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -77,7 +78,28 @@ class NotificationService {
       return [];
     }
   }
+Future markAsRead(int id) async{
 
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.SeenNotification+"/$id"));
+      respons.headers.addAll(headers);
+      http.StreamedResponse responses = await respons.send();
+
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+        return;
+      }else{
+        return;
+      }
+      }catch(e){
+      print(e);
+      return;
+    }
+}
 
 }
 

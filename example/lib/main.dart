@@ -200,7 +200,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:  appstate(),
+        home:  SplashScreen(),
       ),
     );
   }

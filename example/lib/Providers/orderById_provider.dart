@@ -4,23 +4,30 @@ import 'package:flutter/cupertino.dart';
 
 class OrderByIdProvider extends ChangeNotifier{
   OrderByIdService _orderByIdService=OrderByIdService();
+  List<OrderDetailsModel> _orderListDetails=[];
 
-  List<OrderByIdModel> _orderList=[];
+  List<OrderDetailsModel> get orderListDetails => _orderListDetails;
 
-
-  List<OrderByIdModel> get orderList => _orderList;
-
-  set orderList(List<OrderByIdModel> value) {
-    _orderList = value;
+  set orderListDetails(List<OrderDetailsModel> value) {
+    _orderListDetails = value;
   }
 
+  // List<OrderByIdModel> _orderList=[];
+  //
+  //
+  // List<OrderByIdModel> get orderList => _orderList;
+  //
+  // set orderList(List<OrderByIdModel> value) {
+  //   _orderList = value;
+  // }
+
   getOrderById(int id) async{
-    _orderList= await _orderByIdService.getOrdersById(id);
+    _orderListDetails= await _orderByIdService.getOrdersDetailsById(id);
     notifyListeners();
   }
 
   clearData(){
-    _orderList=[];
+    _orderListDetails=[];
     notifyListeners();
   }
 }

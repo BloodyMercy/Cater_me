@@ -25,12 +25,11 @@ class _DetailsOrderState extends State<DetailsOrder> {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
     await orders.getOrderById(widget.id);
 
+
     setState(() {
       loading = false;
     });
-    orders.orderList.forEach((element) {
-      Price += element.finalPrice;
-    });
+
   }
 
   Future refreshOrderData() async {
@@ -38,9 +37,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
 
     await orders.clearData();
     await orders.getOrderById(widget.id);
-    orders.orderList.forEach((element) {
-      Price += element.finalPrice;
-    });
+
     return;
   }
 
@@ -50,20 +47,11 @@ class _DetailsOrderState extends State<DetailsOrder> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    Price = 0.0;
-    finaltax = 0.0;
-    finalPrice = 0.0;
 
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
-
-    finalPrice = Price + finaltax;
     return Scaffold(
       body: SafeArea(
         child: RefreshIndicator(
@@ -98,7 +86,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "${order.orderList[index].item} x ${order.orderList[index].quantity}",
+                                          "${order.orderListDetails[0].orderItems[index].item}",
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontWeight: FontWeight.bold),
@@ -110,7 +98,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                               0.03,
                                         ),
                                         Text(
-                                          "\$ ${order.orderList[index].finalPrice.toDouble().toStringAsFixed(2)}",
+                                          "\$ ${order.orderListDetails[0].orderItems[index].price}",
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontWeight: FontWeight.bold),
@@ -121,7 +109,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                 ],
                               );
                             },
-                            itemCount: order.orderList.length,
+                            itemCount: order.orderListDetails[0].orderItems.length,
                           ),
                         ),
                       ),

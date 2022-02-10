@@ -48,6 +48,7 @@ class ApiLink{
  static String DeleteCreditCards=host+"Checkout/DeleteCreditCard";
  static String AddCreditCards=host+"Checkout/AddCreditCard";
  static String UpdateAddress=host+"Addresses/UpdateAddress";
+ static String SeenNotification=host+"Notifications/MarkAsSeen";
 
 
 

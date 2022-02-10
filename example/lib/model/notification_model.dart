@@ -3,6 +3,7 @@ class notificationModel {
   int orderId = 0;
   String title = '';
   String description = '';
+  bool seen=false;
 
   notificationModel();
 
@@ -11,6 +12,7 @@ class notificationModel {
     orderId = json['orderId'];
     title = json['title'];
     description = json['description'];
+    seen=json['seen'];
   }
 
   
