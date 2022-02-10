@@ -80,13 +80,13 @@ class _NotificationsState extends State<Notifications> {
                       itemCount: allNotification.notificationlist.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () async{
+                          onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (builder) => OrderId(index, 1),
                               ),
                             );
-                           await allNotification.markAsRead(allNotification.notificationlist[index].id);
+                            allNotification.markAsRead(allNotification.notificationlist[index].id);
 
                           },
                           child: Card(
