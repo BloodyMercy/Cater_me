@@ -65,6 +65,61 @@ return address;
     }
   }
 
+ Future<Address> updateAddress({
+   int id,
+   String addresstitle,
+   String country,
+   String city,
+   String street,
+   String building,
+   String floor,
+   String longitude,
+   String latitude,
+ }) async {
+   Address address=Address();
+   try {
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     var headers = {
+       'Authorization': 'Bearer ${prefs.getString("token")}'   };
+     var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.UpdateAddress));
+     respons.headers.addAll(headers);
+     respons.fields.addAll({
+          'Id': id.toString(),
+       'Title': addresstitle,
+       'CityId': city,
+       'Street': street,
+       'BuildingName': building,
+       'FloorNumber': floor,
+       'CountryId': country,
+       'longitude':longitude,
+       'latitude':latitude,
+     });
+
+     // open a bytestream
+
+     http.StreamedResponse responses = await respons.send();
+     // responses.stream.transform(utf8.decoder).listen((value) {
+     //   print(value);
+     // });
+     var response = await http.Response.fromStream(responses);
+     print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+     if (response.statusCode == 200) {
+       Map<String, dynamic> responseData = json.decode(response.body);
+       //  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+       address = Address.fromJson(responseData);
+       return address;
+
+     } else {
+       print(response.reasonPhrase);
+       return address;
+     }
+   } catch (e) {
+     print(e);
+     return address;
+   }
+ }
+
 
 Future<ErrorMessage> deleteAddress(int id) async{
    ErrorMessage em=ErrorMessage();
@@ -136,17 +191,11 @@ print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:$e");
 
     List<Country> l=[];
     try {
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
-
-
       var headers = {
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request = http.Request('GET', Uri.parse(ApiLink.GetAllCountry));
-
       request.headers.addAll(headers);
-
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       print("ssssssssssssssssssssssssssssssssssssssss:${response.statusCode}");

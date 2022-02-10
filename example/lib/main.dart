@@ -1,3 +1,4 @@
+import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/notification_provider.dart';
@@ -198,7 +199,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: appstate(),
+        home:  appstate(),
       ),
     );
   }

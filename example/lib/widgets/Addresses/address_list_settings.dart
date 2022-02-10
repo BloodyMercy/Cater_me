@@ -46,7 +46,9 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                 children:  [
                   Spacer(),
                   IconButton(onPressed: (){
-
+                    address.valueIndex=index;
+                    address.createOrUpdate=1;
+                    address.id=widget.address[index].id;
                     address.addresstitlecontroller.text=widget.address[index].title;
                     address.citycontrollerstring.text=widget.address[index].city;
                     // address.countrycontrollerstring.text=;

@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text(""),),
 
         body: SafeArea(
           child: Column(
@@ -134,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(
           number: number, name: cardNameHolder, expiryMonth: expiryMonth, expiryYear: expiryYear, cvv: cvv);
-
+print(response.token);
       // Hide loading dialog
       Navigator.pop(context);
       final address = Provider.of<OrderCaterProvider>(context, listen: false);

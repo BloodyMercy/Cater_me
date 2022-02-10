@@ -49,6 +49,12 @@ bool loading=false;
   LocationPermission permission = LocationPermission.denied;
   void checkPermission() async{
     permission = await Geolocator.checkPermission();
+    if(permission.name=="denied") {
+      await Geolocator.requestPermission();
+      getCurrentLocation();
+    }
+    else
+    getCurrentLocation();
   }
 
   bool ready=true;
@@ -82,12 +88,13 @@ bool loading=false;
   initState(){
 
     checkPermission();
-    getCurrentLocation();
+
+
     getmarker();
 
 
   }
-  getmarker() async{
+ Future getmarker() async{
      Uint8List markerIcon = await getBytesFromAsset('images/marker.png', 80);
   setState(() {
     mybit= BitmapDescriptor.fromBytes(markerIcon);
@@ -132,15 +139,27 @@ bool loading=false;
             onPressed: () async{
               address.loading=true;
               address.notifyListeners();
-
-             await address.createAddress();
-              address.loading=false;
-              if( address.addressCreated.id==0){
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+              if(address.createOrUpdate==0){
+                await address.createAddress();
+                address.loading=false;
+                if( address.addressCreated.id==0){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+                }else{
+                  address.clearAddressController();
+                  Navigator.of(context).pop();
+                }
               }else{
-             address.clearAddressController();
-             Navigator.of(context).pop();
+                await address.updateAddresss();
+                address.loading=false;
+                if( address.addressCreated.id!=0){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                }else{
+                  address.clearAddressController();
+                  Navigator.of(context).pop();
+                }
               }
+
+
             },
           )
         ],
@@ -152,7 +171,7 @@ bool loading=false;
         width: MediaQuery.of(context).size.width,
         child: GoogleMap(
           myLocationEnabled: true,
-          myLocationButtonEnabled: false,
+          myLocationButtonEnabled: true,
           zoomControlsEnabled: false,
           markers: Set<Marker>.of(
             <Marker>[
@@ -162,7 +181,7 @@ bool loading=false;
         },
             draggable: true,
             markerId: MarkerId('Marker'),
-            icon: mybit,
+            // icon: mybit,
             position: LatLng(currentLatLng.latitude, currentLatLng.longitude),
             onDragEnd: ((newPosition) {
               print(newPosition.latitude);

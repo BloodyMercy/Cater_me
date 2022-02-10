@@ -23,7 +23,15 @@ List<Country> _listcountry=[];//<Country>
 List<String> _listnamenumber=[];
 List<String> _listnameevent=[];
 Address _addressCreated=Address();
-bool _loading=false;
+  Address _addressUpdated=Address();
+
+  Address get addressUpdated => _addressUpdated;
+
+  set addressUpdated(Address value) {
+    _addressUpdated = value;
+  }
+
+  bool _loading=false;
 
 
   bool get loading => _loading;
@@ -137,6 +145,42 @@ return em.message;
 
   set listcityname(List<String> value) {
     _listcityname = value;
+  }
+
+  int _id=0;
+
+  int get id => _id;
+
+  set id(int value) {
+    _id = value;
+  }
+
+  int _createOrUpdate=0;
+
+
+  int get createOrUpdate => _createOrUpdate;
+
+  set createOrUpdate(int value) {
+    _createOrUpdate = value;
+  }
+
+  updateAddresss() async{
+
+  _addressUpdated= await _addressService.updateAddress(
+      id:id,
+      addresstitle: addresstitlecontroller.text,
+      country: countrycontroller.text,
+      city: citycontroller.text,
+      street: streetcontroller.text,
+      building: buildingcontroller.text,
+      floor: floornumbercontroller.text,
+      longitude: longtituenumbercontroller.text,
+      latitude: latitudenumbercontroller.text,
+    );
+  // _listaddress.insert(0,_addressCreated);
+  _listaddress[valueIndex]=_addressUpdated;
+  notifyListeners();
+
 
   }
   createAddress() async {
