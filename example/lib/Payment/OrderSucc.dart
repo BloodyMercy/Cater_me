@@ -1,5 +1,7 @@
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -59,12 +61,14 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                 flex: 1,
               ),
               Container(
-                width: MediaQuery.of(context).size.width / 4,
-                height: MediaQuery.of(context).size.height / 8,
+                // width: MediaQuery.of(context).size.width / 4,
+                height: MediaQuery.of(context).size.height / 4,
                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('images/Samlogo.png'),
+                      fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Image.asset('images/samm.jpeg'),
               ),
               Container(
                 padding: EdgeInsets.symmetric(
@@ -170,7 +174,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                             Text(
                               "${address.evendatecontroller.text}",
                               style: TextStyle(
-                                color: Colors.white,
+                                color:  Color(0xff9FACBD),
                                 fontSize: 12,
                                 fontFamily: 'Ubuntu',
                               ),
@@ -222,24 +226,43 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     Row(
                       children: [
                         Container(
-                            width: width / 10,
-                            height: height / 20,
-                            child: Column(
-                              children: [
-                                _serpres.serviceId == 0
-                                    ? SvgPicture.asset(
-                                        ('images/caterme.svg'),
-                                  height: MediaQuery.of(context).size.height *0.04,
-                                      )
-                                    : SvgPicture.asset('images/daberne.svg'),
-                                // height: MediaQuery.of(context).size.height *0.04,
-                              ],
-                            )),
+                          width: width / 10,
+                          height: height / 20,
+                          child: Column(
+                            children: [
+                              _serpres.serviceId == 1
+                                  ? SvgPicture.asset(
+                                      ('images/caterme.svg'),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.04,
+                                    )
+                                  : SvgPicture.asset(
+                                      'images/daberne.svg',
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.06,
+                                    ),
+                            ],
+                          ),
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('${_serpres.serviceId}'),
+                            _serpres.serviceId == 1
+                                ? Text(
+                                    'Cater me',
+                                    style: TextStyle(
+                                      color: Color(0xff9FACBD),
+                                      fontFamily: 'Ubuntu',
+                                    ),
+                                  )
+                                : Text('Daberni',
+                                    style: TextStyle(
+                                      color: Color(0xff9FACBD),
+                                      fontFamily: 'Ubuntu',
+                                    ))
                           ],
                         ),
                       ],
@@ -320,9 +343,20 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width / 25),
                   child: ElevatedButton(
-                    onPressed: () async {
-                      // _serpres.cleardata();
-                      // changescreenuntill(context, HomeView(0));
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => CustomDialog(
+                          title: "Success",
+                          description:
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                          buttonText: "Okay",
+                        ),
+                      );
+                      // Navigator.of(context).pushAndRemoveUntil(
+                      //     MaterialPageRoute(
+                      //         builder: (context) => Navigationbar(0)),
+                      //     (Route<dynamic> route) => false);
                     },
                     child: Text(
                       "Finish",

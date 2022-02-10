@@ -27,18 +27,18 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Lottie.asset(
-        'images/animation/catermelottie.json',
+        'images/animation/CaterMe.json',
         controller: _controller,
         height: MediaQuery.of(context).size.height * 5,
 
         animate: true,
         onLoaded: (composition) {
-          _controller
-            ..duration = composition.duration
-            ..forward().whenComplete(() => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => appstate()),
-            ));
+          // _controller
+          //   ..duration = composition.duration
+          //   ..forward().whenComplete(() => Navigator.pushReplacement(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => appstate()),
+          //   ));
         },
       ),
     );

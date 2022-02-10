@@ -492,7 +492,7 @@ class _OrderState extends State<Order> {
                bool a=     await   orderProvider.makeorder(address.evendatecontroller.text, address.typeofeventcontroller.text, address.numberofguestcontroller.text,  "src_nxrej2zfr4uedj5p5xxuljrl5i");
 
                     Navigator.of(context).pop();
-if(a)
+if(!a)
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AppointmentSuccess()));
 else{
   showDialog(
