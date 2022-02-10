@@ -54,6 +54,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
         });
   }
 
+
   void deleteAddress(String id) {
     setState(() {
       _address.removeWhere(
@@ -89,6 +90,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
+              adress.clearAddressController();
               Navigator.of(context).pop();
             },
             icon: Icon(
