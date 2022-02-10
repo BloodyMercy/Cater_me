@@ -6,6 +6,14 @@ import 'package:flutter/cupertino.dart';
 class CreditCardsProvider extends ChangeNotifier{
   CreditCardsService _creditCardsService=CreditCardsService();
   List<CreditCardsModel> _list=[];
+  CreditCardsModel _credit=CreditCardsModel();
+
+  CreditCardsModel get credit => _credit;
+
+  set credit(CreditCardsModel value) {
+    _credit = value;
+  }
+
   bool _loading=false;
   int _valueIndex=-1;
   bool _loadingDelete=false;

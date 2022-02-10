@@ -3,6 +3,7 @@ import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
@@ -14,13 +15,24 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   int _value = -1;
   int selectedIndex = -1;
   bool addcard = false;
-
+  bool loading=true;
+  getAllData() async{
+    var _creditCards = Provider.of<CreditCardsProvider>(context,listen: false);
+    _creditCards.loading=true;
+    await _creditCards.getAllCards();
+    _creditCards.loading=false;
+  }
+  @override
+  void initState() {
+    getAllData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    final cc = Provider.of<CreditCardsProvider>(context, listen: true);
+    final _creditCards=Provider.of<CreditCardsProvider>(context,listen: true);
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child:loading? Container(
           color: LightColors.kLightYellow,
           child: Column(
             children: <Widget>[
@@ -45,21 +57,20 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                 onChanged: (value) {
                                   setState(() {
                                     _value = i;
-                                    // orderprovider.valueIndex = index;
                                   });
-                                  // orderprovider.value = widget.address[index];
+                                  _creditCards.credit=_creditCards.list[i];
                                 },
                               ),
                               _buildCreditCard(
                                   color: LightColors.kLightYellow2,
-                                  cardExpiration: "05/2024",
-                                  cardHolder: "HOUSSEM SELMI",
-                                  cardNumber: "9874 4785 XXXX 6548"),
+                                  cardExpiration: "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                  cardHolder: _creditCards.list[i].ownerName,
+                                  cardNumber:  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",),
                             ],
                           ),
                         );
                       },
-                      childCount: 5,
+                      childCount: _creditCards.list.length,
                     ),
                   ),
                   // SliverToBoxAdapter(
@@ -105,7 +116,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   )
             ],
           ),
-        ),
+        ):Center(child: IconButton(
+          onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>HomeScreen()));
+          }, icon: Icon(Icons.add_rounded),
+        ),),
       ),
     );
   }
