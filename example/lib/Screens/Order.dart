@@ -1,4 +1,5 @@
 
+import 'package:CaterMe/Payment/OrderSucc.dart';
 import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
@@ -472,10 +473,42 @@ class _OrderState extends State<Order> {
                               }
 
                      else if(orderProvider.spets==8){
+                                showDialog(
+                                  context: this.context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return WillPopScope(
+                                        onWillPop: () => Future<bool>.value(false),
+                                        child: AlertDialog(
+                                          title: Text("Loading..."),
+                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
+                                        ));
+                                  },
+                                );
+
 
                                 final address = Provider.of<AdressProvider>(context, listen: false);
-                    await   orderProvider.makeorder(address.evendatecontroller.text, address.typeofeventcontroller.text, address.numberofguestcontroller.text, "token", "idcard");
-                              }
+
+               bool a=     await   orderProvider.makeorder(address.evendatecontroller.text, address.typeofeventcontroller.text, address.numberofguestcontroller.text,  "src_nxrej2zfr4uedj5p5xxuljrl5i");
+
+                    Navigator.of(context).pop();
+if(a)
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AppointmentSuccess()));
+else{
+  showDialog(
+    context: this.context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("error "),
+        content: Text("try again"),
+        actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
+      );
+    },
+  );
+}
+
+
+                     }
                            //   if(orderProvider.spets==4||orderProvider.spets==5||orderProvider.spets==6) {
                               else
                                 orderProvider.spets++;

@@ -20,7 +20,9 @@ import 'package:CaterMe/Screens/notifications.dart';
 import 'package:badges/badges.dart';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+
 
 class Navigationbar extends StatefulWidget {
   int _selectedIndex;
@@ -130,14 +132,16 @@ class _NavigationBarState extends State<Navigationbar> {
             unselectedItemColor:  Theme.of(context).primaryColor,
             items: [
               const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
+                icon: Icon(FontAwesomeIcons.home,
+                  size: 25, //Icon Size
+                  color: Color(0xFF3F5521),//Color Of Icon
                 ),
                 label: 'Home',
               ),
               const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.calendar_today_rounded,
+                icon: Icon(FontAwesomeIcons.calendarCheck,
+                  size: 25, //Icon Size
+                  color: Color(0xFF3F5521),//Color Of Icon
                 ),
                 label: 'Ocasions',
               ),
@@ -146,20 +150,23 @@ class _NavigationBarState extends State<Navigationbar> {
                     badgeColor: Color.fromRGBO(253, 202, 29, 1),
                    // badgeContent:Text("3"),
                     child: Icon(
-                      Icons.backpack,
+                      Icons.backpack,size: 25,
                       color: Theme.of(context).primaryColor,
-                    )),
+                    ),
+                ),
                 label: 'Orders',
               ):BottomNavigationBarItem(
           icon:  Icon(
                 Icons.backpack,
+                size: 25,
                 color: Theme.of(context).primaryColor,
               ),
           label: 'Orders',
         ),
               const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
+                icon: Icon(FontAwesomeIcons.solidUser,
+                  size: 25, //Icon Size
+                  color: Color(0xFF3F5521),//Color Of Icon
                 ),
                 label: 'Settings',
               ),

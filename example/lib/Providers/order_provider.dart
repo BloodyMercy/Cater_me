@@ -38,7 +38,7 @@ class OrderCaterProvider extends ChangeNotifier{
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request;
 
-      request = http.Request('POST', Uri.parse(ApiLink.AddCreditCards));
+      request = http.MultipartRequest('POST', Uri.parse(ApiLink.AddCreditCards));
       request.fields.addAll({
         'token':a ,
 
@@ -66,7 +66,7 @@ class OrderCaterProvider extends ChangeNotifier{
     }
 
   }
-  Future<bool>  makeorder(String date,String type,String nb,String token,String idcard)async {
+  Future<bool>  makeorder(String date,String type,String nb,String idcard)async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -88,7 +88,7 @@ class OrderCaterProvider extends ChangeNotifier{
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request;
 
-        request = http.Request('POST', Uri.parse(ApiLink.makeorder));
+        request = http.MultipartRequest('POST', Uri.parse(ApiLink.makeorder));
       request.fields.addAll({
         'AddressId': value.id,
         'ServiceId': serviceId,
@@ -97,7 +97,7 @@ class OrderCaterProvider extends ChangeNotifier{
         "EventTypeId":type,
         "NumberOfGuests":nb,
         "PaymentFriend":mapitemf,
-        "Token":token,
+
         "CardId":idcard,
 
       });

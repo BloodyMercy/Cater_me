@@ -19,7 +19,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'auth/login_screen.dart';
 import 'auth/newlogin/screens/loginScreen.dart';
 import 'occasion/theme/colors/light_colors.dart';
@@ -408,9 +408,9 @@ setData(String imageUrl) async{
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(
-                                      Icons.person,
-                                      color: Color(0xFF3F5521),
+                                    Icon(FontAwesomeIcons.solidUser,
+                                      size: 20, //Icon Size
+                                      color: Color(0xFF3F5521),//Color Of Icon
                                     ),
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.05,
@@ -457,7 +457,10 @@ setData(String imageUrl) async{
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.03,
                                 ),
-                                Icon(Icons.maps_home_work_outlined,color:Color(0xFF3F5521),),
+                                Icon(FontAwesomeIcons.building,
+                                  size: 20, //Icon Size
+                                  color: Color(0xFF3F5521),//Color Of Icon
+                                ),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,
                                 ),
@@ -501,7 +504,10 @@ setData(String imageUrl) async{
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.03,
                                 ),
-                                Icon(Icons.credit_card_rounded,color:Color(0xFF3F5521),),
+                                Icon(FontAwesomeIcons.creditCard,
+                                  size: 20, //Icon Size
+                                  color: Color(0xFF3F5521),//Color Of Icon
+                                ),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,
                                 ),
@@ -545,9 +551,9 @@ setData(String imageUrl) async{
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.03,
                                 ),
-                                Icon(
-                                  Icons.person_add,
-                                  color: Color(0xFF3F5521),
+                                Icon(FontAwesomeIcons.userPlus,
+                                  size: 20, //Icon Size
+                                  color: Color(0xFF3F5521),//Color Of Icon
                                 ),
                                 SizedBox(
                                   width: mediaQuery.size.width * 0.05,

@@ -18,6 +18,12 @@ class ConfirmLocation extends StatefulWidget {
 }
 
 class _ConfirmLocationState extends State<ConfirmLocation> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+ //  @override
+ // void dispose(){
+ //    _scaffoldKey.currentState.removeCurrentSnackBar();
+ //    super.dispose();
+ //  }
   LatLng currentLatLng= LatLng(0.0, 0.0); //initial currentPosition values cannot assign null values
   Completer<GoogleMapController> _controller = Completer();
 bool loading=false;
@@ -115,6 +121,8 @@ bool loading=false;
     ui.FrameInfo fi = await codec.getNextFrame();
     return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
   }
+
+
   bool loadingMap=true;
   @override
   Widget build(BuildContext context) {
@@ -153,20 +161,25 @@ bool loading=false;
                 await address.createAddress();
                 address.loading=false;
                 if( address.addressCreated.id==0){
+                  // _scaffoldKey.currentState.showSnackBar();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
-                }else{
-                  address.clearAddressController();
+                }else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address added")));
+                await  Future.delayed(Duration(seconds: 2));
                   Navigator.of(context).pop();
                 }
               }else{
-
                  await address.updateAddresss();
                 address.loading=false;
-                if( address.addressCreated.id!=0){
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                if( address.addressUpdated.id!=0){
+                  address.getAllAddress();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("updated done ")));
+                  await  Future.delayed(Duration(seconds: 2));
+                  Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
                 }else{
-                  address.clearAddressController();
-                  Navigator.of(context).pop();
+                  address.getAllAddress();
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Updated failed ")));
+                  // Navigator.of(context).pop();
                 }
               }
 
