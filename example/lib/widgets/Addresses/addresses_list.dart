@@ -49,6 +49,8 @@ class _AddressesListState extends State<AddressesList> {
 
   void _startAddNewAddress(BuildContext ctx) {
     showModalBottomSheet(
+
+        isScrollControlled:true,
         context: ctx,
         builder: (_) {
           return AddressesTextField(_addNewAddress);

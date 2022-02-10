@@ -34,9 +34,11 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
 
   void _startAddNewFriend(BuildContext ctx) {
     showModalBottomSheet(
+        isScrollControlled:true,
         context: ctx,
         builder: (_) {
           return GestureDetector(
+
             child: FreindsTextField(_addNewFriend),
             behavior: HitTestBehavior.opaque,
           );
