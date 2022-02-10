@@ -96,70 +96,109 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                       SliverChildBuilderDelegate((BuildContext context, int i) {
                         return  Container(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              _buildCreditCard(
-                                  color: LightColors.kLightYellow2,
-                                  cardExpiration: _creditCards.list[i].expiryDate,
-                                  cardHolder: _creditCards.list[i].ownerName,
-                                  cardNumber: "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}"),
-                              _creditCards.loadingDelete? Center(
-                                child: CircularProgressIndicator(),).alignment: IconButton(
-                                  onPressed: () {
-                                    _creditCards.valueIndex = i;
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: Text('Delete Credit Card'),
-                                        content: Text('Are you sure you want to delete this card'),
-                                        actions: [
-                                          Row(
-                                            mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                            children: [  ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
+                            Card(
+                            elevation: 4.0,
+                            color: LightColors.kLightYellow2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.2,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Row(mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [IconButton(
+                                      onPressed: () {
+                                        _creditCards.valueIndex = i;
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            title: Text('Delete Credit Card'),
+                                            content: Text('Are you sure do you want to delete this card'),
+                                            actions: [
+                                              Row(
+                                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                                children: [  ElevatedButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
 
-                                                },
-                                                child: Text('NO')),
-                                              ElevatedButton(
-                                                  onPressed: () async{
-                                                    _creditCards.loading=true;
-                                                    _creditCards.notifyListeners();
-                                                    Navigator.pop(context);
+                                                    },
+                                                    child: Text('NO')),
+                                                  ElevatedButton(
+                                                      onPressed: () async{
+                                                        _creditCards.loading=true;
+                                                        _creditCards.notifyListeners();
+                                                        Navigator.pop(context);
 
-                                                    var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
-                                                    if(delete=="deleted"){
-                                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                          content: Text('Address Deleted')
-                                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                      //   content: Text('Address Deleted'),
-                                                      ));
-                                                    }else{
-                                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                          content: Text('Address cannot be deleted')
-                                                        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                        //   content: Text('Address Deleted'),
-                                                      ));
-                                                    }
+                                                        var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
+                                                        if(delete=="deleted"){
+                                                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                              content: Text('Address Deleted')
+                                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                            //   content: Text('Address Deleted'),
+                                                          ));
+                                                        }else{
+                                                          _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                                              content: Text('Address cannot be deleted')
+                                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                            //   content: Text('Address Deleted'),
+                                                          ));
+                                                        }
 
 
-                                                   await _creditCards.getAllCards();
-                                                    _creditCards.loading=false;
-                                                    _creditCards.notifyListeners();
-                                                  },
-                                                  child: Text('Yes')),
+                                                        await _creditCards.getAllCards();
+                                                        _creditCards.loading=false;
+                                                        _creditCards.notifyListeners();
+                                                      },
+                                                      child: Text('Yes')),
+                                                ],
+                                              )
                                             ],
-                                          )
-                                        ],
+                                          ),
+                                        );
+
+
+
+
+
+
+                                      }, icon:Icon(Icons.delete,color: Colors.red) ),],),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 16.0),
+                                    child: Text(
+                                      "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                      style: TextStyle(
+                                          color: Color(0xff3F5521),
+                                          fontSize: 21,
+                                          fontFamily: 'CourrierPrime'),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      _buildDetailsBlock(
+                                        label: 'CARDHOLDER',
+                                        value: _creditCards.list[i].ownerName,
                                       ),
-                                    );
+                                      _buildDetailsBlock(label: 'VALID THRU', value: "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                              // _buildCreditCard(
+                              //     color: LightColors.kLightYellow2,
+                              //     cardExpiration: _creditCards.list[i].expiryDate,
+                              //     cardHolder: _creditCards.list[i].ownerName,
+                              //     cardNumber: "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}"),
 
-
-
-
-
-
-                                  }, icon:Icon(Icons.delete,color: Colors.red) ),
 
                           // Slidable(
                           //   key: UniqueKey(),
@@ -186,12 +225,9 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                           childCount:  _creditCards.list.length
                       ),
                     ),
-                    // SliverToBoxAdapter(
-                    //   child:
-                    //   _buildAddCardButton(
-                    //       icon: Icon(Icons.add),
-                    //       color: LightColors.kLightYellow2),
-                    // )
+                    SliverToBoxAdapter(
+                      child: SizedBox(height: 15,),
+                    ),
                   ],
                 )
 

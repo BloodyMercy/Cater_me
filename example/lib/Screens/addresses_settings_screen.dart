@@ -112,6 +112,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           actions: [
             IconButton(
                 onPressed: () {
+                  adress.createOrUpdate=0;
                   adress.clearAddressController();
                   _startAddNewAddress(context);
                 },

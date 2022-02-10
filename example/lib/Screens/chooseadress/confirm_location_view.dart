@@ -21,6 +21,14 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
   LatLng currentLatLng= LatLng(0.0, 0.0); //initial currentPosition values cannot assign null values
   Completer<GoogleMapController> _controller = Completer();
 bool loading=false;
+
+  Future<void> _gotoLocation(double lat,double long) async {
+    final GoogleMapController controller = await _controller.future;
+
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(lat, long), zoom: 20,tilt: 50.0,
+      bearing: 45.0,)));
+  }
+
   void getCurrentLocation() async{
 
     await Geolocator.getCurrentPosition().then((currLocation) async {
@@ -49,6 +57,12 @@ bool loading=false;
   LocationPermission permission = LocationPermission.denied;
   void checkPermission() async{
     permission = await Geolocator.checkPermission();
+    if(permission.name=="denied") {
+      await Geolocator.requestPermission();
+      getCurrentLocation();
+    }
+    else
+    getCurrentLocation();
   }
 
   bool ready=true;
@@ -82,12 +96,13 @@ bool loading=false;
   initState(){
 
     checkPermission();
-    getCurrentLocation();
+
+
     getmarker();
 
 
   }
-  getmarker() async{
+ Future getmarker() async{
      Uint8List markerIcon = await getBytesFromAsset('images/marker.png', 80);
   setState(() {
     mybit= BitmapDescriptor.fromBytes(markerIcon);
@@ -130,17 +145,32 @@ bool loading=false;
           IconButton(
             icon:  Icon(Icons.done),
             onPressed: () async{
+              _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
+
               address.loading=true;
               address.notifyListeners();
-
-             await address.createAddress();
-              address.loading=false;
-              if( address.addressCreated.id==0){
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+              if(address.createOrUpdate==0){
+                await address.createAddress();
+                address.loading=false;
+                if( address.addressCreated.id==0){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+                }else{
+                  address.clearAddressController();
+                  Navigator.of(context).pop();
+                }
               }else{
-             address.clearAddressController();
-             Navigator.of(context).pop();
+
+                 await address.updateAddresss();
+                address.loading=false;
+                if( address.addressCreated.id!=0){
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                }else{
+                  address.clearAddressController();
+                  Navigator.of(context).pop();
+                }
               }
+
+
             },
           )
         ],
@@ -152,7 +182,7 @@ bool loading=false;
         width: MediaQuery.of(context).size.width,
         child: GoogleMap(
           myLocationEnabled: true,
-          myLocationButtonEnabled: false,
+          myLocationButtonEnabled: true,
           zoomControlsEnabled: false,
           markers: Set<Marker>.of(
             <Marker>[
@@ -162,7 +192,7 @@ bool loading=false;
         },
             draggable: true,
             markerId: MarkerId('Marker'),
-            icon: mybit,
+            // icon: mybit,
             position: LatLng(currentLatLng.latitude, currentLatLng.longitude),
             onDragEnd: ((newPosition) {
               print(newPosition.latitude);
