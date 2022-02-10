@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
+import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
 
 import 'package:CaterMe/model/packages.dart';
@@ -23,6 +24,47 @@ class OrderCaterProvider extends ChangeNotifier{
 
   set controllers(List<TextEditingController> value) {
     _controllers = value;
+  }
+
+  Future<CreditCardsModel> sendtokeknpayemnt(String a) async{
+
+    CreditCardsModel card=new  CreditCardsModel();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request;
+
+      request = http.Request('POST', Uri.parse(ApiLink.AddCreditCards));
+      request.fields.addAll({
+        'token':a ,
+
+
+
+      });
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+
+      if (response.statusCode == 200) {
+       Map<String,dynamic> responseData = json.decode(response.body);
+       card=CreditCardsModel.fromJson(responseData);  //map to list
+       // return posts;
+    return card;
+      }
+      else {
+        print(response.reasonPhrase);
+        return card;
+      }
+    }catch(e){
+      return card;
+    }
+
   }
   Future<bool>  makeorder(String date,String type,String nb,String token,String idcard)async {
 

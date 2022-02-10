@@ -153,7 +153,9 @@ password.text="P@ssw0rd";
 
 
       if(u.response){
+        getdata();
         _status=Status.Authenticated;
+
       }
 
 
@@ -184,7 +186,7 @@ password.text="P@ssw0rd";
         gender.text.toString(),
         image
       );
-
+      getdata();
       _messageSignUp = u.message;
 
       notifyListeners();

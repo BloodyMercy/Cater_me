@@ -58,11 +58,14 @@ dependencies:
   simple_animations: ^1.3.3
   image_picker:
   cloud_firestore:
+  fluttertoast: 8.0.6
   firebase_storage:
   photo_view:
   get: ^4.1.4
   lottie: ^1.2.1
-  flutter_spinkit:
+  flutter_local_notifications: 5.0.0+4
+
+
 
 
 

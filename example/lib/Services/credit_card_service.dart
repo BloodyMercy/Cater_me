@@ -38,7 +38,7 @@ try{
   var headers = {
     'Authorization': 'Bearer ${prefs.getString("token")}'
   };
-  var request = http.Request('POST', Uri.parse(ApiLink.DeleteCreditCard+"/$id"));
+  var request = http.Request('POST', Uri.parse(ApiLink.DeleteCreditCards+"/$id"));
   request.headers.addAll(headers);
   http.StreamedResponse responses = await request.send();
   var response = await http.Response.fromStream(responses);

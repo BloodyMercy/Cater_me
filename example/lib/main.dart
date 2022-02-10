@@ -13,12 +13,15 @@ import 'package:CaterMe/Screens/order_summery_1.dart';
 import 'package:CaterMe/Screens/splash_screen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Helpers/Constant.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'Providers/address.dart';
@@ -33,6 +36,7 @@ import 'Screens/chooseadress/confirm_location_view.dart';
 import 'Screens/occasion/screens/home_page.dart';
 import 'Screens/order_summery_copy.dart';
 
+import 'chat/providers/chat_provider.dart';
 import 'colors/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +65,7 @@ void main() async {
     print('User declined or has not accepted permission');
   }
 
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class appstate extends StatefulWidget {
@@ -119,14 +123,23 @@ class _appstateState extends State<appstate> {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
+   MyApp({Key key}) : super(key: key);
+   SharedPreferences prefs;
+   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: PersonalInfoProvider()),
+        Provider<ChatProvider>(
+          create: (_) => ChatProvider(
+            prefs: this.prefs,
+            firebaseFirestore: this.firebaseFirestore,
+            firebaseStorage: this.firebaseStorage,
+          ),
+        ),
         ChangeNotifierProvider.value(value: OrderStatusProvider()),
         ChangeNotifierProvider.value(value: OrderByIdProvider()),
         ChangeNotifierProvider.value(value: NotificationProvider()),
