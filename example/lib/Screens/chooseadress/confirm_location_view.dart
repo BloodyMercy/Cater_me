@@ -21,6 +21,14 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
   LatLng currentLatLng= LatLng(0.0, 0.0); //initial currentPosition values cannot assign null values
   Completer<GoogleMapController> _controller = Completer();
 bool loading=false;
+
+  Future<void> _gotoLocation(double lat,double long) async {
+    final GoogleMapController controller = await _controller.future;
+
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(lat, long), zoom: 20,tilt: 50.0,
+      bearing: 45.0,)));
+  }
+
   void getCurrentLocation() async{
 
     await Geolocator.getCurrentPosition().then((currLocation) async {
@@ -149,6 +157,8 @@ bool loading=false;
                   Navigator.of(context).pop();
                 }
               }else{
+
+                _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
                 await address.updateAddresss();
                 address.loading=false;
                 if( address.addressCreated.id!=0){
