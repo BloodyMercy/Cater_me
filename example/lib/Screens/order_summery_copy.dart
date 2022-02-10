@@ -382,10 +382,10 @@ bool loading=false;
                         trailing: SizedBox(
                             height: mediaQuery.size.height/20,
                             width: mediaQuery.size.width/5,
-                            child: TextField(
+                            child: TextFormField(
 
                               decoration: InputDecoration(
-                                labelText:"Price" ,
+                                hintText:'Price' ,
                                 fillColor: Color(0xFF3F5521),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(

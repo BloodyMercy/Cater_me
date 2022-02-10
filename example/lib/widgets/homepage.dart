@@ -381,7 +381,7 @@ class _HomePageState extends State<HomePage> {
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: (mediaQuery.size.width * 0.04),
-                                          top: mediaQuery.size.height * 0.05),
+                                         ),
                                       child: Text(
                                         'Cuisines',
                                         style: Theme.of(context)
