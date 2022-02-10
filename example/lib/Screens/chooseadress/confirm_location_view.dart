@@ -145,6 +145,8 @@ bool loading=false;
           IconButton(
             icon:  Icon(Icons.done),
             onPressed: () async{
+              _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
+
               address.loading=true;
               address.notifyListeners();
               if(address.createOrUpdate==0){
@@ -158,8 +160,7 @@ bool loading=false;
                 }
               }else{
 
-                _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
-                await address.updateAddresss();
+                 await address.updateAddresss();
                 address.loading=false;
                 if( address.addressCreated.id!=0){
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
