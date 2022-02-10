@@ -11,7 +11,7 @@ class OccasionsCard extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return Column(children: [
       SizedBox(
-        width: mediaQuery.size.width * 0.97,
+        width: mediaQuery.size.width * 0.8,
         height: mediaQuery.size.height * 0.15,
         child: Card(
           shape: const RoundedRectangleBorder(

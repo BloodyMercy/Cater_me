@@ -38,8 +38,10 @@ class _OccasionCardState extends State<OccasionCard> {
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
-    final occasion=Provider.of<OccasionProvider>(context,listen:true);
-    List<Occasion> occc=getOccasionsToday(occasion.today);
+    // final occasion=Provider.of<OccasionProvider>(context,listen:true);
+    final package=Provider.of<PackagesProvider>(context,listen:true);
+    // List<Occasion> occc=getOccasionsToday(occasion.today);
+    List<Occasion> occa=getOccasionsToday(package.occasions);
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(OccasionsCard card, int index) =>
         Container(
@@ -59,7 +61,7 @@ class _OccasionCardState extends State<OccasionCard> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      EditOccasion(occasion.all[index]),
+                                      EditOccasion(occa[index]),
                                 ),
                               );
                             },
@@ -78,7 +80,7 @@ class _OccasionCardState extends State<OccasionCard> {
             ],
           ),
         );
-    List<OccasionsCard> card = getOccasions(occasion.today);
+    List<OccasionsCard> card = getOccasions(package.occasions);
     var content = card.length >0?Container(
       height: mediaQuery.size.height*0.2,
         child: ListView.builder(

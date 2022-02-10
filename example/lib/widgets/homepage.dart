@@ -103,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                   child: SingleChildScrollView(
                     physics: AlwaysScrollableScrollPhysics(),
                     child: ColoredBox(
-                      color:  LightColors.kLightYellow,
-                        child: Column(
+                      color: LightColors.kLightYellow,
+                      child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -126,7 +126,8 @@ class _HomePageState extends State<HomePage> {
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                  color: LightColors.kLightYellow2),
+                                                  color: LightColors
+                                                      .kLightYellow2),
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           focusedBorder: OutlineInputBorder(
@@ -190,7 +191,8 @@ class _HomePageState extends State<HomePage> {
                                         icon: Badge(
                                             badgeColor:
                                                 Color.fromRGBO(253, 202, 29, 1),
-                                            badgeContent: Text(package.nbnotification),
+                                            badgeContent:
+                                                Text(package.nbnotification),
                                             child: Icon(
                                               Icons.notifications,
                                               color: Theme.of(context)
@@ -487,7 +489,6 @@ class _HomePageState extends State<HomePage> {
                       height: mediaQuery.size.height / 1.2,
                       child: ListView.builder(
                         padding: const EdgeInsets.all(25),
-
                         itemCount: package.listItems.length,
                         itemBuilder: (BuildContext context, int index) {
                           return listitemssearch[index]
@@ -520,7 +521,7 @@ class _HomePageState extends State<HomePage> {
                                               width: 100,
                                             ),
                                             SizedBox(
-                                              width: 50,
+                                              width: MediaQuery.of(context).size.width * 0.04,
                                             ),
                                             Text(
                                               '${package.listItems[index].title}',

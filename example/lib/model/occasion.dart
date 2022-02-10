@@ -14,7 +14,7 @@ Occasion.fromJson(Map<String, dynamic> json) {
   type = json['type'];
 }
   Occasion.fromJsonadd(Map<String, dynamic> json) {
-    id = json['typeid'];
+    id = json['profileId'];
     date = json['date'];
     name = json['title'];
     type = json['typeId'].toString();

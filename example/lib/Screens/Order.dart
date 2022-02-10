@@ -403,7 +403,7 @@ class _OrderState extends State<Order> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Total: ${details.totale.toString()} SAR", style: const TextStyle(
+                          Text("Total: ${details.totale.toStringAsFixed(3)} SAR", style: const TextStyle(
                               fontSize: 18,
                               fontFamily: 'BerlinSansFB',
                               fontWeight: FontWeight.bold),),

@@ -128,74 +128,11 @@ setData(String imageUrl) async{
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20.0),
                           child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
-                            child: CircleAvatar(
+                            child:
+                            CircleAvatar(
                               backgroundColor: Colors.transparent,
-                              minRadius: 16,
-                              maxRadius: screenHeight * 0.1,
-                              // child: ClipOval(
-                              //
-                              //   child: Image.network(
-                              //
-                              //     personalInfo.imageUrl,
-                              //     // fit: BoxFit.fitHeight,
-                              //     loadingBuilder: (BuildContext context, Widget child,
-                              //         ImageChunkEvent loadingProgress) {
-                              //       if (loadingProgress == null) {
-                              //         return child;
-                              //       }
-                              //       return Center(
-                              //         child: CircularProgressIndicator(
-                              //           value: loadingProgress.expectedTotalBytes != null
-                              //               ? loadingProgress.cumulativeBytesLoaded /
-                              //               loadingProgress.expectedTotalBytes
-                              //               : null,
-                              //         ),
-                              //       );
-                              //     },
-                              //   ),
-                              // ),
-                              // radius: 30,
-                              child:  Container(
-                                height: screenHeight * 0.1,
-                                width: screenHeight * 0.1,
-
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(width: 1, color: Colors.transparent)
-                                ),
-                                // child: Image.network(
-                                //
-                                //     personalInfo.imageUrl,
-                                //     loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
-                                //       if (loadingProgress == null) return child;
-                                //       return Center(
-                                //         child: CircularProgressIndicator(
-                                //           // color: ColorConstants.themeColor,
-                                //           value: loadingProgress.expectedTotalBytes != null &&
-                                //               loadingProgress.expectedTotalBytes != null
-                                //               ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
-                                //               : null,
-                                //         ),
-                                //       );
-                                //     },
-                                //     errorBuilder: (context, object, stackTrace) {
-                                //       return Icon(
-                                //         Icons.account_circle,
-                                //         size: screenHeight * 0.1,
-                                //         // color: ColorConstants.greyColor,
-                                //       );
-                                //     },
-                                //     width: screenHeight * 0.1,
-                                //     height: screenHeight * 0.1,
-                                //     fit: BoxFit.cover,
-                                //
-                                //   ),
-                              ),
+                              radius: screenHeight * 0.1,
                               backgroundImage: NetworkImage(personalInfo.imageUrl),
-
-
-
-                              //   ,
                             ),
                           ),
                         ),

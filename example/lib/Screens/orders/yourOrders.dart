@@ -70,14 +70,15 @@ class _YourOrdersState extends State<YourOrders> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (builder) =>
-                                      OrderId(orders.listOrder[index].id, 0),
-                                ),
-                              );
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //     builder: (builder) =>
+                              //         OrderId(orders.listOrder[index], 0),
+                              //   ),
+                              // );
                             },
                             child: Card(
+                              elevation: 5,
                               color: LightColors.kLightYellow2,
                                 child: Padding(
                               padding: const EdgeInsets.symmetric(
