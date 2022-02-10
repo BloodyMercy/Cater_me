@@ -26,6 +26,7 @@ class OrderServices {
         return [];
       }
     } catch (e) {
+      print(e);
       return [];
     }
   }

@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/occasion.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +57,8 @@ class _OccasionListViewState extends State<OccasionListView> {
                 ),
               )
                   : ListView.builder(
+                // dragStartBehavior: DragStartBehavior.start,
+                // reverse: true,
                   itemCount: occa.all.length,
                   itemBuilder: (ctx, index) {
                     return Card(
@@ -80,12 +83,12 @@ class _OccasionListViewState extends State<OccasionListView> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
+                                      '${DateFormat.MMM().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                        '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
+                                        '${DateFormat.d().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
                                         style: const TextStyle(
                                             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
                                   ],
@@ -94,7 +97,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                           SizedBox(
                             width: mediaQuery.size.width * 0.1,),
                           Text(
-                            '${occa.all[index].name}',
+                            '${occa.all[occa.all.length - 1 -index].name}',
                             style: Theme.of(context).textTheme.headline2,
                           ),
                         ],

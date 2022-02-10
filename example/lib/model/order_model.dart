@@ -9,18 +9,19 @@ class OrderModel {
   String street='';
   String buildingName='';
   int floorNumber=0;
-  int total=0;
+  double total=0.0;
   String orderStatus='';
   String eventType='';
   String eventDate="";
   String eventName='';
   String numberOfGuests='';
-  int percentageOfDaberni=0;
-  int hoursOfDaberni=0;
-  int tax=0;
+  // double percentageOfDaberni=0.0;
+  // double hoursOfDaberni=0.0;
+  // double tax=0.0;
 
   OrderModel(
-  {this.id,
+  {
+    this.id,
         profileId,
         addressId,
         addressTitle,
@@ -34,9 +35,10 @@ class OrderModel {
         eventDate,
         eventName,
         numberOfGuests,
-        percentageOfDaberni,
-        hoursOfDaberni,
-        tax});
+        // percentageOfDaberni,
+        // hoursOfDaberni,
+        // tax
+  });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -47,15 +49,15 @@ class OrderModel {
     street = json['street'];
     buildingName = json['buildingName'];
     floorNumber = json['floorNumber'];
-    total = json['total'];
+    total = json['total'].toDouble();
     orderStatus = json['orderStatus'];
     eventType = json['eventType'];
     eventDate = json['eventDate'];
     eventName = json['eventName'];
     numberOfGuests = json['numberOfGuests'];
-    percentageOfDaberni = json['percentageOfDaberni'];
-    hoursOfDaberni = json['hoursOfDaberni'];
-    tax = json['tax']==null?0:json['tax'];
+    // percentageOfDaberni = json['percentageOfDaberni'];
+    // hoursOfDaberni = json['hoursOfDaberni'];
+    // tax = json['tax']==null?0.0:json['tax'];
   }
 
   // Map<String, dynamic> toJson() {
