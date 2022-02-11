@@ -1,4 +1,5 @@
 import 'package:CaterMe/Drawer/drawer_screen.dart';
+import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Order.dart';
@@ -83,6 +84,7 @@ class _NavigationBarState extends State<Navigationbar> {
   Widget buildbody(BuildContext context) {
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
+    final address=Provider.of<AdressProvider>(context,listen: true);
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -103,6 +105,7 @@ class _NavigationBarState extends State<Navigationbar> {
               ),
               backgroundColor: Colors.transparent,
               onPressed: () {
+                address.value2Index=-1;
                 orderCaterprovider.valueIndex=-1;
                 Navigator.of(context).push(
                   MaterialPageRoute(

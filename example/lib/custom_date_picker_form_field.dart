@@ -16,7 +16,7 @@ class CustomDatePickerFormField extends StatefulWidget {
 class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
 
   FocusNode _focusNode = FocusNode();
-  DateFormat _dateFormat = DateFormat('dd/MM/yy');
+  DateFormat _dateFormat = DateFormat('yyyy/MM/dd');
   DateFormat _monthFormat = DateFormat('MMMM');
   DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');

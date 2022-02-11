@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/add_on.dart';

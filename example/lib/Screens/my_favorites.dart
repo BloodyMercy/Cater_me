@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/widgets/favoriteDetails.dart';
+import 'package:CaterMe/widgets/items_details.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -73,11 +74,15 @@ class _MyFavoritesState extends State<MyFavorites> {
                         )
                       : SingleChildScrollView(
                         child: GestureDetector(
-                          // onTap:( )=> Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             favoriteDetails()));
+                          onTap:() {
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         AdsitemDetail(
+                            //             ),
+                            //   ),
+                            // );
+                          },
                           child: Column(
                               children: [...getFavorites(package.listfavorite)],
                             ),
