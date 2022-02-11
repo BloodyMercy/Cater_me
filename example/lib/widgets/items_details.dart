@@ -6,6 +6,7 @@ import 'package:CaterMe/model/item.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 
 
@@ -72,72 +73,153 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
         ),
         backgroundColor: const Color.fromRGBO(63, 85, 33, 1),
       ),
-      body: LayoutBuilder(
-        builder: (ctx, constraints) => qPortrait == Orientation.portrait
-            ? Container(
-          color: LightColors.kLightYellow,
-              child: Column(
-          children: [
-              SizedBox(
+      body: SingleChildScrollView(
+        child: LayoutBuilder(
+          builder: (ctx, constraints) => qPortrait == Orientation.portrait
+              ? Container(
+            color: LightColors.kLightYellow,
+                child: Column(
+            children: [
+                SizedBox(
+                    height: constraints.maxHeight * 0.5,
+                    width: double.maxFinite,
+                    child: FittedBox(
+                        fit: BoxFit.fill,
+                        child: Image.network(widget.food.image))),
+                Container(
                   height: constraints.maxHeight * 0.5,
-                  width: double.maxFinite,
-                  child: FittedBox(
-                      fit: BoxFit.fill,
-                      child: Image.network(widget.food.image))),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10, horizontal: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Html(
+                        data: """<p>
+   Linking to <a href='https://github.com'>websites</a> has never been easier.
+  </p>""",
+
+                      ),
+                      SizedBox(
+                          height: constraints.maxHeight * 0.04,
+                          child: FittedBox(
+                              child: Text(
+                                widget.food.title,
+                                style: st20Bold,
+                              ))),
+                      SizedBox(
+                        height: constraints.maxHeight * 0.05,
+                      ),
+                      SizedBox(
+                        height: constraints.maxHeight * 0.04,
+                        child: FittedBox(
+                          child: Text(
+                            "Details:",
+                            style: st20Bold,
+                          ),
+                        ),
+                      ),
+                      Container(height:70,child:ListView.builder(
+                        itemCount: widget.food.itemDetails.length,
+                        itemBuilder: (ctx, i) {
+                          return ListTile(
+                            leading: Icon(Icons.circle),
+                            title: Text(widget.food.itemDetails[i].description),
+                            subtitle: Text(widget.food.itemDetails[i].title),
+
+
+
+                          );
+                        },
+                      )),
+                      SizedBox(
+                        height: constraints.maxHeight * 0.135,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                  height: constraints.maxHeight * 0.03,
+                                  child: const FittedBox(
+                                      child: Text("PRICE",
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontFamily: 'BerlinSansFB')))),
+                              Text(
+                                widget.food.price.toString(),
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'BerlinSansFB',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: constraints.maxHeight * 0.04,
+                          ),
+                          // ElevatedButton(
+                          //   onPressed: () {
+                          //     // validate();
+                          //   },
+                          //   child: const Text(
+                          //     'ADD',
+                          //     style: TextStyle(
+                          //         fontWeight: FontWeight.bold,
+                          //         fontFamily: 'BerlinSansFB'),
+                          //   ),
+                          //   style: ElevatedButton.styleFrom(
+                          //     padding: EdgeInsets.fromLTRB(
+                          //       screenHeight * 0.06,
+                          //       screenHeight * 0.02,
+                          //       screenHeight * 0.06,
+                          //       screenHeight * 0.02,
+                          //     ),
+                          //     onPrimary:
+                          //         const Color.fromRGBO(255, 255, 255, 1),
+                          //     primary: const Color.fromRGBO(63, 85, 33, 1),
+                          //     shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(5.0),
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+            ],
+          ),
+              )
+              : Row(
+            children: [
+              FittedBox(
+                  fit: BoxFit.fill,
+                  child: Image.asset(
+                    widget.food.image,
+                    height: constraints.maxHeight * 1,
+                    width: constraints.maxWidth * 0.5,
+                  )),
               Container(
-                height: constraints.maxHeight * 0.5,
+                // height: constraints.maxHeight * 0.5,
+                width: constraints.maxWidth * 0.5,
                 padding: const EdgeInsets.symmetric(
                     vertical: 10, horizontal: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        height: constraints.maxHeight * 0.04,
-                        child: FittedBox(
-                            child: Text(
-                              widget.food.title,
-                              style: st20Bold,
-                            ))),
-                    SizedBox(
-                      height: constraints.maxHeight * 0.05,
-                    ),
-                    SizedBox(
-                      height: constraints.maxHeight * 0.04,
-                      child: FittedBox(
-                        child: Text(
-                          "Details:",
-                          style: st20Bold,
-                        ),
-                      ),
-                    ),
-                    Container(height:70,child:ListView.builder(
-                      itemCount: widget.food.itemDetails.length,
-                      itemBuilder: (ctx, i) {
-                        return ListTile(
-                          leading: Icon(Icons.circle),
-                          title: Text(widget.food.itemDetails[i].description),
-                          subtitle: Text(widget.food.itemDetails[i].title),
-
-
-
-                        );
-                      },
-                    )),
-                    SizedBox(
-                      height: constraints.maxHeight * 0.135,
-                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           children: [
-                            Container(
-                                height: constraints.maxHeight * 0.03,
-                                child: const FittedBox(
-                                    child: Text("PRICE",
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontFamily: 'BerlinSansFB')))),
+                            SizedBox(
+                              height: constraints.maxHeight * 0.04,
+                              child: const FittedBox(
+                                child: Text(
+                                  "price",
+                                ),
+                              ),
+                            ),
                             Text(
                               widget.food.price.toString(),
                               style: const TextStyle(
@@ -147,6 +229,7 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
                             ),
                           ],
                         ),
+
                         SizedBox(
                           height: constraints.maxHeight * 0.04,
                         ),
@@ -154,19 +237,13 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
                         //   onPressed: () {
                         //     // validate();
                         //   },
-                        //   child: const Text(
-                        //     'ADD',
-                        //     style: TextStyle(
-                        //         fontWeight: FontWeight.bold,
-                        //         fontFamily: 'BerlinSansFB'),
-                        //   ),
+                        //   child: const Text('Add'),
                         //   style: ElevatedButton.styleFrom(
                         //     padding: EdgeInsets.fromLTRB(
-                        //       screenHeight * 0.06,
-                        //       screenHeight * 0.02,
-                        //       screenHeight * 0.06,
-                        //       screenHeight * 0.02,
-                        //     ),
+                        //         screenHeight * 0.06,
+                        //         screenHeight * 0.02,
+                        //         screenHeight * 0.06,
+                        //         screenHeight * 0.02),
                         //     onPrimary:
                         //         const Color.fromRGBO(255, 255, 255, 1),
                         //     primary: const Color.fromRGBO(63, 85, 33, 1),
@@ -180,75 +257,8 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
                   ],
                 ),
               )
-          ],
-        ),
-            )
-            : Row(
-          children: [
-            FittedBox(
-                fit: BoxFit.fill,
-                child: Image.asset(
-                  widget.food.image,
-                  height: constraints.maxHeight * 1,
-                  width: constraints.maxWidth * 0.5,
-                )),
-            Container(
-              // height: constraints.maxHeight * 0.5,
-              width: constraints.maxWidth * 0.5,
-              padding: const EdgeInsets.symmetric(
-                  vertical: 10, horizontal: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: constraints.maxHeight * 0.04,
-                            child: const FittedBox(
-                              child: Text(
-                                "price",
-                              ),
-                            ),
-                          ),
-                          Text(
-                            widget.food.price.toString(),
-                            style: const TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'BerlinSansFB',
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: constraints.maxHeight * 0.04,
-                      ),
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     // validate();
-                      //   },
-                      //   child: const Text('Add'),
-                      //   style: ElevatedButton.styleFrom(
-                      //     padding: EdgeInsets.fromLTRB(
-                      //         screenHeight * 0.06,
-                      //         screenHeight * 0.02,
-                      //         screenHeight * 0.06,
-                      //         screenHeight * 0.02),
-                      //     onPrimary:
-                      //         const Color.fromRGBO(255, 255, 255, 1),
-                      //     primary: const Color.fromRGBO(63, 85, 33, 1),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(5.0),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
