@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:credit_card/credit_card_form.dart';
@@ -58,8 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(""),),
-
+      appBar: AppBar(title: Text("Add Card",style: Theme.of(context).textTheme.headline1,),centerTitle: true,),
         body: SafeArea(
           child: Column(
             children: <Widget>[
@@ -112,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _generateToken() async {
+
     try {
       // Show loading dialog
       showDialog(
@@ -137,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
           number: number, name: cardNameHolder, expiryMonth: expiryMonth, expiryYear: expiryYear, cvv: cvv);
 print(response.token);
       // Hide loading dialog
-      Navigator.pop(context);
+      // Navigator.pop(context);
       final address = Provider.of<OrderCaterProvider>(context, listen: false);
 
 CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token);
@@ -159,6 +160,8 @@ if(card.id==0){
 }
 
 else {
+  final _creditCards=Provider.of<CreditCardsProvider>(context,listen: false);
+   await _creditCards.getAllCards();
   Navigator.pop(context);
 }
 
