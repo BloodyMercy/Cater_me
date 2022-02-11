@@ -12,7 +12,6 @@ import "package:image_picker/image_picker.dart";
 import 'package:provider/provider.dart';
 
 
-import '../../custom_date_picker_form_field.dart';
 import 'newlogin/screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -452,15 +451,47 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             SizedBox(height: screenHeight * 0.015),
                             // SizedBox(height: _mediaQuery * 0.03),
-                            Container(
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Row(
+                                children: [
+                                  Text(selectedDate == null
+                                      ? "No Date chosen!"
+                                      : 'Picked date: ${DateFormat.yMd().format(selectedDate)}'),
+                                  IconButton(
+                                    onPressed: ()async{
 
-                              height: screenHeight*0.1,
+                                      _newDate = (await showDatePicker(
+                                        context: context,
+                                        builder: (context, child) => Theme(
+                                            data: ThemeData().copyWith(
+                                              colorScheme: ColorScheme.light(
+                                                  primary: Color(0xff3F5521),
+                                                  surface: Color(0xff3F5521),
+                                                  onPrimary: Colors.black),
+                                            ),
+                                            child: child),
+                                        initialDate: selectedDate,
+                                        firstDate: DateTime(1930),
+                                        lastDate: DateTime.now(),
+                                        initialEntryMode: DatePickerEntryMode.calendarOnly,
+                                      ));
 
-                              child:CustomDatePickerFormField(
+                                      setState(() {
+                                        if (_newDate != null) {
+                                          selectedDate = _newDate;
+                                          authProvider.birthday.text=_newDate.toString() ;
 
-                                label: "BirthDate",
-                                controller: authProvider.birthday,
+                                        }
+                                      });
+                                    },
 
+                                    icon: Icon(
+                                      Icons.date_range,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ],

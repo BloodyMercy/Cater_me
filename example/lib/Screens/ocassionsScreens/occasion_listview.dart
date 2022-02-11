@@ -83,7 +83,7 @@ class _OccasionListViewState extends State<OccasionListView> {
           child: !loading? Column(
             children: [
               SizedBox(
-                height: _mediaQuery * 0.82,
+                height: _mediaQuery * 0.80,
                 child:occa.all.isEmpty
                     ? Center(
                   child: Container(
@@ -117,12 +117,12 @@ class _OccasionListViewState extends State<OccasionListView> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '${DateFormat.MMM().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
+                                        '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
                                         style: const TextStyle(
                                             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                          '${DateFormat.d().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
+                                          '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
                                           style: const TextStyle(
                                               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
                                     ],
@@ -131,7 +131,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                             SizedBox(
                               width: mediaQuery.size.width * 0.1,),
                             Text(
-                              '${occa.all[occa.all.length - 1 -index].name}',
+                              '${occa.all[index].name}',
                               style: Theme.of(context).textTheme.headline2,
                             ),
                           ],
