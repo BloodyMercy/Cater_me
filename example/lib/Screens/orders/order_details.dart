@@ -24,6 +24,9 @@ class _DetailsOrderState extends State<DetailsOrder> {
   getData() async {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
     await orders.getOrderById(widget.id);
+   await orders.getOrderItems();
+   print(orders.items.length);
+
 
 
     setState(() {
@@ -53,68 +56,69 @@ class _DetailsOrderState extends State<DetailsOrder> {
   Widget build(BuildContext context) {
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
     return Scaffold(
-      body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: refreshOrderData,
-          child: loading
-              ? Container(
-                  color: LightColors.kLightYellow,
-                  child: Center(
+      body: Center(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: RefreshIndicator(
+              onRefresh: refreshOrderData,
+              child: loading
+                  ? Center(
                     child: CircularProgressIndicator(
                       color: Color(0xFF3F5521),
                     ),
-                  ),
-                )
-              : Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Card(
-                        elevation: 5,
-                        child: Container(
-                          child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
+                  )
+                  : Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Card(
+                            elevation: 5,
+                            child: Container(
+                              child: ListView.builder(
+                                itemCount: order.items.length,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Row(
+                                          mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "${order.orderListDetails[0].orderItems[index].item}",
-                                          style: TextStyle(
-                                              color: Color(0xFF3F5521),
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        SizedBox(
-                                          height: MediaQuery.of(context)
+                                          children: [
+                                            Text(
+                                              "${order.items[index].item}",
+                                              style: TextStyle(
+                                                  color: Color(0xFF3F5521),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.03,
+                                                  0.03,
+                                            ),
+                                            Text(
+                                              "\$ ${order.items[index].price}",
+                                              style: TextStyle(
+                                                  color: Color(0xFF3F5521),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          "\$ ${order.orderListDetails[0].orderItems[index].price}",
-                                          style: TextStyle(
-                                              color: Color(0xFF3F5521),
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                            itemCount: order.orderListDetails[0].orderItems.length,
+                                      ) ],
+                                  );
+                                },
+
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ]),
-              ),
+                        ]),
+                  ),
+            ),
+          ),
         ),
       ),
     );
