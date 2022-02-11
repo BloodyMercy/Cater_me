@@ -25,11 +25,7 @@ class _OcasionsState extends State<Ocasions> {
         appBar:  AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
+
           centerTitle: true,
           title: Text(
             'Occasions',

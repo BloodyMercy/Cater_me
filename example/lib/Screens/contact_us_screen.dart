@@ -39,11 +39,7 @@ bool loading=false;
             iconSize: 30,
           ),
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
+
           centerTitle: true,
           title: Text(
             'Contact Us',

@@ -65,11 +65,7 @@ class _EditOccasionState extends State<EditOccasion> {
             iconSize: 30,
           ),
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
+
           centerTitle: true,
           title: Text(
             'Edit Occasion',

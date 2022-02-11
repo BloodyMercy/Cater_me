@@ -42,11 +42,7 @@ class _CardsNewAdressState extends State<CardsNewAdress> {
         ),
         child: AppBar(
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
+
           centerTitle: true,
           title: Text(
             'Adresses',

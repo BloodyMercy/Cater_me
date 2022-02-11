@@ -15,7 +15,7 @@ class OrderByIdProvider extends ChangeNotifier{
     _orderDetails = value;
   }
 
-  List<PaymentFriend> _payment=[];
+
 
   List<OrderItems> _items=[];
 
@@ -26,10 +26,12 @@ class OrderByIdProvider extends ChangeNotifier{
     _items = value;
   }
 
-  List get payment => _payment;
+  List<PaymentFriend> _paymentFreind=[];
 
-  set payment(List value) {
-    _payment = value;
+  List<PaymentFriend> get paymentFreind => _paymentFreind;
+
+  set paymentFreind(List<PaymentFriend> value) {
+    _paymentFreind = value;
   }
 
   List<OrderDetailsModel> get orderListDetails => _orderListDetails;
@@ -59,22 +61,22 @@ class OrderByIdProvider extends ChangeNotifier{
         items.add(element);
       });
     }else{
+
       return _items=[];
     }
-    notifyListeners();
   }
+  Future getOrderPaymentFreind() async{
+paymentFreind=[];
 
-
-  getOrderPayment() {
-   if (_orderListDetails[0].paymentFriend.length != 0){
-     _orderListDetails[0].paymentFriend.forEach((element) {
-       _payment.add(element);
+    if(_orderListDetails[0].paymentFriend!=null){
+      return _orderListDetails[0].paymentFriend.forEach((element) {
+        paymentFreind.add(element);
       });
     }else{
-     return _payment=[];
-   }
-   notifyListeners();
+      return _items=[];
+    }
   }
+
 
   clearData(){
     _orderListDetails=[];

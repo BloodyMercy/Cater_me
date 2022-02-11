@@ -25,7 +25,8 @@ class _DetailsOrderState extends State<DetailsOrder> {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
     await orders.getOrderById(widget.id);
    await orders.getOrderItems();
-   print(orders.items.length);
+   await orders.getOrderPaymentFreind();
+   print(orders.paymentFreind.length);
 
 
 
@@ -74,45 +75,143 @@ class _DetailsOrderState extends State<DetailsOrder> {
                         children: [
                           Card(
                             elevation: 5,
-                            child: Container(
-                              child: ListView.builder(
-                                itemCount: order.items.length,
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "${order.items[index].item}",
-                                              style: TextStyle(
-                                                  color: Color(0xFF3F5521),
-                                                  fontWeight: FontWeight.bold),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: ListView.builder(
+                                    itemCount: order.items.length,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, i) {
+                                      return Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "${order.items[i].item}",
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                      0.03,
+                                                ),
+                                                Text(
+                                                  "SAR ${order.items[i].price}",
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                                  0.03,
-                                            ),
-                                            Text(
-                                              "\$ ${order.items[index].price}",
-                                              style: TextStyle(
-                                                  color: Color(0xFF3F5521),
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ) ],
-                                  );
-                                },
+                                          ) ],
+                                      );
+                                    },
 
-                              ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Tax" ,style:TextStyle(
+                                  color: Color(0xFF3F5521),
+                                    fontWeight: FontWeight.bold)),
+                                      Text("SAR ${
+                                          double.parse((order.orderListDetails[0].tax).toStringAsFixed(2))}",style:TextStyle(
+                                          color: Color(0xFF3F5521),
+                                    fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("SubTotal" ,style:TextStyle(
+                                          color: Color(0xFF3F5521),
+                                          fontWeight: FontWeight.bold)),
+                                      Text("SAR ${
+                                          double.parse((order.orderListDetails[0].subTotal).toStringAsFixed(2))}",style:TextStyle(
+                                          color: Color(0xFF3F5521),
+                                          fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ),Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Total" ,style:TextStyle(
+                                          color: Color(0xFF3F5521),
+                                          fontWeight: FontWeight.bold)),
+                                      Text("SAR ${
+                                          double.parse((order.orderListDetails[0].total).toStringAsFixed(2))}",style:TextStyle(
+                                          color: Color(0xFF3F5521),
+                                          fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+
+                                    ],
+                                  ),
+                                ),
+                              order.paymentFreind.length==0?Container():  Container(
+                                  child: ListView.builder(
+                                    itemCount: order.paymentFreind.length,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "${order.paymentFreind[index].email}",
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                      0.03,
+                                                ),
+                                                Text(
+                                                  "SAR ${order.paymentFreind[index].amount}",
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                          ) ],
+                                      );
+                                    },
+
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ]),

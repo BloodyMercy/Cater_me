@@ -131,32 +131,33 @@ setData(String imageUrl) async{
                             child:
                             CircleAvatar(
                               backgroundColor: Colors.transparent,
-                              radius: screenHeight * 0.2,
-                              child:ClipOval(child: Image.network(
-                                personalInfo.imageUrl,
-                                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                     // color: ColorConstants.themeColor,
-                                      value: loadingProgress.expectedTotalBytes != null &&
-                                          loadingProgress.expectedTotalBytes != null
-                                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
-                                          : null,
-                                    ),
-                                  );
-                                },
-                                errorBuilder: (context, object, stackTrace) {
-                                  return Icon(
-                                    Icons.account_circle,
-                                    size: 35,
-                                 //   color: ColorConstants.greyColor,
-                                  );
-                                },
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.fill,
-                              )),
+                              radius: screenHeight * 0.1,
+                              backgroundImage: NetworkImage(personalInfo.imageUrl),
+                              // child:ClipOval(child: Image.network(
+                              //   personalInfo.imageUrl,
+                              //   loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
+                              //     if (loadingProgress == null) return child;
+                              //     return Center(
+                              //       child: CircularProgressIndicator(
+                              //        // color: ColorConstants.themeColor,
+                              //         value: loadingProgress.expectedTotalBytes != null &&
+                              //             loadingProgress.expectedTotalBytes != null
+                              //             ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                              //             : null,
+                              //       ),
+                              //     );
+                              //   },
+                              //   errorBuilder: (context, object, stackTrace) {
+                              //     return Icon(
+                              //       Icons.account_circle,
+                              //       size: 35,
+                              //    //   color: ColorConstants.greyColor,
+                              //     );
+                              //   },
+                              //   width: 150,
+                              //   height: 150,
+                              //   fit: BoxFit.fill,
+                              // )),
                             ),
                           ),
                         ),

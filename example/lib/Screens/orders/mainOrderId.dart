@@ -30,7 +30,7 @@ class _OrderIdState extends State<OrderId> {
     List<Widget> _screen = [DetailsOrder(widget.id), TrackingOrder(widget.id)];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order Info"),
+        title: Text("Order Info",style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
       ),
       body: SafeArea(child: _screen[widget.screen]),

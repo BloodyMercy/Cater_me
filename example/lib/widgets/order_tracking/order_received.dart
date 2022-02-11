@@ -21,7 +21,6 @@ class OrderReceived extends StatelessWidget {
           children: [
             Image.asset("images/order_received.png"),
             Container(
-
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: FittedBox(

@@ -113,7 +113,7 @@ class Event {
 
 class PaymentFriend {
   int friendId;
-  int amount;
+  double amount;
   String image;
   String email;
   String phoneNumber;
@@ -123,7 +123,7 @@ class PaymentFriend {
 
   PaymentFriend.fromJson(Map<String, dynamic> json) {
     friendId = json['friendId'];
-    amount = json['amount'];
+    amount = json['amount'].toDouble();
     image = json['image'];
     email = json['email'];
     phoneNumber = json['phoneNumber'];

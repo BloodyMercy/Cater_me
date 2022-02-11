@@ -55,6 +55,8 @@ class _YourOrdersState extends State<YourOrders> {
     final orders = Provider.of<OrderProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(title: Text("My Orders",style: Theme.of(context).textTheme.headline1,),
+        centerTitle: true,),
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
           child: Padding(
