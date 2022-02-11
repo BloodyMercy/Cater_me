@@ -83,7 +83,7 @@ class _OccasionListViewState extends State<OccasionListView> {
           child: !loading? Column(
             children: [
               SizedBox(
-                height: _mediaQuery * 0.78,
+                height: _mediaQuery * 0.82,
                 child:occa.all.isEmpty
                     ? Center(
                   child: Container(
