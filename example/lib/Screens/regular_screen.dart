@@ -92,7 +92,7 @@ getData()async{
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     return SingleChildScrollView(
       child:  Container(
-        color: LightColors.kLightYellow2,
+        // color: LightColors.kLightYellow2,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
