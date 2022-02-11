@@ -1,3 +1,5 @@
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
+import 'package:CaterMe/Screens/appointment/donation.dart';
 import 'package:flutter/material.dart';
 
 import 'const.dart';
@@ -69,15 +71,38 @@ class CustomDialog extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 24.0),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // To close the dialog
-                  },
-                  child: Text(buttonText),
-                ),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Navigationbar(0),
+                            ),
+                                (route) => false);
+                      },
+                      child: Text('No'),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>  DonationAdded())); // To close the dialog
+                      },
+                      child: Text(buttonText),
+                    ),
+                  ),
+                ],
+              )
+
             ],
           ),
         ),

@@ -131,7 +131,7 @@ setData(String imageUrl) async{
                             child:
                             CircleAvatar(
                               backgroundColor: Colors.transparent,
-                              radius: screenHeight * 0.1,
+                              radius: screenHeight * 0.2,
                               child:ClipOval(child: Image.network(
                                 personalInfo.imageUrl,
                                 loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {

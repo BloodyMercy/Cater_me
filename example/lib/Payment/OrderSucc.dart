@@ -205,20 +205,22 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                             color: Color(0xff9FACBD),
                           ),
                         ),
-                        Container(
-                          width: width / 6,
-                          height: height / 20,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "${_serpres.value.title}",
-                                style: TextStyle(
-                                  color: Color(0xff9FACBD),
-                                  fontFamily: 'Ubuntu',
+                        Expanded(
+                          child: Container(
+                            width: width / 6,
+                            height: height / 20,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "${_serpres.value.title}",
+                                  style: TextStyle(
+                                    color: Color(0xff9FACBD),
+                                    fontFamily: 'Ubuntu',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -237,15 +239,17 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                                           MediaQuery.of(context).size.height *
                                               0.04,
                                     )
-                                  : SvgPicture.asset(
-                                      'images/daberne.svg',
+                                  : Image.asset(
+                                      'images/daberneLogo.png',
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.06,
+                                              0.05,
+
                                     ),
                             ],
                           ),
                         ),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.03,),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,10 +353,16 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                         builder: (BuildContext context) => CustomDialog(
                           title: "Success",
                           description:
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                          buttonText: "Okay",
+                          "Do You Want To Donate The Rest Of Your Food?"
+                        ,
+                          buttonText: "Donate",
+
+
+
                         ),
                       );
+
+
                       // Navigator.of(context).pushAndRemoveUntil(
                       //     MaterialPageRoute(
                       //         builder: (context) => Navigationbar(0)),

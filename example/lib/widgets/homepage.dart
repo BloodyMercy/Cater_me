@@ -374,6 +374,7 @@ class _HomePageState extends State<HomePage> {
                                   : Container(),
                               Center(child: OccasionCard(Axis.horizontal)),
                             ]),
+                            SizedBox(height: mediaQuery.size.height * 0.1,),
                             Container(
                               child: Column(children: [
                                 Row(
@@ -523,11 +524,13 @@ class _HomePageState extends State<HomePage> {
                                             SizedBox(
                                               width: MediaQuery.of(context).size.width * 0.04,
                                             ),
-                                            Text(
-                                              '${package.listItems[index].title}',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline2,
+                                            Expanded(
+                                              child: Text(
+                                                '${package.listItems[index].title}',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline2,
+                                              ),
                                             ),
                                           ],
                                         ),

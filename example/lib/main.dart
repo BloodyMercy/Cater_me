@@ -8,6 +8,7 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/personal_info_provider.dart';
+import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
 import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 
 import 'package:CaterMe/Screens/intro_screen.dart';

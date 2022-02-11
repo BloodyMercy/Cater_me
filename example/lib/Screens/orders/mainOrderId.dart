@@ -4,6 +4,7 @@ import 'package:CaterMe/Screens/orders/order_tracking.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class OrderId extends StatefulWidget {
   int id;
@@ -41,7 +42,7 @@ class _OrderIdState extends State<OrderId> {
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.list), label: "Details"),
-            BottomNavigationBarItem(icon: Icon(Icons.add), label: "Tracking")
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: "Tracking")
           ]),
     );
   }

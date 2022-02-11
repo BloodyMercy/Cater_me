@@ -414,7 +414,7 @@ controller:details.controllers[index],
                    height: 10,
                  ),
                  Text(
-                   'Subtotal: ${details.subTotal}',
+                   'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
                    style: TextStyle(
                      fontWeight: FontWeight.bold,
                    ),
@@ -423,7 +423,7 @@ controller:details.controllers[index],
                    height: 10,
                  ),
                  Text(
-                   'Totale: ${details.totale}',
+                   'Totale: ${details.totale.toStringAsFixed(3)}',
                    style: TextStyle(
                      color: Color(0xFF3F5521),
                      fontWeight: FontWeight.bold,
