@@ -1,4 +1,3 @@
-import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/add_on.dart';
@@ -8,7 +7,6 @@ import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:provider/provider.dart';
 
 
 
@@ -29,7 +27,6 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
   bool loading = false;
   @override
   Widget build(BuildContext context) {
-    final packages=Provider.of<PackagesProvider>(context,listen: false);
     var qPortrait = MediaQuery.of(context).orientation;
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -96,7 +93,9 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Html(
-
+                      data: """<p>
+   Linking to <a href='https://github.com'>websites</a> has never been easier.
+  </p>""",
 
                     ),
                     SizedBox(
