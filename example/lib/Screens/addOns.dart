@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddOns extends StatefulWidget {
-int addOns;
-String title;
+  int addOns;
+  String title;
 
-  AddOns(this.addOns,this.title);
+  AddOns(this.addOns, this.title);
 
   @override
   State<AddOns> createState() => _AddOnsState();
@@ -21,14 +21,15 @@ class _AddOnsState extends State<AddOns> {
   void initState() {
     getallons();
     super.initState();
+  }
 
-  }
-  getallons() async{
+  getallons() async {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
-    _cuisin.loading=true;
-   await _cuisin.getonid(widget.addOns);
-   _cuisin.loading=false;
+    _cuisin.loading = true;
+    await _cuisin.getonid(widget.addOns);
+    _cuisin.loading = false;
   }
+
   @override
   Widget build(BuildContext context) {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: true);
@@ -63,21 +64,21 @@ class _AddOnsState extends State<AddOns> {
       appBar: appBar,
       body: ColoredBox(
         color: Colors.white,
-        child:
-        _cuisin.loading?
-        Center(child: CircularProgressIndicator(),)
-            :
-        GridView(
-            padding: const EdgeInsets.all(25),
-            children: getAddOns(_cuisin.allons),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 2.9 / 3,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 5,
-            ),
-          ),
-        ),
-      );
+        child: _cuisin.loading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : GridView(
+                padding: const EdgeInsets.all(25),
+                children: getAddOns(_cuisin.allons),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 2.9 / 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 5,
+                ),
+              ),
+      ),
+    );
   }
 }

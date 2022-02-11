@@ -13,6 +13,7 @@ import 'order_add_details.dart';
 
 class PackageCard extends StatefulWidget {
   Package packages;
+
   PackageCard(this.packages);
 
   @override
@@ -20,14 +21,16 @@ class PackageCard extends StatefulWidget {
 }
 
 class _PackageCardState extends State<PackageCard> {
-  bool loading= false;
-  getData()async{
-    final pack=Provider.of<PackagesProvider>(context,listen: false);
+  bool loading = false;
+
+  getData() async {
+    final pack = Provider.of<PackagesProvider>(context, listen: false);
     await pack.getpacakgesby(pack.packages.id);
-  //   setState(() {
-  //     loading=false;
-  //   });
-   }
+    //   setState(() {
+    //     loading=false;
+    //   });
+  }
+
   @override
   void initState() {
     getData();
@@ -36,63 +39,58 @@ class _PackageCardState extends State<PackageCard> {
 
   @override
   Widget build(BuildContext context) {
-    final pack=Provider.of<PackagesProvider>(context,listen: true);
+    final pack = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return InkWell(
-        onTap: (){
+        onTap: () {
           //
-          Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => packageAdsDetail(
-                 widget.packages
-                ),
-              ));
-
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => packageAdsDetail(widget.packages),
+          ));
         },
+        child: Container(
+          // width: mediaQuery.size.width * 0.97,
 
-        child:Container(
+          decoration: BoxDecoration(
 
-      width: mediaQuery.size.width * 0.97,
+            border: Border.all(style: BorderStyle.none),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            image: DecorationImage(
 
-
-      decoration: BoxDecoration(
-
-          border: Border.all(style: BorderStyle.none),
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          image: DecorationImage(
-
-              image: NetworkImage(
-                widget.packages.image,
-              ),
-              fit: BoxFit.fill)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                border: Border.all(style: BorderStyle.none),
-                color: Color(0xFF3F5521),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-              ),
-              height: mediaQuery.size.height * 0.07,
-              width: mediaQuery.size.width * 0.97,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: mediaQuery.size.width * 0.035, vertical: mediaQuery.size.height*0.015),
-                child: Text(
-                  widget.packages.title,
-                  style: TextStyle(
-                      color:LightColors.kLightYellow,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'BerlinSansFB'),
+                image: NetworkImage(
+                  widget.packages.image,
                 ),
-              )),
-        ],
-      ),
-    ));
+                fit: BoxFit.contain),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(style: BorderStyle.none),
+                    // color: Color.fromRGBO(63, 85, 33, 0.5),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                  height: mediaQuery.size.height * 0.07,
+                  width: mediaQuery.size.width * 0.97,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: mediaQuery.size.width * 0.035,
+                        vertical: mediaQuery.size.height * 0.015),
+                    // child: Text(
+                    //   widget.packages.title,
+                    //   style: TextStyle(
+                    //       color: LightColors.kLightYellow,
+                    //       fontSize: 20,
+                    //       fontWeight: FontWeight.bold,
+                    //       fontFamily: 'BerlinSansFB'),
+                    // ),
+                  )),
+            ],
+          ),
+        ));
   }
 }

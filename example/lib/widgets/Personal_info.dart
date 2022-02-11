@@ -100,9 +100,21 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           TextFormField(
                             controller: user.name,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                  Icons.person),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: _mediaQuery * 0.03,
+                                  bottom: _mediaQuery * 0.025,
+                                  top: _mediaQuery * 0.025),
                               labelText: 'Full Name',
                               labelStyle: Theme.of(context).textTheme.headline4,
-                              contentPadding: const EdgeInsets.only(left: 20),
+                              // contentPadding: const EdgeInsets.only(left: 20),
                             ),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -114,9 +126,21 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           TextFormField(
                             controller: user.email,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                  Icons.mail_outline),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: _mediaQuery * 0.03,
+                                  bottom: _mediaQuery * 0.025,
+                                  top: _mediaQuery * 0.025),
                               labelText: 'Email',
                               labelStyle: Theme.of(context).textTheme.headline4,
-                              contentPadding: const EdgeInsets.only(left: 20),
+                              // contentPadding: const EdgeInsets.only(left: 20),
                             ),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -130,9 +154,21 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           TextFormField(
                             controller: user.phoneNumber,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                  Icons.phone),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: _mediaQuery * 0.03,
+                                  bottom: _mediaQuery * 0.025,
+                                  top: _mediaQuery * 0.025),
                               labelText: 'Phone Number',
                               labelStyle: Theme.of(context).textTheme.headline4,
-                              contentPadding: const EdgeInsets.only(left: 20),
+                              // contentPadding: const EdgeInsets.only(left: 20),
                             ),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,

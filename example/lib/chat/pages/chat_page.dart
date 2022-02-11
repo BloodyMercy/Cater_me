@@ -418,7 +418,7 @@ class ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text(
           this.peerNickname,
-          style: TextStyle(color: ColorConstants.primaryColor),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -565,6 +565,7 @@ class ChatPageState extends State<ChatPage> {
     );
   }
 
+  //keyboard
   Widget buildInput() {
     return Container(
       child: Row(
@@ -642,7 +643,7 @@ class ChatPageState extends State<ChatPage> {
                   listMessage = snapshot.data.docs;
                   if (listMessage.length > 0) {
                     return ListView.builder(
-                      padding: EdgeInsets.all(10),
+                      // padding: EdgeInsets.all(10),
                       itemBuilder: (context, index) => buildItem(index, snapshot.data?.docs[index]),
                       itemCount: snapshot.data?.docs.length,
                       reverse: true,

@@ -33,29 +33,29 @@ class CuisinsCard extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-                color: ((this.index % 2) == 0)
-                    ? Color.fromRGBO(253, 202, 29, 0.8)
-                    : Color.fromRGBO(135, 217, 12, 0.8),
+                // color: ((this.index % 2) == 0)
+                //     ? Color.fromRGBO(253, 202, 29, 0.8)
+                //     : Color.fromRGBO(135, 217, 12, 0.8),
                 border: Border.all(style: BorderStyle.none),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
-                    opacity: 0.5,
+                    // opacity: 0.5,
                     image: NetworkImage(
                       this.cuisin.image,
                     ),
                     fit: BoxFit.fill)),
             width: mediaQuery.size.height * 0.15,
             height: mediaQuery.size.height * 0.20,
-            child: Center(
-              child: Text(
-                '${this.cuisin.name}',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'BerlinSansFB'),
-              ),
-            ),
+            // child: Center(
+            //   child: Text(
+            //     '${this.cuisin.name}',
+            //     style: TextStyle(
+            //         color: Colors.white,
+            //         fontSize: 20,
+            //         fontWeight: FontWeight.bold,
+            //         fontFamily: 'BerlinSansFB'),
+            //   ),
+            // ),
           )),
         ),
 

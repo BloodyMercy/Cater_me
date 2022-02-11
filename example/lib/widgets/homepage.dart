@@ -8,6 +8,7 @@ import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
 import 'package:CaterMe/widgets/items_details.dart';
@@ -115,6 +116,7 @@ class _HomePageState extends State<HomePage> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
                                       child: TextField(
+
                                         showCursor: true,
                                         readOnly: true,
                                         autofocus: false,
@@ -125,9 +127,9 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                  color: LightColors
-                                                      .kLightYellow2),
+                                              borderSide:  BorderSide(
+                                                  color:colorCustom,
+                                                      ),
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           focusedBorder: OutlineInputBorder(
@@ -156,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                ChatPage(peerId: "admin",peerAvatar: "",peerNickname: "caterme",),
+                                                ChatPage(peerId: "admin",peerAvatar: "",peerNickname: "Customer Service",),
                                               ),
                                             );
                                           },

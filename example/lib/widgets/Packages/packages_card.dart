@@ -42,7 +42,7 @@ bool loading=false;
         );
     List<PackageCard> card = getPackages();
     return SizedBox(
-      width: mediaQuery.size.width * 0.97,
+      // width: mediaQuery.size.width * 90,
       child:!loading? Card(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
@@ -50,7 +50,7 @@ bool loading=false;
           ),
         ),
         child: Container(
-          color: LightColors.kLightYellow,
+
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

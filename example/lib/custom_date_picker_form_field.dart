@@ -77,8 +77,8 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
       margin: EdgeInsets.only(bottom: 15),
       padding: EdgeInsets.all(13),
       decoration: BoxDecoration(
-          color: LightColors.kLightYellow2,
-          borderRadius: BorderRadius.all(Radius.circular(5))
+          color:Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(15))
       ),
       child: Row(
         children: [
