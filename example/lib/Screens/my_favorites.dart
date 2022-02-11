@@ -51,11 +51,11 @@ class _MyFavoritesState extends State<MyFavorites> {
             iconSize: 30,
           ),
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15),
-            ),
-          ),
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(15),
+          //   ),
+          // ),
           centerTitle: true,
           title: Text(
             'My Favorites',

@@ -57,11 +57,11 @@ class _NotificationsState extends State<Notifications> {
                 Navigator.of(context).pop();
               },
             ),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(15),
-              ),
-            ),
+            // shape: const RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.vertical(
+            //     bottom: Radius.circular(15),
+            //   ),
+            // ),
             centerTitle: true,
             title: Text(
               'Notifications',

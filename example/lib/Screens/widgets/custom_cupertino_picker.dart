@@ -163,7 +163,8 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
               Container(
                 height: 250,
                 child: CupertinoPicker(
-                  backgroundColor: LightColors.kLightYellow2,
+
+                  backgroundColor: Colors.white,
                   onSelectedItemChanged: (value) {
                     setState(() {
                       widget.selectedValue = value;

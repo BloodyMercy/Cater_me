@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/custom_daily_picker.dart';
@@ -166,20 +167,41 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                 key: formkey,
                 child: Column(
                   children: [
-
                     TextFormField(
+                      // onSaved: (value) => name = value,
                       controller: address.eventnamecontroller,
-                      decoration: const InputDecoration(
-                        labelText: 'Event Name',
-                        contentPadding: EdgeInsets.only(left: 20),
+                      autovalidateMode:
+                      AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                        contentPadding:
+                        EdgeInsets.only(left: screenHeight * 0.04),
+                        // prefixIcon:Icon(Icons.event),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          // borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: new BorderSide(color:colorCustom)
+                        ),
+                        hintText: 'Event Name',
+                        hintStyle:
+                        Theme.of(context).textTheme.headline4,
                       ),
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: 'Required *'),
-                        // EmailValidator(errorText: 'Not a valid email'),
-                      ]),
-
+                      keyboardType: TextInputType.text,
                     ),
+                    // TextFormField(
+                    //   controller: address.eventnamecontroller,
+                    //   decoration: const InputDecoration(
+                    //     labelText: 'Event Name',
+                    //     contentPadding: EdgeInsets.only(left: 20),
+                    //   ),
+                    //   autovalidateMode: AutovalidateMode.onUserInteraction,
+                    //   validator: MultiValidator([
+                    //     RequiredValidator(errorText: 'Required *'),
+                    //     // EmailValidator(errorText: 'Not a valid email'),
+                    //   ]),
+                    //
+                    // ),
                     SizedBox(height: screenHeight * 0.02),
 
 
@@ -203,7 +225,7 @@ final address=Provider.of<AdressProvider>(context,listen: true);
 
                       child:CustomDailyDate(
 
-                        label: "Daily Date",
+                        label: "Event Time",
                         controller: address.DailyDatecontroller,
 
                       ),

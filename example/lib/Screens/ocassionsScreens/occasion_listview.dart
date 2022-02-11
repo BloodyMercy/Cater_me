@@ -44,142 +44,177 @@ class _OccasionListViewState extends State<OccasionListView> {
     var _mediaQuery = MediaQuery.of(context).size.height;
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
-      child:RefreshIndicator(
-        onRefresh: refreshocasionData,
-        child: !loading? Column(
-          children: [
-            SizedBox(
-              height: _mediaQuery * 0.78,
-              child:occa.all.isEmpty
-                  ? Center(
-                child: Container(
-                  child: Image.asset('images/no addresses yet-02.png'),
+
+      child:Scaffold(
+        appBar: AppBar(
+          //  IconButton(
+          //   onPressed: () {
+          //     Navigator.of(context).pop(
+          //     );
+          //   },
+          //   icon: Icon(Icons.arrow_back, color: Colors.white),
+          //   iconSize: 30,
+          // ),
+          elevation: 0,
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(15),
+          //   ),
+          // ),
+          centerTitle: true,
+          title: Text(
+            'My Occasions',
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          backgroundColor: Theme.of(context).primaryColor,
+          actions: [
+            IconButton(onPressed: (){
+
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const AddNewOccasion(),
                 ),
-              )
-                  : ListView.builder(
-                // dragStartBehavior: DragStartBehavior.start,
-                // reverse: true,
-                  itemCount: occa.all.length,
-                  itemBuilder: (ctx, index) {
-                    return Card(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: mediaQuery.size.height * 0.15,
-                            width: mediaQuery.size.width * 0.23,
-                            child: Card(
-                                color: Theme.of(context).primaryColor,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '${DateFormat.MMM().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
-                                      style: const TextStyle(
-                                          color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                        '${DateFormat.d().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
-                                        style: const TextStyle(
-                                            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
-                                  ],
-                                )),
-                          ),
-                          SizedBox(
-                            width: mediaQuery.size.width * 0.1,),
-                          Text(
-                            '${occa.all[occa.all.length - 1 -index].name}',
-                            style: Theme.of(context).textTheme.headline2,
-                          ),
-                        ],
-                      ),
-                    );
-                    // Card(
-                    //   child: Row(
-                    //     children: [
-                    //       Padding(
-                    //         padding: EdgeInsets.symmetric(
-                    //             vertical: _mediaQuery * 0.02,
-                    //             horizontal: _mediaQuery * 0.01),
-                    //         child: CircleAvatar(
-                    //           radius: 25.0,
-                    //           child: ClipRRect(
-                    //             child: Image.network(
-                    //               occasion[index].name,
-                    //             ),
-                    //             borderRadius: BorderRadius.circular(50.0),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Text(
-                    //             occasion[index].date,
-                    //             style: const TextStyle(
-                    //                 fontSize: 20, fontWeight: FontWeight.bold),
-                    //           ),
-                    //           Text(
-                    //             friend[index].email,
-                    //             style: const TextStyle(
-                    //                 fontSize: 15, fontWeight: FontWeight.bold),
-                    //           ),
-                    //           // SizedBox(height: _mediaQuery * 0.01),
-                    //           Text(
-                    //             friend[index].phoneNumber,
-                    //             style: const TextStyle(
-                    //                 fontSize: 13, fontWeight: FontWeight.bold),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ],
-                    //   ),
-                    // );
-
-
-                  }),
-
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const AddNewOccasion(),
-                  ),
-                );
-              },
-              child: const Text(
-                "Add new occasion",
-                style: TextStyle(
-                    color: Color.fromRGBO(63, 85, 33, 1),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'BerlinSansFB'),
-              ),
-              style: ElevatedButton.styleFrom(
-                elevation: 5,
-                padding: EdgeInsets.symmetric(
-                  horizontal: (mediaQuery.size.width * 0.05),
-                  vertical: (mediaQuery.size.height * 0.01),
-                ),
-                primary:  Colors.white,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                ),
-              ),
-            ),
-
+              );
+            }, icon: Icon(Icons.add))
           ],
-        ):Center(child: CircularProgressIndicator()),
+        ),
+        body: RefreshIndicator(
+          onRefresh: refreshocasionData,
+          child: !loading? Column(
+            children: [
+              SizedBox(
+                height: _mediaQuery * 0.78,
+                child:occa.all.isEmpty
+                    ? Center(
+                  child: Container(
+                    child: Image.asset('images/no addresses yet-02.png'),
+                  ),
+                )
+                    : ListView.builder(
+                  // dragStartBehavior: DragStartBehavior.start,
+                  // reverse: true,
+                    itemCount: occa.all.length,
+                    itemBuilder: (ctx, index) {
+                      return Card(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: mediaQuery.size.height * 0.15,
+                              width: mediaQuery.size.width * 0.23,
+                              child: Card(
+                                  color: Theme.of(context).primaryColor,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '${DateFormat.MMM().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                          '${DateFormat.d().format(DateTime.parse(occa.all[occa.all.length - 1 -index].date))}',
+                                          style: const TextStyle(
+                                              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
+                                    ],
+                                  )),
+                            ),
+                            SizedBox(
+                              width: mediaQuery.size.width * 0.1,),
+                            Text(
+                              '${occa.all[occa.all.length - 1 -index].name}',
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                          ],
+                        ),
+                      );
+                      // Card(
+                      //   child: Row(
+                      //     children: [
+                      //       Padding(
+                      //         padding: EdgeInsets.symmetric(
+                      //             vertical: _mediaQuery * 0.02,
+                      //             horizontal: _mediaQuery * 0.01),
+                      //         child: CircleAvatar(
+                      //           radius: 25.0,
+                      //           child: ClipRRect(
+                      //             child: Image.network(
+                      //               occasion[index].name,
+                      //             ),
+                      //             borderRadius: BorderRadius.circular(50.0),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //       Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           Text(
+                      //             occasion[index].date,
+                      //             style: const TextStyle(
+                      //                 fontSize: 20, fontWeight: FontWeight.bold),
+                      //           ),
+                      //           Text(
+                      //             friend[index].email,
+                      //             style: const TextStyle(
+                      //                 fontSize: 15, fontWeight: FontWeight.bold),
+                      //           ),
+                      //           // SizedBox(height: _mediaQuery * 0.01),
+                      //           Text(
+                      //             friend[index].phoneNumber,
+                      //             style: const TextStyle(
+                      //                 fontSize: 13, fontWeight: FontWeight.bold),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // );
+
+
+                    }),
+
+              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(
+              //         builder: (context) => const AddNewOccasion(),
+              //       ),
+              //     );
+              //   },
+              //   child: const Text(
+              //     "Add new occasion",
+              //     style: TextStyle(
+              //         color: Color.fromRGBO(63, 85, 33, 1),
+              //         fontSize: 15,
+              //         fontWeight: FontWeight.bold,
+              //         fontFamily: 'BerlinSansFB'),
+              //   ),
+              //   style: ElevatedButton.styleFrom(
+              //     elevation: 5,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: (mediaQuery.size.width * 0.05),
+              //       vertical: (mediaQuery.size.height * 0.01),
+              //     ),
+              //     primary:  Colors.white,
+              //     shape: const RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.all(Radius.circular(30)),
+              //     ),
+              //   ),
+              // ),
+
+            ],
+          ):Center(child: CircularProgressIndicator()),
+        ),
       ),
     );
   }

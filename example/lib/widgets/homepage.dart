@@ -505,6 +505,7 @@ class _HomePageState extends State<HomePage> {
                                       );
                                     },
                                     child: Card(
+
                                       color: LightColors.kLightYellow2,
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
