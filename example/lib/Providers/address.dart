@@ -27,11 +27,17 @@ List<String> _listnamenumber=[];
 List<String> _listnameevent=[];
 Address _addressCreated=Address();
   Address _addressUpdated=Address();
-
+String _eventname="";
   Address get addressUpdated => _addressUpdated;
 
   FriendModel _value=FriendModel() ;
 
+
+  String get eventname => _eventname;
+
+  set eventname(String value) {
+    _eventname = value;
+  }
 
   FriendModel get value => _value;
 

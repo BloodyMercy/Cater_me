@@ -133,31 +133,7 @@ setData(String imageUrl) async{
                               backgroundColor: Colors.transparent,
                               radius: screenHeight * 0.1,
                               backgroundImage: NetworkImage(personalInfo.imageUrl),
-                              // child:ClipOval(child: Image.network(
-                              //   personalInfo.imageUrl,
-                              //   loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
-                              //     if (loadingProgress == null) return child;
-                              //     return Center(
-                              //       child: CircularProgressIndicator(
-                              //        // color: ColorConstants.themeColor,
-                              //         value: loadingProgress.expectedTotalBytes != null &&
-                              //             loadingProgress.expectedTotalBytes != null
-                              //             ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
-                              //             : null,
-                              //       ),
-                              //     );
-                              //   },
-                              //   errorBuilder: (context, object, stackTrace) {
-                              //     return Icon(
-                              //       Icons.account_circle,
-                              //       size: 35,
-                              //    //   color: ColorConstants.greyColor,
-                              //     );
-                              //   },
-                              //   width: 150,
-                              //   height: 150,
-                              //   fit: BoxFit.fill,
-                              // )),
+
                             ),
                           ),
                         ),
@@ -270,34 +246,7 @@ setData(String imageUrl) async{
                                               color: Colors.black),
                                         ),
                                       ),
-                                      TextButton(
-                                        onPressed: () async {
-                                          final SharedPreferences
-                                          sharedPreferences =
-                                          await SharedPreferences.getInstance();
-                                          sharedPreferences.remove('Email');
-                                          sharedPreferences.remove('Password');
-                                          personalInfo.clearAllTextController();
 
-                                          sharedPreferences.clear();
-
-                                          Navigator.of(ctx).pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen(),
-                                              ),
-                                                  (route) => false);
-                                        },
-                                        child: const Text(
-                                          "LogOut",
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "BerlinSansFB",
-                                            color: Color.fromRGBO(234, 77, 71, 1),
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ],
@@ -316,23 +265,7 @@ setData(String imageUrl) async{
             border: Border.all(),
             borderRadius: BorderRadius.circular(20),
           ),
-          // child: Image.network(
-          //   personalInfo.imageUrl,
-          //   loadingBuilder: (BuildContext context, Widget child,
-          //       ImageChunkEvent loadingProgress) {
-          //     if (loadingProgress == null) {
-          //       return child;
-          //     }
-          //     return Center(
-          //       child: CircularProgressIndicator(
-          //         value: loadingProgress.expectedTotalBytes != null
-          //             ? loadingProgress.cumulativeBytesLoaded /
-          //             loadingProgress.expectedTotalBytes
-          //             : null,
-          //       ),
-          //     );
-          //   },
-          // ),
+
         ),
               SizedBox(
                 height: screenHeight * 0.01,
@@ -350,19 +283,299 @@ setData(String imageUrl) async{
               Expanded(
                 child: ListView(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => PersonalInfo(),
+                    Card(
+                      color:  const Color.fromARGB(206, 255, 255, 255),
+                      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0)),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => PersonalInfo(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+                                          Icon(FontAwesomeIcons.solidUser,
+                                            size: 20, //Icon Size
+                                            color: Color(0xFF3F5521),//Color Of Icon
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.05,
+                                          ),
+                                          Text(
+                                            "Personal Info",
+                                            style: TextStyle(
+                                                color: Color(0xFF3F5521),
+                                                fontSize: 25,
+                                                fontFamily: 'BerlinSansFB'),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(children: [
+                                        Icon(
+                                          Icons.chevron_right,
+                                          color: Color(0xFF3F5521),
+                                        ),
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.03,
+                                        ),
+                                      ]),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
+                          ),
+                          Divider(),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => AccountInfo(),
+                                  ),
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.03,
+                                      ),
+                                      Icon(
+                                        Icons.vpn_key_sharp,
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.05,
+                                      ),
+                                      Text(
+                                        "Reset Password",
+                                        style: TextStyle(
+                                            color: Color(0xFF3F5521),
+                                            fontSize: 25,
+                                            fontFamily: 'BerlinSansFB'),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(children: [
+                                    Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xFF3F5521),
+                                    ),
+                                    SizedBox(
+                                      width: mediaQuery.size.width * 0.03,
+                                    ),
+                                  ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Card(
+
+                        color:  const Color.fromARGB(206, 255, 255, 255),
+                        shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0)),
                         child: Column(
                           children: [
-                            Row(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AddAddressSettingsScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.03,
+                                        ),
+                                        Icon(FontAwesomeIcons.building,
+                                          size: 20, //Icon Size
+                                          color: Color(0xFF3F5521),//Color Of Icon
+                                        ),
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.05,
+                                        ),
+                                        Text(
+                                          "My Addresses",
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontSize: 25,
+                                              fontFamily: 'BerlinSansFB'),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(children: [
+                                      Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.03,
+                                      ),
+                                    ]),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            Divider(thickness: 1,),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => CreditCardsSettings(),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.03,
+                                        ),
+                                        Icon(FontAwesomeIcons.creditCard,
+                                          size: 20, //Icon Size
+                                          color: Color(0xFF3F5521),//Color Of Icon
+                                        ),
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.05,
+                                        ),
+                                        Text(
+                                          "My Credit Cards",
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontSize: 25,
+                                              fontFamily: 'BerlinSansFB'),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(children: [
+                                      Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.03,
+                                      ),
+                                    ]),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Divider(thickness: 1,),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AddFriendScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.03,
+                                        ),
+                                        Icon(FontAwesomeIcons.userPlus,
+                                          size: 20, //Icon Size
+                                          color: Color(0xFF3F5521),//Color Of Icon
+                                        ),
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.05,
+                                        ),
+                                        Text(
+                                          "My Friends",
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontSize: 25,
+                                              fontFamily: 'BerlinSansFB'),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(children: [
+                                      Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.03,
+                                      ),
+                                    ]),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Card(
+
+                        color:  const Color.fromARGB(206, 255, 255, 255),
+                        shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0)),
+                        child: GestureDetector(
+                          onTap: () async {
+                            final SharedPreferences
+                            sharedPreferences =
+                                await SharedPreferences.getInstance();
+                            sharedPreferences.remove('Email');
+                            sharedPreferences.remove('Password');
+                            personalInfo.clearAllTextController();
+
+                            sharedPreferences.clear();
+
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoginScreen(),
+                                ),
+                                    (route) => false);
+
+
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
@@ -370,7 +583,7 @@ setData(String imageUrl) async{
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(FontAwesomeIcons.solidUser,
+                                    Icon(FontAwesomeIcons.signOutAlt,
                                       size: 20, //Icon Size
                                       color: Color(0xFF3F5521),//Color Of Icon
                                     ),
@@ -378,7 +591,7 @@ setData(String imageUrl) async{
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
-                                      "Personal Info",
+                                      "Logout ",
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 25,
@@ -388,7 +601,7 @@ setData(String imageUrl) async{
                                 ),
                                 Row(children: [
                                   Icon(
-                                    Icons.arrow_forward,
+                                    Icons.chevron_right,
                                     color: Color(0xFF3F5521),
                                   ),
                                   SizedBox(
@@ -397,245 +610,10 @@ setData(String imageUrl) async{
                                 ]),
                               ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => AddAddressSettingsScreen(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.03,
-                                ),
-                                Icon(FontAwesomeIcons.building,
-                                  size: 20, //Icon Size
-                                  color: Color(0xFF3F5521),//Color Of Icon
-                                ),
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.05,
-                                ),
-                                Text(
-                                  "Addresses",
-                                  style: TextStyle(
-                                      color: Color(0xFF3F5521),
-                                      fontSize: 25,
-                                      fontFamily: 'BerlinSansFB'),
-                                ),
-                              ],
-                            ),
-                            Row(children: [
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Color(0xFF3F5521),
-                              ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.03,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => CreditCardsSettings(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.03,
-                                ),
-                                Icon(FontAwesomeIcons.creditCard,
-                                  size: 20, //Icon Size
-                                  color: Color(0xFF3F5521),//Color Of Icon
-                                ),
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.05,
-                                ),
-                                Text(
-                                  "My Credit Cards",
-                                  style: TextStyle(
-                                      color: Color(0xFF3F5521),
-                                      fontSize: 25,
-                                      fontFamily: 'BerlinSansFB'),
-                                ),
-                              ],
-                            ),
-                            Row(children: [
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Color(0xFF3F5521),
-                              ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.03,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => AddFriendScreen(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.03,
-                                ),
-                                Icon(FontAwesomeIcons.userPlus,
-                                  size: 20, //Icon Size
-                                  color: Color(0xFF3F5521),//Color Of Icon
-                                ),
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.05,
-                                ),
-                                Text(
-                                  "Add Friends",
-                                  style: TextStyle(
-                                      color: Color(0xFF3F5521),
-                                      fontSize: 25,
-                                      fontFamily: 'BerlinSansFB'),
-                                ),
-                              ],
-                            ),
-                            Row(children: [
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Color(0xFF3F5521),
-                              ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.03,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => AccountInfo(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.03,
-                                ),
-                                Icon(
-                                  Icons.vpn_key_sharp,
-                                  color: Color(0xFF3F5521),
-                                ),
-                                SizedBox(
-                                  width: mediaQuery.size.width * 0.05,
-                                ),
-                                Text(
-                                  "Reset Password",
-                                  style: TextStyle(
-                                      color: Color(0xFF3F5521),
-                                      fontSize: 25,
-                                      fontFamily: 'BerlinSansFB'),
-                                ),
-                              ],
-                            ),
-                            Row(children: [
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Color(0xFF3F5521),
-                              ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.03,
-                              ),
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(vertical: 20),
-                    //   child: GestureDetector(
-                    //     onTap: () {
-                    //       Navigator.of(context).push(
-                    //         MaterialPageRoute(
-                    //           builder: (context) => ContactUsScreen(),
-                    //         ),
-                    //       );
-                    //     },
-                    //     child: Row(
-                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //       children: [
-                    //         Row(
-                    //           children: [
-                    //             SizedBox(
-                    //               width: mediaQuery.size.width * 0.03,
-                    //             ),
-                    //             Icon(
-                    //               Icons.email,
-                    //               color: Color(0xFF3F5521),
-                    //             ),
-                    //             SizedBox(
-                    //               width: mediaQuery.size.width * 0.05,
-                    //             ),
-                    //             Text(
-                    //               "Contact Us",
-                    //               style: TextStyle(
-                    //                   color: Color(0xFF3F5521),
-                    //                   fontSize: 25,
-                    //                   fontFamily: 'BerlinSansFB'),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //         Row(children: [
-                    //           Icon(
-                    //             Icons.arrow_forward,
-                    //             color: Color(0xFF3F5521),
-                    //           ),
-                    //           SizedBox(
-                    //             width: mediaQuery.size.width * 0.03,
-                    //           ),
-                    //         ]),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
 
                   ],
                 ),

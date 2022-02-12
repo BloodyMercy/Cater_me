@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/Screens/widgets/custom_ElevatedButton.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:CaterMe/widgets/Addresses/address_list_settings.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_list.dart';
@@ -50,7 +51,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
         isScrollControlled: true,
         context: ctx,
         builder: (_) {
-          return AddressesTextField(_addNewAddress);
+          return AddressesTextField(_addNewAddress,ctx);
         });
   }
 
@@ -86,7 +87,9 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
     var _mediaQuery = MediaQuery.of(context).size.height;
 
     return SafeArea(
+
       child: Scaffold(
+
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -108,29 +111,41 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
-            IconButton(
-                onPressed: () {
-                  adress.createOrUpdate=0;
-                  adress.clearAddressController();
-                  _startAddNewAddress(context);
-                },
-                icon: Icon(Icons.add))
+
           ],
         ),
         body: Container(
           // height: _mediaQuery,
           color: LightColors.kLightYellow,
           child: !loading
-              ? AddressesListSettings(
-                  adress.listaddress, deleteAddress)
-              : Container(
-                  color: LightColors.kLightYellow,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF3F5521),
-                    ),
+              ? Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomElevatedButton("+ Add new address"),
                   ),
-                ),
+
+                  AddressesListSettings(
+                      adress.listaddress, deleteAddress),
+                ],
+              )
+              : Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomElevatedButton("+ Add new address"),
+                  ),
+
+                  Container(
+                      color: LightColors.kLightYellow,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: Color(0xFF3F5521),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
 
           // floatingActionButton: FloatingActionButton(
           //   backgroundColor: Theme.of(context).primaryColor,

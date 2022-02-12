@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 
 class AddressesTextField extends StatefulWidget {
   final Function addAddress;
-
-  AddressesTextField(this.addAddress);
+BuildContext main;
+  AddressesTextField(this.addAddress, this.main);
 
   @override
   State<AddressesTextField> createState() => _AddressesTextFields();
@@ -52,6 +52,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
 
     var _mediaQueryText = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
+      key:_scaffoldKey ,
       child: Container(
         child: Padding(
           padding: EdgeInsets.only(
@@ -149,14 +150,13 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 //   loadingfinal = false;
                                 // });
                                 print("Added Failed");
-                                _scaffoldKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      "Add Address Failed!",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                ScaffoldMessenger.of(widget.main).showSnackBar( SnackBar(
+                                  content: Text(
+                                    "Add Address Failed!",
+                                    style: TextStyle(color: Colors.white),
                                   ),
-                                );
+                                ),);
+
                                 return;
                               }
 

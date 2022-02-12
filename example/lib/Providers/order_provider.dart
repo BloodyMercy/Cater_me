@@ -105,32 +105,7 @@ class OrderCaterProvider extends ChangeNotifier{
       var request;
 
         request = http.Request('POST', Uri.parse(ApiLink.makeorder));
-    // String item=json.encode(mapitemf);
-    // String order=json.encode(mapitem);
-    // String event =json.encode( {
-    //     "eventName": "string",
-    //     "eventDate": date,
-    //     "eventTypeId": type,
-    //     "numberOfGuestsId": nb
-    //
-    //
-    //
-    // });
 
-      // request.body = '''{\r\n  "addressId": ${value.id},
-      // \r\n  "serviceId": ${serviceId},
-      // \r\n  "orderItems": [\r\n    {\r\n      "itemId": 1,\r\n      "quantity": 2\r\n    },\r\n {\r\n      "itemId": 7,\r\n      "quantity": 1\r\n    }\r\n  ],
-      // \r\n  "event": {\r\n    "eventName": "testing event",\r\n    "eventDate": "2022-02-10T17:19:15.810Z",\r\n    "eventTypeId": 1,\r\n    "numberOfGuestsId": 1\r\n  },\r\n  "paymentFriend": [\r\n    {\r\n      "friendId": 1,\r\n      "amount": 3,\r\n     \r\n    }\r\n  ],\r\n  "cardId": "src_mqkoucbmeehelbuxpo6wwemxou"\r\n}''';
-      //
-      // request.fields.addAll({
-      //   'AddressId': value.id,
-      //   'ServiceId': serviceId,
-      //   "OrderItems":order,
-      //   "event":event,
-      //   "paymentFriend":item,
-      //   "CardId":idcard,
-      //
-      // });
       request.body = json.encode({
         "addressId": value.id,
         "serviceId": serviceId,

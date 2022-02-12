@@ -53,7 +53,7 @@ class _AddressesListState extends State<AddressesList> {
         isScrollControlled:true,
         context: ctx,
         builder: (_) {
-          return AddressesTextField(_addNewAddress);
+          return AddressesTextField(_addNewAddress, ctx);
         });
   }
   @override
@@ -100,6 +100,7 @@ print(_value);
                                   horizontal: _mediaQuery * 0.01),
                               child: Row(
                                 children: [
+                                  Icon(Icons.location_on_outlined),
                                   SizedBox(
                                     width: 45,
                                   ),

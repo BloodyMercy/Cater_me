@@ -47,7 +47,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         isScrollControlled:true,
         context: ctx,
         builder: (_) {
-          return AddressesTextField(_addNewAddress);
+          return AddressesTextField(_addNewAddress,ctx);
         });
   }
 

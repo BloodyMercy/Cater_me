@@ -32,7 +32,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
 
-      height: _mediaQuery * 0.9,
+      height: _mediaQuery * 0.7,
       child: widget.address.isEmpty
           ? Center(
           child: Container(
@@ -62,7 +62,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                         isScrollControlled: true,
                         context: ctx,
                         builder: (_) {
-                          return AddressesTextField((){});
+                          return AddressesTextField((){} ,context);
                         });
 
                   }, icon: Icon(Icons.edit,color: Color(0xFF3F5521),)),
@@ -90,23 +90,49 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                       vertical: _mediaQuery * 0.03,
                       horizontal: _mediaQuery * 0.01),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Icon(Icons.location_on ,color: Color(0xFF3F5521),),
+                      Column(children: [
+
+                      ],),
                       SizedBox(
+
                         width: _mediaQueryWidth*0.01,
+
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Title : ${widget.address[index].title.toString()}",
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+
+
+                          Row(
+                            children: [
+                              const Text(
+                                "Title : ",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ), Text(
+                                 widget.address[index].title.toString(),
+                                style: const TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.normal),
+                              ),
+                            ],
                           ),
 
-                          Text(
-                            "City : ${widget.address[index].city.toString()}",
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                          Row(
+                            children: [
+                              Text(
+                                "City : ",
+                                style: const TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ), Text(
+                                widget.address[index].city.toString(),
+                                style: const TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.normal
+                                ),
+                              ),
+                            ],
                           ),
 
                           Text(
