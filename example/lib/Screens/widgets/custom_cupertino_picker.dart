@@ -233,45 +233,55 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
       decoration: BoxDecoration(
           color: Colors.white, //white
           borderRadius: BorderRadius.all(Radius.circular(5))),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              focusNode: _focusNode,
-              controller: widget.controller,
-              onTap: () {
-                _focusNode.unfocus();
-                showPicker(context);
-              },
-              readOnly: true,
-              keyboardType: this.widget.inputType,
-              maxLines: null,
-              style: TextStyle(
-                color: Colors.black, //black
-                fontSize: 12,
+      child: Expanded(
+        child: TextFormField(
+
+
+
+          decoration: InputDecoration(
+
+
+prefixIcon:Icon(
+  Icons.keyboard_arrow_down,
+  color: Colors.black,
+  size: 14,
+) ,
+          //    contentPadding:
+           //   EdgeInsets.only(left: mediaQuery.size.width * 0.04),
+
+              alignLabelWithHint: true,
+              labelStyle: TextStyle(
+                  fontSize: _focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                  color:
+                  _focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+              labelText: widget.label,
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5.0),
+                borderSide: const BorderSide(
+                  color: Colors.grey,
+                ),
               ),
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.auto,
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 13, vertical: 0),
-                labelText: this.widget.label,
-                floatingLabelStyle: Theme.of(context).textTheme.headline4,
-                labelStyle: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w300),
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-              ),
-            ),
-          ),
-          Icon(
-            Icons.keyboard_arrow_down,
-            color: Colors.black,
-            size: 14,
-          )
-        ],
+              focusedBorder: OutlineInputBorder(
+
+                  borderRadius: BorderRadius.circular(5.0),
+                  borderSide: const BorderSide(
+                    color: Color(0xFF3F5521),
+                  ))),
+          style: TextStyle(color: Colors.black),
+
+          focusNode: _focusNode,
+          controller: widget.controller,
+          onTap: () {
+            _focusNode.unfocus();
+            showPicker(context);
+          },
+          readOnly: true,
+          keyboardType: this.widget.inputType,
+          maxLines: null,
+
+        ),
       ),
     );
   }
