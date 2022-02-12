@@ -18,9 +18,7 @@ class _costumTextFieldState extends State<customTextField> {
     return  Container(
         padding: const EdgeInsets.all(20.0),
         child: TextFormField(
-onTap: (){
 
-},
           controller: widget.controller,
           focusNode: focusNode,
           decoration: InputDecoration(
@@ -36,6 +34,12 @@ onTap: (){
                   color:
                   focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
               labelText: widget.label,
+            hintStyle:TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+
               filled: true,
               fillColor: Colors.white,
               enabledBorder: OutlineInputBorder(
@@ -50,7 +54,11 @@ onTap: (){
                   borderSide: const BorderSide(
                     color: Color(0xFF3F5521),
                   ))),
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'BerlinSansFB'),
         ));
   }
 }
