@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class customTextField extends StatefulWidget {
+class customTextFieldicon extends StatefulWidget {
+  Icon icon ;
 
-
-String label;
-TextEditingController controller;
-customTextField({ this.controller,  this.label});
+  String label;
+  TextEditingController controller;
+  customTextFieldicon({ this.controller,  this.label, this.icon});
   @override
   _costumTextFieldState createState() => _costumTextFieldState();
 }
 
-class _costumTextFieldState extends State<customTextField> {
+class _costumTextFieldState extends State<customTextFieldicon> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -23,11 +23,11 @@ class _costumTextFieldState extends State<customTextField> {
           controller: widget.controller,
           focusNode: focusNode,
           decoration: InputDecoration(
+              prefixIcon: widget.icon,
 
 
-
-                contentPadding:
-                EdgeInsets.only(left: mediaQuery.size.width * 0.04),
+              contentPadding:
+              EdgeInsets.only(left: mediaQuery.size.width * 0.04),
 
               alignLabelWithHint: true,
               labelStyle: TextStyle(
@@ -35,11 +35,11 @@ class _costumTextFieldState extends State<customTextField> {
                   color:
                   focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
               labelText: widget.label,
-            hintStyle:TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'BerlinSansFB'),
+              hintStyle:TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'BerlinSansFB'),
 
               filled: true,
               fillColor: Colors.white,
