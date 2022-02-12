@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_added.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/occasion.dart';
@@ -118,15 +119,8 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
               child: Column(
                 children: [
                   SizedBox(height: mediaQuery.size.height * 0.07),
-                  TextFormField(
-                    controller: occasion.nameofoccasioncontroller,
-                    decoration: InputDecoration(
-                      labelText: 'Name Of Occasion',
-                      labelStyle: Theme.of(context).textTheme.headline4,
-                      contentPadding:
-                          EdgeInsets.only(left: mediaQuery.size.width * 0.04),
-                    ),
-                  ),
+
+                  customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
                   SizedBox(height: mediaQuery.size.height * 0.04),
                   // TextFormField(
                   //   controller: typeController,
@@ -138,8 +132,9 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                   //   ),
                   // ),
 
-                  occasion.listoccasiontype.length != 0
-                      ? CustomCupertinoPicker(
+                  // occasion.listoccasiontype.length != 0
+                  //     ?
+                  CustomCupertinoPicker(
                           label: 'Type of Occasion',
                           items: occasion.listoccasiontypename,
                           listoccasiontype: occasion.listoccasiontype,
@@ -147,57 +142,61 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           inputType: TextInputType.number,
                           controller: occasion.typeofoccasioncontroller,
                         )
-                      : Center(
-                          child: Container(
-                          child: Text("No Occasion Type to Dispaly"),
-                        )),
+                      // : Center(
+                      //     child: Container(
+                      //     child: Text("No Occasion Type to Dispaly"),
+                      //   ))
+                  ,
                   SizedBox(height: mediaQuery.size.height * 0.04),
+               Container(
+                 margin: EdgeInsets.only(bottom: 15),
+                 padding: EdgeInsets.all(13),
+                 decoration: BoxDecoration(
+                     color: Colors.white, //white
+                     borderRadius: BorderRadius.all(Radius.circular(5))),
+                  child:
+                  Row(
+                    children: [
+                      Text(
+                        selectedDate == null
+                            ? "No Date chosen!"
+                            : 'Picked date: ${DateFormat.yMd().format(selectedDate)}',
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          _newDate = (await showDatePicker(
+                            context: context,
+                            builder: (context, child) => Theme(
+                                data: ThemeData().copyWith(
+                                  colorScheme: ColorScheme.light(
+                                      primary: Color(0xff3F5521),
+                                      surface: Color(0xff3F5521),
+                                      onPrimary: Colors.black),
+                                ),
+                                child: child),
+                            initialDate: selectedDate,
+                            firstDate: DateTime(1930),
+                            lastDate: DateTime.now(),
+                            initialEntryMode:
+                            DatePickerEntryMode.calendarOnly,
+                          ));
 
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: mediaQuery.size.height * 0.035),
-                    child: Row(
-                      children: [
-                        Text(
-                          selectedDate == null
-                              ? "No Date chosen!"
-                              : 'Picked date: ${DateFormat.yMd().format(selectedDate)}',
+                          setState(() {
+                            if (_newDate != null) {
+                              selectedDate = _newDate;
+                              occasion.datechosencontroller.text =
+                                  _newDate.toString();
+                            }
+                          });
+                        },
+                        icon: Icon(
+                          Icons.date_range,
+                          color: Theme.of(context).primaryColor,
                         ),
-                        IconButton(
-                          onPressed: () async {
-                            _newDate = (await showDatePicker(
-                              context: context,
-                              builder: (context, child) => Theme(
-                                  data: ThemeData().copyWith(
-                                    colorScheme: ColorScheme.light(
-                                        primary: Color(0xff3F5521),
-                                        surface: Color(0xff3F5521),
-                                        onPrimary: Colors.black),
-                                  ),
-                                  child: child),
-                              initialDate: selectedDate,
-                              firstDate: DateTime(1930),
-                              lastDate: DateTime.now(),
-                              initialEntryMode:
-                                  DatePickerEntryMode.calendarOnly,
-                            ));
+                      ),
+                    ],
+                  ),),
 
-                            setState(() {
-                              if (_newDate != null) {
-                                selectedDate = _newDate;
-                                occasion.datechosencontroller.text =
-                                    _newDate.toString();
-                              }
-                            });
-                          },
-                          icon: Icon(
-                            Icons.date_range,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                   // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   //   Text(
                   //     "Yearly reminder",
