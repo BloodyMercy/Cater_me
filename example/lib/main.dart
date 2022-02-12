@@ -27,6 +27,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Helpers/Constant.dart';
 import 'NavigationBar/navigation_bar.dart';
+import 'NavigationBar/newnavigation/navigation.dart';
 import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
 import 'Providers/occasion.dart';
@@ -201,7 +202,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:  appstate(),
+        home: HomenavigationPage(),
       ),
     );
   }

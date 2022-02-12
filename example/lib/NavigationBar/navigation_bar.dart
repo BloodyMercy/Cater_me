@@ -127,7 +127,7 @@ class _NavigationBarState extends State<Navigationbar> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           color: LightColors.kLightYellow,
-          shape: const CircularNotchedRectangle(),
+         shape: const CircularNotchedRectangle(),
           notchMargin: 5,
           clipBehavior: Clip.antiAlias,
           child: BottomNavigationBar(
