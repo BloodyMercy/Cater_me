@@ -121,7 +121,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                   SizedBox(height: mediaQuery.size.height * 0.07),
 
                   customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
-                  SizedBox(height: mediaQuery.size.height * 0.04),
+               //   SizedBox(height: mediaQuery.size.height * 0.04),
                   // TextFormField(
                   //   controller: typeController,
                   //   decoration: InputDecoration(
@@ -147,55 +147,10 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                       //     child: Text("No Occasion Type to Dispaly"),
                       //   ))
                   ,
-                  SizedBox(height: mediaQuery.size.height * 0.04),
-               Container(
-                 margin: EdgeInsets.only(bottom: 15),
-                 padding: EdgeInsets.all(13),
-                 decoration: BoxDecoration(
-                     color: Colors.white, //white
-                     borderRadius: BorderRadius.all(Radius.circular(5))),
-                  child:
-                  Row(
-                    children: [
-                      Text(
-                        selectedDate == null
-                            ? "No Date chosen!"
-                            : 'Picked date: ${DateFormat.yMd().format(selectedDate)}',
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          _newDate = (await showDatePicker(
-                            context: context,
-                            builder: (context, child) => Theme(
-                                data: ThemeData().copyWith(
-                                  colorScheme: ColorScheme.light(
-                                      primary: Color(0xff3F5521),
-                                      surface: Color(0xff3F5521),
-                                      onPrimary: Colors.black),
-                                ),
-                                child: child),
-                            initialDate: selectedDate,
-                            firstDate: DateTime(1930),
-                            lastDate: DateTime.now(),
-                            initialEntryMode:
-                            DatePickerEntryMode.calendarOnly,
-                          ));
+                 // SizedBox(height: mediaQuery.size.height * 0.001),
 
-                          setState(() {
-                            if (_newDate != null) {
-                              selectedDate = _newDate;
-                              occasion.datechosencontroller.text =
-                                  _newDate.toString();
-                            }
-                          });
-                        },
-                        icon: Icon(
-                          Icons.date_range,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),),
+                  customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
+
 
                   // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   //   Text(

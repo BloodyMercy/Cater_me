@@ -228,60 +228,57 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Container(
-      margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.all(13),
+      height: MediaQuery.of(context).size.height/11,
+     // margin: EdgeInsets.only(bottom: 5),
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white, //white
           borderRadius: BorderRadius.all(Radius.circular(5))),
-      child: Expanded(
-        child: TextFormField(
+      child: TextFormField(
 
 
 
-          decoration: InputDecoration(
+        decoration: InputDecoration(
 
 
-prefixIcon:Icon(
+suffixIcon:Icon(
   Icons.keyboard_arrow_down,
   color: Colors.black,
-  size: 14,
+  size: 24,
 ) ,
-          //    contentPadding:
-           //   EdgeInsets.only(left: mediaQuery.size.width * 0.04),
 
-              alignLabelWithHint: true,
-              labelStyle: TextStyle(
-                  fontSize: _focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                  color:
-                  _focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-              labelText: widget.label,
-              filled: true,
-              fillColor: Colors.white,
-              enabledBorder: OutlineInputBorder(
+            alignLabelWithHint: true,
+            labelStyle: TextStyle(
+            fontFamily: 'BerlinSansFB',
+                fontSize: _focusNode.hasFocus ? 20 : 18.0,//I believe the size difference here is 6.0 to account padding
+                color:
+                _focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+            labelText: widget.label,
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              borderSide: const BorderSide(
+                color: Colors.grey,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+
                 borderRadius: BorderRadius.circular(5.0),
                 borderSide: const BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
+                  color: Color(0xFF3F5521),
+                ))),
+        style: TextStyle(color: Colors.black),
 
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF3F5521),
-                  ))),
-          style: TextStyle(color: Colors.black),
+        focusNode: _focusNode,
+        controller: widget.controller,
+        onTap: () {
+          _focusNode.unfocus();
+          showPicker(context);
+        },
+        readOnly: true,
+        keyboardType: this.widget.inputType,
 
-          focusNode: _focusNode,
-          controller: widget.controller,
-          onTap: () {
-            _focusNode.unfocus();
-            showPicker(context);
-          },
-          readOnly: true,
-          keyboardType: this.widget.inputType,
-          maxLines: null,
-
-        ),
       ),
     );
   }

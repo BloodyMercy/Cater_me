@@ -112,6 +112,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 SizedBox(
                                     width: mediaQuery.size.width * 0.6,
+
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
@@ -127,7 +128,9 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
+
                                               borderSide:  BorderSide(
+
                                                   color:colorCustom,
                                                       ),
                                               borderRadius:

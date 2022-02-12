@@ -1,6 +1,6 @@
 
 
-import 'package:CaterMe/Screens/homepage.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
@@ -16,14 +16,7 @@ void changeScreenpop(BuildContext context, Widget widget) {
 }
 
 
- changeScreenUntil(BuildContext context,status,String login) async{
 
-
-       Navigator.of(context).pushAndRemoveUntil(
-           MaterialPageRoute(builder: (context) =>
-              HomePage()), (Route<dynamic> route) => false);
-
-}
 
 
 

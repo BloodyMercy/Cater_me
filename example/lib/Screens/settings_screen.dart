@@ -157,7 +157,7 @@ setData(String imageUrl) async{
                                         'Camera',
                                         style: TextStyle(
                                           fontFamily: 'BerlinSansFB',
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: Color.fromRGBO(63, 85, 33, 1),
                                         ),
                                       ),
@@ -176,7 +176,7 @@ setData(String imageUrl) async{
                                         'Gallery',
                                         style: TextStyle(
                                           fontFamily: 'BerlinSansFB',
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: Color.fromRGBO(63, 85, 33, 1),
                                         ),
                                       ),
@@ -221,7 +221,7 @@ setData(String imageUrl) async{
                                   const Text(
                                     "Are you sure you want to\nlog out?",
                                     style: TextStyle(
-                                      fontSize: 17,
+                                      fontSize: 15,
                                       fontFamily: "BerlinSansFB",
                                     ),
                                     textAlign: TextAlign.center,
@@ -319,7 +319,7 @@ setData(String imageUrl) async{
                                             "Personal Info",
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
-                                                fontSize: 25,
+                                                fontSize: 20,
                                                 fontFamily: 'BerlinSansFB'),
                                           ),
                                         ],
@@ -369,7 +369,7 @@ setData(String imageUrl) async{
                                         "Reset Password",
                                         style: TextStyle(
                                             color: Color(0xFF3F5521),
-                                            fontSize: 25,
+                                            fontSize: 20,
                                             fontFamily: 'BerlinSansFB'),
                                       ),
                                     ],
@@ -427,7 +427,7 @@ setData(String imageUrl) async{
                                           "My Addresses",
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
-                                              fontSize: 25,
+                                              fontSize: 20,
                                               fontFamily: 'BerlinSansFB'),
                                         ),
                                       ],
@@ -476,7 +476,7 @@ setData(String imageUrl) async{
                                           "My Credit Cards",
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
-                                              fontSize: 25,
+                                              fontSize: 20,
                                               fontFamily: 'BerlinSansFB'),
                                         ),
                                       ],
@@ -524,7 +524,7 @@ setData(String imageUrl) async{
                                           "My Friends",
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
-                                              fontSize: 25,
+                                              fontSize: 20,
                                               fontFamily: 'BerlinSansFB'),
                                         ),
                                       ],
@@ -594,7 +594,7 @@ setData(String imageUrl) async{
                                       "Logout ",
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
-                                          fontSize: 25,
+                                          fontSize: 20,
                                           fontFamily: 'BerlinSansFB'),
                                     ),
                                   ],
