@@ -44,6 +44,11 @@ class ChatProvider {
         .doc(groupChatId)
         .collection(groupChatId)
         .doc(DateTime.now().millisecondsSinceEpoch.toString());
+    DocumentReference documentReferences = firebaseFirestore
+        .collection(FirestoreConstants.pathMessageCollection)
+        .doc(groupChatId);
+
+
 
     MessageChat messageChat = MessageChat(
       idFrom: currentUserId,
@@ -53,7 +58,11 @@ class ChatProvider {
       type: type,
     );
 
+    Map<String, dynamic> userChat = {
+    "user":groupChatId
+  };
     FirebaseFirestore.instance.runTransaction((transaction) async {
+      transaction.set(documentReferences,userChat);
       transaction.set(
         documentReference,
         messageChat.toJson(),
