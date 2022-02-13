@@ -11,8 +11,8 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: getScreenWidth(1000),
-            height: getScreenHeight(1000),
+            width: getScreenWidth(475),
+            height: getScreenHeight(475),
             child: Image.asset('assets/images/Completed.png'),
           ),
         ],

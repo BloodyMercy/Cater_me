@@ -126,8 +126,10 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
                     child: CustomElevatedButton("+ Add new address"),
                   ),
 
-                  AddressesListSettings(
-                      adress.listaddress, deleteAddress),
+                  Center(
+                      child: Container(
+                        child: Image.asset('images/NoAdresses.png'),
+                      ))
                 ],
               )
               : Column(
