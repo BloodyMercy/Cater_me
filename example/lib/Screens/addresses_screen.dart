@@ -90,15 +90,16 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  !loading
-                      ? AddressesList(adress.listaddress, deleteAddress)
-                      : Container(
-                          color: LightColors.kLightYellow,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              color: Color(0xFF3F5521),
-                            ),
-                          )),
+                  // !loading
+                  //     ?
+                  AddressesList(adress.listaddress, deleteAddress)
+                      // : Container(
+                      //     color: LightColors.kLightYellow,
+                      //     child: Center(
+                      //       child: CircularProgressIndicator(
+                      //         color: Color(0xFF3F5521),
+                      //       ),
+                      //     )),
                 ],
               ),
             ),

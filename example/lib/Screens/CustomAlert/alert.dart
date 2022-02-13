@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'const.dart';
 
 class CustomDialog extends StatelessWidget {
-  final String title, description, buttonText,buttonText2;
-  final Image image;
+  final String title, description;
+final Widget button1,button2;
+final bool oneOrtwo;
 
   CustomDialog({
     @required this.title,
     @required this.description,
-    @required this.buttonText,
-    @required this.buttonText2,
-    this.image,
+    @required this.button1,
+    @required this.oneOrtwo,
+    this.button2,
   });
 
   @override
@@ -59,7 +60,7 @@ class CustomDialog extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
-                ),
+                ),textAlign: TextAlign.center,
               ),
               SizedBox(height: 16.0),
               Text(
@@ -70,39 +71,28 @@ class CustomDialog extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 24.0),
-              Row(
+             oneOrtwo? Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => Navigationbar(0),
-                            ),
-                            (route) => false);
-                      },
-                      child: Text('No'),
-                    ),
+                    child: button1,
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DonationAdded(),
-                          ),
-                        ); // To close the dialog
-                      },
-                      child: Text(buttonText),
-
-                    ),
+                    child: button2,
                   ),
                 ],
-              )
+              ) :
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               children: [
+                 Align(
+                   alignment: Alignment.center,
+                   child:button1,
+                 ),
+               ],
+             )
             ],
           ),
         ),

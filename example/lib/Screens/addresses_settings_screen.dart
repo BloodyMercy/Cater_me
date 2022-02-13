@@ -83,7 +83,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final adress = Provider.of<AdressProvider>(context, listen: true);
+    final address = Provider.of<AdressProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     var _mediaQuery = MediaQuery.of(context).size.height;
 
@@ -94,7 +94,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              adress.clearAddressController();
+              address.clearAddressController();
               Navigator.of(context).pop();
             },
             icon: Icon(
@@ -112,43 +112,35 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
-
+            IconButton(onPressed: (){
+              address.createOrUpdate=0;
+              address.addresstitlecontroller.clear();
+              address.citycontrollerstring.clear();
+              address.streetcontroller.clear();
+              address.buildingcontroller.clear();
+              address.floornumbercontroller.clear();
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (_) {
+                  return AddressesTextField(_addNewAddress, context);
+                });
+              },
+                icon: Icon(Icons.add))
           ],
         ),
-        body: !loading
-            ? Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomElevatedButton("+ Add new address"),
-            ),
-
-            Center(
-                child: Container(
-                  child: Image.asset('images/NoAdresses.png'),
-                ))
-          ],
-        )
-
-        :Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomElevatedButton("+ Add new address"),
-            ),
-
-            Container(
-              color: LightColors.kLightYellow,
-              child: Center(
-                child: CircularProgressIndicator(
-                  color: Color(0xFF3F5521),
-                ),
-              ),
-            ),
-          ],
-        )
-
-      ),
-    );
+        body:
+          AddressesListSettings(address.listaddress),
+        // !loading
+        //     ? Center(
+        //       child: CircularProgressIndicator(
+        //         color: Color(0xFF3F5521),
+        //       ),
+        //     )
+        //     :
+      //   Center(
+      //       child: Image.asset('images/NoAdresses.png'))
+      // ),
+    ));
   }
 }

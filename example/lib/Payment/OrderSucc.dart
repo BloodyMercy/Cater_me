@@ -2,6 +2,7 @@ import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
+import 'package:CaterMe/Screens/appointment/donation.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -355,7 +356,27 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           description:
                           "Do You Want To Donate The Rest Of Your Food?"
                         ,
-                          buttonText: "Donate",
+                          button1: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        DonationAdded(),
+                                  ),
+                                      (route) => false);
+                            },
+                            child: Text('Donate'),
+                          ),button2:  ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      Navigationbar(0),
+                                ),
+                                    (route) => false);
+                          },
+                          child: Text('No'),
+                        ), oneOrtwo: true,
 
 
 
