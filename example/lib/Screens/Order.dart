@@ -350,7 +350,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                   Container(
                     height: MediaQuery.of(context).size.height/1.55,
                     child:
-                    (orderProvider.spets==1)? const AddAddressScreen():
+                    (orderProvider.spets==1)?  AddAddressScreen():
                     (orderProvider.spets==3)? RegularDaberneScreen():
                     (orderProvider.spets==2)? ReguarScreen(addresses.Friends):
                     (orderProvider.spets==4)? RelatedOffersScreen():

@@ -127,7 +127,7 @@ class _AddressesListState extends State<AddressesList> {
                                   Radio(
                                     fillColor: MaterialStateColor.resolveWith((states) => colorCustom),
                                     toggleable: true,
-                                    groupValue: _value,
+                                    groupValue: orderprovider.valueIndex ,
                                     value: i,
                                     onChanged: (value) {
                                       setState(() {
