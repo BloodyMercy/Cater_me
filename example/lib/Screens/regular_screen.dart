@@ -185,19 +185,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                       ),
                       keyboardType: TextInputType.text,
                     ),
-                    // TextFormField(
-                    //   controller: address.eventnamecontroller,
-                    //   decoration: const InputDecoration(
-                    //     labelText: 'Event Name',
-                    //     contentPadding: EdgeInsets.only(left: 20),
-                    //   ),
-                    //   autovalidateMode: AutovalidateMode.onUserInteraction,
-                    //   validator: MultiValidator([
-                    //     RequiredValidator(errorText: 'Required *'),
-                    //     // EmailValidator(errorText: 'Not a valid email'),
-                    //   ]),
-                    //
-                    // ),
+
                     SizedBox(height: screenHeight * 0.02),
 
                     Container(
@@ -237,18 +225,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                       controller: address.typeofeventcontrollerstring,
                     ),
 
-//                     Radio(
-//                       toggleable: true,
-//                       groupValue: address.value2Index,
-//                       //  value: i,
-//                       onChanged: (value) {
-//                         setState(() {
-// //    _value = i;
-//                           address.value2Index ;
-//                         });
-//                         address.value ;
-//                       },
-//                     ),
+
                     SizedBox(height: screenHeight * 0.03),
                     Center(
                       child: Text(
@@ -299,50 +276,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                         ),
                         Text('Others'),
 
-                        //       ListTile(
-                        //         leading: Radio(
-                        //       toggleable: true,
-                        //           // value: 'female',
-                        //           value:0 ,
-                        //           groupValue:address.value2Index,
-                        //           onChanged: (value) {
-                        //             setState(() {
-                        //
-                        // address.value2Index = value;
-                        //             });
-                        //           },
-                        //         ),
-                        //         title: const Text('Me'),
-                        //       ),
 
-                        // ListTile(
-                        //   leading: Radio(
-                        //     // value: 'female',
-                        //     toggleable: true,
-                        //     value:1 ,
-                        //
-                        //
-                        //     groupValue: address.value2Index,
-                        //     onChanged: (value) {
-                        //       setState(() {
-                        //
-                        //         address.value2Index = value;
-                        //       });
-                        //     },
-                        //   ),
-                        //   title: const Text('Other'),
-                        // ),
-                        // Text('Me',style: TextStyle(
-                        //     color: Color(0xFF3F5521),
-                        //     fontWeight: FontWeight.normal,
-                        //     fontSize: 20
-                        // ),),
-                        //
-                        // Text('Other',style: TextStyle(
-                        //     color: Color(0xFF3F5521),
-                        //     fontWeight: FontWeight.normal,
-                        //     fontSize: 20
-                        // ),),
                       ],
                     ),
 

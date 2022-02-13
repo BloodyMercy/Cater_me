@@ -17,7 +17,7 @@ class _costumTextFieldState extends State<customTextFieldicon> {
     final mediaQuery = MediaQuery.of(context);
     FocusNode focusNode = FocusNode();
     return  Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(12.0),
         child: TextFormField(
 
           controller: widget.controller,

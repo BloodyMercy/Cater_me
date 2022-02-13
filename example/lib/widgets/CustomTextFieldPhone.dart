@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class customTextFieldPhone extends StatefulWidget {
-  Icon icon ;
 
+  Icon icon ;
   String label;
   TextEditingController controller;
   customTextFieldPhone({ this.controller,  this.label, this.icon});
@@ -17,7 +17,7 @@ class _costumTextFieldPhone extends State<customTextFieldPhone> {
     final mediaQuery = MediaQuery.of(context);
     FocusNode focusNode = FocusNode();
     return  Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: TextFormField(
         keyboardType: TextInputType.number,
 
@@ -27,7 +27,7 @@ class _costumTextFieldPhone extends State<customTextFieldPhone> {
 
         decoration: InputDecoration(
 
-prefix: widget.icon,
+prefixIcon: widget.icon,
 
             contentPadding:
             EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),

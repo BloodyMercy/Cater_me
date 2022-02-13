@@ -176,10 +176,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   adress.streetcontroller.text.isEmpty ||
                                   adress.buildingcontroller.text.isEmpty ||
                                   adress.floornumbercontroller.text.isEmpty) {
-                                // setState(() {
-                                //   loadingfinal = false;
-                                // });
-                                print("Added Failed");
+
+
                                 ScaffoldMessenger.of(widget.main).showSnackBar( SnackBar(
                                   content: Text(
                                     "Add Address Failed!",
@@ -190,18 +188,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 return;
                               }
 
-                              // adress.createAddress();
-                              // setState(() {
-                              //   loadingfinal = false;
-                              // });
-                              // _scaffoldKey.currentState!.showSnackBar(
-                              //   SnackBar(
-                              //     content: Text(
-                              //       "Add Address Succes",
-                              //       style: TextStyle(color: Colors.white),
-                              //     ),
-                              //   ),
-                              // );
+
                               Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                             },
