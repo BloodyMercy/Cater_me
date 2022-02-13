@@ -16,7 +16,7 @@ class AddOn {
   );
 
  AddOn.fromJson(Map<String, dynamic> json) {
-  tax = json['tax']==null?0:json['tax'];
+  tax = json['tax']??0;
   id = json['id'];
   image = json['image'];
   title = json['title'];

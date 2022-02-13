@@ -109,7 +109,6 @@ setData(String imageUrl) async{
 
           child: Column(
             children: [
-
               Row(
                 children: [
                   Expanded(
@@ -133,6 +132,7 @@ setData(String imageUrl) async{
                               backgroundColor: Colors.transparent,
                               radius: screenHeight * 0.1,
                               backgroundImage: NetworkImage(personalInfo.imageUrl),
+
 
                             ),
                           ),

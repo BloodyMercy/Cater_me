@@ -48,32 +48,41 @@ class OrderByIdProvider extends ChangeNotifier{
   // set orderList(List<OrderByIdModel> value) {
   //   _orderList = value;
   // }
+Map<String,dynamic> _orderbyId={};
+
+  Map<String, dynamic> get orderbyId => _orderbyId;
+
+  set orderbyId(Map<String, dynamic> value) {
+    _orderbyId = value;
+  }
 
   getOrderById(int id) async{
-    _orderListDetails= await _orderByIdService.getOrdersDetailsById(id);
-
+    orderbyId= await _orderByIdService.getOrdersDetailsById(id);
     notifyListeners();
   }
 
   Future getOrderItems() async{
-    if(_orderListDetails[0].orderItems.length!=0){
-     return _orderListDetails[0].orderItems.forEach((element) {
-        items.add(element);
-      });
+
+    if(orderbyId['orderItems'].length!=0){
+      _items=List<OrderItems>.from(orderbyId['orderItems'].map((model)=> OrderItems.fromJson(model)));
+     // return orderbyId['orderItems'].forEach((element) {
+     //    items.add(element);
+     //
+     //  });
     }else{
 
       return _items=[];
     }
+
   }
   Future getOrderPaymentFreind() async{
 paymentFreind=[];
 
-    if(_orderListDetails[0].paymentFriend!=null){
-      return _orderListDetails[0].paymentFriend.forEach((element) {
-        paymentFreind.add(element);
-      });
+    if(orderbyId["paymentFriend"]!=0){
+      paymentFreind=List<PaymentFriend>.from(orderbyId["paymentFriend"].map((model)=>PaymentFriend.fromJson(model)));
+
     }else{
-      return _items=[];
+      return paymentFreind=[];
     }
   }
 
@@ -81,5 +90,26 @@ paymentFreind=[];
   clearData(){
     _orderListDetails=[];
     notifyListeners();
+  }
+bool _buttonDonate=false;
+
+  bool get buttonDonate => _buttonDonate;
+
+  set buttonDonate(bool value) {
+    _buttonDonate = value;
+  }
+
+  bool _textDonate=false;
+
+  bool get textDonate => _textDonate;
+
+  set textDonate(bool value) {
+    _textDonate = value;
+  }
+
+  donate(int id) async{
+  bool donate= await _orderByIdService.Donate(id);
+   notifyListeners();
+   return donate;
   }
 }

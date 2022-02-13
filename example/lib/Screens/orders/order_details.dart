@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,13 +21,14 @@ class _DetailsOrderState extends State<DetailsOrder> {
   double finalPrice = 0.0;
 
   bool loading = true;
-
+bool donate=false;
   getData() async {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
     await orders.getOrderById(widget.id);
    await orders.getOrderItems();
    await orders.getOrderPaymentFreind();
-   print(orders.paymentFreind.length);
+   print(orders.items.length);
+   donate=  orders.orderbyId['isDonated']??false;
 
 
 
@@ -56,168 +58,227 @@ class _DetailsOrderState extends State<DetailsOrder> {
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
+
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: RefreshIndicator(
-              onRefresh: refreshOrderData,
-              child: loading
-                  ? Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF3F5521),
-                    ),
-                  )
-                  : Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Card(
-                            elevation: 5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  child: ListView.builder(
-                                    itemCount: order.items.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, i) {
-                                      return Column(
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: refreshOrderData,
+          child: loading
+              ? Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xFF3F5521),
+                ),
+              )
+              : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Card(
+                          elevation: 5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: ListView.builder(
+                                  itemCount: order.items.length,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, i) {
+                                    return Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "${order.items[i].item}",
+                                                style: TextStyle(
+                                                    color: blackColor,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              SizedBox(
+                                                height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                    0.03,
+                                              ),
+                                              Text(
+                                                "SAR ${order.items[i].price}",
+                                                style: TextStyle(
+                                                    color: blackColor,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ) ],
+                                    );
+                                  },
+
+                                ),
+                              ),
+
+
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Card(
+                          elevation: 5,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Tax" ,style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                    Text("SAR ${
+                                        double.parse((order.orderbyId["tax"]).toStringAsFixed(2))}",style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("SubTotal" ,style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                    Text("SAR ${
+                                        double.parse((order.orderbyId["subTotal"]).toStringAsFixed(2))}",style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Total" ,style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                    Text("SAR ${
+                                        double.parse((order.orderbyId["total"]).toStringAsFixed(2))}",style:TextStyle(
+                                        color: blackColor,
+                                        fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Card(
+                          elevation: 5,
+                          child: order.paymentFreind.length==0?Container():  Container(
+                            child: ListView.builder(
+                              itemCount: order.paymentFreind.length,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  "${order.items[i].item}",
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                SizedBox(
-                                                  height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                      0.03,
-                                                ),
-                                                Text(
-                                                  "SAR ${order.items[i].price}",
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                              ],
-                                            ),
-                                          ) ],
-                                      );
-                                    },
+                                          Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                    radius: 25,
+                                                    backgroundImage: NetworkImage(order.paymentFreind[index].image),
+                                                  ),
+                                                  // SizedBox(width: 5,),
+                                                  Column(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        "${order.paymentFreind[index].name}",
+                                                        style: TextStyle(
+                                                            color: blackColor,
+                                                            fontWeight: FontWeight.bold),
 
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("Tax" ,style:TextStyle(
-                                  color: Color(0xFF3F5521),
-                                    fontWeight: FontWeight.bold)),
-                                      Text("SAR ${
-                                          double.parse((order.orderListDetails[0].tax).toStringAsFixed(2))}",style:TextStyle(
-                                          color: Color(0xFF3F5521),
-                                    fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("SubTotal" ,style:TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontWeight: FontWeight.bold)),
-                                      Text("SAR ${
-                                          double.parse((order.orderListDetails[0].subTotal).toStringAsFixed(2))}",style:TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("Total" ,style:TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontWeight: FontWeight.bold)),
-                                      Text("SAR ${
-                                          double.parse((order.orderListDetails[0].total).toStringAsFixed(2))}",style:TextStyle(
-                                          color: Color(0xFF3F5521),
-                                          fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
+                                                      ),
+                                                      Text(
+                                                        "${order.paymentFreind[index].email}",
+                                                        style: TextStyle(
+                                                            color: blackColor,
+                                                            fontWeight: FontWeight.bold),
 
-                                    ],
-                                  ),
-                                ),
-                              order.paymentFreind.length==0?Container():  Container(
-                                  child: ListView.builder(
-                                    itemCount: order.paymentFreind.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) {
-                                      return Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  "${order.paymentFreind[index].email}",
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                                SizedBox(
-                                                  height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                      0.03,
-                                                ),
-                                                Text(
-                                                  "SAR ${order.paymentFreind[index].amount}",
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                              ],
-                                            ),
-                                          ) ],
-                                      );
-                                    },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          // SizedBox(
+                                          //   height: MediaQuery.of(context)
+                                          //       .size
+                                          //       .height *
+                                          //       0.03,
+                                          // ),
+                                          Text(
+                                            "SAR ${order.paymentFreind[index].amount}",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
 
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
-                        ]),
+                        ),
+                     donate ?
+                        Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Text("Your food is donated",style: Theme.of(context).textTheme.headline1.copyWith(color: colorCustom),),
+                       )
+
+          : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Do you want to donate your food?",style: Theme.of(context).textTheme.headline1.copyWith(color: colorCustom),),
+
+                         order.buttonDonate ? Center(child: CircularProgressIndicator(),)
+                            :  ElevatedButton(onPressed: ()async{
+                              order.buttonDonate=true;
+                             setState(() {
+                             });
+                            donate=await order.donate(widget.id);
+                               order.buttonDonate=false;
+                              setState(() {
+                              });
+                              }, child: Text("Donate",style: Theme.of(context).textTheme.headline1,)),
+                            ],
+                          ),
+                        ),
+                      ]
                   ),
-            ),
-          ),
+                ),
+              ),
         ),
       ),
     );

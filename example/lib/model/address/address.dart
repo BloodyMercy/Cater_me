@@ -14,7 +14,7 @@ class Address {
   Address();
 
   Address.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id']??0;
     city = json['city'];
     cityId = json['cityId'];
     street = json['street'];

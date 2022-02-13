@@ -1,35 +1,3 @@
-// class OrderByIdModel {
-//   String item="";
-//   int quantity;
-//   int itemPrice=0;
-//   String date ="";
-//   int totalItemPrice=0;
-//   int finalPrice=0;
-//   int total=0;
-//   bool isDaberni=false;
-//
-//   OrderByIdModel(
-//   {item,
-//       this.quantity,
-//       itemPrice,
-//       date,
-//       totalItemPrice,
-//       finalPrice,
-//       total,
-//       isDaberni});
-//
-//   OrderByIdModel.fromJson(Map<String, dynamic> json) {
-//     item = json['item'];
-//     quantity = json['quantity'];
-//     itemPrice = json['itemPrice'];
-//     date = json['date'];
-//     totalItemPrice = json['totalItemPrice'];
-//     finalPrice = json['finalPrice'];
-//     total = json['total'];
-//     isDaberni = json['isDaberni'];
-//   }
-// }
-
 class OrderDetailsModel {
   int addressId;
   int serviceId;
@@ -80,49 +48,68 @@ class OrderItems {
   int quantity;
   double price;
   double total;
+  double tax;
 
-  OrderItems({this.item, this.quantity, this.price, this.total});
+  OrderItems({this.item, this.quantity, this.price, this.total, this.tax});
 
   OrderItems.fromJson(Map<String, dynamic> json) {
     item = json['item'];
     quantity = json['quantity'];
     price = json['price'].toDouble();
     total = json['total'].toDouble();
+    tax = json['tax'].toDouble();
   }
+
 }
 
 class Event {
+  String eventType;
   String eventName;
   String eventDate;
   int eventTypeId;
   String numberOfGuests;
+  String contactPhoneNumber;
+  String contactName;
 
   Event(
-      {this.eventName,
+      {this.eventType,
+        this.eventName,
         this.eventDate,
         this.eventTypeId,
-        this.numberOfGuests});
+        this.numberOfGuests,
+        this.contactPhoneNumber,
+        this.contactName});
 
   Event.fromJson(Map<String, dynamic> json) {
+    eventType = json['eventType'];
     eventName = json['eventName'];
     eventDate = json['eventDate'];
     eventTypeId = json['eventTypeId'];
     numberOfGuests = json['numberOfGuests'];
+    contactPhoneNumber = json['contactPhoneNumber'];
+    contactName = json['contactName'];
   }
 }
 
 class PaymentFriend {
   int friendId;
+  String name;
   double amount;
   String image;
   String email;
   String phoneNumber;
 
   PaymentFriend(
-      {this.friendId, this.amount, this.image, this.email, this.phoneNumber});
+      {this.friendId,
+        this.name,
+        this.amount,
+        this.image,
+        this.email,
+        this.phoneNumber});
 
   PaymentFriend.fromJson(Map<String, dynamic> json) {
     friendId = json['friendId'];
+    name = json['name'];
     amount = json['amount'].toDouble();
     image = json['image'];
     email = json['email'];
