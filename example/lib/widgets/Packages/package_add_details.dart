@@ -111,180 +111,71 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
       ),
       body: SingleChildScrollView(
         child: !loading
-            ? Container(
-                height: screenHeight * 0.95,
-                width: MediaQuery.of(context).size.width * 11,
-                child: LayoutBuilder(
-                  builder: (ctx, constraints) => qPortrait ==
-                          Orientation.portrait
-                      ? Column(
-                          children: [
-                            SizedBox(
-                              height: constraints.maxHeight * 0.4,
-                              width: double.maxFinite,
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: Image.network(widget.food.image),
-                              ),
-                            ),
+            ? Column(
+                      children: [
+                        SizedBox(
+                          height:MediaQuery.of(context).size.height * 0.4,
+                          width: double.maxFinite,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Image.network(widget.food.image),
+                          ),
+                        ),
 
 
-                            Container(
-                              height: constraints.maxHeight * 0.5,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 25),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                      height: constraints.maxHeight * 0.04,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          FittedBox(
-                                              child: Text(
-                                            widget.food.title,
-                                            style: st20Bold,
-                                          )),
-                                          // !loading
-                                          //     ?
-                                          //     : CircularProgressIndicator(
-                                          //         color:
-                                          //             LightColors.kLightYellow,
-                                          //         strokeWidth: 4.0,
-                                          //       )
-                                        ],
-                                      )),
-                                  SizedBox(
-                                    height: constraints.maxHeight * 0.025,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                          height: constraints.maxHeight * 0.03,
-                                          child: const FittedBox(
-                                              child: Text(
-                                            "PRICE",
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.bold),
-                                          ))),
-                                      SizedBox(width: 20,),
-                                      Text(
-                                        widget.food.price.toString(),
-                                        style: const TextStyle(
-                                            fontSize: 18,
-                                            fontFamily: 'BerlinSansFB',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: constraints.maxHeight * 0.025,
-                                  ),
-
-                                  SizedBox(
-                                    height: constraints.maxHeight * 0.04,
-                                    child: FittedBox(
-
-                                    ),
-                                  ),
-                                  Html(
-                                    data: widget.food.description,
-                                  ),
-                                  Container(
-                                      height: constraints.maxHeight * 0.2,
-                                      child: ListView.builder(
-                                        itemCount:
-                                            widget.food.itemDetails.length,
-                                        itemBuilder: (ctx, i) {
-                                          return ListTile(
-                                            leading: Icon(Icons.circle),
-                                            title: Text(widget.food
-                                                .itemDetails[i].description),
-                                            subtitle: Text(widget
-                                                .food.itemDetails[i].title),
-                                          );
-                                        },
-                                      )),
-
-                                ],
-                              ),
-                            )
-                          ],
-                        )
-                      : Row(
+                        Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
                           children: [
                             FittedBox(
-                                fit: BoxFit.fill,
-                                child: Image.asset(
-                                  widget.food.image,
-                                  height: constraints.maxHeight * 1,
-                                  width: constraints.maxWidth * 0.5,
-                                )),
-                            Container(
-                              // height: constraints.maxHeight * 0.5,
-                              width: constraints.maxWidth * 0.5,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 25),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height:
-                                                constraints.maxHeight * 0.04,
-                                            child: const FittedBox(
-                                              child: Text(
-                                                "price",
-                                              ),
-                                            ),
-                                          ),
-                                          Text(
-                                            widget.food.price.toString(),
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-
-                                      // ElevatedButton(
-                                      //   onPressed: () {
-                                      //     // validate();
-                                      //   },
-                                      //   child: const Text('Add'),
-                                      //   style: ElevatedButton.styleFrom(
-                                      //     padding: EdgeInsets.fromLTRB(
-                                      //         screenHeight * 0.06,
-                                      //         screenHeight * 0.02,
-                                      //         screenHeight * 0.06,
-                                      //         screenHeight * 0.02),
-                                      //     onPrimary:
-                                      //         const Color.fromRGBO(255, 255, 255, 1),
-                                      //     primary: const Color.fromRGBO(63, 85, 33, 1),
-                                      //     shape: RoundedRectangleBorder(
-                                      //       borderRadius: BorderRadius.circular(5.0),
-                                      //     ),
-                                      //   ),
-                                      // ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )
+                                child: Text(
+                              widget.food.title,
+                              style: st20Bold,
+                            )),
+                            // !loading
+                            //     ?
+                            //     : CircularProgressIndicator(
+                            //         color:
+                            //             LightColors.kLightYellow,
+                            //         strokeWidth: 4.0,
+                            //       )
                           ],
                         ),
-                ),
-              )
+                        SizedBox(
+                          height:MediaQuery.of(context).size.height * 0.025,
+                        ),
+                        Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment.start,
+                          children: [
+                            Container(
+                                height: MediaQuery.of(context).size.height * 0.03,
+                                child: const FittedBox(
+                                    child: Text(
+                                  "PRICE",
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: 'BerlinSansFB',
+                                      fontWeight: FontWeight.bold),
+                                ))),
+                            SizedBox(width: 20,),
+                            Text(
+                              widget.food.price.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BerlinSansFB',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+
+                      Html(
+                            data: widget.food.description,
+                          ),
+
+                      ],
+                    )
+
             : Center(child: CircularProgressIndicator()),
       ),
     );
