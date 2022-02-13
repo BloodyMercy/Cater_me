@@ -27,6 +27,7 @@ class ReguarScreen extends StatefulWidget {
 
 class _ReguarScreenState extends State<ReguarScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -40,58 +41,55 @@ class _ReguarScreenState extends State<ReguarScreen> {
     }
     return false;
   }
+
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
 
-getData()async{
-  final address=Provider.of<AdressProvider>(context,listen: false);
- await address.getRegular();
-  final occasion=Provider.of<FriendsProvider >(context,listen: false);
-  if(occasion.listFriends.length==0)
-    await occasion.getAllFriends();
-  List<String> l = [];
-  for(int i=0;i<occasion.listFriends.length;i++)
-  {
-    l.add(occasion.listFriends[i].name);
-
-
+  getData() async {
+    final address = Provider.of<AdressProvider>(context, listen: false);
+    await address.getRegular();
+    final occasion = Provider.of<FriendsProvider>(context, listen: false);
+    if (occasion.listFriends.length == 0) await occasion.getAllFriends();
+    List<String> l = [];
+    for (int i = 0; i < occasion.listFriends.length; i++) {
+      l.add(occasion.listFriends[i].name);
+    }
+    setState(() {
+      listFriendssearch = l;
+    });
+    // controllersearch.text="p";
+    setState(() {
+      loading = false;
+    });
   }
-  setState(() {
-    listFriendssearch=l;
-  });
-  // controllersearch.text="p";
-  setState(() {
-    loading=false;
-  });
-}
-@override
+
+  @override
   void initState() {
-  getData();
+    getData();
     super.initState();
   }
+
   int _value = -1;
   bool loading = true;
 
-
-
   List<String> listFriendssearch = [];
 
-
-
   Future<bool> _onWillPop() async {
-
-    final frnd=Provider.of<FriendsProvider >(context,listen:true);
+    final frnd = Provider.of<FriendsProvider>(context, listen: true);
 
     return (await showDialog(
-        context: context,
-        builder: (context) => setupAlertDialoadContainer(context,frnd.listFriends))) ??
+            context: context,
+            builder: (context) =>
+                setupAlertDialoadContainer(context, frnd.listFriends))) ??
         false;
   }
+
   TextEditingController controllersearch = TextEditingController();
-  Widget setupAlertDialoadContainer(context,List<FriendModel> l) {
-    final frnd=Provider.of<FriendsProvider >(context,listen:true);
+
+  Widget setupAlertDialoadContainer(context, List<FriendModel> l) {
+    final frnd = Provider.of<FriendsProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     return SingleChildScrollView(
-      child:  Container(
+      child: Container(
         // color: LightColors.kLightYellow2,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -102,41 +100,42 @@ getData()async{
               width: 400.0, // Change as per your requirement
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount:frnd.listFriends.length,
+                itemCount: frnd.listFriends.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return
-                    listFriendssearch[index].contains(controllersearch.text.toLowerCase())?
-                    CheckboxListTile(
-                      activeColor: Theme.of(context).primaryColor,
-                      value: details.choosebillFriend.contains(frnd.listFriends[index]),
-                      onChanged: (val) {
-                        if(val==true)
-                          details.addfriend(frnd.listFriends[index]);
-                        else
-                          details.removefriend(frnd.listFriends[index]);
-                      },
-                      title: Card(
-                        color: LightColors.kLightYellow2,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CircleAvatar(
-                                radius: 25.0,
-                                child: ClipRRect(
-                                  child: Image.network(
-                                      l[index].image),
-                                  borderRadius: BorderRadius.circular(50.0),
-                                ),
+                  return listFriendssearch[index]
+                          .contains(controllersearch.text.toLowerCase())
+                      ? CheckboxListTile(
+                          activeColor: Theme.of(context).primaryColor,
+                          value: details.choosebillFriend
+                              .contains(frnd.listFriends[index]),
+                          onChanged: (val) {
+                            if (val == true)
+                              details.addfriend(frnd.listFriends[index]);
+                            else
+                              details.removefriend(frnd.listFriends[index]);
+                          },
+                          title: Card(
+                            color: LightColors.kLightYellow2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 25.0,
+                                    child: ClipRRect(
+                                      child: Image.network(l[index].image),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                  Text(l[index].name),
+                                ],
                               ),
-                              Text(l[index].name),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ):Container();
-
+                        )
+                      : Container();
                 },
               ),
             ),
@@ -145,24 +144,20 @@ getData()async{
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-final address=Provider.of<AdressProvider>(context,listen: true);
+    final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
-    return   SingleChildScrollView(
+    return SingleChildScrollView(
       child: Container(
         color: LightColors.kLightYellow,
         height: screenHeight * 1,
         child: Padding(
-          padding:
-          const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
           child: Column(
             children: [
-
               SizedBox(height: screenHeight * 0.03),
-
-
-
               Form(
                 key: formkey,
                 child: Column(
@@ -170,22 +165,19 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                     TextFormField(
                       // onSaved: (value) => name = value,
                       controller: address.eventnamecontroller,
-                      autovalidateMode:
-                      AutovalidateMode.onUserInteraction,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                         contentPadding:
-                        EdgeInsets.only(left: screenHeight * 0.04),
+                            EdgeInsets.only(left: screenHeight * 0.04),
                         // prefixIcon:Icon(Icons.event),
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
-                          // borderSide: BorderSide.none,
+                            // borderSide: BorderSide.none,
                             borderRadius: BorderRadius.circular(15.0),
-                            borderSide: new BorderSide(color:colorCustom)
-                        ),
+                            borderSide: new BorderSide(color: colorCustom)),
                         hintText: 'Event Name',
-                        hintStyle:
-                        Theme.of(context).textTheme.headline4,
+                        hintStyle: Theme.of(context).textTheme.headline4,
                       ),
                       keyboardType: TextInputType.text,
                     ),
@@ -204,37 +196,26 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                     // ),
                     SizedBox(height: screenHeight * 0.02),
 
-
-
-
                     Container(
-
-                      height: MediaQuery.of(context).size.height/8,
-
-                      child:CustomDatePickerFormField(
-
+                      height: MediaQuery.of(context).size.height / 8,
+                      child: CustomDatePickerFormField(
                         label: "Event Date",
                         controller: address.evendatecontroller,
-
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.02),
                     Container(
-
-                      height: MediaQuery.of(context).size.height/8,
-
-                      child:CustomDailyDate(
-
+                      height: MediaQuery.of(context).size.height / 8,
+                      child: CustomDailyDate(
                         label: "Event Time",
                         controller: address.DailyDatecontroller,
-
                       ),
                     ),
 
                     SizedBox(height: screenHeight * 0.02),
                     CustomCupertinoPicker(
-                      label:"Numbers Of Guests",
-                      items:address.listnamenumber,
+                      label: "Numbers Of Guests",
+                      items: address.listnamenumber,
                       numberOfGuests: address.regular.numberOfGuests,
                       selectedValue: 1,
                       inputType: TextInputType.number,
@@ -244,13 +225,12 @@ final address=Provider.of<AdressProvider>(context,listen: true);
                     SizedBox(height: screenHeight * 0.02),
 
                     CustomCupertinoPicker(
-                      label:"Type Of Event",
-                      items:address.listnameevent,
+                      label: "Type Of Event",
+                      items: address.listnameevent,
                       events: address.regular.events,
                       selectedValue: 0,
                       inputType: TextInputType.number,
                       controller: address.typeofeventcontrollerstring,
-
                     ),
 
 //                     Radio(
@@ -266,71 +246,91 @@ final address=Provider.of<AdressProvider>(context,listen: true);
 //                       },
 //                     ),
                     Center(
-                      child: Text('Contact Person',style: TextStyle(
-                          color: Color(0xFF3F5521),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                      ),),
-                    ),
-                SizedBox(height: screenHeight*0.03),
-
-                Column(
-
-                  children: [
-
-                    ListTile(
-                      leading: Radio(
-                    toggleable: true,
-                        // value: 'female',
-                        value:0 ,
-                        groupValue:address.value2Index,
-                        onChanged: (value) {
-                          setState(() {
-
-              address.value2Index = value;
-                          });
-                        },
+                      child: Text(
+                        'Contact Person',
+                        style: TextStyle(
+                            color: Color(0xFF3F5521),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
                       ),
-                      title: const Text('Me'),
                     ),
+                    SizedBox(height: screenHeight * 0.03),
 
-                    ListTile(
-                      leading: Radio(
-                        // value: 'female',
-                        toggleable: true,
-                        value:1 ,
+                    Row(
+                      children: [
+                        Radio(
+                          toggleable: true,
+                          // value: 'female',
+                          value: 0,
+                          groupValue: address.value2Index,
+                          onChanged: (value) {
+                            setState(() {
+                              address.value2Index = value;
+                            });
+                          },
+                        ),
 
+                        Text('Me'),
+                        SizedBox(width: MediaQuery.of(context).size.width /5,),
+                        Radio(
+                          toggleable: true,
+                          // value: 'female',
+                          value: 0,
+                          groupValue: address.value2Index,
+                          onChanged: (value) {
+                            setState(() {
+                              address.value2Index = value;
+                            });
+                          },
+                        ),
+                        Text('Me'),
 
-                        groupValue: address.value2Index,
-                        onChanged: (value) {
-                          setState(() {
+                        //       ListTile(
+                        //         leading: Radio(
+                        //       toggleable: true,
+                        //           // value: 'female',
+                        //           value:0 ,
+                        //           groupValue:address.value2Index,
+                        //           onChanged: (value) {
+                        //             setState(() {
+                        //
+                        // address.value2Index = value;
+                        //             });
+                        //           },
+                        //         ),
+                        //         title: const Text('Me'),
+                        //       ),
 
-                            address.value2Index = value;
-                          });
-                        },
-                      ),
-                      title: const Text('Other'),
+                        // ListTile(
+                        //   leading: Radio(
+                        //     // value: 'female',
+                        //     toggleable: true,
+                        //     value:1 ,
+                        //
+                        //
+                        //     groupValue: address.value2Index,
+                        //     onChanged: (value) {
+                        //       setState(() {
+                        //
+                        //         address.value2Index = value;
+                        //       });
+                        //     },
+                        //   ),
+                        //   title: const Text('Other'),
+                        // ),
+                        // Text('Me',style: TextStyle(
+                        //     color: Color(0xFF3F5521),
+                        //     fontWeight: FontWeight.normal,
+                        //     fontSize: 20
+                        // ),),
+                        //
+                        // Text('Other',style: TextStyle(
+                        //     color: Color(0xFF3F5521),
+                        //     fontWeight: FontWeight.normal,
+                        //     fontSize: 20
+                        // ),),
+                      ],
                     ),
-                    // Text('Me',style: TextStyle(
-                    //     color: Color(0xFF3F5521),
-                    //     fontWeight: FontWeight.normal,
-                    //     fontSize: 20
-                    // ),),
-                    //
-                    // Text('Other',style: TextStyle(
-                    //     color: Color(0xFF3F5521),
-                    //     fontWeight: FontWeight.normal,
-                    //     fontSize: 20
-                    // ),),
-
-                  ],
-                ),
-
-
-
-
-
-
 
 //                   ListView.builder(
 //                       padding: const EdgeInsets.all(8),
@@ -389,9 +389,6 @@ final address=Provider.of<AdressProvider>(context,listen: true);
 //                         );
 //                       }
 //                   ),
-
-
-
                   ],
                 ),
               ),
@@ -400,15 +397,5 @@ final address=Provider.of<AdressProvider>(context,listen: true);
         ),
       ),
     );
-
-
-
-
-
-
-
-
-
-
   }
 }
