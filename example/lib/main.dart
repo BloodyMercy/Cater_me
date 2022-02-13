@@ -26,6 +26,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Helpers/Constant.dart';
+import 'IntroTest/on_boarding_screen.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'NavigationBar/newnavigation/navigation.dart';
 import 'Providers/address.dart';
@@ -202,7 +203,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: HomenavigationPage(),
+        home: OnBoardingScreens(),
       ),
     );
   }

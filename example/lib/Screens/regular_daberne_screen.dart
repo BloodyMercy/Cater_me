@@ -30,79 +30,75 @@ bool loading = true;
         Provider.of<OrderCaterProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    return Container(
-      color: LightColors.kLightYellow,
-      height: screenHeight * 1,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
 
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    reg = !reg;
-                    dab = false;
-                  });
-                  orderProvider.serviceId = 1;
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.check_circle,
-                      color: orderProvider.serviceId == 1
-                          ? Theme.of(context).primaryColor
-                          : Colors.black12,
-                      size: 30,
-                    ),
-                    Container(
-                      // decoration:  BoxDecoration(
-                      //     border: Border.all(
-                      //       color: reg? Theme.of(context).primaryColor: Colors.white,
-                      //     ),),
-                      child: SvgPicture.asset('images/CaterMeStep2.svg',
-                          height: screenHeight * 0.3),
-                    ),
-                  ],
-                ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  reg = !reg;
+                  dab = false;
+                });
+                orderProvider.serviceId = 1;
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(
+                    Icons.check_circle,
+                    color: orderProvider.serviceId == 1
+                        ? Theme.of(context).primaryColor
+                        : Colors.black12,
+                    size: 30,
+                  ),
+                  Container(
+                    // decoration:  BoxDecoration(
+                    //     border: Border.all(
+                    //       color: reg? Theme.of(context).primaryColor: Colors.white,
+                    //     ),),
+                    child: SvgPicture.asset('images/CaterMeStep2.svg',
+                        height: screenHeight * 0.3),
+                  ),
+                ],
               ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    dab = !dab;
-                    reg = false;
-                  });
-                  orderProvider.serviceId = 2;
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(
-                      Icons.check_circle,
-                      color: orderProvider.serviceId == 2
-                          ? Theme.of(context).primaryColor
-                          : Colors.black12,
-                      size: 30,
-                    ),
-                    Container(
-                      // decoration:  BoxDecoration(
-                      //   border: Border.all(
-                      //     color: dab? Theme.of(context).primaryColor: Colors.white,
-                      //   ),),
-                      child:
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  dab = !dab;
+                  reg = false;
+                });
+                orderProvider.serviceId = 2;
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(
+                    Icons.check_circle,
+                    color: orderProvider.serviceId == 2
+                        ? Theme.of(context).primaryColor
+                        : Colors.black12,
+                    size: 30,
+                  ),
+                  Container(
+                    // decoration:  BoxDecoration(
+                    //   border: Border.all(
+                    //     color: dab? Theme.of(context).primaryColor: Colors.white,
+                    //   ),),
+                    child:
 
 
-                      SvgPicture.asset('images/daberni.svg',
-                          height: screenHeight * 0.2),
-                    ),
-                  ],
-                ),
+                    SvgPicture.asset('images/daberni.svg',
+                        height: screenHeight * 0.2),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
