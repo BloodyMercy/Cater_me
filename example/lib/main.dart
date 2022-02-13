@@ -164,6 +164,16 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: colorCustom,
           textTheme: const TextTheme(
+            bodyText1:  TextStyle(
+                color: Color(0xFF3F5521),
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+            bodyText2:  TextStyle(
+                color: Color(0xFF3F5521),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
             headline1: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -203,7 +213,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: OnBoardingScreens(),
+        home: appstate(),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/model/packages.dart';
@@ -112,7 +113,8 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
       //   title: Text('Details', style: Theme.of(context).textTheme.headline1),
       //   actions: [
       //     IconButton(
-      //         icon: Icon(
+      //         icon:
+      //         Icon(
       //           widget.food.isfavorite
       //               ? Icons
       //               .star_purple500_outlined
@@ -169,7 +171,42 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                   Card(
                        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(150)),
-                      child: IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.heart,color: Colors.green,size: 20,)
+                      child: IconButton(onPressed: () async {
+              setState(() {
+                loading = true;
+              });
+
+              showDialog(
+                context: this.context,
+                barrierDismissible: false,
+                builder: (BuildContext contexts) {
+                  return WillPopScope(
+                      // onWillPop: () => Future<bool>.value(false),
+                      child: AlertDialog(
+                        title: Text("Loading...",style: TextStyle(color: yellowColor),),
+                        content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: yellowColor,)]),
+                      ));
+                },
+              );
+              await PackageService
+                  .favoriteitem(
+                  widget.food.id)
+                  .then((value) {
+                if (value) {
+                  Navigator.pop(context);
+                  // Navigator.of(context).pop;
+                  widget.food.isfavorite =
+                  !widget.food
+                      .isfavorite;
+                }
+                setState(() {
+                  loading = false;
+                });
+              });
+              Navigator.of(context).pop;
+            },
+
+                          icon: Icon( widget.food.isfavorite ? FontAwesomeIcons.heart:FontAwesomeIcons.solidHeart,color: yellowColor,size: 20,)
 
                       ))
                 ],
@@ -179,11 +216,11 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                   child: Center(
                     child: IconButton(onPressed: (){
                       Navigator.of(context).pop();
-                    },icon: Icon(Icons.arrow_back,color: Colors.green,size: 30,),),
+                    },icon: Icon(Icons.arrow_back,color: yellowColor,size: 30,),),
                   ),
                 ),
 
-                pinned: true,
+                pinned: false,
                 floating: true,
                 expandedHeight: MediaQuery.of(context).size.height * 0.4,
                 backgroundColor: Colors.transparent,
@@ -212,6 +249,44 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                         )),
                     child: Column(
                       children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Row(
+                            children: [
+                              Text("Title: ",style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BerlinSansFB',
+                                  fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                widget.food.title,
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'BerlinSansFB',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Row(
+                            children: [
+                              Text("Price: ",style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BerlinSansFB',
+                                  fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "SAR ${widget.food.price.toString()}",
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'BerlinSansFB',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
                         Html(
                           data: widget.food.description,
                           style: {

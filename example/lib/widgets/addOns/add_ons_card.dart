@@ -33,7 +33,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
           child: card,
         );
     return Container(
-        height: mediaQuery.size.height * 0.3,
+        height: mediaQuery.size.height * 0.4,
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,14 +42,14 @@ class _AddOnsCardState extends State<AddOnsCard> {
                 padding: EdgeInsets.only(left: (mediaQuery.size.width * 0.04)),
                 child: Text(
                   '${package.addonsall[widget.i].name}',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
               // SizedBox(width: mediaQuery.size.width*0.6),
               Padding(
                 padding: EdgeInsets.only(right: (mediaQuery.size.width * 0.04)),
                 child: GestureDetector(
-                    child:  Text("See All", style: Theme.of(context).textTheme.headline2),
+                    child:  Text("See All", style: Theme.of(context).textTheme.bodyText1),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -73,7 +73,8 @@ class _AddOnsCardState extends State<AddOnsCard> {
                   final cards = widget.card[i];
                   return buildCards(cards, i);
                 },
-              ))
-        ]));
+              )),
+        ]
+        ));
   }
 }

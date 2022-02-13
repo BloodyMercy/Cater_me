@@ -38,7 +38,7 @@ class AddOnCards extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     '${this.addOn.title}',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),
