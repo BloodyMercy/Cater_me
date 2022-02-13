@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 SizedBox(
                                     width: mediaQuery.size.width * 0.6,
-
+                                    height: mediaQuery.size.height/13 ,
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10, vertical: 10),
@@ -128,9 +128,7 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
-
                                               borderSide:  BorderSide(
-
                                                   color:colorCustom,
                                                       ),
                                               borderRadius:
@@ -148,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                                           hintStyle: TextStyle(
                                               color: Theme.of(context)
                                                   .primaryColor,
-                                              fontSize: 16,
+                                              fontSize: 13,
                                               fontFamily: 'Segoe UI'),
                                         ),
                                       ),

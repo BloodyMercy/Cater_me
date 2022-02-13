@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +24,14 @@ class _AddressesListState extends State<AddressesList> {
   List<Addresses> _address = [];
 
   void _addNewAddress(
-      String contactName,
-      String email,
-      String phoneNumber,
-      String country,
-      String city,
-      String addressTitle,
-      // String id,
-      ) {
+    String contactName,
+    String email,
+    String phoneNumber,
+    String country,
+    String city,
+    String addressTitle,
+    // String id,
+  ) {
     final newAddress = Addresses(
       // image: image,
       contactName: contactName,
@@ -49,32 +50,31 @@ class _AddressesListState extends State<AddressesList> {
 
   void _startAddNewAddress(BuildContext ctx) {
     showModalBottomSheet(
-
-        isScrollControlled:true,
+        isScrollControlled: true,
         context: ctx,
         builder: (_) {
           return AddressesTextField(_addNewAddress, ctx);
         });
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
 //getdata();
-
   }
-  getdata(){
+
+  getdata() {
     final orderprovider =
-    Provider.of<OrderCaterProvider>(context, listen: false);
+        Provider.of<OrderCaterProvider>(context, listen: false);
 
-_value=orderprovider.valueIndex;
-print(_value);
-
+    _value = orderprovider.valueIndex;
+    print(_value);
   }
+
   @override
   Widget build(BuildContext context) {
-
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
@@ -83,9 +83,33 @@ print(_value);
         height: _mediaQuery * 0.6,
         child: widget.address.isEmpty
             ? Center(
-                child: Container(
-                child: Image.asset('images/no addresses yet-01.png'),
-              ))
+          child:  TextButton(
+            onPressed: () => _startAddNewAddress(context),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Add An Address",
+                  style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color(0xFF3F5521),
+                      fontFamily: 'BerlinSansFB',
+                      fontSize: 17),
+                ),
+                Icon(
+                  Icons.add,
+                  color: Color(0xFF3F5521),
+                )
+              ],
+            ),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              primary: Colors.white,
+            ),
+          ),
+        )
             : Expanded(
                 child: CustomScrollView(
                   slivers: [
@@ -100,93 +124,142 @@ print(_value);
                                   horizontal: _mediaQuery * 0.01),
                               child: Row(
                                 children: [
-                                  Icon(Icons.location_on_outlined),
-                                  SizedBox(
-                                    width: 45,
-                                  ),
                                   Radio(
+                                    fillColor: MaterialStateColor.resolveWith((states) => colorCustom),
                                     toggleable: true,
-                                    groupValue:_value,
+                                    groupValue: _value,
                                     value: i,
                                     onChanged: (value) {
                                       setState(() {
-                                         _value = i;
+                                        _value = i;
                                         orderprovider.valueIndex = i;
                                       });
                                       orderprovider.value = widget.address[i];
                                     },
                                   ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Title: ${widget.address[i].title.toString()}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      // Radio(
-                                      //   value: 2,
-                                      //   groupValue: _value,
-                                      //   onChanged: (value) {
-                                      //     setState(() {
-                                      //       _value = _value;
-                                      //     });
-                                      //   },
-                                      // ),
-                                      Text(
-                                        "City: ${widget.address[i].city.toString()}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      // Radio(
-                                      //   value: 3,
-                                      //   groupValue: _value,
-                                      //   onChanged: (value) {
-                                      //     setState(() {
-                                      //       _value = _value;
-                                      //     });
-                                      //   },
-                                      // ),
-                                      Text(
-                                        "Street: ${widget.address[i].street.toString()}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      // Radio(
-                                      //   value: 4,
-                                      //   groupValue: _value,
-                                      //   onChanged: (value) {
-                                      //     setState(() {
-                                      //       _value = _value;
-                                      //     });
-                                      //   },
-                                      // ),
-                                      Text(
-                                        "Building Name: ${widget.address[i].buildingName.toString()}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      // Radio(
-                                      //   value: 5,
-                                      //   groupValue: _value,
-                                      //   onChanged: (value) {
-                                      //     setState(() {
-                                      //       _value = _value;
-                                      //     });
-                                      //   },
-                                      // ),
-                                      Text(
-                                        "Floor Number: ${widget.address[i].floorNumber.toString()}",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+
+                                            style: DefaultTextStyle.of(context).style,
+                                            children:  <TextSpan>[
+                                              TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              TextSpan(text: ' ${widget.address[i].title.toString()}'),
+                                            ],
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   "Title: ${widget.address[i].title.toString()}",
+                                        //   style: const TextStyle(
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                        // Radio(
+                                        //   value: 2,
+                                        //   groupValue: _value,
+                                        //   onChanged: (value) {
+                                        //     setState(() {
+                                        //       _value = _value;
+                                        //     });
+                                        //   },
+                                        // ),
+                                        RichText(
+                                          text: TextSpan(
+
+                                            style: DefaultTextStyle.of(context).style,
+                                            children:  <TextSpan>[
+                                              TextSpan(text: 'City :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              TextSpan(text: ' ${widget.address[i].city.toString()}'),
+                                            ],
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   "City: ${widget.address[i].city.toString()}",
+                                        //   style: const TextStyle(
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                        // Radio(
+                                        //   value: 3,
+                                        //   groupValue: _value,
+                                        //   onChanged: (value) {
+                                        //     setState(() {
+                                        //       _value = _value;
+                                        //     });
+                                        //   },
+                                        // ),
+                                        RichText(
+                                          text: TextSpan(
+
+                                            style: DefaultTextStyle.of(context).style,
+                                            children:  <TextSpan>[
+                                              TextSpan(text: 'Street :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              TextSpan(text: ' ${widget.address[i].street.toString()}'),
+                                            ],
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   "Street: ${widget.address[i].street.toString()}",
+                                        //   style: const TextStyle(
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                        // Radio(
+                                        //   value: 4,
+                                        //   groupValue: _value,
+                                        //   onChanged: (value) {
+                                        //     setState(() {
+                                        //       _value = _value;
+                                        //     });
+                                        //   },
+                                        // ),
+                                        RichText(
+                                          text: TextSpan(
+
+                                            style: DefaultTextStyle.of(context).style,
+                                            children:  <TextSpan>[
+                                              TextSpan(text: 'Building Name :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              TextSpan(text: ' ${widget.address[i].buildingName.toString()}'),
+                                            ],
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   "Building Name: ${widget.address[i].buildingName.toString()}",
+                                        //   style: const TextStyle(
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                        // Radio(
+                                        //   value: 5,
+                                        //   groupValue: _value,
+                                        //   onChanged: (value) {
+                                        //     setState(() {
+                                        //       _value = _value;
+                                        //     });
+                                        //   },
+                                        // ),
+                                        RichText(
+                                          text: TextSpan(
+
+                                            style: DefaultTextStyle.of(context).style,
+                                            children:  <TextSpan>[
+                                              TextSpan(text: 'Floor Number :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              TextSpan(text: ' ${widget.address[i].floorNumber.toString()}'),
+                                            ],
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   "Floor Number: ${widget.address[i].floorNumber.toString()}",
+                                        //   style: const TextStyle(
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -198,31 +271,31 @@ print(_value);
                     ),
                     SliverToBoxAdapter(
                       child: TextButton(
-                      onPressed: () => _startAddNewAddress(context),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Add An Address",
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                                color: Color(0xFF3F5521),
-                                fontFamily: 'BerlinSansFB',
-                                fontSize: 17),
-                          ),
-                          Icon(
-                            Icons.add,
-                            color: Color(0xFF3F5521),
-                          )
-                        ],
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                        onPressed: () => _startAddNewAddress(context),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Add An Address",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Color(0xFF3F5521),
+                                  fontFamily: 'BerlinSansFB',
+                                  fontSize: 17),
+                            ),
+                            Icon(
+                              Icons.add,
+                              color: Color(0xFF3F5521),
+                            )
+                          ],
                         ),
-                        primary: Colors.white,
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          primary: Colors.white,
+                        ),
                       ),
-                    ),
                     )
                   ],
                 ),

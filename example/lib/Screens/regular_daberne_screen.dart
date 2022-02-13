@@ -92,7 +92,10 @@ bool loading = true;
                       //   border: Border.all(
                       //     color: dab? Theme.of(context).primaryColor: Colors.white,
                       //   ),),
-                      child: SvgPicture.asset('images/daberni.svg',
+                      child:
+
+
+                      SvgPicture.asset('images/daberni.svg',
                           height: screenHeight * 0.2),
                     ),
                   ],
