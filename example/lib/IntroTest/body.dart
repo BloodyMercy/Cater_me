@@ -1,4 +1,6 @@
 import 'package:CaterMe/IntroTest/size_config.dart';
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 
@@ -35,7 +37,7 @@ class _BodyState extends State<Body> {
         child: Column(
           children: [
             Expanded(
-              flex: 4,
+              flex: 9,
               child: PageView.builder(
                   onPageChanged: (value) {
                     setState(() {
@@ -49,7 +51,7 @@ class _BodyState extends State<Body> {
                   )),
             ),
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Column(
                 children: [
                   Spacer(),
@@ -61,37 +63,33 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                   Spacer(
-                    flex: 5,
+                    flex: 1,
                   ),
-                  Padding(
-                    padding:
-                    EdgeInsets.symmetric(horizontal: getScreenWidth(20)),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: getScreenHeight(60),
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        color: kSecondaryColor,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: kPrimaryColor,
+                  SizedBox(
+                    width: double.infinity,
+                    height: getScreenHeight(60),
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Navigationbar(0),
                           ),
+                        );
+                      },
+                      child: Text(
+                        'Get Started',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: colorCustom,
                         ),
                       ),
                     ),
                   ),
-                  Spacer(),
+                //  Spacer(),
                 ],
               ),
             ),
@@ -109,7 +107,7 @@ class _BodyState extends State<Body> {
       height: 6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(3),
-        color: currentPage == index ? kSecondaryColor : Colors.black38,
+        color: currentPage == index ? colorCustom: redColor,
       ),
     );
   }

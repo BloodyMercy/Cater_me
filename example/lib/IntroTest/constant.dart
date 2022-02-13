@@ -1,5 +1,6 @@
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xff000000);
-const kSecondaryColor = Color(0xffffffff);
+final kPrimaryColor = Colors.white;
+// final kSecondaryColor = colorCustom;
 const kTextColor = Color(0xDD000eee);

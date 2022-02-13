@@ -116,7 +116,7 @@ class _appstateState extends State<appstate> {
                 return LoginScreen();
 
               case Status.walkingpage:
-                return IntroScreen();
+                return OnBoardingScreens();
               case Status.Authenticated:
                 return Navigationbar(0);
             }
