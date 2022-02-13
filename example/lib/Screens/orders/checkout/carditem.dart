@@ -83,11 +83,11 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                 SizedBox(
                   width: 20,
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FittedBox(
+                      child: Text(
                         widget.cart.title,
                         style:  TextStyle(
                             fontSize: 14,
@@ -95,88 +95,26 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                             fontFamily: 'Ubuntu'),
                         maxLines: 1,
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                     Text(
-                       widget.cart.description,
-                       style:  TextStyle(
-                         fontSize: 10,
-                         color: Color(0xFF3F5521),
-                         fontFamily: 'Ubuntu',
-                       ),),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          _itemCount != 0
-                              ? Container(
-                              decoration: BoxDecoration(
-                                color:  Color.fromRGBO(253, 202, 29, 1),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              height: 30,
-                              width: 30,
-                              child: IconButton(
-                                  padding: EdgeInsets.zero,
-                                  icon:  Icon(
-                                    Icons.remove,
-                                    color: Colors.white,
-                                    size: 18,
-                                  ),
-                                  onPressed: () async{
-                                    setState(() {
-                                     // if(widget.cart.status!="Package"){
-                                        if(_itemCount>0){
-
-                                          setState(() {
-                                            _itemCount--;
-                                            widget.cart.quantity=_itemCount;
-                                            //_cartP.modifyquantity(_itemCount, widget.index);
-                                          } );
-                                          _cartP.itemOrders[widget.index]=widget.cart;
-                                          _cartP.modifyItemsmoins(_itemCount, widget.index);
-
-                                        }
-
-
-
-                                    });}
-                              ))
-                              : Container(
-                              decoration: BoxDecoration(
-                                color:  Color.fromRGBO(253, 202, 29, 1),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              height: 30,
-                              width: 30,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                icon:  Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                  size: 18,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            _itemCount.toString() ,
-                            style:  TextStyle(
-                              color: Color(0xFF3F5521),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Container(
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                   // Text(
+                   //   widget.cart.description,
+                   //   style:  TextStyle(
+                   //     fontSize: 10,
+                   //     color: Color(0xFF3F5521),
+                   //     fontFamily: 'Ubuntu',
+                   //   ),),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        _itemCount != 0
+                            ? Container(
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(253, 202, 29, 1),
+                              color:  Color.fromRGBO(253, 202, 29, 1),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             height: 30,
@@ -184,32 +122,94 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                             child: IconButton(
                                 padding: EdgeInsets.zero,
                                 icon:  Icon(
-                                  Icons.add,
+                                  Icons.remove,
                                   color: Colors.white,
                                   size: 18,
                                 ),
-                                onPressed: (){
-                                 // setState(() {
-                                   // if(widget.cart.status!="Package") {
-                                     // if(_itemCount <int.parse(widget.cart.)){
+                                onPressed: () async{
+                                  setState(() {
+                                   // if(widget.cart.status!="Package"){
+                                      if(_itemCount>0){
 
-                                   setState(() {
+                                        setState(() {
+                                          _itemCount--;
+                                          widget.cart.quantity=_itemCount;
+                                          //_cartP.modifyquantity(_itemCount, widget.index);
+                                        } );
+                                        _cartP.itemOrders[widget.index]=widget.cart;
+                                        _cartP.modifyItemsmoins(_itemCount, widget.index);
+
+                                      }
+
+
+
+                                  });}
+                            ))
+                            : Container(
+                            decoration: BoxDecoration(
+                              color:  Color.fromRGBO(253, 202, 29, 1),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            height: 30,
+                            width: 30,
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              icon:  Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              onPressed: () {
+
+                              },
+                            )),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          _itemCount.toString() ,
+                          style:  TextStyle(
+                            color: Color(0xFF3F5521),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(253, 202, 29, 1),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          height: 30,
+                          width: 30,
+                          child: IconButton(
+                              padding: EdgeInsets.zero,
+                              icon:  Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              onPressed: (){
+                               // setState(() {
+                                 // if(widget.cart.status!="Package") {
+                                   // if(_itemCount <int.parse(widget.cart.)){
+
+                                 setState(() {
     _itemCount++;
     widget.cart.quantity=_itemCount;
     //_cartP.modifyquantity(_itemCount, widget.index);
     } );
 
     _cartP.modifyItems(_itemCount, widget.index);
-                                        //_cartP.modifyquantity(_itemCount, widget.index);
-                                     // }
-                                  }
+                                      //_cartP.modifyquantity(_itemCount, widget.index);
+                                   // }
+                                }
 
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
                 Spacer(flex: 1,),
                 Expanded(

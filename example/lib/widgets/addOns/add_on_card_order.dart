@@ -64,23 +64,25 @@ class AddOnCardOrder extends StatelessWidget {
                         EdgeInsets.only(left: (mediaQuery.size.width * 0.035)),
                     child: Row(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${this.addOn.title}',
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  '\$${this.addOn.price}',
-                                  style: Theme.of(context).textTheme.headline2,
-                                ),
-                                //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))
-                              ],
-                            )
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${this.addOn.title}',
+                                style: Theme.of(context).textTheme.headline2,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '\$${this.addOn.price}',
+                                    style: Theme.of(context).textTheme.headline2,
+                                  ),
+                                  //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),

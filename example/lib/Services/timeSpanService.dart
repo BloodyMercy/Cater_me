@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:CaterMe/model/TimeSpanModel.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'ApiLink.dart';
@@ -37,7 +38,13 @@ id=adjustString(id);
 
        // for(int i=0;i<l.length;i++)
           value=timeSpanHours.fromJson(l);
-
+       DateTime parseDate =
+       new DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse( value.timespan);
+       var inputDate = DateTime.parse(parseDate.toString());
+       var outputFormat = DateFormat('MM/dd/yyyy hh:mm a');
+       var outputDate = outputFormat.format(inputDate);
+          value.timespan=  outputDate.toString();
+print('peterrrrrrrrrrrr ${value.timespan}');
         //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
 
 

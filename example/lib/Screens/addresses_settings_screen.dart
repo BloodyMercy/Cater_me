@@ -123,6 +123,20 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
               child: CustomElevatedButton("+ Add new address"),
             ),
 
+            Center(
+                child: Container(
+                  child: Image.asset('images/NoAdresses.png'),
+                ))
+          ],
+        )
+
+        :Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomElevatedButton("+ Add new address"),
+            ),
+
             Container(
               color: LightColors.kLightYellow,
               child: Center(
@@ -133,19 +147,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
             ),
           ],
         )
-            : Column(
-      children: [
-      Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: CustomElevatedButton("+ Add new address"),
-    ),
 
-    Center(
-    child: Container(
-    child: Image.asset('images/NoAdresses.png'),
-    ))
-    ],
-    )
       ),
     );
   }

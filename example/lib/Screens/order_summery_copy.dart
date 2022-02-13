@@ -403,55 +403,48 @@ controller:details.controllers[index],
              SliverToBoxAdapter(child:  Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
+Column(
+  children: [
+    Text(
+        "You cant't cancel or edit your order once submitted!"),
+    Text(
+      'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    Text(
+      'Totale: ${details.totale.toStringAsFixed(3)}',
+      style: TextStyle(
+        color: Color(0xFF3F5521),
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    Text(
+      '*(VAT included ${details.tax} %:)',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+
+    Padding(
+      padding: const EdgeInsets.only(right: 23.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '*(VAT included ${details.tax} %:  SAR)',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    ),
+  ],
+)
 
 
-                 SizedBox(
-                   height: 10,
-                 ),
-                 Text(
-                     "You cant't cancel or edit your order once submitted!"),
-                 SizedBox(
-                   height: 10,
-                 ),
-                 Text(
-                   'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-                 SizedBox(
-                   height: 10,
-                 ),
-                 Text(
-                   'Totale: ${details.totale.toStringAsFixed(3)}',
-                   style: TextStyle(
-                     color: Color(0xFF3F5521),
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-                 SizedBox(
-                   height: 10,
-                 ),
-                 Text(
-                   '*(VAT included ${details.tax} %:)',
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.only(right: 23.0),
-                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                       Text(
-                         '*(VAT included ${details.tax} %:  SAR)',
-                         style: TextStyle(
-                           fontWeight: FontWeight.bold,
-                         ),
-                       ),
-                     ],
-                   ),
-                 ),
                ],
              ))
 

@@ -14,6 +14,7 @@ class timeSpanHours{
     _isDaberni = value;
   }
   timeSpanHours.fromJson(Map<String, dynamic> json) {
+
     _timespan = json['timeSpanHours'].toString()??"not found";
     _isDaberni = json['isDaberni']??false;
 

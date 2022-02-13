@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'const.dart';
 
 class CustomDialog extends StatelessWidget {
-  final String title, description, buttonText;
+  final String title, description, buttonText,buttonText2;
   final Image image;
 
   CustomDialog({
     @required this.title,
     @required this.description,
     @required this.buttonText,
+    @required this.buttonText2,
     this.image,
   });
 
@@ -97,6 +98,7 @@ class CustomDialog extends StatelessWidget {
                         ); // To close the dialog
                       },
                       child: Text(buttonText),
+
                     ),
                   ),
                 ],

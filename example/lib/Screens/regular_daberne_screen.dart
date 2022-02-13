@@ -15,35 +15,34 @@ class RegularDaberneScreen extends StatefulWidget {
 }
 
 class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
-   bool reg;
-   bool dab;
+  bool reg;
+  bool dab;
 
   @override
   void initState() {
     super.initState();
     reg = false;
     dab = false;
-  //  data();
-
+    //  data();
   }
-  data(){
+
+  data() {
     final orderProvider =
-    Provider.of<OrderCaterProvider>(context, listen: true);
-    final addresProvider =
-    Provider.of<AdressProvider>(context, listen: true);
-    if(addresProvider.hours.isDaberni){
-      orderProvider.serviceId = 2;}
-    setState(() {
-
-    });
+        Provider.of<OrderCaterProvider>(context, listen: true);
+    final addresProvider = Provider.of<AdressProvider>(context, listen: true);
+    if (addresProvider.hours.isDaberni) {
+      orderProvider.serviceId = 2;
+    }
+    setState(() {});
   }
-bool loading = true;
+
+  bool loading = true;
+
   @override
   Widget build(BuildContext context) {
     final orderProvider =
         Provider.of<OrderCaterProvider>(context, listen: true);
-    final addresProvider =
-        Provider.of<AdressProvider>(context, listen: true);
+    final addresProvider = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Padding(
@@ -52,15 +51,15 @@ bool loading = true;
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
             GestureDetector(
               onTap: () {
-                if(!addresProvider.hours.isDaberni){
-                setState(() {
-                  reg = !reg;
-                  dab = false;
-                });
-                orderProvider.serviceId = 1;}
+                if (!addresProvider.hours.isDaberni) {
+                  setState(() {
+                    reg = !reg;
+                    dab = false;
+                  });
+                  orderProvider.serviceId = 1;
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -76,7 +75,7 @@ bool loading = true;
                     children: [
                       SvgPicture.asset('images/CaterMeStep2.svg',
                           height: screenHeight * 0.3),
-                      Text(" after ${addresProvider.hours.timespan} hours")
+                      Text(" after ${addresProvider.hours.timespan} ")
                     ],
                   ),
                 ],
@@ -84,13 +83,14 @@ bool loading = true;
             ),
             GestureDetector(
               onTap: () {
-      if(!addresProvider.hours.isDaberni){
-                setState(() {
-                  dab = !dab;
-                  reg = false;
-                });
-                orderProvider.serviceId = 2;
-              }},
+                if (!addresProvider.hours.isDaberni) {
+                  setState(() {
+                    dab = !dab;
+                    reg = false;
+                  });
+                  orderProvider.serviceId = 2;
+                }
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -108,13 +108,10 @@ bool loading = true;
                         //   border: Border.all(
                         //     color: dab? Theme.of(context).primaryColor: Colors.white,
                         //   ),),
-                        child:
-
-
-                        SvgPicture.asset('images/daberni.svg',
+                        child: SvgPicture.asset('images/daberni.svg',
                             height: screenHeight * 0.2),
                       ),
-                      Text(" before ${addresProvider.hours.timespan} hours"),
+                      Text(" before ${addresProvider.hours.timespan} "),
                     ],
                   ),
                 ],
