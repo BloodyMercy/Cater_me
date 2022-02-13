@@ -83,9 +83,12 @@ class OrderCaterProvider extends ChangeNotifier{
     }
      //   "itemId": 1,\r\n      "quantity": 2\r\n
     for(int i=0;i<choosebillFriend.length;i++){
-
+if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text=="0"){
+  controllers.removeAt(i);
+  choosebillFriend.removeAt(i);
+}
       mapitemf.add({"friendId":choosebillFriend[i].id,
-        "amount":12});
+        "amount":controllers[i].text  });
     }
 
     try{

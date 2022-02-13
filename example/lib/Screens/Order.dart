@@ -306,9 +306,7 @@ class _OrderState extends State<Order> {
 
 
                                 setState(() {
-
-                                  //orderProvider.spets=value;
-                                  _controller.animateTo(
+                                _controller.animateTo(
                                     0,
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.linear,
