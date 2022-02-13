@@ -113,7 +113,7 @@ crossAxisAlignment: CrossAxisAlignment.start,
                                 child: Container(
 
 
-                                  color: Theme.of(context).primaryColor,
+                                  color: Colors.amber,
 
 
                                   child: Column(
@@ -132,8 +132,8 @@ crossAxisAlignment: CrossAxisAlignment.start,
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                width: mediaQuery.size.width * 0.1,),
+                              // SizedBox(
+                              //   width: mediaQuery.size.width * 0.1,),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
