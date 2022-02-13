@@ -25,7 +25,7 @@ class ApiLink{
  static String GetOrdersSetting=host+'Settings/GetOrderSettings';
  static String GetAllCity=host+'Addresses/GetAllCities/';
  static String AddRegular=host+'Settings/GetOrderSettings';
- static String favoriteitem=host+'Favorites/AddItemToFavorites/';
+ static String favoriteitem=host+'Favorites/ToggleFavorite/';
  static String GetAllFriends=host+'Friends/GetAllFriends';
  static String GetAllFavorite=host+'Favorites/GetAllFavorites';
  static String GetAllOrders=host+"Orders/GetUserOrders";
