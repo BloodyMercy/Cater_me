@@ -108,60 +108,6 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text('Details', style: Theme.of(context).textTheme.headline1),
-      //   actions: [
-      //     IconButton(
-      //         icon:
-      //         Icon(
-      //           widget.food.isfavorite
-      //               ? Icons
-      //               .star_purple500_outlined
-      //               : Icons
-      //               .star_border_outlined,
-      //           color: Colors.yellow,
-      //           size: 30,
-      //         ),
-      //         onPressed: () async {
-      //           setState(() {
-      //             loading = true;
-      //           });
-      //           await PackageService
-      //               .favoriteitem(
-      //               widget.food.id)
-      //               .then((value) {
-      //             if (value) {
-      //               widget.food.isfavorite =
-      //               !widget.food
-      //                   .isfavorite;
-      //             }
-      //             setState(() {
-      //               loading = false;
-      //             });
-      //           });
-      //         })
-      //   ],
-      //   // title: Row(
-      //   //
-      //   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //   //   children: [
-      //   //     const Padding(
-      //   //       padding: EdgeInsets.only(left: 40.0),
-      //   //
-      //   //         child: Text(
-      //   //           'Details',
-      //   //           style: TextStyle(fontWeight: FontWeight.bold),
-      //   //         ),
-      //   //
-      //   //
-      //   //     ),
-      //   //
-      //   //
-      //   //   ],
-      //   // ),
-      //   backgroundColor: const Color.fromRGBO(63, 85, 33, 1),
-      // ),
       body:
           CustomScrollView(
             slivers: [
@@ -250,21 +196,12 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(15),
-                          child: Row(
-                            children: [
-                              Text("Title: ",style: const TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: 'BerlinSansFB',
-                                  fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                widget.food.title,
-                                style: const TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'BerlinSansFB',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                          child: Text(
+                            widget.food.title,
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'BerlinSansFB',
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
@@ -288,9 +225,12 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                         ),
                         Html(
                           data: widget.food.description,
-                          // // style: {
-                          // //   "body":Style(fontFamily: 'BerlinSansFB',)
-                          // },
+                          style: {
+
+                            "body":Style(fontFamily: 'BerlinSansFB',color: Colors.black87,
+                                fontWeight: FontWeight.normal,
+                               )
+                          },
                         ),
                       ],
                     ),
