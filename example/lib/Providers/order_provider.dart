@@ -70,14 +70,7 @@ class OrderCaterProvider extends ChangeNotifier{
   Future<bool>  makeorder(String date,String type,String nb,String idcard)async {
 
     List<Map<String,dynamic>> mapitem=[
-      {
-        "itemId": 1,
-        "quantity": 2
-      },
-      {
-        "itemId": 7,
-        "quantity": 1
-      }
+
     ];
     List<Map<String,dynamic>> mapitemf=[];
   //  Strinmapitems="[\r\n ";
