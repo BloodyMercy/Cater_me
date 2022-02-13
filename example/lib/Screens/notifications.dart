@@ -91,7 +91,7 @@ class _NotificationsState extends State<Notifications> {
                               ),
                             );
                             allNotification.markAsRead(allNotification.notificationlist[index].id);
-                            if(allNotification.notificationlist[index].seen){
+                            if(!allNotification.notificationlist[index].seen){
                             var i= int.parse(package.nbnotification);
                              i--;
                             package.nbnotification = i.toString();
@@ -118,18 +118,20 @@ class _NotificationsState extends State<Notifications> {
                                               AssetImage('images/food33.jpg'),
                                         ),
                                       ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(allNotification
-                                              .notificationlist[index].title),
-                                          Text(allNotification
-                                              .notificationlist[index].description),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(allNotification
+                                                .notificationlist[index].title),
+                                            Text(allNotification
+                                                .notificationlist[index].description),
 
 
-                                        ]
+                                          ]
 
+                                        ),
                                       ),
 
                                     ],

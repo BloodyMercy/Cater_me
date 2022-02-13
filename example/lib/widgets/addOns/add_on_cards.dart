@@ -1,9 +1,11 @@
 import 'package:CaterMe/model/add_on.dart';
+import 'package:CaterMe/model/packages.dart';
+import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
 import 'package:CaterMe/widgets/items_details.dart';
 import 'package:flutter/material.dart';
 
 class AddOnCards extends StatelessWidget {
-  AddOn addOn;
+  Package addOn;
 
   AddOnCards(this.addOn);
 
@@ -14,7 +16,7 @@ class AddOnCards extends StatelessWidget {
         child: InkWell(
       onTap: () {
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AdsitemDetail(addOn)));
+            MaterialPageRoute(builder: (context) => packageAdsDetailTest(addOn)));
       },
       child: Card(
 

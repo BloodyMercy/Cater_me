@@ -97,7 +97,7 @@ class PackageService{
   }
 
 
-  static Future<List<AddOn>> getOnsbyidorder(int id,int idservice,bool a) async{
+  static Future<List<Package>> getOnsbyidorder(int id,int idservice,bool a) async{
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -117,9 +117,9 @@ class PackageService{
 
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
-        List<AddOn> ld=[];
+        List<Package> ld=[];
         for(int i=0;i<l.length;i++)
-          ld.add(AddOn.fromJson(l[i]));
+          ld.add(Package.fromJson(l[i]));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
@@ -164,7 +164,7 @@ class PackageService{
       return [];
     }
   }
- static Future<List<AddOn>> getOnsbyid(int id) async{
+ static Future<List<Package>> getOnsbyid(int id) async{
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -181,9 +181,9 @@ class PackageService{
 
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
-        List<AddOn> ld=[];
+        List<Package> ld=[];
         for(int i=0;i<l.length;i++)
-          ld.add(AddOn.fromJson(l[i]));
+          ld.add(Package.fromJson(l[i]));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
@@ -342,7 +342,7 @@ class PackageService{
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
 
-        Map<String, dynamic> responseData = json.decode(response.body);
+        // Map<String, dynamic> responseData = json.decode(response.body);
 
 
 

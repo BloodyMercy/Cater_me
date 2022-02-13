@@ -188,22 +188,21 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                       ));
                 },
               );
+              print("${widget.food.isfavorite}");
               await PackageService
                   .favoriteitem(
                   widget.food.id)
                   .then((value) {
                 if (value) {
                   Navigator.pop(context);
-                  // Navigator.of(context).pop;
-                  widget.food.isfavorite =
-                  !widget.food
-                      .isfavorite;
+                  widget.food.isfavorite =!widget.food.isfavorite;
                 }
                 setState(() {
                   loading = false;
                 });
               });
-              Navigator.of(context).pop;
+
+              print("${widget.food.isfavorite}");
             },
 
                           icon: Icon( widget.food.isfavorite ? FontAwesomeIcons.heart:FontAwesomeIcons.solidHeart,color: yellowColor,size: 20,)
@@ -221,7 +220,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                 ),
 
                 pinned: false,
-                floating: true,
+                floating: false,
                 expandedHeight: MediaQuery.of(context).size.height * 0.4,
                 backgroundColor: Colors.transparent,
                 flexibleSpace: FlexibleSpaceBar(
@@ -289,9 +288,9 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                         ),
                         Html(
                           data: widget.food.description,
-                          style: {
-                            "body":Style( fontSize: FontSize(18.0), )
-                          },
+                          // // style: {
+                          // //   "body":Style(fontFamily: 'BerlinSansFB',)
+                          // },
                         ),
                       ],
                     ),

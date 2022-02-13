@@ -196,25 +196,25 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.all(10.0),
-                                            child: Expanded(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      CircleAvatar(
-                                                        radius: 25,
-                                                        backgroundImage:
-                                                            NetworkImage(order
-                                                                .paymentFreind[
-                                                                    index]
-                                                                .image),
-                                                      ),
-                                                      // SizedBox(width: 5,),
-                                                      Padding(
-                                                        padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 25,
+                                                      backgroundImage:
+                                                          NetworkImage(order
+                                                              .paymentFreind[
+                                                                  index]
+                                                              .image),
+                                                    ),
+                                                    // SizedBox(width: 5,),
+                                                    Padding(
+                                                      padding: const EdgeInsets.all(8.0),
+                                                      child: Expanded(
                                                         child: Column(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -244,23 +244,23 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                           ],
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  // SizedBox(
-                                                  //   height: MediaQuery.of(context)
-                                                  //       .size
-                                                  //       .height *
-                                                  //       0.03,
-                                                  // ),
-                                                  Text(
-                                                    "SAR ${order.paymentFreind[index].amount}",
-                                                    style: TextStyle(
-                                                        color: blackColor,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ],
-                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                // SizedBox(
+                                                //   height: MediaQuery.of(context)
+                                                //       .size
+                                                //       .height *
+                                                //       0.03,
+                                                // ),
+                                                Text(
+                                                  "SAR ${order.paymentFreind[index].amount}",
+                                                  style: TextStyle(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
                                             ),
                                           )
                                         ],
