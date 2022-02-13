@@ -92,12 +92,6 @@ class _AdsitemDetailState extends State<AdsitemDetail> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Html(
-                      data: """<p>
-   Linking to <a href='https://github.com'>websites</a> has never been easier.
-  </p>""",
-
-                    ),
                     SizedBox(
                         height: constraints.maxHeight * 0.04,
                         child: FittedBox(

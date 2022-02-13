@@ -49,7 +49,7 @@ class AddOnCards extends StatelessWidget {
                     children: [
 
                       Text(
-                        'Sar ${this.addOn.price}',
+                        'SAR ${this.addOn.price}',
                         style: TextStyle(
                             fontSize: 15,
                             color: Color(0xFF3F5521),

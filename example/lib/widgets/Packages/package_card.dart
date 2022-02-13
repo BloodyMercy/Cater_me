@@ -5,6 +5,7 @@ import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/package.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/package_add_details.dart';
+import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class _PackageCardState extends State<PackageCard> {
         onTap: () {
           //
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => packageAdsDetail(widget.packages),
+            builder: (context) => packageAdsDetailTest(widget.packages),
           ));
         },
         child: Container(
