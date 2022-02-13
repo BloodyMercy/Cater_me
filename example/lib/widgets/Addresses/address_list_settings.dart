@@ -36,7 +36,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
       child: widget.address.isEmpty
           ? Center(
           child: Container(
-            child: Image.asset('images/no addresses yet-01.png'),
+            child: Image.asset('images/NoAdresses.png'),
           ))
           : ListView.builder(
           itemCount: widget.address.length,

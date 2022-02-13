@@ -63,7 +63,7 @@ bool loading = true;
                       //     border: Border.all(
                       //       color: reg? Theme.of(context).primaryColor: Colors.white,
                       //     ),),
-                      child: SvgPicture.asset('images/caterme.svg',
+                      child: SvgPicture.asset('images/CaterMeStep2.svg',
                           height: screenHeight * 0.3),
                     ),
                   ],
