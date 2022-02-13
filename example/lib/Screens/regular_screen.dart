@@ -166,26 +166,9 @@ class _ReguarScreenState extends State<ReguarScreen> {
                 key: formkey,
                 child: Column(
                   children: [
-                    TextFormField(
-                      // onSaved: (value) => name = value,
-                      controller: address.eventnamecontroller,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.only(left: screenHeight * 0.04),
-                        // prefixIcon:Icon(Icons.event),
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            // borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: new BorderSide(color: colorCustom)),
-                        hintText: 'Event Name',
-                        hintStyle: Theme.of(context).textTheme.headline4,
-                      ),
-                      keyboardType: TextInputType.text,
-                    ),
+                    customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
 
+,
                     SizedBox(height: screenHeight * 0.02),
 
                     Container(

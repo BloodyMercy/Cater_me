@@ -118,8 +118,19 @@ class _AccountInfoState extends State<AccountInfo> {
                               fontWeight: FontWeight.normal,
                               fontFamily: 'BerlinSansFB'),
                           decoration: InputDecoration(
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
 
-
+                              errorBorder: OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+  borderSide: const BorderSide(
+    color: Colors.red,
+  ),
+),
 
                               contentPadding:
                               EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
@@ -169,8 +180,18 @@ class _AccountInfoState extends State<AccountInfo> {
                                 fontFamily: 'BerlinSansFB'),
                             decoration: InputDecoration(
 
-
-
+focusedErrorBorder: OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+  borderSide: const BorderSide(
+    color: Colors.red,
+  ),
+),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
                                 contentPadding:
                                 EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
 
@@ -215,7 +236,19 @@ class _AccountInfoState extends State<AccountInfo> {
                             decoration: InputDecoration(
 
 
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
 
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
                                 contentPadding:
                                 EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
 

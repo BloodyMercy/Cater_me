@@ -64,7 +64,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
       initialDateTime: _chosenDate,
 
       minDateTime: DateTime.now(),
-      dateFormat: 'dHm',
+      dateFormat: "Hm",
       onClose: () {
 
       },

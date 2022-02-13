@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode focusNode =FocusNode();
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
@@ -90,76 +91,144 @@ class _LoginScreenState extends State<LoginScreen> {
                         key: formkey,
                         child: Column(children: [
                           TextFormField(
-                              controller: authProvider.email,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
+
+
+                              style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'BerlinSansFB'),
                               decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                  icon: const Icon(Icons.mail_outline),
-                                  onPressed: () {},
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
-                                    bottom: screenHeight * 0.025,
-                                    top: screenHeight * 0.025),
-                                hintText: 'Email or Phone number',
-                                hintStyle:
-                                    Theme.of(context).textTheme.headline4,
-                              ),
-                              validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
-                                // EmailValidator(errorText: 'Not a valid email'),
-                              ]),
-                              keyboardType: TextInputType.emailAddress),
+                                  prefixIcon: IconButton(
+                                    icon: const Icon(Icons.mail_outline),
+                                    onPressed: () {},
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  contentPadding:
+                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                                  alignLabelWithHint: true,
+                                  labelStyle: TextStyle(
+                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                      color:
+                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                  labelText: 'Email',
+                                  hintStyle:TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BerlinSansFB'),
+
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: const BorderSide(
+                                        color: Color(0xFF3F5521),
+                                      ))),
+                              controller:authProvider.email,
+                              validator: validatePass,
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              keyboardType: TextInputType.emailAddress
+                          ),
+
                           SizedBox(
                             height: screenHeight * 0.015,
                           ),
+
+
                           TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            controller: authProvider.password,
-                            decoration: InputDecoration(
-                              errorStyle: const TextStyle(fontSize: 10),
-                              prefixIcon: IconButton(
-                                icon: Icon(
-                                  passObscure
-                                      ? Icons.lock_outlined
-                                      : Icons.lock_open_outlined,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    passObscure = !passObscure;
-                                  });
-                                },
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              contentPadding: EdgeInsets.only(
-                                  left: screenHeight * 0.03,
-                                  bottom: screenHeight * 0.025,
-                                  top: screenHeight * 0.025),
-                              hintText: 'Password',
-                              hintStyle: Theme.of(context).textTheme.headline4,
-                            ),
-                            // validator: validatePass,
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                  errorText: 'this field is Required *'),
-                              // EmailValidator(errorText: 'Not a valid email'),
-                            ]),
+
+
+                              style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'BerlinSansFB'),
+                              decoration: InputDecoration(
+                                  prefixIcon: IconButton(
+                                    icon: Icon(
+                                      passObscure
+                                          ? Icons.lock_outlined
+                                          : Icons.lock_open_outlined,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        passObscure = !passObscure;
+                                      });
+                                    },
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  contentPadding:
+                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                                  alignLabelWithHint: true,
+                                  labelStyle: TextStyle(
+                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                      color:
+                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                  labelText: 'Password',
+                                  hintStyle:TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BerlinSansFB'),
+
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: const BorderSide(
+                                        color: Color(0xFF3F5521),
+                                      ))),
+                              controller:authProvider.password,
+                              validator: validatePass,
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: passObscure,
                           ),
+
+
+
+
+
                         ]),
                       ),
                     ),
