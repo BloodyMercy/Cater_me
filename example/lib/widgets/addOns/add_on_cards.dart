@@ -28,17 +28,24 @@ class AddOnCards extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
             children: [
-              Image.network(
-                this.addOn.image,
-                height: 100,
-                width: 100,
+              Card(
+
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),),
+                elevation: 4,
+                child: Image.network(
+                  this.addOn.image,
+                  height: 100,
+                  width: 200,
+
+                ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     '${this.addOn.title}',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),
