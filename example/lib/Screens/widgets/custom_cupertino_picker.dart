@@ -65,6 +65,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
 
   void showPicker(BuildContext ctx) {
     showCupertinoModalPopup(
+
         context: ctx,
         builder: (_) {
           return Column(
@@ -90,6 +91,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                         style: TextStyle(
                             color: Color(0xFF3F5521), fontWeight: FontWeight.w300),
                       ),
+
                       onPressed: () {
                         if (widget.label == 'Country') {
                           final adress =
@@ -199,6 +201,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           widget.listoccasiontype[widget.selectedValue].id.toString();
                     }
                   },
+
                   scrollController: FixedExtentScrollController(
                       initialItem: widget.selectedValue),
                   itemExtent: 40.0,

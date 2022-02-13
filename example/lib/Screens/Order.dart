@@ -358,7 +358,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                     (orderProvider.spets==5)? AddonsCardoffer(0):
                     (orderProvider.spets==7)?CreditCardsPage():
-                    (orderProvider.spets==6)? const OrderSummeryCopy():
+                    (orderProvider.spets==6)?  OrderSummeryCopy(orderProvider.totale):
 
 
                     Container(),

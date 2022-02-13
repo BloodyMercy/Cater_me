@@ -11,7 +11,8 @@ import 'occasion/theme/colors/light_colors.dart';
 import 'orders/checkout/carditem.dart';
 
 class OrderSummeryCopy extends StatefulWidget {
-  const OrderSummeryCopy({Key key}) : super(key: key);
+  double alpha =0.0;
+   OrderSummeryCopy(this.alpha);
 
   @override
   _OrderSummeryCopyState createState() => _OrderSummeryCopyState();
@@ -27,6 +28,7 @@ bool loading=false;
   void initState() {
     super.initState();
     getData();
+
   //  _isChecked = List<bool>.filled(15, false);
   }
   List<String> listFriendssearch = [];
@@ -136,19 +138,6 @@ bool loading=false;
         child: Container(
           color: LightColors.kLightYellow,
           child: Column(children:[
-          //   Text(
-          //   'Receipt',
-          //   style: TextStyle(
-          //       color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-          // ),
-          //   Text(
-          //     'All prices include VAT',
-          //     style: TextStyle(
-          //         color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
-          //   ),
-          //   SizedBox(
-          //     height: 20,
-          //   ),
 
 
        Expanded(
@@ -184,11 +173,7 @@ bool loading=false;
                               ),
                             ),
                             onDismissed: (direction) {
-                              //setState(() {
-                              // _cartP.listcart.removeAt(index);
-                              // _cartP.RemoveFromCart(widget.data[index]);
 
-                              //   });
                               details.removeItems(details.itemOrders[i]);
                             },
                             child: CartItemCard(details.itemOrders[i], i),
@@ -205,11 +190,7 @@ bool loading=false;
                children: [
                  TextButton(
                    onPressed: () {
-                     // return  await showDialog(
-                     //   context: context,
-                     //   builder: (context) =>
-                     //       setupAlertDialoadContainer()
-                     // );
+
                   setState(() {
                     issearch=!issearch;
                   });
@@ -278,51 +259,7 @@ bool loading=false;
                      height: mediaQuery.size.height *
                          0.02,
                    ),
-                   // SizedBox(
-                   //   height: mediaQuery.size.height *
-                   //       0.06,
-                   //   child: TextField(
-                   //     autofocus: false,
-                   //     onTap: () {
-                   //     },
-                   //     decoration: InputDecoration(
-                   //       enabledBorder:
-                   //       OutlineInputBorder(
-                   //           borderSide:
-                   //           const BorderSide(
-                   //               color: Color
-                   //                   .fromRGBO(
-                   //                   232,
-                   //                   232,
-                   //                   232,
-                   //                   1)),
-                   //           borderRadius:
-                   //           BorderRadius
-                   //               .circular(
-                   //               10)),
-                   //       focusedBorder: OutlineInputBorder(
-                   //           borderSide: BorderSide(
-                   //               color: Theme.of(
-                   //                   context)
-                   //                   .primaryColor)),
-                   //       filled: true,
-                   //       fillColor:
-                   //       const Color.fromRGBO(
-                   //           232, 232, 232, 1),
-                   //       hintText: 'Search',
-                   //       prefixIcon: const Icon(
-                   //           Icons.search),
-                   //       prefixIconColor:
-                   //       Colors.black,
-                   //       hintStyle: TextStyle(
-                   //           color: Colors.grey[850],
-                   //           fontSize: 16,
-                   //           fontFamily:
-                   //           'BerlinSansFB'),
-                   //     ),
-                   //     controller: controllersearch,
-                   //   ),
-                   // ),
+
                  ],
                ),
              ):Container()),
@@ -384,15 +321,30 @@ bool loading=false;
                         title: Text(details.choosebillFriend[index].name),
                         trailing: SizedBox(
                             height: mediaQuery.size.height/20,
-                            width: mediaQuery.size.width/5,
+                            width: mediaQuery.size.width/3,
                             child: TextFormField(
+onChanged: (value){
+  double sum=0.0;
+  for(int i=0; i<details.controllers.length;i++){
+    if(details.controllers[i].text.isEmpty||details.controllers[i].text==null){
+    }else{
+    sum+=double.parse(details.controllers[i].text);
+    }
+  }
+  double lastinput= double.parse( details.controllers[index].text);
+  if(sum>details.totale) {
+    details.controllers[index].text = (details.totale- (sum-lastinput) ).toString();
+  }
+setState(() {
 
+});
+},
                               decoration: InputDecoration(
                                 hintText:'Price' ,
                                 fillColor: Color(0xFF3F5521),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
-                                      color: Color(0xFF3F5521), width: 2.0),
+                                      color: Color(0xFF3F5521), width: 1.0),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                               ),

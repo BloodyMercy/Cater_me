@@ -153,6 +153,14 @@ class OrderCaterProvider extends ChangeNotifier{
 
   double _subTotal = 0;
   double _totale = 0;
+  double _totalefreind = 0;
+
+  double get totalefreind => _totalefreind;
+
+  set totalefreind(double value) {
+    _totalefreind = value;
+  }
+
   int _tax =3;
 
 
