@@ -59,6 +59,36 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Details', style: Theme.of(context).textTheme.headline1),
+        actions: [
+          IconButton(
+              icon: Icon(
+                widget.food.isfavorite
+                    ? Icons
+                    .star_purple500_outlined
+                    : Icons
+                    .star_border_outlined,
+                color: Colors.yellow,
+                size: 30,
+              ),
+              onPressed: () async {
+                setState(() {
+                  loading = true;
+                });
+                await PackageService
+                    .favoriteitem(
+                    widget.food.id)
+                    .then((value) {
+                  if (value) {
+                    widget.food.isfavorite =
+                    !widget.food
+                        .isfavorite;
+                  }
+                  setState(() {
+                    loading = false;
+                  });
+                });
+              })
+        ],
         // title: Row(
         //
         //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,40 +147,13 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                             widget.food.title,
                                             style: st20Bold,
                                           )),
-                                          !loading
-                                              ? IconButton(
-                                                  icon: Icon(
-                                                    widget.food.isfavorite
-                                                        ? Icons
-                                                            .star_purple500_outlined
-                                                        : Icons
-                                                            .star_border_outlined,
-                                                    color: Colors.yellow,
-                                                    size: 20,
-                                                  ),
-                                                  onPressed: () async {
-                                                    setState(() {
-                                                      loading = true;
-                                                    });
-                                                    await PackageService
-                                                            .favoriteitem(
-                                                                widget.food.id)
-                                                        .then((value) {
-                                                      if (value) {
-                                                        widget.food.isfavorite =
-                                                            !widget.food
-                                                                .isfavorite;
-                                                      }
-                                                      setState(() {
-                                                        loading = false;
-                                                      });
-                                                    });
-                                                  })
-                                              : CircularProgressIndicator(
-                                                  color:
-                                                      LightColors.kLightYellow,
-                                                  strokeWidth: 4.0,
-                                                )
+                                          // !loading
+                                          //     ?
+                                          //     : CircularProgressIndicator(
+                                          //         color:
+                                          //             LightColors.kLightYellow,
+                                          //         strokeWidth: 4.0,
+                                          //       )
                                         ],
                                       )),
                                   SizedBox(
@@ -158,7 +161,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                   ),
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.start,
                                     children: [
                                       Container(
                                           height: constraints.maxHeight * 0.03,
@@ -170,6 +173,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                                 fontFamily: 'BerlinSansFB',
                                                 fontWeight: FontWeight.bold),
                                           ))),
+                                      SizedBox(width: 20,),
                                       Text(
                                         widget.food.price.toString(),
                                         style: const TextStyle(
@@ -186,10 +190,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                   SizedBox(
                                     height: constraints.maxHeight * 0.04,
                                     child: FittedBox(
-                                      child: Text(
-                                        "Details:",
-                                        style: st20Bold,
-                                      ),
+
                                     ),
                                   ),
                                   Html(
@@ -210,100 +211,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                           );
                                         },
                                       )),
-                                  // SizedBox(
-                                  //   height: constraints.maxHeight * 0.073,
-                                  // ),
-                                  // Row(
-                                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  //   children: [
-                                  //     Row(
-                                  //       children: [
-                                  //         IconButton(
-                                  //             onPressed: () {
-                                  //               setState(() {
-                                  //                 if (count != 0) {
-                                  //                   count--;
-                                  //                 }
-                                  //               });
-                                  //             },
-                                  //             icon: Icon(
-                                  //               Icons.remove_circle,
-                                  //               color: Color.fromRGBO(63, 85, 33, 1),
-                                  //             )),
-                                  //         Text(
-                                  //           "$count",
-                                  //           style: TextStyle(
-                                  //             color: Color.fromRGBO(63, 85, 33, 1),
-                                  //             fontSize: 30,
-                                  //           ),
-                                  //         ),
-                                  //         IconButton(
-                                  //             onPressed: () {
-                                  //               setState(() {
-                                  //                 count++;
-                                  //               });
-                                  //             },
-                                  //             icon: Icon(
-                                  //               Icons.add_circle,
-                                  //               color: Color.fromRGBO(63, 85, 33, 1),
-                                  //             )),
-                                  //       ],
-                                  //     ),
-                                  //     SizedBox(
-                                  //       height: constraints.maxHeight * 0.04,
-                                  //     ),
-                                  //     FloatingActionButton(
-                                  //       onPressed: () {
-                                  //         if (count == 0) {
-                                  //         } else {
-                                  //           a.id = widget.food.id;
-                                  //           a.image = widget.food.image;
-                                  //           a.description = widget.food.description;
-                                  //           a.isfavorite = widget.food.isfavorite;
-                                  //           a.itemDetails = widget.food.itemDetails;
-                                  //           a.title = widget.food.title;
-                                  //           a.quantity = count;
-                                  //           a.totalprice = count * widget.food.price;
-                                  //           orderprovider.addItems(a);
-                                  //           Navigator.of(context).pop(false);
-                                  //         }
-                                  //
-                                  //       },
-                                  //       child: const Text(
-                                  //         'ADD',
-                                  //         style: TextStyle(
-                                  //             fontWeight: FontWeight.bold,
-                                  //             fontFamily: 'BerlinSansFB'),
-                                  //       ),
-                                  //       backgroundColor: Color.fromRGBO(63, 85, 33, 1),
-                                  //     )
-                                  //     // ElevatedButton(
-                                  //     //   onPressed: () {
-                                  //     //     // validate();
-                                  //     //   },
-                                  //     //   child: const Text(
-                                  //     //     'ADD',
-                                  //     //     style: TextStyle(
-                                  //     //         fontWeight: FontWeight.bold,
-                                  //     //         fontFamily: 'BerlinSansFB'),
-                                  //     //   ),
-                                  //     //   style: ElevatedButton.styleFrom(
-                                  //     //     padding: EdgeInsets.fromLTRB(
-                                  //     //       screenHeight * 0.06,
-                                  //     //       screenHeight * 0.02,
-                                  //     //       screenHeight * 0.06,
-                                  //     //       screenHeight * 0.02,
-                                  //     //     ),
-                                  //     //     onPrimary:
-                                  //     //         const Color.fromRGBO(255, 255, 255, 1),
-                                  //     //     primary: const Color.fromRGBO(63, 85, 33, 1),
-                                  //     //     shape: RoundedRectangleBorder(
-                                  //     //       borderRadius: BorderRadius.circular(100.0),
-                                  //     //     ),
-                                  //     //   ),
-                                  //     // ),
-                                  //   ],
-                                  // ),
+
                                 ],
                               ),
                             )

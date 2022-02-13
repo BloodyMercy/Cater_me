@@ -11,6 +11,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -93,6 +94,7 @@ class UserProvider with ChangeNotifier {
     email.text=_personalInfo.email;
     phoneNumber.text=_personalInfo.phoneNumber;
     birthDate=_personalInfo.birthDate;
+    birthday.text= DateFormat("dd-MM-yyyy").format(DateTime.parse(_personalInfo.birthDate));
     imageUrl=_personalInfo.imageUrl;
     notifyListeners();
   }

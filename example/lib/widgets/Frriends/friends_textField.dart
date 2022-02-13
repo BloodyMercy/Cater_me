@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +37,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode focusnode =FocusNode();
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     submitData() {
       final enteredfullName = friends.namecontroller.text;
@@ -80,42 +82,62 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(height: _mediaQueryText * 0.06),
-                  TextFormField(
+                  customTextField(read: false,label:'Full Name' ,controller:friends.namecontroller ,),
 
-                    decoration: const InputDecoration(
-                      labelText: 'Full Name',
-                      contentPadding: EdgeInsets.only(left: 20),
-                    ),
-                    // onSubmitted: (_) => submitData(),
-                    autovalidateMode:
-                    AutovalidateMode.onUserInteraction,
-                    controller: friends.namecontroller,
-                  ),
-                  SizedBox(height: _mediaQueryText * 0.03),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      contentPadding: EdgeInsets.only(left: 20),
-                    ),
-                    autovalidateMode:
-                    AutovalidateMode.onUserInteraction,
-                    // onSubmitted: (_) => submitData(),
-                    keyboardType: TextInputType.emailAddress,
-                    controller: friends.emailcontroller,
-                  ),
-                  SizedBox(height: _mediaQueryText * 0.03),
-                  TextFormField(
-                    controller: friends.phonecontroller,
-                    decoration: const InputDecoration(
-                      labelText: 'Phone Number',
-                      contentPadding: EdgeInsets.only(left: 20),
-                    ),
-                    // onSubmitted: (_) => submitData(),
-                    autovalidateMode:
-                    AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.phone,
+             //     SizedBox(height: _mediaQueryText * 0.02),
+                  customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
 
-                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+
+                        controller: friends.phonecontroller,
+                        focusNode: focusnode,
+
+                        autovalidateMode:
+                        AutovalidateMode.onUserInteraction,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+
+
+
+                            contentPadding:
+                            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                            alignLabelWithHint: true,
+                            labelStyle: TextStyle(
+                                fontSize: focusnode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                color:
+                                focusnode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                            labelText: 'Phone Number',
+                            hintStyle:TextStyle(
+                                color: Colors.black87,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'BerlinSansFB'),
+
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: const BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF3F5521),
+                                ))),
+                        style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'BerlinSansFB'),
+                      )),
+                  SizedBox(height: _mediaQueryText * 0.03),
+
                   SizedBox(height: _mediaQueryText * 0.03),
                   !loading ? ElevatedButton(
                     onPressed: () async {

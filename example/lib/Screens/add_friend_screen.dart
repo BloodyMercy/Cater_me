@@ -124,7 +124,9 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                   ),
                 ),
         ),
+
         floatingActionButton: FloatingActionButton(
+
           child: const Icon(Icons.add),
           backgroundColor: Theme.of(context).primaryColor,
           onPressed: () => _startAddNewFriend(context),

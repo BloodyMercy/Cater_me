@@ -80,14 +80,7 @@ class _PackageCardState extends State<PackageCard> {
                     padding: EdgeInsets.symmetric(
                         horizontal: mediaQuery.size.width * 0.035,
                         vertical: mediaQuery.size.height * 0.015),
-                    // child: Text(
-                    //   widget.packages.title,
-                    //   style: TextStyle(
-                    //       color: LightColors.kLightYellow,
-                    //       fontSize: 20,
-                    //       fontWeight: FontWeight.bold,
-                    //       fontFamily: 'BerlinSansFB'),
-                    // ),
+
                   )),
             ],
           ),
