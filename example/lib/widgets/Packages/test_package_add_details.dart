@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 
@@ -164,9 +165,23 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
             slivers: [
               SliverAppBar(
                 shadowColor: Colors.transparent,
-                leading: IconButton(onPressed: (){
-                  Navigator.of(context).pop();
-                },icon: Icon(Icons.backup,color: Colors.green,size: 35,),),
+                actions: [
+                  Card(
+                       shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(150)),
+                      child: IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.heart,color: Colors.green,size: 20,)
+
+                      ))
+                ],
+                leading: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(150)),
+                  child: Center(
+                    child: IconButton(onPressed: (){
+                      Navigator.of(context).pop();
+                    },icon: Icon(Icons.arrow_back,color: Colors.green,size: 30,),),
+                  ),
+                ),
 
                 pinned: true,
                 floating: true,

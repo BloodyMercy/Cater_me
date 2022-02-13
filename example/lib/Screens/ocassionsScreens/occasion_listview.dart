@@ -109,7 +109,7 @@ crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 height: mediaQuery.size.height * 0.17,
-                                width: mediaQuery.size.width * 0.20,
+                                width: mediaQuery.size.width * 0.25,
                                 child: Container(
 
 
