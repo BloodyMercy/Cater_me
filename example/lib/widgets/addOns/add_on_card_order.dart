@@ -50,7 +50,7 @@ class AddOnCardOrder extends StatelessWidget {
             },
             child: Container(
               // width: mediaQuery.size.width*0.8 ,
-              height: mediaQuery.size.height * 0.25,
+              height: mediaQuery.size.height * 0.35,
 
               child: Column(
                 children: [
@@ -70,7 +70,9 @@ class AddOnCardOrder extends StatelessWidget {
                             children: [
                               Text(
                                 '${this.addOn.title}',
+                                maxLines: 2,
                                 style: Theme.of(context).textTheme.headline2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Row(
                                 children: [

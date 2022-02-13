@@ -136,20 +136,16 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                   ))
               : Center(child: Text("No Cuisines To Dispaly")),
           !loadingitems
-              ? Container(
-                  height: 500,
-                  //ß  width:300,
-
-                  child: GridView(
-                    padding: const EdgeInsets.all(25),
-                    children: getAddOnOrder(_cuisin.allons),
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 2.9 / 3,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 5,
-                    ),
-                  ))
+              ? GridView(
+                padding: const EdgeInsets.all(25),
+                children: getAddOnOrder(_cuisin.allons),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 2.9 / 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 5,
+                ),
+              )
               : Center(
                   child: CircularProgressIndicator(
                     color: Color(0xFF3F5521),
