@@ -178,7 +178,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                         controller: address.evendatecontroller,
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.02),
+
                     Container(
                       height: MediaQuery.of(context).size.height / 8,
                       child: CustomDailyDate(
@@ -187,7 +187,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * 0.02),
+
                     CustomCupertinoPicker(
                       label: "Numbers Of Guests",
                       items: address.listnamenumber,

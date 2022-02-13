@@ -70,57 +70,57 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
     );
   }
   @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    return Container(
+  Widget build(BuildContext context) {   FocusNode focusNode=FocusNode();
+  double height = MediaQuery.of(context).size.height;
+  return Container(
+      padding: const EdgeInsets.all(10.0),
+      child: TextFormField(
+        readOnly: true,
+        controller: widget.controller,
+        focusNode: focusNode,
+        onTap: ()  {
 
-      margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.all(13),
-      decoration: BoxDecoration(
-          color:Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(15))
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              focusNode: _focusNode,
-              controller:widget.controller,
-              onTap: (){
-                _focusNode.unfocus();
-                showPicker(context);
-              },
-              readOnly: true,
-              maxLines: null,
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 12,
-              ),
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.auto,
-                contentPadding: EdgeInsets.symmetric(horizontal: 13,vertical:0),
-                labelText: this.widget.label,
-                //hintText: 'sdsad',
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
+          showPicker(context);
 
-                ),
-                labelStyle: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w300
-                ),
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
+        },
+        decoration: InputDecoration(
+            suffixIcon: Icon(Icons.keyboard_arrow_down_sharp, size: 20,),
+
+
+            contentPadding:
+            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+            alignLabelWithHint: true,
+            labelStyle: TextStyle(
+                fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                color:
+                focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+            labelText: widget.label,
+            hintStyle:TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'BerlinSansFB'),
+
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              borderSide: const BorderSide(
+                color: Colors.grey,
               ),
             ),
-          ),
-          Icon(Icons.keyboard_arrow_down,color: Color(0xff9FACBD),size: 14,)
-        ],
-      ),
-    );
+            focusedBorder: OutlineInputBorder(
+
+                borderRadius: BorderRadius.circular(5.0),
+                borderSide: const BorderSide(
+                  color: Color(0xFF3F5521),
+                ))),
+        style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'BerlinSansFB'),
+      ));
   }
 }

@@ -109,7 +109,7 @@ crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 height: mediaQuery.size.height * 0.17,
-                                width: mediaQuery.size.width * 0.27,
+                                width: mediaQuery.size.width * 0.20,
                                 child: Container(
 
 
@@ -134,18 +134,22 @@ crossAxisAlignment: CrossAxisAlignment.start,
                               ),
                               SizedBox(
                                 width: mediaQuery.size.width * 0.1,),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '${occa.all[index].name}',
-                                    style: Theme.of(context).textTheme.headline2,
-                                  ),
-                                  Text(
-                                    '${occa.all[index].type}',
-                                    style: Theme.of(context).textTheme.headline2,
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '${occa.all[index].name}',
+                                      style: Theme.of(context).textTheme.headline2,
+                                    ),
+                                    SizedBox(height: 65,),
+                                    Text(
+                                      '${occa.all[index].type}',
+                                      style: Theme.of(context).textTheme.headline2,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

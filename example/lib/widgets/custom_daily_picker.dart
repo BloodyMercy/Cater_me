@@ -22,7 +22,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
   // DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
   DateFormat _minuteFormat = DateFormat('m');
-  DateFormat _hourFormat = DateFormat('H');
+  DateFormat _hourFormat = DateFormat('Hm');
 
   DateTime _chosenDate=DateTime.now();
   String _chosenMin="";
@@ -49,89 +49,80 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
 
 
   void showPicker(ctx) {
-    DatePicker.showDatePicker(
-
-      ctx,
-      onMonthChangeStartWithFirstDate: true,
-      pickerTheme: DateTimePickerTheme(
-        showTitle: false,
-        backgroundColor:LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color:Color(0xFF3F5521),
-        ),
-      ),
-
-      initialDateTime: _chosenDate,
-
-      minDateTime: DateTime.now(),
-      dateFormat: "Hm",
-      onClose: () {
-
-      },
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(() {
-          _chosenDate = dateTime;
-          _chosenDay = _dayFormat.format(dateTime);
-          _chosenHour = _hourFormat.format(dateTime);
-          _chosenMin = _minuteFormat.format(dateTime) ;
-          widget.controller.text = _dateFormat.format(dateTime);
+    showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.time,
+                onDateTimeChanged: (value) {
+                  _chosenDate=value;
+                  widget.controller.text=_hourFormat.format(value).toString();
+                },
+                initialDateTime: DateTime.now(),
+              ));
         });
-      },
-    );
   }
   @override
   Widget build(BuildContext context) {
+    FocusNode focusNode=FocusNode();
     double height = MediaQuery.of(context).size.height;
     return Container(
+        padding: const EdgeInsets.all(10.0),
+        child: TextFormField(
+          readOnly: true,
+          controller: widget.controller,
+          focusNode: focusNode,
+          onTap: ()  {
 
-      margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.all(13),
-      decoration: BoxDecoration(
-          color: LightColors.kLightYellow2,
-          borderRadius: BorderRadius.all(Radius.circular(5))
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              focusNode: _focusNode,
-              controller:widget.controller,
-              onTap: (){
-                _focusNode.unfocus();
-                showPicker(context);
-              },
-              readOnly: true,
-              maxLines: null,
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 12,
-              ),
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.auto,
-                contentPadding: EdgeInsets.symmetric(horizontal: 13,vertical:0),
-                labelText: this.widget.label,
-                //hintText: 'sdsad',
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
+              showPicker(context);
 
+          },
+          decoration: InputDecoration(
+suffixIcon: Icon(Icons.keyboard_arrow_down_sharp, size: 20,),
+
+
+              contentPadding:
+              EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+              alignLabelWithHint: true,
+              labelStyle: TextStyle(
+                  fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                  color:
+                  focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+              labelText: widget.label,
+              hintStyle:TextStyle(
+                  color: Colors.black87,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'BerlinSansFB'),
+
+              filled: true,
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5.0),
+                borderSide: const BorderSide(
+                  color: Colors.grey,
                 ),
-                labelStyle: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w300
-                ),
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
               ),
-            ),
-          ),
-          Icon(Icons.keyboard_arrow_down,color: Color(0xff9FACBD),size: 14,)
-        ],
-      ),
-    );
+              focusedBorder: OutlineInputBorder(
+
+                  borderRadius: BorderRadius.circular(5.0),
+                  borderSide: const BorderSide(
+                    color: Color(0xFF3F5521),
+                  ))),
+          style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'BerlinSansFB'),
+        ));
   }
 }
