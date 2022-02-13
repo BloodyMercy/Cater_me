@@ -15,7 +15,7 @@ class OrderDelivered extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset("images/order_delivered.png"),
+            Image.asset("images/OrderDelivrd.png"),
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 10),
