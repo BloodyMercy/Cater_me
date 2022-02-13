@@ -128,13 +128,15 @@ int selected=0;
                                 width: mediaQuery.size.height * 0.15,
                                 height: mediaQuery.size.height /8,
                                 child: Center(
-                                  child: Text(
-                                    '${_cuisin.addonsall[index].name}',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'BerlinSansFB'),
+                                  child: Expanded(
+                                    child: Text(
+                                      '${_cuisin.addonsall[index].name}',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                    ),
                                   ),
                                 ),
                               )),

@@ -47,7 +47,8 @@ class _CustomStepperState extends State<CustomStepper> {
     Color color;
     for(int i=0;i<widget.text.length;i++){
       if(i<widget.selected){
-        color= Color(0xFF3F5521);
+
+        color=  Color.fromRGBO(253, 202, 29, 1);
       }
       else if(i>widget.selected){
         color= Color(0xFF3F5521);
@@ -60,13 +61,14 @@ class _CustomStepperState extends State<CustomStepper> {
             key: keys[i],
             child: GestureDetector(
               onTap:(){
-                widget.onTap(i+1);
-                Scrollable.ensureVisible(
-                  keys[i].currentContext,
-                  curve: Curves.fastOutSlowIn,
-                  duration: kThemeAnimationDuration,
-                );
-              },
+                if(i<widget.selected) {
+                  widget.onTap(i + 1);
+                  Scrollable.ensureVisible(
+                    keys[i].currentContext,
+                    curve: Curves.fastOutSlowIn,
+                    duration: kThemeAnimationDuration,
+                  );
+                } },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -118,7 +120,7 @@ class _CustomStepperState extends State<CustomStepper> {
       else{
         if(i<widget.selected){
           boxDecoration = BoxDecoration(
-              color: Color(0xFF3F5521)
+              color: Color.fromRGBO(253, 202, 29, 1)
           );
         }
         else if(i>widget.selected){

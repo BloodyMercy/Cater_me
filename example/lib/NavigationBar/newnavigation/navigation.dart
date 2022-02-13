@@ -128,18 +128,6 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
   }
 
 
-  Widget _buildAppBar() {
-    // return Padding(
-    //   padding: const EdgeInsets.all(20.0),
-    //   child: Row(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: <Widget>[
-    //       Expanded(child: Text("Menu", style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600, ),)),
-    //       ActionButton(icon: Icons.add_shopping_cart,),
-    //     ],
-    //   ),
-    // );
-  }
 
 
 

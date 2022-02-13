@@ -62,10 +62,13 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
               ? Column(
                   children: [
                     SizedBox(
+
                         height: constraints.maxHeight * 0.25,
                         width: double.maxFinite,
-                        child: FittedBox(
-                            fit: BoxFit.fill,
+                        child: Card(
+                          elevation: 12,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),),
                             child: Image.network(widget.food.image))),
                     Container(
                       height: constraints.maxHeight * 0.5,

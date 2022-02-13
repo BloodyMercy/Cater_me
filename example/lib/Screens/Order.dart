@@ -42,7 +42,7 @@ class _OrderState extends State<Order> {
   final _controller = new ScrollController();
   var _key = GlobalKey<ScaffoldState>();
 ///  DatabaseMethods databaseMethods = new DatabaseMethods();
-  int nbSteps = 6;
+
   double barheight=0.0;
 
 
@@ -78,26 +78,10 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
 
   getucustomerdata() async {
-    // UserProvider _customer=Provider.of<UserProvider>(context,listen:false);
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // String? id= prefs.getString("id");
-    // _customer.userModel=  await   firebaseFiretore.collection("users").doc("type").collection("customer").doc(id).get().then((doc) {
-    //   return UserModel.fromSnapshot(doc);
-    // });
+
   }
   getprofdata()async{
-    // widget.loadin=false;
-    // setState(() {
-    //
-    // });
-    // if(widget.location=="Packages")
-    //   widget.profdata= await   firebaseFiretore.collection("users").doc("type").collection("professional").doc(widget.package.idbarber).get().then((doc) {
-    //     return UserModel.fromSnapshot(doc);
-    //   });
-    // widget.loadin=true;
-    // setState(() {
-    //
-    // });
+
   }
    int steps;
   @override
@@ -223,23 +207,15 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                             "please choose an address "),
                                       ),
                                     );
-                                    // orderProvider.spets==1;
+
                                   }
 
-                                // if (orderProvider.value.id==0) {
-                                //   _key.currentState
-                                //       .showSnackBar(
-                                //     SnackBar(
-                                //       content: Text(
-                                //           "please choose one from the following offers "),
-                                //     ),
-                                //   );
-                                // }
+
                                 else{
                                   orderProvider.spets=value;
                                 }
                               }
-                              if(orderProvider.spets==2) {
+                              if(orderProvider.spets==3) {
                                 if (orderProvider.value.id==0) {
                                   _key.currentState
                                       .showSnackBar(
@@ -254,7 +230,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                   orderProvider.spets=value;
                                 }
                               }
-                              if(orderProvider.spets==3){
+                              if(orderProvider.spets==2){
                                 if (address
                                     .eventnamecontroller
                                     .text ==
@@ -302,7 +278,6 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                 setState(() {
 
-                              //    orderProvider.spets=value;
                                   _controller.animateTo(
                                     0,
                                     duration: Duration(milliseconds: 500),
@@ -317,7 +292,6 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                 setState(() {
 
-                               //   orderProvider.spets=value;
                                   _controller.animateTo(
                                     0,
                                     duration: Duration(milliseconds: 500),
@@ -346,20 +320,14 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
 
 
-
-
-// setState(() {
-//
-// });
-
-
                             },
-                            text: [
+                            text: const [
                               "Location",
-                              "Service",
                               "Event Details",
+                              "Service",
+
                               "Packages",
-                              "Menus",
+
                               "Add-Ons",
                               "Checkout",
                               "Payment"
@@ -372,7 +340,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                   ),
 
-                  Divider(
+                  const Divider(
                     height: 20,
                     thickness: 1,
                     indent: 0,
@@ -383,15 +351,14 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                     height: MediaQuery.of(context).size.height/1.55,
                     child:
                     (orderProvider.spets==1)? AddAddressScreen():
-                    (orderProvider.spets==2)? RegularDaberneScreen():
-                    (orderProvider.spets==3)? ReguarScreen(addresses.Friends):
+                    (orderProvider.spets==3)? RegularDaberneScreen():
+                    (orderProvider.spets==2)? ReguarScreen(addresses.Friends):
                     (orderProvider.spets==4)? RelatedOffersScreen():
-                    (orderProvider.spets==5)? CuisinCardoffer(packageProvider.cuisins.id):
-                    (orderProvider.spets==6)? AddonsCardoffer(0):
-                    //(orderProvider.spets==6)? AddOnOrderScreen():
-                    (orderProvider.spets==8)?CreditCardsPage():
-                    (orderProvider.spets==7)? OrderSummeryCopy():
-                   // (steps==5)? :
+
+                    (orderProvider.spets==5)? AddonsCardoffer(0):
+                    (orderProvider.spets==7)?CreditCardsPage():
+                    (orderProvider.spets==6)? OrderSummeryCopy():
+
 
                     Container(),
                   ),
@@ -427,7 +394,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                orderProvider.spets++;
                                 }
                               }
-                          else    if(orderProvider.spets==2) {
+                          else    if(orderProvider.spets==3) {
                                 if (orderProvider.serviceId==0
                                 ) {
                                   _key.currentState
@@ -447,7 +414,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
 
 
-                     else         if(orderProvider.spets==3) {
+                     else         if(orderProvider.spets==2) {
                                 if (address
                                     .eventnamecontroller
                                     .text ==
@@ -475,7 +442,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                 }
                               }
 
-                     else if(orderProvider.spets==8){
+                     else if(orderProvider.spets==7){
                                 showDialog(
                                   context: this.context,
                                   barrierDismissible: false,
@@ -512,7 +479,7 @@ else{
 
 
                      }
-                           //   if(orderProvider.spets==4||orderProvider.spets==5||orderProvider.spets==6) {
+
                               else
                                 orderProvider.spets++;
                           //    }

@@ -71,14 +71,15 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                       child: GestureDetector(
                         child: FittedBox(
                           child: Card(
+
                             // clipBehavior: Clip.antiAlias,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            elevation: 0,
+                            elevation: 12,
                             child: Image.network(
                                 pack.allpackagesorder[index].image,
-                                fit: BoxFit.fill,
+                                fit: BoxFit.scaleDown,
                                 // width: double.maxFinite,
                                 height: screenHeight * 0.175,
                                 width: _width * 0.8),
