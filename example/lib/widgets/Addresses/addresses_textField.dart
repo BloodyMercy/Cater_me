@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
+import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,6 +49,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode focusNode = FocusNode();
     final adress = Provider.of<AdressProvider>(context, listen: true);
 
     var _mediaQueryText = MediaQuery.of(context).size.height;
@@ -65,13 +67,10 @@ class _AddressesTextFields extends State<AddressesTextField> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     SizedBox(height: _mediaQueryText * 0.03),
-                    TextField(
-                      decoration: const InputDecoration(
-                        labelText: 'Address Title',
-                        contentPadding: EdgeInsets.only(left: 20),
-                      ),
-                      controller: adress.addresstitlecontroller,
-                    ),
+                    customTextField(label:'Address Title' ,controller:adress.addresstitlecontroller ,read: false,)
+                   ,
+
+
                     SizedBox(height: _mediaQueryText * 0.03),
 
                     adress.listcountry.length != 0
@@ -98,35 +97,66 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           )
                         : Center(),
                     SizedBox(height: _mediaQueryText * 0.03),
-                    TextField(
-                      decoration: const InputDecoration(
-                        labelText: 'Street',
-                        contentPadding: EdgeInsets.only(left: 20),
-                      ),
+                    customTextField(label:'Street' ,controller:adress.streetcontroller ,read: false,),
+
+
 
                       // keyboardType: TextInputType.phone,
-                      controller: adress.streetcontroller,
-                    ),
-                    SizedBox(height: _mediaQueryText * 0.03),
-                    TextField(
-                      decoration: const InputDecoration(
-                        labelText: 'Building',
-                        contentPadding: EdgeInsets.only(left: 20),
-                      ),
 
-                      // keyboardType: TextInputType.phone,
-                      controller: adress.buildingcontroller,
-                    ),
                     SizedBox(height: _mediaQueryText * 0.03),
-                    TextField(
-                      decoration: const InputDecoration(
-                        labelText: 'Floor',
-                        contentPadding: EdgeInsets.only(left: 20),
+                    customTextField(label:'Building' ,controller:adress.buildingcontroller ,read: false,),
+
+
+                    SizedBox(height: _mediaQueryText * 0.03),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+
+                        controller: adress.floornumbercontroller,
+                        focusNode: focusNode,
+
+                        decoration: InputDecoration(
+
+
+
+                            contentPadding:
+                            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                            alignLabelWithHint: true,
+                            labelStyle: TextStyle(
+                                fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                color:
+                                focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                            labelText: "Floor",
+                            hintStyle:const TextStyle(
+                                color: Colors.black87,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'BerlinSansFB'),
+
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: const BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF3F5521),
+                                ))),
+                        style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'BerlinSansFB'),
                       ),
-                      // keyboardType: TextInputType.phone,
-                      controller: adress.floornumbercontroller,
-                      keyboardType: TextInputType.number,
                     ),
+
                     SizedBox(height: _mediaQueryText * 0.03),
 
 
