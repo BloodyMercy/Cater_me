@@ -67,7 +67,7 @@ class OrderCaterProvider extends ChangeNotifier{
     }
 
   }
-  Future<bool>  makeorder(String date,String type,String nb,String idcard)async {
+  Future<bool>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
 
     List<Map<String,dynamic>> mapitem=[
 
@@ -104,13 +104,16 @@ class OrderCaterProvider extends ChangeNotifier{
         "serviceId": serviceId,
         "orderItems": mapitem,
         "event": {
-          "eventName": "testing event",
-          "eventDate":"2022-02-10",
+          "eventName": eventname,
+          "eventDate":date,
           "eventTypeId":type,
-          "numberOfGuestsId": nb
+          "numberOfGuestsId": nb,
+          "contactPersonName":contactname,
+          "contactPersonPhoneNumber":contactphone,
+
         },
         "paymentFriend": mapitemf,
-        "cardId": "src_mqkoucbmeehelbuxpo6wwemxou"
+        "cardId": idcard
       });
 
       request.headers.addAll(headers);

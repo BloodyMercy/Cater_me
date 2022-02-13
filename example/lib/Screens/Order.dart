@@ -463,7 +463,15 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                 final address = Provider.of<AdressProvider>(context, listen: false);
 
-               bool a=     await   orderProvider.makeorder(address.evendatecontroller.text, address.typeofeventcontroller.text, address.numberofguestcontroller.text,  _creditCards.credit.cardId);
+               bool a=     await   orderProvider.makeorder(
+                   date: address.evendatecontroller.text.replaceAll(RegExp('[^A-Za-z0-9]'), '-', ),
+                   type: address.typeofeventcontroller.text,
+                   nb: address.numberofguestcontroller.text,
+                   idcard: _creditCards.credit.cardId,
+               contactname:address.name.text,
+               contactphone: address.phone.text,
+                 eventname: address.eventnamecontroller.text
+               );
 
                     Navigator.of(context).pop();
 if(a)
