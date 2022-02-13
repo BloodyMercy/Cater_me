@@ -43,7 +43,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   }
 
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
-
+bool form = false;
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
     await address.getRegular();
@@ -245,6 +245,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
 //                         address.value ;
 //                       },
 //                     ),
+                    SizedBox(height: screenHeight * 0.03),
                     Center(
                       child: Text(
                         'Contact Person',
@@ -257,9 +258,12 @@ class _ReguarScreenState extends State<ReguarScreen> {
                     SizedBox(height: screenHeight * 0.03),
 
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Radio(
                           toggleable: true,
+                          fillColor: MaterialStateColor.resolveWith(
+                              (states) => colorCustom),
                           // value: 'female',
                           value: 0,
                           groupValue: address.value2Index,
@@ -271,19 +275,24 @@ class _ReguarScreenState extends State<ReguarScreen> {
                         ),
 
                         Text('Me'),
-                        SizedBox(width: MediaQuery.of(context).size.width /5,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 10,
+                        ),
                         Radio(
+                          fillColor: MaterialStateColor.resolveWith(
+                              (states) => colorCustom),
                           toggleable: true,
                           // value: 'female',
-                          value: 0,
+                          value: 1,
                           groupValue: address.value2Index,
                           onChanged: (value) {
                             setState(() {
+form = true;
                               address.value2Index = value;
                             });
                           },
                         ),
-                        Text('Me'),
+                        Text('Others'),
 
                         //       ListTile(
                         //         leading: Radio(
