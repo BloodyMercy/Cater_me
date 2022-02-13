@@ -15,6 +15,7 @@ import 'package:CaterMe/Screens/occasion/screens/home_page.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:CaterMe/widgets/my_favorites_card.dart';
@@ -134,20 +135,18 @@ class _NavigationBarState extends State<Navigationbar> {
             backgroundColor:  LightColors.kLightYellow,
             type: BottomNavigationBarType.fixed,
             iconSize: 30,
-            selectedItemColor:Color.fromRGBO(253, 202, 29, 1),
+            selectedItemColor:yellowColor,
             unselectedItemColor:  Theme.of(context).primaryColor,
             items: [
               const BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.home,
-                  size: 25, //Icon Size
-                  color: Color(0xFF3F5521),//Color Of Icon
+                  size: 25, //Icon Size//Color Of Icon
                 ),
                 label: 'Home',
               ),
               const BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.calendarCheck,
                   size: 25, //Icon Size
-                  color: Color(0xFF3F5521),//Color Of Icon
                 ),
                 label: 'Ocasions',
               ),
@@ -165,14 +164,14 @@ class _NavigationBarState extends State<Navigationbar> {
           icon:  Icon(
                 Icons.backpack,
                 size: 25,
-                color: Theme.of(context).primaryColor,
+
               ),
           label: 'Orders',
         ),
               const BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.solidUser,
                   size: 25, //Icon Size
-                  color: Color(0xFF3F5521),//Color Of Icon
+
                 ),
                 label: 'Settings',
               ),
