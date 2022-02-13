@@ -288,9 +288,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           children: [
                             Row(
                               children: [
-                                Text('${address.eventnamecontroller.text}'),
-                                Text('${address.numberofguestcontroller.text}'),
-                                Text('${address.typeofeventcontroller.text}'),
+                                Text('${address.eventnamecontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
+                                Text('${address.numberofguestcontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
+                                Text('${address.typeofeventcontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
                               ],
                             )
                           ]),
