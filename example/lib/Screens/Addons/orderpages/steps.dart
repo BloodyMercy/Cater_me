@@ -24,7 +24,8 @@ class AddonsCardoffer extends StatefulWidget {
 
 class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
   int activeIndex;
-int selected=0;
+  int selected = 0;
+
   // getData()async{
   //   Packages _cuisin=Provider.of<Packages>(context,listen: false);
   //
@@ -36,22 +37,23 @@ int selected=0;
     getalldata();
     //  getData();
   }
-  getalldata() async{
-    final package=Provider.of<CuisineProvider>(context,listen: false);
+
+  getalldata() async {
+    final package = Provider.of<CuisineProvider>(context, listen: false);
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
-   // await package.getcuisinsbyid(widget.id);
-    if(_cuisin.addonsall.length>0) {
-
-      await _cuisin.getonidorder(_cuisin.addonsall[0].id,orderprov.serviceId,false);
+    // await package.getcuisinsbyid(widget.id);
+    if (_cuisin.addonsall.length > 0) {
+      await _cuisin.getonidorder(
+          _cuisin.addonsall[0].id, orderprov.serviceId, false);
     }
     setState(() {
-      loadingitems=false;
+      loadingitems = false;
     });
   }
 
+  bool loadingitems = true;
 
-  bool loadingitems=true;
   // bool loading = true;
   // final List<PageViewModel> pages = [
   @override
@@ -61,123 +63,102 @@ int selected=0;
 
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
-      //  width: 20,
-      // height: 20,
+          //  width: 20,
+          // height: 20,
 
-      child: card,
-    );
+          child: card,
+        );
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
-    return
-
-
-
-      SingleChildScrollView(
-
-          child:Container(
-            color: LightColors.kLightYellow,
-            child: Column(children:[
-              _cuisin.addonsall.length != 0
-                  ? Container(
+    return SingleChildScrollView(
+        child: Container(
+      color: LightColors.kLightYellow,
+      child: Column(children: [
+        _cuisin.addonsall.length != 0
+            ? Container(
                 color: LightColors.kLightYellow,
-                  height:50,
-                  width: 400,
-                  child:
-                  ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _cuisin.addonsall.length,
-                    itemBuilder: (context, index) {
-                      //  final cards = card[i];
-                      return Container(
-                        child:
-                        GestureDetector(
-
-                          onTap: () async{
-                            setState(() {
-                              loadingitems=true;
-                              selected=index;
-                            });
-                            await _cuisin.getonid(_cuisin.addonsall[index].id);
-                            setState(() {
-                              loadingitems=false;
-                            });
-                            //
-                            // Navigator.of(context).pushReplacement(
-                            //   MaterialPageRoute(
-                            //     builder: (context) => AddOns(cuisin.id),
-                            //   ),
-                            // );
-
-
-                          },
-                          child: Card(
+                height: 50,
+                width: 400,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _cuisin.addonsall.length,
+                  itemBuilder: (context, index) {
+                    //  final cards = card[i];
+                    return Container(
+                      child: GestureDetector(
+                        onTap: () async {
+                          setState(() {
+                            loadingitems = true;
+                            selected = index;
+                          });
+                          await _cuisin.getonid(_cuisin.addonsall[index].id);
+                          setState(() {
+                            loadingitems = false;
+                          });
+                          //
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => AddOns(cuisin.id),
+                          //   ),
+                          // );
+                        },
+                        child: Card(
                             color: LightColors.kLightYellow2,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
                               ),
-                              child: Container(
-
-                                decoration: BoxDecoration(
-                                    color: (index   == selected)
-                                        ? Color.fromRGBO(253, 202, 29, 0.8)
-                                        :  Color(0xFF3F5521),
-                                    border: Border.all(style: BorderStyle.none),
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                   ),
-                                width: mediaQuery.size.height * 0.15,
-                                height: mediaQuery.size.height /8,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: (index == selected)
+                                    ? Color.fromRGBO(253, 202, 29, 0.8)
+                                    : Color(0xFF3F5521),
+                                border: Border.all(style: BorderStyle.none),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              width: mediaQuery.size.height * 0.15,
+                              height: mediaQuery.size.height / 8,
+                              child: FittedBox(
                                 child: Center(
-                                  child: Expanded(
-                                    child: Text(
-                                      '${_cuisin.addonsall[index].name}',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
+                                  child: Text(
+                                    '${_cuisin.addonsall[index].name}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'BerlinSansFB'),
                                   ),
                                 ),
-                              )),
-                        ),
+                              ),
+                            )),
+                      ),
+                    );
+                  },
+                ))
+            : Center(child: Text("No Cuisines To Dispaly")),
+        !loadingitems
+            ? Container(
+                height: 500,
+                //ß  width:300,
 
-
-
-
-
-
-
-                      );
-
-
-
-                    },
-                  )): Center(child: Text("No Cuisines To Dispaly")),
-
-
-              !loadingitems?  Container(
-                  height: 500,
-                  //ß  width:300,
-
-                  child:  GridView(
-                    padding: const EdgeInsets.all(25),
-                    children: getAddOnOrder(_cuisin.allons),
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 2.9 / 3,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 5,
-                    ),
-                  )):Center(child: CircularProgressIndicator(
-                color: Color(0xFF3F5521),
-              ),)
-
-
-
-            ]),
-          ));
-
+                child: GridView(
+                  padding: const EdgeInsets.all(25),
+                  children: getAddOnOrder(_cuisin.allons),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 2.9 / 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 5,
+                  ),
+                ))
+            : Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xFF3F5521),
+                ),
+              )
+      ]),
+    ));
 
     // listview.builder(
 
@@ -196,6 +177,5 @@ int selected=0;
     //     viewportFraction: 0.3,
     //   ),
     // )
-
   }
 }

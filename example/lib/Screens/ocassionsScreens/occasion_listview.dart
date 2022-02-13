@@ -87,7 +87,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                 child:occa.all.isEmpty
                     ? Center(
                   child: Container(
-                    child: Image.asset('images/no addresses yet-02.png'),
+                    child: Image.asset('images/NoOccassionsYet.png'),
                   ),
                 )
                     : ListView.builder(

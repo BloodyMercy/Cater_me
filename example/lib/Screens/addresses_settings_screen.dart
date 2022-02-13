@@ -115,47 +115,37 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
           ],
         ),
-        body: Container(
-          // height: _mediaQuery,
-          color: LightColors.kLightYellow,
-          child: !loading
-              ? Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomElevatedButton("+ Add new address"),
-                  ),
+        body: !loading
+            ? Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomElevatedButton("+ Add new address"),
+            ),
 
-                  Center(
-                      child: Container(
-                        child: Image.asset('images/NoAdresses.png'),
-                      ))
-                ],
-              )
-              : Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomElevatedButton("+ Add new address"),
-                  ),
-
-                  Container(
-                      color: LightColors.kLightYellow,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: Color(0xFF3F5521),
-                        ),
-                      ),
-                    ),
-                ],
+            Container(
+              color: LightColors.kLightYellow,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Color(0xFF3F5521),
+                ),
               ),
+            ),
+          ],
+        )
+            : Column(
+      children: [
+      Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CustomElevatedButton("+ Add new address"),
+    ),
 
-          // floatingActionButton: FloatingActionButton(
-          //   backgroundColor: Theme.of(context).primaryColor,
-          //   child: Icon(Icons.add),
-          //   onPressed: () => _startAddNewAddress(context),
-          // ),
-        ),
+    Center(
+    child: Container(
+    child: Image.asset('images/NoAdresses.png'),
+    ))
+    ],
+    )
       ),
     );
   }

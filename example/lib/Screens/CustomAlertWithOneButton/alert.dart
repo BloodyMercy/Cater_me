@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'const.dart';
 
-class CustomDialog extends StatelessWidget {
+
+
+class CustomDialog2 extends StatelessWidget {
   final String title, description, buttonText;
   final Image image;
 
-  CustomDialog({
+  CustomDialog2({
     @required this.title,
     @required this.description,
     @required this.buttonText,
@@ -78,29 +80,18 @@ class CustomDialog extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => Navigationbar(0),
+                              builder: (context) =>
+                                  Navigationbar(0),
                             ),
-                            (route) => false);
+                                (route) => false);
                       },
                       child: Text('No'),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DonationAdded(),
-                          ),
-                        ); // To close the dialog
-                      },
-                      child: Text(buttonText),
-                    ),
-                  ),
+
                 ],
               )
+
             ],
           ),
         ),

@@ -16,7 +16,7 @@ class FriendsList extends StatelessWidget {
         child: friend.isEmpty
             ? Center(
              child: Container(
-               child: Image.asset('images/no addresses yet-02.png'),
+               child: Image.asset('images/NoFriendsYet.png'),
              ),
               )
             : ListView.builder(
