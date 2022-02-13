@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/address.dart';
+import 'package:CaterMe/Services/timeSpanService.dart';
+import 'package:CaterMe/model/TimeSpanModel.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
@@ -126,7 +128,28 @@ List<String> _listcityname=[];
   TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
   TextEditingController typeofeventcontrollerstring=TextEditingController();
+  TextEditingController name=TextEditingController();
+  TextEditingController phone=TextEditingController();
+  timeSpanService _spanService =timeSpanService();
+  bool load =true;
+  timeSpanHours _hours= timeSpanHours();
 
+
+  timeSpanService get spanService => _spanService;
+
+  set spanService(timeSpanService value) {
+    _spanService = value;
+  }
+
+
+  checktime() async{
+    load=false;
+    notifyListeners();
+
+    _hours= await _spanService.gettimespan(evendatecontroller.text, DailyDatecontroller.text);
+    load=true;
+    notifyListeners();
+  }
 clearAddressController(){
 
       addresstitlecontroller.clear();
@@ -288,7 +311,7 @@ notifyListeners();
 
 
 
- static int _value2Index = -1;
+ static int _value2Index = 0;
 
   int get value2Index => _value2Index;
 
@@ -301,5 +324,11 @@ notifyListeners();
 
   set value1Index(int value) {
     value1Index = value;
+  }
+
+  timeSpanHours get hours => _hours;
+
+  set hours(timeSpanHours value) {
+    _hours = value;
   }
 }

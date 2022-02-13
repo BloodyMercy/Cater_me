@@ -16,6 +16,7 @@ class ApiLink{
  static String Register=host+"Accounts/Register/1";
  static String GetPackages=host+'HomePage/GetHomePage';
  static String Getcusinibyid=host+'Items/GetCategoryItems/';
+ static String Gettimespan=host+'Orders/getTimeSpan/';
 
  static String categoryTypeId=host+'Items/GetCuisineCategories/';
  static String AddAddress=host+'Addresses/CreateAddress';

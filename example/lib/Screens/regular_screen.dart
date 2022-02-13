@@ -153,7 +153,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
-    return SingleChildScrollView(
+    return address.load?SingleChildScrollView(
       child: Container(
         color: LightColors.kLightYellow,
         height: screenHeight * 1,
@@ -265,13 +265,14 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
                     form
                         ? customTextFieldicon(
+                      controller:address.name ,
                             label: 'Name',
                             icon: Icon(Icons.person),
                           )
                         : Container(),
                     form
                         ? customTextFieldPhone(
-
+controller: address.phone,
                             label: 'Phone Number',
                             icon: Icon(Icons.phone),
 
@@ -279,63 +280,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                           )
                         : Container(),
 
-                    //                   ListView.builder(
-//                       padding: const EdgeInsets.all(8),
-//                       itemCount: 1,
-//                       itemBuilder: (BuildContext context, int i) {
-//                         return Row(
-//                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                           children: [
-//                             // SizedBox(
-//                             //   width: 45,
-//                             // ),
-//                             Radio(
-//                               toggleable: true,
-//                               groupValue: address.value2Index,
-//                               //  value: i,
-//                               onChanged: (value) {
-//                                 setState(() {
-// //    _value = i;
-//                                   address.value2Index = i;
-//                                 });
-//                                 address.value = address.Friends[i];
-//                               },
-//                             ),
-//                             Row(
-//
-//                               children: [
-//                                 Text('Me',style: TextStyle(
-//                                     color: Color(0xFF3F5521),
-//                                     fontWeight: FontWeight.normal,
-//                                     fontSize: 20
-//                                 ),),
-//                                 SizedBox(width:MediaQuery.of(context).size.width*0.28),
-//                                 Radio(
-//                                   toggleable: true,
-//                                   groupValue: address.value1Index,
-//                                   //  value: i,
-//                                   onChanged: (value) {
-//                                     setState(() {
-// //    _value = i;
-//                                       address.value2Index = i;
-//                                     });
-//                                     address.value = address.Friends[i];
-//                                   },
-//                                 ),
-//                                 Text('Other',style: TextStyle(
-//                                     color: Color(0xFF3F5521),
-//                                     fontWeight: FontWeight.normal,
-//                                     fontSize: 20
-//                                 ),),
-//
-//
-//                               ],
-//                             ),
-//
-//                           ],
-//                         );
-//                       }
-//                   ),
+
                   ],
                 ),
               ),
@@ -343,6 +288,6 @@ class _ReguarScreenState extends State<ReguarScreen> {
           ),
         ),
       ),
-    );
+    ):Center(child: CircularProgressIndicator(),);
   }
 }

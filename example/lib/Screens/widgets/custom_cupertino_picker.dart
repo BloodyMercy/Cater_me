@@ -62,21 +62,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
     super.dispose();
   }
 
-  // @override
-  // void initState(){
-  //   if(widget.selectedValue==-1 || widget.selectedValue == null) {
-  //     widget.selectedValue = 0;
-  //     setState(() {
-  //
-  //     });
-  //   }
-  //   else{
-  //     widget.controller.text = widget.items[widget.selectedValue];
-  //     setState(() {
-  //
-  //     });
-  //   }
-  // }
+
   void showPicker(BuildContext ctx) {
     showCupertinoModalPopup(
         context: ctx,

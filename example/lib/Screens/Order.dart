@@ -55,7 +55,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
         backgroundColor:Colors.white ,
         title: new Text("Are you sure you want to exit?"),
         content: new Text(
-          "",style: TextStyle(color:Colors.white),),
+          "",style: const TextStyle(color:Colors.white),),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -113,7 +113,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
   @override
   Widget build(BuildContext context) {
     final addresses = Provider.of<AdressProvider>(context, listen: true);
-    // final address = Provider.of<OrderCaterProvider>(context, listen: true);
+  // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
     final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
@@ -134,13 +134,13 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.white,
-            title: Text("Order",
-              style: TextStyle(
+            title: const Text("Order",
+              style: const TextStyle(
                   color: Color(0xFF3F5521),
                   fontWeight: FontWeight.bold,
                   fontSize: 25),),
             leading: IconButton(
-              icon: Icon(Icons.close, color: Color(0xFF3F5521),),
+              icon: const Icon(Icons.close, color: const Color(0xFF3F5521),),
               onPressed: () async {
                 return  await showDialog(
                   context: context,
@@ -148,7 +148,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                     backgroundColor:Colors.white ,
                     title: new Text("Are you sure you want to exit?"),
                     content: new Text(
-                      "",style: TextStyle(color:Colors.white),),
+                      "",style: const TextStyle(color:Colors.white),),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.of(context).pop(false),
@@ -175,7 +175,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
           ),
           body: true?SingleChildScrollView(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               width: MediaQuery.of(context).size.width,
@@ -202,7 +202,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                   ) {
                                     _key.currentState
                                         .showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text(
                                             "please choose an address "),
                                       ),
@@ -219,8 +219,8 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                 if (orderProvider.value.id==0) {
                                   _key.currentState
                                       .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
+                                    const SnackBar(
+                                      content: const Text(
                                           "please choose one from the following offers "),
                                     ),
                                   );
@@ -250,7 +250,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                       // if( orderProvider.serviceId==0){
                                       // _key.currentState
                                       //     .showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                       content: Text(
                                       "please fill the empty fields "),
                                       );
@@ -263,7 +263,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                           _controller.animateTo(
                                             0,
-                                            duration: Duration(milliseconds: 500),
+                                            duration: const Duration(milliseconds: 500),
                                             curve: Curves.linear,
                                           );
                                         });
@@ -280,7 +280,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                   _controller.animateTo(
                                     0,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     curve: Curves.linear,
                                   );
                                 });
@@ -294,7 +294,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
 
                                   _controller.animateTo(
                                     0,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     curve: Curves.linear,
                                   );
                                 });
@@ -309,7 +309,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                   //orderProvider.spets=value;
                                   _controller.animateTo(
                                     0,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     curve: Curves.linear,
                                   );
                                 });
@@ -350,14 +350,14 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                   Container(
                     height: MediaQuery.of(context).size.height/1.55,
                     child:
-                    (orderProvider.spets==1)? AddAddressScreen():
+                    (orderProvider.spets==1)? const AddAddressScreen():
                     (orderProvider.spets==3)? RegularDaberneScreen():
                     (orderProvider.spets==2)? ReguarScreen(addresses.Friends):
                     (orderProvider.spets==4)? RelatedOffersScreen():
 
                     (orderProvider.spets==5)? AddonsCardoffer(0):
                     (orderProvider.spets==7)?CreditCardsPage():
-                    (orderProvider.spets==6)? OrderSummeryCopy():
+                    (orderProvider.spets==6)? const OrderSummeryCopy():
 
 
                     Container(),
@@ -369,7 +369,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                     child: Container(
                       height: MediaQuery.of(context).size.height/9,
                      // color: Colors.yellow,
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -384,7 +384,7 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                    ) {
                                   _key.currentState
                                       .showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text(
                                           "please choose an address "),
                                     ),
@@ -399,8 +399,8 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                 ) {
                                   _key.currentState
                                       .showSnackBar(
-                                    SnackBar(
-                                      content: Text(
+                                    const SnackBar(
+                                      content: const Text(
                                           "please choose one from the following offers "),
                                     ),
                                   );
@@ -431,13 +431,16 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                         .text == "") {
                                   _key.currentState
                                       .showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text(
                                           "please fill the empty fields "),
                                     ),
                                   );
                                 }
                                 else{
+                                 await  address.checktime();
+                                 if(address.hours.isDaberni)
+                                   orderProvider.serviceId=2;
                                   orderProvider.spets++;
                                 }
                               }
@@ -450,8 +453,8 @@ final _orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
                                     return WillPopScope(
                                         onWillPop: () => Future<bool>.value(false),
                                         child: AlertDialog(
-                                          title: Text("Loading..."),
-                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
+                                          title: const Text("Loading..."),
+                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[const CircularProgressIndicator()]),
                                         ));
                                   },
                                 );
@@ -469,9 +472,9 @@ else{
     context: this.context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text("error "),
-        content: Text("try again"),
-        actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
+        title: const Text("error "),
+        content: const Text("try again"),
+        actions: <Widget>[TextButton(child: const Text("Close"), onPressed: () => Navigator.pop(context))],
       );
     },
   );
@@ -488,15 +491,15 @@ else{
 
 
                             },
-                            child:   orderProvider.spets!=8? Text(
+                            child:   orderProvider.spets!=8? const Text(
                            'Next',
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
-                            ):Text(
+                            ):const Text(
                               'Done',
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
@@ -519,7 +522,7 @@ else{
                 ],
               ),
             ),
-          ):  Center(
+          ):  const Center(
                   child: CircularProgressIndicator(),
                 ),
         ),
