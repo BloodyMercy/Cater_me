@@ -21,8 +21,8 @@ class OrderDetailsModel {
         this.isDonated});
 
   OrderDetailsModel.fromJson(Map<String, dynamic> json) {
-    addressId = json['addressId'];
-    serviceId = json['serviceId'];
+    addressId = json['addressId']??0;
+    serviceId = json['serviceId']??0;
     if (json['orderItems'] != null) {
       orderItems = <OrderItems>[];
       json['orderItems'].forEach((v) {
@@ -36,10 +36,10 @@ class OrderDetailsModel {
         paymentFriend.add(new PaymentFriend.fromJson(v));
       });
     }
-    subTotal = json['subTotal'].toDouble();
-    total = json['total'].toDouble();
-    tax = json['tax'].toDouble();
-    isDonated = json['isDonated'];
+    subTotal = json['subTotal'].toDouble()??0.0;
+    total = json['total'].toDouble()??0.0;
+    tax = json['tax'].toDouble()??0.0;
+    isDonated = json['isDonated']??false;
   }
 }
 
@@ -53,11 +53,11 @@ class OrderItems {
   OrderItems({this.item, this.quantity, this.price, this.total, this.tax});
 
   OrderItems.fromJson(Map<String, dynamic> json) {
-    item = json['item'];
-    quantity = json['quantity'];
-    price = json['price'].toDouble();
-    total = json['total'].toDouble();
-    tax = json['tax'].toDouble();
+    item = json['item']??"not found";
+    quantity = json['quantity']??0;
+    price = json['price'].toDouble()??0.0;
+    total = json['total'].toDouble()??0.0;
+    tax = json['tax'].toDouble()??0.0;
   }
 
 }
@@ -81,13 +81,13 @@ class Event {
         this.contactName});
 
   Event.fromJson(Map<String, dynamic> json) {
-    eventType = json['eventType'];
-    eventName = json['eventName'];
-    eventDate = json['eventDate'];
-    eventTypeId = json['eventTypeId'];
-    numberOfGuests = json['numberOfGuests'];
-    contactPhoneNumber = json['contactPhoneNumber'];
-    contactName = json['contactName'];
+    eventType = json['eventType']??"not found";
+    eventName = json['eventName']??"not found";
+    eventDate = json['eventDate']??"not found";
+    eventTypeId = json['eventTypeId']??0;
+    numberOfGuests = json['numberOfGuests']??"not found";
+    contactPhoneNumber = json['contactPhoneNumber']??"not found";
+    contactName = json['contactName']??"not found";
   }
 }
 
@@ -108,11 +108,11 @@ class PaymentFriend {
         this.phoneNumber});
 
   PaymentFriend.fromJson(Map<String, dynamic> json) {
-    friendId = json['friendId'];
-    name = json['name'];
-    amount = json['amount'].toDouble();
-    image = json['image'];
-    email = json['email'];
-    phoneNumber = json['phoneNumber'];
+    friendId = json['friendId']??0;
+    name = json['name']??"not found";
+    amount = json['amount'].toDouble()??0.0;
+    image = json['image']??"not found";
+    email = json['email']??"not found";
+    phoneNumber = json['phoneNumber']??"not found";
   }
 }

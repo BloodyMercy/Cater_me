@@ -10,8 +10,8 @@ class Regular {
 
   Regular.fromJson(Map<String, dynamic> json) {
    // percentageOfDaberni = json['percentageOfDaberni'];
-    hoursOfDaberni = json['hoursOfDaberni'];
-    tax = json['tax']==null?0:json['tax'];
+    hoursOfDaberni = json['hoursOfDaberni']??0;
+    tax = json['tax']==null?0:json['tax']??0;
     if (json['numberOfGuests'] != null) {
       numberOfGuests = <NumberOfGuests>[];
       json['numberOfGuests'].forEach((v) {
@@ -49,8 +49,8 @@ class NumberOfGuests {
   NumberOfGuests({this.id, this.title});
 
   NumberOfGuests.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
+    id = json['id']??0;
+    title = json['title']??"not found";
   }
 
   Map<String, dynamic> toJson() {
@@ -68,8 +68,8 @@ class Events {
   Events({this.id, this.name});
 
   Events.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+    id = json['id']??0;
+    name = json['name']??'not found';
   }
 
   Map<String, dynamic> toJson() {

@@ -17,12 +17,12 @@ class AddOn {
 
  AddOn.fromJson(Map<String, dynamic> json) {
   tax = json['tax']??0;
-  id = json['id'];
-  image = json['image'];
-  title = json['title'];
-  description = json['description'];
-  price = double.parse(json['price'].toString());
-  isfavorite = json['isFavorite'];
+  id = json['id']??0;
+  image = json['image']??"not found";
+  title = json['title']??"not found";
+  description = json['description']??"not found";
+  price = double.parse(json['price'].toString())??0.0;
+  isfavorite = json['isFavorite']??false;
   if (json['itemDetails'] != null) {
    itemDetails = [];
    json['itemDetails'].forEach((v) {

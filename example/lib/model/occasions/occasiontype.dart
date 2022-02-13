@@ -5,8 +5,8 @@ class OccassionType {
   OccassionType({this.id, this.name});
 
   OccassionType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['title'];
+    id = json['id']??0;
+    name = json['title']??"not found";
   }
 
 }

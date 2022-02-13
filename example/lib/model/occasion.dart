@@ -8,16 +8,16 @@ class Occasion {
   Occasion();
 
 Occasion.fromJson(Map<String, dynamic> json) {
-  id = json['id'];
-  date = json['date'];
-  name = json['title'];
-  type = json['type'];
+  id = json['id']??0;
+  date = json['date']??"not found";
+  name = json['title']??"not found";
+  type = json['type']??"not found";
 }
   Occasion.fromJsonadd(Map<String, dynamic> json) {
-    id = json['profileId'];
-    date = json['date'];
-    name = json['title'];
-    type = json['typeId'].toString();
+    id = json['profileId']??0;
+    date = json['date']??"not found";
+    name = json['title']??"not found";
+    type = json['typeId'].toString()??"not found";
 
   }
 }

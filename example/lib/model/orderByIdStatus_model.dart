@@ -5,7 +5,7 @@ class OrderByIdStatusModel {
   OrderByIdStatusModel({this.statusId});
 
   OrderByIdStatusModel.fromJson(Map<String, dynamic> json) {
-    statusId = json['statusId'];
+    statusId = json['statusId']??0;
   }
 
   // Map<String, dynamic> toJson() {

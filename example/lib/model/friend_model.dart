@@ -10,10 +10,10 @@ class FriendModel {
 
   FriendModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
-    name = json['name']??"";
-    phoneNumber = json['phoneNumber']??"";
-    email = json['email']??"";
-    image = json['image']??"";
+    name = json['name']??"not found";
+    phoneNumber = json['phoneNumber']??"not found";
+    email = json['email']??"not found";
+    image = json['image']??"not found";
 
   }
 

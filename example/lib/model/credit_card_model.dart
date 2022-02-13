@@ -10,12 +10,12 @@ class CreditCardsModel {
    );
 
   CreditCardsModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    cardId = json['cardId'];
-    expiryDate = json['expiryDate'];
-    ownerName = json['ownerName'];
-    cardNumber = json['cardNumber'];
-    type = json['type'];
+    id = json['id']??0;
+    cardId = json['cardId']??"not found";
+    expiryDate = json['expiryDate']??"not found";
+    ownerName = json['ownerName']??"not found";
+    cardNumber = json['cardNumber']??"not found";
+    type = json['type']??"not found";
   }
 
   // Map<String, dynamic> toJson() {

@@ -8,11 +8,11 @@ class notificationModel {
   notificationModel();
 
   notificationModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    orderId = json['orderId'];
-    title = json['title'];
-    description = json['description'];
-    seen=json['seen'];
+    id = json['id']??0;
+    orderId = json['orderId']??0;
+    title = json['title']??"not found";
+    description = json['description']??"not found";
+    seen=json['seen']??false;
   }
 
   

@@ -8,11 +8,11 @@ class PersonalInfoModel {
   PersonalInfoModel({name, phoneNumber, email, birthDate,imageUrl});
 
   PersonalInfoModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    phoneNumber = json['phoneNumber'];
-    email = json['email'];
-    birthDate = json['birthDate'];
-    imageUrl=json['imageUrl'];
+    name = json['name']??"not found";
+    phoneNumber = json['phoneNumber']??"not found";
+    email = json['email']??"not found";
+    birthDate = json['birthDate']??"not found";
+    imageUrl=json['imageUrl']??"not found";
   }
 
   // Map<String, dynamic> toJson() {

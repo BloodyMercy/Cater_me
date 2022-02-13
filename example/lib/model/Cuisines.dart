@@ -8,8 +8,8 @@ class Cuisines {
   Cuisines();
 
   Cuisines.fromJson(Map<dynamic, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+    id = json['id']??0;
+    name = json['name']??'not found';
     if (json['categories'] != null) {
       categories = <Cuisins>[];
       json['categories'].forEach((v) {

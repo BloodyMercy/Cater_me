@@ -5,7 +5,7 @@ class City {
   City();
 
   City.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+    id = json['id']??0;
+    name = json['name']??"not found";
   }
 }

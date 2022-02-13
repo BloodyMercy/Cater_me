@@ -17,12 +17,12 @@ int id;
 
   Package.fromJson(Map<String, dynamic> json) {
     tax = json['tax']==null?0:json['tax'];
-    id = json['id'];
-    image = json['image'];
-    title = json['title'];
-    description = json['description'];
-    price = double.parse(json['price'].toString());
-    isfavorite = json['isFavorite'];
+    id = json['id']??0;
+    image = json['image']??"not found";
+    title = json['title']??"not found";
+    description = json['description']??"not found";
+    price = double.parse(json['price'].toString())??0.0;
+    isfavorite = json['isFavorite']??false;
     if (json['itemDetails'] != null) {
       itemDetails = [];
       json['itemDetails'].forEach((v) {

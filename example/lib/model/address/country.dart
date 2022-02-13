@@ -5,8 +5,8 @@ class Country {
   Country({this.id, this.name});
 
   Country.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+    id = json['id']??0;
+    name = json['name']??'not found';
   }
 
 }

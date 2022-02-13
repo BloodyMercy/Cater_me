@@ -6,9 +6,9 @@ class Details {
   Details(this.id, this.title, this.description);
 
   Details.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    description = json['description'];
+    id = json['id']??0;
+    title = json['title']??"not found";
+    description = json['description']??"not found";
   }
 
   Map<String, dynamic> toJson() {

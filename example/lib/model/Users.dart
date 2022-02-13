@@ -20,18 +20,18 @@ class Users {
 
 
   Users.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    uid = json['uid'];
-    name = json['name'];
-    phoneNumber = json['phoneNumber'];
-    imageUrl = json['imageUrl'];
-    role = json['role'];
-    email = json['email'];
-    orderListId = json['orderListId'];
-    isActive = json['isActive'];
-    gender = json['gender'];
-    birthDate = json['birthDate'];
-    token = json['token'];
+    id = json['id']??0;
+    uid = json['uid']??"not found";
+    name = json['name']??"not found";
+    phoneNumber = json['phoneNumber']??"not found";
+    imageUrl = json['imageUrl']??"not found";
+    role = json['role']??"not found";
+    email = json['email']??"not found";
+    orderListId = json['orderListId']??0;
+    isActive = json['isActive']??false;
+    gender = json['gender']??"not found";
+    birthDate = json['birthDate']??"not found";
+    token = json['token']??"not found";
   }
 
   Map<String, dynamic> toJson( ) {

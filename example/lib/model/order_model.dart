@@ -41,20 +41,20 @@ class OrderModel {
   });
 
   OrderModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    profileId = json['profileId'];
-    addressId = json['addressId'];
-    addressTitle = json['addressTitle'];
-    country = json['country'];
-    street = json['street'];
-    buildingName = json['buildingName'];
-    floorNumber = json['floorNumber'];
-    total = json['total'].toDouble();
-    orderStatus = json['orderStatus'];
-    eventType = json['eventType'];
-    eventDate = json['eventDate'];
-    eventName = json['eventName'];
-    numberOfGuests = json['numberOfGuests'];
+    id = json['id']??0;
+    profileId = json['profileId']??0;
+    addressId = json['addressId']??0;
+    addressTitle = json['addressTitle']??"not found";
+    country = json['country']??"not found";
+    street = json['street']??"not found";
+    buildingName = json['buildingName']??"not found";
+    floorNumber = json['floorNumber']??0;
+    total = json['total'].toDouble()??0.0;
+    orderStatus = json['orderStatus']??"not found";
+    eventType = json['eventType']??"not found";
+    eventDate = json['eventDate']??"not found";
+    eventName = json['eventName']??"not found";
+    numberOfGuests = json['numberOfGuests']??"not found";
     // percentageOfDaberni = json['percentageOfDaberni'];
     // hoursOfDaberni = json['hoursOfDaberni'];
     // tax = json['tax']==null?0.0:json['tax'];

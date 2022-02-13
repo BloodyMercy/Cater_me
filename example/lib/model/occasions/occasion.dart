@@ -11,12 +11,12 @@ class Occassion {
       this.hasReminder, this.profileId, this.title, this.typeId, this.date,this.name,this.type);
 
   Occassion.fromJson(Map<String, dynamic> json) {
-    hasReminder = json['hasReminder'];
-    profileId = json['profileId'];
-    title = json['title'];
-    typeId = json['typeId'];
-    type = json['type'];
-    date = json['date'];
+    hasReminder = json['hasReminder']??false;
+    profileId = json['profileId']??"not found";
+    title = json['title']??"not found";
+    typeId = json['typeId']??0;
+    type = json['type']??0;
+    date = json['date']??'not found';
   }
 
   // Map<String, dynamic> toJson() {

@@ -15,14 +15,14 @@ class Address {
 
   Address.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
-    city = json['city'];
-    cityId = json['cityId'];
-    street = json['street'];
-    buildingName = json['buildingName'];
-    floorNumber = json['floorNumber'];
-    title = json['title'];
-    longitude=json['longitude'];
-    latitude=json['latitude'];
+    city = json['city']??"not found";
+    cityId = json['cityId']??0;
+    street = json['street']??'not found';
+    buildingName = json['buildingName']??"not found";
+    floorNumber = json['floorNumber']??0;
+    title = json['title']??"not found";
+    longitude=json['longitude']??"not found";
+    latitude=json['latitude']??"not found";
     if (json['occations'] != null) {
       occations = <Occations>[];
       json['occations'].forEach((v) {
