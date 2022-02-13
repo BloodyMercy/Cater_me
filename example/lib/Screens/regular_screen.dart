@@ -1,9 +1,12 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
+import 'package:CaterMe/Screens/widgets/costumTextFieldIcon.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:CaterMe/widgets/CustomTextFieldPhone.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/custom_daily_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,7 +46,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
   }
 
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
-bool form = false;
+  bool form = false;
+
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
     await address.getRegular();
@@ -269,6 +273,7 @@ bool form = false;
                           groupValue: address.value2Index,
                           onChanged: (value) {
                             setState(() {
+                              form = false;
                               address.value2Index = value;
                             });
                           },
@@ -287,7 +292,7 @@ bool form = false;
                           groupValue: address.value2Index,
                           onChanged: (value) {
                             setState(() {
-form = true;
+                              form = true;
                               address.value2Index = value;
                             });
                           },
@@ -341,7 +346,23 @@ form = true;
                       ],
                     ),
 
-//                   ListView.builder(
+                    form
+                        ? customTextFieldicon(
+                            label: 'Name',
+                            icon: Icon(Icons.person),
+                          )
+                        : Container(),
+                    form
+                        ? customTextFieldPhone(
+
+                            label: 'Phone Number',
+                            icon: Icon(Icons.phone),
+
+
+                          )
+                        : Container(),
+
+                    //                   ListView.builder(
 //                       padding: const EdgeInsets.all(8),
 //                       itemCount: 1,
 //                       itemBuilder: (BuildContext context, int i) {
