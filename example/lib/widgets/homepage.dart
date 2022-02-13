@@ -232,17 +232,7 @@ class _HomePageState extends State<HomePage> {
                                           Theme.of(context).textTheme.headline2,
                                     ),
                                   ),
-                                  //SizedBox(width: mediaQuery.size.width*0.38),
-                                  // IconButton(
-                                  //     iconSize: 30,
-                                  //     icon: const Icon(Icons.arrow_forward),
-                                  //     onPressed: () {
-                                  //       Navigator.of(context).push(
-                                  //         MaterialPageRoute(
-                                  //           builder: (context) => const Ocasions(),
-                                  //         ),
-                                  //       );
-                                  //     }),
+
                                 ],
                               ),
                               ((getOccasionsToday(package.occasions).length ==
@@ -378,54 +368,7 @@ class _HomePageState extends State<HomePage> {
                               Center(child: OccasionCard(Axis.horizontal)),
                             ]),
                             SizedBox(height: mediaQuery.size.height * 0.1,),
-                            // Container(
-                            //   child: Column(children: [
-                            //     Row(
-                            //       mainAxisAlignment:
-                            //           MainAxisAlignment.spaceBetween,
-                            //       children: [
-                            //         Padding(
-                            //           padding: EdgeInsets.only(
-                            //               left: (mediaQuery.size.width * 0.04),
-                            //              ),
-                            //           child: Text(
-                            //             'Cuisines',
-                            //             style: Theme.of(context)
-                            //                 .textTheme
-                            //                 .headline2,
-                            //           ),
-                            //         ),
-                            //         // SizedBox(width: mediaQuery.size.width*0.6),
-                            //         Padding(
-                            //             padding: EdgeInsets.only(
-                            //                 right:
-                            //                     (mediaQuery.size.width * 0.04)),
-                            //             child: GestureDetector(
-                            //                 child: Text("See All",
-                            //                     style: Theme.of(context)
-                            //                         .textTheme
-                            //                         .headline2),
-                            //                 onTap: () {
-                            //                   Navigator.of(context).push(
-                            //                     MaterialPageRoute(
-                            //                       builder: (context) =>
-                            //                           CuisinsScreen(
-                            //                               package.cuisins.id),
-                            //                     ),
-                            //                   );
-                            //                 }))
-                            //       ],
-                            //     ),
-                            //     SizedBox(
-                            //         height: mediaQuery.size.height * 0.3,
-                            //         //width: mediaQuery.size.width,
-                            //         child: CuisinCard()),
-                            //     // SizedBox(height:mediaQuery.size.height * 0.212,
-                            //     //   child:adss[0]),
-                            //     //  SizedBox(height:mediaQuery.size.height * 0.212,
-                            //     //  child:adss[1]),
-                            //   ]),
-                            // ),
+
                             ...getAddOnsCard(package.addonsall),
                           ]
                       ),
@@ -551,31 +494,5 @@ class _HomePageState extends State<HomePage> {
                 )),
     );
   }
-// _searchBar() {
-//   return Padding(
-//     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-//     child: TextField(
-//       autofocus: false,
-//       onChanged: (searchText) {
-//         searchText = searchText.toLowerCase();
-//         setState(() {});
-//       },
-//       decoration: InputDecoration(
-//         enabledBorder: OutlineInputBorder(
-//             borderSide:
-//             const BorderSide(color: Color.fromRGBO(232, 232, 232, 1)),
-//             borderRadius: BorderRadius.circular(10)),
-//         focusedBorder: OutlineInputBorder(
-//             borderSide: BorderSide(color: Theme.of(context).primaryColor)),
-//         filled: true,
-//         fillColor: const Color.fromRGBO(232, 232, 232, 1),
-//         hintText: 'Search',
-//         prefixIcon: const Icon(Icons.search),
-//         prefixIconColor: Colors.black,
-//         hintStyle: TextStyle(
-//             color: Colors.grey[850], fontSize: 16, fontFamily: 'Segoe UI'),
-//       ),
-//     ),
-//   );
-// }
+
 }

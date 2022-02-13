@@ -95,24 +95,27 @@ class _OccasionListViewState extends State<OccasionListView> {
                   // reverse: true,
                     itemCount: occa.all.length,
                     itemBuilder: (ctx, index) {
-                      return Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Card(
+elevation: 3,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
                           ),
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              height: mediaQuery.size.height * 0.15,
-                              width: mediaQuery.size.width * 0.23,
-                              child: Card(
+                          child: Row(
+crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: mediaQuery.size.height * 0.17,
+                                width: mediaQuery.size.width * 0.27,
+                                child: Container(
+
+
                                   color: Theme.of(context).primaryColor,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                  ),
+
+
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -126,91 +129,35 @@ class _OccasionListViewState extends State<OccasionListView> {
                                           style: const TextStyle(
                                               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
                                     ],
-                                  )),
-                            ),
-                            SizedBox(
-                              width: mediaQuery.size.width * 0.1,),
-                            Text(
-                              '${occa.all[index].name}',
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                          ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: mediaQuery.size.width * 0.1,),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '${occa.all[index].name}',
+                                    style: Theme.of(context).textTheme.headline2,
+                                  ),
+                                  Text(
+                                    '${occa.all[index].type}',
+                                    style: Theme.of(context).textTheme.headline2,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       );
-                      // Card(
-                      //   child: Row(
-                      //     children: [
-                      //       Padding(
-                      //         padding: EdgeInsets.symmetric(
-                      //             vertical: _mediaQuery * 0.02,
-                      //             horizontal: _mediaQuery * 0.01),
-                      //         child: CircleAvatar(
-                      //           radius: 25.0,
-                      //           child: ClipRRect(
-                      //             child: Image.network(
-                      //               occasion[index].name,
-                      //             ),
-                      //             borderRadius: BorderRadius.circular(50.0),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           Text(
-                      //             occasion[index].date,
-                      //             style: const TextStyle(
-                      //                 fontSize: 20, fontWeight: FontWeight.bold),
-                      //           ),
-                      //           Text(
-                      //             friend[index].email,
-                      //             style: const TextStyle(
-                      //                 fontSize: 15, fontWeight: FontWeight.bold),
-                      //           ),
-                      //           // SizedBox(height: _mediaQuery * 0.01),
-                      //           Text(
-                      //             friend[index].phoneNumber,
-                      //             style: const TextStyle(
-                      //                 fontSize: 13, fontWeight: FontWeight.bold),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // );
+
 
 
                     }),
 
               ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Navigator.of(context).push(
-              //       MaterialPageRoute(
-              //         builder: (context) => const AddNewOccasion(),
-              //       ),
-              //     );
-              //   },
-              //   child: const Text(
-              //     "Add new occasion",
-              //     style: TextStyle(
-              //         color: Color.fromRGBO(63, 85, 33, 1),
-              //         fontSize: 15,
-              //         fontWeight: FontWeight.bold,
-              //         fontFamily: 'BerlinSansFB'),
-              //   ),
-              //   style: ElevatedButton.styleFrom(
-              //     elevation: 5,
-              //     padding: EdgeInsets.symmetric(
-              //       horizontal: (mediaQuery.size.width * 0.05),
-              //       vertical: (mediaQuery.size.height * 0.01),
-              //     ),
-              //     primary:  Colors.white,
-              //     shape: const RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.all(Radius.circular(30)),
-              //     ),
-              //   ),
-              // ),
+
 
             ],
           ):Center(child: CircularProgressIndicator()),

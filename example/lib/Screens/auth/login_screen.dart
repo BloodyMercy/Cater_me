@@ -87,8 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Center(
                       child: Form(
-                        // autovalidateMode: AutovalidateMode.onUserInteraction,
-                        key: formkey,
+                          key: formkey,
                         child: Column(children: [
                           TextFormField(
 
@@ -145,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: Color(0xFF3F5521),
                                       ))),
                               controller:authProvider.email,
-                              validator: validatePass,
+
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress
                           ),
