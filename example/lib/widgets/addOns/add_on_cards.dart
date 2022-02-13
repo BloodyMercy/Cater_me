@@ -47,7 +47,12 @@ class AddOnCards extends StatelessWidget {
                   padding: const EdgeInsets.only(left:2.0),
                   child: Text(
                     '${this.addOn.title}',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                    //  fontFamily:
+                    ),
                   ),
                 ),
               ),
@@ -60,8 +65,8 @@ class AddOnCards extends StatelessWidget {
                       Text(
                         'SAR ${this.addOn.price}',
                         style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xFF3F5521),
+                            fontSize: 12,
+                            color: Colors.black87,
                             fontWeight: FontWeight.bold),
                       ),SizedBox(
                         height: 5,
