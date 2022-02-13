@@ -1,4 +1,5 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ class Greeting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userprovider=Provider.of<UserProvider>(context,listen: true);
     final mediaQuery = MediaQuery.of(context);
     const double fontSize = 40;
     const String fontFamily = 'Berlin Sans FB';
@@ -29,7 +31,7 @@ class Greeting extends StatelessWidget {
                       SizedBox(
                         height: mediaQuery.size.height * 0.38,
                       ),
-                      Text("Hi ${name},",
+                      Text("Hi ${userprovider.name.text},",
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontFamily: fontFamily,
