@@ -170,7 +170,7 @@ class ChatPageState extends State<ChatPage> {
                     ),
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                     width: 200,
-                    decoration: BoxDecoration(color: ColorConstants.greyColor2, borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(color: ColorConstants.themeColor, borderRadius: BorderRadius.circular(8)),
                     margin: EdgeInsets.only(bottom: isLastMessageRight(index) ? 20 : 10, right: 10),
                   )
                 : messageChat.type == TypeMessage.image

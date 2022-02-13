@@ -2,6 +2,7 @@ import 'package:CaterMe/Screens/AddonsCard.dart';
 import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/addons/addonsall.dart';
 import 'package:CaterMe/model/cuisins.dart';
+import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Menu/menus_cards.dart';
 import 'package:CaterMe/widgets/addOns/add_on_card_order.dart';
 
@@ -12,13 +13,13 @@ import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 
 import 'add_ons_card.dart';
 
-List<AddOnCards> getAddOns(List<AddOn> on) {
+List<AddOnCards> getAddOns(List<Package> on) {
   var list = on;
   var result = list.map((e) => AddOnCards(e)).toList();
   return result;
 }
 
-List<AddOnCardOrder> getAddOnOrder(List<AddOn> on) {
+List<AddOnCardOrder> getAddOnOrder(List<Package> on) {
   var list = on;
   var result = list.map((e) => AddOnCardOrder(e)).toList();
   return result;

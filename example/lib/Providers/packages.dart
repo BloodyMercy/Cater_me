@@ -36,31 +36,32 @@ List<Package> get allpackagesorder => _allpackagesorder;
   }
 
   List<Cuisins> _allcuisins=[];
-List<AddOn> _allons=[];
-List<AddOn> _allonsorder=[];
+List<Package> _allons=[];
+List<Package> _allonsorder=[];
 Map<String, dynamic> _alldata={};
-List<AddOn> _listItems=[];
+List<Package> _listItems=[];
 
-List<AddOn> get listItems => _listItems;
 
-  set listItems(List<AddOn> value) {
+List<Package> get listItems => _listItems;
+
+  set listItems(List<Package> value) {
     _listItems = value;
   }
 
-  List<AddOn> get allonsorder => _allonsorder;
+  List<Package> get allonsorder => _allonsorder;
 
-  set allonsorder(List<AddOn> value) {
+  set allonsorder(List<Package> value) {
     _allonsorder = value;
   }
 
   TextEditingController controllersearch=TextEditingController();
-List<AddOn> get allons => _allons;
 
-  set allons(List<AddOn> value) {
+
+List<Package> get allons => _allons;
+
+  set allons(List<Package> value) {
     _allons = value;
   }
-
-
 
   Packages get packages => _packages;
 
@@ -149,8 +150,8 @@ loading=false;
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
-       _listItems = List<AddOn>.from(
-          _alldata['dropDown'].map((model) => AddOn.fromJson(model)));
+       _listItems = List<Package>.from(
+          _alldata['dropDown'].map((model) => Package.fromJson(model)));
        _nbnotification=_alldata["notificationCount"].toString();
 
 

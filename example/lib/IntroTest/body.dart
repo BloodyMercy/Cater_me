@@ -31,6 +31,14 @@ class _BodyState extends State<Body> {
       'text': '',
       'image': 'images/IntroductionScreen/introductionscreen3.png',
     },
+    {
+      'text': '',
+      'image': 'images/IntroductionScreen/introductionscreen4.png',
+    },
+    {
+      'text': '',
+      'image': 'images/IntroductionScreen/introductionscreen5.png',
+    },
   ];
 
   @override

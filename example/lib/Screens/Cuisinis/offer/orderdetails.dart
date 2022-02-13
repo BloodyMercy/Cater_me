@@ -15,7 +15,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:provider/provider.dart';
 
 class OrderAdscuisDetail extends StatefulWidget {
- AddOn food;
+  Package food;
 
   OrderAdscuisDetail(this.food);
 

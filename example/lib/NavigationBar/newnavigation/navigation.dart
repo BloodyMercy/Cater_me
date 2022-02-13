@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Order.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,13 +23,14 @@ class HomenavigationPage extends StatefulWidget {
 
 class _HomePageState extends State<HomenavigationPage> {
 
-  List<Widget> _pages = [  HomePage(),
+  List<Widget> _pages = [
+    HomePage(),
     OccasionListView(),
     YourOrders(),
     TABBar()
   ];
 
-  List<IconData> _bottomBarIcons = [FontAwesomeIcons.home, FontAwesomeIcons.calendarCheck,Icons.backpack, FontAwesomeIcons.solidUser,];
+  List<IconData> _bottomBarIcons = [FontAwesomeIcons.home, FontAwesomeIcons.calendarCheck,Icons.backpack,FontAwesomeIcons.solidUser,];
   List<String> _bottomBarLabels = ["Home", "Occasions", "Orders", "Profile"];
 
   int _currentBottomTabSelected = 0;
@@ -81,6 +83,7 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
            // _buildAppBar(),
             Expanded(child: _pages[_currentBottomTabSelected]),
             BottomAppBar(
+
 
               color: LightColors.kLightYellow,
               shape: const CircularNotchedRectangle(),
