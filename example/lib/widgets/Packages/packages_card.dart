@@ -74,7 +74,7 @@ bool loading=false;
                   autoPlayAnimationDuration: Duration(milliseconds: 800),
                   viewportFraction: 1,
                 ),
-              ):Center(child:Text("no Packages",style: TextStyle(color: Colors.black),)),
+              ):Center(child:Text("No Packages",style: TextStyle(color: Colors.black),)),
               Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: mediaQuery.size.height * 0.03,

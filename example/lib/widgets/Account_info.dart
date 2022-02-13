@@ -58,7 +58,7 @@ class _AccountInfoState extends State<AccountInfo> {
   }
 
   bool loading = false;
-
+  FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);
@@ -98,108 +98,216 @@ class _AccountInfoState extends State<AccountInfo> {
             : SingleChildScrollView(
                 child: Form(
                   key: formkey,
-                  child: Column(
-                    children: [
-                      SizedBox(height: _mediaQuery * 0.03),
-                      FittedBox(
-                        child: Text(
-                          'Change Password',
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                      ),
-                      SizedBox(height: _mediaQuery * 0.06),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Old Password',
-                          labelStyle: Theme.of(context).textTheme.headline4,
-                          contentPadding: const EdgeInsets.only(left: 20),
-                        ),
-                        controller: user.oldPassword,
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: 'Required *'),
-                          // EmailValidator(errorText: 'Not a valid password'),
-                        ]),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        obscureText: true,
-                      ),
-                      SizedBox(height: _mediaQuery * 0.03),
-                      TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'New Password',
-                            labelStyle: Theme.of(context).textTheme.headline4,
-                            contentPadding: const EdgeInsets.only(left: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        SizedBox(height: _mediaQuery * 0.03),
+                        FittedBox(
+                          child: Text(
+                            'Change Password',
+                            style: Theme.of(context).textTheme.headline2,
                           ),
-                          controller: user.password1,
-                          validator: validatePass,
-                          autovalidateMode: AutovalidateMode.onUserInteraction),
-                      SizedBox(height: _mediaQuery * 0.03),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Confirm Password',
-                          labelStyle: Theme.of(context).textTheme.headline4,
-                          contentPadding: const EdgeInsets.only(left: 20),
                         ),
-                        controller: user.confirmpassword,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (user.password1.text !=
-                              user.confirmpassword.text) {
-                            return "Password dosen't match";
-                          }
-                          return null;
-                        },
-                        obscureText: true,
-                      ),
-                      SizedBox(height: _mediaQuery * 0.09),
-                      loadingButton
-                          ? CircularProgressIndicator()
-                          : ElevatedButton(
-                              onPressed: () async {
-                                if (!formkey.currentState.validate()) {
-                                  return;
-                                } else {
-                                  setState(() {
-                                    loadingButton = true;
-                                  });
-                                  validateText();
-                                  var resetPassword =
-                                      await user.ResetPassword();
-                                  print(resetPassword);
-                                  if (resetPassword) {
-                                    print("Reset succeed");
-                                    setState(() {
-                                      loadingButton = false;
-                                    });
-                                    Navigator.of(context).pop();
+                        SizedBox(height: _mediaQuery * 0.06),
+                        TextFormField(
+                          focusNode: focusNode,
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'BerlinSansFB'),
+                          decoration: InputDecoration(
+
+
+
+                              contentPadding:
+                              EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                              alignLabelWithHint: true,
+                              labelStyle: TextStyle(
+                                  fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                  color:
+                                  focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                              labelText:"Old password",
+                              hintStyle:TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521),
+                                  ))),
+                          controller: user.oldPassword,
+                          validator: MultiValidator([
+                            RequiredValidator(errorText: 'Required *'),
+                            // EmailValidator(errorText: 'Not a valid password'),
+                          ]),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          obscureText: true,
+                        ),
+                        SizedBox(height: _mediaQuery * 0.03),
+                        TextFormField(
+
+
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'BerlinSansFB'),
+                            decoration: InputDecoration(
+
+
+
+                                contentPadding:
+                                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                                alignLabelWithHint: true,
+                                labelStyle: TextStyle(
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                    color:
+                                    focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                labelText: 'New Password',
+                                hintStyle:TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB'),
+
+                                filled: true,
+                                fillColor: Colors.white,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFF3F5521),
+                                    ))),
+                            controller: user.password1,
+                            validator: validatePass,
+                            autovalidateMode: AutovalidateMode.onUserInteraction),
+                        SizedBox(height: _mediaQuery * 0.03),
+                        TextFormField(
+
+
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'BerlinSansFB'),
+                            decoration: InputDecoration(
+
+
+
+                                contentPadding:
+                                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                                alignLabelWithHint: true,
+                                labelStyle: TextStyle(
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                                    color:
+                                    focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                labelText: 'Confirm Password',
+                                hintStyle:TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB'),
+
+                                filled: true,
+                                fillColor: Colors.white,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFF3F5521),
+                                    ))),
+
+                          controller: user.confirmpassword,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (user.password1.text !=
+                                user.confirmpassword.text) {
+                              return "Password dosen't match";
+                            }
+                            return null;
+                          },
+                          obscureText: true,
+                        ),
+                        SizedBox(height: _mediaQuery * 0.09),
+                        loadingButton
+                            ? CircularProgressIndicator()
+                            : ElevatedButton(
+                                onPressed: () async {
+                                  if (!formkey.currentState.validate()) {
+                                    return;
                                   } else {
                                     setState(() {
-                                      loadingButton = false;
+                                      loadingButton = true;
                                     });
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
-                                      content: Text('Cannot Update Password'),
-                                    ));
+                                    validateText();
+                                    var resetPassword =
+                                        await user.ResetPassword();
+                                    print(resetPassword);
+                                    if (resetPassword) {
+                                      print("Reset succeed");
+                                      setState(() {
+                                        loadingButton = false;
+                                      });
+                                      Navigator.of(context).pop();
+                                    } else {
+                                      setState(() {
+                                        loadingButton = false;
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text('Cannot Update Password'),
+                                      ));
+                                    }
+                                    user.clearAllTextController();
                                   }
-                                  user.clearAllTextController();
-                                }
-                              },
-                              child: Text(
-                                'SAVE',
-                                style: Theme.of(context).textTheme.headline1,
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.fromLTRB(
-                                    _mediaQuery * 0.18,
-                                    _mediaQuery * 0.02,
-                                    _mediaQuery * 0.18,
-                                    _mediaQuery * 0.02),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                },
+                                child: Text(
+                                  'SAVE',
+                                  style: Theme.of(context).textTheme.headline1,
                                 ),
-                                primary: const Color(0xff3F5521),
-                              ),
-                            )
-                    ],
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.fromLTRB(
+                                      _mediaQuery * 0.18,
+                                      _mediaQuery * 0.02,
+                                      _mediaQuery * 0.18,
+                                      _mediaQuery * 0.02),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  primary: const Color(0xff3F5521),
+                                ),
+                              )
+                      ],
+                    ),
                   ),
                 ),
               ),

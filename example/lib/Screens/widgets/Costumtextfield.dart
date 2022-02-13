@@ -114,7 +114,7 @@ readOnly: widget.read,
                   borderSide: const BorderSide(
                     color: Color(0xFF3F5521),
                   ))),
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.grey,
               fontSize: 15,
               fontWeight: FontWeight.bold,

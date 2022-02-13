@@ -193,7 +193,7 @@ class _OrderAdsDetailState extends State<packageAdsDetail> {
                                     ),
                                   ),
                                   Html(
-                                    data: "${widget.food.description}",
+                                    data: widget.food.description,
                                   ),
                                   Container(
                                       height: constraints.maxHeight * 0.2,
