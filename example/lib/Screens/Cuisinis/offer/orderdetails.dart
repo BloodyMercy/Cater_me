@@ -78,12 +78,12 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                        height: constraints.maxHeight * 0.04,
+                        height: constraints.maxHeight * 0.05,
                         child: Row(
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
                           children: [
-                            FittedBox(
+                            Expanded(
                                 child: Text(
                                   widget.food.title,
                                   style: st20Bold,
