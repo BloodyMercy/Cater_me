@@ -118,7 +118,8 @@ class _NavigationBarState extends State<Navigationbar> {
   }
   startinto() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-    if(sh.getBool("startintro")??true)
+    bool a=sh.getBool("startintro")??true;
+    if(a)
     intro = Intro(
       stepCount: 2,
       maskClosable: true,
