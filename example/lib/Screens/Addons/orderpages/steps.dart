@@ -63,8 +63,8 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
 
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
-          //  width: 20,
-          // height: 20,
+           width: 20,
+          height: 20,
 
           child: card,
         );
@@ -115,19 +115,18 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20)),
                                 ),
-                                width: mediaQuery.size.height * 0.15,
+                                width: mediaQuery.size.height * 0.25,
                                 height: mediaQuery.size.height / 8,
                                 child: FittedBox(
-                                  child: Center(
-                                    child: Text(
-                                      '${_cuisin.addonsall[index].name}',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'BerlinSansFB'),
-                                    ),
+                                  child: Text(
+                                    '${_cuisin.addonsall[index].name}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'BerlinSansFB'),
                                   ),
+                                  fit: BoxFit.scaleDown,
                                 ),
                               )),
                         ),
