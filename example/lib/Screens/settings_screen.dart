@@ -537,7 +537,7 @@ setData(String imageUrl) async{
                             showDialog(context: context,
                                 builder: (BuildContext context) {
                                  return CustomDialog(
-                                    title: 'Sad to see you go',
+                                    title: 'Sad to see you leave',
                                     description: "",
                                     oneOrtwo: true,
                                     button1: ElevatedButton(

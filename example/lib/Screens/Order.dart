@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/add_on_order_screen.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
 import 'package:CaterMe/Screens/order_summery_1.dart';
@@ -143,33 +144,56 @@ class _OrderState extends State<Order> {
             leading: IconButton(
               icon: const Icon(Icons.close, color: const Color(0xFF3F5521),),
               onPressed: () async {
-                return  await showDialog(
-                  context: context,
-                  builder: (context) => new AlertDialog(
-                    backgroundColor:Colors.white ,
-                    title: new Text("Are you sure you want to exit?"),
-                    content: new Text(
-                      "",style: const TextStyle(color:Colors.white),),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.of(context).pop(false),
-                        child: new Text("No"),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          orderProvider.spets = 1;
+                showDialog(context: context, builder: (BuildContext context){
+                  return CustomDialog(title: "Are you sure you want to exit?", description: "", button1:  ElevatedButton(
+                      onPressed: () {
+                        orderProvider.spets = 1;
 
-                          clearAlldata();
-                          // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
-                          // _serpres.cleardata();
-                           Navigator.of(context).pop();
-                           Navigator.of(context).pop();
-                        } ,
-                        child: new Text("yes")),
+                        clearAlldata();
+                        // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
+                        // _serpres.cleardata();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                      } ,
+                      child: new Text("yes"))
+                    , oneOrtwo: true,button2: ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text("No"),
+                  ), );
 
-                    ],
-                  ),
-                );
+                });
+
+
+
+
+
+                // return  await showDialog(
+                //   context: context,
+                //   builder: (context) => new AlertDialog(
+                //     backgroundColor:Colors.white ,
+                //     title: new Text("Are you sure you want to exit?"),
+                //     content: new Text(
+                //       "",style: const TextStyle(color:Colors.white),),
+                //     actions: <Widget>[
+                //       TextButton(
+                //         onPressed: () => Navigator.of(context).pop(false),
+                //         child: new Text("No"),
+                //       ),
+                //       TextButton(
+                //         onPressed: () {
+                //           orderProvider.spets = 1;
+                //
+                //           clearAlldata();
+                //           // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
+                //           // _serpres.cleardata();
+                //            Navigator.of(context).pop();
+                //            Navigator.of(context).pop();
+                //         } ,
+                //         child: new Text("yes")),
+                //
+                //     ],
+                //   ),
+                // );
 
               },
             ),
