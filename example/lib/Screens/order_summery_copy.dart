@@ -248,7 +248,7 @@ bool loading=false;
                    Padding(
                      padding:const EdgeInsets.only(left: 15.0),
                      child: Text(
-                       'Choose the friends you want to share the order with.',
+                       details.choosebillFriend.length>0 ? 'Choose the friends you want to share the order with.':'No freind to share',
                        style: TextStyle(
                            color: Theme.of(context)
                                .primaryColor,
