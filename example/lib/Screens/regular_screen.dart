@@ -72,7 +72,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
     super.initState();
   }
 
-  int _value = -1;
+  int _value = 0;
   bool loading = true;
 
   List<String> listFriendssearch = [];

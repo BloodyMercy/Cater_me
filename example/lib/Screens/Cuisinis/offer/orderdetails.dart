@@ -154,7 +154,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                       ),
                     ),
                     Container(
-                        height: 85,
+                        height: MediaQuery.of(context).size.height * 0.09,
                         child: ListView.builder(
                           itemCount: widget.food.itemDetails.length,
                           itemBuilder: (ctx, i) {
