@@ -136,17 +136,16 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                         _creditCards.loading=true;
                                                         _creditCards.notifyListeners();
                                                         Navigator.pop(context);
-
                                                         var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
                                                         if(delete=="deleted"){
                                                           _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                              content: Text('Address Deleted')
+                                                              content: Text('Credit card Deleted')
                                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                             //   content: Text('Address Deleted'),
                                                           ));
                                                         }else{
                                                           _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                              content: Text('Address cannot be deleted')
+                                                              content: Text('Credit card cannot be deleted')
                                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                             //   content: Text('Address Deleted'),
                                                           ));
