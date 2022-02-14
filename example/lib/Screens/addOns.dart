@@ -69,6 +69,7 @@ class _AddOnsState extends State<AddOns> {
                 child: CircularProgressIndicator(),
               )
             : GridView(
+
                 padding: const EdgeInsets.all(25),
                 children: getAddOns(_cuisin.allons),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

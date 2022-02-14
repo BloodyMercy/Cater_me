@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:CaterMe/Drawer/drawer_screen.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
@@ -16,6 +18,7 @@ import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:CaterMe/widgets/my_favorites_card.dart';
@@ -44,11 +47,103 @@ class _NavigationBarState extends State<Navigationbar> {
   ];
 
 
-
+  Widget customThemeWidgetBuilder(StepWidgetParams stepWidgetParams) {
+    List<String> texts = [
+      'Make your order now ',
+      'check your order and see traking order',
+      'My usage is also very simple, you can quickly learn and use it through example and api documentation.',
+      'In order to quickly implement the guidance, I also provide a set of out-of-the-box themes, I wish you all a happy use, goodbye!',
+    ];
+    return Padding(
+      padding: EdgeInsets.all(
+        32,
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 40,
+          ),
+          Text(
+            '${texts[stepWidgetParams.currentStepIndex]}【${stepWidgetParams.currentStepIndex + 1} / ${stepWidgetParams.stepCount}】',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: stepWidgetParams.onPrev,
+                child: Text(
+                  'Prev',
+                ),
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              ElevatedButton(
+                onPressed: stepWidgetParams.onNext,
+                child: Text(
+                  'Next',
+                ),
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              ElevatedButton(
+                onPressed: stepWidgetParams.onFinish,
+                child: Text(
+                  'Finish',
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
   void _onItemTap(int index) {
     setState(() {
       widget._selectedIndex = index;
     });
+  }
+  Intro intro;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    intro = Intro(
+      stepCount: 2,
+      maskClosable: true,
+      onHighlightWidgetTap: (introStatus) {
+        print(introStatus);
+      },
+
+      /// use defaultTheme
+      widgetBuilder: StepWidgetBuilder.useDefaultTheme(
+        texts: [
+          'Click here,and make your order',
+          'View all packages,add your occassions,Traking your orders',
+       ],
+        buttonTextBuilder: (currPage, totalPage) {
+          return currPage < totalPage - 1 ? 'Next' : 'Finish';
+        },
+      ),
+    );
+    intro.setStepConfig(
+      0,
+      borderRadius: BorderRadius.circular(64),
+    );
+    Timer(
+      Duration(
+        milliseconds: 500,
+      ),
+          () {
+        /// start the intro
+        intro.start(context);
+      },
+    );
   }
   @override
   Widget build(BuildContext context){
@@ -87,13 +182,17 @@ class _NavigationBarState extends State<Navigationbar> {
     final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
     final address=Provider.of<AdressProvider>(context,listen: true);
 
-    return Scaffold(
+    return
+      Scaffold(
+
+
         resizeToAvoidBottomInset: false,
         body: IndexedStack(
           index: widget._selectedIndex,
           children: _widgetOptions,
         ),
         floatingActionButton: SizedBox(
+          key: intro.keys[0],
           height: 55,
           width: 55,
           child: FittedBox(
@@ -132,6 +231,7 @@ class _NavigationBarState extends State<Navigationbar> {
           notchMargin: 5,
           clipBehavior: Clip.antiAlias,
           child: BottomNavigationBar(
+            key: intro.keys[1],
             backgroundColor:  LightColors.kLightYellow,
             type: BottomNavigationBarType.fixed,
             iconSize: 30,
@@ -151,6 +251,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 label: 'Ocasions',
               ),
         package.nbnotification!="0"  ? BottomNavigationBarItem(
+
                 icon:  Badge(
                     badgeColor: Color.fromRGBO(253, 202, 29, 1),
                    // badgeContent:Text("3"),
@@ -162,6 +263,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 label: 'Orders',
               ):BottomNavigationBarItem(
           icon:  Icon(
+
                 Icons.backpack,
                 size: 25,
 

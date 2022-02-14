@@ -49,7 +49,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
               Padding(
                 padding: EdgeInsets.only(right: (mediaQuery.size.width * 0.04)),
                 child: GestureDetector(
-                    child:  Text("See All", style: Theme.of(context).textTheme.bodyText1),
+                    child:  Text("See All", style: TextStyle( fontSize: 12)),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(

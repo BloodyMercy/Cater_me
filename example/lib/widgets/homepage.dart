@@ -9,6 +9,7 @@ import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
 import 'package:CaterMe/widgets/items_details.dart';
@@ -31,12 +32,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isSearch = false;
 
+  Intro intro;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getalldata();
     getData();
+
   }
 
   bool loading = false;
