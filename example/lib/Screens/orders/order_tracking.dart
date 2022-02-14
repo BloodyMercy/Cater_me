@@ -58,13 +58,13 @@ class _TrackingOrderState extends State<TrackingOrder> {
                 child: Column(
                   children: [
                     orderStatus.orderStatus.statusId == 1
-                        ? OrderReceived()
+                        ?  OrderPreparing()
                         : Container(),
                     orderStatus.orderStatus.statusId == 2
-                        ? OrderPreparing()
+                        ?  OrderOnTheWay()
                         : Container(),
                     orderStatus.orderStatus.statusId == 3
-                        ? OrderOnTheWay()
+                        ? OrderReceived()
                         : Container(),
                     orderStatus.orderStatus.statusId == 4
                         ? OrderDelivered()

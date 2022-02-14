@@ -90,7 +90,6 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
     return SafeArea(
 
       child: Scaffold(
-
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -129,7 +128,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
                 icon: Icon(Icons.add))
           ],
         ),
-        body:
+        body: loading? Center(child:CircularProgressIndicator()) :
           AddressesListSettings(address.listaddress),
         // !loading
         //     ? Center(

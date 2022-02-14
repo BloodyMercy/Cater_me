@@ -21,6 +21,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import 'Packages/test_package_add_details.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
   static const routeName = '/home_page';
@@ -449,7 +451,7 @@ class _HomePageState extends State<HomePage> {
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                          builder: (context) => AdsitemDetail(
+                                          builder: (context) => packageAdsDetailTest(
                                               package.listItems[index]),
                                         ),
                                       );
