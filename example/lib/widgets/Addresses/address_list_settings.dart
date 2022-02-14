@@ -100,22 +100,47 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                   ],
                                 ),
 
-                                Text(
-                                  "Street : ${widget.address[index].street.toString()}",
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Street : ",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold),
+                                    ), Text(
+                                      "${widget.address[index].street.toString()}",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.normal),
+                                    ),
+                                  ],
                                 ),
 
-                                Text(
-                                  "Building Name : ${widget.address[index].buildingName.toString()}",
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Building Name : ",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold),
+                                    ),Text(
+                                      " ${widget.address[index].buildingName.toString()}",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight. normal),
+                                    ),
+                                  ],
                                 ),
 
-                                Text(
-                                  "Floor Number : ${widget.address[index].floorNumber.toString()}",
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.bold),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Floor Number : ",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "${widget.address[index].floorNumber.toString()}",
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight. normal),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

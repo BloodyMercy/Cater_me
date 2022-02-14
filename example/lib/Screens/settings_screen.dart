@@ -60,7 +60,6 @@ class _TABBarState extends State<TABBar>  {
       setState(() {
         this.image = imageTemporary;
       });
-      // ignore: nullable_type_in_catch_clause
     } on PlatformException catch (e) {
       print('Failed : $e');
     }

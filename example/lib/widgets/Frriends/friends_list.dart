@@ -51,13 +51,13 @@ class FriendsList extends StatelessWidget {
                             Text(
                               friend[index].email,
                               style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 15, fontWeight: FontWeight.normal),
                             ),
                             // SizedBox(height: _mediaQuery * 0.01),
                             Text(
                               friend[index].phoneNumber,
                               style: const TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.bold),
+                                  fontSize: 13, fontWeight: FontWeight.normal),
                             ),
                           ],
                         ),

@@ -28,6 +28,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Navigationbar extends StatefulWidget {
@@ -113,6 +114,11 @@ class _NavigationBarState extends State<Navigationbar> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
+  }
+  startinto() async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    if(sh.getBool("startintro")??true)
     intro = Intro(
       stepCount: 2,
       maskClosable: true,
@@ -125,7 +131,7 @@ class _NavigationBarState extends State<Navigationbar> {
         texts: [
           'Click here,and make your order',
           'View all packages,add your occassions,Traking your orders',
-       ],
+        ],
         buttonTextBuilder: (currPage, totalPage) {
           return currPage < totalPage - 1 ? 'Next' : 'Finish';
         },
@@ -144,6 +150,7 @@ class _NavigationBarState extends State<Navigationbar> {
         intro.start(context);
       },
     );
+    sh.setBool("startintro", false);
   }
   @override
   Widget build(BuildContext context){
