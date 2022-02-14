@@ -199,7 +199,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           child: Text(
                             widget.food.title,
                             style: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 28,
                                 fontFamily: 'BerlinSansFB',
                                 fontWeight: FontWeight.bold),
                           ),

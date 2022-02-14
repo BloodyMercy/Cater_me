@@ -73,7 +73,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                   ),
                   Column(
                     children: [
-                      SvgPicture.asset('images/CaterMeStep2.svg',
+                      SvgPicture.asset('images/caterme.svg',
                           height: screenHeight * 0.3),
                       Text(" after ${addresProvider.hours.timespan} ")
                     ],
