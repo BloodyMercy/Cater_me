@@ -140,7 +140,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           listoccasiontype: occasion.listoccasiontype,
                           selectedValue: 0,
                           inputType: TextInputType.number,
-                          controller: occasion.typeofoccasioncontroller,
+                          controller: occasion.typeofoccasioncontrollername,
                         )
                       // : Center(
                       //     child: Container(

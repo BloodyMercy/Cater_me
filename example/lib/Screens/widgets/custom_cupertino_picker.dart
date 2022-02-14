@@ -137,6 +137,10 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           final occa=Provider.of<OccasionProvider>(context,listen: false);
                           occa.typeofoccasioncontroller.text =
                               widget.listoccasiontype[widget.selectedValue].id.toString();
+
+                          occa.typeofoccasioncontrollername.text =
+                              widget.listoccasiontype[widget.selectedValue].name.toString();
+
                           Navigator.of(context).pop();
                         }
                       },
