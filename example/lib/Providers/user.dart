@@ -111,10 +111,6 @@ class UserProvider with ChangeNotifier {
 
   UserProvider.statusfunction() {
 getdata();
-// email.text="patourtohme9@gmail.com";
-// password.text="Peter69@";
-email.text="patour_aboulpete1@gmail.com";
-password.text="P@ssw0rd";
   }
 
 
