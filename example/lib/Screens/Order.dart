@@ -467,6 +467,21 @@ class _OrderState extends State<Order> {
                                   orderProvider.spets++;
                                 }
                               }
+                     else if(orderProvider.spets==6){
+                       if(orderProvider.itemOrders.length>0)
+                         orderProvider.spets++;
+                       else
+                         {
+                           _key.currentState
+                               .showSnackBar(
+                             const SnackBar(
+                               content: Text(
+                                   "no items to order"),
+                             ),
+                           );
+                         }
+
+                              }
 
                      else if(orderProvider.spets==7){
                                 showDialog(
