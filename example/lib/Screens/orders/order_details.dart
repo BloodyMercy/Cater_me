@@ -32,8 +32,13 @@ class _DetailsOrderState extends State<DetailsOrder> {
     print(orders.items.length);
     final orderStatus =
     Provider.of<OrderStatusProvider>(context, listen: false);
-    await orderStatus.getOrderStatus(widget.id);
-    if(orderStatus==4) rejected=true;
+     await orderStatus.getOrderStatus(widget.id);
+
+    if(orderStatus.orderStatus.statusId!=4){
+     setState(() {
+       rejected=true;
+     });
+    }
     donate = orders.orderbyId['isDonated'] ?? false;
     setState(() {
       loading = false;
@@ -275,7 +280,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                 ),
                         ),
                       ),
-                    rejected?  SliverToBoxAdapter(
+                  rejected ? SliverToBoxAdapter(
                         child: donate
                             ? Center(
                               child: Padding(
@@ -325,7 +330,8 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                 ),
                             ),
                       ):
-                      Container(),
+                      SliverToBoxAdapter(child: Container(),)
+
                     ],
                   )
             ),

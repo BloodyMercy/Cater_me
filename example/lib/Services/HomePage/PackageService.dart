@@ -129,6 +129,7 @@ class PackageService{
         return [];
       }
     }catch(e){
+      print(e);
       return [];
     }
   }

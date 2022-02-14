@@ -111,8 +111,8 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
           "eventDate":date,
           "eventTypeId":type,
           "numberOfGuestsId": nb,
-          "contactPersonName":contactname,
-          "contactPersonPhoneNumber":contactphone,
+          "contactPersonName":contactname??"",
+          "contactPersonPhoneNumber":contactphone??"",
 
         },
         "paymentFriend": mapitemf,

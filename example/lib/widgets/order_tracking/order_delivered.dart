@@ -1,6 +1,5 @@
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OrderDelivered extends StatelessWidget {
@@ -16,7 +15,7 @@ class OrderDelivered extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset("images/OrderDelivrd.png"),
+            Image.asset("images/CaterDelivery.png"),
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -24,7 +23,8 @@ class OrderDelivered extends StatelessWidget {
                 fit: BoxFit.contain,
                 child: Text(
                   "Order Delivered",
-                  style: TextStyle(color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -35,13 +35,13 @@ class OrderDelivered extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.circle, color: colorCustom),
+                  Icon(Icons.circle, color: Color(0xFF3F5521)),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Received',
-                    style: TextStyle(fontSize: 20, color: colorCustom),
+                    style: TextStyle(fontSize: 20, color: Color(0xFF3F5521)),
                   ),
                 ],
               ),
@@ -52,14 +52,14 @@ class OrderDelivered extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: colorCustom,
+                    color: Color(0xFF3F5521),
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Prepering Order',
-                    style: TextStyle(fontSize: 20, color: colorCustom),
+                    style: TextStyle(fontSize: 20, color: Color(0xFF3F5521)),
                   ),
                 ],
               ),
@@ -88,14 +88,17 @@ class OrderDelivered extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color:yellowColor,
+                    color: Color.fromRGBO(253, 202, 29, 1),
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Order Delivered',
-                    style: TextStyle(fontSize: 20, color: yellowColor,)
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromRGBO(253, 202, 29, 1),
+                    ),
                   ),
                 ],
               ),

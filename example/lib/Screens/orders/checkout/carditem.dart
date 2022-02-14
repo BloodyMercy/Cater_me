@@ -41,10 +41,13 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
       color:  Color.fromRGBO(232, 232, 232, 1.0),
       height: 200,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding:  EdgeInsets.fromLTRB(20, 20, 5, 20),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
               children: [
                 SizedBox(
                   width: 80,
