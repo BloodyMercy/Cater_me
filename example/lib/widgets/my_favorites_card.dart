@@ -21,7 +21,9 @@ class MyFavoritesCard extends StatelessWidget {
             height: mediaQuery.size.height * 0.35,
             width: mediaQuery.size.width * 0.95,
             child: InkWell(
-              // onTap: packageAdsDetailTest(this.food),
+              onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>packageAdsDetailTest(this.food)));
+              },
               child: Card(
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
