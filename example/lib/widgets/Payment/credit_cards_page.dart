@@ -1,6 +1,7 @@
 import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -55,6 +56,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                           child: Row(
                             children: [
                               Radio(
+                                fillColor: MaterialStateColor.resolveWith((states) => colorCustom),
                                 toggleable: true,
                                 groupValue: _value,
                                 value: i,
