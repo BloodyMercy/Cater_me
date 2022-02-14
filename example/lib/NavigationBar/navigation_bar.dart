@@ -217,6 +217,10 @@ class _NavigationBarState extends State<Navigationbar> {
               onPressed: () {
                 address.clearAddressController();
                 orderCaterprovider.spets=1;
+                orderCaterprovider.totale=0.0;
+                orderCaterprovider.choosebillFriend=[];
+                orderCaterprovider.choosebillFriend=[];
+               // orderCaterprovider.listFriend=[];
                 address.value2Index=-1;
                 orderCaterprovider.valueIndex=-1;
                 Navigator.of(context).push(

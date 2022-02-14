@@ -120,6 +120,8 @@ class _OrderState extends State<Order> {
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
     final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
 
+    final _creditCards=Provider.of<CreditCardsProvider>(context,listen: true);
+
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
@@ -167,33 +169,7 @@ class _OrderState extends State<Order> {
 
 
 
-                // return  await showDialog(
-                //   context: context,
-                //   builder: (context) => new AlertDialog(
-                //     backgroundColor:Colors.white ,
-                //     title: new Text("Are you sure you want to exit?"),
-                //     content: new Text(
-                //       "",style: const TextStyle(color:Colors.white),),
-                //     actions: <Widget>[
-                //       TextButton(
-                //         onPressed: () => Navigator.of(context).pop(false),
-                //         child: new Text("No"),
-                //       ),
-                //       TextButton(
-                //         onPressed: () {
-                //           orderProvider.spets = 1;
-                //
-                //           clearAlldata();
-                //           // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
-                //           // _serpres.cleardata();
-                //            Navigator.of(context).pop();
-                //            Navigator.of(context).pop();
-                //         } ,
-                //         child: new Text("yes")),
-                //
-                //     ],
-                //   ),
-                // );
+
 
               },
             ),
@@ -496,10 +472,16 @@ class _OrderState extends State<Order> {
                                         ));
                                   },
                                 );
-                                final _creditCards=Provider.of<CreditCardsProvider>(context,listen: false);
-
-                                final address = Provider.of<AdressProvider>(context, listen: false);
-
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
+print(_creditCards.credit.cardId);
                bool a=     await   orderProvider.makeorder(
                    date: address.evendatecontroller.text.replaceAll(RegExp('[^A-Za-z0-9]'), '-', ),
                    type: address.typeofeventcontroller.text,
