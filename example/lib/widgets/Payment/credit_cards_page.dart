@@ -18,21 +18,25 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   bool loading=true;
   getAllData() async{
     var _creditCards = Provider.of<CreditCardsProvider>(context,listen: false);
-    _creditCards.loading=true;
+    // _creditCards.loading=true;
     await _creditCards.getAllCards();
-    _creditCards.loading=false;
+    // _creditCards.loading=false;
+    setState(() {
+      loading=false;
+    });
   }
   @override
   void initState() {
     getAllData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final _creditCards=Provider.of<CreditCardsProvider>(context,listen: true);
     return Scaffold(
       body: SafeArea(
-        child:loading? Container(
+        child:loading?Center(child: CircularProgressIndicator(),):  _creditCards.list.length !=0? Container(
           color: LightColors.kLightYellow,
           child: Column(
             children: <Widget>[
@@ -116,10 +120,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   )
             ],
           ),
-        ):Center(child: IconButton(
+        )
+
+        : Center(child: ElevatedButton(
           onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (_)=>HomeScreen()));
-          }, icon: Icon(Icons.add_rounded),
+          }, child: Text("Add a credit card"),
         ),),
       ),
     );

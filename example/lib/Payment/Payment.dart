@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
           number: number, name: cardNameHolder, expiryMonth: expiryMonth, expiryYear: expiryYear, cvv: cvv);
 print(response.token);
       // Hide loading dialog
-      // Navigator.pop(context);
+   //   Navigator.pop(context);
       final address = Provider.of<OrderCaterProvider>(context, listen: false);
 
 CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token);
@@ -162,6 +162,8 @@ if(card.id==0){
 else {
   final _creditCards=Provider.of<CreditCardsProvider>(context,listen: false);
    await _creditCards.getAllCards();
+   print("ssssssssss");
+   Navigator.of(context).pop();
   Navigator.pop(context);
 }
 

@@ -215,6 +215,8 @@ class _NavigationBarState extends State<Navigationbar> {
               ),
               backgroundColor: Colors.transparent,
               onPressed: () {
+                address.clearAddressController();
+                orderCaterprovider.spets=1;
                 address.value2Index=-1;
                 orderCaterprovider.valueIndex=-1;
                 Navigator.of(context).push(

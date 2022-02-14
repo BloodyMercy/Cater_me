@@ -152,12 +152,26 @@ List<String> _listcityname=[];
   }
 clearAddressController(){
 
-      addresstitlecontroller.clear();
-      streetcontroller.clear();
-      buildingcontroller.clear();
-      floornumbercontroller.clear();
+
+       addresstitlecontroller.clear();
+       countrycontroller.clear();
+      countrycontrollerstring.clear();
+       citycontroller.clear();
+       citycontrollerstring.clear();
+       streetcontroller.clear();
+     buildingcontroller.clear();
+       floornumbercontroller.clear();
+       longtituenumbercontroller.clear();
       latitudenumbercontroller.clear();
-      longtituenumbercontroller.clear();
+       eventnamecontroller.clear();
+       evendatecontroller.clear();
+      numberofguestcontroller.clear();
+       DailyDatecontroller.clear();
+       numberofguestcontrollerstring.clear();
+       typeofeventcontroller.clear();
+      typeofeventcontrollerstring.clear();
+       name.clear();
+      phone.clear();
 }
 Future<String> deleteAddress(int id) async{
 var em= await _addressService.deleteAddress(id);
