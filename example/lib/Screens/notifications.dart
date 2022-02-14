@@ -87,7 +87,8 @@ class _NotificationsState extends State<Notifications> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (builder) => OrderId(index, 1),
+                                builder: (builder) => OrderId(allNotification.notificationlist[index].orderId, 1),
+
                               ),
                             );
                             allNotification.markAsRead(allNotification.notificationlist[index].id);
@@ -109,15 +110,15 @@ class _NotificationsState extends State<Notifications> {
                                   allNotification.notificationlist[index].seen ? FaIcon(FontAwesomeIcons.checkDouble,color: colorCustom,):Container(),
                                   Row(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 20.0),
-                                        child: CircleAvatar(
-                                          minRadius: 16,
-                                          maxRadius: screenHeight * 0.04,
-                                          backgroundImage:
-                                              AssetImage('images/food33.jpg'),
-                                        ),
-                                      ),
+                                      // Padding(
+                                      //   padding: const EdgeInsets.only(right: 20.0),
+                                      //   child: CircleAvatar(
+                                      //     minRadius: 16,
+                                      //     maxRadius: screenHeight * 0.04,
+                                      //     backgroundImage:
+                                      //         AssetImage('images/food33.jpg'),
+                                      //   ),
+                                      // ),
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment:
