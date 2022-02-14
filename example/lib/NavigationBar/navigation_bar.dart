@@ -108,7 +108,24 @@ class _NavigationBarState extends State<Navigationbar> {
       widget._selectedIndex = index;
     });
   }
-  Intro intro;
+  Intro intro=Intro(
+    stepCount: 2,
+    maskClosable: true,
+    onHighlightWidgetTap: (introStatus) {
+      print(introStatus);
+    },
+
+    /// use defaultTheme
+    widgetBuilder: StepWidgetBuilder.useDefaultTheme(
+      texts: [
+        'Click here,and make your order',
+        'View all packages,add your occassions,Traking your orders',
+      ],
+      buttonTextBuilder: (currPage, totalPage) {
+        return currPage < totalPage - 1 ? 'Next' : 'Finish';
+      },
+    ),
+  );
 
   @override
   void initState() {
@@ -118,39 +135,23 @@ class _NavigationBarState extends State<Navigationbar> {
   }
   startinto() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-    bool a=sh.getBool("startintro")??true;
-    if(a)
-    intro = Intro(
-      stepCount: 2,
-      maskClosable: true,
-      onHighlightWidgetTap: (introStatus) {
-        print(introStatus);
-      },
+    //bool a=sh.getBool("startintro")==null;
 
-      /// use defaultTheme
-      widgetBuilder: StepWidgetBuilder.useDefaultTheme(
-        texts: [
-          'Click here,and make your order',
-          'View all packages,add your occassions,Traking your orders',
-        ],
-        buttonTextBuilder: (currPage, totalPage) {
-          return currPage < totalPage - 1 ? 'Next' : 'Finish';
-        },
-      ),
-    );
     intro.setStepConfig(
       0,
       borderRadius: BorderRadius.circular(64),
     );
-    Timer(
-      Duration(
-        milliseconds: 500,
-      ),
-          () {
-        /// start the intro
-        intro.start(context);
-      },
-    );
+    if(sh.getBool("startintro")??true) {
+      Timer(
+        Duration(
+          milliseconds: 500,
+        ),
+            () {
+          /// start the intro
+          intro.start(context);
+        },
+      );
+    }
     sh.setBool("startintro", false);
   }
   @override
