@@ -81,38 +81,29 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     final mediaQuery = MediaQuery.of(context);
     var _mediaQuery = MediaQuery.of(context).size.height;
 
-    return Container(
-      color: LightColors.kLightYellow,
-      child: Column(
-        children: [
-          SizedBox(
-            height: mediaQuery.size.height * 0.6,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // !loading
-                  //     ?
-                  AddressesList(adress.listaddress, deleteAddress)
-                      // : Container(
-                      //     color: LightColors.kLightYellow,
-                      //     child: Center(
-                      //       child: CircularProgressIndicator(
-                      //         color: Color(0xFF3F5521),
-                      //       ),
-                      //     )),
-                ],
-              ),
+    return Column(
+      children: [
+        SizedBox(
+          height: mediaQuery.size.height * 0.6,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // !loading
+                //     ?
+                AddressesList(adress.listaddress, deleteAddress)
+                    // : Container(
+                    //     color: LightColors.kLightYellow,
+                    //     child: Center(
+                    //       child: CircularProgressIndicator(
+                    //         color: Color(0xFF3F5521),
+                    //       ),
+                    //     )),
+              ],
             ),
           ),
+        ),
 
-        ],
-      ),
-
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Theme.of(context).primaryColor,
-      //   child: Icon(Icons.add),
-      //   onPressed: () => _startAddNewAddress(context),
-      // ),
+      ],
     );
   }
 }

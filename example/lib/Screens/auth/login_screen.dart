@@ -217,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: Color(0xFF3F5521),
                                       ))),
                               controller:authProvider.password,
-                              validator: validatePass,
+                             // validator: validatePass,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
 
                             keyboardType: TextInputType.visiblePassword,
