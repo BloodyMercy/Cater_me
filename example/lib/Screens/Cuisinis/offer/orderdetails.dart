@@ -58,8 +58,8 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
         MediaQuery.of(context).padding.bottom;
     return SingleChildScrollView(
       child: Container(
-        height: screenHeight * 0.95,
-        width: MediaQuery.of(context).size.width * 0.9,
+        height: screenHeight * 1,
+        width: MediaQuery.of(context).size.width * 1,
         child: LayoutBuilder(
           builder: (ctx, constraints) => qPortrait == Orientation.portrait
               ? Column(
@@ -78,10 +78,9 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                        height: constraints.maxHeight * 0.05,
+                        height: constraints.maxHeight * 0.1,
                         child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                                 child: Text(
@@ -210,31 +209,33 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                         SizedBox(
                           height: constraints.maxHeight * 0.04,
                         ),
-                        FloatingActionButton(
-                          onPressed: () {
-                            if (count == 0) {
-                            } else {
-                              a.id = widget.food.id;
-                              a.image = widget.food.image;
-                              a.description = widget.food.description;
-                              a.isfavorite = widget.food.isfavorite;
-                              a.itemDetails = widget.food.itemDetails;
-                              a.title = widget.food.title;
-                              a.quantity = count;
-                              a.price=widget.food.price;
-                              a.totalprice = count * widget.food.price;
-                              orderprovider.addItems(a);
-                              Navigator.of(context).pop(false);
-                            }
+                        Expanded(
+                          child: FloatingActionButton(
+                            onPressed: () {
+                              if (count == 0) {
+                              } else {
+                                a.id = widget.food.id;
+                                a.image = widget.food.image;
+                                a.description = widget.food.description;
+                                a.isfavorite = widget.food.isfavorite;
+                                a.itemDetails = widget.food.itemDetails;
+                                a.title = widget.food.title;
+                                a.quantity = count;
+                                a.price=widget.food.price;
+                                a.totalprice = count * widget.food.price;
+                                orderprovider.addItems(a);
+                                Navigator.of(context).pop(false);
+                              }
 
-                          },
-                          child: const Text(
-                            'ADD',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'BerlinSansFB'),
+                            },
+                            child:  Text(
+                              'ADD',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                            ),
+                            backgroundColor: Color.fromRGBO(63, 85, 33, 1),
                           ),
-                          backgroundColor: Color.fromRGBO(63, 85, 33, 1),
                         )
                         // ElevatedButton(
                         //   onPressed: () {

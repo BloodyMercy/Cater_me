@@ -77,7 +77,7 @@ class AddOnCardOrder extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    '\$${this.addOn.price}',
+                                    'SAR ${this.addOn.price}',
                                     style: Theme.of(context).textTheme.headline2,
                                   ),
                                   //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))
