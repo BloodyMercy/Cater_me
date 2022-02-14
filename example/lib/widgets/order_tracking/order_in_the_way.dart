@@ -1,4 +1,5 @@
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class OrderOnTheWay extends StatelessWidget {
@@ -34,11 +35,11 @@ class OrderOnTheWay extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.circle,color: Color(0xFF3F5521)),
+                  Icon(Icons.circle,color: colorCustom),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
-                  Text('Received',style: TextStyle(fontSize: 20,color:Color(0xFF3F5521)),),
+                  Text('Received',style: TextStyle(fontSize: 20,color:colorCustom),),
                 ],
               ),
 
@@ -48,11 +49,11 @@ class OrderOnTheWay extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.circle,color: Color(0xFF3F5521),),
+                  Icon(Icons.circle,color: colorCustom,),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
-                  Text('Prepering Order',style: TextStyle(fontSize: 20,color: Color(0xFF3F5521)),),
+                  Text('Prepering Order',style: TextStyle(fontSize: 20,color: colorCustom),),
                 ],
               ),
             ),
@@ -60,11 +61,11 @@ class OrderOnTheWay extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.circle,color:  Color.fromRGBO(253, 202, 29, 1),),
+                  Icon(Icons.circle,color:  yellowColor,),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
-                  Text('Order Is On The Way',style: TextStyle(fontSize: 20,color: Color.fromRGBO(253, 202, 29, 1),),),
+                  Text('Order Is On The Way',style: TextStyle(fontSize: 20,color: yellowColor,),),
                 ],
               ),
             ),
@@ -72,11 +73,11 @@ class OrderOnTheWay extends StatelessWidget {
               padding:const EdgeInsets.only(left: 20.0),
               child: Row(
                 children: [
-                  Icon(Icons.circle,color: Color(0xFF3F5521),),
+                  Icon(Icons.circle,color: colorCustom,),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
-                  Text('Order Delivered',style: TextStyle(fontSize: 20,color: Color(0xFF3F5521)),),
+                  Text('Order Delivered',style: TextStyle(fontSize: 20,color: colorCustom),),
                 ],
               ),
             ),

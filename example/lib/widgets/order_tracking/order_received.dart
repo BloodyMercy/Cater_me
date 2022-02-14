@@ -22,7 +22,7 @@ class OrderReceived extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.contain,
                 child: Text(
-                  "Preparing Order",
+                  "Received Order",
                   style: TextStyle(
                       color: Color(0xFF3F5521), fontWeight: FontWeight.bold),
                 ),
@@ -37,14 +37,14 @@ class OrderReceived extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                      color:colorCustom,
+                    color:  yellowColor,
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Received',
-                    style: TextStyle( color: colorCustom, fontSize: 20),
+                    style: TextStyle( color: yellowColor, fontSize: 20),
                   ),
                 ],
               ),
@@ -55,7 +55,8 @@ class OrderReceived extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color:  Color.fromRGBO(253, 202, 29, 1),
+                      color: colorCustom
+
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
@@ -64,7 +65,7 @@ class OrderReceived extends StatelessWidget {
                     'Prepering Order',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color.fromRGBO(253, 202, 29, 1),
+                      color: colorCustom
                     ),
                   ),
                 ],
@@ -76,14 +77,14 @@ class OrderReceived extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: Color(0xFF3F5521),
+                    color:colorCustom,
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Order Is On The Way',
-                    style: TextStyle(fontSize: 20, color: Color(0xFF3F5521)),
+                    style: TextStyle(fontSize: 20, color: colorCustom),
                   ),
                 ],
               ),
@@ -94,14 +95,14 @@ class OrderReceived extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: Color(0xFF3F5521),
+                    color: colorCustom,
                   ),
                   SizedBox(
                     width: mediaquerywidth * 0.03,
                   ),
                   Text(
                     'Order Delivered',
-                    style: TextStyle(fontSize: 20, color: Color(0xFF3F5521)),
+                    style: TextStyle(fontSize: 20, color: colorCustom),
                   ),
                 ],
               ),
