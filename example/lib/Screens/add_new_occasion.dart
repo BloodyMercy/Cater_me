@@ -91,33 +91,12 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           selectedValue: 0,
                           inputType: TextInputType.number,
                           controller: occasion.typeofoccasioncontrollername,
-                        )
-                      // : Center(
-                      //     child: Container(
-                      //     child: Text("No Occasion Type to Dispaly"),
-                      //   ))
-                  ,
-                 // SizedBox(height: mediaQuery.size.height * 0.001),
+                        ),
 
                   customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
 
 
-                  // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  //   Text(
-                  //     "Yearly reminder",
-                  //     style: Theme.of(context).textTheme.headline2,
-                  //   ),
-                  //   Switch.adaptive(
-                  //     activeColor: Theme.of(context).primaryColor,
-                  //     value: yearly,
-                  //     onChanged: (val) {
-                  //       setState(() {
-                  //         // yearly = val;
-                  //       });
-                  //       occa.yearlureminder = val;
-                  //     },
-                  //   ),
-                  // ]),
+
                   SizedBox(
                     height: mediaQuery.size.height * 0.2,
                   ),

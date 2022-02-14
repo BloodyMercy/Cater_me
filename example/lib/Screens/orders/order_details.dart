@@ -77,54 +77,80 @@ class _DetailsOrderState extends State<DetailsOrder> {
                 : CustomScrollView(
                     slivers: [
                       SliverToBoxAdapter(
-                        child: Card(
-                          elevation: 5,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: ListView.builder(
-                                  itemCount: order.items.length,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, i) {
-                                    return Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                "${order.items[i].item}",
-                                                style: TextStyle(
-                                                    color: blackColor,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.03,
-                                              ),
-                                              Text(
-                                                "SAR ${order.items[i].price}",
-                                                style: TextStyle(
-                                                    color: blackColor,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                            elevation: 5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: ListView.builder(
+                                    itemCount: order.items.length,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, i) {
+                                      return Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "${order.items[i].item}  ",
+                                                  style: TextStyle(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.03,
+                                                ),
+                                                Text(
+                                                  "SAR ${order.items[i].price}",
+                                                  style: TextStyle(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+
                                           ),
-                                        )
-                                      ],
-                                    );
-                                  },
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Quantity",
+                                                  style: TextStyle(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                      FontWeight.normal),
+                                                ),
+                                                Text(
+                                                  "${order.items[i].quantity}",
+                                                  style: TextStyle(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                      FontWeight.normal),
+                                                ),
+                                            ],),
+                                          )
+                                        ],
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -142,12 +168,12 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                     Text("Tax",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                     Text(
                                         "SAR ${double.parse((order.orderbyId["tax"]??0.0).toStringAsFixed(2))}",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                   ],
                                 ),
                               ),
@@ -160,12 +186,12 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                     Text("SubTotal",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                     Text(
                                         "SAR ${double.parse((order.orderbyId["subTotal"]??0.0).toStringAsFixed(2))}",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                   ],
                                 ),
                               ),
@@ -178,12 +204,12 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                     Text("Total",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                     Text(
                                         "SAR ${double.parse((order.orderbyId["total"]??0.0).toStringAsFixed(2))}",
                                         style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.bold)),
+                                            fontWeight: FontWeight.normal)),
                                   ],
                                 ),
                               ),
@@ -240,7 +266,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                                       blackColor,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold),
+                                                                          .normal),
                                                             ),
                                                             Text(
                                                               "${order.paymentFreind[index].email}",
@@ -249,7 +275,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                                       blackColor,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold),
+                                                                          .normal),
                                                             ),
                                                           ],
                                                         ),
@@ -257,18 +283,13 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                     ),
                                                   ],
                                                 ),
-                                                // SizedBox(
-                                                //   height: MediaQuery.of(context)
-                                                //       .size
-                                                //       .height *
-                                                //       0.03,
-                                                // ),
+
                                                 Text(
                                                   "SAR ${order.paymentFreind[index].amount}",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
-                                                          FontWeight.bold),
+                                                          FontWeight.normal),
                                                 ),
                                               ],
                                             ),
