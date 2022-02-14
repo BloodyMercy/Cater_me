@@ -81,7 +81,6 @@ class OrderCaterProvider extends ChangeNotifier{
             "quantity":itemOrders[i].quantity}
       );
     }
-     //   "itemId": 1,\r\n      "quantity": 2\r\n
     for(int i=0;i<choosebillFriend.length;i++){
 if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text=="0"){
   controllers.removeAt(i);

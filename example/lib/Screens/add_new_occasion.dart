@@ -21,52 +21,16 @@ class AddNewOccasion extends StatefulWidget {
 }
 
 class _AddNewOccasionState extends State<AddNewOccasion> {
-  DateTime selectedDate = DateTime.now();
-  DateTime _newDate;
-  // void _presentDataPicker() {
-  //   showDatePicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime(2019),
-  //     lastDate: DateTime(DateTime.now().year + 1),
-  //   ).then((value) {
-  //     if (value == null) {
-  //       return;
-  //     }
-  //     setState(() {
-  //       selectedDate = value;
-  //     });
-  //   });
-  // }
-  _presentDataPicker() async {
-    _newDate = (await showDatePicker(
-      context: context,
-      builder: (context, child) => Theme(
-          data: ThemeData().copyWith(
-            colorScheme: ColorScheme.light(
-                primary: Color(0xff3F5521),
-                surface: Color(0xff3F5521),
-                onPrimary: Colors.black),
-          ),
-          child: child),
-      initialDate: selectedDate,
-      firstDate: DateTime(1930),
-      lastDate: DateTime.now(),
-      initialEntryMode: DatePickerEntryMode.calendarOnly,
-    ));
-    setState(() {
-      if (_newDate != null) {
-        selectedDate = _newDate;
-      }
-    });
-  }
+
+
+
 
   bool loading = true;
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     await occasion.getAllOccasionType();
     await occasion.getallnewoccasion();
-    // occasion.yearlureminder = false;
+
     setState(() {
       loading = false;
     });
@@ -78,15 +42,13 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     super.initState();
   }
 
-  // bool yearly = false;
+
   bool ispressed = false;
   final _scaff = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    // final package = Provider.of<PackagesProvider>(context, listen: true);
-    final occasion = Provider.of<OccasionProvider>(context, listen: true);
+   final occasion = Provider.of<OccasionProvider>(context, listen: true);
 
-    // List<Occasion> occasion = occasionSS;
     final mediaQuery = MediaQuery.of(context);
 
 
@@ -99,7 +61,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
               Navigator.of(context).pop(
               );
             },
-            icon: Icon(Icons.arrow_back, color: Colors.white),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
             iconSize: 30,
           ),
           elevation: 0,
@@ -121,19 +83,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                   SizedBox(height: mediaQuery.size.height * 0.07),
 
                   customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
-               //   SizedBox(height: mediaQuery.size.height * 0.04),
-                  // TextFormField(
-                  //   controller: typeController,
-                  //   decoration: InputDecoration(
-                  //     labelText: 'Type of Occasion',
-                  //     labelStyle: Theme.of(context).textTheme.headline4,
-                  //     contentPadding:
-                  //         EdgeInsets.only(left: mediaQuery.size.width * 0.04),
-                  //   ),
-                  // ),
 
-                  // occasion.listoccasiontype.length != 0
-                  //     ?
                   CustomCupertinoPicker(
                           label: 'Type of Occasion',
                           items: occasion.listoccasiontypename,
@@ -183,7 +133,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                     occasion.nameofoccasioncontroller.text ==
                                         "") {
                                   _scaff.currentState.showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content:
                                           Text("you cant add empty occasion"),
                                     ),
@@ -192,14 +142,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                   setState(() {
                                     ispressed = true;
                                   });
-                                  // Occassion n = Occasion(
-                                  //     name: nameController.text.toString(),
-                                  //     type: typeController.text.toString(),
-                                  //     date: selectedDate.toString(),
-                                  //     yearly: yearly) as Occassion;
-                                  //  package.occasions.add(n);
-                                  occasion.datechosencontroller.text =
-                                      '${DateFormat.yMd().format(selectedDate)}';
+
                                   bool a =
                                       await occasion.createOccasions(context);
                                   if (!a)
@@ -208,7 +151,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                         ispressed=false;
                                       });
                                     _scaff.currentState.showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text(
                                             "Please fill all the fields"),
                                       ),
@@ -221,7 +164,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                     });
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) => OccasionAdded(),
+                                        builder: (context) => const OccasionAdded(),
                                       ),
                                     );
                                   }
@@ -242,12 +185,12 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                 primary: Theme.of(context).primaryColor,
                               ),
                             )
-                          : Center(child: CircularProgressIndicator()),
+                          : const Center(child: const CircularProgressIndicator()),
                     ],
                   )
                 ],
               )),
-        ): Center(
+        ): const Center(
           child: CircularProgressIndicator(),
         ),
       ),

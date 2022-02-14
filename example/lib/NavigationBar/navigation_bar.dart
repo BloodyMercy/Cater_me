@@ -1,28 +1,18 @@
 import 'dart:async';
 
-import 'package:CaterMe/Drawer/drawer_screen.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Order.dart';
-import 'package:CaterMe/Screens/add_friend_screen.dart';
-import 'package:CaterMe/Screens/addresses_screen_fab.dart';
-import 'package:CaterMe/Screens/addresses_screen.dart';
-import 'package:CaterMe/Screens/dashboard.dart';
-import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
-import 'package:CaterMe/Screens/occasion/screens/home_page.dart';
+
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
-import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/homepage.dart';
-import 'package:CaterMe/widgets/my_favorites_card.dart';
-import 'package:CaterMe/Screens/notifications.dart';
 import 'package:badges/badges.dart';
 
 import 'package:flutter/material.dart';
