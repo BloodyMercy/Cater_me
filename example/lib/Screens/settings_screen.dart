@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/add_friend_screen.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
 import 'package:CaterMe/Screens/addresses_settings_screen.dart';
@@ -532,24 +533,38 @@ setData(String imageUrl) async{
                         color:  const Color.fromARGB(206, 255, 255, 255),
                         shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0)),
                         child: GestureDetector(
-                          onTap: () async {
-                            final SharedPreferences
-                            sharedPreferences =
-                                await SharedPreferences.getInstance();
-                            sharedPreferences.remove('Email');
-                            sharedPreferences.remove('Password');
-                            personalInfo.clearAllTextController();
+                          onTap: () {
+                            showDialog(context: context,
+                                builder: (BuildContext context) {
+                                 return CustomDialog(
+                                    title: 'Sad to see you go',
+                                    description: "",
+                                    oneOrtwo: true,
+                                    button1: ElevatedButton(
+                                      onPressed: () async {
+                                        final SharedPreferences
+                                        sharedPreferences =
+                                        await SharedPreferences.getInstance();
+                                        sharedPreferences.remove('Email');
+                                        sharedPreferences.remove('Password');
+                                        personalInfo.clearAllTextController();
+                                        sharedPreferences.clear();
 
-                            sharedPreferences.clear();
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoginScreen(),
+                                            ),
+                                                (route) => false);
+                                      }, child: Text("Logout"),),
+                                    button2: ElevatedButton(onPressed: () {
+                                      Navigator.of(context).pop();
+                                    }, child: Text("No"),
 
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      LoginScreen(),
-                                ),
-                                    (route) => false);
-
-
+                                    )
+                                    ,);
+                                });
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -561,15 +576,14 @@ setData(String imageUrl) async{
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.03,
                                     ),
-                                    Icon(FontAwesomeIcons.signOutAlt,
+                                    const Icon(FontAwesomeIcons.signOutAlt,
                                       size: 20, //Icon Size
                                       color: Color(0xFF3F5521),//Color Of Icon
                                     ),
                                     SizedBox(
                                       width: mediaQuery.size.width * 0.05,
                                     ),
-                                    Text(
-                                      "Logout ",
+                                    const Text( "Logout ",
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
@@ -578,7 +592,7 @@ setData(String imageUrl) async{
                                   ],
                                 ),
                                 Row(children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.chevron_right,
                                     color: Color(0xFF3F5521),
                                   ),
@@ -589,7 +603,7 @@ setData(String imageUrl) async{
                               ],
                             ),
                           ),
-                        ),
+                        )
                       ),
                     ),
 
