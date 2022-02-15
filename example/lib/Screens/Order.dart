@@ -249,10 +249,7 @@ class _OrderState extends State<Order> {
                                                 "" ||
                                             address.typeofeventcontroller.text ==
                                                 "") {
-                                          // orderProvider.spets=0;
-                                          // if( orderProvider.serviceId==0){
-                                          // _key.currentState
-                                          //     .showSnackBar(
+
                                           const SnackBar(
                                             content: Text(
                                                 "please fill the empty fields "),

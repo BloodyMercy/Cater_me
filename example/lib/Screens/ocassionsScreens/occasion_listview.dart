@@ -87,30 +87,33 @@ class _OccasionListViewState extends State<OccasionListView> {
     children:
       List.generate(occa.listoccasiontype.length, (int index) {
 
-        return    Card(
-          child: Container(
-           // width: ,
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    occa.listoccasiontype[index].id==-700?
-                    IconButton(
+        return    GestureDetector(
+          onTap: (){ Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) =>
+              const AddNewOccasion(),
+            ),
+          );},
+          child: Card(
+            child: Container(
+             // width: ,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      occa.listoccasiontype[index].id==-700?
+                      IconButton(
 
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                            const AddNewOccasion(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(Icons.add),
-                    ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.3,),
-                    Text(occa.listoccasiontype[index].name)
-                  ],
-                ),
-              ],
+                        onPressed: () {
+
+                        },
+                        icon: const Icon(Icons.add),
+                      ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.3,),
+                      Text(occa.listoccasiontype[index].name)
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ); } ),
