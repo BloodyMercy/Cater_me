@@ -228,13 +228,7 @@ class _OrderSummery1State extends State<OrderSummery1> {
                               fontSize: 25,
                               fontFamily: 'BerlinSansFB'),
                         ),
-                        Text(
-                          "${details.tax.toString()} %",
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 25,
-                              fontFamily: 'BerlinSansFB'),
-                        )
+
                       ],
                     ),
                     Row(

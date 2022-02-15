@@ -164,7 +164,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
     _totalefreind = value;
   }
 
-  int _tax =3;
+  int _tax =15;
 
 
   int get tax => _tax;
@@ -202,7 +202,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
   addItems(ItemOrders item){
     _itemOrders.add(item);
     subTotal=subTotal+item.totalprice;
-    totale= subTotal+subTotal*tax/100;
+    totale= subTotal+subTotal;
     notifyListeners();
   }
 
@@ -226,7 +226,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
  removeItems(ItemOrders item){
     _itemOrders.remove(item);
     subTotal=subTotal-item.totalprice;
-    totale= subTotal+subTotal*tax/100;
+    totale= subTotal+subTotal;
     notifyListeners();
   }
 modifyItems(int count,int index){
@@ -236,7 +236,7 @@ modifyItems(int count,int index){
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
    // _itemOrders.remove(item);
     subTotal=subTotal+(count*_itemOrders[index].price);
-    totale= subTotal+subTotal*tax/100;
+    totale= subTotal+subTotal;
     notifyListeners();
   }
   modifyItemsmoins(int count,int index){
@@ -246,7 +246,7 @@ modifyItems(int count,int index){
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
     // _itemOrders.remove(item);
     subTotal=subTotal+(count*_itemOrders[index].price);
-    totale= subTotal+subTotal*tax/100;
+    totale= subTotal+subTotal;
     notifyListeners();
   }
 
