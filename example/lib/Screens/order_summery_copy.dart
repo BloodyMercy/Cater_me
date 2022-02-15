@@ -143,7 +143,7 @@ bool loading=false;
        Expanded(
            child: CustomScrollView(slivers: <Widget>[
 
-           details.itemOrders.length==0? SliverToBoxAdapter(child:Center(child:Text("no items added")))  : SliverList(
+           details.itemOrders.length==0? SliverToBoxAdapter(child:Center(child:Text("no items added",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black))))  : SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int i) {
                     final item = details.itemOrders[i];
@@ -199,7 +199,7 @@ bool loading=false;
                      "Share Bill",
                      style: TextStyle(
                          decoration: TextDecoration.underline,
-                         color: Color(0xFF3F5521),
+                         color: Colors.black,
                          fontSize: 20,
                          fontWeight: FontWeight.bold,
                          fontFamily: 'BerlinSansFB'),
@@ -341,15 +341,15 @@ setState(() {
 },
                               decoration: InputDecoration(
                                 hintText:'Price' ,
-                                fillColor: Color(0xFF3F5521),
+                                fillColor: Colors.black,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
-                                      color: Color(0xFF3F5521), width: 1.0),
+                                      color: Colors.black, width: 1.0),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                               ),
                               keyboardType: TextInputType.number,
-controller:details.controllers[index],
+                              controller:details.controllers[index],
                             ))); // you can add your unavailable item here
                   },
                   childCount:details.choosebillFriend.length ,

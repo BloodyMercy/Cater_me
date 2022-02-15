@@ -142,14 +142,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           padding: const EdgeInsets.only(left: 8.0, top: 16.0),
           child: Text(
             '$title',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8.0, bottom: 16.0),
           child: Text(
             '$subTitle',
-            style: TextStyle(fontSize: 21, color: Color(0xff3F5521)),
+            style: TextStyle(fontSize: 21, color: Colors.black,fontWeight: FontWeight.normal),
           ),
         )
       ],
@@ -182,7 +182,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               child: Text(
                 '$cardNumber',
                 style: TextStyle(
-                    color: Color(0xff3F5521),
+                    color: Colors.black,
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
               ),
@@ -231,14 +231,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         Text(
           '$label',
           style: TextStyle(
-              color: Color(0xff3F5521),
+              color: Colors.black,
               fontSize: 9,
               fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
           style: TextStyle(
-              color: Color(0xff3F5521),
+              color: Colors.black,
               fontSize: 15,
               fontWeight: FontWeight.bold),
         )

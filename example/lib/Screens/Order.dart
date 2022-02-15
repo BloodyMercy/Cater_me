@@ -134,441 +134,465 @@ class _OrderState extends State<Order> {
     return SafeArea(
       child: WillPopScope(
         onWillPop: _onWillPop,
-        child: Scaffold(
-          key: _key,
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            title: const Text(
-              "Order",
-              style: const TextStyle(
-                  color: Color(0xFF3F5521),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
-            ),
-            leading: IconButton(
-              icon: const Icon(
-                Icons.close,
-                color: const Color(0xFF3F5521),
+        child: GestureDetector(
+          onTap: (){
+            FocusScopeNode currentFocus = FocusScope.of(context);
+
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Scaffold(
+            key: _key,
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              title: const Text(
+                "Order",
+                style: const TextStyle(
+                    color: Color(0xFF3F5521),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
               ),
-              onPressed: () async {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CustomDialog(
-                        title: "Are you sure you want to exit?",
-                        description: "",
-                        button1: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: const Color(0xFF3F5521),
+                ),
+                onPressed: () async {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomDialog(
+                          title: "Are you sure you want to exit?",
+                          description: "",
+                          button1: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey,
+                            ),
+                              onPressed: () {
+                                orderProvider.spets = 1;
+
+                                clearAlldata();
+
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("yes")),
+                          oneOrtwo: true,
+                          button2: ElevatedButton(
+                            onPressed: () {  Navigator.of(context).pop();},
+                            child: Text("No"),
                           ),
-                            onPressed: () {
-                              orderProvider.spets = 1;
-
-                              clearAlldata();
-
-                              Navigator.of(context).pop();
-                              Navigator.of(context).pop();
-                            },
-                            child: Text("yes")),
-                        oneOrtwo: true,
-                        button2: ElevatedButton(
-                          onPressed: () {  Navigator.of(context).pop();},
-                          child: Text("No"),
-                        ),
-                      );
-                    });
+                        );
+                      });
 
 
-              },
+                },
+              ),
             ),
-          ),
-          body: true
-              ? SingleChildScrollView(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    height: height * 0.88,
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.white,
-                          width: MediaQuery.of(context).size.width,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            controller: _verticatl,
-                            child: Column(
-                              children: [
-                                CustomStepper(
-                                  controller: _controller,
-                                  onTap: (int value) {
-                                    if (orderProvider.spets == 1) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
+            body: true
+                ? SingleChildScrollView(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      width: MediaQuery.of(context).size.width,
+                      height: height * 0.88,
+                      child: Column(
+                        children: [
+                          Container(
+                            color: Colors.white,
+                            width: MediaQuery.of(context).size.width,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              controller: _verticatl,
+                              child: Column(
+                                children: [
+                                  CustomStepper(
+                                    controller: _controller,
+                                    onTap: (int value) {
+                                      if (orderProvider.spets == 1) {
+                                        if (orderProvider.value.id == 0) {
+                                          _key.currentState.showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                  "please choose an address "),
+                                            ),
+                                          );
+                                        } else {
+                                          orderProvider.spets = value;
+                                        }
+                                      }
+                                      if (orderProvider.spets == 3) {
+                                        if (orderProvider.value.id == 0) {
+                                          _key.currentState.showSnackBar(
+                                            const SnackBar(
+                                              content: const Text(
+                                                  "please choose one from the following offers "),
+                                            ),
+                                          );
+                                          // orderProvider.spets=0;
+                                        } else {
+                                          orderProvider.spets = value;
+                                        }
+                                      }
+                                      if (orderProvider.spets == 2) {
+                                        if (address.eventnamecontroller.text ==
+                                                "" ||
+                                            address.evendatecontroller.text ==
+                                                "" ||
+                                            address.numberofguestcontroller
+                                                    .text ==
+                                                "" ||
+                                            address.typeofeventcontroller.text ==
+                                                "") {
+                                          // orderProvider.spets=0;
+                                          // if( orderProvider.serviceId==0){
+                                          // _key.currentState
+                                          //     .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                                "please choose an address "),
-                                          ),
-                                        );
-                                      } else {
-                                        orderProvider.spets = value;
-                                      }
-                                    }
-                                    if (orderProvider.spets == 3) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
-                                          const SnackBar(
-                                            content: const Text(
-                                                "please choose one from the following offers "),
-                                          ),
-                                        );
-                                        // orderProvider.spets=0;
-                                      } else {
-                                        orderProvider.spets = value;
-                                      }
-                                    }
-                                    if (orderProvider.spets == 2) {
-                                      if (address.eventnamecontroller.text ==
-                                              "" ||
-                                          address.evendatecontroller.text ==
-                                              "" ||
-                                          address.numberofguestcontroller
-                                                  .text ==
-                                              "" ||
-                                          address.typeofeventcontroller.text ==
-                                              "") {
-                                        // orderProvider.spets=0;
-                                        // if( orderProvider.serviceId==0){
-                                        // _key.currentState
-                                        //     .showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                              "please fill the empty fields "),
-                                        );
-                                        // );
-                                      } else {
-                                        orderProvider.spets = value;
-                                        setState(() {
-                                          //  orderProvider.spets=value;
+                                                "please fill the empty fields "),
+                                          );
+                                          // );
+                                        } else {
+                                          orderProvider.spets = value;
+                                          setState(() {
+                                            //  orderProvider.spets=value;
 
+                                            _controller.animateTo(
+                                              0,
+                                              duration: const Duration(
+                                                  milliseconds: 500),
+                                              curve: Curves.linear,
+                                            );
+                                          });
+                                        }
+                                      }
+
+                                      if (orderProvider.spets == 5) {
+                                        setState(() {
                                           _controller.animateTo(
                                             0,
-                                            duration: const Duration(
-                                                milliseconds: 500),
+                                            duration:
+                                                const Duration(milliseconds: 500),
                                             curve: Curves.linear,
                                           );
                                         });
+                                      } else {
+                                        orderProvider.spets = value;
                                       }
-                                    }
-
-                                    if (orderProvider.spets == 5) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration:
-                                              const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 6) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration:
-                                              const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 7) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration:
-                                              const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                  },
-                                  text: const [
-                                    "Location",
-                                    "Event Details",
-                                    "Service",
-                                    "Packages",
-                                    "Add-Ons",
-                                    "Checkout",
-                                    "Payment"
-                                  ],
-                                  selected: orderProvider.spets,
-                                )
-                              ],
+                                      if (orderProvider.spets == 6) {
+                                        setState(() {
+                                          _controller.animateTo(
+                                            0,
+                                            duration:
+                                                const Duration(milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
+                                        });
+                                      } else {
+                                        orderProvider.spets = value;
+                                      }
+                                      if (orderProvider.spets == 7) {
+                                        setState(() {
+                                          _controller.animateTo(
+                                            0,
+                                            duration:
+                                                const Duration(milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
+                                        });
+                                      } else {
+                                        orderProvider.spets = value;
+                                      }
+                                    },
+                                    text: const [
+                                      "Location",
+                                      "Event Details",
+                                      "Service",
+                                      "Packages",
+                                      "Add-Ons",
+                                      "Checkout",
+                                      "Payment"
+                                    ],
+                                    selected: orderProvider.spets,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        const Divider(
-                          height: 20,
-                          thickness: 1,
-                          indent: 0,
-                          endIndent: 0,
-                          color: Color(0xFF3F5521),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height / 1.55,
-                          child: (orderProvider.spets == 1)
-                              ? AddAddressScreen()
-                              : (orderProvider.spets == 3)
-                                  ? RegularDaberneScreen()
-                                  : (orderProvider.spets == 2)
-                                      ? ReguarScreen(addresses.Friends)
-                                      : (orderProvider.spets == 4)
-                                          ? RelatedOffersScreen()
-                                          : (orderProvider.spets == 5)
-                                              ? AddonsCardoffer(0)
-                                              : (orderProvider.spets == 7)
-                                                  ? CreditCardsPage()
-                                                  : (orderProvider.spets == 6)
-                                                      ? OrderSummeryCopy(
-                                                          orderProvider.totale)
-                                                      : Container(),
-                        ),
-                        Expanded(
-                          child: Container(
-                              height: MediaQuery.of(context).size.height / 9,
-                              // color: Colors.yellow,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "Total: ${details.totale.toStringAsFixed(3)} SAR",
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: 'BerlinSansFB',
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                              SizedBox(height: MediaQuery.of(context).size
-                                                .height*0.02,),
-                                              Text(
-
-                                                  '*(VAT included ${details.tax} %:)',
-
-                                                  style: TextStyle(
-                                                          fontSize: 14,
-                                                    fontWeight: FontWeight.bold,
-
-                                                  ),
-
-                                                ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 20.0),
-                                      child: ElevatedButton(
-                                        onPressed: () async {
-                                          if (orderProvider.spets == 1) {
-                                            if (orderProvider.value.id == 0) {
-                                              _key.currentState.showSnackBar(
-                                                const SnackBar(
-                                                  content: Text(
-                                                      "please choose an address "),
-                                                ),
-                                              );
-                                            } else {
-                                              orderProvider.spets++;
-                                              _animateToIndex(orderProvider.spets);
-                                            }
-                                          } else if (orderProvider.spets == 3) {
-                                            if (orderProvider.serviceId == 0) {
-                                              _key.currentState.showSnackBar(
-                                                const SnackBar(
-                                                  content: const Text(
-                                                      "please choose one from the following offers "),
-                                                ),
-                                              );
-                                            } else {
-                                              orderProvider.spets++;
-
-                                              _animateToIndex(orderProvider.spets);
-                                            }
-                                          } else if (orderProvider.spets == 2) {
-                                            if (address.eventnamecontroller
-                                                        .text ==
-                                                    "" ||
-                                                address.evendatecontroller.text ==
-                                                    "" ||
-                                                address.numberofguestcontroller
-                                                        .text ==
-                                                    "" ||
-                                                address.typeofeventcontroller
-                                                        .text ==
-                                                    "") {
-                                              _key.currentState.showSnackBar(
-                                                const SnackBar(
-                                                  content: Text(
-                                                      "please fill the empty fields "),
-                                                ),
-                                              );
-                                            } else {
-                                              await address.checktime();
-                                              if (address.hours.isDaberni)
-                                                orderProvider.serviceId = 2;
-                                              orderProvider.spets++;
-
-                                              _animateToIndex(orderProvider.spets);
-                                            }
-                                          } else if (orderProvider.spets == 6) {
-                                            if (orderProvider.itemOrders.length >
-                                                0)
-                                              orderProvider.spets++;
-                                            else {
-                                              _key.currentState.showSnackBar(
-                                                const SnackBar(
-                                                  content:
-                                                      Text("no items to order"),
-                                                ),
-                                              );
-                                            }
-                                          } else if (orderProvider.spets == 7) {
-                                            showDialog(
-                                              context: this.context,
-                                              barrierDismissible: false,
-                                              builder: (BuildContext context) {
-                                                return WillPopScope(
-                                                    onWillPop: () =>
-                                                        Future<bool>.value(false),
-                                                    child: AlertDialog(
-                                                      title: const Text(
-                                                          "Loading..."),
-                                                      content: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          children: <Widget>[
-                                                            const CircularProgressIndicator()
-                                                          ]),
-                                                    ));
-                                              },
-                                            );
-                                            final _creditCards =
-                                                Provider.of<CreditCardsProvider>(
-                                                    context,
-                                                    listen: false);
-
-                                            final address =
-                                                Provider.of<AdressProvider>(
-                                                    context,
-                                                    listen: false);
-
-                                            bool a =
-                                                await orderProvider.makeorder(
-                                                    date: address
-                                                        .evendatecontroller.text
-                                                        .replaceAll(
-                                                      RegExp('[^A-Za-z0-9]'),
-                                                      '-',
+                          const Divider(
+                            height: 20,
+                            thickness: 1,
+                            indent: 0,
+                            endIndent: 0,
+                            color: Color(0xFF3F5521),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height / 1.55,
+                            child: (orderProvider.spets == 1)
+                                ? AddAddressScreen()
+                                : (orderProvider.spets == 3)
+                                    ? RegularDaberneScreen()
+                                    : (orderProvider.spets == 2)
+                                        ? ReguarScreen(addresses.Friends)
+                                        : (orderProvider.spets == 4)
+                                            ? RelatedOffersScreen()
+                                            : (orderProvider.spets == 5)
+                                                ? AddonsCardoffer(0)
+                                                : (orderProvider.spets == 7)
+                                                    ? CreditCardsPage()
+                                                    : (orderProvider.spets == 6)
+                                                        ? OrderSummeryCopy(
+                                                            orderProvider.totale)
+                                                        : Container(),
+                          ),
+                          Expanded(
+                            child: Container(
+                                height: MediaQuery.of(context).size.height / 9,
+                                // color: Colors.yellow,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "Total: ${details.totale.toStringAsFixed(3)} SAR",
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: 'BerlinSansFB',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                                SizedBox(height: MediaQuery.of(context).size
+                                                  .height*0.02,),
+                                                Text(
+                                                    '*(VAT included ${details.tax} %:)',
+                                                    style: TextStyle(
+                                                            fontSize: 10,
+                                                      fontWeight: FontWeight.bold,
+                                                      color:Colors.black,
                                                     ),
-                                                    type: address
-                                                        .typeofeventcontroller
-                                                        .text,
-                                                    nb: address
-                                                        .numberofguestcontroller
-                                                        .text,
-                                                    idcard: _creditCards
-                                                        .credit.cardId,
-                                                    contactname:
-                                                        address.name.text,
-                                                    contactphone:
-                                                        address.phone.text,
-                                                    eventname: address
-                                                        .eventnamecontroller
-                                                        .text);
+                                                  ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom: 20.0),
+                                        child: ElevatedButton(
+                                          onPressed: () async {
+                                            if (orderProvider.spets == 1) {
+                                              if (orderProvider.value.id == 0) {
+                                                _key.currentState.showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                        "please choose an address "),
+                                                  ),
+                                                );
+                                              } else {
+                                                orderProvider.spets++;
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              }
+                                            } else
+                                            if (orderProvider.spets == 3) {
+                                              if (orderProvider.serviceId ==
+                                                  0) {
+                                                _key.currentState.showSnackBar(
+                                                  const SnackBar(
+                                                    content: const Text(
+                                                        "please choose one from the following offers "),
+                                                  ),
+                                                );
+                                              } else {
+                                                orderProvider.spets++;
 
-                                            Navigator.of(context).pop();
-                                            if (a)
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AppointmentSuccess()));
-                                            else {
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              }
+                                            } else
+                                            if (orderProvider.spets == 2) {
+                                              if (address.eventnamecontroller
+                                                  .text ==
+                                                  "" ||
+                                                  address.evendatecontroller
+                                                      .text ==
+                                                      "" ||
+                                                  address
+                                                      .numberofguestcontroller
+                                                      .text ==
+                                                      "" ||
+                                                  address.typeofeventcontroller
+                                                      .text ==
+                                                      "") {
+                                                _key.currentState.showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                        "please fill the empty fields "),
+                                                  ),
+                                                );
+                                              } else {
+                                                await address.checktime();
+                                                if (address.hours.isDaberni)
+                                                  orderProvider.serviceId = 2;
+                                                orderProvider.spets++;
+
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              }
+                                            } else
+                                            if (orderProvider.spets == 6) {
+                                              if (orderProvider.itemOrders
+                                                  .length >
+                                                  0)
+                                                orderProvider.spets++;
+                                              else {
+                                                _key.currentState.showSnackBar(
+                                                  const SnackBar(
+                                                    content:
+                                                    Text("no items to order"),
+                                                  ),
+                                                );
+                                              }
+                                            } else
+                                            if (orderProvider.spets == 7) {
                                               showDialog(
                                                 context: this.context,
-                                                builder: (BuildContext context) {
-                                                  return AlertDialog(
-                                                    title: const Text("error "),
-                                                    content:
-                                                        const Text("try again"),
-                                                    actions: <Widget>[
-                                                      TextButton(
-                                                          child:
-                                                              const Text("Close"),
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  context))
-                                                    ],
-                                                  );
+                                                barrierDismissible: false,
+                                                builder: (
+                                                    BuildContext context) {
+                                                  return WillPopScope(
+                                                      onWillPop: () =>
+                                                      Future<bool>.value(false),
+                                                      child: AlertDialog(
+                                                        title: const Text(
+                                                            "Loading..."),
+                                                        content: Column(
+                                                            mainAxisSize:
+                                                            MainAxisSize.min,
+                                                            children: <Widget>[
+                                                              const CircularProgressIndicator()
+                                                            ]),
+                                                      ));
                                                 },
                                               );
-                                            }
-                                          } else
-                                            orderProvider.spets++;
+                                              final _creditCards =
+                                              Provider.of<CreditCardsProvider>(
+                                                  context,
+                                                  listen: false);
 
-                                          _animateToIndex(orderProvider.spets);
-                                          //    }
-                                        },
-                                        child: orderProvider.spets != 7
-                                            ? const Text(
-                                                'Next',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight: FontWeight.bold),
-                                              )
-                                            : const Text(
-                                                'Done',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight: FontWeight.bold),
+                                              final address =
+                                              Provider.of<AdressProvider>(
+                                                  context,
+                                                  listen: false);
+
+                                              bool a =
+                                              await orderProvider.makeorder(
+                                                  date: address
+                                                      .evendatecontroller.text
+                                                      .replaceAll(
+                                                    RegExp('[^A-Za-z0-9]'),
+                                                    '-',
+                                                  ),
+                                                  type: address
+                                                      .typeofeventcontroller
+                                                      .text,
+                                                  nb: address
+                                                      .numberofguestcontroller
+                                                      .text,
+                                                  idcard: _creditCards
+                                                      .credit.cardId,
+                                                  contactname:
+                                                  address.name.text,
+                                                  contactphone:
+                                                  address.phone.text,
+                                                  eventname: address
+                                                      .eventnamecontroller
+                                                      .text);
+
+                                              Navigator.of(context).pop();
+                                              if (a)
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AppointmentSuccess()));
+                                              else {
+                                                showDialog(
+                                                  context: this.context,
+                                                  builder: (
+                                                      BuildContext context) {
+                                                    return AlertDialog(
+                                                      title: const Text(
+                                                          "error "),
+                                                      content:
+                                                      const Text("try again"),
+                                                      actions: <Widget>[
+                                                        TextButton(
+                                                            child:
+                                                            const Text("Close"),
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    context))
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            } else
+                                              orderProvider.spets++;
+
+                                            _animateToIndex(
+                                                orderProvider.spets);
+                                            //    }},
+                                            child:
+                                            orderProvider.spets != 8
+                                                ? const Text(
+                                              'Next',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: 'BerlinSansFB',
+                                                  fontWeight: FontWeight.bold,
                                               ),
-                                        // style: ElevatedButton.styleFrom(
-                                        //   padding: EdgeInsets.fromLTRB(
-                                        //     width * 0.1,
-                                        //     screenHeight * 0.03,
-                                        //     width * 0.1,
-                                        //     screenHeight * 0.03,
-                                        //   ),
-                                        //   onPrimary:
-                                        //       const Color.fromRGBO(255, 255, 255, 1),
-                                        //   primary: const Color.fromRGBO(63, 85, 33, 1),
-                                        //
-                                        // ),
+                                            )
+                                                : const Text(
+                                              'Done',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: 'BerlinSansFB',
+                                                  fontWeight: FontWeight.bold,
+                                                  ),
+                                            );
+
+                                            // style: ElevatedButton.styleFrom(
+                                            //   padding: EdgeInsets.fromLTRB(
+                                            //     width * 0.1,
+                                            //     screenHeight * 0.03,
+                                            //     width * 0.1,
+                                            //     screenHeight * 0.03,
+                                            //   ),
+                                            //   onPrimary:
+                                            //       const Color.fromRGBO(255, 255, 255, 1),
+                                            //   primary: const Color.fromRGBO(63, 85, 33, 1),
+                                            //
+                                            // );
+                                          }),
                                       ),
-                                    ),
-                                  ])),
-                        ),
-                      ],
+                                    ])),
+                          ),
+                        ],
+                      ),
                     ),
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
                   ),
-                )
-              : const Center(
-                  child: CircularProgressIndicator(),
-                ),
+          ),
         ),
       ),
     );

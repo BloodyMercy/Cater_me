@@ -147,7 +147,7 @@ class _AddressesListState extends State<AddressesList> {
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
                                           // TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].title.toString()}',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
+                                          TextSpan(text: ' ${widget.address[i].title.toString()}',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 22)),
                                         ],
                                       ),
                                     ),
