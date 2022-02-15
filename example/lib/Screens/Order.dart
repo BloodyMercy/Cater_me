@@ -40,6 +40,7 @@ class Order extends StatefulWidget {
 
 class _OrderState extends State<Order> {
   final _controller = ScrollController();
+  ScrollController _verticatl =ScrollController();
   var _key = GlobalKey<ScaffoldState>();
 
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -104,7 +105,16 @@ class _OrderState extends State<Order> {
 
     return;
   }
+  void _animateToIndex(int index) {
+    setState(() {
+      _verticatl.animateTo(
+        (index * MediaQuery.of(context).size.width/4).toDouble(),
+        duration: Duration(seconds: 2),
+        curve: Curves.fastOutSlowIn,
+      );
+    });
 
+  }
   @override
   Widget build(BuildContext context) {
     final addresses = Provider.of<AdressProvider>(context, listen: true);
@@ -171,33 +181,7 @@ class _OrderState extends State<Order> {
                       );
                     });
 
-                // return  await showDialog(
-                //   context: context,
-                //   builder: (context) => new AlertDialog(
-                //     backgroundColor:Colors.white ,
-                //     title: new Text("Are you sure you want to exit?"),
-                //     content: new Text(
-                //       "",style: const TextStyle(color:Colors.white),),
-                //     actions: <Widget>[
-                //       TextButton(
-                //         onPressed: () => Navigator.of(context).pop(false),
-                //         child: new Text("No"),
-                //       ),
-                //       TextButton(
-                //         onPressed: () {
-                //           orderProvider.spets = 1;
-                //
-                //           clearAlldata();
-                //           // ServicePreservationProvider _serpres = Provider.of<ServicePreservationProvider>(context, listen: false);
-                //           // _serpres.cleardata();
-                //            Navigator.of(context).pop();
-                //            Navigator.of(context).pop();
-                //         } ,
-                //         child: new Text("yes")),
-                //
-                //     ],
-                //   ),
-                // );
+
               },
             ),
           ),
@@ -216,6 +200,7 @@ class _OrderState extends State<Order> {
                           width: MediaQuery.of(context).size.width,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
+                            controller: _verticatl,
                             child: Column(
                               children: [
                                 CustomStepper(
@@ -270,12 +255,7 @@ class _OrderState extends State<Order> {
                                         setState(() {
                                           //  orderProvider.spets=value;
 
-                                          _controller.animateTo(
-                                            0,
-                                            duration: const Duration(
-                                                milliseconds: 500),
-                                            curve: Curves.linear,
-                                          );
+
                                         });
                                       }
                                     }
@@ -377,6 +357,7 @@ class _OrderState extends State<Order> {
                                     ),
                                     ElevatedButton(
                                       onPressed: () async {
+
                                         if (orderProvider.spets == 1) {
                                           if (orderProvider.value.id == 0) {
                                             _key.currentState.showSnackBar(
@@ -387,6 +368,8 @@ class _OrderState extends State<Order> {
                                             );
                                           } else {
                                             orderProvider.spets++;
+
+                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 3) {
                                           if (orderProvider.serviceId == 0) {
@@ -398,6 +381,8 @@ class _OrderState extends State<Order> {
                                             );
                                           } else {
                                             orderProvider.spets++;
+
+                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 2) {
                                           if (address.eventnamecontroller
@@ -422,6 +407,8 @@ class _OrderState extends State<Order> {
                                             if (address.hours.isDaberni)
                                               orderProvider.serviceId = 2;
                                             orderProvider.spets++;
+
+                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 6) {
                                           if (orderProvider.itemOrders.length >
@@ -518,9 +505,11 @@ class _OrderState extends State<Order> {
                                           }
                                         } else
                                           orderProvider.spets++;
+
+                                        _animateToIndex(orderProvider.spets);
                                         //    }
                                       },
-                                      child: orderProvider.spets != 8
+                                      child: orderProvider.spets != 7
                                           ? const Text(
                                               'Next',
                                               style: TextStyle(
@@ -535,18 +524,7 @@ class _OrderState extends State<Order> {
                                                   fontFamily: 'BerlinSansFB',
                                                   fontWeight: FontWeight.bold),
                                             ),
-                                      // style: ElevatedButton.styleFrom(
-                                      //   padding: EdgeInsets.fromLTRB(
-                                      //     width * 0.1,
-                                      //     screenHeight * 0.03,
-                                      //     width * 0.1,
-                                      //     screenHeight * 0.03,
-                                      //   ),
-                                      //   onPrimary:
-                                      //       const Color.fromRGBO(255, 255, 255, 1),
-                                      //   primary: const Color.fromRGBO(63, 85, 33, 1),
-                                      //
-                                      // ),
+
                                     ),
                                   ])),
                         ),
