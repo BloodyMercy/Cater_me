@@ -547,7 +547,7 @@ setData(String imageUrl) async{
                                     title: 'Sad to see you leave',
                                     description: "",
                                     oneOrtwo: true,
-                                    button1: ElevatedButton(
+                                    button2: ElevatedButton(
                                       onPressed: () async {
                                         final SharedPreferences
                                         sharedPreferences =
@@ -565,7 +565,7 @@ setData(String imageUrl) async{
                                             ),
                                                 (route) => false);
                                       }, child: Text("Logout"),),
-                                    button2: ElevatedButton(onPressed: () {
+                                    button1: ElevatedButton(onPressed: () {
                                       Navigator.of(context).pop();
                                     }, child: Text("No"),
 
