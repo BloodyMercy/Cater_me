@@ -1,10 +1,15 @@
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
+import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
+import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/model/occasion.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import 'ocassionsScreens/occasion_added.dart';
+import 'ocassionsScreens/occasion_listview.dart';
 
 class EditOccasion extends StatefulWidget {
   Occasion occ;
@@ -38,9 +43,19 @@ class _EditOccasionState extends State<EditOccasion> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    OccasionProvider occasion = Provider.of<OccasionProvider>(context, listen: false);
     selectedDate = DateTime.parse(widget.occ.date);
-    typeController.text=widget.occ.type;
-    nameController.text=widget.occ.name;
+    occasion.nameofoccasioncontroller.text=widget.occ.name;
+    occasion.datechosencontroller.text=widget.occ.date.substring(0,10);
+    occasion.typeofoccasioncontrollername.text=widget.occ.type;
+    for(int i=0;i<occasion.listoccasiontype.length;i++){
+if(occasion.listoccasiontype[i].name==    occasion.typeofoccasioncontrollername.text)
+      occasion.typeofoccasioncontroller.text=occasion.listoccasiontype[i].id.toString();
+
+
+    }
+  //  occasion.typeofoccasioncontroller.text=widget.occ.type;
+
 
 }
   // late bool yearly;
@@ -50,22 +65,25 @@ class _EditOccasionState extends State<EditOccasion> {
   // void initState() {
   //   yearly = widget.occ.yearly;
   // }
-
+  final _scaff = GlobalKey<ScaffoldState>();
+bool loading=false;
+bool ispressed = false;
   @override
   Widget build(BuildContext context) {
     //List<Occasion> occasion = occasionSS;
     final mediaQuery = MediaQuery.of(context);
-    OccasionProvider _occasion = Provider.of<OccasionProvider>(context, listen: false);
+    OccasionProvider occasion = Provider.of<OccasionProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
+  key:_scaff,
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop(
               );
             },
-            icon: Icon(Icons.arrow_back, color: Colors.white),
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
             iconSize: 30,
           ),
           elevation: 0,
@@ -77,93 +95,100 @@ class _EditOccasionState extends State<EditOccasion> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              SizedBox(height: mediaQuery.size.height * 0.07),
-              TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  hintText: widget.occ.name,
-                  labelText: 'Name Of Occasion',
-                  labelStyle: Theme.of(context).textTheme.headline4,
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-              ),
-              SizedBox(height: mediaQuery.size.height * 0.04),
-              TextFormField(
-                controller: typeController,
-                decoration: InputDecoration(
-                  hintText: widget.occ.type,
-                  labelText: 'Type of Occasion',
-                  labelStyle: Theme.of(context).textTheme.headline4,
-                  contentPadding: EdgeInsets.only(left: 20),
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              SizedBox(height: mediaQuery.size.height * 0.04),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Text(selectedDate == null
-                        ? "No Date chosen!"
-                        : 'Picked date: ${DateFormat.yMd().format(selectedDate)}'),
-                    TextButton(
-                      onPressed: _presentDataPicker,
-                      child: Text(
-                        'Choose date',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+        body: !loading? SingleChildScrollView(
+          child:
 
-              SizedBox(
-                height: mediaQuery.size.height * 0.2,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          Container(
+              color: Colors.white,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      widget.occ.name = nameController.text.toString();
-                      widget.occ.type = typeController.text.toString();
-                      widget.occ.date = selectedDate.toString();
-                      _occasion.updateoccation(id: widget.occ.id ,name:nameController.text.toString(),date:selectedDate.toString(),typeid: typeController.text.toString()  );
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => Ocasions(),
-                        ),
-                      );
-                    },
-                      child: Text(
-                      'update',
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.only(
-                        left: 130,
-                        right: 130,
-                        top: 20,
-                        bottom: 20,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      primary: Theme.of(context).primaryColor,
-                    ),
+                  SizedBox(height: mediaQuery.size.height * 0.07),
+
+                  customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
+
+                  CustomCupertinoPicker(
+                    label: 'Type of Occasion',
+                    items: occasion.listoccasiontypename,
+                    listoccasiontype: occasion.listoccasiontype,
+                    selectedValue: 0,
+                    inputType: TextInputType.number,
+                    controller: occasion.typeofoccasioncontrollername,
                   ),
+
+                  customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
+
+
+
+                  SizedBox(
+                    height: mediaQuery.size.height * 0.2,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      !ispressed
+                          ? ElevatedButton(
+                        onPressed: () async {
+                          if (occasion.datechosencontroller.text == "" ||
+                              occasion.typeofoccasioncontrollername.text ==
+                                  "" ||
+                              occasion.nameofoccasioncontroller.text ==
+                                  "") {
+                            _scaff.currentState.showSnackBar(
+                              const SnackBar(
+                                content:
+                                Text("you cant add empty occasion"),
+                              ),
+                            );
+                          } else {
+                            setState(() {
+                              ispressed = true;
+                            });
+
+                            bool a =
+                            await occasion.updateoccation(idss: widget.occ.id);
+                            if (!a)
+                            {
+                              setState(() {
+                                ispressed=false;
+                              });
+                              _scaff.currentState.showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      "Please fill all the fields"),
+                                ),
+
+                              );  }
+                            else {
+                              occasion.cleardata();
+                              setState(() {
+                                ispressed = false;
+                              });
+                              Navigator.of(context).pop();
+                            }
+                          }
+                        },
+                        child: Text(
+                          'Update',
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: (mediaQuery.size.width * 0.3),
+                            vertical: (mediaQuery.size.height * 0.02),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          primary: Theme.of(context).primaryColor,
+                        ),
+                      )
+                          : const Center(child: const CircularProgressIndicator()),
+                    ],
+                  )
                 ],
-              )
-            ],
-          )),
+              )),
+        ): const Center(
+          child: CircularProgressIndicator(),
         ),
       ),
     );

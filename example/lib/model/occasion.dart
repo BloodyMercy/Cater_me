@@ -17,7 +17,7 @@ Occasion.fromJson(Map<String, dynamic> json) {
   image = json['image']??"not found";
 }
   Occasion.fromJsonadd(Map<String, dynamic> json) {
-    id = json['profileId']??0;
+    id = json['id']??0;
     date = json['date']??"not found";
     name = json['title']??"not found";
     type = json['type'].toString()??"not found";

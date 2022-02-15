@@ -159,10 +159,15 @@ bool loading=false;
     notifyListeners();
   }
 
-deleteoccation(String id){
-  _occasionService.deleteOcation(int.parse(id));
+deleteoccation(Occasion occ) async {
+ await  _occasionService.deleteOcation(occ.id);
+ all.remove(occ);
+ notifyListeners();
 }
-updateoccation({int id , String date , String name , String typeid}){
-_occasionService.update(id:id ,date:date ,name: name,typeId:typeid );
+updateoccation({int idss }) async {
+  datechosencontroller.text=datechosencontroller.text.replaceAll(RegExp('[^A-Za-z0-9]'), '-');
+    return await _occasionService.update(id:idss ,       name: nameofoccasioncontroller.text,
+  typeId: int.parse(typeofoccasioncontroller.text),
+  date: datechosencontroller.text,);
 }
 }

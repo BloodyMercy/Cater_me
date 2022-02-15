@@ -118,38 +118,37 @@ class OccasionService {
     }
   }
 
-  update({int id, String name, String typeId, String date }) async {
+  update({int id, String name, int typeId, String date }) async {
     Occasion occasion = Occasion();
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'};
-      var respons = http.MultipartRequest(
-          'POST', Uri.parse(ApiLink.Updateoccasions));
+        'Authorization': 'Bearer ${prefs.getString("token")}','Content-Type': 'application/json'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Updateoccasions));
       respons.headers.addAll(headers);
       respons.fields.addAll({
         'Id': id.toString(),
         'Name': name,
-        'TypeId': typeId,
+        'TypeId': typeId.toString(),
         'Date': date,
 
       });
       http.StreamedResponse responses = await respons.send();
 
       var response = await http.Response.fromStream(responses);
-      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      print("${response.statusCode}");
       if (response.statusCode == 200) {
         Map<String, dynamic> responseData = json.decode(response.body);
 
         occasion = Occasion.fromJson(responseData);
-        return occasion;
+        return true;
       } else {
         print(response.reasonPhrase);
-        return occasion;
+        return false;
       }
     } catch (e) {
       print(e);
-      return occasion;
+      return false;
     }
   }
 
