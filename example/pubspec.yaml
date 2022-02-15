@@ -66,6 +66,8 @@ dependencies:
   flutter_local_notifications: 5.0.0+4
   font_awesome_flutter:
   flutter_html: ^2.2.1
+  audioplayers: ^0.20.1
+
 
 
 
@@ -112,6 +114,7 @@ flutter:
     - images/animation/
     - images/IntroductionScreen/
     - images/orderTracking/
+    - images/audio/car.mpeg
 
   #   - images/a_dot_ham.jpeg
 

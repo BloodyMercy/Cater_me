@@ -32,10 +32,6 @@ class _BodyState extends State<Body> {
       'image': 'images/IntroductionScreen/introductionscreen3.png',
     },
 
-    // {
-    //   'text': '',
-    //   'image': 'images/IntroductionScreen/introductionscreen5.png',
-    // },
   ];
 
   @override
