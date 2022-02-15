@@ -48,9 +48,11 @@ class OccasionsCard extends StatelessWidget {
               ),
                SizedBox(
         width: mediaQuery.size.width * 0.1,),
-              Text(
-                '${this.occasions.name}',
-                style: Theme.of(context).textTheme.headline2,
+              Expanded(
+                child: Text(
+                  '${this.occasions.name}',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
               ),
             ],
           ),

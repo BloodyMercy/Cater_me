@@ -576,6 +576,7 @@ class _OrderState extends State<Order> {
                                                   fontSize: 18,
                                                   fontFamily: 'BerlinSansFB',
                                                   fontWeight: FontWeight.bold,
+
                                               ),
                                             )
                                                 : const Text(

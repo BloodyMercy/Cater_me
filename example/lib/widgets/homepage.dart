@@ -35,13 +35,13 @@ class _HomePageState extends State<HomePage> {
   bool isSearch = false;
 
   Intro intro;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getalldata();
     getData();
-
   }
 
   bool loading = false;
@@ -81,422 +81,449 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-          // appBar: AppBar(
-          //   automaticallyImplyLeading: false,
-          //   elevation: 0,
-          //   shape: const RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.vertical(
-          //       bottom: Radius.circular(15),
-          //     ),
-          //   ),
-          //   centerTitle: true,
-          //   title: Text(
-          //     'Home',
-          //     style: Theme.of(context).textTheme.headline1,
-          //   ),
-          //   backgroundColor: Theme.of(context).primaryColor,
-          // ),
+        // appBar: AppBar(
+        //   automaticallyImplyLeading: false,
+        //   elevation: 0,
+        //   shape: const RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.vertical(
+        //       bottom: Radius.circular(15),
+        //     ),
+        //   ),
+        //   centerTitle: true,
+        //   title: Text(
+        //     'Home',
+        //     style: Theme.of(context).textTheme.headline1,
+        //   ),
+        //   backgroundColor: Theme.of(context).primaryColor,
+        // ),
           body: !isSearch
               ? RefreshIndicator(
-                  onRefresh: refreshdata,
-                  child: SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    child: ColoredBox(
-                      color: LightColors.kLightYellow,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: mediaQuery.size.width * 0.6,
-                                    height: mediaQuery.size.height/13 ,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 10),
-                                      child: TextField(
+            onRefresh: refreshdata,
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: ColoredBox(
+                color: LightColors.kLightYellow,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                              width: mediaQuery.size.width * 0.6,
+                              height: mediaQuery.size.height / 13,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 10),
+                                child: TextField(
 
-                                        showCursor: true,
-                                        readOnly: true,
-                                        autofocus: false,
-                                        onTap: () {
-                                          setState(() {
-                                            isSearch = true;
-                                          });
-                                        },
-                                        decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                              borderSide:  BorderSide(
-                                                  color:colorCustom,
-                                                      ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Theme.of(context)
-                                                      .primaryColor)),
-                                          filled: true,
-                                          fillColor: LightColors.kLightYellow2,
-                                          hintText: 'Search',
-                                          prefixIcon: const Icon(Icons.search),
-                                          prefixIconColor:
-                                              Theme.of(context).primaryColor,
-                                          hintStyle: TextStyle(
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              fontSize: 13,
-                                              fontFamily: 'Segoe UI'),
-                                        ),
-                                      ),
-                                    )),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                ChatPage(peerId: "admin",peerAvatar: "",peerNickname: "Customer Service",),
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(
-                                            Icons.chat,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          )),
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MyFavorites(),
-                                            ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.favorite,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Notifications(),
-                                            ),
-                                          );
-                                        },
-                                        icon: Badge(
-                                            badgeColor:
-                                                Color.fromRGBO(253, 202, 29, 1),
-                                            badgeContent:
-                                                Text(package.nbnotification),
-                                            child: Icon(
-                                              Icons.notifications,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: (mediaQuery.size.width * 0.035),
-                                  top: mediaQuery.size.height * 0.05),
-                              child: Text(
-                                'Packages',
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                            ),
-                            Center(child: PackagesCard()),
-                            Column(children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: (mediaQuery.size.width * 0.04),
-                                        top: mediaQuery.size.height * 0.05),
-                                    child: Text(
-                                      'Upcoming occasions',
-                                      style:
-                                          Theme.of(context).textTheme.headline2,
-                                    ),
-                                  ),
-
-                                ],
-                              ),
-                              ((getOccasionsToday(package.occasions).length ==
-                                      0))
-                                  ? Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            mediaQuery.size.width * 0.01,
-                                      ),
-                                      child: Column(children: [
-                                        SizedBox(
-                                          width: mediaQuery.size.width * 0.97,
-                                          // height: mediaQuery.size.height * 0.15,
-                                          child: Card(
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(20),
-                                              ),
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                SizedBox(
-                                                  height:
-                                                      mediaQuery.size.height *
-                                                          0.15,
-                                                  width: mediaQuery.size.width *
-                                                      0.23,
-                                                  child: Card(
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                      shape:
-                                                          const RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(20),
-                                                        ),
-                                                      ),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            DateFormat.MMM()
-                                                                .format(DateTime
-                                                                    .now()),
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 30,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                          Text(
-                                                              DateFormat.d()
-                                                                  .format(DateTime
-                                                                      .now()),
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize: 30,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold))
-                                                        ],
-                                                      )),
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: mediaQuery
-                                                                  .size.width *
-                                                              0.02),
-                                                      child: Text(
-                                                        'You don\'t have any upcoming occasions ',
-                                                        style: TextStyle(
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                            fontSize: 11,
-                                                            fontFamily:
-                                                                'BerlinSansFB'),
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        IconButton(
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .push(
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        const AddNewOccasion(),
-                                                              ),
-                                                            );
-                                                          },
-                                                          icon: const Icon(Icons
-                                                              .add_circle_outline_rounded),
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .primaryColor,
-                                                        ),
-                                                        Text(
-                                                          'Add an occasion ',
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: Theme.of(
-                                                                      context)
-                                                                  .primaryColor,
-                                                              fontSize: 15,
-                                                              fontFamily:
-                                                                  'BerlinSansFB'),
-                                                        ),
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ]),
-                                    )
-                                  : Container(),
-                              Center(child: OccasionCard(Axis.horizontal)),
-                            ]),
-                            // SizedBox(height: mediaQuery.size.height * 0.1,),
-
-                            ...getAddOnsCard(package.addonsall),
-                          ]
-                      ),
-                    ),
-                  ),
-                )
-              : ListView(
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              isSearch = false;
-                            });
-                          },
-                          icon: Icon(Icons.arrow_back),
-                        ),
-                        SizedBox(
-                            width: mediaQuery.size.width * 0.8,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 10),
-                              child: TextField(
-                                autofocus: false,
-                                onChanged: (searchText) {
-                                  searchText = searchText.toLowerCase();
-                                  setState(() {
-                                    isSearch = true;
-                                  });
-                                  if (searchText == "")
+                                  showCursor: true,
+                                  readOnly: true,
+                                  autofocus: false,
+                                  onTap: () {
                                     setState(() {
-                                      isSearch = false;
+                                      isSearch = true;
                                     });
-                                },
-                                decoration: InputDecoration(
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color:
-                                              Color.fromRGBO(232, 232, 232, 1)),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              Theme.of(context).primaryColor)),
-                                  filled: true,
-                                  fillColor:
-                                      const Color.fromRGBO(232, 232, 232, 1),
-                                  hintText: 'Search',
-                                  prefixIcon: const Icon(Icons.search),
-                                  prefixIconColor: Colors.black,
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey[850],
-                                      fontSize: 16,
-                                      fontFamily: 'Segoe UI'),
+                                  },
+                                  decoration: InputDecoration(
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: colorCustom,
+                                        ),
+                                        borderRadius:
+                                        BorderRadius.circular(10)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Theme
+                                                .of(context)
+                                                .primaryColor)),
+                                    filled: true,
+                                    fillColor: LightColors.kLightYellow2,
+                                    hintText: 'Search',
+                                    prefixIcon: const Icon(Icons.search),
+                                    prefixIconColor:
+                                    Theme
+                                        .of(context)
+                                        .primaryColor,
+                                    hintStyle: TextStyle(
+                                        color: Theme
+                                            .of(context)
+                                            .primaryColor,
+                                        fontSize: 13,
+                                        fontFamily: 'Segoe UI'),
+                                  ),
                                 ),
-                                controller: controllersearch,
-                              ),
-                            )),
-                      ],
-                    ),
-
-                    //items
-                    Container(
-                      color: LightColors.kLightYellow,
-                      height: mediaQuery.size.height / 1.2,
-                      child: ListView.builder(
-                        padding: const EdgeInsets.all(25),
-                        itemCount: package.listItems.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return listitemssearch[index]
-                                  .contains(controllersearch.text.toLowerCase())
-                              ? Center(
-                                  child: GestureDetector(
-                                    onTap: () {
+                              )),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                          builder: (context) => packageAdsDetailTest(
-                                              package.listItems[index]),
+                                          builder: (context) =>
+                                              ChatPage(peerId: "admin",
+                                                peerAvatar: "",
+                                                peerNickname: "Customer Service",),
                                         ),
                                       );
                                     },
-                                    child: Card(
-
-                                      color: LightColors.kLightYellow2,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(20),
-                                        ),
+                                    icon: Icon(
+                                      Icons.chat,
+                                      color:
+                                      Theme
+                                          .of(context)
+                                          .primaryColor,
+                                    )),
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MyFavorites(),
                                       ),
-                                      child: Container(
-                                        // width: mediaQuery.size.width*0.8 ,
-                                        height: mediaQuery.size.height * 0.1,
-                                        child: Row(
-                                          children: [
-                                            Image.network(
-                                              package.listItems[index].image,
-                                              height: 100,
-                                              width: 100,
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: Theme
+                                        .of(context)
+                                        .primaryColor,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            Notifications(),
+                                      ),
+                                    );
+                                  },
+                                  icon: Badge(
+                                      badgeColor:
+                                      Color.fromRGBO(253, 202, 29, 1),
+                                      badgeContent:
+                                      Text(package.nbnotification),
+                                      child: Icon(
+                                        Icons.notifications,
+                                        color: Theme
+                                            .of(context)
+                                            .primaryColor,
+                                      )),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: (mediaQuery.size.width * 0.035),
+                            top: mediaQuery.size.height * 0.05),
+                        child: Text(
+                          'Packages',
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline2,
+                        ),
+                      ),
+                      Center(child: PackagesCard()),
+                      Column(children: [
+                        Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left: (mediaQuery.size.width * 0.04),
+                                  top: mediaQuery.size.height * 0.05),
+                              child: Text(
+                                'Upcoming occasions',
+                                style:
+                                Theme
+                                    .of(context)
+                                    .textTheme
+                                    .headline2,
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        ((getOccasionsToday(package.occasions).length ==
+                            0))
+                            ? Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal:
+                            mediaQuery.size.width * 0.01,
+                          ),
+                          child: Column(children: [
+                            SizedBox(
+                              width: mediaQuery.size.width * 0.97,
+                              // height: mediaQuery.size.height * 0.15,
+                              child: Card(
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                      mediaQuery.size.height *
+                                          0.15,
+                                      width: mediaQuery.size.width *
+                                          0.23,
+                                      child: Card(
+                                          color: Theme
+                                              .of(context)
+                                              .primaryColor,
+                                          shape:
+                                          const RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.all(
+                                              Radius.circular(20),
                                             ),
-                                            SizedBox(
-                                              width: MediaQuery.of(context).size.width * 0.04,
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                '${package.listItems[index].title}',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headline2,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment
+                                                .center,
+                                            children: [
+                                              Text(
+                                                DateFormat.MMM()
+                                                    .format(DateTime
+                                                    .now()),
+                                                style: const TextStyle(
+                                                    color: Colors
+                                                        .white,
+                                                    fontSize: 30,
+                                                    fontWeight:
+                                                    FontWeight
+                                                        .bold),
                                               ),
+                                              Text(
+                                                  DateFormat.d()
+                                                      .format(DateTime
+                                                      .now()),
+                                                  style: const TextStyle(
+                                                      color: Colors
+                                                          .white,
+                                                      fontSize: 30,
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .bold))
+                                            ],
+                                          )),
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: mediaQuery
+                                                  .size.width *
+                                                  0.02),
+                                          child: Text(
+                                            'You don\'t have any upcoming occasions ',
+                                            style: TextStyle(
+                                                color: Theme
+                                                    .of(
+                                                    context)
+                                                    .primaryColor,
+                                                fontSize: 11,
+                                                fontFamily:
+                                                'BerlinSansFB'),
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                Navigator.of(
+                                                    context)
+                                                    .push(
+                                                  MaterialPageRoute(
+                                                    builder:
+                                                        (context) =>
+                                                    const AddNewOccasion(),
+                                                  ),
+                                                );
+                                              },
+                                              icon: const Icon(Icons
+                                                  .add_circle_outline_rounded),
+                                              color:
+                                              Theme
+                                                  .of(context)
+                                                  .primaryColor,
+                                            ),
+                                            Text(
+                                              'Add an occasion ',
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight
+                                                      .bold,
+                                                  color: Theme
+                                                      .of(
+                                                      context)
+                                                      .primaryColor,
+                                                  fontSize: 15,
+                                                  fontFamily:
+                                                  'BerlinSansFB'),
                                             ),
                                           ],
-                                        ),
-                                      ),
+                                        )
+                                      ],
                                     ),
-                                  ),
-                                )
-                              : Container();
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
+                        )
+                            : Container(),
+                        Center(child: OccasionCard(Axis.horizontal)),
+                      ]),
+                      // SizedBox(height: mediaQuery.size.height * 0.1,),
+
+                      ...getAddOnsCard(package.addonsall),
+                    ]
+                ),
+              ),
+            ),
+          )
+              : ListView(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isSearch = false;
+                      });
+                    },
+                    icon: Icon(Icons.arrow_back),
+                  ),
+                  SizedBox(
+                      width: mediaQuery.size.width * 0.8,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        child: TextField(
+                          autofocus: false,
+                          onChanged: (searchText) {
+                            searchText = searchText.toLowerCase();
+                            setState(() {
+                              isSearch = true;
+                            });
+                            if (searchText == "")
+                              setState(() {
+                                isSearch = false;
+                              });
+                          },
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color:
+                                    Color.fromRGBO(232, 232, 232, 1)),
+                                borderRadius: BorderRadius.circular(10)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                    Theme
+                                        .of(context)
+                                        .primaryColor)),
+                            filled: true,
+                            fillColor:
+                            const Color.fromRGBO(232, 232, 232, 1),
+                            hintText: 'Search',
+                            prefixIcon: const Icon(Icons.search),
+                            prefixIconColor: Colors.black,
+                            hintStyle: TextStyle(
+                                color: Colors.grey[850],
+                                fontSize: 16,
+                                fontFamily: 'Segoe UI'),
+                          ),
+                          controller: controllersearch,
+                        ),
+                      )),
+                ],
+              ),
+
+              //items
+              Container(
+                color: LightColors.kLightYellow,
+                height: mediaQuery.size.height / 1.2,
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(25),
+                  itemCount: package.listItems.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return listitemssearch[index]
+                        .contains(controllersearch.text.toLowerCase())
+                        ? Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  packageAdsDetailTest(
+                                      package.listItems[index]),
+                            ),
+                          );
                         },
+                        child: Card(
+
+                          color: LightColors.kLightYellow2,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: Container(
+                            // width: mediaQuery.size.width*0.8 ,
+                            height: mediaQuery.size.height * 0.1,
+                            child: Row(
+                              children: [
+                                Image.network(
+                                  package.listItems[index].image,
+                                  height: 100,
+                                  width: 100,
+                                ),
+                                SizedBox(
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.04,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${package.listItems[index].title}',
+                                    style: Theme
+                                        .of(context)
+                                        .textTheme
+                                        .headline2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                )),
+                    )
+                        : Container();
+                  },
+                ),
+              ),
+            ],
+          )),
     );
   }
 

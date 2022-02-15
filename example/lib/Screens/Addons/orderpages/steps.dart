@@ -143,7 +143,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
 
                   child: GridView(
                     padding: const EdgeInsets.all(25),
-                    children: getAddOnOrder(_cuisin.allons),
+                    children: getAddOnOrder(_cuisin.allonsorder),
                     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
                       childAspectRatio:  2.5/3,
