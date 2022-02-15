@@ -117,6 +117,7 @@ class _OrderState extends State<Order> {
   }
   @override
   Widget build(BuildContext context) {
+    final _creditCardss=Provider.of<CreditCardsProvider>(context,listen: true);
     final addresses = Provider.of<AdressProvider>(context, listen: true);
     // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
@@ -446,8 +447,11 @@ class _OrderState extends State<Order> {
                                             if (orderProvider.spets == 6) {
                                               if (orderProvider.itemOrders
                                                   .length >
-                                                  0)
+                                                  0) {
                                                 orderProvider.spets++;
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              }
                                               else {
                                                 _key.currentState.showSnackBar(
                                                   const SnackBar(
@@ -456,99 +460,116 @@ class _OrderState extends State<Order> {
                                                   ),
                                                 );
                                               }
-                                            } else
-                                            if (orderProvider.spets == 7) {
-                                              showDialog(
-                                                context: this.context,
-                                                barrierDismissible: false,
-                                                builder: (
-                                                    BuildContext context) {
-                                                  return WillPopScope(
-                                                      onWillPop: () =>
-                                                      Future<bool>.value(false),
-                                                      child: AlertDialog(
-                                                        title: const Text(
-                                                            "Loading..."),
-                                                        content: Column(
-                                                            mainAxisSize:
-                                                            MainAxisSize.min,
-                                                            children: <Widget>[
-                                                              const CircularProgressIndicator()
-                                                            ]),
-                                                      ));
-                                                },
-                                              );
-                                              final _creditCards =
-                                              Provider.of<CreditCardsProvider>(
-                                                  context,
-                                                  listen: false);
-
-                                              final address =
-                                              Provider.of<AdressProvider>(
-                                                  context,
-                                                  listen: false);
-
-                                              bool a =
-                                              await orderProvider.makeorder(
-                                                  date: address
-                                                      .evendatecontroller.text
-                                                      .replaceAll(
-                                                    RegExp('[^A-Za-z0-9]'),
-                                                    '-',
+                                            } else if (orderProvider.spets ==
+                                                7) {
+                                              if (_creditCardss.credit.id ==
+                                                  0) {
+                                                _key.currentState.showSnackBar(
+                                                  const SnackBar(
+                                                    content:
+                                                    Text(
+                                                        "no credit cards selected"),
                                                   ),
-                                                  type: address
-                                                      .typeofeventcontroller
-                                                      .text,
-                                                  nb: address
-                                                      .numberofguestcontroller
-                                                      .text,
-                                                  idcard: _creditCards
-                                                      .credit.cardId,
-                                                  contactname:
-                                                  address.name.text,
-                                                  contactphone:
-                                                  address.phone.text,
-                                                  eventname: address
-                                                      .eventnamecontroller
-                                                      .text);
-
-                                              Navigator.of(context).pop();
-                                              if (a)
-                                                Navigator.pushReplacement(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            AppointmentSuccess()));
+                                                );
+                                              }
                                               else {
                                                 showDialog(
                                                   context: this.context,
+                                                  barrierDismissible: false,
                                                   builder: (
                                                       BuildContext context) {
-                                                    return AlertDialog(
-                                                      title: const Text(
-                                                          "error "),
-                                                      content:
-                                                      const Text("try again"),
-                                                      actions: <Widget>[
-                                                        TextButton(
-                                                            child:
-                                                            const Text("Close"),
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    context))
-                                                      ],
-                                                    );
+                                                    return WillPopScope(
+                                                        onWillPop: () =>
+                                                        Future<bool>.value(
+                                                            false),
+                                                        child: AlertDialog(
+                                                          title: const Text(
+                                                              "Loading..."),
+                                                          content: Column(
+                                                              mainAxisSize:
+                                                              MainAxisSize.min,
+                                                              children: <
+                                                                  Widget>[
+                                                                const CircularProgressIndicator()
+                                                              ]),
+                                                        ));
                                                   },
                                                 );
+                                                final _creditCards =
+                                                Provider.of<
+                                                    CreditCardsProvider>(
+                                                    context,
+                                                    listen: false);
+
+                                                final address =
+                                                Provider.of<AdressProvider>(
+                                                    context,
+                                                    listen: false);
+
+                                                bool a =
+                                                await orderProvider.makeorder(
+                                                    date: address
+                                                        .evendatecontroller.text
+                                                        .replaceAll(
+                                                      RegExp('[^A-Za-z0-9]'),
+                                                      '-',
+                                                    ),
+                                                    type: address
+                                                        .typeofeventcontroller
+                                                        .text,
+                                                    nb: address
+                                                        .numberofguestcontroller
+                                                        .text,
+                                                    idcard: _creditCards
+                                                        .credit.cardId,
+                                                    contactname:
+                                                    address.name.text,
+                                                    contactphone:
+                                                    address.phone.text,
+                                                    eventname: address
+                                                        .eventnamecontroller
+                                                        .text);
+
+                                                Navigator.of(context).pop();
+                                                if (a)
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              AppointmentSuccess()));
+                                                else {
+                                                  showDialog(
+                                                    context: this.context,
+                                                    builder: (
+                                                        BuildContext context) {
+                                                      return AlertDialog(
+                                                        title: const Text(
+                                                            "error "),
+                                                        content:
+                                                        const Text("try again"),
+                                                        actions: <Widget>[
+                                                          TextButton(
+                                                              child:
+                                                              const Text(
+                                                                  "Close"),
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      context))
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
                                               }
-                                            } else
+                                            } else {
                                               orderProvider.spets++;
 
-                                            _animateToIndex(
-                                                orderProvider.spets);
-                                            //    }},
+                                              _animateToIndex(
+                                                  orderProvider.spets);
+                                            }
+                                          },
                                             child:
-                                            orderProvider.spets != 8
+                                            orderProvider.spets != 7
                                                 ? const Text(
                                               'Next',
                                               style: TextStyle(
@@ -560,11 +581,12 @@ class _OrderState extends State<Order> {
                                                 : const Text(
                                               'Done',
                                               style: TextStyle(
+
                                                   fontSize: 18,
                                                   fontFamily: 'BerlinSansFB',
                                                   fontWeight: FontWeight.bold,
                                                   ),
-                                            );
+                                            )
 
                                             // style: ElevatedButton.styleFrom(
                                             //   padding: EdgeInsets.fromLTRB(
@@ -578,7 +600,7 @@ class _OrderState extends State<Order> {
                                             //   primary: const Color.fromRGBO(63, 85, 33, 1),
                                             //
                                             // );
-                                          }),
+                                          ),
                                       ),
                                     ])),
                           ),
