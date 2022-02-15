@@ -134,20 +134,13 @@ class _NavigationBarState extends State<Navigationbar> {
     // TODO: implement initState
     super.initState();
     startinto();
-    playaudio();
+ //   playaudio();
     inAppMessaging(context,SplashScreen());
 
   }
 
 
-  playaudio() async{
-    _audioCache = AudioCache(
-      prefix: 'audio/',
-      fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
-    );
-    _audioCache.play('car.mpeg');
 
-  }
   startinto() async{
 
 

@@ -4,6 +4,7 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/appointment/donation.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -22,9 +23,28 @@ class AppointmentSuccess extends StatefulWidget {
 class _AppointmentSuccessState extends State<AppointmentSuccess> {
   var _key = GlobalKey<ScaffoldState>();
   final f = new DateFormat('MM/dd/yyyy hh:mm');
-
+  AudioCache _audioCache;
 //  Widget svg = SvgPicture.asset('assets/images/reset_success.svg');
   // Widget svg1 = SvgPicture.asset('assets/images/cube.svg');
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   // startinto();
+      playaudio();
+  //  inAppMessaging(context,SplashScreen());
+
+  }
+  playaudio() async{
+    _audioCache = AudioCache(
+      prefix: 'audio/',
+      fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
+    );
+    _audioCache.play('car.mpeg');
+
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight =
