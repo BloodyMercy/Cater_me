@@ -159,5 +159,10 @@ bool loading=false;
     notifyListeners();
   }
 
-
+deleteoccation(String id){
+  _occasionService.deleteOcation(int.parse(id));
+}
+updateoccation({int id , String date , String name , String typeid}){
+_occasionService.update(id:id ,date:date ,name: name,typeId:typeid );
+}
 }

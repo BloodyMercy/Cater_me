@@ -29,13 +29,7 @@ class _OccasionCardState extends State<OccasionCard> {
     // getdata();
     super.initState();
   }
-  // getdata() async {
-  //  final occasion=Provider.of<PackageService>(context,listen: false);
-  //   setState(()async {
-  //     alloccasions=await PackageService.AllOccasions() ;
-  //   });
-  // }
-  // final List<PageViewModel> pages = [
+
   @override
   Widget build(BuildContext context) {
     // final occasion=Provider.of<OccasionProvider>(context,listen:true);

@@ -1,8 +1,10 @@
+import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/model/occasion.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class EditOccasion extends StatefulWidget {
   Occasion occ;
@@ -37,6 +39,8 @@ class _EditOccasionState extends State<EditOccasion> {
     // TODO: implement initState
     super.initState();
     selectedDate = DateTime.parse(widget.occ.date);
+    typeController.text=widget.occ.type;
+    nameController.text=widget.occ.name;
 
 }
   // late bool yearly;
@@ -51,7 +55,7 @@ class _EditOccasionState extends State<EditOccasion> {
   Widget build(BuildContext context) {
     //List<Occasion> occasion = occasionSS;
     final mediaQuery = MediaQuery.of(context);
-
+    OccasionProvider _occasion = Provider.of<OccasionProvider>(context, listen: false);
 
     return SafeArea(
       child: Scaffold(
@@ -120,21 +124,7 @@ class _EditOccasionState extends State<EditOccasion> {
                   ],
                 ),
               ),
-              // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              //   Text(
-              //     "Yearly reminder",
-              //     style: Theme.of(context).textTheme.headline2,
-              //   ),
-                // Switch.adaptive(
-                //   activeColor: Theme.of(context).primaryColor,
-                //   value: yearly,
-                //   onChanged: (val) {
-                //     setState(() {
-                //       yearly = val;
-                //     });
-                //   },
-                // ),
-             // ]),
+
               SizedBox(
                 height: mediaQuery.size.height * 0.2,
               ),
@@ -142,11 +132,11 @@ class _EditOccasionState extends State<EditOccasion> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       widget.occ.name = nameController.text.toString();
                       widget.occ.type = typeController.text.toString();
-                      //widget.occ.yearly = yearly;
                       widget.occ.date = selectedDate.toString();
+                      _occasion.updateoccation(id: widget.occ.id ,name:nameController.text.toString(),date:selectedDate.toString(),typeid: typeController.text.toString()  );
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => Ocasions(),
@@ -154,7 +144,7 @@ class _EditOccasionState extends State<EditOccasion> {
                       );
                     },
                       child: Text(
-                      'SAVE',
+                      'update',
                       style: Theme.of(context).textTheme.headline1,
                     ),
                     style: ElevatedButton.styleFrom(

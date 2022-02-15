@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../add_new_occasion.dart';
+import '../edit_occasion.dart';
 
 class OccasionListView extends StatefulWidget {
   @override
@@ -119,65 +120,78 @@ class _OccasionListViewState extends State<OccasionListView> {
              delegate: SliverChildBuilderDelegate(
 
                  (context ,int index ){
-                   return Container(
-                     child: Card(
-                       elevation: 3,
-                       shape: const RoundedRectangleBorder(
-                         borderRadius: BorderRadius.all(
-                           Radius.circular(20),
-                         ),
-                       ),
-                       child: Row(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           SizedBox(
-                             height: mediaQuery.size.height * 0.17,
-                             width: mediaQuery.size.width * 0.25,
-                             child: Container(
+                   return GestureDetector(
+                     onTap: (){
 
+                       Navigator.of(context).push(
+                         MaterialPageRoute(
+                           builder: (context) =>
+                            EditOccasion(occa.all[index]),
+                         ),
+                       );
+
+
+                     },
+                     child: Container(
+                       child: Card(
+                         elevation: 3,
+                         shape: const RoundedRectangleBorder(
+                           borderRadius: BorderRadius.all(
+                             Radius.circular(20),
+                           ),
+                         ),
+                         child: Row(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             SizedBox(
                                height: mediaQuery.size.height * 0.17,
                                width: mediaQuery.size.width * 0.25,
-                               color: Colors.amber,
+                               child: Container(
+
+                                 height: mediaQuery.size.height * 0.17,
+                                 width: mediaQuery.size.width * 0.25,
+                                 color:Color.fromRGBO(63, 85, 33, 1),
 
 
+                                 child: Column(
+                                   mainAxisAlignment: MainAxisAlignment.center,
+                                   children: [
+                                     Text(
+                                       '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
+                                       style: const TextStyle(
+                                           color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                                     ),
+                                     Text(
+                                         '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
+                                         style: const TextStyle(
+                                             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
+                                   ],
+                                 ),
+                               ),
+                             ),
+                             // SizedBox(
+                             //   width: mediaQuery.size.width * 0.1,),
+                             Padding(
+                               padding: const EdgeInsets.all(8.0),
                                child: Column(
-                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                  children: [
                                    Text(
-                                     '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
-                                     style: const TextStyle(
-                                         color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                                     '${occa.all[index].name}',
+                                     style: Theme.of(context).textTheme.headline2,
                                    ),
+                                   SizedBox(height: 65,),
                                    Text(
-                                       '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
-                                       style: const TextStyle(
-                                           color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
+                                     '${occa.all[index].type}',
+                                     style: Theme.of(context).textTheme.headline2,
+                                   ),
                                  ],
                                ),
                              ),
-                           ),
-                           // SizedBox(
-                           //   width: mediaQuery.size.width * 0.1,),
-                           Padding(
-                             padding: const EdgeInsets.all(8.0),
-                             child: Column(
-                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                               children: [
-                                 Text(
-                                   '${occa.all[index].name}',
-                                   style: Theme.of(context).textTheme.headline2,
-                                 ),
-                                 SizedBox(height: 65,),
-                                 Text(
-                                   '${occa.all[index].type}',
-                                   style: Theme.of(context).textTheme.headline2,
-                                 ),
-                               ],
-                             ),
-                           ),
-                           SizedBox(width:MediaQuery.of(context).size.width/58 ,),
-                           Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/4,)
-                         ],
+                             SizedBox(width:MediaQuery.of(context).size.width/58 ,),
+                             Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/4,)
+                           ],
+                         ),
                        ),
                      ),
                    );

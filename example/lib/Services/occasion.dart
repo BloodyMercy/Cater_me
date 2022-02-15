@@ -8,28 +8,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'ApiLink.dart';
 
-class OccasionService{
+class OccasionService {
   Future createOccasion({
     int id,
     // bool hasReminder,
-   String name,
-  int typeId,
+    String name,
+    int typeId,
     String date,
-  })async{
-    Occasion occasion=Occasion();
+  }) async {
+    Occasion occasion = Occasion();
     try {
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'   };
-      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.CreateOccasions));
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
+      var respons = http.MultipartRequest(
+          'POST', Uri.parse(ApiLink.CreateOccasions));
       respons.headers.addAll(headers);
       respons.fields.addAll({
         'profileId': id.toString(),
         'Title': name,
         'TypeId': typeId.toString(),
         'date': date,
-       // 'HasReminder': "${hasReminder}",
+        // 'HasReminder': "${hasReminder}",
       });
 
       // open a bytestream
@@ -45,7 +45,6 @@ class OccasionService{
 
         occasion = Occasion.fromJsonadd(responseData);
         return occasion;
-
       } else {
         print(response.reasonPhrase);
         return occasion;
@@ -57,12 +56,10 @@ class OccasionService{
   }
 
 
-  Future<List<OccassionType>> getAllOcasionType() async{
-    List<OccassionType> l=[];
+  Future<List<OccassionType>> getAllOcasionType() async {
+    List<OccassionType> l = [];
     try {
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
 
 
       var headers = {
@@ -74,40 +71,33 @@ class OccasionService{
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
-
         List<dynamic> responseData = json.decode(response.body);
 
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
 
-        for(int i=0;i<responseData.length;i++){
+        for (int i = 0; i < responseData.length; i++) {
           l.add(OccassionType.fromJson(responseData[i]));
         }
         return l;
-
       }
       else {
         print(response.reasonPhrase);
         return [];
       }
-
-
-
-    }catch(e){
+    } catch (e) {
       return [];
     }
   }
 
   //newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-  static Future<Map<String, dynamic>> getallnewoccasions() async{
-    List<Occasion> l=[];
+  static Future<Map<String, dynamic>> getallnewoccasions() async {
+    List<Occasion> l = [];
     try {
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
 
-
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request('GET', Uri.parse(ApiLink.Getalloccasions));
       request.headers.addAll(headers);
       http.StreamedResponse responses = await request.send();
@@ -115,31 +105,27 @@ class OccasionService{
       if (response.statusCode == 200) {
         Map<String, dynamic> responseData = json.decode(response.body);
         return responseData;
-
       }
       else if (response.statusCode == 401) {
-        return {"status":"1"};
-
+        return {"status": "1"};
       }
       else {
         print(response.reasonPhrase);
         return {};
       }
-
-
-
-    }catch(e){
-
+    } catch (e) {
       return {};
     }
   }
-  update({String id ,String name , String typeId , String date  })async{
-     Occasion occasion =Occasion();
+
+  update({int id, String name, String typeId, String date }) async {
+    Occasion occasion = Occasion();
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'   };
-      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Updateoccasions));
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
+      var respons = http.MultipartRequest(
+          'POST', Uri.parse(ApiLink.Updateoccasions));
       respons.headers.addAll(headers);
       respons.fields.addAll({
         'Id': id.toString(),
@@ -157,7 +143,6 @@ class OccasionService{
 
         occasion = Occasion.fromJson(responseData);
         return occasion;
-
       } else {
         print(response.reasonPhrase);
         return occasion;
@@ -167,31 +152,30 @@ class OccasionService{
       return occasion;
     }
   }
-  }
 
-  Future<ErrorMessage> deleteOcation(int id) async{
-    ErrorMessage em=ErrorMessage();
-    try{
+
+  Future<ErrorMessage> deleteOcation(int id) async {
+    ErrorMessage em = ErrorMessage();
+    try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'   };
-      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Deleteoccasions+"/$id"));
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
+      var respons = http.MultipartRequest(
+          'POST', Uri.parse(ApiLink.Deleteoccasions + "/$id"));
       respons.headers.addAll(headers);
       http.StreamedResponse responses = await respons.send();
       var response = await http.Response.fromStream(responses);
-      if(response.statusCode==200){
-        em.message="deleted";
+      if (response.statusCode == 200) {
+        em.message = "deleted";
         return em;
-      }else{
-        em.message="cannot delete";
+      } else {
+        em.message = "cannot delete";
         return em;
       }
-
     }
-    catch(e){
+    catch (e) {
       print("error cannot delete");
     }
     return ErrorMessage();
-
   }
-
+}
