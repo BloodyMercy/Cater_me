@@ -1,14 +1,10 @@
 import 'package:CaterMe/IntroTest/size_config.dart';
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-import 'constant.dart';
-import 'homepage.dart';
 import 'on_boarding_contant.dart';
 
 class Body extends StatefulWidget {

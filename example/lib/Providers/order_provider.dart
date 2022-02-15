@@ -1,18 +1,13 @@
 import 'dart:convert';
 
-
-import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
-
-import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];

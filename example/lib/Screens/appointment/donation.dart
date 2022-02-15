@@ -1,6 +1,5 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/colors/colors.dart';
-
 import 'package:flutter/material.dart';
 
 class DonationAdded extends StatelessWidget {

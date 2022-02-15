@@ -1,12 +1,9 @@
 
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
-import 'package:CaterMe/model/add_on.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-
-import 'package:provider/provider.dart';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 

@@ -1,9 +1,6 @@
 import 'package:CaterMe/IntroTest/size_config.dart';
 import 'package:flutter/material.dart';
 
-
-import 'constant.dart';
-
 class OnBoardingContent extends StatelessWidget {
   const OnBoardingContent({
     Key key,

@@ -1,9 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/data/food_details.dart';
-import 'package:CaterMe/data/food_imags.dart';
-import 'package:CaterMe/widgets/Cuisins/cuisins_list.dart';
 import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,5 @@
 import 'package:CaterMe/Screens/addOns.dart';
-import 'package:CaterMe/Screens/add_on_order_screen.dart';
-import 'package:CaterMe/Screens/specific_menu.dart';
 import 'package:CaterMe/model/cuisins.dart';
-
 import 'package:flutter/material.dart';
 
 class CuisinsCard extends StatelessWidget {

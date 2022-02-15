@@ -1,4 +1,3 @@
-import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/packages.dart';
 
 class Addonall {

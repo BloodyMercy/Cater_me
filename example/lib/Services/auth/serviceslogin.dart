@@ -4,11 +4,7 @@ import 'dart:io';
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/Users.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../ApiLink.dart';

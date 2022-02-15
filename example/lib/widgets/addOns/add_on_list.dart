@@ -1,15 +1,9 @@
 import 'package:CaterMe/Screens/AddonsCard.dart';
-import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/addons/addonsall.dart';
-import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/packages.dart';
-import 'package:CaterMe/widgets/Menu/menus_cards.dart';
-import 'package:CaterMe/widgets/addOns/add_on_card_order.dart';
-
-import 'package:CaterMe/widgets/addOns/add_on_cards.dart';
-
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
-
+import 'package:CaterMe/widgets/addOns/add_on_card_order.dart';
+import 'package:CaterMe/widgets/addOns/add_on_cards.dart';
 
 import 'add_ons_card.dart';
 

@@ -2,12 +2,9 @@
 
 import 'dart:convert';
 
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
-import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/occasion.dart';
-import 'package:CaterMe/model/package.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';

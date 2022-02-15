@@ -1,9 +1,7 @@
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/order_details.dart';
 import 'package:CaterMe/Screens/orders/order_tracking.dart';
-import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class OrderId extends StatefulWidget {

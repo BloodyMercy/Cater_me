@@ -1,17 +1,9 @@
 import 'package:CaterMe/Providers/occasion.dart';
-import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_added.dart';
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
-import 'package:CaterMe/colors/colors.dart';
-import 'package:CaterMe/model/occasion.dart';
-import 'package:CaterMe/model/occasions/occasion.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../custom_date_picker_form_field.dart';
 
 class AddNewOccasion extends StatefulWidget {
   const AddNewOccasion({Key key}) : super(key: key);

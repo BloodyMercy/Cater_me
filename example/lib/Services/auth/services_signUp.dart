@@ -1,15 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:CaterMe/chat/constants/firestore_constants.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
-import 'package:CaterMe/model/Users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../ApiLink.dart';
 
 class AuthModelSignUp {

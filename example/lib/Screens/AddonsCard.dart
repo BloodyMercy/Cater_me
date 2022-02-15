@@ -1,8 +1,4 @@
-import 'package:CaterMe/Screens/specific_menu.dart';
-import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/addons/addonsall.dart';
-import 'package:CaterMe/model/cuisins.dart';
-
 import 'package:flutter/material.dart';
 
 import 'add_on_order_screen.dart';

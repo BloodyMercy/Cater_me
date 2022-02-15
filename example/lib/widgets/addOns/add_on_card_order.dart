@@ -1,10 +1,6 @@
-import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
-import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/packages.dart';
-import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AddOnCardOrder extends StatelessWidget {
   Package addOn;

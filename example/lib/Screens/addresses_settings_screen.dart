@@ -1,14 +1,9 @@
 import 'package:CaterMe/Providers/address.dart';
-import 'package:CaterMe/Screens/widgets/custom_ElevatedButton.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:CaterMe/widgets/Addresses/address_list_settings.dart';
-import 'package:CaterMe/widgets/Addresses/addresses_list.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'occasion/theme/colors/light_colors.dart';
 
 class AddAddressSettingsScreen extends StatefulWidget {
   const AddAddressSettingsScreen({Key key}) : super(key: key);

@@ -1,7 +1,6 @@
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-
- import 'package:CaterMe/widgets/order_tracking/order_delivered.dart';
+import 'package:CaterMe/widgets/order_tracking/order_delivered.dart';
 import 'package:CaterMe/widgets/order_tracking/order_in_the_way.dart';
 import 'package:CaterMe/widgets/order_tracking/order_preparing.dart';
 import 'package:CaterMe/widgets/order_tracking/order_received.dart';

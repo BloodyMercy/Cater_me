@@ -5,8 +5,9 @@ import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'ApiLink.dart';
 
 class AddressService{

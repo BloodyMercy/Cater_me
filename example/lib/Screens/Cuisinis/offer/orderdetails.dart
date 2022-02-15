@@ -1,17 +1,10 @@
-import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/addOns.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
-import 'package:CaterMe/model/Cuisines.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
-import 'package:CaterMe/model/add_on.dart';
-import 'package:CaterMe/model/cuisins.dart';
-import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:provider/provider.dart';
 
 class OrderAdscuisDetail extends StatefulWidget {

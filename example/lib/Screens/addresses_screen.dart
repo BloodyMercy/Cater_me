@@ -1,5 +1,4 @@
 import 'package:CaterMe/Providers/address.dart';
-import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_list.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';

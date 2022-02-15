@@ -1,16 +1,11 @@
-import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/edit_occasion.dart';
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
-import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/widgets/occasions/occasions_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 class OccasionCard extends StatefulWidget {

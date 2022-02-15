@@ -4,15 +4,11 @@ import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:CaterMe/Services/auth/serviceslogin.dart';
 import 'package:CaterMe/Services/personal_info_service.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
-import 'package:CaterMe/model/Users.dart';
 import 'package:CaterMe/model/personal_info.dart';
-
 import 'package:flutter/foundation.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum Status {

@@ -1,9 +1,6 @@
 
 import 'package:CaterMe/Services/friend.dart';
-
 import 'package:CaterMe/model/friend_model.dart';
-
-
 import 'package:flutter/cupertino.dart';
 
 class FriendsProvider extends ChangeNotifier {

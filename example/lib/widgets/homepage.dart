@@ -1,21 +1,16 @@
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
-
 import 'package:CaterMe/Screens/add_new_occasion.dart';
-import 'package:CaterMe/Screens/cuisins_screen.dart';
-
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
+import 'package:CaterMe/widgets/Packages/packages_card.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
-import 'package:CaterMe/widgets/Cuisins/cuisin_card.dart';
-import 'package:CaterMe/widgets/items_details.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
-import 'package:CaterMe/widgets/Packages/packages_card.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

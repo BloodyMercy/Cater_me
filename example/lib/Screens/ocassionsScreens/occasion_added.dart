@@ -1,6 +1,5 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-
 import 'package:flutter/material.dart';
 
 class OccasionAdded extends StatelessWidget {

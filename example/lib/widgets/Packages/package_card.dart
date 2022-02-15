@@ -1,16 +1,8 @@
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/data/food_details.dart';
-import 'package:CaterMe/model/occasion.dart';
-import 'package:CaterMe/model/package.dart';
 import 'package:CaterMe/model/packages.dart';
-import 'package:CaterMe/widgets/Packages/package_add_details.dart';
 import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import 'order_add_details.dart';
 
 class PackageCard extends StatefulWidget {
   Package packages;

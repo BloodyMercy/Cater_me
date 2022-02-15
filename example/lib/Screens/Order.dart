@@ -1,18 +1,14 @@
 import 'package:CaterMe/Payment/OrderSucc.dart';
-import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
-import 'package:CaterMe/Screens/add_on_order_screen.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
-import 'package:CaterMe/Screens/order_summery_1.dart';
 import 'package:CaterMe/Screens/order_summery_copy.dart';
 import 'package:CaterMe/Screens/regular_daberne_screen.dart';
 import 'package:CaterMe/Screens/regular_screen.dart';
 import 'package:CaterMe/Screens/related_offers_screen.dart';
-import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/widgets/Customer_stepper.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +16,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Addons/orderpages/steps.dart';
-import 'AddonsOrder.dart';
-import 'Cuisinis/offer/Cuisin_offer_card.dart';
-import 'CuisinsOrder.dart';
 
 class Order extends StatefulWidget {
   // int selectedStep;

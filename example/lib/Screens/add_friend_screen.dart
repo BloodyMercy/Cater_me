@@ -1,5 +1,4 @@
 import 'package:CaterMe/Providers/friend.dart';
-import 'package:CaterMe/model/address.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/Frriends/friends_textField.dart';

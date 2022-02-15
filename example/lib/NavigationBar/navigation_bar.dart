@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:CaterMe/Helpers/inappnotification.dart';
 import 'package:CaterMe/Providers/address.dart';
@@ -7,12 +6,9 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Order.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
-
-
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
-import 'package:CaterMe/Services/notification_service.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/notificaition/services/notification_service.dart';
@@ -20,7 +16,6 @@ import 'package:CaterMe/widgets/homepage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

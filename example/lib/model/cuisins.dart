@@ -1,4 +1,4 @@
-import 'menu.dart';
+
 
 class Cuisins {
    String name="";

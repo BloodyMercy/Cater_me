@@ -1,5 +1,4 @@
 import 'package:CaterMe/Providers/packages.dart';
-
 import 'package:CaterMe/Services/occasion.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasion.dart';
@@ -7,7 +6,6 @@ import 'package:CaterMe/model/occasions/occasiontype.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 
 class OccasionProvider extends ChangeNotifier {

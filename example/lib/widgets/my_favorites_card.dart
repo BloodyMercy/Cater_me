@@ -1,5 +1,4 @@
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/material.dart';
 

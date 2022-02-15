@@ -10,7 +10,6 @@ import 'package:credit_card/credit_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_checkout_payment/flutter_checkout_payment.dart';
-
 import 'package:provider/provider.dart';
 class HomeScreen extends StatefulWidget {
   @override

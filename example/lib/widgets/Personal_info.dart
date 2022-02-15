@@ -1,5 +1,3 @@
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
-import 'package:CaterMe/Providers/personal_info_provider.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';

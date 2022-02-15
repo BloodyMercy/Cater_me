@@ -1,11 +1,7 @@
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/addOns.dart';
-import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/addOns/add_on_cards.dart';
-
 import 'package:flutter/material.dart';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 class AddOnsCard extends StatefulWidget {

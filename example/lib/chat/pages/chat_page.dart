@@ -5,13 +5,11 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/chat/constants/color_constants.dart';
 import 'package:CaterMe/chat/constants/firestore_constants.dart';
 import 'package:CaterMe/chat/models/message_chat.dart';
-
 import 'package:CaterMe/chat/providers/chat_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

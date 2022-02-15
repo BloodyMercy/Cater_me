@@ -1,7 +1,5 @@
-import 'package:CaterMe/model/add_on.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
-import 'package:CaterMe/widgets/items_details.dart';
 import 'package:flutter/material.dart';
 
 class AddOnCards extends StatelessWidget {

@@ -1,7 +1,5 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/occasion.dart';
-import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';

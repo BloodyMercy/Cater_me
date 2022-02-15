@@ -1,12 +1,9 @@
-import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/packages.dart';
+import 'package:CaterMe/widgets/Packages/package_card.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:CaterMe/widgets/my_favorites_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_card.dart';
-import 'package:CaterMe/widgets/Packages/package_card.dart';
-import 'package:CaterMe/widgets/Packages/packages_card.dart';
-
 import 'package:flutter/material.dart';
 
 List<OccasionsCard> getOccasions(List<Occasion> occasion) {

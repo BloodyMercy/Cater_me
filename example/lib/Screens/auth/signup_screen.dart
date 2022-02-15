@@ -3,14 +3,12 @@ import 'dart:io';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/greeting.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:intl/intl.dart';
 import "package:image_picker/image_picker.dart";
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 
 import 'newlogin/screens/loginScreen.dart';
 

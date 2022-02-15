@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:CaterMe/model/friend_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'ApiLink.dart';
 
 class FriendServices {

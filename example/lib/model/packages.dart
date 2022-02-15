@@ -1,4 +1,3 @@
-import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/details.dart';
 
 class Package {

@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:CaterMe/model/cuisins.dart';
-import 'package:CaterMe/model/packages.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../ApiLink.dart';
 

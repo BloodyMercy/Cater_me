@@ -1,6 +1,4 @@
-import 'dart:convert';
 
-import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/address.dart';
 import 'package:CaterMe/Services/timeSpanService.dart';
 import 'package:CaterMe/model/TimeSpanModel.dart';
@@ -9,10 +7,7 @@ import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
 import 'package:CaterMe/model/friend_model.dart';
-import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 
 class AdressProvider extends ChangeNotifier{
 

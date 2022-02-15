@@ -1,15 +1,9 @@
 import 'package:CaterMe/Providers/occasion.dart';
-import 'package:CaterMe/Screens/ocassionsScreens/occasions.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/model/occasion.dart';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import 'ocassionsScreens/occasion_added.dart';
-import 'ocassionsScreens/occasion_listview.dart';
 
 class EditOccasion extends StatefulWidget {
   Occasion occ;

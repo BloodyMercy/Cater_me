@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/personal_info.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'ApiLink.dart';
 
 class PersonalInfoService {

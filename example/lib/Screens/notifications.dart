@@ -1,11 +1,8 @@
 import 'package:CaterMe/Providers/notification_provider.dart';
-import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/colors/colors.dart';
-import 'package:CaterMe/widgets/Frriends/friends_list.dart';
-import 'package:CaterMe/widgets/notifications_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

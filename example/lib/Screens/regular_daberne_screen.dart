@@ -1,13 +1,8 @@
 import 'package:CaterMe/Providers/address.dart';
-import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'daberne_screen.dart';
-import 'occasion/theme/colors/light_colors.dart';
-import 'regular_screen.dart';
+import 'package:provider/provider.dart';
 
 class RegularDaberneScreen extends StatefulWidget {
   @override
