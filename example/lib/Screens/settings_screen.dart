@@ -251,7 +251,8 @@ setData(String imageUrl) async{
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
-                                                fontFamily: 'BerlinSansFB'),
+                                                fontFamily: 'BerlinSansFB',
+                                                fontWeight: FontWeight.normal),
                                           ),
                                         ],
                                       ),
@@ -301,7 +302,8 @@ setData(String imageUrl) async{
                                         style: TextStyle(
                                             color: Color(0xFF3F5521),
                                             fontSize: 20,
-                                            fontFamily: 'BerlinSansFB'),
+                                            fontFamily: 'BerlinSansFB',
+                                            fontWeight: FontWeight.normal),
                                       ),
                                     ],
                                   ),
@@ -359,7 +361,8 @@ setData(String imageUrl) async{
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
-                                              fontFamily: 'BerlinSansFB'),
+                                              fontFamily: 'BerlinSansFB',
+                                              fontWeight: FontWeight.normal),
                                         ),
                                       ],
                                     ),
@@ -408,7 +411,8 @@ setData(String imageUrl) async{
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
-                                              fontFamily: 'BerlinSansFB'),
+                                              fontFamily: 'BerlinSansFB',
+                                              fontWeight: FontWeight.normal),
                                         ),
                                       ],
                                     ),
@@ -456,7 +460,8 @@ setData(String imageUrl) async{
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
-                                              fontFamily: 'BerlinSansFB'),
+                                              fontFamily: 'BerlinSansFB',
+                                              fontWeight: FontWeight.normal),
                                         ),
                                       ],
                                     ),
@@ -509,12 +514,14 @@ setData(String imageUrl) async{
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
-                                          fontFamily: 'BerlinSansFB'),
+                                          fontFamily: 'BerlinSansFB',
+                                          fontWeight: FontWeight.normal),
                                     ),
                                   ],
                                 ),
                                 Row(children: [
-                                  Text("English"),
+                                  Text("English",style:TextStyle(
+                                      fontWeight: FontWeight.normal)),
                                   SizedBox(
                                     width: mediaQuery.size.width * 0.03,
                                   ),
@@ -587,7 +594,8 @@ setData(String imageUrl) async{
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
-                                          fontFamily: 'BerlinSansFB'),
+                                          fontFamily: 'BerlinSansFB',
+                                          fontWeight: FontWeight.normal),
                                     ),
                                   ],
                                 ),

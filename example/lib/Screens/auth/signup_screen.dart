@@ -457,7 +457,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 children: [
                                   Text(selectedDate == null
                                       ? "No Date chosen!"
-                                      : 'Picked date: ${DateFormat.yMd().format(selectedDate)}'),
+                                      : 'Birthdate: ${DateFormat.yMd().format(selectedDate)}'),
                                   IconButton(
                                     onPressed: ()async{
 
