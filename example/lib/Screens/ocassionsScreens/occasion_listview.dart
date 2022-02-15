@@ -22,9 +22,9 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
     await occasion.getalloccasions();
     final occa = Provider.of<OccasionProvider>(context, listen: false);
-    occa.listoccasiontype.add(OccassionType(id: -700,name: "Add occation",image: ''));
     await occa.getAllOccasionType();
 
+    occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
 
   }
 
@@ -40,7 +40,9 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();
+
     await occa.getallnewoccasion();
+    occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
     return;
   }
 
@@ -59,18 +61,11 @@ class _OccasionListViewState extends State<OccasionListView> {
       centerTitle: true,
       title: Text(
         'My Occasions',
-        // style: Theme.of(context).textTheme.headline1,
       ),
       backgroundColor: Theme
           .of(context)
           .primaryColor,
-      // actions: [
-      //   IconButton(
-      //       onPressed: () {
 
-      //       },
-      //       icon: Icon(Icons.add))
-      // ],
     ),
     body: RefreshIndicator(
     onRefresh: refreshocasionData,
@@ -79,189 +74,56 @@ class _OccasionListViewState extends State<OccasionListView> {
     SliverAppBar(
     pinned: false,
     floating: false,
-    expandedHeight: MediaQuery.of(context).size.height * 0.4,
+    expandedHeight: MediaQuery.of(context).size.height * 0.2,
     backgroundColor: Colors.transparent,
     flexibleSpace: FlexibleSpaceBar(
     background: SizedBox(
-    height: MediaQuery.of(context).size.height * 0.4,
+    height: MediaQuery.of(context).size.height * 0.01,
     width: double.maxFinite,
     child: Container(
-    height: MediaQuery.of(context).size.height * 0.5,
+    height: MediaQuery.of(context).size.height * 0.1,
     child: ListView(
     scrollDirection: Axis.horizontal,
     children:
       List.generate(occa.listoccasiontype.length, (int index) {
 
         return    Card(
-          child: Row(
-            children: [
-              Column(
-                children: [
-                  occa.listoccasiontype[index].id==-700?
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const AddNewOccasion(),
-                        ),
-                      );
-                    },
-                    icon: Icon(Icons.add),
-                  ):NetworkImage(occa.listoccasiontype[index].image),
-                  Text(occa.listoccasiontype[index].name)
-                ],
-              ),
-            ],
+          child: Container(
+           // width: ,
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    occa.listoccasiontype[index].id==-700?
+                    IconButton(
+
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const AddNewOccasion(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.add),
+                    ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.2,loadingBuilder: (context, child, loadingProgress) {
+                      CircularProgressIndicator();
+                    },),
+                    Text(occa.listoccasiontype[index].name)
+                  ],
+                ),
+              ],
+            ),
           ),
-        ); }),
-
-
-
+        ); } ),
     ),
-    )
-
-
-
-    // return  Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     Text('Quick add'),
-    //     Card(
-    //       child: Row(
-    //         children: [
-    //           Column(
-    //             children: [
-    //               IconButton(
-    //                 onPressed: () {
-    //                   Navigator.of(context).push(
-    //                     MaterialPageRoute(
-    //                       builder: (context) =>
-    //                       const AddNewOccasion(),
-    //                     ),
-    //                   );
-    //                 },
-    //                 icon: Icon(Icons.add),
-    //               ),
-    //               Text('Add Occasion')
-    //             ],
-    //           ),
-    //         ],
-    //       ),
-    //     )
-    //   ],
-    // );
-
-
-  ,
-
-  // scrollDirection: Axis.horizontal,
-
+    ),
   ),
   ),
   ),
-  // leading: Card(
-  //   child: ,
-  // ),
-
   ],
-  )
-
-  ,
-
-  )
-
-  ,
-
-//
-//           !loading? Column(
-//             children: [
-//               SizedBox(
-//                 height: _mediaQuery * 0.80,
-//                 child:occa.all.isEmpty
-//                     ? Center(
-//                   child: Container(
-//                     child: Image.asset('images/NoOccassionsYet.png'),
-//                   ),
-//                 )
-//                     : ListView.builder(
-//                   // dragStartBehavior: DragStartBehavior.start,
-//                   // reverse: true,
-//                     itemCount: occa.all.length,
-//                     itemBuilder: (ctx, index) {
-//                       return Padding(
-//                         padding: const EdgeInsets.all(10.0),
-//                         child: Card(
-// elevation: 3,
-//                           shape: const RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.all(
-//                               Radius.circular(20),
-//                             ),
-//                           ),
-//                           child: Row(
-// crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               SizedBox(
-//                                 height: mediaQuery.size.height * 0.17,
-//                                 width: mediaQuery.size.width * 0.25,
-//                                 child: Container(
-//
-//
-//                                   color: Colors.amber,
-//
-//
-//                                   child: Column(
-//                                     mainAxisAlignment: MainAxisAlignment.center,
-//                                     children: [
-//                                       Text(
-//                                         '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
-//                                         style: const TextStyle(
-//                                             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-//                                       ),
-//                                       Text(
-//                                           '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
-//                                           style: const TextStyle(
-//                                               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
-//                                     ],
-//                                   ),
-//                                 ),
-//                               ),
-//                               // SizedBox(
-//                               //   width: mediaQuery.size.width * 0.1,),
-//                               Padding(
-//                                 padding: const EdgeInsets.all(8.0),
-//                                 child: Column(
-//                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                   children: [
-//                                     Text(
-//                                       '${occa.all[index].name}',
-//                                       style: Theme.of(context).textTheme.headline2,
-//                                     ),
-//                                     SizedBox(height: 65,),
-//                                     Text(
-//                                       '${occa.all[index].type}',
-//                                       style: Theme.of(context).textTheme.headline2,
-//                                     ),
-//                                   ],
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       );
-//
-//
-//
-//                     }),
-//
-//               ),
-//
-//
-//             ],
-//           ):Center(child: CircularProgressIndicator()
-  )
-
-  ,
-
+  ),
+  ),
+),
   );
 }}

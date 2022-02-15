@@ -7,7 +7,7 @@ String image ;
   OccassionType.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
     name = json['title']??"not found";
-    image= json['image']??"notfound";
+    image= json['image']??"not found";
   }
 
 }

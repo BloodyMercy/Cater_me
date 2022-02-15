@@ -391,6 +391,7 @@ class _OrderState extends State<Order> {
                                               );
                                             } else {
                                               orderProvider.spets++;
+                                              _animateToIndex(orderProvider.spets);
                                             }
                                           } else if (orderProvider.spets == 3) {
                                             if (orderProvider.serviceId == 0) {
@@ -402,6 +403,8 @@ class _OrderState extends State<Order> {
                                               );
                                             } else {
                                               orderProvider.spets++;
+
+                                              _animateToIndex(orderProvider.spets);
                                             }
                                           } else if (orderProvider.spets == 2) {
                                             if (address.eventnamecontroller
@@ -426,6 +429,8 @@ class _OrderState extends State<Order> {
                                               if (address.hours.isDaberni)
                                                 orderProvider.serviceId = 2;
                                               orderProvider.spets++;
+
+                                              _animateToIndex(orderProvider.spets);
                                             }
                                           } else if (orderProvider.spets == 6) {
                                             if (orderProvider.itemOrders.length >
@@ -522,9 +527,11 @@ class _OrderState extends State<Order> {
                                             }
                                           } else
                                             orderProvider.spets++;
+
+                                          _animateToIndex(orderProvider.spets);
                                           //    }
                                         },
-                                        child: orderProvider.spets != 8
+                                        child: orderProvider.spets != 7
                                             ? const Text(
                                                 'Next',
                                                 style: TextStyle(
