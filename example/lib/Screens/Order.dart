@@ -255,7 +255,12 @@ class _OrderState extends State<Order> {
                                         setState(() {
                                           //  orderProvider.spets=value;
 
-
+                                          _controller.animateTo(
+                                            0,
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
                                         });
                                       }
                                     }
@@ -357,7 +362,6 @@ class _OrderState extends State<Order> {
                                     ),
                                     ElevatedButton(
                                       onPressed: () async {
-
                                         if (orderProvider.spets == 1) {
                                           if (orderProvider.value.id == 0) {
                                             _key.currentState.showSnackBar(
@@ -368,8 +372,6 @@ class _OrderState extends State<Order> {
                                             );
                                           } else {
                                             orderProvider.spets++;
-
-                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 3) {
                                           if (orderProvider.serviceId == 0) {
@@ -381,8 +383,6 @@ class _OrderState extends State<Order> {
                                             );
                                           } else {
                                             orderProvider.spets++;
-
-                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 2) {
                                           if (address.eventnamecontroller
@@ -407,8 +407,6 @@ class _OrderState extends State<Order> {
                                             if (address.hours.isDaberni)
                                               orderProvider.serviceId = 2;
                                             orderProvider.spets++;
-
-                                            _animateToIndex(orderProvider.spets);
                                           }
                                         } else if (orderProvider.spets == 6) {
                                           if (orderProvider.itemOrders.length >
@@ -505,11 +503,9 @@ class _OrderState extends State<Order> {
                                           }
                                         } else
                                           orderProvider.spets++;
-
-                                        _animateToIndex(orderProvider.spets);
                                         //    }
                                       },
-                                      child: orderProvider.spets != 7
+                                      child: orderProvider.spets != 8
                                           ? const Text(
                                               'Next',
                                               style: TextStyle(
@@ -524,7 +520,18 @@ class _OrderState extends State<Order> {
                                                   fontFamily: 'BerlinSansFB',
                                                   fontWeight: FontWeight.bold),
                                             ),
-
+                                      // style: ElevatedButton.styleFrom(
+                                      //   padding: EdgeInsets.fromLTRB(
+                                      //     width * 0.1,
+                                      //     screenHeight * 0.03,
+                                      //     width * 0.1,
+                                      //     screenHeight * 0.03,
+                                      //   ),
+                                      //   onPrimary:
+                                      //       const Color.fromRGBO(255, 255, 255, 1),
+                                      //   primary: const Color.fromRGBO(63, 85, 33, 1),
+                                      //
+                                      // ),
                                     ),
                                   ])),
                         ),

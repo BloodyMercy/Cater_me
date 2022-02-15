@@ -146,8 +146,8 @@ class _AddressesListState extends State<AddressesList> {
 
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
-                                          TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].title.toString()}'),
+                                          // TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                          TextSpan(text: ' ${widget.address[i].title.toString()}',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                     ),
@@ -157,8 +157,8 @@ class _AddressesListState extends State<AddressesList> {
 
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
-                                          TextSpan(text: 'City :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].city.toString()}'),
+                                          // TextSpan(text: 'City :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                                          TextSpan(text: ' ${widget.address[i].city.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                                         ],
                                       ),
                                     ),
@@ -168,8 +168,8 @@ class _AddressesListState extends State<AddressesList> {
 
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
-                                          TextSpan(text: 'Street :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].street.toString()}'),
+                                          TextSpan(text: ' Street :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                                          TextSpan(text: ' ${widget.address[i].street.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                                         ],
                                       ),
                                     ),
@@ -179,8 +179,8 @@ class _AddressesListState extends State<AddressesList> {
 
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
-                                          TextSpan(text: 'Building Name :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].buildingName.toString()}'),
+                                          TextSpan(text: ' Building :',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                                          TextSpan(text: ' ${widget.address[i].buildingName.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                                         ],
                                       ),
                                     ),
@@ -204,8 +204,8 @@ class _AddressesListState extends State<AddressesList> {
 
                                         style: DefaultTextStyle.of(context).style,
                                         children:  <TextSpan>[
-                                          TextSpan(text: 'Floor Number :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].floorNumber.toString()}'),
+                                          TextSpan(text: ' Floor :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                                          TextSpan(text: ' ${widget.address[i].floorNumber.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                                         ],
                                       ),
                                     ),
