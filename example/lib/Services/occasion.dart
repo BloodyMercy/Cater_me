@@ -108,18 +108,11 @@ class OccasionService{
       var headers = {
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request = http.Request('GET', Uri.parse(ApiLink.Getalloccasions));
-
       request.headers.addAll(headers);
-
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
-
         Map<String, dynamic> responseData = json.decode(response.body);
-
-        //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
-
-
         return responseData;
 
       }
@@ -138,5 +131,9 @@ class OccasionService{
 
       return {};
     }
+  }
+  update({String id ,String name , String typeId , String date , bool hasreminder }){
+
+
   }
 }

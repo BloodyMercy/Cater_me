@@ -25,24 +25,13 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
   DateFormat _hourFormat = DateFormat('Hm');
 
   DateTime _chosenDate=DateTime.now();
-  String _chosenMin="";
-  String _chosenHour="";
-  String _chosenMonth="";
-  String _chosenYear="";
-  String _chosenDay="";
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _chosenDate = DateTime.now();
-    _chosenHour="";
-    _chosenMin="";
-
-
-    _chosenDay = _dayFormat.format(_chosenDate);
-    _chosenMin = _minuteFormat.format(_chosenDate)  ;
-    _chosenHour = _hourFormat.format(_chosenDate) ;
 
   }
   @override

@@ -39,7 +39,6 @@ class _OccasionListViewState extends State<OccasionListView> {
   }
   @override
   Widget build(BuildContext context) {
-    final occasion=Provider.of<PackagesProvider>(context,listen: true);
     final occa=Provider.of<OccasionProvider>(context,listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
     final mediaQuery = MediaQuery.of(context);
@@ -47,20 +46,9 @@ class _OccasionListViewState extends State<OccasionListView> {
 
       child:Scaffold(
         appBar: AppBar(
-          //  IconButton(
-          //   onPressed: () {
-          //     Navigator.of(context).pop(
-          //     );
-          //   },
-          //   icon: Icon(Icons.arrow_back, color: Colors.white),
-          //   iconSize: 30,
-          // ),
+
           elevation: 0,
-          // shape: const RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.vertical(
-          //     bottom: Radius.circular(15),
-          //   ),
-          // ),
+
           centerTitle: true,
           title: Text(
             'My Occasions',
@@ -91,8 +79,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                   ),
                 )
                     : ListView.builder(
-                  // dragStartBehavior: DragStartBehavior.start,
-                  // reverse: true,
+
                     itemCount: occa.all.length,
                     itemBuilder: (ctx, index) {
                       return Padding(
@@ -105,7 +92,7 @@ elevation: 3,
                             ),
                           ),
                           child: Row(
-crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 height: mediaQuery.size.height * 0.17,

@@ -41,6 +41,8 @@ class ApiLink{
  static String GetPersonalInfo=host+"Accounts/GetUser";
  static String UpdateProfle=host+"Accounts/UpdateProfile";
  static String Getalloccasions=host+"Occasions/GetAllOccasions";
+ static String Updateoccasions=host+"Occasions/UpdateOccasion";
+ static String Deleteoccasions=host+"Occasions/DeleteOccasion";
  static String UpdatePersonalInfo=host+"Accounts/UpdateProfile";
  static String ResetPassword=host+"Accounts/ResetPassword";
  static String DeleteAddress=host+"Addresses/DeleteAddress";
