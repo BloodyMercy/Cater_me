@@ -459,58 +459,85 @@ class _OrderState extends State<Order> {
 
                               }
 
-                     else if(orderProvider.spets==7){
-                                showDialog(
-                                  context: this.context,
-                                  barrierDismissible: false,
-                                  builder: (BuildContext context) {
-                                    return WillPopScope(
-                                        onWillPop: () => Future<bool>.value(false),
-                                        child: AlertDialog(
-                                          title: const Text("Loading..."),
-                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[const CircularProgressIndicator()]),
-                                        ));
-                                  },
-                                );
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-print(_creditCards.credit.cardId);
-               bool a=     await   orderProvider.makeorder(
-                   date: address.evendatecontroller.text.replaceAll(RegExp('[^A-Za-z0-9]'), '-', ),
-                   type: address.typeofeventcontroller.text,
-                   nb: address.numberofguestcontroller.text,
-                   idcard: _creditCards.credit.cardId,
-               contactname:address.name.text,
-               contactphone: address.phone.text,
-                 eventname: address.eventnamecontroller.text
-               );
+                     else if(orderProvider.spets==7) {
+                                final _creditCards = Provider.of<
+                                    CreditCardsProvider>(context, listen: true);
 
-                    Navigator.of(context).pop();
-if(a)
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AppointmentSuccess()));
-else{
-  showDialog(
-    context: this.context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text("error "),
-        content: const Text("try again"),
-        actions: <Widget>[TextButton(child: const Text("Close"), onPressed: () => Navigator.pop(context))],
-      );
-    },
-  );
-}
+                                if (_creditCards.credit.id == 0) {
 
 
-                     }
 
+                                  _key.currentState
+                                      .showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                          "please choose credit card"),
+                                    ),
+                                  );
+
+
+
+
+
+                                  //
+
+                                }
+                                else {
+                                  showDialog(
+                                    context: this.context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return WillPopScope(
+                                          onWillPop: () =>
+                                          Future<bool>.value(false),
+                                          child: AlertDialog(
+                                            title: const Text("Loading..."),
+                                            content: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: <Widget>[
+                                                  const CircularProgressIndicator()
+                                                ]),
+                                          ));
+                                    },
+                                  );
+
+                                  bool a = await orderProvider.makeorder(
+                                      date: address.evendatecontroller.text
+                                          .replaceAll(
+                                        RegExp('[^A-Za-z0-9]'), '-',),
+                                      type: address.typeofeventcontroller.text,
+                                      nb: address.numberofguestcontroller.text,
+                                      idcard: _creditCards.credit.cardId,
+                                      contactname: address.name.text,
+                                      contactphone: address.phone.text,
+                                      eventname: address.eventnamecontroller
+                                          .text
+                                  );
+
+                                  Navigator.of(context).pop();
+                                  if (a)
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (context) =>
+                                            AppointmentSuccess()));
+                                  else {
+                                    showDialog(
+                                      context: this.context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text("error "),
+                                          content: const Text("try again"),
+                                          actions: <Widget>[
+                                            TextButton(
+                                                child: const Text("Close"),
+                                                onPressed: () =>
+                                                    Navigator.pop(context))
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
+                                }
+                              }
                               else
                                 orderProvider.spets++;
                           //    }
@@ -519,7 +546,7 @@ else{
 
 
                             },
-                            child:   orderProvider.spets!=8? const Text(
+                            child:   orderProvider.spets!=7? const Text(
                            'Next',
                               style: TextStyle(
                                   fontSize: 18,

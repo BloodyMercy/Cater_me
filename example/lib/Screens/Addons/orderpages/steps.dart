@@ -60,6 +60,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
   Widget build(BuildContext context) {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: true);
     final _cuisinprovider = Provider.of<CuisineProvider>(context, listen: true);
+    final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
 
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
@@ -88,7 +89,8 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                               loadingitems = true;
                               selected = index;
                             });
-                            await _cuisin.getonid(_cuisin.addonsall[index].id);
+                            await _cuisin.getonidorder(
+                                _cuisin.addonsall[index].id, orderprov.serviceId, false);
                             setState(() {
                               loadingitems = false;
                             });
