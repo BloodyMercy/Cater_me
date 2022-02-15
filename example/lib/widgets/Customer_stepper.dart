@@ -46,7 +46,7 @@ class _CustomStepperState extends State<CustomStepper> {
     List<Widget> stepperCircles = [];
     Color color;
     for(int i=0;i<widget.text.length;i++){
-      if(i<widget.selected){
+      if(i<=widget.selected){
 
         color=  Color.fromRGBO(253, 202, 29, 1);
       }

@@ -112,7 +112,7 @@ setData(String imageUrl) async{
               Center(
                 child: GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 4.0),
                     child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
                       child:
                       CircleAvatar(
@@ -209,7 +209,7 @@ setData(String imageUrl) async{
 
 
               SizedBox(
-                height: screenHeight * 0.05,
+                height: screenHeight * 0.02,
               ),
               Expanded(
                 child: ListView(
@@ -547,7 +547,7 @@ setData(String imageUrl) async{
                                     title: 'Sad to see you leave',
                                     description: "",
                                     oneOrtwo: true,
-                                    button1: ElevatedButton(
+                                    button2: ElevatedButton(
                                       onPressed: () async {
                                         final SharedPreferences
                                         sharedPreferences =
@@ -565,7 +565,7 @@ setData(String imageUrl) async{
                                             ),
                                                 (route) => false);
                                       }, child: Text("Logout"),),
-                                    button2: ElevatedButton(onPressed: () {
+                                    button1: ElevatedButton(onPressed: () {
                                       Navigator.of(context).pop();
                                     }, child: Text("No"),
 

@@ -96,7 +96,7 @@ class _YourOrdersState extends State<YourOrders> {
                                     children: [
                                       Text(orders.listOrder[index].eventName,
                                           style: TextStyle(
-                                              color: Color(0xFF3F5521),
+                                              color: Colors.black,
                                               fontWeight: FontWeight.bold)),
                                       Text(
                                         orders.listOrder[index].orderStatus,
@@ -115,8 +115,8 @@ class _YourOrdersState extends State<YourOrders> {
                                   Text(
                                     "${DateFormat("dd-MM-yyyy").format(DateTime.parse(orders.listOrder[index].eventDate))}",
                                     style: TextStyle(
-                                        color: Color(0xFF3F5521),
-                                        fontWeight: FontWeight.bold),
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.normal),
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -124,8 +124,8 @@ class _YourOrdersState extends State<YourOrders> {
                                   Text(
                                     "Address: ${orders.listOrder[index].addressTitle}",
                                     style: TextStyle(
-                                        color: Color(0xFF3F5521),
-                                        fontWeight: FontWeight.bold),
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.normal),
                                   )
                                 ],
                               ),

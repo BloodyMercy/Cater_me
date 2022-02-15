@@ -69,13 +69,13 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 35.0),
                 child: Center(
                   child: Image(
                     image: AssetImage('images/logo.png'),
                     // width: 800,
-                    height: 300,
+                    height: MediaQuery.of(context).size.height * 0.4,
                   ),
                 ),
               ),

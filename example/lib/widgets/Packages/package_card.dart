@@ -61,7 +61,7 @@ class _PackageCardState extends State<PackageCard> {
                 image: NetworkImage(
                   widget.packages.image,
                 ),
-                fit: BoxFit.contain),
+                fit: BoxFit.fill),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,

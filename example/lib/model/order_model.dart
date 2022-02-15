@@ -55,9 +55,7 @@ class OrderModel {
     eventDate = json['eventDate']??"not found";
     eventName = json['eventName']??"not found";
     numberOfGuests = json['numberOfGuests']??"not found";
-    // percentageOfDaberni = json['percentageOfDaberni'];
-    // hoursOfDaberni = json['hoursOfDaberni'];
-    // tax = json['tax']==null?0.0:json['tax'];
+
   }
 
   // Map<String, dynamic> toJson() {

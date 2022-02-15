@@ -28,7 +28,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
   bool loading = true;
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
-    await occasion.getAllOccasionType();
+
     await occasion.getallnewoccasion();
 
     setState(() {

@@ -143,7 +143,7 @@ bool loading=false;
        Expanded(
            child: CustomScrollView(slivers: <Widget>[
 
-           details.itemOrders.length==0? SliverToBoxAdapter(child:Center(child:Text("no items added")))  : SliverList(
+           details.itemOrders.length==0? SliverToBoxAdapter(child:Center(child:Text("no items added",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black))))  : SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int i) {
                     final item = details.itemOrders[i];
@@ -186,7 +186,7 @@ bool loading=false;
                 ),
               ),
              issearch?SliverToBoxAdapter(child:     Row(
-               mainAxisAlignment: MainAxisAlignment.end,
+               mainAxisAlignment: MainAxisAlignment.center,
                children: [
                  TextButton(
                    onPressed: () {
@@ -199,7 +199,7 @@ bool loading=false;
                      "Share Bill",
                      style: TextStyle(
                          decoration: TextDecoration.underline,
-                         color: Color(0xFF3F5521),
+                         color: Colors.black,
                          fontSize: 20,
                          fontWeight: FontWeight.bold,
                          fontFamily: 'BerlinSansFB'),
@@ -341,105 +341,105 @@ setState(() {
 },
                               decoration: InputDecoration(
                                 hintText:'Price' ,
-                                fillColor: Color(0xFF3F5521),
+                                fillColor: Colors.black,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
-                                      color: Color(0xFF3F5521), width: 1.0),
+                                      color: Colors.black, width: 1.0),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                               ),
                               keyboardType: TextInputType.number,
-controller:details.controllers[index],
+                              controller:details.controllers[index],
                             ))); // you can add your unavailable item here
                   },
                   childCount:details.choosebillFriend.length ,
                 ),
               ):SliverToBoxAdapter(child:Container()),
-             SliverToBoxAdapter(child:  Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-Padding(
-  padding: const EdgeInsets.only(left: 15.0),
-  child:   Column(
-
-    crossAxisAlignment: CrossAxisAlignment.start,
-
-    children: [
-
-      Text(
-
-          "You cant't cancel or edit your order once submitted!"),
-
-      Text(
-
-        'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
-
-        style: TextStyle(
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-      Text(
-
-        'Totale: ${details.totale.toStringAsFixed(3)}',
-
-        style: TextStyle(
-
-          color: Color(0xFF3F5521),
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-      Text(
-
-        '*(VAT included ${details.tax} %:)',
-
-        style: TextStyle(
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-
-
-      Row(
-
-
-
-        children: [
-
-          Text(
-
-            '*(VAT included ${details.tax} %:  SAR)',
-
-            style: TextStyle(
-
-              fontWeight: FontWeight.bold,
-
-            ),
-
-          ),
-
-        ],
-
-      ),
-
-    ],
-
-  ),
-)
-
-
-               ],
-             ))
+//              SliverToBoxAdapter(child:  Column(
+//                crossAxisAlignment: CrossAxisAlignment.start,
+//                children: [
+// Padding(
+//   padding: const EdgeInsets.only(left: 15.0),
+//   child:   Column(
+//
+//     crossAxisAlignment: CrossAxisAlignment.start,
+//
+//     children: [
+//
+//       Text(
+//
+//           "You cant't cancel or edit your order once submitted!"),
+//
+//       Text(
+//
+//         'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
+//
+//         style: TextStyle(
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//       Text(
+//
+//         'Totale: ${details.totale.toStringAsFixed(3)}',
+//
+//         style: TextStyle(
+//
+//           color: Color(0xFF3F5521),
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//       Text(
+//
+//         '*(VAT included ${details.tax} %:)',
+//
+//         style: TextStyle(
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//
+//
+//       Row(
+//
+//
+//
+//         children: [
+//
+//           Text(
+//
+//             '*(VAT included ${details.tax} %:  SAR)',
+//
+//             style: TextStyle(
+//
+//               fontWeight: FontWeight.bold,
+//
+//             ),
+//
+//           ),
+//
+//         ],
+//
+//       ),
+//
+//     ],
+//
+//   ),
+// )
+//
+//
+//                ],
+//              ))
 
             ]),
        ),

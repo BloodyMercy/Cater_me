@@ -75,7 +75,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     children: [
                       Image.asset('images/CaterMe.png',
                           height: screenHeight * 0.3),
-                      Text(" after ${addresProvider.hours.timespan} ")
+                      Text(" after ${addresProvider.hours.timespan} ",style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
                     ],
                   ),
                 ],
@@ -111,7 +111,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                         child: SvgPicture.asset('images/daberni.svg',
                             height: screenHeight * 0.2),
                       ),
-                      Text(" before ${addresProvider.hours.timespan} "),
+                      Text(" before ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                     ],
                   ),
                 ],
