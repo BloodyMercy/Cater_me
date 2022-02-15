@@ -234,8 +234,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           child: Column(
                             children: [
                               _serpres.serviceId == 1
-                                  ? SvgPicture.asset(
-                                      ('images/caterme.svg'),
+                                  ? Image.asset(
+                                      ('images/CaterMe.png'),
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.04,
@@ -289,9 +289,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           children: [
                             Row(
                               children: [
-                                Text('${address.eventnamecontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
-                                Text('${address.numberofguestcontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
-                                Text('${address.typeofeventcontroller.text}',style: TextStyle(color: Color(0xff9FACBD)),),
+                                Text('${address.eventnamecontroller.text}q',style: TextStyle(color: Color(0xff9FACBD)),),
+                                Text('${address.numberofguestcontroller.text}a',style: TextStyle(color: Color(0xff9FACBD)),),
+                                Text('${address.typeofeventcontroller.text}z',style: TextStyle(color: Color(0xff9FACBD)),),
                               ],
                             )
                           ]),
