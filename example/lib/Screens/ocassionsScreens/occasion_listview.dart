@@ -22,8 +22,9 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
     await occasion.getalloccasions();
     final occa = Provider.of<OccasionProvider>(context, listen: false);
+    occa.listoccasiontype.add(OccassionType(id: -700,name: "Add occation",image: ''));
     await occa.getAllOccasionType();
-  occa.listoccasiontype.add(OccassionType());
+
 
   }
 
@@ -89,13 +90,14 @@ class _OccasionListViewState extends State<OccasionListView> {
     child: ListView(
     scrollDirection: Axis.horizontal,
     children:
-      List.generate(4, (int index) {
+      List.generate(occa.listoccasiontype.length, (int index) {
 
         return    Card(
           child: Row(
             children: [
               Column(
                 children: [
+                  occa.listoccasiontype[index].id==-700?
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -106,8 +108,8 @@ class _OccasionListViewState extends State<OccasionListView> {
                       );
                     },
                     icon: Icon(Icons.add),
-                  ),
-                  Text('Add Occasion')
+                  ):NetworkImage(occa.listoccasiontype[index].image),
+                  Text(occa.listoccasiontype[index].name)
                 ],
               ),
             ],
