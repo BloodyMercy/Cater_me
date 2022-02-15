@@ -44,10 +44,12 @@ class _YourOrdersState extends State<YourOrders> {
 
   @override
   Color _getColorByEvent(String orderStatus) {
-    if (orderStatus == "Accepted") return  Color(0xFF3F5521);
+    if (orderStatus == "Accetped") return  Color(0xFF3F5521);
+    if (orderStatus == "Received") return  Color(0xFF3F5521);
     if (orderStatus == "Rejected") return Color(0xFFEA4D47);
     if (orderStatus == "Pending ") return  Color(0xFFEAB316);
     if (orderStatus == "Delivered") return Color(0xFF272833);
+
     return Colors.blue;
   }
 

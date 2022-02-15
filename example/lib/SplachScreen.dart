@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (5000)),
+      duration: Duration(seconds: (50)),
       vsync: this,
     );
   }
@@ -27,18 +27,18 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Lottie.asset(
-        'images/animation/CaterMe.json',
+        'images/animation/CatermeLottieTest.json',
         controller: _controller,
         height: MediaQuery.of(context).size.height * 5,
 
         animate: true,
         onLoaded: (composition) {
-          // _controller
-          //   ..duration = composition.duration
-          //   ..forward().whenComplete(() => Navigator.pushReplacement(
-          //     context,
-          //     MaterialPageRoute(builder: (context) => appstate()),
-          //   ));
+          _controller
+            ..duration = composition.duration
+            ..forward().whenComplete(() => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => appstate()),
+            ));
         },
       ),
     );

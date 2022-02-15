@@ -166,7 +166,7 @@ class ChatPageState extends State<ChatPage> {
                 ? Container(
                     child: Text(
                       messageChat.content,
-                      style: TextStyle(color: ColorConstants.primaryColor),
+                      style: TextStyle(color: Colors.white ),
                     ),
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                     width: 200,

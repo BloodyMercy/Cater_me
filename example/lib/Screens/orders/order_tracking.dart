@@ -53,29 +53,26 @@ class _TrackingOrderState extends State<TrackingOrder> {
                   ),
                 ),
               )
-            : Container(
-                color: LightColors.kLightYellow,
-                child: Column(
-                  children: [
-                    orderStatus.orderStatus.statusId == 1
-                        ?  OrderPreparing()
-                        : Container(),
-                    orderStatus.orderStatus.statusId == 2
-                        ?  OrderOnTheWay()
-                        : Container(),
-                    orderStatus.orderStatus.statusId == 3
-                        ? OrderReceived()
-                        : Container(),
-                    orderStatus.orderStatus.statusId == 4
-                        ? OrderDelivered()
-                        : Container(),
+            : Column(
+              children: [
+                orderStatus.orderStatus.statusId == 1
+                    ?  OrderPreparing()
+                    : Container(),
+                orderStatus.orderStatus.statusId == 2
+                    ?  OrderOnTheWay()
+                    : Container(),
+                orderStatus.orderStatus.statusId == 3
+                    ? OrderReceived()
+                    : Container(),
+                orderStatus.orderStatus.statusId == 4
+                    ? OrderDelivered()
+                    : Container(),
 
 
 
-                    // CustomStepperOrder(text: ["text","text"],selected: 1,),
-                  ],
-                ),
-              ),
+                // CustomStepperOrder(text: ["text","text"],selected: 1,),
+              ],
+            ),
       ),
     );
   }
