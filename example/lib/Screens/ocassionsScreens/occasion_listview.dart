@@ -106,9 +106,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                         );
                       },
                       icon: const Icon(Icons.add),
-                    ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.2,loadingBuilder: (context, child, loadingProgress) {
-                      CircularProgressIndicator();
-                    },),
+                    ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.3,),
                     Text(occa.listoccasiontype[index].name)
                   ],
                 ),
