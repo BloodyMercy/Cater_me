@@ -21,23 +21,23 @@ class _BodyState extends State<Body> {
   List<Map<String, String>> onBoardingData = [
     {
       'text': '',
-      'image': 'introductionscreen01.png',
+      'image': 'images/IntroductionScreen/introductionscreen04.png',
     },
     {
       'text': '',
-      'image': 'introductionscreen02.png',
+      'image': 'images/IntroductionScreen/introductionscreen01.png',
     },
     {
       'text': '',
-      'image': 'introductionscreen03.png',
+      'image': 'images/IntroductionScreen/introductionscreen02.png',
     },
     {
       'text': '',
-      'image': 'introductionscreen04.png',
+      'image': 'images/IntroductionScreen/introductionscreen03.png',
     },
     {
       'text': '',
-      'image': 'introductionscreen05.png',
+      'image': 'images/IntroductionScreen/introductionscreen05.png',
     },
 
   ];

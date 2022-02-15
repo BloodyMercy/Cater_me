@@ -1,4 +1,5 @@
-
+import 'package:CaterMe/Payment/OrderSucc.dart';
+import 'package:CaterMe/Payment/Payment.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/notification_provider.dart';
@@ -7,6 +8,12 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/personal_info_provider.dart';
+import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
+import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
+
+import 'package:CaterMe/Screens/intro_screen.dart';
+import 'package:CaterMe/Screens/order_summery_1.dart';
+import 'package:CaterMe/Screens/splash_screen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +37,9 @@ import 'Providers/user.dart';
 
 
 import 'Screens/auth/login_screen.dart';
+import 'Screens/chooseadress/confirm_location_view.dart';
+import 'Screens/occasion/screens/home_page.dart';
+import 'Screens/order_summery_copy.dart';
 
 import 'chat/providers/chat_provider.dart';
 import 'colors/colors.dart';
