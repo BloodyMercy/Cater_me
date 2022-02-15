@@ -113,7 +113,7 @@ flutter:
     - images/iconphase2/
     - images/animation/
     - images/Occassion/
-#    - images/IntroductionScreen/
+    - images/IntroductionScreen/
     - images/orderTracking/
     - images/audio/car.mpeg
 
