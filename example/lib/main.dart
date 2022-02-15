@@ -164,6 +164,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
       ],
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Cater Me',
         theme: ThemeData(
