@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasiontype.dart';
@@ -94,13 +95,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       occa.listoccasiontype[index].id==-700?
-                      IconButton(
-
-                        onPressed: () {
-
-                        },
-                        icon: const Icon(Icons.add),
-                      ):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.3,),
+                      Icon(Icons.add,size: 40,color: colorCustom,):Image.network(occa.listoccasiontype[index].image,width: MediaQuery.of(context).size.width*0.3,),
                       Text(occa.listoccasiontype[index].name)
                     ],
                   ),
@@ -189,7 +184,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                ),
                              ),
                              SizedBox(width:MediaQuery.of(context).size.width/5.8 ,),
-                             Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/5.5,)
+                             Expanded(child: Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/5.5,))
                            ],
                          ),
                        ),
