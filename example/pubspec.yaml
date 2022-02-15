@@ -110,7 +110,8 @@ flutter:
     - images/
     - images/iconphase2/
     - images/animation/
-    - images/IntroductionScreen/
+    - images/Occassion/
+#    - images/IntroductionScreen/
     - images/orderTracking/
 
   #   - images/a_dot_ham.jpeg

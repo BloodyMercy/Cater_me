@@ -15,7 +15,6 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-
 //
 // @override
 // Widget build(BuildContext context) {
@@ -61,9 +60,6 @@ import 'package:provider/provider.dart';
 //   );
 // }
 
-
-
-
 class packageAdsDetailTest extends StatefulWidget {
   Package food;
 
@@ -101,159 +97,174 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
   @override
   Widget build(BuildContext context) {
     final orderprovider =
-    Provider.of<OrderCaterProvider>(context, listen: true);
+        Provider.of<OrderCaterProvider>(context, listen: true);
     final pack = Provider.of<PackagesProvider>(context, listen: true);
     var qPortrait = MediaQuery.of(context).orientation;
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     return Scaffold(
-      body:
-          CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                shadowColor: Colors.transparent,
-                actions: [
-                  Card(
-                       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(150)),
-                      child: IconButton(onPressed: () async {
-              setState(() {
-                loading = true;
-              });
-
-              showDialog(
-                context: this.context,
-                barrierDismissible: false,
-                builder: (BuildContext contexts) {
-                  return WillPopScope(
-                      // onWillPop: () => Future<bool>.value(false),
-                      child: AlertDialog(
-                        title: Text("Loading...",style: TextStyle(color: yellowColor),),
-                        content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: yellowColor,)]),
-                      ));
-                },
-              );
-              print("${widget.food.isfavorite}");
-              await PackageService
-                  .favoriteitem(
-                  widget.food.id)
-                  .then((value) {
-                if (value) {
-                  Navigator.pop(context);
-                  widget.food.isfavorite =!widget.food.isfavorite;
-                }
-                setState(() {
-                  loading = false;
-                });
-              });
-
-              print("${widget.food.isfavorite}");
-            },
-
-                          icon: Icon(widget.food.isfavorite? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,color: yellowColor,size: 20,)
-
-                      ))
-                ],
-                leading: Card(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            shadowColor: Colors.transparent,
+            actions: [
+              Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(150)),
-                  child: Center(
-                    child: IconButton(onPressed: (){
-                      Navigator.of(context).pop();
-                    },icon: Icon(Icons.arrow_back,color: yellowColor,size: 30,),),
+                  child: IconButton(
+                      onPressed: () async {
+                        setState(() {
+                          loading = true;
+                        });
+
+                        showDialog(
+                          context: this.context,
+                          barrierDismissible: false,
+                          builder: (BuildContext contexts) {
+                            return WillPopScope(
+                                // onWillPop: () => Future<bool>.value(false),
+                                child: AlertDialog(
+                              title: Text(
+                                "Loading...",
+                                style: TextStyle(color: yellowColor),
+                              ),
+                              content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    CircularProgressIndicator(
+                                      color: yellowColor,
+                                    )
+                                  ]),
+                            ));
+                          },
+                        );
+                        print("${widget.food.isfavorite}");
+                        await PackageService.favoriteitem(widget.food.id)
+                            .then((value) {
+                          if (value) {
+                            Navigator.pop(context);
+                            widget.food.isfavorite = !widget.food.isfavorite;
+                          }
+                          setState(() {
+                            loading = false;
+                          });
+                        });
+
+                        print("${widget.food.isfavorite}");
+                      },
+                      icon: Icon(
+                        widget.food.isfavorite
+                            ? FontAwesomeIcons.solidHeart
+                            : FontAwesomeIcons.heart,
+                        color: yellowColor,
+                        size: 20,
+                      )))
+            ],
+            leading: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(150)),
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: yellowColor,
+                    size: 30,
                   ),
                 ),
-
-                pinned: false,
-                floating: false,
-                expandedHeight: MediaQuery.of(context).size.height * 0.4,
-                backgroundColor: Colors.transparent,
-                flexibleSpace: FlexibleSpaceBar(
-                  background:SizedBox(
-                    height:MediaQuery.of(context).size.height * 0.4,
-                    width: double.maxFinite,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Image.network(widget.food.image),
-                    ),
-                  ) ,
-                ),
-
               ),
-              SliverList(
-                delegate:
-              SliverChildListDelegate(
-                [
-                  Container(
-                    // height: MediaQuery.of(context).size.height * 0.6,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(30),
-                        )),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Text(
-                            widget.food.title,
-                            style: const TextStyle(
-                                fontSize: 28,
-                                fontFamily: 'BerlinSansFB',
-                                fontWeight: FontWeight.bold),
-                          ),
+            ),
+            pinned: false,
+            floating: false,
+            expandedHeight: MediaQuery.of(context).size.height * 0.4,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: FlexibleSpaceBar(
+              background: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: double.maxFinite,
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Image.network(widget.food.image),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Container(
+                  // height: MediaQuery.of(context).size.height * 0.6,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30),
+                      )),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Text(
+                          widget.food.title,
+                          style: const TextStyle(
+                              fontSize: 28,
+                              fontFamily: 'BerlinSansFB',
+                              fontWeight: FontWeight.bold),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Row(
-                            children: [
-                              Text("Price: ",style: const TextStyle(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Price: ",
+                              style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "SAR ${widget.food.price.toString()}",
-                                style: const TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'BerlinSansFB',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+                            ),
+                            Text(
+                              "SAR ${widget.food.price.toString()}",
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'BerlinSansFB',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        Html(
-                          data: widget.food.description,
-                          style: {
-
-                            "body":Style(fontFamily: 'BerlinSansFB',color: Colors.black87,
-                                fontWeight: FontWeight.normal,
-                               )
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                      Html(
+                        data: widget.food.description,
+                        style: {
+                          "body": Style(
+                            fontFamily: 'BerlinSansFB',
+                            color: Colors.black87,
+                            fontWeight: FontWeight.normal,
+                          )
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              )
-            ],
-          ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
-
   }
 }
-
-
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final PreferredSize child;
 
-  _SliverAppBarDelegate({ this.child });
+  _SliverAppBarDelegate({this.child});
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     // TODO: implement build
     return child;
   }
@@ -271,5 +282,4 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     // TODO: implement shouldRebuild
     return false;
   }
-
 }
