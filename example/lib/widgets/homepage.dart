@@ -372,7 +372,7 @@ class _HomePageState extends State<HomePage> {
                                   : Container(),
                               Center(child: OccasionCard(Axis.horizontal)),
                             ]),
-                            SizedBox(height: mediaQuery.size.height * 0.1,),
+                            // SizedBox(height: mediaQuery.size.height * 0.1,),
 
                             ...getAddOnsCard(package.addonsall),
                           ]
