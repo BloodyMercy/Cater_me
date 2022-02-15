@@ -186,7 +186,7 @@ bool loading=false;
                 ),
               ),
              issearch?SliverToBoxAdapter(child:     Row(
-               mainAxisAlignment: MainAxisAlignment.end,
+               mainAxisAlignment: MainAxisAlignment.center,
                children: [
                  TextButton(
                    onPressed: () {
@@ -355,91 +355,91 @@ controller:details.controllers[index],
                   childCount:details.choosebillFriend.length ,
                 ),
               ):SliverToBoxAdapter(child:Container()),
-             SliverToBoxAdapter(child:  Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-Padding(
-  padding: const EdgeInsets.only(left: 15.0),
-  child:   Column(
-
-    crossAxisAlignment: CrossAxisAlignment.start,
-
-    children: [
-
-      Text(
-
-          "You cant't cancel or edit your order once submitted!"),
-
-      Text(
-
-        'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
-
-        style: TextStyle(
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-      Text(
-
-        'Totale: ${details.totale.toStringAsFixed(3)}',
-
-        style: TextStyle(
-
-          color: Color(0xFF3F5521),
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-      Text(
-
-        '*(VAT included ${details.tax} %:)',
-
-        style: TextStyle(
-
-          fontWeight: FontWeight.bold,
-
-        ),
-
-      ),
-
-
-
-      Row(
-
-
-
-        children: [
-
-          Text(
-
-            '*(VAT included ${details.tax} %:  SAR)',
-
-            style: TextStyle(
-
-              fontWeight: FontWeight.bold,
-
-            ),
-
-          ),
-
-        ],
-
-      ),
-
-    ],
-
-  ),
-)
-
-
-               ],
-             ))
+//              SliverToBoxAdapter(child:  Column(
+//                crossAxisAlignment: CrossAxisAlignment.start,
+//                children: [
+// Padding(
+//   padding: const EdgeInsets.only(left: 15.0),
+//   child:   Column(
+//
+//     crossAxisAlignment: CrossAxisAlignment.start,
+//
+//     children: [
+//
+//       Text(
+//
+//           "You cant't cancel or edit your order once submitted!"),
+//
+//       Text(
+//
+//         'Subtotal: ${details.subTotal.toStringAsFixed(3)}',
+//
+//         style: TextStyle(
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//       Text(
+//
+//         'Totale: ${details.totale.toStringAsFixed(3)}',
+//
+//         style: TextStyle(
+//
+//           color: Color(0xFF3F5521),
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//       Text(
+//
+//         '*(VAT included ${details.tax} %:)',
+//
+//         style: TextStyle(
+//
+//           fontWeight: FontWeight.bold,
+//
+//         ),
+//
+//       ),
+//
+//
+//
+//       Row(
+//
+//
+//
+//         children: [
+//
+//           Text(
+//
+//             '*(VAT included ${details.tax} %:  SAR)',
+//
+//             style: TextStyle(
+//
+//               fontWeight: FontWeight.bold,
+//
+//             ),
+//
+//           ),
+//
+//         ],
+//
+//       ),
+//
+//     ],
+//
+//   ),
+// )
+//
+//
+//                ],
+//              ))
 
             ]),
        ),
