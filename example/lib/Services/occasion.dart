@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasion.dart';
 import 'package:CaterMe/model/occasions/occasiontype.dart';
@@ -132,8 +133,65 @@ class OccasionService{
       return {};
     }
   }
-  update({String id ,String name , String typeId , String date , bool hasreminder }){
+  update({String id ,String name , String typeId , String date  })async{
+     Occasion occasion =Occasion();
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Updateoccasions));
+      respons.headers.addAll(headers);
+      respons.fields.addAll({
+        'Id': id.toString(),
+        'Name': name,
+        'TypeId': typeId,
+        'Date': date,
 
+      });
+      http.StreamedResponse responses = await respons.send();
+
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseData = json.decode(response.body);
+
+        occasion = Occasion.fromJson(responseData);
+        return occasion;
+
+      } else {
+        print(response.reasonPhrase);
+        return occasion;
+      }
+    } catch (e) {
+      print(e);
+      return occasion;
+    }
+  }
+  }
+
+  Future<ErrorMessage> deleteOcation(int id) async{
+    ErrorMessage em=ErrorMessage();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Deleteoccasions+"/$id"));
+      respons.headers.addAll(headers);
+      http.StreamedResponse responses = await respons.send();
+      var response = await http.Response.fromStream(responses);
+      if(response.statusCode==200){
+        em.message="deleted";
+        return em;
+      }else{
+        em.message="cannot delete";
+        return em;
+      }
+
+    }
+    catch(e){
+      print("error cannot delete");
+    }
+    return ErrorMessage();
 
   }
-}
+

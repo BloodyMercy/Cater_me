@@ -13,6 +13,7 @@ import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/widgets/homepage.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:badges/badges.dart';
 
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class Navigationbar extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<Navigationbar> {
+
+
+
+   AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
     OccasionListView(),
