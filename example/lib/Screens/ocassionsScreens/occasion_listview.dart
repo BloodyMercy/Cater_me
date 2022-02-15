@@ -40,6 +40,7 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();
+    occa.listoccasiontype.clear();
 
     await occa.getallnewoccasion();
     occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
@@ -56,18 +57,7 @@ class _OccasionListViewState extends State<OccasionListView> {
         .height;
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
-      child: Scaffold(
-      appBar: AppBar(
-      centerTitle: true,
-      title: Text(
-        'My Occasions',
-      ),
-      backgroundColor: Theme
-          .of(context)
-          .primaryColor,
-
-    ),
-    body: RefreshIndicator(
+      child:  RefreshIndicator(
     onRefresh: refreshocasionData,
     child: CustomScrollView(
     slivers: [
@@ -100,6 +90,7 @@ class _OccasionListViewState extends State<OccasionListView> {
               child: Row(
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       occa.listoccasiontype[index].id==-700?
                       IconButton(
@@ -122,9 +113,84 @@ class _OccasionListViewState extends State<OccasionListView> {
   ),
   ),
   ),
+
+         SliverList(
+
+             delegate: SliverChildBuilderDelegate(
+
+                 (context ,int index ){
+                   return Container(
+                     child: Card(
+                       elevation: 3,
+                       shape: const RoundedRectangleBorder(
+                         borderRadius: BorderRadius.all(
+                           Radius.circular(20),
+                         ),
+                       ),
+                       child: Row(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           SizedBox(
+                             height: mediaQuery.size.height * 0.17,
+                             width: mediaQuery.size.width * 0.25,
+                             child: Container(
+
+                               height: mediaQuery.size.height * 0.17,
+                               width: mediaQuery.size.width * 0.25,
+                               color: Colors.amber,
+
+
+                               child: Column(
+                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 children: [
+                                   Text(
+                                     '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
+                                     style: const TextStyle(
+                                         color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                                   ),
+                                   Text(
+                                       '${DateFormat.d().format(DateTime.parse(occa.all[index].date))}',
+                                       style: const TextStyle(
+                                           color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
+                                 ],
+                               ),
+                             ),
+                           ),
+                           // SizedBox(
+                           //   width: mediaQuery.size.width * 0.1,),
+                           Padding(
+                             padding: const EdgeInsets.all(8.0),
+                             child: Column(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 Text(
+                                   '${occa.all[index].name}',
+                                   style: Theme.of(context).textTheme.headline2,
+                                 ),
+                                 SizedBox(height: 65,),
+                                 Text(
+                                   '${occa.all[index].type}',
+                                   style: Theme.of(context).textTheme.headline2,
+                                 ),
+                               ],
+                             ),
+                           ),
+                           SizedBox(width:MediaQuery.of(context).size.width/58 ,),
+                           Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/4,)
+                         ],
+                       ),
+                     ),
+                   );
+                 },
+
+
+               childCount: occa.all.length ,))
+
+
+
   ],
   ),
   ),
-),
+
   );
 }}
