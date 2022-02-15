@@ -188,7 +188,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                  ],
                                ),
                              ),
-                             SizedBox(width:MediaQuery.of(context).size.width/58 ,),
+                             SizedBox(width:MediaQuery.of(context).size.width/5.8 ,),
                              Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/4,)
                            ],
                          ),
