@@ -45,9 +45,14 @@ import 'chat/providers/chat_provider.dart';
 import 'colors/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'notificaition/services/notification_service.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  NotificationServices notificationService = NotificationServices();
+  await notificationService.init();
+  await notificationService.requestIOSPermissions();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
@@ -72,7 +77,7 @@ void main() async {
 
   runApp( MyApp());
 }
-
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 class appstate extends StatefulWidget {
   const appstate({Key key}) : super(key: key);
 

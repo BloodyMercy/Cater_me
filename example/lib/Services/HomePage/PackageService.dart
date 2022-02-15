@@ -111,7 +111,7 @@ class PackageService{
       else
          request = http.Request('GET', Uri.parse(ApiLink.GetItemByadd+"$id/$idservice"));
       request.headers.addAll(headers);
-
+print(ApiLink.GetItemByadd+"$id/$idservice");
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
 
