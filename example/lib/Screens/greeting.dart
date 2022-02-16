@@ -11,7 +11,7 @@ class Greeting extends StatelessWidget {
   Widget build(BuildContext context) {
     final userprovider=Provider.of<UserProvider>(context,listen: true);
     final mediaQuery = MediaQuery.of(context);
-    const double fontSize = 40;
+    const double fontSize = 33;
     const String fontFamily = 'Berlin Sans FB';
     return Scaffold(
         body: SingleChildScrollView(
@@ -33,6 +33,7 @@ class Greeting extends StatelessWidget {
                       ),
                       Text("Hi ${userprovider.name.text},",
                           style: TextStyle(
+
                             color: Theme.of(context).primaryColor,
                             fontFamily: fontFamily,
                             fontSize: fontSize,
