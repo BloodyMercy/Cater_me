@@ -45,7 +45,10 @@ FriendModel _FriendCreated = FriendModel();
      int.parse(phonecontroller.text.toString()),
       emailcontroller.text.toString(),
     );
-    _listFriends.add(_FriendCreated);
+    _listFriends.insert(0, _FriendCreated);
+    namecontroller.text="";
+    phonecontroller.text="";
+    emailcontroller.text="";
     notifyListeners();
   }
 

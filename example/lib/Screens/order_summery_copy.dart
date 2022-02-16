@@ -23,7 +23,6 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   ScrollController _scrollController = ScrollController();
 
   @override
-  // List<bool> _isChecked = List<bool>.filled(15, false);
   bool loading = false;
 
   @override
@@ -31,7 +30,6 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     super.initState();
     getData();
 
-    //  _isChecked = List<bool>.filled(15, false);
   }
 
   List<String> listFriendssearch = [];
@@ -46,7 +44,6 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     setState(() {
       listFriendssearch = l;
     });
-    // controllersearch.text="p";
     setState(() {
       loading = false;
     });
@@ -309,7 +306,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                   ? SliverList(
                       delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                        return listFriendssearch[index]
+                        return frnd.listFriends[index].name
                                 .contains(controllersearch.text.toLowerCase())
                             ? CheckboxListTile(
                                 activeColor: Theme.of(context).primaryColor,
@@ -346,7 +343,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               )
                             : Container();
                       },
-                      childCount: listFriendssearch.length,
+                      childCount: frnd.listFriends.length,
                     ))
                   : SliverToBoxAdapter(child: Container()),
 
