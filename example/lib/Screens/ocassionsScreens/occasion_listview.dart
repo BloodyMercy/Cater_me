@@ -19,9 +19,10 @@ class _OccasionListViewState extends State<OccasionListView> {
 
   getData() async {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
-    await occasion.getalloccasions();
+
     final occa = Provider.of<OccasionProvider>(context, listen: false);
     await occa.getAllOccasionType();
+    await occa.getallnewoccasion();
 
     occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
 
@@ -35,13 +36,16 @@ class _OccasionListViewState extends State<OccasionListView> {
   }
 
   Future refreshocasionData() async {
+
+
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
     final occa = Provider.of<OccasionProvider>(context, listen: false);
-
     occa.all.clear();
     occa.listoccasiontype.clear();
 
+    await occa.getAllOccasionType();
     await occa.getallnewoccasion();
+    await occasion.getalloccasions();
     occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
     return;
   }
@@ -92,7 +96,7 @@ class _OccasionListViewState extends State<OccasionListView> {
 
                 MaterialPageRoute(
                   builder: (context) =>
-                      AddNewOccasion(index),
+                      AddNewOccasion(index ),
                 ),
               );
             }

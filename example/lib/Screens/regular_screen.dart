@@ -43,7 +43,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   }
 
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
-  bool form = false;
+
 
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
@@ -230,7 +230,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                           groupValue: address.value2Index,
                           onChanged: (value) {
                             setState(() {
-                              form = false;
+                              address.form = false;
                               address.value2Index = value;
                             });
                           },
@@ -249,7 +249,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                           groupValue: address.value2Index,
                           onChanged: (value) {
                             setState(() {
-                              form = true;
+                              address.form = true;
                               address.value2Index = value;
                             });
                           },
@@ -260,14 +260,14 @@ class _ReguarScreenState extends State<ReguarScreen> {
                       ],
                     ),
 
-                    form
+                    address.form
                         ? customTextFieldicon(
                       controller:address.name ,
                             label: 'Name',
                             icon: Icon(Icons.person),
                           )
                         : Container(),
-                    form
+                    address.form
                         ? customTextFieldPhone(
 controller: address.phone,
                             label: 'Phone Number',

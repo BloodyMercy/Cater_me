@@ -24,6 +24,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
     await occasion.getallnewoccasion();
 
+    occasion.typeofoccasioncontrollername.text=occasion.listoccasiontype[widget.getposition].name;
     setState(() {
       loading = false;
     });
