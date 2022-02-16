@@ -1,8 +1,10 @@
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
+import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
@@ -234,7 +236,19 @@ class _HomePageState extends State<HomePage> {
                                     .headline2,
                               ),
                             ),
+TextButton(onPressed: (){
 
+  Navigator.of(
+      context)
+      .pushReplacement(
+    MaterialPageRoute(
+      builder:
+          (context) =>
+              Navigationbar(1),
+    ),
+  );
+
+}, child: Text("view"))
                           ],
                         ),
                         ((getOccasionsToday(package.occasions).length ==

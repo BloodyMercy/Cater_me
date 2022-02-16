@@ -18,7 +18,7 @@ Packages _packages=new Packages();
  List<Package> _allpackages=[];
  List<Package> _allpackagesorder=[];
  Cuisines _cuisins=Cuisines();
-
+int _selectedIndex= 0;
 List<Package> get allpackagesorder => _allpackagesorder;
 
   set allpackagesorder(List<Package> value) {
