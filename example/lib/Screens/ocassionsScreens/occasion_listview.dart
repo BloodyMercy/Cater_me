@@ -88,7 +88,13 @@ class _OccasionListViewState extends State<OccasionListView> {
                 ),
               );
             }else{
+              Navigator.of(context).push(
 
+                MaterialPageRoute(
+                  builder: (context) =>
+                      AddNewOccasion(index),
+                ),
+              );
             }
             },
           child: Card(
@@ -185,16 +191,20 @@ class _OccasionListViewState extends State<OccasionListView> {
                                      '${occa.all[index].type}',
                                      style: Theme.of(context).textTheme.headline2,
                                    ),
+                                   SizedBox(height: 20,),
+                                   Text(
+                                     'edit',
+                                   //  locale: ,
+                                     style: Theme.of(context).textTheme.overline,
+                                   ),
                                  ],
                                ),
                              ),
                              SizedBox(width:MediaQuery.of(context).size.width/5.8 ,),
-                             Column(
-                               children: [
+
                                  Expanded(child: Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/5.5,)),
-                                 Icon(Icons.edit),
-                               ],
-                             )
+                             //  ],
+                           //  )
                            ],
                          ),
                        ),

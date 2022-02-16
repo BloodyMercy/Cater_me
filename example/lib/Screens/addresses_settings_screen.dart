@@ -5,6 +5,8 @@ import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'chooseadress/confirm_location_view.dart';
+
 class AddAddressSettingsScreen extends StatefulWidget {
   const AddAddressSettingsScreen({Key key}) : super(key: key);
 
@@ -107,18 +109,19 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
             IconButton(onPressed: (){
-              address.createOrUpdate=0;
-              address.addresstitlecontroller.clear();
-              address.citycontrollerstring.clear();
-              address.streetcontroller.clear();
-              address.buildingcontroller.clear();
-              address.floornumbercontroller.clear();
-              showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                builder: (_) {
-                  return AddressesTextField(_addNewAddress, context);
-                });
+              // address.createOrUpdate=0;
+              // address.addresstitlecontroller.clear();
+              // address.citycontrollerstring.clear();
+              // address.streetcontroller.clear();
+              // address.buildingcontroller.clear();
+              // address.floornumbercontroller.clear();
+              // showModalBottomSheet(
+              //   isScrollControlled: true,
+              //   context: context,
+              //   builder: (_) {
+              //     return AddressesTextField(_addNewAddress, context);
+              //   });
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
               },
                 icon: Icon(Icons.add))
           ],
