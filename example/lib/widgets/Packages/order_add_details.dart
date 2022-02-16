@@ -39,7 +39,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
     super.initState();
   }
 
-  int count = 0;
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -85,33 +85,33 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                     widget.food.title,
                                     style: st20Bold,
                                   )),
-                                  !loading
-                                      ? IconButton(
-                                          icon: Icon(
-                                            widget.food.isfavorite
-                                                ? Icons.star_purple500_outlined
-                                                : Icons.star_border_outlined,
-                                            color: Colors.yellow,
-                                          ),
-                                          onPressed: () async {
-                                            // setState(() {
-                                            //   loading = true;
-                                            // });
-                                            await PackageService.favoriteitem(
-                                                    widget.food.id)
-                                                .then((value) {
-                                              // if (value) {
-                                              //   widget.food.isfavorite = !widget.food.isfavorite;
-                                              // }
-                                              // setState(() {
-                                              //   loading = false;
-                                              // });
-                                            });
-                                          })
-                                      : CircularProgressIndicator(
-                                          color: Colors.white,
-                                          strokeWidth: 4.0,
-                                        )
+                                  // !loading
+                                  //     ? IconButton(
+                                  //         icon: Icon(
+                                  //           widget.food.isfavorite
+                                  //               ? Icons.star_purple500_outlined
+                                  //               : Icons.star_border_outlined,
+                                  //           color: Colors.yellow,
+                                  //         ),
+                                  //         onPressed: () async {
+                                  //           // setState(() {
+                                  //           //   loading = true;
+                                  //           // });
+                                  //           await PackageService.favoriteitem(
+                                  //                   widget.food.id)
+                                  //               .then((value) {
+                                  //             // if (value) {
+                                  //             //   widget.food.isfavorite = !widget.food.isfavorite;
+                                  //             // }
+                                  //             // setState(() {
+                                  //             //   loading = false;
+                                  //             // });
+                                  //           });
+                                  //         })
+                                  //     : CircularProgressIndicator(
+                                  //         color: Colors.white,
+                                  //         strokeWidth: 4.0,
+                                  //       )
                                 ],
                               )),
                           SizedBox(
@@ -142,15 +142,15 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                           SizedBox(
                             height: constraints.maxHeight * 0.025,
                           ),
-                          SizedBox(
-                            height: constraints.maxHeight * 0.04,
-                            child: FittedBox(
-                              child: Text(
-                                "Details:",
-                                style: st20Bold,
-                              ),
-                            ),
-                          ),
+                          // SizedBox(
+                          //   height: constraints.maxHeight * 0.04,
+                          //   child: FittedBox(
+                          //     child: Text(
+                          //       "Details:",
+                          //       style: st20Bold,
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                               height: 85,
                               child: ListView.builder(

@@ -67,9 +67,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     String fullName,
     String email,
     String phoneNumber,
-  ) async{
+  ) async {
     final newFriend = FriendModel();
-   await getData();
+    await getData();
     setState(() {
       _friend.add(newFriend);
     });
@@ -77,14 +77,15 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
   void _startAddNewFriend(BuildContext ctx) {
     showModalBottomSheet(
-        isScrollControlled: true,
-        context: ctx,
-        builder: (_) {
-          return GestureDetector(
-            child: FreindsTextField(_addNewFriend),
-            behavior: HitTestBehavior.opaque,
-          );
-        });
+      isScrollControlled: true,
+      context: ctx,
+      builder: (_) {
+        return GestureDetector(
+          child: FreindsTextField(_addNewFriend),
+          behavior: HitTestBehavior.opaque,
+        );
+      },
+    );
   }
 
   Widget setupAlertDialoadContainer(context, List<FriendModel> l) {
@@ -232,13 +233,13 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   fontFamily: 'BerlinSansFB'),
                             ),
                           ),
-                          SizedBox(height: MediaQuery.of(context).size.height*0.04,)
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                          )
                         ],
                       ),
                     )
-
-                  : SliverToBoxAdapter(child: Container()
-              ),
+                  : SliverToBoxAdapter(child: Container()),
 
               SliverToBoxAdapter(
                   child: !issearch
