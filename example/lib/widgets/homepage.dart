@@ -349,7 +349,7 @@ class _HomePageState extends State<HomePage> {
                                                   MaterialPageRoute(
                                                     builder:
                                                         (context) =>
-                                                    const AddNewOccasion(),
+                                                     AddNewOccasion(0),
                                                   ),
                                                 );
                                               },

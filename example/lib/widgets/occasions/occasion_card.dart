@@ -123,7 +123,7 @@ class _OccasionCardState extends State<OccasionCard> {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const AddNewOccasion(),
+                              builder: (context) =>  AddNewOccasion(0),
                             ),
                           );
                         },
