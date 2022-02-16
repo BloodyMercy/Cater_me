@@ -141,6 +141,9 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                             Navigator.pop(context);
                             widget.food.isfavorite = !widget.food.isfavorite;
                           }
+                          else{
+                            Navigator.pop(context);
+                          }
                           setState(() {
                             loading = false;
                           });
