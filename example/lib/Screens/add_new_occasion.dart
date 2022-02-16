@@ -23,7 +23,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
 
     await occasion.getallnewoccasion();
-
+await occasion.getAllOccasionType();
     occasion.typeofoccasioncontrollername.text=occasion.listoccasiontype[widget.getposition].name;
     occasion.typeofoccasioncontroller.text=occasion.listoccasiontype[widget.getposition].id.toString();
 

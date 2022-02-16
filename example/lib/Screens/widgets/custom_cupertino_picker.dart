@@ -133,6 +133,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                         if (widget.label == "Type Of Event") {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
+
                           adress.typeofeventcontroller.text =
                               widget.events[widget.selectedValue].id.toString();
                           Navigator.of(context).pop();

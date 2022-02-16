@@ -128,7 +128,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontFamily: 'BerlinSansFB',
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.normal),
                                   ))),
                               Text(
                                 widget.food.price.toString(),
@@ -151,6 +151,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                           //     ),
                           //   ),
                           // ),
+
                           Container(
                               height: 85,
                               child: ListView.builder(
