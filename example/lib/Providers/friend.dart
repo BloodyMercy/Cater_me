@@ -20,6 +20,9 @@ class FriendsProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+  deleteFreind(int id)async{
+  return  await  _friendsService.deleteFriends(id);
+  }
 
 
 FriendModel _FriendCreated = FriendModel();
@@ -50,6 +53,25 @@ FriendModel _FriendCreated = FriendModel();
     phonecontroller.text="";
     emailcontroller.text="";
     notifyListeners();
+  }
+  UpdateFriend(int id) async {
+bool done=
+     await  _friendsService.updatefriends(
+        name: namecontroller.text.toString(),
+     phonenumber:
+phonecontroller.text,
+    email:   emailcontroller.text,
+      id: id,
+    );
+
+
+    namecontroller.text="";
+    phonecontroller.text="";
+    emailcontroller.text="";
+ await getAllFriends();
+notifyListeners();
+    return done ;
+
   }
 
 

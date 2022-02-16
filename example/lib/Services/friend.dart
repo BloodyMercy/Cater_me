@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,7 +33,31 @@ class FriendServices {
     }
   }
 
+  Future<bool> deleteFriends(int id) async{
+    ErrorMessage em=ErrorMessage();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.DeleteFriends+"/$id"));
+      respons.headers.addAll(headers);
+      http.StreamedResponse responses = await respons.send();
+      var response = await http.Response.fromStream(responses);
+      if(response.statusCode==200){
+        em.message="deleted";
+        return true;
+      }else{
+        em.message="cannot delete";
+        return false;
+      }
 
+    }
+    catch(e){
+      print("error cannot delete");
+    }
+    return false;
+
+  }
 
 
  static Future<FriendModel> CreateFriend(
@@ -78,6 +103,40 @@ class FriendServices {
     } catch (e) {
       print(e);
       return createF;
+    }
+  }
+  FriendModel friend=FriendModel();
+  Future<bool> updatefriends({int id, String name, String phonenumber, String email }) async {
+
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}','Content-Type': 'application/json'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.Updatefriends));
+      respons.headers.addAll(headers);
+      respons.fields.addAll({
+        'Id': id.toString(),
+        'Name': name,
+        'PhoneNumber': phonenumber,
+        'Email': email,
+
+      });
+      http.StreamedResponse responses = await respons.send();
+
+      var response = await http.Response.fromStream(responses);
+      print("${response.statusCode}");
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseData = json.decode(response.body);
+
+        friend  = FriendModel.fromJson(responseData);
+        return true;
+      } else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
     }
   }
 }

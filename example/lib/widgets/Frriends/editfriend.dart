@@ -1,21 +1,23 @@
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
+import 'package:CaterMe/model/friend_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FreindsTextField extends StatefulWidget {
-  final Function addFriend;
+class editfriend extends StatefulWidget {
+  FriendModel alpha;
 
 
 
-  FreindsTextField(this.addFriend);
+  editfriend(this.alpha);
 
   @override
-  State<FreindsTextField> createState() => _FreindsTextFieldState();
+  State<editfriend> createState() => _FreindsTextFieldState();
 }
 
-class _FreindsTextFieldState extends State<FreindsTextField> {
+class _FreindsTextFieldState extends State<editfriend> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   bool validate() {
@@ -36,7 +38,19 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
   bool loading = false;
 
 
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
+    final friends = Provider.of<FriendsProvider>(context, listen: false);
+    friends.namecontroller.text=widget.alpha.name;
+    friends.emailcontroller.text=widget.alpha.email;
+    friends.phonecontroller.text=widget.alpha.phoneNumber;
+    setState(() {
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     FocusNode focusnode =FocusNode();
@@ -69,7 +83,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   SizedBox(height: _mediaQueryText * 0.06),
                   customTextField(read: false,label:'Full Name' ,controller:friends.namecontroller ,),
 
-             //     SizedBox(height: _mediaQueryText * 0.02),
+                  //     SizedBox(height: _mediaQueryText * 0.02),
                   customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
 
                   Container(
@@ -138,14 +152,14 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                         // reset!=null?
                       }
                       else
-                        {
+                      {
 
-                        await friends.createNewFriend();
+                        await friends.UpdateFriend(widget.alpha.id);
 
-                          setState(() {
-                            loading = false;
+                        setState(() {
+                          loading = false;
 
-                          });
+                        });
 
                         Navigator.of(context).pop();
                       }
@@ -153,7 +167,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
 
                     child: Text(
-                      'Add',
+                      'Edit',
                       style: Theme
                           .of(context)
                           .textTheme

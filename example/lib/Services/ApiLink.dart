@@ -27,6 +27,7 @@ class ApiLink{
  static String AddRegular=host+'Settings/GetOrderSettings';
  static String favoriteitem=host+'Favorites/ToggleFavorite/';
  static String GetAllFriends=host+'Friends/GetAllFriends';
+ static String DeleteFriends=host+'Friends/DeleteFriend';
  static String GetAllFavorite=host+'Favorites/GetAllFavorites';
  static String GetAllOrders=host+"Orders/GetUserOrders";
  static String GetAllOrdersById=host+"Orders/GetUserOrderById";
@@ -38,6 +39,7 @@ class ApiLink{
  static String GetItemByCuisine=host+"Orders/GetItemByCuisine/";
  static String GetItemByadd=host+"Orders/GetItemByAddons/";
  static String Createfriends=host+"Friends/CreateFriend";
+ static String Updatefriends=host+"Friends/UpdateFriend";
  static String GetPersonalInfo=host+"Accounts/GetUser";
  static String UpdateProfle=host+"Accounts/UpdateProfile";
  static String Getalloccasions=host+"Occasions/GetAllOccasions";
