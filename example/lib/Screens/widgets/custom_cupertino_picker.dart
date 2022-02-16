@@ -211,7 +211,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                   },
 
                   scrollController: FixedExtentScrollController(
-                      initialItem: widget.selectedValue),
+                      initialItem: widget.selectedValue-1),
                   itemExtent: 40.0,
                   children: [...buildItems()],
                 ),
