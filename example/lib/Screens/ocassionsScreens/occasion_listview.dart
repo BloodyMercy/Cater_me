@@ -19,9 +19,10 @@ class _OccasionListViewState extends State<OccasionListView> {
 
   getData() async {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
-    await occasion.getalloccasions();
+
     final occa = Provider.of<OccasionProvider>(context, listen: false);
     await occa.getAllOccasionType();
+    await occa.getallnewoccasion();
 
     occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
 
@@ -35,13 +36,16 @@ class _OccasionListViewState extends State<OccasionListView> {
   }
 
   Future refreshocasionData() async {
+
+
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
     final occa = Provider.of<OccasionProvider>(context, listen: false);
-
     occa.all.clear();
     occa.listoccasiontype.clear();
 
+    await occa.getAllOccasionType();
     await occa.getallnewoccasion();
+    await occasion.getalloccasions();
     occa.listoccasiontype.insert(0,OccassionType(id: -700,name: "Add occation",image: ''));
     return;
   }
@@ -77,12 +81,26 @@ class _OccasionListViewState extends State<OccasionListView> {
       List.generate(occa.listoccasiontype.length, (int index) {
 
         return    GestureDetector(
-          onTap: (){ Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) =>
-              const AddNewOccasion(),
-            ),
-          );},
+          onTap: (){
+
+            if(occa.listoccasiontype[index].id==-700) {
+              Navigator.of(context).push(
+
+                MaterialPageRoute(
+                  builder: (context) =>
+                   AddNewOccasion(0),
+                ),
+              );
+            }else{
+              Navigator.of(context).push(
+
+                MaterialPageRoute(
+                  builder: (context) =>
+                      AddNewOccasion(index ),
+                ),
+              );
+            }
+            },
           child: Card(
             child: Container(
              // width: ,
@@ -181,7 +199,12 @@ class _OccasionListViewState extends State<OccasionListView> {
                                ),
                              ),
                              SizedBox(width:MediaQuery.of(context).size.width/5.8 ,),
-                             Expanded(child: Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/5.5,))
+                             Column(
+                               children: [
+                                 Expanded(child: Image.network(occa.all[index].image, width: MediaQuery.of(context).size.width/5.5,)),
+                                 Icon(Icons.edit),
+                               ],
+                             )
                            ],
                          ),
                        ),

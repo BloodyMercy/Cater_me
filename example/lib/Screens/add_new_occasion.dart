@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddNewOccasion extends StatefulWidget {
-  const AddNewOccasion({Key key}) : super(key: key);
+  int getposition =0 ;
+   AddNewOccasion(this.getposition) ;
 
   @override
   State<AddNewOccasion> createState() => _AddNewOccasionState();
@@ -23,6 +24,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
     await occasion.getallnewoccasion();
 
+    occasion.typeofoccasioncontrollername.text=occasion.listoccasiontype[widget.getposition].name;
     setState(() {
       loading = false;
     });
@@ -80,12 +82,14 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           label: 'Type of Occasion',
                           items: occasion.listoccasiontypename,
                           listoccasiontype: occasion.listoccasiontype,
-                          selectedValue: 0,
+                          selectedValue: widget.getposition,
                           inputType: TextInputType.number,
                           controller: occasion.typeofoccasioncontrollername,
                         ),
 
-                  customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
+                  customTextField(label:"Dd / mm / yyyy" ,
+                    controller:occasion.datechosencontroller ,
+                    read: true,),
 
 
 

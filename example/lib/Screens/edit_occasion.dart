@@ -3,6 +3,7 @@ import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class EditOccasion extends StatefulWidget {
@@ -72,6 +73,19 @@ bool ispressed = false;
       child: Scaffold(
   key:_scaff,
         appBar: AppBar(
+          actions: [
+            IconButton(onPressed:()async {
+              loading=true;
+              setState(() {
+
+              });
+              await occasion.deleteoccation(widget.occ) ;
+              setState(() {
+                loading=false;
+              });
+              Navigator.pop(context);
+            } , icon: Icon(FontAwesomeIcons.trash))
+          ],
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop(

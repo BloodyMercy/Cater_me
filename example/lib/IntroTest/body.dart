@@ -31,10 +31,7 @@ class _BodyState extends State<Body> {
       'text': '',
       'image': 'images/IntroductionScreen/introductionscreen03.png',
     },
-    {
-      'text': '',
-      'image': 'images/IntroductionScreen/introductionscreen05.png',
-    },
+
 
   ];
 

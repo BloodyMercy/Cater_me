@@ -21,22 +21,22 @@ class DonationAdded extends StatelessWidget {
 
               children: [
                 Center(
-                    child: Image.asset('images/Group 1068.png',
-                        height: 150, width: 150)),
-                SizedBox(
-                  height: mediaQuery.size.height * 0.08,
-                ),
-                Text(
-                  "The Rest Of Your Food Will Be Donated",
-
-                  style: TextStyle(fontSize: 18,color: colorCustom),
-                ),
-                Text(''),
-                Text(
-                  "To Days Of Hope",
-
-                  style: TextStyle(fontSize: 18,color: colorCustom),
-                ),
+                    child: Image.asset('images/Donated.png',
+                        height: 250, width: 250)),
+                // SizedBox(
+                //   height: mediaQuery.size.height * 0.08,
+                // ),
+                // Text(
+                //   "The Rest Of Your Food Will Be Donated",
+                //
+                //   style: TextStyle(fontSize: 18,color: colorCustom),
+                // ),
+                // Text(''),
+                // Text(
+                //   "To Days Of Hope",
+                //
+                //   style: TextStyle(fontSize: 18,color: colorCustom),
+                // ),
               ],
             ),
             ElevatedButton(

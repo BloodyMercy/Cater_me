@@ -384,6 +384,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                             },
                             child: Text('Donate'),
                           ),button2:  ElevatedButton(
+                          style: ElevatedButton.styleFrom(primary: Colors.grey),
                           onPressed: () {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(

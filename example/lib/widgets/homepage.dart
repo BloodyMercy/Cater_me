@@ -82,21 +82,7 @@ class _HomePageState extends State<HomePage> {
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   automaticallyImplyLeading: false,
-        //   elevation: 0,
-        //   shape: const RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.vertical(
-        //       bottom: Radius.circular(15),
-        //     ),
-        //   ),
-        //   centerTitle: true,
-        //   title: Text(
-        //     'Home',
-        //     style: Theme.of(context).textTheme.headline1,
-        //   ),
-        //   backgroundColor: Theme.of(context).primaryColor,
-        // ),
+
           body: !isSearch
               ? RefreshIndicator(
             onRefresh: refreshdata,
@@ -349,7 +335,7 @@ class _HomePageState extends State<HomePage> {
                                                   MaterialPageRoute(
                                                     builder:
                                                         (context) =>
-                                                    const AddNewOccasion(),
+                                                     AddNewOccasion(0),
                                                   ),
                                                 );
                                               },

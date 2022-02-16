@@ -26,7 +26,7 @@ Address _addressCreated=Address();
   Address _addressUpdated=Address();
 String _eventname="";
   Address get addressUpdated => _addressUpdated;
-
+  bool form = false;
   FriendModel _value=FriendModel() ;
 
 

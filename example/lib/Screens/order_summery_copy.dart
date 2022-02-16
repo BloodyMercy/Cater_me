@@ -235,10 +235,13 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   fontFamily: 'BerlinSansFB'),
                             ),
                           ),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.04,)
                         ],
                       ),
                     )
-                  : SliverToBoxAdapter(child: Container()),
+
+                  : SliverToBoxAdapter(child: Container()
+              ),
 
               SliverToBoxAdapter(
                   child: !issearch

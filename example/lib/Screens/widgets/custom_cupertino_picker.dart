@@ -37,6 +37,7 @@ class CustomCupertinoPicker extends StatefulWidget {
   State<CustomCupertinoPicker> createState() => _CustomCupertinoPickerState();
 }
 
+
 class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
   FocusNode _focusNode = FocusNode();
   buildItems() {
@@ -59,7 +60,12 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
 
     super.dispose();
   }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
+  }
 
   void showPicker(BuildContext ctx) {
     showCupertinoModalPopup(
