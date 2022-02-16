@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/model/address_model.dart';
+import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -118,7 +120,31 @@ bool loading=false;
     ui.FrameInfo fi = await codec.getNextFrame();
     return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
   }
+  List<Addresses> _address = [];
+  void _addNewAddress(
+      String contactName,
+      String email,
+      String phoneNumber,
+      String country,
+      String city,
+      String addressTitle,
+      // String id,
+      ) {
+    final newAddress = Addresses(
+      // image: image,
+      contactName: contactName,
+      email: email,
+      phoneNumber: phoneNumber,
+      country: country,
+      city: city,
+      addressTitle: addressTitle,
+      id: DateTime.now().toString(),
+    );
 
+    setState(() {
+      _address.add(newAddress);
+    });
+  }
 
   bool loadingMap=true;
   @override
@@ -134,34 +160,56 @@ bool loading=false;
         onPressed: ()async{
           _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
 
-          address.loading=true;
-          address.notifyListeners();
-          if(address.createOrUpdate==0){
-            await address.createAddress();
-            address.loading=false;
-            if( address.addressCreated.id==0){
-              // _scaffoldKey.currentState.showSnackBar();
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
-            }else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address added")));
-              await  Future.delayed(Duration(seconds: 2));
-              Navigator.of(context).pop();
-            }
-          }else{
-            await address.updateAddresss();
-            address.loading=false;
-            print(address.addressUpdated);
-            if( address.addressUpdated.id!=0){
-              address.getAllAddress();
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("updated done ")));
-              await  Future.delayed(Duration(seconds: 2));
-              Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
-            }else{
-              address.getAllAddress();
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Updated failed ")));
-              // Navigator.of(context).pop();
-            }
-          }
+          //address.loading=true;
+         // address.notifyListeners();
+
+
+          address.createOrUpdate=0;
+          address.addresstitlecontroller.clear();
+          address.citycontrollerstring.clear();
+          address.streetcontroller.clear();
+          address.buildingcontroller.clear();
+          address.floornumbercontroller.clear();
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (_) {
+              return AddressesTextField(_addNewAddress, context);
+            });
+
+
+
+          // if(address.createOrUpdate==0){
+          //   await address.createAddress();
+          //   address.loading=false;
+          //   if( address.addressCreated.id==0){
+          //     // _scaffoldKey.currentState.showSnackBar();
+          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+          //   }else {
+          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address added")));
+          //     await  Future.delayed(Duration(seconds: 2));
+          //     Navigator.of(context).pop();
+          //   }
+          // }else{
+          //   await address.updateAddresss();
+          //   address.loading=false;
+          //   print(address.addressUpdated);
+          //   if( address.addressUpdated.id!=0){
+          //
+          //
+          //     address.getAllAddress();
+          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("updated done ")));
+          //     await  Future.delayed(Duration(seconds: 2));
+          //     Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+          //
+          //
+          //
+          //   }else{
+          //     address.getAllAddress();
+          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Updated failed ")));
+          //     // Navigator.of(context).pop();
+          //   }
+          // }
 
 
         },

@@ -22,6 +22,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
   bool loading = true;
 
   getData() async {
+   // print(w)
     final orderStatus =
         Provider.of<OrderStatusProvider>(context, listen: false);
     await orderStatus.getOrderStatus(widget.id);

@@ -16,6 +16,7 @@ class StatusOrderService {
       if (response.statusCode == 200) {
         Map<String,dynamic> responseData = json.decode(response.body);
         OrderByIdStatusModel posts =  OrderByIdStatusModel.fromJson(responseData);
+        print(posts.statusId);
         //map to list
         return posts;
       } else {

@@ -165,10 +165,10 @@ class _AddressesTextFields extends State<AddressesTextField> {
                     SizedBox(height: _mediaQueryText * 0.03),
                     !loadingfinal
                         ? ElevatedButton(
-                            onPressed: () {
-                              // setState(() {
-                              //   loadingfinal = true;
-                              // });
+                            onPressed: () async {
+                              setState(() {
+                                loadingfinal = true;
+                              });
                               if (adress
                                       .addresstitlecontroller.text.isEmpty ||
                                   adress.countrycontroller.text.isEmpty ||
@@ -176,7 +176,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   adress.streetcontroller.text.isEmpty ||
                                   adress.buildingcontroller.text.isEmpty ||
                                   adress.floornumbercontroller.text.isEmpty) {
-
+setState(() {
+  loadingfinal=false;
+});
 
                                 ScaffoldMessenger.of(widget.main).showSnackBar( SnackBar(
                                   content: Text(
@@ -187,10 +189,53 @@ class _AddressesTextFields extends State<AddressesTextField> {
 
                                 return;
                               }
+                              else{
+adress.loading=true;
+                                if(adress.createOrUpdate==0){
 
 
-                              Navigator.of(context).pop();
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
+                                  await adress.createAddress();
+                                  setState(() {
+                                    loadingfinal=false;
+                                  });
+                                  adress.loading=false;
+                                  if( adress.addressCreated.id==0){
+                                    // _scaffoldKey.currentState.showSnackBar();
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
+                                  }else {
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address added")));
+                                   // await  Future.delayed(Duration(seconds: 2));
+                                    Navigator.of(context).pop();
+                                    Navigator.of(context).pop();
+                                  }
+                                }else{
+                                  await adress.updateAddresss();
+                                  adress.loading=false;
+                                  print(adress.addressUpdated);
+                                  if( adress.addressUpdated.id!=0){
+
+
+                                    adress.getAllAddress();
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("updated done ")));
+                                 //   await  Future.delayed(Duration(seconds: 2));
+                                    Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                                    Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+
+
+
+                                  }else{
+                                    adress.getAllAddress();
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Updated failed ")));
+                                    // Navigator.of(context).pop();
+                                  }
+                                }
+
+
+                              }
+
+
+                              // Navigator.of(context).pop();
+                              // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                             },
                             child: Text(
                               'Next',
