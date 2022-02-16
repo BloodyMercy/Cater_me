@@ -57,9 +57,9 @@ class _MyFavoritesState extends State<MyFavorites> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        body: SafeArea(
-          child: Container(
-            color: LightColors.kLightYellow,
+        body: Container(
+          color: LightColors.kLightYellow,
+          child: SafeArea(
             child: Center(
               child: !loading
                   ? package.listfavorite.length == 0
