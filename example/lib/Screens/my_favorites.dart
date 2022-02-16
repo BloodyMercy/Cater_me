@@ -64,7 +64,7 @@ class _MyFavoritesState extends State<MyFavorites> {
               child: !loading
                   ? package.listfavorite.length == 0
                       ? Center(
-                          child: Text("No Favorite To Dispaly!"),
+                          child: Image.asset("images/nofavorites.png"),
                         )
                       : SingleChildScrollView(
                         child: GestureDetector(

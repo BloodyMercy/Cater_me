@@ -75,7 +75,10 @@ class _NotificationsState extends State<Notifications> {
                     ),
                   ),
                 )
-              : Container(
+              : allNotification.notificationlist.length==0?
+          Center(child: Image.asset('images/nonotificationyet.png')):
+          Container(
+
                   color: LightColors.kLightYellow,
                   child: ListView.builder(
                       itemCount: allNotification.notificationlist.length,

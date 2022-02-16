@@ -81,34 +81,39 @@ class _AddressesListState extends State<AddressesList> {
     return Container(
         height: _mediaQuery * 0.6,
         child: widget.address.isEmpty
-            ? Center(
-          child:  TextButton(
-            onPressed: () => _startAddNewAddress(context),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            ? Column(
               children: [
-                Text(
-                  "Add An Address",
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
+                Center(child: Image.asset('images/noaddresses.png')),
+                Center(
+          child:  TextButton(
+                onPressed: () => _startAddNewAddress(context),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Add An Address",
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Color(0xFF3F5521),
+                          fontFamily: 'BerlinSansFB',
+                          fontSize: 17),
+                    ),
+                    Icon(
+                      Icons.add,
                       color: Color(0xFF3F5521),
-                      fontFamily: 'BerlinSansFB',
-                      fontSize: 17),
+                    )
+                  ],
                 ),
-                Icon(
-                  Icons.add,
-                  color: Color(0xFF3F5521),
-                )
-              ],
-            ),
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              primary: Colors.white,
-            ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  primary: Colors.white,
+                ),
           ),
-        )
+        ),
+              ],
+            )
             : CustomScrollView(
               slivers: [
                 SliverList(

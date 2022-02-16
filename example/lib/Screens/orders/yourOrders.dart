@@ -65,7 +65,7 @@ class _YourOrdersState extends State<YourOrders> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Container(
+                    :orders.listOrder.length==0?Center(child: Image.asset('images/noorderyet.png')):Container(
                   color: LightColors.kLightYellow,
                         child: ListView.builder(
                         itemBuilder: (context, index) {

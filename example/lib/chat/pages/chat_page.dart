@@ -648,7 +648,7 @@ class ChatPageState extends State<ChatPage> {
                       controller: listScrollController,
                     );
                   } else {
-                    return Center(child: Text("No message here yet..."));
+                    return Center(child:Image.asset('images/nochatyet.png'));
                   }
                 } else {
                   return Center(

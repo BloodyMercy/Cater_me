@@ -144,7 +144,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
-                      child: Text("Add a credit card"),
+                      child: Center(child: Image.asset("images/nocardsyet")),
                     ),
                   ),
       ),

@@ -58,7 +58,7 @@ class _OccasionListViewState extends State<OccasionListView> {
     return SafeArea(
       child:  RefreshIndicator(
     onRefresh: refreshocasionData,
-    child: CustomScrollView(
+    child:occa.all.length==0?Center(child: Image.asset('images/NoOccassionsYet.png')): CustomScrollView(
     slivers: [
     SliverAppBar(
     pinned: false,
@@ -121,7 +121,7 @@ class _OccasionListViewState extends State<OccasionListView> {
   ),
   ),
 
-         SliverList(
+       SliverList(
 
              delegate: SliverChildBuilderDelegate(
 

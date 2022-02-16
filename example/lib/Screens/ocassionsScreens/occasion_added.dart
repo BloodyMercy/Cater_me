@@ -19,15 +19,15 @@ class OccasionAdded extends StatelessWidget {
           Column(
             children: [
               Center(
-                  child: Image.asset('images/Group 1068.png',
-                      height: 150, width: 150)),
-              SizedBox(
-                height: mediaQuery.size.height * 0.08,
-              ),
-              Text(
-                "Occasion Added",
-                style: Theme.of(context).textTheme.headline5,
-              ),
+                  child: Image.asset('images/occasionadded.png',
+                      height: 350, width: 250)),
+              // SizedBox(
+              //   height: mediaQuery.size.height * 0.08,
+              // ),
+              // Text(
+              //   "Occasion Added",
+              //   style: Theme.of(context).textTheme.headline5,
+              // ),
             ],
           ),
           ElevatedButton(

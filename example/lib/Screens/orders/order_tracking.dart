@@ -45,23 +45,25 @@ class _TrackingOrderState extends State<TrackingOrder> {
     return Scaffold(
       body: SafeArea(
         child: loading
-            ? Container(
-                color: LightColors.kLightYellow,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: Color(0xFF3F5521),
+            ? SingleChildScrollView(
+              child: Container(
+                  color: LightColors.kLightYellow,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
+                    ),
                   ),
                 ),
-              )
+            )
             : Column(
               children: [
-                orderStatus.orderStatus.statusId == 1
+                orderStatus.orderStatus.statusId == 2
                     ?  OrderPreparing()
                     : Container(),
-                orderStatus.orderStatus.statusId == 2
+                orderStatus.orderStatus.statusId == 3
                     ?  OrderOnTheWay()
                     : Container(),
-                orderStatus.orderStatus.statusId == 3
+                orderStatus.orderStatus.statusId == 1
                     ? OrderReceived()
                     : Container(),
                 orderStatus.orderStatus.statusId == 4
