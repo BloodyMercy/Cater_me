@@ -87,7 +87,9 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           controller: occasion.typeofoccasioncontrollername,
                         ),
 
-                  customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
+                  customTextField(label:"Dd / mm / yyyy" ,
+                    controller:occasion.datechosencontroller ,
+                    read: true,),
 
 
 

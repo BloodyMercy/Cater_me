@@ -349,6 +349,8 @@ maintainBottomViewPadding: true,
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "Total: ${details.totale.toStringAsFixed(3)} SAR",
@@ -359,14 +361,17 @@ maintainBottomViewPadding: true,
                                             ),
                                                   SizedBox(height: MediaQuery.of(context).size
                                                     .height*0.02,),
-                                                  Text(
-                                                      '*(VAT included :)',
-                                                      style: TextStyle(
-                                                              fontSize: 10,
-                                                        fontWeight: FontWeight.bold,
-                                                        color:Colors.black,
+
+
+                                                   Text(
+                                                        '*(VAT included )',
+                                                        style: TextStyle(
+                                                                fontSize: 10,
+                                                          fontWeight: FontWeight.bold,
+                                                          color:Colors.black,
+                                                        ),
                                                       ),
-                                                    ),
+
                                           ],
                                         ),
                                         Padding(
