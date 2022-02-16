@@ -96,6 +96,7 @@ setData(String imageUrl) async{
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
+
         child: Container(
           color: LightColors.kLightYellow,
           height: mediaQuery.size.height,
@@ -206,6 +207,7 @@ setData(String imageUrl) async{
               ),
               Expanded(
                 child: ListView(
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
                     Card(
                       color:  const Color.fromARGB(206, 255, 255, 255),
