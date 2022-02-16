@@ -101,7 +101,7 @@ class _NotificationsState extends State<Notifications> {
                           },
                           child: Card(
                             color: LightColors.kLightYellow2,
-                            elevation: 5,
+                            // elevation: 5,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(30, 10, 30, 30),
                               child: Column(

@@ -21,7 +21,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
 
   bool loading = true;
   bool donate = false;
-  bool rejected=false;
+  bool rejected = false;
 
   getData() async {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
@@ -30,13 +30,13 @@ class _DetailsOrderState extends State<DetailsOrder> {
     await orders.getOrderPaymentFreind();
     print(orders.items.length);
     final orderStatus =
-    Provider.of<OrderStatusProvider>(context, listen: false);
-     await orderStatus.getOrderStatus(widget.id);
+        Provider.of<OrderStatusProvider>(context, listen: false);
+    await orderStatus.getOrderStatus(widget.id);
 
-    if(orderStatus.orderStatus.statusId!=4){
-     setState(() {
-       rejected=true;
-     });
+    if (orderStatus.orderStatus.statusId != 4) {
+      setState(() {
+        rejected = true;
+      });
     }
     donate = orders.orderbyId['isDonated'] ?? false;
     setState(() {
@@ -78,12 +78,14 @@ class _DetailsOrderState extends State<DetailsOrder> {
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
+
+                          child: Column(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Invoice'),
+                              Card(
+                                // elevation: 5,
+                                child: Container(
                                   child: ListView.builder(
                                     itemCount: order.items.length,
                                     physics: NeverScrollableScrollPhysics(),
@@ -95,7 +97,8 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                             padding: const EdgeInsets.all(10.0),
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Text(
                                                   "${order.items[i].item}  ",
@@ -119,177 +122,31 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                 ),
                                               ],
                                             ),
-
+                                          ),
+                                          Divider(
+                                            thickness: 2,
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  "Quantity",
-                                                  style: TextStyle(
-                                                      color: blackColor,
-                                                      fontWeight:
-                                                      FontWeight.normal),
-                                                ),
-                                                Text(
-                                                  "${order.items[i].quantity}",
-                                                  style: TextStyle(
-                                                      color: blackColor,
-                                                      fontWeight:
-                                                      FontWeight.normal),
-                                                ),
-                                            ],),
-                                          )
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: Card(
-                          elevation: 5,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Tax",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                    Text(
-                                        "SAR ${double.parse((order.orderbyId["tax"]??0.0).toStringAsFixed(2))}",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("SubTotal",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                    Text(
-                                        "SAR ${double.parse((order.orderbyId["subTotal"]??0.0).toStringAsFixed(2))}",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Total",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                    Text(
-                                        "SAR ${double.parse((order.orderbyId["total"]??0.0).toStringAsFixed(2))}",
-                                        style: TextStyle(
-                                            color: blackColor,
-                                            fontWeight: FontWeight.normal)),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: Card(
-                          elevation: 5,
-                          child: order.paymentFreind.length == 0
-                              ? Container()
-                              : Container(
-                                  child: ListView.builder(
-                                    itemCount: order.paymentFreind.length,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) {
-                                      return Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Row(
-                                              mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      radius: 25,
-                                                      backgroundImage:
-                                                          NetworkImage(order
-                                                              .paymentFreind[
-                                                                  index]
-                                                              .image),
-                                                    ),
-                                                    // SizedBox(width: 5,),
-                                                    Padding(
-                                                      padding: const EdgeInsets.all(8.0),
-                                                      child: Expanded(
-                                                        child: Column(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              "${order.paymentFreind[index].name}",
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      blackColor,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal),
-                                                            ),
-                                                            Text(
-                                                              "${order.paymentFreind[index].email}",
-                                                              style: TextStyle(
-                                                                  color:
-                                                                      blackColor,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  "SAR ${order.paymentFreind[index].amount}",
-                                                  style: TextStyle(
-                                                      color: blackColor,
-                                                      fontWeight:
-                                                          FontWeight.normal),
-                                                ),
+                                                // Text(
+                                                //   "Quantity",
+                                                //   style: TextStyle(
+                                                //       color: blackColor,
+                                                //       fontWeight:
+                                                //           FontWeight.normal),
+                                                // ),
+                                                // Text(
+                                                //   "${order.items[i].quantity}",
+                                                //   style: TextStyle(
+                                                //       color: blackColor,
+                                                //       fontWeight:
+                                                //           FontWeight.normal),
+                                                // ),
                                               ],
                                             ),
                                           )
@@ -298,63 +155,248 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                     },
                                   ),
                                 ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                  rejected ? SliverToBoxAdapter(
-                        child: donate
-                            ? Center(
-                              child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Your food is donated",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline1
-                                        .copyWith(color: colorCustom),
-                                  ),
-                                ),
-                            )
-                            : Center(
-                              child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "Do you want to donate your food?",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline1
-                                            .copyWith(color: colorCustom),
-                                      ),
-                                      order.buttonDonate
-                                          ? Center(
-                                              child: CircularProgressIndicator(),
-                                            )
-                                          : ElevatedButton(
-                                              onPressed: () async {
-                                                order.buttonDonate = true;
-                                                setState(() {});
-                                                donate =
-                                                    await order.donate(widget.id);
-                                                order.buttonDonate = false;
-                                                setState(() {});
-                                              },
-                                              child: Text(
-                                                "Donate",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .headline1,
-                                              )),
-                                    ],
-                                  ),
-                                ),
-                            ),
-                      ):
-                      SliverToBoxAdapter(child: Container(),)
+                      SliverToBoxAdapter(
+                        child: Column(
+                          children: [
+                            // Text('Payment'),
+                            Card(
+                              // elevation: 5,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Tax",
+                                          style: TextStyle(
+                                              color: blackColor,
+                                              fontWeight: FontWeight.normal),
+                                        ),
+                                        Text(
+                                            "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal)),
 
+                                      ],
+                                    ),
+
+
+                                  ),
+                                  Divider(
+                                    thickness: 2,
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Row(
+
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+
+                                        Text("SubTotal",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal)),
+                                        Text(
+                                            "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal)),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(
+                                    thickness: 2,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Total",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal)),
+                                        Text(
+                                            "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SliverToBoxAdapter(
+
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Column(
+                            children: [
+                              Text('Payments'),
+                              Card(
+                                elevation: 5,
+                                child: order.paymentFreind.length == 0
+                                    ? Container()
+                                    : Container(
+                                        child: ListView.builder(
+                                          itemCount: order.paymentFreind.length,
+                                          physics: NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            return Column(
+                                              children: [
+
+                                                Padding(
+                                                  padding: const EdgeInsets.all(10.0),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+
+                                                          // CircleAvatar(
+                                                          //   radius: 25,
+                                                          //   backgroundImage:
+                                                          //       NetworkImage(order
+                                                          //           .paymentFreind[
+                                                          //               index]
+                                                          //           .image),
+                                                          // ),
+                                                          // SizedBox(width: 5,),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    8.0),
+                                                            child: Expanded(
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    "${order.paymentFreind[index].name}",
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            blackColor,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .normal),
+                                                                  ),
+                                                                  // Text(
+                                                                  //   "${order.paymentFreind[index].email}",
+                                                                  //   style: TextStyle(
+                                                                  //       color:
+                                                                  //           blackColor,
+                                                                  //       fontWeight:
+                                                                  //           FontWeight
+                                                                  //               .normal),
+                                                                  // ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Text(
+                                                        "SAR ${order.paymentFreind[index].amount}",
+                                                        style: TextStyle(
+                                                            color: blackColor,
+                                                            fontWeight:
+                                                                FontWeight.normal),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            );
+                                          },
+                                        ),
+                                      ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      rejected
+                          ? SliverToBoxAdapter(
+                              child: donate
+                                  ? Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Your food is donated",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1
+                                              .copyWith(color: colorCustom),
+                                        ),
+                                      ),
+                                    )
+                                  : Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Do you want to donate your food?",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline1
+                                                  .copyWith(color: colorCustom),
+                                            ),
+                                            order.buttonDonate
+                                                ? Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  )
+                                                : ElevatedButton(
+                                                    onPressed: () async {
+                                                      order.buttonDonate = true;
+                                                      setState(() {});
+                                                      donate = await order
+                                                          .donate(widget.id);
+                                                      order.buttonDonate =
+                                                          false;
+                                                      setState(() {});
+                                                    },
+                                                    child: Text(
+                                                      "Donate",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline1,
+                                                    )),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                            )
+                          : SliverToBoxAdapter(
+                              child: Container(),
+                            )
                     ],
-                  )
-            ),
+                  )),
       ),
     );
   }

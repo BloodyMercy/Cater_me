@@ -5,6 +5,7 @@ import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 
 class OrderAdsDetail extends StatefulWidget {
@@ -85,6 +86,8 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                     widget.food.title,
                                     style: st20Bold,
                                   )),
+
+
                                   // !loading
                                   //     ? IconButton(
                                   //         icon: Icon(
@@ -117,6 +120,16 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                           SizedBox(
                             height: constraints.maxHeight * 0.025,
                           ),
+                          // Html(
+                          //   data: widget.food.description,
+                          //   style: {
+                          //     "body": Style(
+                          //       fontFamily: 'BerlinSansFB',
+                          //       color: Colors.black87,
+                          //       fontWeight: FontWeight.normal,
+                          //     )
+                          //   },
+                          // ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

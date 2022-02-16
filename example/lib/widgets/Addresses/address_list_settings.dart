@@ -33,7 +33,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
 
-      height: _mediaQuery * 0.7,
+      height: _mediaQuery * 0.87,
       child: widget.address.isEmpty
           ? Center(
           child: Container(
