@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/address.dart';
@@ -86,7 +87,10 @@ class _AddressesListState extends State<AddressesList> {
                 Center(child: Image.asset('images/noaddresses.png')),
                 Center(
           child:  TextButton(
-                onPressed: () => _startAddNewAddress(context),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
+
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
