@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                Padding(
-                padding: EdgeInsets.only(left: 35.0),
+                padding: EdgeInsets.only(left: 25.0),
                 child: Center(
                   child: Image(
                     image: AssetImage('images/logo.png'),

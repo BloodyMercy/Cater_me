@@ -77,7 +77,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         //     child: Icon(Icons.add),
         //   ),
         // ),)
-      body:_creditCards.loading?Center(child: CircularProgressIndicator(),):
+      body: _creditCards.list.length==0?Center(child: Image.asset('images/nocardsyet.png')):_creditCards.loading?Center(child: CircularProgressIndicator(),):
       SafeArea(
         child:  Column(
 

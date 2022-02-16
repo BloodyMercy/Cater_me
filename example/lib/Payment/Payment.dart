@@ -82,13 +82,24 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                 Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
                   ElevatedButton(
+
                     child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          "add to my cards",
-                          style: TextStyle(fontSize: 14),
+                          "Add To My Cards",
+                          style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
                         )),
                     onPressed: _generateToken,
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: (MediaQuery.of(context).size.width * 0.2),
+                        vertical: (MediaQuery.of(context).size.height * 0.01),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      primary: Theme.of(context).primaryColor,
+                    ),
                   ),
 
                 ]),

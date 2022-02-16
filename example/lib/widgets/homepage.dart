@@ -223,11 +223,12 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: (mediaQuery.size.width * 0.04),
-                                  top: mediaQuery.size.height * 0.05),
-                              child: Text(
+                            // Padding(
+                            //   padding: EdgeInsets.only(
+                                  // left: (mediaQuery.size.width * 0.04),
+                                  // top: mediaQuery.size.height * 0.05),
+                              // child:
+                        Text(
                                 'Upcoming occasions',
                                 style:
                                 Theme
@@ -235,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                                     .textTheme
                                     .headline2,
                               ),
-                            ),
+                            // ),
 TextButton(onPressed: (){
 
   Navigator.of(
@@ -248,12 +249,12 @@ TextButton(onPressed: (){
     ),
   );
 
-}, child: Text("view"))
+}, child: Text("See All",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'BerlinSansFB',fontSize: 12),))
                           ],
                         ),
                         ((getOccasionsToday(package.occasions).length ==
-                            0))
-                            ? Padding(
+                            0))?
+                             Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal:
                             mediaQuery.size.width * 0.01,
@@ -270,6 +271,7 @@ TextButton(onPressed: (){
                                 ),
                                 child: Row(
                                   children: [
+
                                     SizedBox(
                                       height:
                                       mediaQuery.size.height *
@@ -374,18 +376,23 @@ TextButton(onPressed: (){
                                                   fontFamily:
                                                   'BerlinSansFB'),
                                             ),
+
                                           ],
                                         )
                                       ],
                                     ),
+
                                   ],
                                 ),
                               ),
                             ),
+                            Center(child: OccasionCard(Axis.horizontal)),
                           ]),
                         )
-                            : Container(),
+                            :
+                             Container(),
                         Center(child: OccasionCard(Axis.horizontal)),
+
                       ]),
                       // SizedBox(height: mediaQuery.size.height * 0.1,),
 

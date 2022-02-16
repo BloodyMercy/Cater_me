@@ -172,6 +172,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                          CustomDialog(title: "Do you want to delete this address",
                                            description: "",
                                            button1:ElevatedButton(
+                                             style: ElevatedButton.styleFrom(primary: Colors.grey),
                                              child: Text("Yes"),
                                              onPressed: ()async{
                                                showDialog(

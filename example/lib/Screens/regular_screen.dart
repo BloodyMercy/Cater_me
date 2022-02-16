@@ -150,6 +150,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
+    FocusNode focusNode = FocusNode();
     return address.load?SingleChildScrollView(
       child: Container(
         color: LightColors.kLightYellow,
@@ -163,9 +164,59 @@ class _ReguarScreenState extends State<ReguarScreen> {
                 key: formkey,
                 child: Column(
                   children: [
-                    customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextFormField(
 
-,
+
+                  style: const TextStyle(
+                  color: Colors.grey,
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'BerlinSansFB'),
+                    decoration: InputDecoration(
+
+
+
+                        contentPadding:
+                        EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+
+                        alignLabelWithHint: true,
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
+                            color:
+                            focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                        labelText: 'Event Name',
+                        hintStyle:TextStyle(
+                            color: Colors.black87,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'BerlinSansFB'),
+
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: const BorderSide(
+                              color: Color(0xFF3F5521),
+                            ))),
+                    controller:address.eventnamecontroller,
+
+                    // autovalidateMode: AutovalidateMode.onUserInteraction,
+                    keyboardType: TextInputType.text
+              ),
+                ),
+                    // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
+
+
                     SizedBox(height: screenHeight * 0.02),
 
                     Container(
