@@ -17,7 +17,14 @@ class CreditCardsProvider extends ChangeNotifier{
   bool _loading=false;
   int _valueIndex=-1;
   bool _loadingDelete=false;
+int _value=-1;
 
+
+  CreditCardsService get creditCardsService => _creditCardsService;
+
+  set creditCardsService(CreditCardsService value) {
+    _creditCardsService = value;
+  }
 
   bool get loadingDelete => _loadingDelete;
 
@@ -57,4 +64,9 @@ class CreditCardsProvider extends ChangeNotifier{
    return em.message;
   }
 
+  int get value => _value;
+
+  set value(int value) {
+    _value = value;
+  }
 }

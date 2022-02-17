@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:CaterMe/Helpers/inappnotification.dart';
 import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Order.dart';
@@ -196,6 +197,7 @@ class _NavigationBarState extends State<Navigationbar> {
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
     final address=Provider.of<AdressProvider>(context,listen: true);
+    final credit=Provider.of<CreditCardsProvider>(context,listen: true);
 
     return
       Scaffold(
@@ -225,6 +227,10 @@ class _NavigationBarState extends State<Navigationbar> {
                 orderCaterprovider.totale=0.0;
                 orderCaterprovider.choosebillFriend=[];
                 orderCaterprovider.choosebillFriend=[];
+                orderCaterprovider.itemOrders=[];
+                credit.value=-1;
+                orderCaterprovider.serviceId=0;
+
                // orderCaterprovider.listFriend=[];
                 address.value2Index=-1;
                 orderCaterprovider.valueIndex=-1;

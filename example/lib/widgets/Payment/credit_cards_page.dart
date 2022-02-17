@@ -68,9 +68,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                               MaterialStateColor.resolveWith(
                                                   (states) => colorCustom),
                                           toggleable: true,
-                                          groupValue: _value,
+                                          groupValue: _creditCards.value,
                                           value: i,
                                           onChanged: (value) {
+                                            _creditCards.value=i;
                                             setState(() {
                                               _value = i;
                                             });

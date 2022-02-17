@@ -39,11 +39,10 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();
-    occa.listoccasiontype.clear();
-
+  //  occa.listoccasiontype.clear();
+   // await occa.getAllOccasionType();
     await occa.getallnewoccasion();
-    occa.listoccasiontype
-        .insert(0, OccassionType(id: -700, name: "Add occation", image: ''));
+
     return;
   }
 

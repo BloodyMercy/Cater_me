@@ -82,7 +82,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
   choosebillFriend.removeAt(i);
 }
       mapitemf.add({"friendId":choosebillFriend[i].id,
-        "amount":controllers[i].text  });
+        "amount":int.parse(controllers[i].text)  });
     }
 
     try{
@@ -103,14 +103,15 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         "event": {
           "eventName": eventname,
           "eventDate":date,
-          "eventTypeId":type,
-          "numberOfGuestsId": nb,
+         // "eventTime":date,
+          "eventTypeId":int.parse(type),
+          "numberOfGuestsId": int.parse(nb),
           "contactPersonName":contactname??"",
           "contactPersonPhoneNumber":contactphone??"",
 
         },
         "paymentFriend": mapitemf,
-        "cardId": idcard
+        "cardId": "{$idcard}a"
       });
 
       request.headers.addAll(headers);
@@ -196,8 +197,8 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
   addItems(ItemOrders item){
     _itemOrders.add(item);
-    subTotal=subTotal+item.totalprice;
-    totale= subTotal+subTotal;
+   // subTotal=subTotal+item.totalprice;
+    totale= totale+item.totalprice;
     notifyListeners();
   }
 
@@ -220,28 +221,27 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
  removeItems(ItemOrders item){
     _itemOrders.remove(item);
-    subTotal=subTotal-item.totalprice;
-    totale= subTotal+subTotal;
+    totale= totale-item.totalprice;
     notifyListeners();
   }
 modifyItems(int count,int index){
 
-    _itemOrders[index].quantity=count;
-    subTotal=subTotal- _itemOrders[index].totalprice;
-    _itemOrders[index].totalprice=count*_itemOrders[index].price;
-   // _itemOrders.remove(item);
-    subTotal=subTotal+(count*_itemOrders[index].price);
-    totale= subTotal+subTotal;
-    notifyListeners();
+  _itemOrders[index].quantity=count;
+  totale= totale-  _itemOrders[index].totalprice;
+  _itemOrders[index].totalprice=count*_itemOrders[index].price;
+  // _itemOrders.remove(item);
+  // subTotal=subTotal+(count*_itemOrders[index].price);
+  totale= totale+  _itemOrders[index].totalprice;
+  notifyListeners();
   }
   modifyItemsmoins(int count,int index){
 
     _itemOrders[index].quantity=count;
-    subTotal=subTotal- _itemOrders[index].totalprice;
+    totale= totale-  _itemOrders[index].totalprice;
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
     // _itemOrders.remove(item);
-    subTotal=subTotal+(count*_itemOrders[index].price);
-    totale= subTotal+subTotal;
+   // subTotal=subTotal+(count*_itemOrders[index].price);
+    totale= totale+  _itemOrders[index].totalprice;
     notifyListeners();
   }
 
