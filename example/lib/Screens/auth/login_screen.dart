@@ -1,5 +1,6 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -309,7 +310,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             child: Text(
                               'Log In',
-                              style: TextStyle(color: Colors.white)
+                              style: TextStyle(color: Colors.white,
+                                  fontWeight: FontWeight.bold,fontFamily: 'BerlinSansFB',
+                              fontSize: 16)
                             ),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(

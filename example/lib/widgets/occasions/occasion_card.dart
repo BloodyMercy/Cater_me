@@ -77,63 +77,64 @@ class _OccasionCardState extends State<OccasionCard> {
         itemCount: card.length+1, itemBuilder: (BuildContext context, int index) {
      // final cards = card[index];
       return index==card.length?    Container(
-        child: Column(
-          mainAxisAlignment:
-          MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: mediaQuery
-                      .size.width *
-                      0.02),
-              child: Text(
-                'You don\'t have any upcoming occasions ',
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 35.0),
+          child: Row(
+            // mainAxisAlignment:
+            // MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: mediaQuery
+                        .size.width *
+                        0.02,
+               ),
+                // child: Text(
+                //   'You don\'t have any upcoming occasions ',
+                //   style: TextStyle(
+                //       color: Theme.of(
+                //           context)
+                //           .primaryColor,
+                //       fontSize: 11,
+                //       fontFamily:
+                //       'BerlinSansFB'),
+                // ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(
+                      context)
+                      .push(
+                    MaterialPageRoute(
+                      builder:
+                          (context) =>
+                          AddNewOccasion(
+                              0),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons
+                    .add_circle_outline_rounded),
+                color:
+                Theme.of(context)
+                    .primaryColor,
+              ),
+              Text(
+                'Add an occasion ',
                 style: TextStyle(
+                    fontWeight:
+                    FontWeight
+                        .bold,
                     color: Theme.of(
                         context)
                         .primaryColor,
-                    fontSize: 11,
+                    fontSize: 15,
                     fontFamily:
                     'BerlinSansFB'),
-              ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(
-                        context)
-                        .push(
-                      MaterialPageRoute(
-                        builder:
-                            (context) =>
-                            AddNewOccasion(
-                                0),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons
-                      .add_circle_outline_rounded),
-                  color:
-                  Theme.of(context)
-                      .primaryColor,
-                ),
-                Text(
-                  'Add an occasion ',
-                  style: TextStyle(
-                      fontWeight:
-                      FontWeight
-                          .bold,
-                      color: Theme.of(
-                          context)
-                          .primaryColor,
-                      fontSize: 15,
-                      fontFamily:
-                      'BerlinSansFB'),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ):buildCards(card[index], index);
     },

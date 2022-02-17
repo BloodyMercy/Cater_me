@@ -212,17 +212,18 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  // Padding(
-                                  //   padding: EdgeInsets.only(
-                                  // left: (mediaQuery.size.width * 0.04),
-                                  // top: mediaQuery.size.height * 0.05),
-                                  // child:
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                  left: (mediaQuery.size.width * 0.04),
+                                  // top: mediaQuery.size.height * 0.05
+                                      ),
+                                  child:
                                   Text(
                                     'Upcoming occasions',
                                     style:
                                         Theme.of(context).textTheme.headline2,
                                   ),
-                                  // ),
+                                  ),
                                   TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pushReplacement(
@@ -316,15 +317,17 @@ class _HomePageState extends State<HomePage> {
                                                           left: mediaQuery
                                                                   .size.width *
                                                               0.02),
-                                                      child: Text(
-                                                        'You don\'t have any upcoming occasions ',
-                                                        style: TextStyle(
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                            fontSize: 11,
-                                                            fontFamily:
-                                                                'BerlinSansFB'),
+                                                      child: FittedBox(
+                                                        child: Text(
+                                                          'You don\'t have any upcoming occasions ',
+                                                          style: TextStyle(
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .primaryColor,
+                                                              fontSize: 13,
+                                                              fontFamily:
+                                                                  'BerlinSansFB'),
+                                                        ),
                                                       ),
                                                     ),
                                                     Row(
@@ -402,9 +405,10 @@ class _HomePageState extends State<HomePage> {
                                                   (mediaQuery.size.width * 0.04)),
                                           child: GestureDetector(
                                               child: Text("See All",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline2),
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontFamily: 'BerlinSansFB'
+                                                  )),
                                               onTap: () {
                                                 Navigator.of(context).push(
                                                   MaterialPageRoute(
