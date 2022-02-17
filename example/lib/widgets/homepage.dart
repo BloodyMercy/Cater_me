@@ -9,6 +9,8 @@ import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
+import 'package:CaterMe/model/occasions/cuisin_card.dart';
+import 'package:CaterMe/model/occasions/cuisins_screen.dart';
 import 'package:CaterMe/widgets/Packages/packages_card.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
@@ -374,6 +376,57 @@ class _HomePageState extends State<HomePage> {
                                     )
                                   : Container(),
                               Center(child: OccasionCard(Axis.horizontal)),
+
+
+                              Container(
+                                child: Column(children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: (mediaQuery.size.width * 0.04),
+                                           ),
+                                        child: Text(
+                                          'Cuisines',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                        ),
+                                      ),
+                                      // SizedBox(width: mediaQuery.size.width*0.6),
+                                      Padding(
+                                          padding: EdgeInsets.only(
+                                              right:
+                                                  (mediaQuery.size.width * 0.04)),
+                                          child: GestureDetector(
+                                              child: Text("See All",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .headline2),
+                                              onTap: () {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CuisinsScreen(
+                                                            package.cuisins.id),
+                                                  ),
+                                                );
+                                              }))
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: mediaQuery.size.height * 0.3,
+                                      //width: mediaQuery.size.width,
+                                      child: CuisinCard()),
+                                  // SizedBox(height:mediaQuery.size.height * 0.212,
+                                  //   child:adss[0]),
+                                  //  SizedBox(height:mediaQuery.size.height * 0.212,
+                                  //  child:adss[1]),
+                                ]),
+                              ),
+
                             ]),
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
 
