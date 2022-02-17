@@ -292,7 +292,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               child: Text(
                                 'Add Friend',
                                 style: TextStyle(
-                                    decoration: TextDecoration.underline),
+                                    decoration: TextDecoration.underline,
+                                fontFamily: 'BerlinSansFB',
+                                ),
                               ),
                             )
                           ],

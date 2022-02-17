@@ -1,5 +1,6 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DonationAdded extends StatelessWidget {
@@ -22,7 +23,7 @@ class DonationAdded extends StatelessWidget {
               children: [
                 Center(
                     child: Image.asset('images/Donated.png',
-                        height: 250, width: 250)),
+                        fit: BoxFit.contain,)),
                 // SizedBox(
                 //   height: mediaQuery.size.height * 0.08,
                 // ),

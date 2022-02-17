@@ -85,7 +85,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('images/Samcater.png'),
-                      fit: BoxFit.cover),
+                      fit: BoxFit.contain
+                  ),
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),
@@ -265,7 +266,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       "Finish",
                       style: TextStyle(
                         fontFamily: 'BerlinSansFB',
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
