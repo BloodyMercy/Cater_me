@@ -1,12 +1,14 @@
 import 'package:CaterMe/Providers/cuisines.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
-import 'package:CaterMe/widgets/Cuisins/cuisins_list.dart';
+
 
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
+
+import 'cuisins_list.dart';
 
 class CuisinCard extends StatefulWidget {
   @override
