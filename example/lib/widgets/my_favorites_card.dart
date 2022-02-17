@@ -38,7 +38,7 @@ class MyFavoritesCard extends StatelessWidget {
                       image: NetworkImage(
                         food.image,
                       ),
-                      fit: BoxFit.fill)),
+                      fit: BoxFit.contain)),
               // child: Column(
               //   mainAxisAlignment: MainAxisAlignment.end,
               //   crossAxisAlignment: CrossAxisAlignment.start,
