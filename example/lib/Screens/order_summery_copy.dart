@@ -91,6 +91,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   Widget setupAlertDialoadContainer(context, List<FriendModel> l) {
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
+
     return SingleChildScrollView(
       child: Container(
         color: LightColors.kLightYellow2,
@@ -156,6 +157,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
+    var screenHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
       body: SafeArea(
           child: CustomScrollView(slivers: <Widget>[
@@ -326,9 +329,13 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       CircleAvatar(
+                                        backgroundColor: Colors.transparent,
+                                        // radius: screenHeight * 0.04,
                                         radius: 25.0,
                                         child: ClipRRect(
+
                                           child: Image.network(
+
                                               frnd.listFriends[index].image),
                                           borderRadius:
                                               BorderRadius.circular(50.0),
@@ -355,6 +362,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
                         return ListTile(
                             leading: CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              radius: screenHeight * 0.04,
                               backgroundImage: NetworkImage(
                                   details.choosebillFriend[index].image),
                             ),
