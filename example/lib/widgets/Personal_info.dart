@@ -1,9 +1,12 @@
+import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import '../custom_date_picker_form_field.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key key}) : super(key: key);
@@ -26,8 +29,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   getData() async {
-    final personalInfo =
-         Provider.of<UserProvider>(context, listen: false);
+    final personalInfo = Provider.of<UserProvider>(context, listen: false);
     await personalInfo.getPersonalInfo();
     setState(() {
       loading = false;
@@ -48,13 +50,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
     return false;
   }
 
-   DateTime _newDate;
-
-
+  DateTime _newDate;
 
   @override
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
+    final address = Provider.of<AdressProvider>(context, listen: true);
     final user = Provider.of<UserProvider>(context, listen: true);
 
     var _mediaQuery =
@@ -73,7 +74,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
             iconSize: 30,
           ),
           elevation: 0,
-
           centerTitle: true,
           title: Text(
             'Personal Info',
@@ -83,13 +83,15 @@ class _PersonalInfoState extends State<PersonalInfo> {
         ),
         body: loading
             ? Container(
-            color:LightColors.kLightYellow,
-              child: Center(
-                  child: CircularProgressIndicator(color:Color(0xFF3F5521),),
+                color: LightColors.kLightYellow,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Color(0xFF3F5521),
+                  ),
                 ),
-            )
+              )
             : Container(
-          color: LightColors.kLightYellow,
+                color: LightColors.kLightYellow,
                 child: Center(
                   child: SingleChildScrollView(
                     child: Form(
@@ -100,27 +102,26 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           children: [
                             TextFormField(
                               controller: user.name,
-
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(
-                                      Icons.person),
-
-
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                                  prefixIcon: Icon(Icons.person),
+                                  contentPadding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.04),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                    //I believe the size difference here is 6.0 to account padding
+                                    color: focusNode.hasFocus
+                                        ? Color(0xFF3F5521)
+                                        : Colors.grey,
+                                  ),
                                   labelText: 'Full Name',
-                                  hintStyle:TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'BerlinSansFB'),
-
+                                  hintStyle: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB',
+                                  ),
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
@@ -130,7 +131,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-
                                       borderRadius: BorderRadius.circular(5.0),
                                       borderSide: const BorderSide(
                                         color: Color(0xFF3F5521),
@@ -140,7 +140,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'BerlinSansFB'),
-
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
@@ -150,26 +149,24 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             SizedBox(height: _mediaQuery * 0.03),
                             TextFormField(
                               controller: user.email,
-                              decoration:  InputDecoration(
-
-                                  prefixIcon: Icon(
-                                      Icons.mail_outline),
-
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.mail_outline),
+                                  contentPadding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.04),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                      fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                      //I believe the size difference here is 6.0 to account padding
+                                      color: focusNode.hasFocus
+                                          ? Color(0xFF3F5521)
+                                          : Colors.grey),
                                   labelText: "Email",
-                                  hintStyle:TextStyle(
+                                  hintStyle: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'BerlinSansFB'),
-
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
@@ -179,7 +176,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-
                                       borderRadius: BorderRadius.circular(5.0),
                                       borderSide: const BorderSide(
                                         color: Color(0xFF3F5521),
@@ -196,25 +192,23 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             TextFormField(
                               controller: user.phoneNumber,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(
-                                      Icons.phone),
-
-
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                                  prefixIcon: Icon(Icons.phone),
+                                  contentPadding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.04),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                      fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                      //I believe the size difference here is 6.0 to account padding
+                                      color: focusNode.hasFocus
+                                          ? Color(0xFF3F5521)
+                                          : Colors.grey),
                                   labelText: 'Phone number',
-                                  hintStyle:TextStyle(
+                                  hintStyle: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'BerlinSansFB'),
-
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
@@ -224,7 +218,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-
                                       borderRadius: BorderRadius.circular(5.0),
                                       borderSide: const BorderSide(
                                         color: Color(0xFF3F5521),
@@ -234,7 +227,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'BerlinSansFB'),
-
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
@@ -243,74 +235,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               keyboardType: TextInputType.phone,
                             ),
                             SizedBox(height: _mediaQuery * 0.03),
+                            Container(
+                              height: MediaQuery.of(context).size.height / 8,
+                              child: CustomDatePickerFormField(
 
-                            TextFormField(
+                                label: "Birthdate",
 
-                             readOnly: true,
-                              controller:user.birthday ,
-                              focusNode: focusNode,
-                              onTap: ()  async {
-    _newDate = await showDatePicker(
-    context: context,
-    builder: (context, child) => Theme(
-    data: ThemeData().copyWith(
-    colorScheme: ColorScheme.light(
-    primary: Color(0xff3F5521),
-    surface: Color(0xff3F5521),
-    onPrimary: Colors.black),
-    ),
-    child: child),
-    initialDate: DateTime.now(),
-    firstDate: DateTime(1930),
-    lastDate: DateTime.now(),
-    initialEntryMode:
-    DatePickerEntryMode.calendarOnly,
-    );
-user.birthday.text=DateFormat("dd-MM-yyyy").format(_newDate);
-    user.birthDate = _newDate.toString();
-    setState(() {
-
-    });
-
-                              },
-                              decoration: InputDecoration(
-prefixIcon: Icon(Icons.date_range),
-
-
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
-                                  alignLabelWithHint: true,
-                                  labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                  labelText: "Birthday",
-                                  hintStyle:TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'BerlinSansFB'),
-
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Color(0xFF3F5521),
-                                      ))),
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'BerlinSansFB'),
+                                controller: address.evendatecontroller,
+                              ),
                             ),
                             SizedBox(height: _mediaQuery * 0.07),
                             loadingButton

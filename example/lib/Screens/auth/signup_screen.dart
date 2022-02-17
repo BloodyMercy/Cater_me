@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/greeting.dart';
+import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -10,6 +12,7 @@ import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../custom_date_picker_form_field.dart';
 import 'newlogin/screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -91,37 +94,41 @@ class _SignupScreenState extends State<SignupScreen> {
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
   ];
-  DateTime selectedDate = DateTime.now();
-   DateTime _newDate;
-  _datePicker() async {
-    _newDate = (await showDatePicker(
-      context: context,
-      builder: (context, child) => Theme(
-          data: ThemeData().copyWith(
-            colorScheme: ColorScheme.light(
-                primary: Color(0xff3F5521),
-                surface: Color(0xff3F5521),
-                onPrimary: Colors.black),
-          ),
-          child: child),
-      initialDate: selectedDate,
-      firstDate: DateTime(1930),
-      lastDate: DateTime.now(),
-      initialEntryMode: DatePickerEntryMode.calendarOnly,
-    ));
-    setState(() {
-      if (_newDate != null) {
-        selectedDate = _newDate;
-
-      }
-    });
-  }
+  // DateTime selectedDate = DateTime.now();
+  DateTime _selectedDay = DateTime.utc(2000, 10, 16);
+  // _datePicker() async {
+  //   _newDate = (await showDatePicker(
+  //     context: context,
+  //     builder: (context, child) => Theme(
+  //         data: ThemeData().copyWith(
+  //           colorScheme: ColorScheme.light(
+  //               primary: Color(0xff3F5521),
+  //               surface: Color(0xff3F5521),
+  //               onPrimary: Colors.black),
+  //         ),
+  //         child: child),
+  //     initialDate: selectedDate,
+  //     firstDate: DateTime(1930),
+  //     lastDate: DateTime.now(),
+  //     initialEntryMode: DatePickerEntryMode.calendarOnly,
+  //   ));
+  //   setState(() {
+  //     if (_newDate != null) {
+  //       selectedDate = _newDate;
+  //
+  //     }
+  //   });
+  // }
 
   final _scaffKey = GlobalKey<ScaffoldState>();
   bool _loading = false;
 
   @override
+
   Widget build(BuildContext context) {
+    final address = Provider.of<AdressProvider>(context, listen: true);
+    // final user = Provider.of<UserProvider>(context, listen: true);
+    FocusNode focusNode = FocusNode();
     final authProvider = Provider.of<UserProvider>(context);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
@@ -403,94 +410,106 @@ class _SignupScreenState extends State<SignupScreen> {
                               ]),
                               keyboardType: TextInputType.phone,
                             ),
+                             DropdownButton(
+                              underline: const SizedBox(),
+                              focusColor: Colors.white,
+                              hint: Padding(
+                                padding: const EdgeInsets.only(left: 15.0),
+                                child: Text(
+                                  "Gender",
+                                  style:
+                                  Theme.of(context).textTheme.headline4,
+                                ),
+                              ),
+                              dropdownColor: Colors.white,
+                              iconSize: 36,
+                              isExpanded: true,
+                              style: const TextStyle(
+                                  color: Colors.black54, fontSize: 15),
+                              value: genderChoose,
+                              onChanged: (newValue) {
+                                authProvider.gender.text = newValue as String;
+                                setState(() {
+                                  genderChoose = newValue as String;
+                                      (value) => value == null
+                                      ? 'Please fill in your gender'
+                                      : null;
+                                });
+                              },
+                              items: listGender.map((valueItem) {
+                                return DropdownMenuItem(
+                                  value: valueItem['id'].toString(),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child:
+                                    Text(valueItem['gender'].toString()),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height / 8,
+                              child: CustomDatePickerFormField(
+
+                                label: "Birthdate",
+
+                                controller: address.evendatecontroller,
+                              ),
+                            ),
                             SizedBox(height: screenHeight * 0.015),
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: DropdownButton(
-                                underline: const SizedBox(),
-                                focusColor: Colors.white,
-                                hint: Padding(
-                                  padding: const EdgeInsets.only(left: 15.0),
-                                  child: Text(
-                                    "Gender",
-                                    style:
-                                        Theme.of(context).textTheme.headline4,
-                                  ),
-                                ),
-                                dropdownColor: Colors.white,
-                                iconSize: 36,
-                                isExpanded: true,
-                                style: const TextStyle(
-                                    color: Colors.black54, fontSize: 15),
-                                value: genderChoose,
-                                onChanged: (newValue) {
-                                  authProvider.gender.text = newValue as String;
-                                  setState(() {
-                                    genderChoose = newValue as String;
-                                    (value) => value == null
-                                        ? 'Please fill in your gender'
-                                        : null;
-                                  });
-                                },
-                                items: listGender.map((valueItem) {
-                                  return DropdownMenuItem(
-                                    value: valueItem['id'].toString(),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15.0),
-                                      child:
-                                          Text(valueItem['gender'].toString()),
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
+
                             ),
                             SizedBox(height: screenHeight * 0.015),
                             // SizedBox(height: _mediaQuery * 0.03),
                             Padding(
                               padding: const EdgeInsets.only(left: 20),
-                              child: Row(
-                                children: [
-                                  Text(selectedDate == null
-                                      ? "No Date chosen!"
-                                      : 'Birthdate: ${DateFormat.yMd().format(selectedDate)}'),
-                                  IconButton(
-                                    onPressed: ()async{
 
-                                      _newDate = (await showDatePicker(
-                                        context: context,
-                                        builder: (context, child) => Theme(
-                                            data: ThemeData().copyWith(
-                                              colorScheme: ColorScheme.light(
-                                                  primary: Color(0xff3F5521),
-                                                  surface: Color(0xff3F5521),
-                                                  onPrimary: Colors.black),
-                                            ),
-                                            child: child),
-                                        initialDate: selectedDate,
-                                        firstDate: DateTime(1930),
-                                        lastDate: DateTime.now(),
-                                        initialEntryMode: DatePickerEntryMode.calendarOnly,
-                                      ));
 
-                                      setState(() {
-                                        if (_newDate != null) {
-                                          selectedDate = _newDate;
-                                          authProvider.birthday.text=_newDate.toString() ;
-
-                                        }
-                                      });
-                                    },
-
-                                    icon: Icon(
-                                      Icons.date_range,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                  )
-                                ],
-                              ),
+                              // child: Row(
+                              //   children: [
+                              //     Text(selectedDate == null
+                              //         ? "No Date chosen!"
+                              //         : 'Birthdate: ${DateFormat.yMd().format(selectedDate)}'),
+                              //     IconButton(
+                              //       onPressed: ()async{
+                              //
+                              //         _newDate = (await showDatePicker(
+                              //           context: context,
+                              //           builder: (context, child) => Theme(
+                              //               data: ThemeData().copyWith(
+                              //                 colorScheme: ColorScheme.light(
+                              //                     primary: Color(0xff3F5521),
+                              //                     surface: Color(0xff3F5521),
+                              //                     onPrimary: Colors.black),
+                              //               ),
+                              //               child: child),
+                              //           initialDate: selectedDate,
+                              //           firstDate: DateTime(1930),
+                              //           lastDate: DateTime.now(),
+                              //           initialEntryMode: DatePickerEntryMode.calendarOnly,
+                              //         ));
+                              //
+                              //         setState(() {
+                              //           if (_newDate != null) {
+                              //             selectedDate = _newDate;
+                              //             authProvider.birthday.text=_newDate.toString() ;
+                              //
+                              //           }
+                              //         });
+                              //       },
+                              //
+                              //       icon: Icon(
+                              //         Icons.date_range,
+                              //         color: Theme.of(context).primaryColor,
+                              //       ),
+                              //     )
+                              //   ],
+                              // ),
                             ),
                           ],
                         ),
@@ -513,7 +532,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 });
                                 // reset!=null?
                               } else {
-                                if (await authProvider.signUp(image,DateFormat.yMd().format(selectedDate).toString())) {
+                                if (await authProvider.signUp(image,DateFormat.yMd().format(_selectedDay).toString())) {
                                   setState(() {
                                     _loading = false;
                                   });

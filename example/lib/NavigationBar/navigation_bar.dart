@@ -117,7 +117,7 @@ class _NavigationBarState extends State<Navigationbar> {
     widgetBuilder: StepWidgetBuilder.useDefaultTheme(
       texts: [
         'Click here,and make your order',
-        'View all packages,add your occassions,Traking your orders',
+        'View all packages,add your occassions,track your orders',
       ],
       buttonTextBuilder: (currPage, totalPage) {
         return currPage < totalPage - 1 ? 'Next' : 'Finish';

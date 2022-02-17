@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (5)),
+      duration: Duration(seconds: (2)),
       vsync: this,
     );
   }
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Lottie.asset(
-        'images/animation/CaterMeLottie.json',
+        'images/animation/LottieCaterMe.json',
         controller: _controller,
         height: MediaQuery.of(context).size.height * 5,
 
