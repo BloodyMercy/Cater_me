@@ -284,6 +284,22 @@ maintainBottomViewPadding: true,
                                         } else {
                                           orderProvider.spets = value;
                                         }
+                                        if(orderProvider.spets==6){
+                                          bool a=false;
+                                  for(int i=0;i<orderProvider.choosebillFriend.length;i++) {
+                                    if (orderProvider.choosebillFriend[i].price == 0) {
+                                      a = true;
+                                    }
+                                  }
+                                  if(a)
+                                    const SnackBar(content: Text("please fill the empty fields "),);
+
+                                    else
+                                    orderProvider.spets = value;
+
+
+                                        }
+
                                         if (orderProvider.spets == 7) {
                                           setState(() {
                                             _controller.animateTo(
