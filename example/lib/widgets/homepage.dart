@@ -207,6 +207,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Center(child: PackagesCard()),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
                               Row(
                                 mainAxisAlignment:
@@ -380,9 +381,10 @@ class _HomePageState extends State<HomePage> {
                                   : Container(),
                               Center(child: OccasionCard(Axis.horizontal)),
 
-
+                                   SizedBox(height: MediaQuery.of(context).size.height*0.1),
                               Container(
-                                child: Column(children: [
+                                child: Column(
+                                    children: [
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -392,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                                             left: (mediaQuery.size.width * 0.04),
                                            ),
                                         child: Text(
-                                          'Cuisines',
+                                          'Shishas',
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline2,
