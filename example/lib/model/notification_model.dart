@@ -4,6 +4,7 @@ class notificationModel {
   String title = '';
   String description = '';
   bool seen=false;
+  String date = '';
 
   notificationModel();
 
@@ -13,6 +14,7 @@ class notificationModel {
     title = json['title']??"not found";
     description = json['description']??"not found";
     seen=json['seen']??false;
+    date = json['date']?? false;
   }
 
   
