@@ -194,7 +194,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
             delegate: SliverChildListDelegate(
               [
                 Container(
-                  // height: MediaQuery.of(context).size.height * 0.6,
+                  // height: MediaQuery.of(context).size.height ,
                   decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.vertical(
@@ -233,6 +233,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           ],
                         ),
                       ),
+                   //   Container(height: 100,),
                       Html(
                         data: widget.food.description,
                         style: {
@@ -243,6 +244,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           )
                         },
                       ),
+                    //  Container(height: 100,),
                     ],
                   ),
                 ),
