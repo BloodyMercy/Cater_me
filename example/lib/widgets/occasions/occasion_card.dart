@@ -75,7 +75,7 @@ class _OccasionCardState extends State<OccasionCard> {
         child: ListView.builder(
           scrollDirection: widget.ax,
         itemCount: card.length+1, itemBuilder: (BuildContext context, int index) {
-      final cards = card[index];
+     // final cards = card[index];
       return index==card.length?    Container(
         child: Column(
           mainAxisAlignment:
@@ -135,7 +135,7 @@ class _OccasionCardState extends State<OccasionCard> {
             )
           ],
         ),
-      ):buildCards(cards, index);
+      ):buildCards(card[index], index);
     },
 
         // options: widget.ax == Axis.vertical
