@@ -111,7 +111,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
         },
         "paymentFriend": mapitemf,
-        "cardId": "{$idcard}a"
+        "cardId": idcard
       });
 
       request.headers.addAll(headers);
