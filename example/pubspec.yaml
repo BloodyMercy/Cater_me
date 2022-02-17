@@ -118,7 +118,6 @@ flutter:
     - images/
     - images/iconphase2/
     - images/animation/
-    - -images/Logoicon/
 
     - images/IntroductionScreen/
     - images/orderTracking/
