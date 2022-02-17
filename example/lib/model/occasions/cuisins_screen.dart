@@ -92,7 +92,7 @@ package.clearData();
                 ),
               ),
               package.cuisinsbyid.length>0?     SizedBox(
-                height: mediaQuery.size.height * 0.70,
+                height: mediaQuery.size.height * 0.80,
                 child: GridView(
                   padding: const EdgeInsets.all(25),
                   children: getCuisinsCards(package.cuisinsbyid),
