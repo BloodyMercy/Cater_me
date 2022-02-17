@@ -416,7 +416,7 @@ class ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text(
           this.peerNickname,
-          style: TextStyle(color: Colors.white),
+          style: Theme.of(context).textTheme.headline1,
         ),
         centerTitle: true,
       ),

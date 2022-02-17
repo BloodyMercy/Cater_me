@@ -1,7 +1,9 @@
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'editfriend.dart';
@@ -34,6 +36,7 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
 
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
+    var _mediaQueryWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: SizedBox(
         height: _mediaQuery * 0.9,
@@ -55,44 +58,50 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
                           padding: EdgeInsets.symmetric(
                               vertical: _mediaQuery * 0.02,
                               horizontal: _mediaQuery * 0.01),
-                          child: CircleAvatar(
-                            radius: 25.0,
-                            child: ClipRRect(
-                              child: Image.network(
-                                 widget.friend[index].image,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 25.0,
+                                child: ClipRRect(
+                                  child: Image.network(
+                                     widget.friend[index].image,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
+                              SizedBox(width:_mediaQueryWidth * 0.025 ,),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.friend[index].name,
+                                    style: const TextStyle(
+                                        fontSize: 20, fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    widget.friend[index].email,
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.normal),
+                                  ),
+                                  // SizedBox(height: _mediaQuery * 0.01),
+                                  Text(
+                                    widget.friend[index].phoneNumber,
+                                    style: const TextStyle(
+                                        fontSize: 13, fontWeight: FontWeight.normal),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.friend[index].name,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              widget.friend[index].email,
-                              style: const TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.normal),
-                            ),
-                            // SizedBox(height: _mediaQuery * 0.01),
-                            Text(
-                              widget.friend[index].phoneNumber,
-                              style: const TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.normal),
-                            ),
-                          ],
-                        ),
+
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                           IconButton(onPressed: (){
                             //edit
                             _EditFriend(context,widget.friend[index]);
-                          }, icon: Icon(Icons.edit)
+                          }, icon: Icon(FontAwesomeIcons.solidEdit,color: Color(0xFF3F5521),size: 20)
                           ),
                             IconButton(onPressed: ()async{
                               loading=false;
@@ -114,7 +123,8 @@ setState(() {
 
 });
 
-                            }, icon: Icon(Icons.delete)
+                            }, icon: Icon(FontAwesomeIcons.trash,color: redColor
+                              ,size: 20,)
                             ),
 
                           ],)

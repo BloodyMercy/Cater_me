@@ -214,7 +214,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                            oneOrtwo: true,
                                          )
                                      )  ;
-                                    }, icon:Icon(FontAwesomeIcons.trash,color: Colors.red,size: 20,) ),
+                                    }, icon:Icon(FontAwesomeIcons.trash,color: redColor,size: 20,) ),
 
                               ],
                             ),

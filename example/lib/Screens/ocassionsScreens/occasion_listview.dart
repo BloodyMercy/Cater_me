@@ -55,9 +55,7 @@ class _OccasionListViewState extends State<OccasionListView> {
     return SafeArea(
       child: RefreshIndicator(
         onRefresh: refreshocasionData,
-        child: occa.all.length == 0
-            ? Center(child: Image.asset('images/NoOccassionsYet.png'))
-            : CustomScrollView(
+        child:CustomScrollView(
                 slivers: [
                   SliverAppBar(
                     pinned: false,
@@ -131,10 +129,14 @@ class _OccasionListViewState extends State<OccasionListView> {
                       ),
                     ),
                   ),
-                  SliverList(
+
+
+                  occa.all.length == 0
+                      ? SliverToBoxAdapter(child: Center(child: Image.asset('images/NoOccassionsYet.png')))
+                      : SliverList(
                       delegate: SliverChildBuilderDelegate(
                     (context, int index) {
-                      return GestureDetector(
+                      return   GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
