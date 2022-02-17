@@ -45,100 +45,59 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 child: CircularProgressIndicator(),
               )
             : _creditCards.list.length != 0
-                ? Container(
-                    color: LightColors.kLightYellow,
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                            child: CustomScrollView(
-                          slivers: [
-                            SliverToBoxAdapter(
-                              child: _buildTitleSection(
-                                  title: "Payment Details",
-                                  subTitle: "How would you like to pay ?"),
+                ? CustomScrollView(
+                  slivers: [
+                SliverToBoxAdapter(
+                  child: _buildTitleSection(
+                      title: "Payment Details",
+                      subTitle: "How would you like to pay ?"),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int i) {
+                      return Container(
+                        child: Row(
+                          children: [
+                            Radio(
+                              fillColor:
+                                  MaterialStateColor.resolveWith(
+                                      (states) => colorCustom),
+                              toggleable: true,
+                              groupValue: _creditCards.value,
+                              value: i,
+                              onChanged: (value) {
+                                _creditCards.value=i;
+                                setState(() {
+                                  _value = i;
+                                });
+                                _creditCards.credit =
+                                    _creditCards.list[i];
+                              },
                             ),
-                            SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int i) {
-                                  return Container(
-                                    child: Row(
-                                      children: [
-                                        Radio(
-                                          fillColor:
-                                              MaterialStateColor.resolveWith(
-                                                  (states) => colorCustom),
-                                          toggleable: true,
-                                          groupValue: _creditCards.value,
-                                          value: i,
-                                          onChanged: (value) {
-                                            _creditCards.value=i;
-                                            setState(() {
-                                              _value = i;
-                                            });
-                                            _creditCards.credit =
-                                                _creditCards.list[i];
-                                          },
-                                        ),
-                                        _buildCreditCard(
-                                          color: LightColors.kLightYellow2,
-                                          cardExpiration:
-                                              "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                                          cardHolder:
-                                              _creditCards.list[i].ownerName,
-                                          cardNumber:
-                                              "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                childCount: _creditCards.list.length,
-                              ),
+                            _buildCreditCard(
+                              color: LightColors.kLightYellow2,
+                              cardExpiration:
+                                  "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                              cardHolder:
+                                  _creditCards.list[i].ownerName,
+                              cardNumber:
+                                  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
                             ),
-                            // SliverToBoxAdapter(
-                            //   child:
-                            //   _buildAddCardButton(
-                            //       icon: Icon(Icons.add),
-                            //       color: LightColors.kLightYellow2),
-                            // )
                           ],
-                        )
-
-                            //
-                            // Container(
-                            //   height: 400,
-                            //   child: ListView.builder(
-                            //     itemCount:3 ,
-                            //       itemBuilder: (ctx,index){
-                            //     return  Row(
-                            //       // mainAxisAlignment: MainAxisAlignment.center,
-                            //       children: [
-                            //         Radio(
-                            //           toggleable: true,
-                            //           // groupValue: orderprovider.valueIndex,
-                            //           value: index,
-                            //           onChanged: (value) {
-                            //             setState(() {
-                            //               _value = index;
-                            //               // orderprovider.valueIndex = index;
-                            //             });
-                            //             // orderprovider.value = widget.address[index];
-                            //           }, groupValue: _value,
-                            //         ),
-                            //         _buildCreditCard(
-                            //             color: LightColors.kLightYellow2,
-                            //             cardExpiration: "05/2024",
-                            //             cardHolder: "HOUSSEM SELMI",
-                            //             cardNumber: "9874 4785 XXXX 6548"),
-                            //       ],
-                            //     );
-                            //   }),
-                            // ),
-
-                            )
-                      ],
-                    ),
-                  )
+                        ),
+                      );
+                    },
+                    childCount: _creditCards.list.length,
+                  ),
+                ),
+                // SliverToBoxAdapter(
+                //   child:
+                //   _buildAddCardButton(
+                //       icon: Icon(Icons.add),
+                //       color: LightColors.kLightYellow2),
+                // )
+                  ],
+                )
                 : Center(
                     child: ElevatedButton(
                       onPressed: () {
