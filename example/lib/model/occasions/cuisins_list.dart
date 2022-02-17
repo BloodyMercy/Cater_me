@@ -2,9 +2,7 @@ import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/food.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 
-import 'package:CaterMe/widgets/Menu/menus_cards.dart';
-
-import 'cuisins_card.dart';
+import 'menus_cards.dart';
 
 List<CuisinsCard> getCuisins(List<Cuisins> cuisins) {
 
