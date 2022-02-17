@@ -1,5 +1,6 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/address.dart';
+import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/appointment/donation.dart';
@@ -12,7 +13,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AppointmentSuccess extends StatefulWidget {
-  AppointmentSuccess();
+  final int id;
+  AppointmentSuccess(this.id);
 
   @override
   _AppointmentSuccessState createState() => _AppointmentSuccessState();
@@ -50,6 +52,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     final _serpres = Provider.of<OrderCaterProvider>(context, listen: true);
 
     final address = Provider.of<AdressProvider>(context, listen: true);
+    final order = Provider.of<OrderByIdProvider>(context, listen: true);
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -228,6 +231,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                             style:
                             ElevatedButton.styleFrom(primary: Colors.grey),
                             onPressed: () {
+
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
                                     builder: (context) => Navigationbar(0),
@@ -239,7 +243,23 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           button2: ElevatedButton(
                             style:
                             ElevatedButton.styleFrom(primary: colorCustom),
-                            onPressed: () {
+                            onPressed: () async{
+                              showDialog(
+                                context: this.context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return WillPopScope(
+                                      onWillPop: () => Future<bool>.value(false),
+                                      child: AlertDialog(
+                                        title: Text("Loading..."),
+                                        content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
+                                      ));
+                                },
+                              );
+
+                              await order.donate(widget.id);
+
+                              Navigator.pop(context);
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
                                     builder: (context) => DonationAdded(),

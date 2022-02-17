@@ -62,7 +62,7 @@ class OrderCaterProvider extends ChangeNotifier{
     }
 
   }
-  Future<bool>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
+  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
 
     List<Map<String,dynamic>> mapitem=[
 
@@ -118,26 +118,29 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
 
       if (response.statusCode == 200) {
+       int responseData = json.decode(response.body);
         // List<dynamic> l = json.decode(response.body);
         // List<AddOn> ld=[];
         // for(int i=0;i<l.length;i++)
         //   ld.add(AddOn.fromJson(l[i]));
+        var i=responseData;
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
-        return true;
+        return i;
       }
       else {
         print(response.reasonPhrase);
-        return false;
+        return 0;
       }
     }catch(e){
       //print()
-      return false;
+      return 0;
     }
     notifyListeners();
-    return true;
+    return 0;
   }
 
   addcontroller(TextEditingController t){

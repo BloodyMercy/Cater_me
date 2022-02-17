@@ -78,15 +78,17 @@ class _DetailsOrderState extends State<DetailsOrder> {
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-
                           child: Column(
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Invoice'),
+                              Text(
+                                'Invoice',
+                                style: TextStyle(color: Colors.black),
+                              ),SizedBox(height: 10,),
                               Card(
-                                // elevation: 5,
+                                elevation: 5,
                                 child: Container(
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     itemCount: order.items.length,
                                     physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
@@ -123,36 +125,10 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                               ],
                                             ),
                                           ),
-                                          Divider(
-                                            thickness: 2,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                // Text(
-                                                //   "Quantity",
-                                                //   style: TextStyle(
-                                                //       color: blackColor,
-                                                //       fontWeight:
-                                                //           FontWeight.normal),
-                                                // ),
-                                                // Text(
-                                                //   "${order.items[i].quantity}",
-                                                //   style: TextStyle(
-                                                //       color: blackColor,
-                                                //       fontWeight:
-                                                //           FontWeight.normal),
-                                                // ),
-                                              ],
-                                            ),
-                                          )
                                         ],
                                       );
                                     },
+                                    separatorBuilder: (BuildContext context, int index) { return Divider(thickness: 2,); },
                                   ),
                                 ),
                               ),
@@ -161,110 +137,108 @@ class _DetailsOrderState extends State<DetailsOrder> {
                         ),
                       ),
                       SliverToBoxAdapter(
-                        child: Column(
-                          children: [
-                            // Text('Payment'),
-                            Card(
-                              // elevation: 5,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Tax",
-                                          style: TextStyle(
-                                              color: blackColor,
-                                              fontWeight: FontWeight.normal),
-                                        ),
-                                        Text(
-                                            "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
-                                            style: TextStyle(
-                                                color: blackColor,
-                                                fontWeight: FontWeight.normal)),
-
-                                      ],
-                                    ),
-
-
-                                  ),
-                                  Divider(
-                                    thickness: 2,
-                                  ),
-
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-
-                                        Text("SubTotal",
-                                            style: TextStyle(
-                                                color: blackColor,
-                                                fontWeight: FontWeight.normal)),
-                                        Text(
-                                            "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
-                                            style: TextStyle(
-                                                color: blackColor,
-                                                fontWeight: FontWeight.normal)),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(
-                                    thickness: 2,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Total",
-                                            style: TextStyle(
-                                                color: blackColor,
-                                                fontWeight: FontWeight.normal)),
-                                        Text(
-                                            "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
-                                            style: TextStyle(
-                                                color: blackColor,
-                                                fontWeight: FontWeight.normal)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      SliverToBoxAdapter(
-
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Text('Payments'),
+                              // Text('Payment'),
                               Card(
                                 elevation: 5,
-                                child: order.paymentFreind.length == 0
-                                    ? Container()
-                                    : Container(
-                                        child: ListView.builder(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Tax",
+                                            style: TextStyle(
+                                                color: blackColor,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                          Text(
+                                              "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                              style: TextStyle(
+                                                  color: blackColor,
+                                                  fontWeight: FontWeight.normal)),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(
+                                      thickness: 2,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("SubTotal",
+                                              style: TextStyle(
+                                                  color: blackColor,
+                                                  fontWeight: FontWeight.normal)),
+                                          Text(
+                                              "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                              style: TextStyle(
+                                                  color: blackColor,
+                                                  fontWeight: FontWeight.normal)),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(
+                                      thickness: 2,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Total",
+                                              style: TextStyle(
+                                                  color: blackColor,
+                                                  fontWeight: FontWeight.normal)),
+                                          Text(
+                                              "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                              style: TextStyle(
+                                                  color: blackColor,
+                                                  fontWeight: FontWeight.normal)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      order.paymentFreind.length == 0? SliverToBoxAdapter(child: Container(),) :
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            children: [
+                              Text('Payments',style:TextStyle(color:Colors.black)),
+                              SizedBox(height: 10,),
+                              Card(
+                                elevation: 5,
+                                child:
+
+                                    Container(
+                                        child: ListView.separated(
                                           itemCount: order.paymentFreind.length,
-                                          physics: NeverScrollableScrollPhysics(),
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
                                           itemBuilder: (context, index) {
                                             return Column(
                                               children: [
-
                                                 Padding(
-                                                  padding: const EdgeInsets.all(10.0),
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -272,7 +246,6 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                     children: [
                                                       Row(
                                                         children: [
-
                                                           // CircleAvatar(
                                                           //   radius: 25,
                                                           //   backgroundImage:
@@ -284,8 +257,8 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                           // SizedBox(width: 5,),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
-                                                                    8.0),
+                                                                const EdgeInsets
+                                                                    .all(10.0),
                                                             child: Expanded(
                                                               child: Column(
                                                                 mainAxisAlignment:
@@ -301,8 +274,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                                         color:
                                                                             blackColor,
                                                                         fontWeight:
-                                                                            FontWeight
-                                                                                .normal),
+                                                                            FontWeight.normal),
                                                                   ),
                                                                   // Text(
                                                                   //   "${order.paymentFreind[index].email}",
@@ -324,14 +296,15 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                         style: TextStyle(
                                                             color: blackColor,
                                                             fontWeight:
-                                                                FontWeight.normal),
+                                                                FontWeight
+                                                                    .normal),
                                                       ),
                                                     ],
                                                   ),
                                                 )
                                               ],
                                             );
-                                          },
+                                          }, separatorBuilder: (BuildContext context, int index) { return Divider(thickness: 2,); },
                                         ),
                                       ),
                               ),
@@ -350,7 +323,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline1
-                                              .copyWith(color: colorCustom),
+                                              .copyWith(color: Colors.black),
                                         ),
                                       ),
                                     )
@@ -364,7 +337,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline1
-                                                  .copyWith(color: colorCustom),
+                                                  .copyWith(color: Colors.black),
                                             ),
                                             order.buttonDonate
                                                 ? Center(

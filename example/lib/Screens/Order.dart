@@ -500,7 +500,7 @@ maintainBottomViewPadding: true,
                                                       context,
                                                       listen: false);
 
-                                                  bool a =
+                                                  int a =
                                                   await orderProvider.makeorder(
                                                       date: address
                                                           .evendatecontroller.text
@@ -525,12 +525,12 @@ maintainBottomViewPadding: true,
                                                           .text);
 
                                                   Navigator.of(context).pop();
-                                                  if (a)
+                                                  if (a!=0)
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
-                                                                AppointmentSuccess()));
+                                                                AppointmentSuccess(a)));
                                                   else {
                                                     showDialog(
                                                       context: this.context,
