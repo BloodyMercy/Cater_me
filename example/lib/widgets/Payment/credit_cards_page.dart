@@ -48,9 +48,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 ? CustomScrollView(
                   slivers: [
                 SliverToBoxAdapter(
+
                   child: _buildTitleSection(
+
                       title: "Payment Details",
-                      subTitle: "How would you like to pay ?"),
+                      subTitle: "How would you like to pay ?",),
+
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
@@ -75,14 +78,17 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                               },
                             ),
                             _buildCreditCard(
-                              color: LightColors.kLightYellow2,
+
+                              color:Colors.black,
                               cardExpiration:
                                   "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
                               cardHolder:
                                   _creditCards.list[i].ownerName,
+
                               cardNumber:
                                   "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
                             ),
+
                           ],
                         ),
                       );
@@ -104,7 +110,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
-                      child: Center(child: Image.asset("images/nocardsyet")),
+                      child: Center(child: Image.asset("images/nocardsyet.png")),
                     ),
                   ),
       ),
@@ -164,7 +170,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               child: Text(
                 '$cardNumber',
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 21,
                     fontFamily: 'CourrierPrime'),
               ),
@@ -213,12 +219,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         Text(
           '$label',
           style: TextStyle(
-              color: Colors.black, fontSize: 9, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
           style: TextStyle(
-              color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],
     );
