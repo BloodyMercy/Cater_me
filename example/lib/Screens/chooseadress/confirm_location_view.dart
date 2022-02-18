@@ -166,6 +166,7 @@ bool loading=false;
 
           address.createOrUpdate=0;
           address.addresstitlecontroller.clear();
+          // address.countrycontroller.clear();
           address.citycontrollerstring.clear();
           address.streetcontroller.clear();
           address.buildingcontroller.clear();

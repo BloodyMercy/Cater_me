@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class customTextFieldPhone extends StatefulWidget {
+  Icon icon;
 
-  Icon icon ;
   String label;
   TextEditingController controller;
-  customTextFieldPhone({ this.controller,  this.label, this.icon});
+
+  customTextFieldPhone({this.controller, this.label, this.icon});
+
   @override
   _costumTextFieldPhone createState() => _costumTextFieldPhone();
 }
@@ -16,7 +18,7 @@ class _costumTextFieldPhone extends State<customTextFieldPhone> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     FocusNode focusNode = FocusNode();
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(12.0),
       child: TextFormField(
         keyboardType: TextInputType.number,
@@ -26,24 +28,20 @@ class _costumTextFieldPhone extends State<customTextFieldPhone> {
         focusNode: focusNode,
 
         decoration: InputDecoration(
-
-prefixIcon: widget.icon,
-
+            prefixIcon: widget.icon,
             contentPadding:
-            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
             alignLabelWithHint: true,
             labelStyle: TextStyle(
-                fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                color:
-                focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                fontSize: focusNode.hasFocus ? 18 : 16.0,
+                //I believe the size difference here is 6.0 to account padding
+                color: focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
             labelText: widget.label,
-            hintStyle:const TextStyle(
+            hintStyle: const TextStyle(
                 color: Colors.black87,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'BerlinSansFB'),
-
             filled: true,
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
@@ -53,7 +51,6 @@ prefixIcon: widget.icon,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-
                 borderRadius: BorderRadius.circular(5.0),
                 borderSide: const BorderSide(
                   color: Color(0xFF3F5521),
