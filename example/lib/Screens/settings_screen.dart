@@ -547,10 +547,13 @@ setData(String imageUrl) async{
                                         final SharedPreferences
                                         sharedPreferences =
                                         await SharedPreferences.getInstance();
-                                        sharedPreferences.remove('Email');
-                                        sharedPreferences.remove('Password');
+                                       // sharedPreferences.remove('Email');
+                                      //  sharedPreferences.remove('Password');
                                         personalInfo.clearAllTextController();
+                                        bool a=sharedPreferences.getBool("startintro");
                                         sharedPreferences.clear();
+                                        sharedPreferences.setBool("startintro", a);
+
 
                                         Navigator.of(context)
                                             .pushAndRemoveUntil(

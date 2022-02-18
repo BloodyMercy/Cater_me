@@ -17,35 +17,23 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: Duration(seconds: (0)),
-      vsync: this,
-    );
+    // _controller = AnimationController(
+    //   duration: Duration(seconds: (2)),
+    //   vsync: this,
+    // );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black54,
       body: Lottie.asset(
         'images/animation/LottieCaterMe.json',
-        controller: _controller,
-        height: MediaQuery.of(context).size.height * 5,
+       // controller: _controller,
+     //   height: MediaQuery.of(context).size.height * 5,
 
-        animate: true,
-        onLoaded: (composition) {
-          _controller
-            ..duration = composition.duration
-            ..forward().whenComplete(() {
-              Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => appstate()),
-            );
+      //  animate: true,
 
-
-            //
-            });
-        },
       ),
     );
   }

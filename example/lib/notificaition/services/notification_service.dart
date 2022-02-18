@@ -9,12 +9,16 @@ import '../../main.dart';
 
 
 class NotificationServices {
+
+//  BuildContext ctx;
   // Singleton pattern
   static final NotificationServices _notificationService =
       NotificationServices._internal();
   factory NotificationServices() {
+
     return _notificationService;
   }
+
 
   NotificationServices._internal();
 
@@ -119,15 +123,20 @@ class NotificationServices {
   Future<void> cancelAllNotifications() async {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
+  Future<void> onSelectNotification(String payload) async {
+    await navigatorKey.currentState
+        ?.push(MaterialPageRoute(builder: (_) {
+          return
+      YourOrders();
+
+
+      //   DetailsPage(payload: payload);
+    }
+    ));
+
+
+
+  }
 }
 
-Future<void> onSelectNotification(String payload) async {
-  await navigatorKey.currentState
-      ?.push(MaterialPageRoute(builder: (_) {
-        YourOrders();
 
-
-     //   DetailsPage(payload: payload);
-      }
-  ));
-}

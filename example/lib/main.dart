@@ -108,9 +108,11 @@ class _appstateState extends State<appstate> {
                 return OnBoardingScreens();
               case Status.Authenticated:
                 return Navigationbar(0);
+              default :
+                return LoginScreen();
             }
 
-            return Container();
+
           }
         });
   }

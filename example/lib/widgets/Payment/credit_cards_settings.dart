@@ -100,7 +100,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                             children: [
                             Card(
                             elevation: 4.0,
-                            color: LightColors.kLightYellow2,
+                            color: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(14),
                             ),
@@ -160,7 +160,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                     child: Text(
                                       "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
                                       style: TextStyle(
-                                          color: Color(0xff3F5521),
+                                          color: Colors.white,
                                           fontSize: 21,
                                           fontFamily: 'CourrierPrime'),
                                     ),
@@ -324,7 +324,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         Text(
           '$label',
           style: TextStyle(
-              color: Color(0xff3F5521),
+              color: Colors.white,
               fontSize: 9,
               fontWeight: FontWeight.bold),
         ),
@@ -332,7 +332,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
 
     "$value",
           style: TextStyle(
-              color: Color(0xff3F5521),
+              color: Colors.white,
               fontSize: 15,
               fontWeight: FontWeight.bold),
         )

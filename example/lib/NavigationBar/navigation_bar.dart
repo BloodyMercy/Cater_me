@@ -37,6 +37,7 @@ class _NavigationBarState extends State<Navigationbar> {
 
   NotificationServices notificationService = NotificationServices();
 
+
    AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
