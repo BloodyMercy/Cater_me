@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                   child:
                                   Text(
-                                    'Upcoming occasions',
+                                    'Upcoming Occasions',
                                     style:
                                         Theme.of(context).textTheme.headline2,
                                   ),
