@@ -1,5 +1,6 @@
 import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddOnCards extends StatelessWidget {
@@ -27,6 +28,7 @@ class AddOnCards extends StatelessWidget {
           height: mediaQuery.size.height * 0.25,
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
+
             children: [
               Card(
 
@@ -45,7 +47,9 @@ class AddOnCards extends StatelessWidget {
                   padding: const EdgeInsets.only(left:2.0),
                   child: Text(
                     '${this.addOn.title}',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
+
                       color: Colors.black87,
                       fontSize: 15,
                         fontWeight: FontWeight.normal,
