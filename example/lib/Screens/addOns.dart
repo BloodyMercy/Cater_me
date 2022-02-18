@@ -19,13 +19,18 @@ class _AddOnsState extends State<AddOns> {
     getallons();
     super.initState();
   }
-
+bool loading=true;
   getallons() async {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
-    _cuisin.loading = true;
+    // _cuisin.loading = true;
     await _cuisin.getonid(widget.addOns);
-    _cuisin.loading = false;
+    // _cuisin.loading = false;
+    setState(() {
+      loading=false;
+    });
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +66,11 @@ class _AddOnsState extends State<AddOns> {
       appBar: appBar,
       body: ColoredBox(
         color: Colors.white,
-        child: _cuisin.loading
+        child: loading
             ? Center(
                 child: CircularProgressIndicator(),
               )
             : GridView(
-
                 padding: const EdgeInsets.all(25),
                 children: getAddOns(_cuisin.allons),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
