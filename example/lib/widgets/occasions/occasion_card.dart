@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OccasionCard extends StatefulWidget {
-  Axis ax;
+
+  Axis  ax;
   OccasionCard(this.ax);
   @override
   State<OccasionCard> createState() => _OccasionCardState();

@@ -7,9 +7,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class EditOccasion extends StatefulWidget {
-  Occasion occ;
+  Occasion  occ;
 
   EditOccasion(this.occ);
+
 
   @override
   State<EditOccasion> createState() => _EditOccasionState();
