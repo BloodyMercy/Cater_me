@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -17,24 +19,28 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    // _controller = AnimationController(
-    //   duration: Duration(seconds: (2)),
-    //   vsync: this,
-    // );
+    _controller = AnimationController(
+      duration: Duration(seconds: (2)),
+      vsync: this,
+    );
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+    Timer(
+        Duration(milliseconds: 3300),
+            () =>
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => appstate())));
     return Scaffold(
-      backgroundColor: Colors.black54,
-      body: Lottie.asset(
-        'images/animation/LottieCaterMe.json',
-       // controller: _controller,
-     //   height: MediaQuery.of(context).size.height * 5,
-
-      //  animate: true,
-
-      ),
+      backgroundColor: Colors.white,
+      body: Center(child:Image.asset(
+        "images/animation/catermegif.gif",
+        height: MediaQuery.of(context).size.height*3,
+        width: MediaQuery.of(context).size.width*2,
+      )),
     );
   }
 }

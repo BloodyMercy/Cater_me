@@ -23,30 +23,31 @@ NotificationServices notificationService = NotificationServices();
      0,
      message.notification.title,
      message.notification.body,
-     jsonEncode({
-       "title": message.data["title"],
-       "eventDate": "DateFormat.format(eventDate!",
-       "eventTime": "eventTime!.format(context)",
-     }),
+
+      // "title": message.data["title"],
+       message.data["orderId"].toString()
+       //"eventDate": "DateFormat.format(eventDate!",
+      // "eventTime": "eventTime!.format(context)",
+
    );
 
    });
  //await FirebaseMessaging.onMessageOpenedApp
 
-   await  FirebaseMessaging.onBackgroundMessage((message) async{
-     await notificationService.showNotification(
-       0,
-       message.data["title"],
-       message.data["body"],
-       jsonEncode({
-         "title": message.data["title"],
-         "eventDate": "DateFormat.format(eventDate!",
-         "eventTime": "eventTime!.format(context)",
-       }),
-     );
-
-
-   });
+   // await  FirebaseMessaging?.onBackgroundMessage((message) async{
+   //   await notificationService.showNotification(
+   //     0,
+   //     message.data["title"],
+   //     message.data["body"],
+   //     jsonEncode({
+   //       "title": message.data["title"],
+   //       "eventDate": "DateFormat.format(eventDate!",
+   //       "eventTime": "eventTime!.format(context)",
+   //     }),
+   //   );
+   //
+   //
+   // });
 
  }catch(e){
    print('exception in app messaging Message data: ${e}');

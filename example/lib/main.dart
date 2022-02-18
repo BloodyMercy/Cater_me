@@ -35,9 +35,7 @@ import 'notificaition/services/notification_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  NotificationServices notificationService = NotificationServices();
-  await notificationService.init();
-  await notificationService.requestIOSPermissions();
+
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
@@ -59,7 +57,9 @@ void main() async {
   } else {
     print('User declined or has not accepted permission');
   }
-
+  NotificationServices notificationService = NotificationServices();
+  await notificationService.init();
+  await notificationService.requestIOSPermissions();
   runApp( MyApp());
 }
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();

@@ -1,3 +1,4 @@
+import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -127,7 +128,7 @@ class NotificationServices {
     await navigatorKey.currentState
         ?.push(MaterialPageRoute(builder: (_) {
           return
-      YourOrders();
+            OrderId(int.parse(payload), 0);
 
 
       //   DetailsPage(payload: payload);
