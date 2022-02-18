@@ -80,191 +80,238 @@ class _AddressesListState extends State<AddressesList> {
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
-        height: _mediaQuery * 0.6,
+        height: _mediaQuery * 0.68,
         child: widget.address.isEmpty
             ? Column(
-              children: [
-                Center(child: Image.asset('images/noaddresses.png')),
-                Center(
-          child:  TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
+                children: [
+                  Center(
+                    child: Image.asset('images/noaddresses.png'),
 
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Add An Address",
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Color(0xFF3F5521),
-                          fontFamily: 'BerlinSansFB',
-                          fontSize: 17),
-                    ),
-                    Icon(
-                      Icons.add,
-                      color: Color(0xFF3F5521),
-                    )
-                  ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
                   ),
-                  primary: Colors.white,
-                ),
-          ),
-        ),
-              ],
-            )
-            : CustomScrollView(
-              slivers: [
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int i) {
-                      return Card(
-                        color: LightColors.kLightYellow2,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: _mediaQuery * 0.04,
-                              horizontal: _mediaQuery * 0.01),
-                          child: Row(
-                            children: [
-                              Radio(
-                                fillColor: MaterialStateColor.resolveWith((states) => colorCustom),
-                                toggleable: true,
-                                groupValue: orderprovider.valueIndex ,
-                                value: i,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _value = i;
-                                    orderprovider.valueIndex = i;
-                                  });
-                                  orderprovider.value = widget.address[i];
-                                },
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-
-                                        style: DefaultTextStyle.of(context).style,
-                                        children:  <TextSpan>[
-                                          // TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
-                                          TextSpan(text: ' ${widget.address[i].title.toString()}',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 22)),
-                                        ],
-                                      ),
-                                    ),
-
-                                    RichText(
-                                      text: TextSpan(
-
-                                        style: DefaultTextStyle.of(context).style,
-                                        children:  <TextSpan>[
-                                          // TextSpan(text: 'City :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                          TextSpan(text: ' ${widget.address[i].city.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                        ],
-                                      ),
-                                    ),
-
-                                    RichText(
-                                      text: TextSpan(
-
-                                        style: DefaultTextStyle.of(context).style,
-                                        children:  <TextSpan>[
-                                          TextSpan(text: ' Street :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                          TextSpan(text: ' ${widget.address[i].street.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                        ],
-                                      ),
-                                    ),
-
-                                    RichText(
-                                      text: TextSpan(
-
-                                        style: DefaultTextStyle.of(context).style,
-                                        children:  <TextSpan>[
-                                          TextSpan(text: ' Building :',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                          TextSpan(text: ' ${widget.address[i].buildingName.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                        ],
-                                      ),
-                                    ),
-                                    // Text(
-                                    //   "Building Name: ${widget.address[i].buildingName.toString()}",
-                                    //   style: const TextStyle(
-                                    //       fontSize: 15,
-                                    //       fontWeight: FontWeight.bold),
-                                    // ),
-                                    // Radio(
-                                    //   value: 5,
-                                    //   groupValue: _value,
-                                    //   onChanged: (value) {
-                                    //     setState(() {
-                                    //       _value = _value;
-                                    //     });
-                                    //   },
-                                    // ),
-                                    RichText(
-                                      text: TextSpan(
-
-                                        style: DefaultTextStyle.of(context).style,
-                                        children:  <TextSpan>[
-                                          TextSpan(text: ' Floor :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                          TextSpan(text: ' ${widget.address[i].floorNumber.toString()}',style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
-                                        ],
-                                      ),
-                                    ),
-                                    // Text(
-                                    //   "Floor Number: ${widget.address[i].floorNumber.toString()}",
-                                    //   style: const TextStyle(
-                                    //       fontSize: 15,
-                                    //       fontWeight: FontWeight.bold),
-                                    // ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => ConfirmLocation()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Add An Address",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Color(0xFF3F5521),
+                                fontFamily: 'BerlinSansFB',
+                                fontSize: 17),
                           ),
-                        ),
-                      );
-                    },
-                    childCount: widget.address.length,
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: TextButton(
-                    onPressed: () => _startAddNewAddress(context),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Add An Address",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Color(0xFF3F5521),
-                              fontFamily: 'BerlinSansFB',
-                              fontSize: 17),
-                        ),
-                        Icon(
-                          Icons.add,
-                          color: Color(0xFF3F5521),
-                        )
-                      ],
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                          Icon(
+                            Icons.add,
+                            color: Color(0xFF3F5521),
+                          )
+                        ],
                       ),
-                      primary: Colors.white,
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        primary: Colors.white,
+                      ),
                     ),
                   ),
-                )
-              ],
-            )
+                ],
+              )
+            : CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int i) {
+                        return Card(
+                          color: LightColors.kLightYellow2,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: _mediaQuery * 0.04,
+                                horizontal: _mediaQuery * 0.01),
+                            child: Row(
+                              children: [
+                                Radio(
+                                  fillColor: MaterialStateColor.resolveWith(
+                                      (states) => colorCustom),
+                                  toggleable: true,
+                                  groupValue: orderprovider.valueIndex,
+                                  value: i,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _value = i;
+                                      orderprovider.valueIndex = i;
+                                    });
+                                    orderprovider.value = widget.address[i];
+                                  },
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
+                                          children: <TextSpan>[
+                                            // TextSpan(text: 'Title :', style: TextStyle(fontWeight: FontWeight.bold)),
+                                            TextSpan(
+                                                text:
+                                                    ' ${widget.address[i].title.toString()}',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 22)),
+                                          ],
+                                        ),
+                                      ),
 
-        );
+                                      RichText(
+                                        text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
+                                          children: <TextSpan>[
+                                            // TextSpan(text: 'City :', style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                                            TextSpan(
+                                                text:
+                                                    ' ${widget.address[i].city.toString()}',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                          ],
+                                        ),
+                                      ),
+
+                                      RichText(
+                                        text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                                text: ' Street :',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                            TextSpan(
+                                                text:
+                                                    ' ${widget.address[i].street.toString()}',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                          ],
+                                        ),
+                                      ),
+
+                                      RichText(
+                                        text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                                text: ' Building :',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                            TextSpan(
+                                                text:
+                                                    ' ${widget.address[i].buildingName.toString()}',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                          ],
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   "Building Name: ${widget.address[i].buildingName.toString()}",
+                                      //   style: const TextStyle(
+                                      //       fontSize: 15,
+                                      //       fontWeight: FontWeight.bold),
+                                      // ),
+                                      // Radio(
+                                      //   value: 5,
+                                      //   groupValue: _value,
+                                      //   onChanged: (value) {
+                                      //     setState(() {
+                                      //       _value = _value;
+                                      //     });
+                                      //   },
+                                      // ),
+                                      RichText(
+                                        text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                                text: ' Floor :',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                            TextSpan(
+                                                text:
+                                                    ' ${widget.address[i].floorNumber.toString()}',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black)),
+                                          ],
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   "Floor Number: ${widget.address[i].floorNumber.toString()}",
+                                      //   style: const TextStyle(
+                                      //       fontSize: 15,
+                                      //       fontWeight: FontWeight.bold),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      childCount: widget.address.length,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: TextButton(
+                      onPressed: () => _startAddNewAddress(context),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Add An Address",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Color(0xFF3F5521),
+                                fontFamily: 'BerlinSansFB',
+                                fontSize: 17),
+                          ),
+                          Icon(
+                            Icons.add,
+                            color: Color(0xFF3F5521),
+                          )
+                        ],
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        primary: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
+              ));
   }
 }

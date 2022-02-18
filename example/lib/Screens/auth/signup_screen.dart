@@ -326,7 +326,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if (val.isEmpty) {
                                   return 'Required ';
                                 } else if (val.length < 6) {
-                                  return 'mot de passe doit etre > 6 caractère';
+                                  return 'Password should be at least 6 characters';
                                 }
 
                                 return null;},
@@ -374,7 +374,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if (val.isEmpty)
                                   return 'Confirm Password';
                                 if (val != authProvider.password.text)
-                                  return 'Mot de passe incorrect';
+                                  return 'Passwords do not match';
                                 return null;
                               },
                               keyboardType: TextInputType.visiblePassword,

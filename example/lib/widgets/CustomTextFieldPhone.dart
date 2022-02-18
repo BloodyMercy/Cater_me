@@ -19,7 +19,7 @@ class _costumTextFieldPhone extends State<customTextFieldPhone> {
     final mediaQuery = MediaQuery.of(context);
     FocusNode focusNode = FocusNode();
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(1.0),
       child: TextFormField(
         keyboardType: TextInputType.number,
 

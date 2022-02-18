@@ -44,7 +44,6 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
 
-
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
     await address.getRegular();
@@ -151,191 +150,184 @@ class _ReguarScreenState extends State<ReguarScreen> {
     final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
     FocusNode focusNode = FocusNode();
-    return address.load?SingleChildScrollView(
-      child: Container(
-        color: LightColors.kLightYellow,
-        height: screenHeight * 1,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-          child: Column(
-            children: [
-              SizedBox(height: screenHeight * 0.03),
-              Form(
-                key: formkey,
+    return address.load
+        ? SingleChildScrollView(
+            child: Container(
+              color: LightColors.kLightYellow,
+              height: screenHeight * 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 30.0),
                 child: Column(
                   children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: TextFormField(
+                    SizedBox(height: screenHeight * 0.03),
+                    Form(
+                      key: formkey,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: TextFormField(
+                                style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal,
+                                    fontFamily: 'BerlinSansFB'),
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        left:
+                                            MediaQuery.of(context).size.width *
+                                                0.04),
+                                    alignLabelWithHint: true,
+                                    labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            focusNode.hasFocus ? 18 : 16.0,
+                                        //I believe the size difference here is 6.0 to account padding
+                                        color: focusNode.hasFocus
+                                            ? Color(0xFF3F5521)
+                                            : Colors.grey),
+                                    labelText: 'Event Name',
+                                    hintStyle: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'BerlinSansFB'),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: const BorderSide(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Color(0xFF3F5521),
+                                        ))),
+                                controller: address.eventnamecontroller,
 
-
-                  style: const TextStyle(
-                  color: Colors.grey,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'BerlinSansFB'),
-                    decoration: InputDecoration(
-
-
-
-                        contentPadding:
-                        EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
-                        alignLabelWithHint: true,
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                            color:
-                            focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                        labelText: 'Event Name',
-                        hintStyle:TextStyle(
-                            color: Colors.black87,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'BerlinSansFB'),
-
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide: const BorderSide(
-                            color: Colors.grey,
+                                // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                keyboardType: TextInputType.text),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
+                          // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
 
-                            borderRadius: BorderRadius.circular(5.0),
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3F5521),
-                            ))),
-                    controller:address.eventnamecontroller,
+                          SizedBox(height: screenHeight * 0.02),
 
-                    // autovalidateMode: AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.text
-              ),
-                ),
-                    // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
+                          Container(
+                            height: MediaQuery.of(context).size.height / 8,
+                            child: CustomDatePickerFormField(
+                              label: "Event Date",
+                              controller: address.evendatecontroller,
+                            ),
+                          ),
 
+                          Container(
+                            height: MediaQuery.of(context).size.height / 8,
+                            child: CustomDailyDate(
+                              label: "Event Time",
+                              controller: address.DailyDatecontroller,
+                            ),
+                          ),
 
-                    SizedBox(height: screenHeight * 0.02),
+                          CustomCupertinoPicker(
+                            label: "Numbers Of Guests",
+                            items: address.listnamenumber,
+                            numberOfGuests: address.regular.numberOfGuests,
+                            selectedValue: 1,
+                            inputType: TextInputType.number,
+                            controller: address.numberofguestcontrollerstring,
+                          ),
 
-                    Container(
-                      height: MediaQuery.of(context).size.height / 8,
-                      child: CustomDatePickerFormField(
-                        label: "Event Date",
-                        controller: address.evendatecontroller,
+                          SizedBox(height: screenHeight * 0.02),
+
+                          CustomCupertinoPicker(
+                            label: "Type Of Event",
+                            items: address.listnameevent,
+                            events: address.regular.events,
+                            selectedValue: 0,
+                            inputType: TextInputType.number,
+                            controller: address.typeofeventcontrollerstring,
+                          ),
+
+                          SizedBox(height: screenHeight * 0.03),
+                          Center(
+                            child: Text(
+                              'Contact Person',
+                              style: TextStyle(
+                                  color: Color(0xFF3F5521),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.03),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Radio(
+                                toggleable: true,
+                                fillColor: MaterialStateColor.resolveWith(
+                                    (states) => colorCustom),
+                                // value: 'female',
+                                value: 0,
+                                groupValue: address.value2Index,
+                                onChanged: (value) {
+                                  setState(() {
+                                    address.form = false;
+                                    address.value2Index = value;
+                                  });
+                                },
+                              ),
+                              Text('Me'),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 10,
+                              ),
+                              Radio(
+                                fillColor: MaterialStateColor.resolveWith(
+                                    (states) => colorCustom),
+                                toggleable: true,
+                                // value: 'female',
+                                value: 1,
+                                groupValue: address.value2Index,
+                                onChanged: (value) {
+                                  setState(() {
+                                    address.form = true;
+                                    address.value2Index = value;
+                                  });
+                                },
+                              ),
+                              Text('Others'),
+                            ],
+                          ),
+
+                          address.form
+                              ? customTextFieldicon(
+                                  controller: address.name,
+                                  label: 'Name',
+                                  icon: Icon(Icons.person),
+                                )
+                              : Container(),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                          address.form
+                              ? customTextFieldPhone(
+                                  controller: address.phone,
+                                  label: 'Phone Number',
+                                  icon: Icon(Icons.phone),
+                                )
+                              : Container(),
+                        ],
                       ),
                     ),
-
-                    Container(
-                      height: MediaQuery.of(context).size.height / 8,
-                      child: CustomDailyDate(
-                        label: "Event Time",
-                        controller: address.DailyDatecontroller,
-                      ),
-                    ),
-
-
-                    CustomCupertinoPicker(
-                      label: "Numbers Of Guests",
-                      items: address.listnamenumber,
-                      numberOfGuests: address.regular.numberOfGuests,
-                      selectedValue: 1,
-                      inputType: TextInputType.number,
-                      controller: address.numberofguestcontrollerstring,
-                    ),
-
-                    SizedBox(height: screenHeight * 0.02),
-
-                    CustomCupertinoPicker(
-                      label: "Type Of Event",
-                      items: address.listnameevent,
-                      events: address.regular.events,
-                      selectedValue: 0,
-                      inputType: TextInputType.number,
-                      controller: address.typeofeventcontrollerstring,
-                    ),
-
-
-                    SizedBox(height: screenHeight * 0.03),
-                    Center(
-                      child: Text(
-                        'Contact Person',
-                        style: TextStyle(
-                            color: Color(0xFF3F5521),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Radio(
-                          toggleable: true,
-                          fillColor: MaterialStateColor.resolveWith(
-                              (states) => colorCustom),
-                          // value: 'female',
-                          value: 0,
-                          groupValue: address.value2Index,
-                          onChanged: (value) {
-                            setState(() {
-                              address.form = false;
-                              address.value2Index = value;
-                            });
-                          },
-                        ),
-
-                        Text('Me'),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width / 10,
-                        ),
-                        Radio(
-                          fillColor: MaterialStateColor.resolveWith(
-                              (states) => colorCustom),
-                          toggleable: true,
-                          // value: 'female',
-                          value: 1,
-                          groupValue: address.value2Index,
-                          onChanged: (value) {
-                            setState(() {
-                              address.form = true;
-                              address.value2Index = value;
-                            });
-                          },
-                        ),
-                        Text('Others'),
-
-
-                      ],
-                    ),
-
-                    address.form
-                        ? customTextFieldicon(
-                      controller:address.name ,
-                            label: 'Name',
-                            icon: Icon(Icons.person),
-                          )
-                        : Container(),
-                    address.form
-                        ? customTextFieldPhone(
-controller: address.phone,
-                            label: 'Phone Number',
-                            icon: Icon(Icons.phone),
-
-
-                          )
-                        : Container(),
-
-
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    ):Center(child: CircularProgressIndicator(),);
+            ),
+          )
+        : Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }
