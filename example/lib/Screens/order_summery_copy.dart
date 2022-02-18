@@ -91,7 +91,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   Widget setupAlertDialoadContainer(context, List<FriendModel> l) {
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
-
+    var screenHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SingleChildScrollView(
       child: Container(
         color: LightColors.kLightYellow2,
@@ -127,11 +128,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   CircleAvatar(
-                                    radius: 25.0,
-                                    child: ClipRRect(
-                                      child: Image.network(l[index].image),
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
+                                    // radius: 25.0,
+                                    backgroundImage: NetworkImage(l[index].image),
+                                    backgroundColor: Colors.transparent,
+                                    radius: screenHeight * 0.04,
                                   ),
                                   Text(l[index].name),
                                 ],
