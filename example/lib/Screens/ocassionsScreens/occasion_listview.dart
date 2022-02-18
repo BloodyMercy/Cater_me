@@ -15,7 +15,7 @@ class OccasionListView extends StatefulWidget {
 }
 
 class _OccasionListViewState extends State<OccasionListView> {
-  bool loading = false;
+  bool loading  = false;
 
   getData() async {
     final occasion = Provider.of<PackagesProvider>(context, listen: false);
