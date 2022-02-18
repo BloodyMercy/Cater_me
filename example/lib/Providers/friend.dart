@@ -21,8 +21,12 @@ class FriendsProvider extends ChangeNotifier {
     notifyListeners();
   }
   deleteFreind(int id)async{
-  return  await  _friendsService.deleteFriends(id);
+  // return  await  _friendsService.deleteFriends(id);
+  var em= await _friendsService.deleteFriends(id);
+  notifyListeners();
+  return em.message;
   }
+
 
 
 FriendModel _FriendCreated = FriendModel();

@@ -33,7 +33,7 @@ class FriendServices {
     }
   }
 
-  Future<bool> deleteFriends(int id) async{
+  Future<ErrorMessage> deleteFriends(int id) async{
     ErrorMessage em=ErrorMessage();
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -45,17 +45,17 @@ class FriendServices {
       var response = await http.Response.fromStream(responses);
       if(response.statusCode==200){
         em.message="deleted";
-        return true;
+        return em;
       }else{
         em.message="cannot delete";
-        return false;
+        return em;
       }
 
     }
     catch(e){
       print("error cannot delete");
     }
-    return false;
+    return ErrorMessage();
 
   }
 

@@ -31,17 +31,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     var appbar = AppBar(
       title: Text(
         'Forgot Password',
-        style: Theme.of(context).textTheme.headline3,
+        style: TextStyle(fontWeight: FontWeight.bold,
+        fontFamily: 'BerlinSansFB',
+        fontSize: 16),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       leading: Padding(
         padding: const EdgeInsets.only(left: 10.0),
         child: IconButton(
           icon: const Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back,
           ),
-          color: Colors.black,
+          color: Colors.white,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -62,7 +64,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               children: [
                 SizedBox(height: screenHeight * 0.12),
                 Text(
-                  'Enter your email and will send\nyou instructions on how to reset it',
+                  'Enter your email or your phone number',
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: screenHeight * 0.12),
@@ -131,9 +133,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.fromLTRB(
-                              screenHeight * 0.18,
+                              screenHeight * 0.14,
                               screenHeight * 0.02,
-                              screenHeight * 0.18,
+                              screenHeight * 0.14,
                               screenHeight * 0.02),
                           onPrimary: const Color.fromRGBO(255, 255, 255, 1),
                           primary: Theme.of(context).primaryColor,

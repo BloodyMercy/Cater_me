@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/friend.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
@@ -35,9 +36,11 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
   @override
   Widget build(BuildContext context) {
 
-    final friends = Provider.of<FriendsProvider>(context, listen: true);
+    final friend = Provider.of<FriendsProvider>(context, listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
+    var screenHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
       child: SizedBox(
         height: _mediaQuery * 0.9,
@@ -62,13 +65,29 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
                           child: Row(
                             children: [
                               CircleAvatar(
-                                radius: 25.0,
-                                child: ClipRRect(
-                                  child: Image.network(
-                                     widget.friend[index].image,
-                                  ),
-                                  borderRadius: BorderRadius.circular(50.0),
+                                backgroundImage: NetworkImage(
+
+                                  widget.friend[index].image,
+                                  // height: screenHeight * 0.25,
+                                  // width: 40,
                                 ),
+                                backgroundColor: Colors.transparent,
+                                radius: screenHeight * 0.04,
+                                // minRadius: 16,
+                                // maxRadius: screenHeight * 0.04,
+
+                                // radius: 25.0,
+                                // child: ClipRRect(
+                                //
+                                //   child: Image.network(
+                                //
+                                //      widget.friend[index].image,
+                                //     // height: screenHeight * 0.25,
+                                //     // width: 40,
+                                //     fit:BoxFit.cover,
+                                //   ),
+                                //   borderRadius: BorderRadius.circular(screenHeight * 0.04),
+                                // ),
                               ),
                               SizedBox(width:_mediaQueryWidth * 0.025 ,),
                               Container(
@@ -113,11 +132,11 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
                               setState(() {
 
                               });
-                              bool state=await  friends.deleteFreind(widget.friend[index].id);
+                              bool state=(await  friend.deleteFreind(widget.friend[index].id)) ;
                               if(state){
                                 loading=true;
 
-                                friends.listFriends.remove(widget.friend[index]);
+                                friend.listFriends.remove(widget.friend[index]);
 
                               }else{
                                 loading=true;
@@ -128,8 +147,58 @@ setState(() {
 
 });
 
-                            }, icon: Icon(FontAwesomeIcons.trash,color: redColor
-                              ,size: 20,)
+                            }, icon: GestureDetector(
+                              child: Icon(FontAwesomeIcons.trash,color: redColor
+                                ,size: 20,),
+                              onTap: (){
+                                showDialog(context: context, builder: (BuildContext context)=>
+                                    CustomDialog(title: "Do you want to delete this friend",
+                                      description: "",
+                                      button1:ElevatedButton(
+                                        style: ElevatedButton.styleFrom(primary: Colors.grey),
+                                        child: Text("Yes"),
+                                        onPressed: ()async{
+                                          showDialog(
+                                            context: this.context,
+                                            barrierDismissible: false,
+                                            builder: (BuildContext contexts) {
+
+                                              return WillPopScope(
+                                                // onWillPop: () => Future<bool>.value(false),
+                                                  child: AlertDialog(
+                                                    title: Text("Loading...",style: TextStyle(color: colorCustom),),
+                                                    content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
+                                                  ));
+                                            },
+                                          );
+                                          var delete= await  friend.deleteFreind(widget.friend[index].id);
+                                          if(delete=="deleted"){
+                                            widget.friend.remove(widget.friend[index]);
+                                            Navigator.pop(context);
+                                            Navigator.of(context).pop();
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                content: Text('Friend Deleted')));
+                                          }else{
+                                            Navigator.pop(context);
+                                            Navigator.of(context).pop();
+
+
+                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                              content: Text('Friend cannot be Deleted'),
+                                            ));
+                                          }
+                                        },
+                                      ),
+                                      button2: ElevatedButton(
+                                        onPressed: (){
+                                          Navigator.of(context).pop();
+                                        },child: Text("No"),
+                                      ),
+                                      oneOrtwo: true,
+                                    )
+                                )  ;
+                              },
+                            )
                             ),
 
                           ],)

@@ -44,7 +44,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
         });
   }
 
-  void deleteAddress(String id) {
+  void deleteFreind(String id) {
     setState(() {
       _friend.removeWhere(
         (element) => element.id == id,
@@ -102,6 +102,14 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
+          actions: [
+            IconButton(onPressed:
+
+
+                  () => _startAddNewFriend(context),
+
+                icon: Icon(Icons.add))
+          ],
         ),
         body: RefreshIndicator(
           onRefresh: frndData,
@@ -124,12 +132,12 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                 ),
         ),
 
-        floatingActionButton: FloatingActionButton(
-
-          child: const Icon(Icons.add),
-          backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () => _startAddNewFriend(context),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //
+        //   child: const Icon(Icons.add),
+        //   backgroundColor: Theme.of(context).primaryColor,
+        //   onPressed: () => _startAddNewFriend(context),
+        // ),
       ),
     );
   }
