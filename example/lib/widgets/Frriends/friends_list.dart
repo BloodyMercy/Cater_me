@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -70,26 +71,30 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
                                 ),
                               ),
                               SizedBox(width:_mediaQueryWidth * 0.025 ,),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.friend[index].name,
-                                    style: const TextStyle(
-                                        fontSize: 20, fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    widget.friend[index].email,
-                                    style: const TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.normal),
-                                  ),
-                                  // SizedBox(height: _mediaQuery * 0.01),
-                                  Text(
-                                    widget.friend[index].phoneNumber,
-                                    style: const TextStyle(
-                                        fontSize: 13, fontWeight: FontWeight.normal),
-                                  ),
-                                ],
+                              Container(
+                                width: _mediaQueryWidth*0.6,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.friend[index].name,
+
+                                      style: const TextStyle(
+                                          fontSize: 20, fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      widget.friend[index].email,
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.normal),
+                                    ),
+                                    // SizedBox(height: _mediaQuery * 0.01),
+                                    Text(
+                                      widget.friend[index].phoneNumber,
+                                      style: const TextStyle(
+                                          fontSize: 13, fontWeight: FontWeight.normal),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

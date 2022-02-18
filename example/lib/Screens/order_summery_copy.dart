@@ -341,7 +341,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                               BorderRadius.circular(50.0),
                                         ),
                                       ),
-                                      Text(frnd.listFriends[index].name),
+                                      Container(width:mediaQuery.size.width *0.5,child: Text(frnd.listFriends[index].name)),
                                     ],
                                   ),
                                 ),

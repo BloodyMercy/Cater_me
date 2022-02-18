@@ -33,7 +33,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
         Provider.of<OrderStatusProvider>(context, listen: false);
     await orderStatus.getOrderStatus(widget.id);
 
-    if (orderStatus.orderStatus.statusId != 4) {
+    if (orderStatus.orderStatus.statusId != 5) {
       setState(() {
         rejected = true;
       });
@@ -62,6 +62,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
+    final _width=MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(
@@ -244,52 +245,16 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      Row(
-                                                        children: [
-                                                          // CircleAvatar(
-                                                          //   radius: 25,
-                                                          //   backgroundImage:
-                                                          //       NetworkImage(order
-                                                          //           .paymentFreind[
-                                                          //               index]
-                                                          //           .image),
-                                                          // ),
-                                                          // SizedBox(width: 5,),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(10.0),
-                                                            child: Expanded(
-                                                              child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "${order.paymentFreind[index].name}",
-                                                                    style: TextStyle(
-                                                                        color:
-                                                                            blackColor,
-                                                                        fontWeight:
-                                                                            FontWeight.normal),
-                                                                  ),
-                                                                  // Text(
-                                                                  //   "${order.paymentFreind[index].email}",
-                                                                  //   style: TextStyle(
-                                                                  //       color:
-                                                                  //           blackColor,
-                                                                  //       fontWeight:
-                                                                  //           FontWeight
-                                                                  //               .normal),
-                                                                  // ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                      Container(
+                                                        width: _width*0.4,
+                                                        child: Text(
+                                                          "${order.paymentFreind[index].name}",
+                                                          style: TextStyle(
+                                                              color:
+                                                                  blackColor,
+                                                              fontWeight:
+                                                                  FontWeight.normal),
+                                                        ),
                                                       ),
                                                       Text(
                                                         "SAR ${order.paymentFreind[index].amount}",
@@ -366,8 +331,8 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                     ),
                             )
                           : SliverToBoxAdapter(
-                              child: Container(),
-                            )
+                              child: Center(),),
+
                     ],
                   )),
       ),
