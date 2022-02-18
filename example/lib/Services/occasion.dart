@@ -128,7 +128,7 @@ class OccasionService {
       respons.headers.addAll(headers);
       respons.fields.addAll({
         'Id': id.toString(),
-        'Name': name,
+        'Title': name,
         'TypeId': typeId.toString(),
         'Date': date,
 
