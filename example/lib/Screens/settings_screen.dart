@@ -562,10 +562,10 @@ setData(String imageUrl) async{
                                                   LoginScreen(),
                                             ),
                                                 (route) => false);
-                                      }, child: Text("Logout"),),
+                                      }, child: Text("Logout",style: TextStyle(fontFamily: 'BerlinSansFB'),),),
                                     button1: ElevatedButton(onPressed: () {
                                       Navigator.of(context).pop();
-                                    }, child: Text("No"),
+                                    }, child: Text("No",style: TextStyle(fontFamily: 'BerlinSansFB')),
 
                                     )
                                     ,);
