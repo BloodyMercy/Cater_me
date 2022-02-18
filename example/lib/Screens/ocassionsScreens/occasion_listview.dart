@@ -103,6 +103,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                               color: colorCustom,
                                             )
                                           : Image.network(
+
                                               occa.listoccasiontype[index]
                                                   .image,
                                               width: MediaQuery.of(context)
