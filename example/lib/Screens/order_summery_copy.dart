@@ -364,7 +364,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
                               radius: screenHeight * 0.04,
-                              backgroundImage: NetworkImage(
+                              backgroundImage:NetworkImage(
                                   details.choosebillFriend[index].image),
                             ),
                             title: Text(details.choosebillFriend[index].name),
