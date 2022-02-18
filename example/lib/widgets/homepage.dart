@@ -432,6 +432,7 @@ class _HomePageState extends State<HomePage> {
                                   //  child:adss[1]),
                                 ]),
                               ),
+                              SizedBox(height: mediaQuery.size.height*0.05,)
 
                             ]),
                             // SizedBox(height: mediaQuery.size.height * 0.1,),

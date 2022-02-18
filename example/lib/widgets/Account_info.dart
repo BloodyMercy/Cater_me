@@ -59,6 +59,7 @@ class _AccountInfoState extends State<AccountInfo> {
 
   bool loading = false;
   FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);
@@ -77,7 +78,6 @@ class _AccountInfoState extends State<AccountInfo> {
             iconSize: 30,
           ),
           elevation: 0,
-
           centerTitle: true,
           title: Text(
             'Account Info',
@@ -87,14 +87,13 @@ class _AccountInfoState extends State<AccountInfo> {
         ),
         body: loading
             ? Container(
-            color:LightColors.kLightYellow,
-              child: Center(
+                color: LightColors.kLightYellow,
+                child: Center(
                   child: CircularProgressIndicator(
                     color: Color(0xFF3F5521),
-
                   ),
                 ),
-            )
+              )
             : SingleChildScrollView(
                 child: Form(
                   key: formkey,
@@ -124,29 +123,28 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: Colors.red,
                                 ),
                               ),
-
                               errorBorder: OutlineInputBorder(
-  borderRadius: BorderRadius.circular(5.0),
-  borderSide: const BorderSide(
-    color: Colors.red,
-  ),
-),
-
-                              contentPadding:
-                              EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
-                                  fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                  color:
-                                  focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                              labelText:"Old password",
-                              hintStyle:TextStyle(
+                                  fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                  //I believe the size difference here is 6.0 to account padding
+                                  color: focusNode.hasFocus
+                                      ? Color(0xFF3F5521)
+                                      : Colors.grey),
+                              labelText: "Old password",
+                              hintStyle: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'BerlinSansFB'),
-
                               filled: true,
                               fillColor: Colors.white,
                               enabledBorder: OutlineInputBorder(
@@ -156,7 +154,6 @@ class _AccountInfoState extends State<AccountInfo> {
                                 ),
                               ),
                               focusedBorder: OutlineInputBorder(
-
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: const BorderSide(
                                     color: Color(0xFF3F5521),
@@ -171,99 +168,40 @@ class _AccountInfoState extends State<AccountInfo> {
                         ),
                         SizedBox(height: _mediaQuery * 0.03),
                         TextFormField(
-
-
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 15,
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'BerlinSansFB'),
                             decoration: InputDecoration(
-
-focusedErrorBorder: OutlineInputBorder(
-  borderRadius: BorderRadius.circular(5.0),
-  borderSide: const BorderSide(
-    color: Colors.red,
-  ),
-),
-                                errorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.red,
-                                  ),
-                                ),
-                                contentPadding:
-                                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
-                                alignLabelWithHint: true,
-                                labelStyle: TextStyle(
-                                    fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                    color:
-                                    focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                labelText: 'New Password',
-                                hintStyle:TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'BerlinSansFB'),
-
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Color(0xFF3F5521),
-                                    ))),
-                            controller: user.password1,
-                            validator: validatePass,
-                            autovalidateMode: AutovalidateMode.onUserInteraction),
-                        SizedBox(height: _mediaQuery * 0.03),
-                        TextFormField(
-
-
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'BerlinSansFB'),
-                            decoration: InputDecoration(
-
-
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: const BorderSide(
                                     color: Colors.red,
                                   ),
                                 ),
-
                                 errorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: const BorderSide(
                                     color: Colors.red,
                                   ),
                                 ),
-                                contentPadding:
-                                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                                contentPadding: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width *
+                                        0.04),
                                 alignLabelWithHint: true,
                                 labelStyle: TextStyle(
-                                    fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                    color:
-                                    focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                labelText: 'Confirm Password',
-                                hintStyle:TextStyle(
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                    //I believe the size difference here is 6.0 to account padding
+                                    color: focusNode.hasFocus
+                                        ? Color(0xFF3F5521)
+                                        : Colors.grey),
+                                labelText: 'New Password',
+                                hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'BerlinSansFB'),
-
                                 filled: true,
                                 fillColor: Colors.white,
                                 enabledBorder: OutlineInputBorder(
@@ -273,12 +211,63 @@ focusedErrorBorder: OutlineInputBorder(
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-
                                     borderRadius: BorderRadius.circular(5.0),
                                     borderSide: const BorderSide(
                                       color: Color(0xFF3F5521),
                                     ))),
-
+                            controller: user.password1,
+                            validator: validatePass,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction),
+                        SizedBox(height: _mediaQuery * 0.03),
+                        TextFormField(
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              fontFamily: 'BerlinSansFB'),
+                          decoration: InputDecoration(
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.04),
+                              alignLabelWithHint: true,
+                              labelStyle: TextStyle(
+                                  fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                  //I believe the size difference here is 6.0 to account padding
+                                  color: focusNode.hasFocus
+                                      ? Color(0xFF3F5521)
+                                      : Colors.grey),
+                              labelText: 'Confirm Password',
+                              hintStyle: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521),
+                                  ))),
                           controller: user.confirmpassword,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
@@ -317,7 +306,7 @@ focusedErrorBorder: OutlineInputBorder(
                                       });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
-                                        content: Text('Cannot Update Password'),
+                                        content: Text('Cannot update! Old password is wrong'),
                                       ));
                                     }
                                     user.clearAllTextController();

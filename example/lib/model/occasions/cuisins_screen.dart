@@ -30,11 +30,14 @@ class _CuisinsScreenState extends State<CuisinsScreen> {
     // TODO: implement initState
 getalldata();
   }
-
+bool loading=true;
   getalldata() async{
     final package=Provider.of<CuisineProvider>(context,listen: false);
 
     await package.getcuisinsbyid(widget.id);
+    setState(() {
+      loading=false;
+    });
   }
   Future refreshdata() async{
     final package=Provider.of<CuisineProvider>(context,listen: false);
@@ -62,7 +65,7 @@ package.clearData();
 
           centerTitle: true,
           title: Text(
-            'Menu',
+            'Shishas',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -72,42 +75,21 @@ package.clearData();
             RefreshIndicator(
               onRefresh: refreshdata,
 
-              child:SingleChildScrollView(
-
-                physics: AlwaysScrollableScrollPhysics(),
-                child: Column(
-
-          children: [
-              Container(
-                alignment: Alignment.topLeft,
-                height: mediaQuery.size.height * 0.1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding:  EdgeInsets.only(left: mediaQuery.size.width*0.05),
-                      child: Text("Cuisines", style: Theme.of(context).textTheme.headline2,),
-                    ),
-                  ],
-                ),
-              ),
-              package.cuisinsbyid.length>0?     SizedBox(
-                height: mediaQuery.size.height * 0.80,
-                child: GridView(
+              child:Center(
+                child:loading?Center(child: CircularProgressIndicator(),): package.cuisinsbyid.length>0?
+                GridView(
                   padding: const EdgeInsets.all(25),
                   children: getCuisinsCards(package.cuisinsbyid),
+
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 150,
-                    childAspectRatio: 1,
+                    childAspectRatio:1,
                     crossAxisSpacing: 8,
-                    mainAxisSpacing: 5,
+                    mainAxisSpacing: 8,
                   ),
-                ),
-              ):Center(child:Text("no cuisins")),
-          ],
-        ),
-        // ),
-      ),
+                ):
+                Center(child:Text("No Shisha")),
+              ),
     )));
   }
 }
