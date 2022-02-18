@@ -12,6 +12,7 @@ import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../customBirthdayPicker.dart';
 import '../../custom_date_picker_form_field.dart';
 import 'newlogin/screens/loginScreen.dart';
 
@@ -449,7 +450,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
-                              child: CustomDatePickerFormField(
+                              child: CustomBirthdayPicker(
 
                                 label: "Birthdate",
 

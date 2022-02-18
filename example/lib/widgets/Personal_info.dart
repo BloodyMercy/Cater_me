@@ -6,6 +6,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../customBirthdayPicker.dart';
 import '../custom_date_picker_form_field.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -156,59 +157,19 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                           0.04),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                      //I believe the size difference here is 6.0 to account padding
-                                      color: focusNode.hasFocus
-                                          ? Color(0xFF3F5521)
-                                          : Colors.grey),
-                                  labelText: "Email",
-                                  hintStyle: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'BerlinSansFB'),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.grey,
-                                    ),
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                    //I believe the size difference here is 6.0 to account padding
+                                    color: focusNode.hasFocus
+                                        ? Color(0xFF3F5521)
+                                        : Colors.grey,
                                   ),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Color(0xFF3F5521),
-                                      ))),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: MultiValidator([
-                                EmailValidator(errorText: "Please enter email"),
-                                RequiredValidator(errorText: 'Required *'),
-                              ]),
-                              keyboardType: TextInputType.emailAddress,
-                            ),
-                            SizedBox(height: _mediaQuery * 0.03),
-                            TextFormField(
-                              controller: user.phoneNumber,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.phone),
-                                  contentPadding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          0.04),
-                                  alignLabelWithHint: true,
-                                  labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                      //I believe the size difference here is 6.0 to account padding
-                                      color: focusNode.hasFocus
-                                          ? Color(0xFF3F5521)
-                                          : Colors.grey),
-                                  labelText: 'Phone number',
+                                  labelText: 'Email',
                                   hintStyle: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'BerlinSansFB'),
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB',
+                                  ),
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
@@ -230,6 +191,97 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
+                                EmailValidator(errorText: "Please enter email"),
+                                RequiredValidator(errorText: 'Required *'),
+                              ]),
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+
+                            // TextFormField(
+                            //   controller: user.email,
+                            //   decoration: InputDecoration(
+                            //       prefixIcon: Icon(Icons.mail_outline),
+                            //       contentPadding: EdgeInsets.only(
+                            //           left: MediaQuery.of(context).size.width *
+                            //               0.04),
+                            //       alignLabelWithHint: true,
+                            //       labelStyle: TextStyle(
+                            //           fontSize: focusNode.hasFocus ? 18 : 16.0,
+                            //           //I believe the size difference here is 6.0 to account padding
+                            //           color: focusNode.hasFocus
+                            //               ? Color(0xFF3F5521)
+                            //               : Colors.grey),
+                            //       labelText: "Email",
+                            //       hintStyle: TextStyle(
+                            //           color: Colors.white,
+                            //           fontSize: 15,
+                            //           fontWeight: FontWeight.bold,
+                            //           fontFamily: 'BerlinSansFB'),
+                            //       filled: true,
+                            //       fillColor: Colors.white,
+                            //       enabledBorder: OutlineInputBorder(
+                            //         borderRadius: BorderRadius.circular(5.0),
+                            //         borderSide: const BorderSide(
+                            //           color: Colors.grey,
+                            //         ),
+                            //       ),
+                            //       focusedBorder: OutlineInputBorder(
+                            //           borderRadius: BorderRadius.circular(5.0),
+                            //           borderSide: const BorderSide(
+                            //             color: Color(0xFF3F5521),
+                            //           ))),
+                            //   autovalidateMode:
+                            //       AutovalidateMode.onUserInteraction,
+                            //   validator: MultiValidator([
+                            //     EmailValidator(errorText: "Please enter email"),
+                            //     RequiredValidator(errorText: 'Required *'),
+                            //   ]),
+                            //   keyboardType: TextInputType.emailAddress,
+                            // ),
+                            SizedBox(height: _mediaQuery * 0.03),
+                            TextFormField(
+                              controller: user.phoneNumber,
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.phone),
+                                contentPadding: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width *
+                                        0.04),
+                                alignLabelWithHint: true,
+                                labelStyle: TextStyle(
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                    //I believe the size difference here is 6.0 to account padding
+                                    color: focusNode.hasFocus
+                                        ? Color(0xFF3F5521)
+                                        : Colors.grey),
+                                labelText: 'Phone number',
+                                hintStyle: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB'),
+                                filled: true,
+                                fillColor: Colors.white,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521),
+                                  ),
+                                ),
+                              ),
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              validator: MultiValidator([
                                 RequiredValidator(errorText: 'Required *'),
                               ]),
                               keyboardType: TextInputType.phone,
@@ -237,10 +289,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             SizedBox(height: _mediaQuery * 0.03),
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
-                              child: CustomDatePickerFormField(
-
+                              child: CustomBirthdayPicker(
                                 label: "Birthdate",
-
                                 controller: address.evendatecontroller,
                               ),
                             ),

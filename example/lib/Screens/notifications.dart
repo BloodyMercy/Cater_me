@@ -36,6 +36,18 @@ class _NotificationsState extends State<Notifications> {
     super.initState();
   }
 
+
+  Future refreshdata() async {
+    final allNotification =
+    Provider.of<NotificationProvider>(context, listen: false);
+
+    await allNotification.ClearAllNotifications();
+    await allNotification.getAllNotifications();
+
+    return;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     var screenHeight =
@@ -47,6 +59,7 @@ class _NotificationsState extends State<Notifications> {
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
+
           appBar: AppBar(
             elevation: 0,
             leading: IconButton(
@@ -78,116 +91,119 @@ class _NotificationsState extends State<Notifications> {
                 )
               : allNotification.notificationlist.length == 0
                   ? Center(child: Image.asset('images/nonotificationyet.png'))
-                  : Container(
-                      color: LightColors.kLightYellow,
-                      child: ListView.builder(
-                          itemCount: allNotification.notificationlist.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (builder) => OrderId(
+                  : RefreshIndicator(
+            onRefresh: refreshdata,
+                    child: Container(
+                        color: LightColors.kLightYellow,
+                        child: ListView.builder(
+                            itemCount: allNotification.notificationlist.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (builder) => OrderId(
+                                          allNotification
+                                              .notificationlist[index].orderId,
+                                          1),
+                                    ),
+                                  );
+                                  allNotification.markAsRead(
+                                      allNotification.notificationlist[index].id);
+                                  if (!allNotification
+                                      .notificationlist[index].seen) {
+                                    var i = int.parse(package.nbnotification);
+                                    i--;
+                                    package.nbnotification = i.toString();
+                                  }
+                                },
+                                child: Card(
+                                  color: LightColors.kLightYellow2,
+                                  // elevation: 5,
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(30, 10, 30, 30),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
                                         allNotification
-                                            .notificationlist[index].orderId,
-                                        1),
+                                                .notificationlist[index].seen
+                                            ? FaIcon(
+                                                FontAwesomeIcons.checkDouble,
+                                                color: colorCustom,
+                                              )
+                                            : Container(),
+                                        Row(
+                                          children: [
+                                            // Padding(
+                                            //   padding: const EdgeInsets.only(right: 20.0),
+                                            //   child: CircleAvatar(
+                                            //     minRadius: 16,
+                                            //     maxRadius: screenHeight * 0.04,
+                                            //     backgroundImage:
+                                            //         AssetImage('images/food33.jpg'),
+                                            //   ),
+                                            // ),
+                                            Expanded(
+                                              child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      allNotification
+                                                          .notificationlist[index]
+                                                          .title,
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: Colors.black),
+                                                    ),
+                                                    SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                                                    Text(
+                                                      allNotification
+                                                          .notificationlist[index]
+                                                          .description,
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          color: Colors.black87),
+                                                    ),
+                                                    SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                                                    Text(
+                                                        '${DateFormat.yMd().add_jm().format(DateTime.parse(allNotification.notificationlist[index].date))}',
+                                                      style: TextStyle(
+                                                          fontSize: 13,
+                                                          color: Colors.black26),
+                                                    ),
+                                                  ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    // child: ListTile(
+                                    //   onTap: () {
+                                    //     Navigator.of(context).push(
+                                    //       MaterialPageRoute(
+                                    //         builder: (builder) => OrderId(index, 1),
+                                    //       ),
+                                    //     );
+                                    //   },
+                                    //   leading: CircleAvatar(
+                                    //     minRadius: 16,
+                                    //     maxRadius: screenHeight * 0.1,
+                                    //     backgroundImage: AssetImage('images/food33.jpg'),
+                                    //   ),
+                                    //
+                                    //   title: Text(allNotification
+                                    //       .notificationlist[index].title),
+                                    //   subtitle: Text(allNotification
+                                    //       .notificationlist[index].description),
+                                    // ),
                                   ),
-                                );
-                                allNotification.markAsRead(
-                                    allNotification.notificationlist[index].id);
-                                if (!allNotification
-                                    .notificationlist[index].seen) {
-                                  var i = int.parse(package.nbnotification);
-                                  i--;
-                                  package.nbnotification = i.toString();
-                                }
-                              },
-                              child: Card(
-                                color: LightColors.kLightYellow2,
-                                // elevation: 5,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(30, 10, 30, 30),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      allNotification
-                                              .notificationlist[index].seen
-                                          ? FaIcon(
-                                              FontAwesomeIcons.checkDouble,
-                                              color: colorCustom,
-                                            )
-                                          : Container(),
-                                      Row(
-                                        children: [
-                                          // Padding(
-                                          //   padding: const EdgeInsets.only(right: 20.0),
-                                          //   child: CircleAvatar(
-                                          //     minRadius: 16,
-                                          //     maxRadius: screenHeight * 0.04,
-                                          //     backgroundImage:
-                                          //         AssetImage('images/food33.jpg'),
-                                          //   ),
-                                          // ),
-                                          Expanded(
-                                            child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    allNotification
-                                                        .notificationlist[index]
-                                                        .title,
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: Colors.black),
-                                                  ),
-                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                                  Text(
-                                                    allNotification
-                                                        .notificationlist[index]
-                                                        .description,
-                                                    style: TextStyle(
-                                                        fontSize: 13,
-                                                        color: Colors.black87),
-                                                  ),
-                                                  SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                                  Text(
-                                                      '${DateFormat.yMd().add_jm().format(DateTime.parse(allNotification.notificationlist[index].date))}',
-                                                    style: TextStyle(
-                                                        fontSize: 13,
-                                                        color: Colors.black26),
-                                                  ),
-                                                ]),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  // child: ListTile(
-                                  //   onTap: () {
-                                  //     Navigator.of(context).push(
-                                  //       MaterialPageRoute(
-                                  //         builder: (builder) => OrderId(index, 1),
-                                  //       ),
-                                  //     );
-                                  //   },
-                                  //   leading: CircleAvatar(
-                                  //     minRadius: 16,
-                                  //     maxRadius: screenHeight * 0.1,
-                                  //     backgroundImage: AssetImage('images/food33.jpg'),
-                                  //   ),
-                                  //
-                                  //   title: Text(allNotification
-                                  //       .notificationlist[index].title),
-                                  //   subtitle: Text(allNotification
-                                  //       .notificationlist[index].description),
-                                  // ),
                                 ),
-                              ),
-                            );
-                          }),
-                    )),
+                              );
+                            }),
+                      ),
+                  )),
     );
   }
 }

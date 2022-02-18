@@ -5,18 +5,17 @@ import 'package:intl/intl.dart';
 
 import 'Screens/occasion/theme/colors/light_colors.dart';
 
-class CustomDatePickerFormField extends StatefulWidget {
+class CustomBirthdayPicker extends StatefulWidget {
   String label;
   TextEditingController controller = TextEditingController();
 
-  CustomDatePickerFormField({this.label, this.controller});
+  CustomBirthdayPicker({this.label, this.controller});
 
   @override
-  State<CustomDatePickerFormField> createState() =>
-      _CustomDatePickerFormFieldState();
+  State<CustomBirthdayPicker> createState() => _CustomBirthdayPicker();
 }
 
-class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
+class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
   FocusNode _focusNode = FocusNode();
   DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
   DateFormat _monthFormat = DateFormat('MMMM');
@@ -45,7 +44,6 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
       ctx,
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
-
         showTitle: false,
         backgroundColor: LightColors.kLightYellow2,
         itemTextStyle: TextStyle(
@@ -53,7 +51,8 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
         ),
       ),
       initialDateTime: _chosenDate,
-      minDateTime: DateTime.now(),
+     maxDateTime: DateTime.now(),
+      minDateTime: DateTime(1950),
       dateFormat: 'MMMM-yyyy-dd',
       onClose: () {},
       onCancel: () => print('onCancel'),
@@ -76,7 +75,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
     FocusNode focusNode = FocusNode();
     double height = MediaQuery.of(context).size.height;
     return Container(
-        padding: const EdgeInsets.all(10.0),
+        // padding: const EdgeInsets.all(20.0),
         child: TextFormField(
           readOnly: true,
           controller: widget.controller,
@@ -92,6 +91,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
               contentPadding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 0.04),
               alignLabelWithHint: true,
+              prefixIcon: Icon(Icons.calendar_today),
               labelStyle: TextStyle(
                   fontSize: focusNode.hasFocus ? 18 : 16.0,
                   //I believe the size difference here is 6.0 to account padding

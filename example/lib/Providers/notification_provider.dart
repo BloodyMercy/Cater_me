@@ -5,6 +5,14 @@ import 'package:flutter/cupertino.dart';
 class NotificationProvider  extends ChangeNotifier{
   NotificationService _notificationService =NotificationService();
   List<notificationModel> _notificationlist = [];
+  Map<String, dynamic> _alldata={};
+
+  Map<String, dynamic> get alldata => _alldata;
+
+  set alldata(Map<String, dynamic> value) {
+    _alldata = value;
+  }
+
   notificationModel _createnotification=notificationModel();
   List<notificationModel> get notificationlist => _notificationlist;
 
@@ -28,6 +36,11 @@ class NotificationProvider  extends ChangeNotifier{
   }
   getAllNotifications()async{
     _notificationlist=await _notificationService.getAllNotifications();
+    notifyListeners();
+  }
+
+  ClearAllNotifications(){
+    _alldata= {};
     notifyListeners();
   }
 
