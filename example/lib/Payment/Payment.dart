@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          "Add To My Cards",
+                          "Add Card",
                           style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
                         )),
                     onPressed: _generateToken,
@@ -171,7 +171,7 @@ if(card.id==0){
 }
 
 else {
-  final _creditCards=Provider.of<CreditCardsProvider>(context,listen: false);
+   final _creditCards=Provider.of<CreditCardsProvider>(context,listen: false);
    await _creditCards.getAllCards();
    print("ssssssssss");
    Navigator.of(context).pop();

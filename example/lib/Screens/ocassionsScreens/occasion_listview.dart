@@ -39,8 +39,8 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();
-  //  occa.listoccasiontype.clear();
-   // await occa.getAllOccasionType();
+    //  occa.listoccasiontype.clear();
+    // await occa.getAllOccasionType();
     await occa.getallnewoccasion();
 
     return;
@@ -55,88 +55,83 @@ class _OccasionListViewState extends State<OccasionListView> {
     return SafeArea(
       child: RefreshIndicator(
         onRefresh: refreshocasionData,
-        child:CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    pinned: false,
-                    floating: false,
-                    expandedHeight: MediaQuery.of(context).size.height * 0.2,
-                    backgroundColor: Colors.transparent,
-                    flexibleSpace: FlexibleSpaceBar(
-                      background: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                        width: double.maxFinite,
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: List.generate(
-                                occa.listoccasiontype.length, (int index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  if (occa.listoccasiontype[index].id == -700) {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => AddNewOccasion(0),
-                                      ),
-                                    );
-                                  } else {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            AddNewOccasion(index),
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Card(
-                                  child: Container(
-                                    // width: ,
-                                    child: Row(
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            occa.listoccasiontype[index].id ==
-                                                    -700
-                                                ? Icon(
-                                                    Icons.add,
-                                                    size: 40,
-                                                    color: colorCustom,
-                                                  )
-                                                : Image.network(
-                                                    occa.listoccasiontype[index]
-                                                        .image,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.3,
-                                                  ),
-                                            Text(occa
-                                                .listoccasiontype[index].name)
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: false,
+              floating: false,
+              expandedHeight: MediaQuery.of(context).size.height * 0.2,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: FlexibleSpaceBar(
+                background: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.05,
+                  width: double.maxFinite,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: List.generate(occa.listoccasiontype.length,
+                          (int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            if (occa.listoccasiontype[index].id == -700) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => AddNewOccasion(0),
                                 ),
                               );
-                            }),
+                            } else {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => AddNewOccasion(index),
+                                ),
+                              );
+                            }
+                          },
+                          child: Card(
+                            child: Container(
+                              // width: ,
+                              child: Row(
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      occa.listoccasiontype[index].id == -700
+                                          ? Icon(
+                                              Icons.add,
+                                              size: 40,
+                                              color: colorCustom,
+                                            )
+                                          : Image.network(
+                                              occa.listoccasiontype[index]
+                                                  .image,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.2,
+                                            ),
+                                      Text(occa.listoccasiontype[index].name)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                   ),
-
-
-                  occa.all.length == 0
-                      ? SliverToBoxAdapter(child: Center(child: Image.asset('images/NoOccassionsYet.png')))
-                      : SliverList(
-                      delegate: SliverChildBuilderDelegate(
+                ),
+              ),
+            ),
+            occa.all.length == 0
+                ? SliverToBoxAdapter(
+                    child: Center(
+                        child: Image.asset('images/NoOccassionsYet.png')))
+                : SliverList(
+                    delegate: SliverChildBuilderDelegate(
                     (context, int index) {
-                      return   GestureDetector(
+                      return GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -240,8 +235,8 @@ class _OccasionListViewState extends State<OccasionListView> {
                     },
                     childCount: occa.all.length,
                   ))
-                ],
-              ),
+          ],
+        ),
       ),
     );
   }
