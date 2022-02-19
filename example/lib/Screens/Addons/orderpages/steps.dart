@@ -37,9 +37,9 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
     // await package.getcuisinsbyid(widget.id);
-    if (_cuisin.addonsall.length > 0) {
+    if (_cuisin.addonsallorder.length > 0) {
       await _cuisin.getonidorder(
-          _cuisin.addonsall[0].id, orderprov.serviceId, false);
+          _cuisin.addonsallorder[0].id, orderprov.serviceId, false);
     }
     setState(() {
       loadingitems = false;
@@ -65,14 +65,14 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
     return SingleChildScrollView(
         child: Column(children: [
-      _cuisin.addonsall.length != 0
+      _cuisin.addonsallorder.length != 0
           ? Container(
               color: LightColors.kLightYellow,
               height: 50,
               width: 400,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _cuisin.addonsall.length,
+                itemCount: _cuisin.addonsallorder.length,
                 itemBuilder: (context, index) {
                   //  final cards = card[i];
                   return Container(
@@ -82,7 +82,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                           loadingitems = true;
                           selected = index;
                         });
-                        await _cuisin.getonidorder(_cuisin.addonsall[index].id,
+                        await _cuisin.getonidorder(_cuisin.addonsallorder[index].id,
                             orderprov.serviceId, false);
                         setState(() {
                           loadingitems = false;
@@ -115,7 +115,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                             height: mediaQuery.size.height / 8,
                             child: FittedBox(
                               child: Text(
-                                '${_cuisin.addonsall[index].name}',
+                                '${_cuisin.addonsallorder[index].name}',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,

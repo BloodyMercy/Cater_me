@@ -58,7 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add Card",style: Theme.of(context).textTheme.headline1,),centerTitle: true,),
+      appBar: AppBar(title: Text("Add Card",style: Theme.of(context).textTheme.headline1,),centerTitle: true,
+ actions: [
+               IconButton(icon: Icon(Icons.done),onPressed: _generateToken)
+
+ ]),
         body: SafeArea(
           child: Column(
             children: <Widget>[
@@ -80,32 +84,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CreditCardForm(onCreditCardModelChange: _onModelChange),
                 ),
               ),
-              Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                  ElevatedButton(
-
-                    child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Text(
-                          "Add Card",
-                          style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
-                        )),
-                    onPressed: _generateToken,
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: (MediaQuery.of(context).size.width * 0.2),
-                        vertical: (MediaQuery.of(context).size.height * 0.01),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      primary: Theme.of(context).primaryColor,
-                    ),
-                  ),
-
-                ]),
-
-                ]),
+              // Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+              //   Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+              //     ElevatedButton(
+              //
+              //       child: Text(
+              //         "Add Card",
+              //         style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
+              //       ),
+              //       onPressed: _generateToken,
+              //       style: ElevatedButton.styleFrom(
+              //         // padding: EdgeInsets.symmetric(
+              //         //   horizontal: (MediaQuery.of(context).size.width * 0.2),
+              //         //   vertical: (MediaQuery.of(context).size.height * 0.01),
+              //         // ),
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(10),
+              //         ),
+              //         primary: Theme.of(context).primaryColor,
+              //       ),
+              //     ),
+              //
+              //
+              //
+              //
+              //   ]),
+              //
+              //   ]),
               SizedBox(height: 10)
             ],
           ),

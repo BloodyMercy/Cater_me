@@ -66,8 +66,15 @@ List<Package> get allons => _allons;
   }
 
   List<Addonall> _addonsall=[];
+  List<Addonall> _addonsallorder=[];
 
-List<Occasion> _occasions=[];
+int get selectedIndex => _selectedIndex;
+
+  set selectedIndex(int value) {
+    _selectedIndex = value;
+  }
+
+  List<Occasion> _occasions=[];
 List<Occasion> _alloccasions=[];
 List<Package> _listfavorite=[];
 
@@ -124,6 +131,29 @@ String get nbnotification => _nbnotification;
   set nbnotification(String value) {
     _nbnotification = value;
   }
+Future<void>  getallpacakgesorder(int id,int id2)async {
+  loading=false;
+//notifyListeners();
+  _alldata=await PackageService.getPackagesrder(id,id2);
+
+
+    if( _alldata['packages']!=null)
+   //   _packages = Packages.fromJson( _alldata['packages']);
+    // if(_alldata['cuisine']!=null)
+   // _cuisins = Cuisines.fromJson(_alldata['cuisine']);
+    _addonsallorder = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
+  //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
+
+  _allpackagesorder = List<Package>.from(
+        _alldata['packages'].map((model) => Package.fromJson(model)));
+  //  _nbnotification=_alldata["notificationCount"].toString();
+
+
+
+
+  loading=true;
+  notifyListeners();
+}
 
   Future<void>  getallpacakges(BuildContext c)async {
 loading=false;
@@ -274,5 +304,11 @@ Cuisines get cuisins => _cuisins;
 
   set cuisins(Cuisines value) {
     _cuisins = value;
+  }
+
+List<Addonall> get addonsallorder => _addonsallorder;
+
+  set addonsallorder(List<Addonall> value) {
+    _addonsallorder = value;
   }
 }

@@ -25,10 +25,10 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
-    await pack.getpacakgesbyidorder(
+    await pack.getallpacakgesorder(
         orderprovider.serviceId,
         int.parse(address.typeofeventcontroller.text.toString()),
-        int.parse(address.numberofguestcontroller.text.toString()));
+        );
     setState(() {
       loading = false;
     });

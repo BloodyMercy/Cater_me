@@ -13,7 +13,48 @@ import '../ApiLink.dart';
 
 class PackageService{
 
+  static Future<Map<String, dynamic>> getPackagesrder(int id,int id2) async{
+    List<Package> l=[];
+    try {
 
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.Request('GET', Uri.parse(ApiLink.GetPackagesorder+"/$id/$id2"));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+      if (response.statusCode == 200) {
+
+        Map<String, dynamic> responseData = json.decode(response.body);
+
+        //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
+
+
+        return responseData;
+
+      }
+      else if (response.statusCode == 401) {
+        return {"status":"1"};
+
+      }
+      else {
+        print(response.reasonPhrase);
+        return {};
+      }
+
+
+
+    }catch(e){
+
+      return {};
+    }
+  }
   static Future<Map<String, dynamic>> getPackages() async{
     List<Package> l=[];
     try {
