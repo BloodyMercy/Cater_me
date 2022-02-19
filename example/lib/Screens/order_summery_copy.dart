@@ -381,6 +381,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                               .controllers[i].text.isEmpty ||
                                           details.controllers[i].text ==
                                               null) {
+                                        details.updateprocefreind(0, index);
+
                                       } else {
                                         sum += double.parse(
                                             details.controllers[i].text);
@@ -392,6 +394,12 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                       details.controllers[index].text =
                                           (details.totale - (sum - lastinput))
                                               .toString();
+                                      details.updateprocefreind(details.totale - (sum - lastinput), index);
+                                    }
+                                    else{
+
+                                      details.updateprocefreind( lastinput, index);
+
                                     }
                                     setState(() {});
                                   },

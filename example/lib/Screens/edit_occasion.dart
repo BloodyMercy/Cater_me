@@ -89,6 +89,12 @@ bool ispressed = false;
           ],
           leading: IconButton(
             onPressed: () {
+    occasion.nameofoccasioncontroller.text="";
+    occasion.datechosencontroller.text="";
+    occasion.typeofoccasioncontrollername.text="";
+    //for(int i=0;i<occasion.listoccasiontype.length;i++){
+   // if(occasion.listoccasiontype[i].name==    occasion.typeofoccasioncontrollername.text)
+    occasion.typeofoccasioncontroller.text="";
               Navigator.of(context).pop(
               );
             },
@@ -155,6 +161,7 @@ bool ispressed = false;
 
                             bool a =
                             await occasion.updateoccation(idss: widget.occ.id);
+                            await occasion.getallnewoccasion();
                             if (!a)
                             {
                               setState(() {
@@ -168,7 +175,12 @@ bool ispressed = false;
 
                               );  }
                             else {
-                              occasion.cleardata();
+                              occasion.nameofoccasioncontroller.text="";
+                              occasion.datechosencontroller.text="";
+                              occasion.typeofoccasioncontrollername.text="";
+                              //for(int i=0;i<occasion.listoccasiontype.length;i++){
+                              // if(occasion.listoccasiontype[i].name==    occasion.typeofoccasioncontrollername.text)
+                              occasion.typeofoccasioncontroller.text="";
                               setState(() {
                                 ispressed = false;
                               });

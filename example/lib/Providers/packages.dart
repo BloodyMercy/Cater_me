@@ -137,16 +137,18 @@ Future<void>  getallpacakgesorder(int id,int id2)async {
   _alldata=await PackageService.getPackagesrder(id,id2);
 
 
-    if( _alldata['packages']!=null)
-   //   _packages = Packages.fromJson( _alldata['packages']);
-    // if(_alldata['cuisine']!=null)
-   // _cuisins = Cuisines.fromJson(_alldata['cuisine']);
-    _addonsallorder = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
-  //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
+    if( _alldata['packages']!=null) {
+      //   _packages = Packages.fromJson( _alldata['packages']);
+      // if(_alldata['cuisine']!=null)
+      // _cuisins = Cuisines.fromJson(_alldata['cuisine']);
+      _addonsallorder = List<Addonall>.from(
+          _alldata['addons'].map((model) => Addonall.fromJson(model)));
+      //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
-  _allpackagesorder = List<Package>.from(
-        _alldata['packages'].map((model) => Package.fromJson(model)));
-  //  _nbnotification=_alldata["notificationCount"].toString();
+      _allpackagesorder = List<Package>.from(
+          _alldata['packages'].map((model) => Package.fromJson(model)));
+      //  _nbnotification=_alldata["notificationCount"].toString();
+    }
 
 
 

@@ -18,13 +18,14 @@ class _OccasionListViewState extends State<OccasionListView> {
   bool loading  = false;
 
   getData() async {
-    final occasion = Provider.of<PackagesProvider>(context, listen: false);
-    await occasion.getalloccasions();
+   // final occasion = Provider.of<PackagesProvider>(context, listen: false);
+ //   await occasion.getalloccasions();
+
     final occa = Provider.of<OccasionProvider>(context, listen: false);
     await occa.getAllOccasionType();
+    await occa.getallnewoccasion();
 
-    occa.listoccasiontype
-        .insert(0, OccassionType(id: -700, name: "Add occasion", image: ''));
+
   }
 
   @override
@@ -35,7 +36,7 @@ class _OccasionListViewState extends State<OccasionListView> {
   }
 
   Future refreshocasionData() async {
-    final occasion = Provider.of<PackagesProvider>(context, listen: false);
+ //   final occasion = Provider.of<PackagesProvider>(context, listen: false);
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();

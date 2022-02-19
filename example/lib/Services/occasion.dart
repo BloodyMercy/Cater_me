@@ -74,8 +74,8 @@ class OccasionService {
         List<dynamic> responseData = json.decode(response.body);
 
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
-
-        for (int i = 0; i < responseData.length; i++) {
+       l.add( OccassionType(id: -700, name: "Add occasion", image: ''));
+        for (int i = 1; i < responseData.length; i++) {
           l.add(OccassionType.fromJson(responseData[i]));
         }
         return l;
@@ -103,17 +103,20 @@ class OccasionService {
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
+        print("rifai200");
         Map<String, dynamic> responseData = json.decode(response.body);
         return responseData;
       }
       else if (response.statusCode == 401) {
         return {"status": "1"};
+       // print("rifai200");
       }
       else {
         print(response.reasonPhrase);
         return {};
       }
     } catch (e) {
+      print(e.toString());
       return {};
     }
   }

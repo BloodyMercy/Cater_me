@@ -20,7 +20,20 @@ class OrderCaterProvider extends ChangeNotifier{
   set controllers(List<TextEditingController> value) {
     _controllers = value;
   }
+updateprocefreind(double a,int index){
+    print("i update");
+    // // FriendModel f=new FriendModel();
+    // f.id = choosebillFriend[index].id;
+    // f.name= choosebillFriend[index].name;
+    // f.email= choosebillFriend[index].email;
+    // f.image= choosebillFriend[index].image;
+    choosebillFriend[index].price=a;
+   // choosebillFriend.removeAt(index);
+   // choosebillFriend.insert(index, f);
+    notifyListeners();
 
+
+}
   Future<CreditCardsModel> sendtokeknpayemnt(String a) async{
 
     CreditCardsModel card=new  CreditCardsModel();

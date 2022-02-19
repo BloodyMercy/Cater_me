@@ -449,8 +449,7 @@ class _OrderState extends State<Order> {
                                                     address.numberofguestcontroller
                                                             .text ==
                                                         "" ||
-                                                    address.name.text == "" ||
-                                                    address.phone.text == "" ||
+
                                                     address.typeofeventcontroller
                                                             .text ==
                                                         "") {
@@ -474,11 +473,36 @@ class _OrderState extends State<Order> {
                                                   6) {
                                                 if (orderProvider
                                                         .itemOrders.length >
-                                                    0) {
+                                                    0 ) {
+bool a=false;
+                                                  if(orderProvider.choosebillFriend.length>0)
+                                                  {
+                                                    for(int i=0;i<orderProvider.choosebillFriend.length;i++){
+                                                      print(i);
+                                                      if (orderProvider.choosebillFriend[i].price==0)
+                                                      {
+                                                        _key.currentState
+                                                            .showSnackBar(
+                                                          const SnackBar(
+                                                            content: Text(
+                                                                "share bill cannot be empty"),
+                                                          ),
+                                                        );
+                                                        a=true;
+                                                        break;
+                                                      }
+
+                                                    }
+                                                  }
+
+
+
+                                                  if(!a){
                                                   orderProvider.spets++;
                                                   _animateToIndex(
-                                                      orderProvider.spets);
+                                                      orderProvider.spets);}
                                                 } else {
+
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(

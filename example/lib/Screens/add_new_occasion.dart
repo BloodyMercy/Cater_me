@@ -172,6 +172,7 @@ await occasion.getAllOccasionType();
 
                                   bool a =
                                       await occasion.createOccasions(context);
+
                                   if (!a)
                                     {
                                       setState(() {
@@ -186,6 +187,7 @@ await occasion.getAllOccasionType();
                                     );  }
                                   else {
                                     occasion.cleardata();
+                                    await occasion.getallnewoccasion();
                                     setState(() {
                                       ispressed = false;
                                     });
