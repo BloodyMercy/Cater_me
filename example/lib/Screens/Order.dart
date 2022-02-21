@@ -449,7 +449,6 @@ class _OrderState extends State<Order> {
                                                     address.numberofguestcontroller
                                                             .text ==
                                                         "" ||
-
                                                     address.typeofeventcontroller
                                                             .text ==
                                                         "") {
@@ -473,14 +472,24 @@ class _OrderState extends State<Order> {
                                                   6) {
                                                 if (orderProvider
                                                         .itemOrders.length >
-                                                    0 ) {
-bool a=false;
-                                                  if(orderProvider.choosebillFriend.length>0)
-                                                  {
-                                                    for(int i=0;i<orderProvider.choosebillFriend.length;i++){
+                                                    0) {
+                                                  bool a = false;
+                                                  if (orderProvider
+                                                          .choosebillFriend
+                                                          .length >
+                                                      0) {
+                                                    for (int i = 0;
+                                                        i <
+                                                            orderProvider
+                                                                .choosebillFriend
+                                                                .length;
+                                                        i++) {
                                                       print(i);
-                                                      if (orderProvider.choosebillFriend[i].price==0)
-                                                      {
+                                                      if (orderProvider
+                                                              .choosebillFriend[
+                                                                  i]
+                                                              .price ==
+                                                          0) {
                                                         _key.currentState
                                                             .showSnackBar(
                                                           const SnackBar(
@@ -488,21 +497,18 @@ bool a=false;
                                                                 "share bill cannot be empty"),
                                                           ),
                                                         );
-                                                        a=true;
+                                                        a = true;
                                                         break;
                                                       }
-
                                                     }
                                                   }
 
-
-
-                                                  if(!a){
-                                                  orderProvider.spets++;
-                                                  _animateToIndex(
-                                                      orderProvider.spets);}
+                                                  if (!a) {
+                                                    orderProvider.spets++;
+                                                    _animateToIndex(
+                                                        orderProvider.spets);
+                                                  }
                                                 } else {
-
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
