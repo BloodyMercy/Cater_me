@@ -57,6 +57,7 @@ class ApiLink{
  static String SeenNotification=host+"Notifications/MarkAsSeen";
  static String DonateFood=host+"Orders/DonateOrder";
  static String DonateFoodss=host+"Orders/DonateOrder";
+ static String ForgetPassword=host+"Accounts/ForgetPassword";
 
 
 

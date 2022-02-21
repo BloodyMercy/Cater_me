@@ -1,6 +1,9 @@
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'confirm_email.dart';
 
@@ -23,11 +26,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       print('Not validated');
     }
   }
-
+bool loading=false;
   final TextEditingController reset = TextEditingController();
-
+  final _scaffold = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final authprovider=Provider.of<UserProvider>(context,listen:true);
     var appbar = AppBar(
       title: Text(
         'Forgot Password',
@@ -56,6 +60,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         MediaQuery.of(context).padding.top;
     return SafeArea(
       child: Scaffold(
+        key: _scaffold,
         appBar: appbar,
         body: SingleChildScrollView(
           child: Container(
@@ -79,7 +84,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           key: formkey,
                           child: Column(children: [
                             TextFormField(
-                              controller: reset,
+                              controller:authprovider.forgetPassword,
                               // onSaved: (value) => email = value,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
@@ -113,19 +118,68 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                       ),
                       SizedBox(height: screenHeight * 0.4),
-                      ElevatedButton(
-                        onPressed: () {
+                      !loading?ElevatedButton(
+                        onPressed: ()
+                        async {
+                          setState(() {
+                            loading = true;
+                          });
+                          // final SharedPreferences sharedPreferences =
+                          //     await SharedPreferences.getInstance();
+                          // sharedPreferences.setString(
+                          //     'email', emailController.text);
+
                           if (formkey.currentState.validate() == false) {
                             // ignore: avoid_print
                             print('Not Validated');
+                            setState(() {
+                              loading = false;
+                            });
                             // reset!=null?
                           } else {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ConfirmEmailSent()));
+                            if (await authprovider.forgetpassword()) {
+                              print("logged");
+                              setState(() {
+                                loading = false;
+                              });
+                              SharedPreferences sh =
+                              await SharedPreferences.getInstance();
+                              sh.setBool("logged", true);
+
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ConfirmEmailSent()),
+                                      );
+                              //authProvider.status=Status.Authenticated;
+                              setState(() {});
+                            } else {
+                              print("hello");
+                              setState(() {
+                                loading = false;
+                              });
+                              _scaffold.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      "error try again"),
+                                ),
+                              );
+                              authprovider.forgetpass = "";
+                            }
                           }
+                        // {
+                        //   if (formkey.currentState.validate() == false) {
+                        //     // ignore: avoid_print
+                        //     print('Not Validated');
+                        //     // reset!=null?
+                        //   } else {
+                        //
+                        //     Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //             builder: (context) =>
+                        //                 const ConfirmEmailSent()));
+                        //   }
                         },
                         child: Text(
                           'Send',
@@ -143,7 +197,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                         ),
-                      ),
+                      ):Center(child: CircularProgressIndicator())
                     ],
                   ),
                 ),

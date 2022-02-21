@@ -19,6 +19,7 @@ enum Status {
 
 class UserProvider with ChangeNotifier {
   TextEditingController oldPassword = TextEditingController();
+  TextEditingController forgetPassword = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController insta = TextEditingController();
   TextEditingController facebook = TextEditingController();
@@ -96,6 +97,14 @@ class UserProvider with ChangeNotifier {
   }
   String _messagelogin = "";
   String _messageSignUp = "";
+  String _forgetpass='';
+
+  String get forgetpass => _forgetpass;
+
+  set forgetpass(String value) {
+    _forgetpass = value;
+  }
+
   String _messageUpdateInfo = "";
 
   String get messagelogin => _messagelogin;
@@ -216,6 +225,28 @@ imageUrl=u.message;
       return "";
     }
   }
+  Future<bool> forgetpassword( ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    try {
+      //notifyListeners();
+    bool u = await AuthModelSignin.forgetPassword(
+          forgetPassword.text
+      );
+//_forgetpass=u.message;
+
+  //    mess = u.message;
+
+     // notifyListeners();
+      return u;
+    } catch (error) {
+      print(error);
+      _forgetpass = "error try again later from provider";
+
+   //  notifyListeners();
+      return false;
+    }
+  }
 
 
 
@@ -246,6 +277,7 @@ imageUrl=u.message;
       print(error);
     }
   }
+
   clearAllTextController(){
     oldPassword.clear();
     email.clear();

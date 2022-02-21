@@ -184,4 +184,26 @@ token=token;
       return em;
     }
   }
-}
+
+ static Future <bool> forgetPassword(String email) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var request = http.MultipartRequest(
+        'POST', Uri.parse(ApiLink.ForgetPassword));
+    request.fields.addAll({
+      'identifier': email,
+    });
+    var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      //print(await response.stream.bytesToString());
+      return true;
+    }
+    else {
+     // print(response.reasonPhrase);
+      return false;
+    }
+  }
+  }
