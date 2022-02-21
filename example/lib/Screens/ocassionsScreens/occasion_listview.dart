@@ -90,9 +90,13 @@ class _OccasionListViewState extends State<OccasionListView> {
                             }
                           },
                           child: Card(
+
                             child: Container(
+                              height:50,
+                              width: MediaQuery.of(context).size.width/3,
                               // width: ,
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +116,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                                       .width *
                                                   0.2,
                                             ),
-                                      Text(occa.listoccasiontype[index].name)
+                                      Text(occa.listoccasiontype[index].name,style: TextStyle(fontSize: 20),)
                                     ],
                                   ),
                                 ],

@@ -276,7 +276,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 icon: Icon(FontAwesomeIcons.calendarCheck,
                   size: 25, //Icon Size
                 ),
-                label: 'Ocasions',
+                label: 'Occasions',
               ),
         package.nbnotification!="0"  ? BottomNavigationBarItem(
 

@@ -160,7 +160,10 @@ class _FreindsTextFieldState extends State<editfriend> {
                           loading = false;
 
                         });
-
+                    //    final friends = Provider.of<FriendsProvider>(context, listen: false);
+                        friends.namecontroller.text="";
+                        friends.emailcontroller.text="";
+                        friends.phonecontroller.text="";
                         Navigator.of(context).pop();
                       }
                     },

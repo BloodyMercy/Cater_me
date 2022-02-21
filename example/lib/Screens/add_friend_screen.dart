@@ -103,10 +103,12 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           ),
           backgroundColor: Theme.of(context).primaryColor,
           actions: [
-            IconButton(onPressed:
+            IconButton(onPressed:() {
+              friends.namecontroller.text="";
+              friends.emailcontroller.text="";
+              friends.phonecontroller.text="";
 
-
-                  () => _startAddNewFriend(context),
+              _startAddNewFriend(context)},
 
                 icon: Icon(Icons.add))
           ],
