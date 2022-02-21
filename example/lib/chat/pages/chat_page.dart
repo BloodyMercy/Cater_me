@@ -15,6 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/widgets.dart';
+import 'full_photo_page.dart';
 
 
 class ChatPage extends StatefulWidget {
@@ -332,12 +333,12 @@ class ChatPageState extends State<ChatPage> {
                                   clipBehavior: Clip.hardEdge,
                                 ),
                                 onPressed: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => FullPhotoPage(url: messageChat.content),
-                                  //   ),
-                                  // );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FullPhotoPage(url: messageChat.content),
+                                    ),
+                                  );
                                 },
                                 style: ButtonStyle(padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(0))),
                               ),

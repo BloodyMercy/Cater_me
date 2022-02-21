@@ -56,6 +56,7 @@ class ApiLink{
  static String UpdateAddress=host+"Addresses/UpdateAddress";
  static String SeenNotification=host+"Notifications/MarkAsSeen";
  static String DonateFood=host+"Orders/DonateOrder";
+ static String DonateFoodss=host+"Orders/DonateOrder";
 
 
 
