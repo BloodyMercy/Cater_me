@@ -32,11 +32,7 @@ class OccasionAdded extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => Navigationbar(0),
-                ),
-              );
+              Navigator.of(context).pop();
             },
             child: Text(
               "CLOSE",

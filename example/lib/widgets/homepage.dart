@@ -423,7 +423,7 @@ class _HomePageState extends State<HomePage> {
                                     ],
                                   ),
                                   SizedBox(
-                                      height: mediaQuery.size.height * 0.3,
+                                      height: mediaQuery.size.height * 0.2,
                                       //width: mediaQuery.size.width,
                                       child: CuisinCard()),
                                   // SizedBox(height:mediaQuery.size.height * 0.212,

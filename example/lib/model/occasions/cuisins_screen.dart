@@ -83,6 +83,7 @@ package.clearData();
 
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 150,
+                    mainAxisExtent: 200,
                     childAspectRatio:1,
                     crossAxisSpacing: 8,
                     mainAxisSpacing: 8,

@@ -36,6 +36,7 @@ class _CuisinCardState extends State<CuisinCard> {
 
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
+    //  height: 100,
           child: card,
         );
     List card = getCuisins(_cuisin.cuisins.categories);

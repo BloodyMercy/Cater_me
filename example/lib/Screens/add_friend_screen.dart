@@ -108,7 +108,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
               friends.emailcontroller.text="";
               friends.phonecontroller.text="";
 
-              _startAddNewFriend(context)},
+              _startAddNewFriend(context);},
 
                 icon: Icon(Icons.add))
           ],

@@ -206,7 +206,7 @@ imageUrl=u.message;
 
   //    mess = u.message;
 
-      notifyListeners();
+     // notifyListeners();
       return u.message;
     } catch (error) {
       print(error);

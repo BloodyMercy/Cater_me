@@ -25,6 +25,7 @@ class CuisinsCard extends StatelessWidget {
         ),
       ),
       child: Container(
+
         decoration: BoxDecoration(
             // color: ((this.index % 2) == 0)
             //     ? Color.fromRGBO(253, 202, 29, 0.8)
@@ -37,8 +38,8 @@ class CuisinsCard extends StatelessWidget {
                   this.cuisin.image,
                 ),
                 fit: BoxFit.fill)),
-        width: mediaQuery.size.height * 0.15,
-        height: mediaQuery.size.height * 0.15,
+        width: mediaQuery.size.width * 0.3,
+        height: mediaQuery.size.height * 0.50,
         // child: Center(
         //   child: Text(
         //     '${this.cuisin.name}',

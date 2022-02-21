@@ -81,7 +81,7 @@ setData(String imageUrl) async{
   }
 
   // TextEditingController controller = TextEditingController();
-
+bool loadingimage=false;
   @override
   Widget build(BuildContext context) {
     // final updateImage = Provider.of<UserProvider>(context, listen: true);
@@ -103,19 +103,41 @@ setData(String imageUrl) async{
 
           child: Column(
             children: [
-              Center(
+              loadingImage?Center(child:CircularProgressIndicator()):Center(
                 child: GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 4.0),
                     child:personalInfo.loading?Center(child: CircularProgressIndicator(),): Center(
                       child:
-                      CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: screenHeight * 0.1,
-                        backgroundImage: NetworkImage(personalInfo.imageUrl),
+                      CircleAvatar(radius: (52),
+                          backgroundColor: Colors.white,
+                          child: ClipRRect(
+                            borderRadius:BorderRadius.circular(50),
+                            child: Image.network(
+                             personalInfo.imageUrl,
+                              errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+                                return Icon(Icons.do_not_disturb,color:Colors.red);
+                              },
+                              loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Padding(
+                                  padding: const EdgeInsets.all(25.0),
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      value: loadingProgress.expectedTotalBytes != null ?
+                                      loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                                          : null,
+                                    ),
+                                  ),
+                                );
+                              },
+                              fit: BoxFit.fill,
+                              width: 100,
+                              height: 100,
+                            ),
+                          )
+                      )
 
-
-                      ),
                     ),
                   ),
                   onTap: () {
@@ -144,8 +166,14 @@ setData(String imageUrl) async{
                                 ),
                                 onTap: () async{
                                   Navigator.pop(context);
+                                  setState(() {
+                                    loadingImage=true;
+                                  });
                                 await  PickImage(ImageSource.camera);
                                 await personalInfo.updateProfile(image);
+                                  setState(() {
+                                    loadingImage=false;
+                                  });
                                 },
                               ),
                               ListTile(
@@ -163,10 +191,14 @@ setData(String imageUrl) async{
                                 ),
                                 onTap: () async {
                                   Navigator.pop(context);
-                                  await PickImage(ImageSource.gallery);
-                                 // personalInfo.loading=true;
-
-                                      await personalInfo.updateProfile(image);
+                                  setState(() {
+                                    loadingImage=true;
+                                  });
+                                  await  PickImage(ImageSource.gallery);
+                                  await personalInfo.updateProfile(image);
+                                  setState(() {
+                                    loadingImage=false;
+                                  });
                               //    personalInfo.notifyListeners();
                                   // if (a != "") {
                                   //   setState(() {

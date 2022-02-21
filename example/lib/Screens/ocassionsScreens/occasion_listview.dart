@@ -40,8 +40,8 @@ class _OccasionListViewState extends State<OccasionListView> {
     final occa = Provider.of<OccasionProvider>(context, listen: false);
 
     occa.all.clear();
-    //  occa.listoccasiontype.clear();
-    // await occa.getAllOccasionType();
+      occa.listoccasiontype.clear();
+     await occa.getAllOccasionType();
     await occa.getallnewoccasion();
 
     return;
@@ -116,7 +116,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                                       .width *
                                                   0.2,
                                             ),
-                                      Text(occa.listoccasiontype[index].name,style: TextStyle(fontSize: 20),)
+                                      Text(occa.listoccasiontype[index].name,style: TextStyle(fontSize: 18),)
                                     ],
                                   ),
                                 ],
@@ -186,43 +186,45 @@ class _OccasionListViewState extends State<OccasionListView> {
                                 ),
                                 // SizedBox(
                                 //   width: mediaQuery.size.width * 0.1,),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10.0),
-                                  child: Column(
-                                    children: [
-                                      Text('${occa.all[index].name}',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold)),
-                                      // SizedBox(
-                                      //   height: 65,
-                                      // ),
-                                      Text('${occa.all[index].type}',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold)),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text('edit',
-                                          //  locale: ,
-                                          style: TextStyle(
-                                              color: Colors.black54,
-                                              fontSize: 13,
-                                              decoration:
-                                                  TextDecoration.underline)
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Column(
+                                      children: [
+                                        Text('${occa.all[index].name}',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold)),
+                                        // SizedBox(
+                                        //   height: 65,
+                                        // ),
+                                        Text('${occa.all[index].type}',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text('edit',
+                                            //  locale: ,
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 13,
+                                                decoration:
+                                                    TextDecoration.underline)
 
-                                          // Theme.of(context)
-                                          //     .textTheme
-                                          //     .overline,
-                                          ),
-                                    ],
+                                            // Theme.of(context)
+                                            //     .textTheme
+                                            //     .overline,
+                                            ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width / 5.8,
-                                ),
+                                // SizedBox(
+                                //   width:
+                                //       MediaQuery.of(context).size.width / 3,
+                                // ),
 
                                 Expanded(
                                   child: Image.network(
