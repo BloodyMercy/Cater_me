@@ -71,13 +71,14 @@ token=token;
     //    SharedPreferences phoneNumber = await SharedPreferences.getInstance();
         prefs.setString('phoneNumber', responseData['phoneNumber']);
         prefs.setString('email', responseData['email']);
+        prefs.setString('role', responseData['role']);
         prefs.commit();
 
         // p.getString("userid")
         users = Users.fromJson(responseData);
         ErrorMessage em = ErrorMessage();
         em.response = true;
-        em.message = "";
+        em.message = responseData['role'];
         em.user=users;
         //int id=responseData["id"];
 

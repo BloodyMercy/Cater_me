@@ -106,10 +106,14 @@ class _appstateState extends State<appstate> {
               case Status.Unauthenticated:
                 return LoginScreen();
 
+                case Status.User:
+                return Navigationbar(0);
+                // case Status.Driver:
+                // return Navigationbar(0);
               case Status.walkingpage:
                 return OnBoardingScreens();
-              case Status.Authenticated:
-                return Navigationbar(0);
+              // case Status.Authenticated:
+              //   return Navigationbar(0);
               default :
                 return LoginScreen();
             }
@@ -207,7 +211,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:appstate()
+        home:SplashScreen()
       ),
     );
   }

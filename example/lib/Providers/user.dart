@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:CaterMe/Services/auth/serviceslogin.dart';
 import 'package:CaterMe/Services/personal_info_service.dart';
@@ -12,7 +13,10 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum Status {
-  Authenticated, //inside application
+  // Authenticated,
+  Driver,
+  User,
+  Supplier,//inside application
   Unauthenticated,
   walkingpage
 }
@@ -122,12 +126,29 @@ getdata();
   getdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
     emailChat.text=sh.getString('email');
+   final userrole=sh.getString('role');
 
 
 
     if(sh.getBool("logged")??false){
 
-      _status=Status.Authenticated;
+      switch (userrole){
+        case 'User':
+          _status=Status.User;
+          break;
+
+        case "Driver":
+          _status=Status.Driver;
+          break;
+        case "Supplier":
+          _status=Status.Supplier;
+          break;
+        default:
+          _status=Status.Unauthenticated;
+          break;
+
+      }
+      // _status=Status.Authenticated;
       notifyListeners();
     }
 
@@ -152,17 +173,37 @@ getdata();
 
       String token = "";
 
-      _messagelogin = u.message;
+
 
 
       if(u.response){
+
+        switch (u.message){
+          case 'User':
+            _status=Status.User;
+            break;
+
+          case "Driver":
+            _status=Status.Driver;
+            break;
+          case "Supplier":
+            _status=Status.Supplier;
+            break;
+          default:
+            _status=Status.Unauthenticated;
+            break;
+
+        }
+        _messagelogin = u.message;
+
+        notifyListeners();
         getdata();
-        _status=Status.Authenticated;
+      //  _status=Status.Authenticated;
 
       }
 
 
-      notifyListeners();
+    //  notifyListeners();
       return u.response;
     } catch (error) {
       //_status = Status.Unauthenticated;
