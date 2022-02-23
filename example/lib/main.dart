@@ -211,7 +211,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: DriverTracking()
+        home: SplashScreen()
       ),
     );
   }
