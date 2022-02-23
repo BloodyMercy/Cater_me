@@ -8,24 +8,24 @@ import 'TodayOrder.dart';
 import 'UpComingOrder.dart';
 
 
-class OrderId extends StatefulWidget {
+class DriverTracking extends StatefulWidget {
   // int id;
   // int screen;
 
   // OrderId(this.id, this.screen);
 
   @override
-  _OrderIdState createState() => _OrderIdState();
+  _DriverTrackingState createState() => _DriverTrackingState();
 }
 
-class _OrderIdState extends State<OrderId> {
+class _DriverTrackingState extends State<DriverTracking> {
   int _selectedIndex = 0;
 
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     widget.screen = index;
-  //   });
-  // }
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
 
 
@@ -34,19 +34,22 @@ class _OrderIdState extends State<OrderId> {
     List<Widget> _screen = [TodayOrder(), UpComingOrder()];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order Info",style: Theme.of(context).textTheme.headline1,),
+        title: Text("Driver Tracking",style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.signOutAlt,size: 20,))
+        ],
       ),
-      body: SafeArea(child: _screen[0]),
+      body: SafeArea(child: _screen[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor:LightColors.kLightYellow,
           unselectedItemColor: Color(0xFF3F5521),
           selectedItemColor: Color.fromRGBO(253, 202, 29, 1),
-          currentIndex: 0,
-          onTap: (_){},
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: "Details"),
-            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: "Tracking")
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: "Today"),
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: "Upcoming")
           ]),
     );
   }

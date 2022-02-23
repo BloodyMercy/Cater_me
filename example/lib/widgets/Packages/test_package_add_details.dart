@@ -152,7 +152,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                         print("${widget.food.isfavorite}");
                       },
                       icon: Icon(
-                        widget.food.isfavorite
+                       widget.food.isfavorite
                             ? FontAwesomeIcons.solidHeart
                             : FontAwesomeIcons.heart,
                         color: yellowColor,

@@ -168,8 +168,6 @@ class _NavigationBarState extends State<Navigationbar> {
 
     return Stack(
       children: <Widget>[
-
-
         AnimatedOpacity(
           opacity: (packageprovider.loading )? 1.0 : 0.2,
           duration: Duration(milliseconds: 500),

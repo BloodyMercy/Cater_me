@@ -41,44 +41,13 @@ class _UpComingOrder extends State<UpComingOrder> {
 
   @override
   Widget build(BuildContext context) {
-    final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
+    // final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: loading
-            ? SingleChildScrollView(
-              child: Container(
-                  color: LightColors.kLightYellow,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF3F5521),
-                    ),
-                  ),
-                ),
-            )
-            : Column(
-              children: [
-                orderStatus.orderStatus.statusId == 2
-                    ?  OrderPreparing()
-                    : Container(),
-                orderStatus.orderStatus.statusId == 3
-                    ?  OrderOnTheWay()
-                    : Container(),
-                orderStatus.orderStatus.statusId == 1
-                    ? OrderReceived()
-                    : Container(),
-                orderStatus.orderStatus.statusId == 4
-                    ? OrderDelivered()
-                    : Container(),
-                orderStatus.orderStatus.statusId == 5?
-                OrderCancel():Container(),
+        child:Center(child: Text("Upcoming orders"))
 
-
-
-                // CustomStepperOrder(text: ["text","text"],selected: 1,),
-              ],
-            ),
       ),
     );
   }

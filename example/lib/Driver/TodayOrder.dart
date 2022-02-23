@@ -19,7 +19,7 @@ class _TodayOrder extends State<TodayOrder> {
   double finaltax = 0.0;
   double finalPrice = 0.0;
 
-  bool loading = true;
+  bool loading = false;
   bool donate = false;
   bool rejected = false;
 
@@ -61,13 +61,13 @@ class _TodayOrder extends State<TodayOrder> {
 
   @override
   Widget build(BuildContext context) {
-    final order = Provider.of<OrderByIdProvider>(context, listen: true);
+    // final order = Provider.of<OrderByIdProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(
         child: RefreshIndicator(
-            // onRefresh: refreshOrderData,
+            onRefresh: (){},
             child: loading
                 ? Center(
                     child: CircularProgressIndicator(
@@ -83,14 +83,14 @@ class _TodayOrder extends State<TodayOrder> {
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Invoice',
+                                "Today's Order",
                                 style: TextStyle(color: Colors.black),
                               ),SizedBox(height: 10,),
                               Card(
                                 elevation: 5,
                                 child: Container(
                                   child: ListView.separated(
-                                    itemCount: order.items.length,
+                                    itemCount: 3,
                                     physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemBuilder: (context, i) {
@@ -104,7 +104,7 @@ class _TodayOrder extends State<TodayOrder> {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  "${order.items[i].item}  ",
+                                                  "Launch  ",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -117,7 +117,7 @@ class _TodayOrder extends State<TodayOrder> {
                                                       0.03,
                                                 ),
                                                 Text(
-                                                  "SAR ${order.items[i].price}",
+                                                  "SAR 1000",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -160,7 +160,8 @@ class _TodayOrder extends State<TodayOrder> {
                                                 fontWeight: FontWeight.normal),
                                           ),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                              // "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                            "SAR 100",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -181,7 +182,8 @@ class _TodayOrder extends State<TodayOrder> {
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                              // "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                            "SAR 100",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -202,7 +204,8 @@ class _TodayOrder extends State<TodayOrder> {
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                              // "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                            "Sar 100",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -216,123 +219,123 @@ class _TodayOrder extends State<TodayOrder> {
                           ),
                         ),
                       ),
-                      order.paymentFreind.length == 0? SliverToBoxAdapter(child: Container(),) :
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Text('Payments',style:TextStyle(color:Colors.black)),
-                              SizedBox(height: 10,),
-                              Card(
-                                elevation: 5,
-                                child:
-
-                                    Container(
-                                        child: ListView.separated(
-                                          itemCount: order.paymentFreind.length,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemBuilder: (context, index) {
-                                            return Column(
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      10.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Container(
-                                                        width: _width*0.4,
-                                                        child: Text(
-                                                          "${order.paymentFreind[index].name}",
-                                                          style: TextStyle(
-                                                              color:
-                                                                  blackColor,
-                                                              fontWeight:
-                                                                  FontWeight.normal),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        "SAR ${order.paymentFreind[index].amount}",
-                                                        style: TextStyle(
-                                                            color: blackColor,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            );
-                                          }, separatorBuilder: (BuildContext context, int index) { return Divider(thickness: 2,); },
-                                        ),
-                                      ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      rejected
-                          ? SliverToBoxAdapter(
-                              child: donate
-                                  ? Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "Your food is donated",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline1
-                                              .copyWith(color: Colors.black),
-                                        ),
-                                      ),
-                                    )
-                                  : Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              "Do you want to donate your food?",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline1
-                                                  .copyWith(color: Colors.black),
-                                            ),
-                                            order.buttonDonate
-                                                ? Center(
-                                                    child:
-                                                        CircularProgressIndicator(),
-                                                  )
-                                                : ElevatedButton(
-                                                    onPressed: () {},
-                                                    // async {
-                                                    //   order.buttonDonate = true;
-                                                    //   setState(() {});
-                                                    //   donate = await order
-                                                    //       .donate();
-                                                    //   order.buttonDonate =
-                                                    //       false;
-                                                    //   setState(() {});
-                                                    // },
-                                                    child: Text(
-                                                      "Donate",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .headline1,
-                                                    )),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                            )
-                          : SliverToBoxAdapter(
-                              child: Center(),),
+                      // order.paymentFreind.length == 0? SliverToBoxAdapter(child: Container(),) :
+                      // SliverToBoxAdapter(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(8),
+                      //     child: Column(
+                      //       children: [
+                      //         Text('Payments',style:TextStyle(color:Colors.black)),
+                      //         SizedBox(height: 10,),
+                      //         Card(
+                      //           elevation: 5,
+                      //           child:
+                      //
+                      //               Container(
+                      //                   child: ListView.separated(
+                      //                     itemCount: order.paymentFreind.length,
+                      //                     physics:
+                      //                         NeverScrollableScrollPhysics(),
+                      //                     shrinkWrap: true,
+                      //                     itemBuilder: (context, index) {
+                      //                       return Column(
+                      //                         children: [
+                      //                           Padding(
+                      //                             padding: const EdgeInsets.all(
+                      //                                 10.0),
+                      //                             child: Row(
+                      //                               mainAxisAlignment:
+                      //                                   MainAxisAlignment
+                      //                                       .spaceBetween,
+                      //                               children: [
+                      //                                 Container(
+                      //                                   width: _width*0.4,
+                      //                                   child: Text(
+                      //                                     "${order.paymentFreind[index].name}",
+                      //                                     style: TextStyle(
+                      //                                         color:
+                      //                                             blackColor,
+                      //                                         fontWeight:
+                      //                                             FontWeight.normal),
+                      //                                   ),
+                      //                                 ),
+                      //                                 Text(
+                      //                                   "SAR ${order.paymentFreind[index].amount}",
+                      //                                   style: TextStyle(
+                      //                                       color: blackColor,
+                      //                                       fontWeight:
+                      //                                           FontWeight
+                      //                                               .normal),
+                      //                                 ),
+                      //                               ],
+                      //                             ),
+                      //                           )
+                      //                         ],
+                      //                       );
+                      //                     }, separatorBuilder: (BuildContext context, int index) { return Divider(thickness: 2,); },
+                      //                   ),
+                      //                 ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+                      // rejected
+                      //     ? SliverToBoxAdapter(
+                      //         child: donate
+                      //             ? Center(
+                      //                 child: Padding(
+                      //                   padding: const EdgeInsets.all(8.0),
+                      //                   child: Text(
+                      //                     "Your food is donated",
+                      //                     style: Theme.of(context)
+                      //                         .textTheme
+                      //                         .headline1
+                      //                         .copyWith(color: Colors.black),
+                      //                   ),
+                      //                 ),
+                      //               )
+                      //             : Center(
+                      //                 child: Padding(
+                      //                   padding: const EdgeInsets.all(8.0),
+                      //                   child: Column(
+                      //                     children: [
+                      //                       Text(
+                      //                         "Do you want to donate your food?",
+                      //                         style: Theme.of(context)
+                      //                             .textTheme
+                      //                             .headline1
+                      //                             .copyWith(color: Colors.black),
+                      //                       ),
+                      //                       order.buttonDonate
+                      //                           ? Center(
+                      //                               child:
+                      //                                   CircularProgressIndicator(),
+                      //                             )
+                      //                           : ElevatedButton(
+                      //                               onPressed: () {},
+                      //                               // async {
+                      //                               //   order.buttonDonate = true;
+                      //                               //   setState(() {});
+                      //                               //   donate = await order
+                      //                               //       .donate();
+                      //                               //   order.buttonDonate =
+                      //                               //       false;
+                      //                               //   setState(() {});
+                      //                               // },
+                      //                               child: Text(
+                      //                                 "Donate",
+                      //                                 style: Theme.of(context)
+                      //                                     .textTheme
+                      //                                     .headline1,
+                      //                               )),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //       )
+                      //     : SliverToBoxAdapter(
+                      //         child: Center(),),
 
                     ],
                   )),
