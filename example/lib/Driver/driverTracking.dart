@@ -1,8 +1,13 @@
+import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/order_details.dart';
 import 'package:CaterMe/Screens/orders/order_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'TodayOrder.dart';
 import 'UpComingOrder.dart';
@@ -31,13 +36,50 @@ class _DriverTrackingState extends State<DriverTracking> {
 
   @override
   Widget build(BuildContext context) {
+    final personalInfo=Provider.of<UserProvider>(context,listen: true);
     List<Widget> _screen = [TodayOrder(), UpComingOrder()];
     return Scaffold(
       appBar: AppBar(
         title: Text("Driver Tracking",style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.signOutAlt,size: 20,))
+          IconButton(onPressed: ()async{
+            showDialog(context: context,
+                builder: (BuildContext context) {
+                  return CustomDialog(
+                    title: 'Sad to see you leave',
+                    description: "",
+                    oneOrtwo: true,
+                    button2: ElevatedButton(
+                      onPressed: () async {
+                        final SharedPreferences
+                        sharedPreferences =
+                        await SharedPreferences.getInstance();
+                        // sharedPreferences.remove('Email');
+                        //  sharedPreferences.remove('Password');
+                        personalInfo.clearAllTextController();
+                        bool a=sharedPreferences.getBool("startintro");
+                        sharedPreferences.clear();
+                        sharedPreferences.setBool("startintro", a);
+
+
+                        Navigator.of(context)
+                            .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  LoginScreen(),
+                            ),
+                                (route) => false);
+                      }, child: Text("Logout",style: TextStyle(fontFamily: 'BerlinSansFB'),),),
+                    button1: ElevatedButton(onPressed: () {
+                      Navigator.of(context).pop();
+                    }, child: Text("No",style: TextStyle(fontFamily: 'BerlinSansFB')),
+
+                    )
+                    ,);
+                });
+
+          }, icon: Icon(FontAwesomeIcons.signOutAlt,size: 20,))
         ],
       ),
       body: SafeArea(child: _screen[_selectedIndex]),
