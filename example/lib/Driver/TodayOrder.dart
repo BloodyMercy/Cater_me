@@ -1,4 +1,3 @@
-import 'package:CaterMe/Driver/listViewOrderDriver.dart';
 import 'package:CaterMe/Driver/orderDriverDetails.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
@@ -96,7 +95,8 @@ class _TodayOrder extends State<TodayOrder> {
                       SliverList(delegate:
                       SliverChildBuilderDelegate(
                               (BuildContext context,int index){
-                        return GestureDetector(
+                        return
+                          GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails()));
                           },
