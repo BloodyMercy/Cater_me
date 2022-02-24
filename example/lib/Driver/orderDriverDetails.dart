@@ -1,17 +1,30 @@
+import 'package:CaterMe/Driver/provider/driverOrder_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OrderDriverDetails extends StatefulWidget {
-  const OrderDriverDetails({Key key}) : super(key: key);
+  final int id;
+  OrderDriverDetails(this.id);
 
   @override
   _OrderDriverDetailsState createState() => _OrderDriverDetailsState();
 }
 
 class _OrderDriverDetailsState extends State<OrderDriverDetails> {
+  getData()async{
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: false);
+    await orderDriver.getOrderByid(widget.id);
+  }
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final screenHeight=MediaQuery.of(context).size.height;
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
     return SafeArea(child: Scaffold(
       appBar: AppBar(
         title: Text("Order Details",style: Theme.of(context).textTheme.headline1,),
@@ -33,7 +46,7 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
               elevation: 5,
               child: Container(
                 child: ListView.separated(
-                  itemCount: 20,
+                  itemCount: orderDriver.orderItems.length,
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, i) {
@@ -47,7 +60,7 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
                                 .spaceBetween,
                             children: [
                               Text(
-                                "Launch  ",
+                                "${orderDriver.orderItems[i].item}",
                                 style: TextStyle(
                                     color: blackColor,
                                     fontWeight:

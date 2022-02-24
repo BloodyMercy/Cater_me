@@ -30,7 +30,6 @@ class _TodayOrder extends State<TodayOrder> {
   getData()async{
     final orderDriver=Provider.of<DriverOrderProvider>(context,listen: false);
     await orderDriver.getOrder();
-    // print(orderDriver.todayOrder[0].id);
   }
 @override
   void initState() {
@@ -90,7 +89,7 @@ class _TodayOrder extends State<TodayOrder> {
                         return
                           GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails(orderDriver.todayOrder[index].id)));
                           },
                           child: Card(
                               elevation: 5,

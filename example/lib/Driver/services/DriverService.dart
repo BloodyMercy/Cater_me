@@ -23,4 +23,27 @@ class DriverService {
       return {};
     }
   }
+
+  Future<Map<String,dynamic>> getOrdersDetailsDriverById(int id) async {
+    try {
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {'Authorization': 'Bearer ${ApiLinkDriver.driverToken}'};
+      var request = http.Request('GET', Uri.parse(ApiLinkDriver.orderDetailsDriver+"/$id"));
+      request.headers.addAll(headers);
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+      if (response.statusCode == 200) {
+        Map<String,dynamic> responseData = json.decode(response.body);
+        // OrderDetailsModel posts =  responseData.map((key, value) => null)
+        //map to list
+        return responseData;
+      } else {
+        print(response.reasonPhrase);
+        return {};
+      }
+    } catch (e) {
+      print(e);
+      return {};
+    }
+  }
 }

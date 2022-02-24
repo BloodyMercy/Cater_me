@@ -3,4 +3,5 @@ class ApiLinkDriver {
   static String hostDriver = "https://caterme.azurewebsites.net/api/";
 
   static String AllOrders = hostDriver + "Driver/GetDriverOrders";
+  static String orderDetailsDriver=hostDriver+"Driver/GetDriverOrder";
 }

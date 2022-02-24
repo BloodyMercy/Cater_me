@@ -1,4 +1,5 @@
 import 'package:CaterMe/Driver/model/driver_model.dart';
+import 'package:CaterMe/Driver/model/orderDetails_driver.dart';
 import 'package:CaterMe/Driver/services/DriverService.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -26,6 +27,21 @@ class DriverOrderProvider extends ChangeNotifier{
   set todayOrder(List value) {
     _todayOrder = value;
   }
+  Map<String,dynamic> _orderDetails={};
+
+  Map<String, dynamic> get orderDetails => _orderDetails;
+
+  set orderDetails(Map<String, dynamic> value) {
+    _orderDetails = value;
+  }
+
+  List<OrderItems> _orderItems=[];
+
+  List<OrderItems> get orderItems => _orderItems;
+
+  set orderItems(List<OrderItems> value) {
+    _orderItems = value;
+  }
 
   getOrder()async{
    allData = await _driverService.getOrderDriver();
@@ -40,6 +56,16 @@ class DriverOrderProvider extends ChangeNotifier{
 
   clearData(){
     _allData={};
+    notifyListeners();
+  }
+
+  getOrderByid(int id) async{
+   orderDetails= await _driverService.getOrdersDetailsDriverById(id);
+    if(orderDetails["orderItems"].length!=0){
+      _orderItems=List<OrderItems>.from(orderDetails['orderItems'].map((model)=> OrderItems.fromJson(model)));
+    }else{
+      _orderItems=[];
+    }
     notifyListeners();
   }
 }

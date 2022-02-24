@@ -90,7 +90,7 @@ class _UpComingOrder extends State<UpComingOrder> {
                       return
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails(orderDriver.todayOrder[index].id)));
                           },
                           child: Card(
                               elevation: 5,
