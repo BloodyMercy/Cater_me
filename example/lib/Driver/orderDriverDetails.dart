@@ -11,12 +11,21 @@ class OrderDriverDetails extends StatefulWidget {
 class _OrderDriverDetailsState extends State<OrderDriverDetails> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight=MediaQuery.of(context).size.height;
     return SafeArea(child: Scaffold(
       appBar: AppBar(
         title: Text("Order Details",style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
       ),
       body: CustomScrollView(slivers: [
+
+        SliverToBoxAdapter(child:
+          Padding(padding: const EdgeInsets.all(8),
+          child: Container(
+            height: screenHeight*0.3,
+            child: Card(child: Center(child: Text("Map")),elevation: 5,),
+          ),)
+          ,),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

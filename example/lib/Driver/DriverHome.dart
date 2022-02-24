@@ -13,17 +13,17 @@ import 'TodayOrder.dart';
 import 'UpComingOrder.dart';
 
 
-class DriverTracking extends StatefulWidget {
+class DriverHome extends StatefulWidget {
   // int id;
   // int screen;
 
   // OrderId(this.id, this.screen);
 
   @override
-  _DriverTrackingState createState() => _DriverTrackingState();
+  _DriverHomeState createState() => _DriverHomeState();
 }
 
-class _DriverTrackingState extends State<DriverTracking> {
+class _DriverHomeState extends State<DriverHome> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

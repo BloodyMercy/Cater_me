@@ -1,10 +1,12 @@
 import 'package:CaterMe/Driver/orderDriverDetails.dart';
+import 'package:CaterMe/Driver/provider/driverOrder_provider.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class TodayOrder extends StatefulWidget {
@@ -25,46 +27,25 @@ class _TodayOrder extends State<TodayOrder> {
   bool donate = false;
   bool rejected = false;
 
-  // getData() async {
-  //   final orders = Provider.of<OrderByIdProvider>(context, listen: false);
-  //   await orders.getOrderById(widget.id);
-  //   await orders.getOrderItems();
-  //   await orders.getOrderPaymentFreind();
-  //   print(orders.items.length);
-  //   final orderStatus =
-  //       Provider.of<OrderStatusProvider>(context, listen: false);
-  //   await orderStatus.getOrderStatus(widget.id);
-  //
-  //   if (orderStatus.orderStatus.statusId != 5) {
-  //     setState(() {
-  //       rejected = true;
-  //     });
-  //   }
-  //   donate = orders.orderbyId['isDonated'] ?? false;
-  //   setState(() {
-  //     loading = false;
-  //   });
-  // }
+  getData()async{
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: false);
+    await orderDriver.getOrder();
+    // print(orderDriver.todayOrder[0].id);
+  }
+@override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
-  // Future refreshOrderData() async {
-  //   final orders = Provider.of<OrderByIdProvider>(context, listen: false);
-  //
-  //   await orders.clearData();
-  //   await orders.getOrderById(widget.id);
-  //
-  //   return;
-  // }
 
-  // @override
-  // void initState() {
-  //   getData();
-  //   super.initState();
-  // }
+
 
   @override
   Widget build(BuildContext context) {
     // final order = Provider.of<OrderByIdProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
 
     return Scaffold(
       body: SafeArea(
@@ -104,59 +85,48 @@ class _TodayOrder extends State<TodayOrder> {
                               elevation: 5,
                               color: LightColors.kLightYellow2,
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
+                                padding:  EdgeInsets.symmetric(
                                     vertical: 20, horizontal: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Event Name",
-                                            // orders.listOrder[index].eventName,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold)),
-                                        Text("Order Status",
-                                          // orders.listOrder[index].orderStatus,
-                                          style: TextStyle(
-                                            // color:
-                                            // _getColorByEvent(orders
-                                            //     .listOrder[index]
-                                            //     .orderStatus.toString()),
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        )
-                                      ],
+                                    Text("${orderDriver.todayOrder[index].eventName}",
+                                        // orders.listOrder[index].eventName,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold)),
+                                    SizedBox(
+                                      height: 10,
                                     ),
+                                    Text("Country: ${orderDriver.todayOrder[index].country}",
+                                        // orders.listOrder[index].eventName,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal)),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text("Street: ${orderDriver.todayOrder[index].street}",
+                                        // orders.listOrder[index].eventName,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal)),
                                     SizedBox(
                                       height: 10,
                                     ),
                                     Text(
-                                      "23-02-2022",
-                                      // "${DateFormat("dd-MM-yyyy").format(DateTime.parse(orders.listOrder[index].eventDate))}",
+
+                                       "Date: ${DateFormat("dd-MM-yyyy").format(DateTime.parse(orderDriver.todayOrder[index].eventDate))}",
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.normal),
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      // "Address: ${orders.listOrder[index].addressTitle}",
-                                      "Address: KSA",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal),
-                                    )
                                   ],
                                 ),
                               )),
                         );
                       }
-
-                      ,childCount: 10)
+                      ,childCount: orderDriver.todayOrder.length)
                         ,),
                     ],
                   )),
