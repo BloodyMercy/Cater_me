@@ -60,7 +60,7 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
                                 .spaceBetween,
                             children: [
                               Text(
-                                "${orderDriver.orderItems[i].item}",
+                                "${orderDriver.orderItems[i].item} x ${orderDriver.orderItems[i].quantity}",
                                 style: TextStyle(
                                     color: blackColor,
                                     fontWeight:
@@ -73,7 +73,7 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
                                     0.03,
                               ),
                               Text(
-                                "SAR 1000",
+                                "SAR ${orderDriver.orderItems[i].price}",
                                 style: TextStyle(
                                     color: blackColor,
                                     fontWeight:
