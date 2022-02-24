@@ -3,12 +3,15 @@ import 'package:CaterMe/Driver/model/driver_model.dart';
 import 'package:CaterMe/Driver/services/apilink.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DriverService {
   Future<Map<String,dynamic>> getOrderDriver() async {
     DriverOrderModel order=DriverOrderModel();
     try {
-      var headers = {'Authorization': 'Bearer ${ApiLinkDriver.driverToken}'};
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request('GET', Uri.parse(ApiLinkDriver.AllOrders));
       request.headers.addAll(headers);
       http.StreamedResponse responses = await request.send();
@@ -27,8 +30,9 @@ class DriverService {
 
   Future<Map<String,dynamic>> getOrdersDetailsDriverById(int id) async {
     try {
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      var headers = {'Authorization': 'Bearer ${ApiLinkDriver.driverToken}'};
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request('GET', Uri.parse(ApiLinkDriver.orderDetailsDriver+"/$id"));
       request.headers.addAll(headers);
       http.StreamedResponse responses = await request.send();

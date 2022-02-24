@@ -1,4 +1,5 @@
 import 'package:CaterMe/Driver/auth/driver_resetpassword.dart';
+import 'package:CaterMe/Driver/screens/DriverHome.dart';
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/cupertino.dart';
@@ -289,7 +290,7 @@ class _DriverLoginScreenState extends State<DriverLoginScreen> {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Navigationbar(0)),
+                                        DriverHome()),
                                     (Route<dynamic> route) => false);
                             //authProvider.status=Status.Authenticated;
                             setState(() {});

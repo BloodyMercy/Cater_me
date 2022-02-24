@@ -1,3 +1,4 @@
+import 'package:CaterMe/Driver/auth/driver_login.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
@@ -67,7 +68,7 @@ class _DriverHomeState extends State<DriverHome> {
                             .pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (context) =>
-                                  LoginScreen(),
+                                  DriverLoginScreen(),
                             ),
                                 (route) => false);
                       }, child: Text("Logout",style: TextStyle(fontFamily: 'BerlinSansFB'),),),
