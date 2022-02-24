@@ -1,5 +1,6 @@
 import 'package:CaterMe/Driver/provider/driverOrder_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,17 +24,50 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
   }
   @override
   Widget build(BuildContext context) {
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Order Details",style: Theme.of(context).textTheme.headline1,),
+          centerTitle: true,
+        ),
+        body: Stack(
+          children: <Widget>[
+            AnimatedOpacity(
+              opacity: (orderDriver.loading )? 0 : 1.0,
+              duration: Duration(milliseconds: 500),
+              child: buildbody(context),
+            ),
+            AnimatedOpacity(
+              opacity: (orderDriver.loading ) ? 1.0 : 0,
+              duration: Duration(milliseconds: 500),
+              child: buildLoading(context),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget buildLoading(BuildContext context){
+    return Align(
+      child: Container(
+        width: 100,
+        height: 100,
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      ),
+      alignment: Alignment.center,
+    );
+  }
+  Widget buildbody(BuildContext context){
     final screenHeight=MediaQuery.of(context).size.height;
     final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
-    return SafeArea(child: Scaffold(
-      appBar: AppBar(
-        title: Text("Order Details",style: Theme.of(context).textTheme.headline1,),
-        centerTitle: true,
-      ),
-      body: CustomScrollView(slivers: [
+    return SafeArea(child:
+
+      CustomScrollView(slivers: [
 
         SliverToBoxAdapter(child:
-          Padding(padding: const EdgeInsets.all(8),
+        Padding(padding: const EdgeInsets.all(8),
           child: Container(
             height: screenHeight*0.3,
             child: Card(child: Center(child: Text("Map")),elevation: 5,),
@@ -54,34 +88,28 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Expanded(
-                            child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment
-                                  .spaceBetween,
-                              children: [
-                                Text(
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment
+                                .spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
                                   "${orderDriver.orderItems[i].item} x ${orderDriver.orderItems[i].quantity}",
                                   style: TextStyle(
                                       color: blackColor,
                                       fontWeight:
                                       FontWeight.normal),
                                 ),
-                                // SizedBox(
-                                //   height: MediaQuery.of(context)
-                                //       .size
-                                //       .height *
-                                //       0.03,
-                                // ),
-                                Text(
-                                  "SAR ${orderDriver.orderItems[i].price}",
-                                  style: TextStyle(
-                                      color: blackColor,
-                                      fontWeight:
-                                      FontWeight.normal),
-                                ),
-                              ],
-                            ),
+                              ),
+                              Text(
+                                "SAR ${orderDriver.orderItems[i].price}",
+                                style: TextStyle(
+                                    color: blackColor,
+                                    fontWeight:
+                                    FontWeight.normal),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -94,6 +122,7 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
           ),
         )
       ],),
-    ));
+    );
   }
+
 }

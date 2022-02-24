@@ -39,13 +39,9 @@ class _TodayOrder extends State<TodayOrder> {
 
 
   Future refreshOrderDdriverData() async {
-
     final orderDriver=Provider.of<DriverOrderProvider>(context,listen: false);
     await orderDriver.clearData();
     await orderDriver.getOrder();
-
-
-
     return;
   }
 
@@ -53,6 +49,35 @@ class _TodayOrder extends State<TodayOrder> {
 
   @override
   Widget build(BuildContext context) {
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
+    return Stack(
+      children: <Widget>[
+        AnimatedOpacity(
+          opacity: (orderDriver.loading )? 0 : 1.0,
+          duration: Duration(milliseconds: 500),
+          child: buildbody(context),
+        ),
+        AnimatedOpacity(
+          opacity: (orderDriver.loading ) ? 1.0 : 0,
+          duration: Duration(milliseconds: 500),
+          child: buildLoading(context),
+        ),
+      ],
+    );
+  }
+  Widget buildLoading(BuildContext context){
+    return Align(
+      child: Container(
+        width: 100,
+        height: 100,
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      ),
+      alignment: Alignment.center,
+    );
+  }
+
+  Widget buildbody(BuildContext context){
     // final order = Provider.of<OrderByIdProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
     final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
@@ -61,33 +86,27 @@ class _TodayOrder extends State<TodayOrder> {
       body: SafeArea(
         child: RefreshIndicator(
             onRefresh:refreshOrderDdriverData,
-            child: loading
-                ? Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF3F5521),
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Today's Order",
+                          style: TextStyle(color: Colors.black),
+                        ),SizedBox(height: 10,),
+                      ],
                     ),
-                  )
-                : CustomScrollView(
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Today's Order",
-                                style: TextStyle(color: Colors.black),
-                              ),SizedBox(height: 10,),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SliverList(delegate:
-                      SliverChildBuilderDelegate(
-                              (BuildContext context,int index){
-                        return
-                          GestureDetector(
+                  ),
+                ),
+                SliverList(delegate:
+                SliverChildBuilderDelegate(
+                        (BuildContext context,int index){
+                      return
+                        GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (_)=>OrderDriverDetails(orderDriver.todayOrder[index].id)));
                           },
@@ -126,7 +145,7 @@ class _TodayOrder extends State<TodayOrder> {
                                     ),
                                     Text(
 
-                                       "Date: ${DateFormat("dd-MM-yyyy").format(DateTime.parse(orderDriver.todayOrder[index].eventDate))}",
+                                      "Date: ${DateFormat("dd-MM-yyyy").format(DateTime.parse(orderDriver.todayOrder[index].eventDate))}",
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.normal),
@@ -135,11 +154,11 @@ class _TodayOrder extends State<TodayOrder> {
                                 ),
                               )),
                         );
-                      }
-                      ,childCount: orderDriver.todayOrder.length)
-                        ,),
-                    ],
-                  )),
+                    }
+                    ,childCount: orderDriver.todayOrder.length)
+                  ,),
+              ],
+            )),
       ),
     );
   }

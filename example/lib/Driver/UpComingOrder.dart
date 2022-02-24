@@ -54,6 +54,35 @@ class _UpComingOrder extends State<UpComingOrder> {
 
   @override
   Widget build(BuildContext context) {
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
+    return Stack(
+      children: <Widget>[
+        AnimatedOpacity(
+          opacity: (orderDriver.loading )? 0 : 1.0,
+          duration: Duration(milliseconds: 500),
+          child: buildbody(context),
+        ),
+        AnimatedOpacity(
+          opacity: (orderDriver.loading ) ? 1.0 : 0,
+          duration: Duration(milliseconds: 500),
+          child: buildLoading(context),
+        ),
+      ],
+    );
+  }
+  Widget buildLoading(BuildContext context){
+    return Align(
+      child: Container(
+        width: 100,
+        height: 100,
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      ),
+      alignment: Alignment.center,
+    );
+  }
+
+  Widget buildbody(BuildContext context){
     // final order = Provider.of<OrderByIdProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
     final orderDriver=Provider.of<DriverOrderProvider>(context,listen: true);
@@ -62,13 +91,7 @@ class _UpComingOrder extends State<UpComingOrder> {
       body: SafeArea(
         child: RefreshIndicator(
             onRefresh: refreshOrderDdriverData,
-            child: loading
-                ? Center(
-              child: CircularProgressIndicator(
-                color: Color(0xFF3F5521),
-              ),
-            )
-                : CustomScrollView(
+            child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
                   child: Padding(

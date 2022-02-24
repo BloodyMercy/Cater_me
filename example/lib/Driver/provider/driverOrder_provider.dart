@@ -5,6 +5,14 @@ import 'package:flutter/cupertino.dart';
 
 class DriverOrderProvider extends ChangeNotifier{
   DriverService _driverService=DriverService();
+  bool _loading=false;
+
+  bool get loading => _loading;
+
+  set loading(bool value) {
+    _loading = value;
+  }
+
   Map<String,dynamic> _allData={};
 
   Map<String, dynamic> get allData => _allData;
@@ -44,6 +52,7 @@ class DriverOrderProvider extends ChangeNotifier{
   }
 
   getOrder()async{
+    loading=true;
    allData = await _driverService.getOrderDriver();
    if(allData==null){
      print("No Data");
@@ -51,6 +60,7 @@ class DriverOrderProvider extends ChangeNotifier{
      todayOrder=List<TodayOrders>.from(allData['todayOrders'].map((model) => TodayOrders.fromJson(model)));
      upcomingOrders=List<UpcomingOrders>.from(allData['upcomingOrders'].map((model) => UpcomingOrders.fromJson(model)));
    }
+    loading=false;
    notifyListeners();
   }
 
@@ -60,12 +70,14 @@ class DriverOrderProvider extends ChangeNotifier{
   }
 
   getOrderByid(int id) async{
+    loading=true;
    orderDetails= await _driverService.getOrdersDetailsDriverById(id);
     if(orderDetails["orderItems"].length!=0){
       _orderItems=List<OrderItems>.from(orderDetails['orderItems'].map((model)=> OrderItems.fromJson(model)));
     }else{
       _orderItems=[];
     }
+    loading=false;
     notifyListeners();
   }
 }
