@@ -4,4 +4,7 @@ class ApiLinkDriver {
 
   static String AllOrders = hostDriver + "Driver/GetDriverOrders";
   static String orderDetailsDriver=hostDriver+"Driver/GetDriverOrder";
+  static String ForgetPassword=hostDriver+"Accounts/ForgetPassword";
+  static String login=hostDriver+"Accounts/login";
+  static String Register=hostDriver+"Accounts/Register/1";
 }

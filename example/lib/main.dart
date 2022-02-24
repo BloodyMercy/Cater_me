@@ -1,4 +1,3 @@
-import 'package:CaterMe/Driver/DriverHome.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/notification_provider.dart';
@@ -20,6 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'Driver/auth/driver_login.dart';
 import 'Driver/provider/driverOrder_provider.dart';
 import 'Helpers/Constant.dart';
 import 'IntroTest/on_boarding_screen.dart';
@@ -213,7 +213,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: DriverHome()
+        home:DriverLoginScreen()
       ),
     );
   }

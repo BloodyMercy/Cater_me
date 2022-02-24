@@ -1,5 +1,6 @@
-import 'package:CaterMe/Driver/orderDriverDetails.dart';
+
 import 'package:CaterMe/Driver/provider/driverOrder_provider.dart';
+import 'package:CaterMe/Driver/screens/orderDriverDetails.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
