@@ -39,6 +39,17 @@ class _TodayOrder extends State<TodayOrder> {
   }
 
 
+  Future refreshOrderDdriverData() async {
+
+    final orderDriver=Provider.of<DriverOrderProvider>(context,listen: false);
+    await orderDriver.clearData();
+    await orderDriver.getOrder();
+
+
+
+    return;
+  }
+
 
 
   @override
@@ -50,7 +61,7 @@ class _TodayOrder extends State<TodayOrder> {
     return Scaffold(
       body: SafeArea(
         child: RefreshIndicator(
-            onRefresh: (){},
+            onRefresh:refreshOrderDdriverData,
             child: loading
                 ? Center(
                     child: CircularProgressIndicator(

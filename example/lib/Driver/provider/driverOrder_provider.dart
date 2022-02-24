@@ -13,6 +13,13 @@ class DriverOrderProvider extends ChangeNotifier{
   }
 
   List<TodayOrders> _todayOrder=[];
+  List<UpcomingOrders> _upcomingOrders=[];
+
+  List<UpcomingOrders> get upcomingOrders => _upcomingOrders;
+
+  set upcomingOrders(List<UpcomingOrders> value) {
+    _upcomingOrders = value;
+  }
 
   List get todayOrder => _todayOrder;
 
@@ -26,7 +33,13 @@ class DriverOrderProvider extends ChangeNotifier{
      print("No Data");
    }else{
      todayOrder=List<TodayOrders>.from(allData['todayOrders'].map((model) => TodayOrders.fromJson(model)));
+     upcomingOrders=List<UpcomingOrders>.from(allData['upcomingOrders'].map((model) => UpcomingOrders.fromJson(model)));
    }
    notifyListeners();
+  }
+
+  clearData(){
+    _allData={};
+    notifyListeners();
   }
 }
