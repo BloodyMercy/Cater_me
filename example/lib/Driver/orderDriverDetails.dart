@@ -54,32 +54,34 @@ class _OrderDriverDetailsState extends State<OrderDriverDetails> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
-                            children: [
-                              Text(
-                                "${orderDriver.orderItems[i].item} x ${orderDriver.orderItems[i].quantity}",
-                                style: TextStyle(
-                                    color: blackColor,
-                                    fontWeight:
-                                    FontWeight.normal),
-                              ),
-                              SizedBox(
-                                height: MediaQuery.of(context)
-                                    .size
-                                    .height *
-                                    0.03,
-                              ),
-                              Text(
-                                "SAR ${orderDriver.orderItems[i].price}",
-                                style: TextStyle(
-                                    color: blackColor,
-                                    fontWeight:
-                                    FontWeight.normal),
-                              ),
-                            ],
+                          child: Expanded(
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment
+                                  .spaceBetween,
+                              children: [
+                                Text(
+                                  "${orderDriver.orderItems[i].item} x ${orderDriver.orderItems[i].quantity}",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight:
+                                      FontWeight.normal),
+                                ),
+                                // SizedBox(
+                                //   height: MediaQuery.of(context)
+                                //       .size
+                                //       .height *
+                                //       0.03,
+                                // ),
+                                Text(
+                                  "SAR ${orderDriver.orderItems[i].price}",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight:
+                                      FontWeight.normal),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
