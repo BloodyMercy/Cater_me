@@ -24,6 +24,9 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
   bool loading = false;
 
   getData() async {
+    setState(() {
+      count =widget.food.min;
+    });
     // final pack = Provider.of<PackagesProvider>(context, listen: false);
     // await pack.getpacakgesby(pack.packages.id);
     // setState(() {
@@ -171,8 +174,10 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                             IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    if (count != 0) {
-                                      count--;
+                                    if(count>widget.food.min) {
+                                      setState(() {
+                                        count=count-widget.food.increment;
+                                      });
                                     }
                                   });
                                 },
@@ -189,9 +194,11 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    count++;
-                                  });
+                                  if(count<widget.food.max) {
+                                    setState(() {
+                                      count=count+widget.food.increment;
+                                    });
+                                  }
                                 },
                                 icon: Icon(
                                   Icons.add_circle,
@@ -216,7 +223,8 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.quantity = count;
                                 a.price=widget.food.price;
                                 a.totalprice = count * widget.food.price;
-                                orderprovider.addItems(a);
+                                a.tax=widget.food.tax;
+                                orderprovider.addItems(a,widget.food.isShisha);
                                 Navigator.of(context).pop(false);
                               }
 

@@ -28,25 +28,20 @@ class _OrderIdState extends State<OrderId> {
     List<Widget> _screen = [DetailsOrder(widget.id), TrackingOrder(widget.id)];
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Order Info",
-          style: Theme.of(context).textTheme.headline1,
-        ),
+        title: Text("Order Info",style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
       ),
       body: SafeArea(child: _screen[widget.screen]),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: LightColors.kLightYellow,
-        unselectedItemColor: Color(0xFF3F5521),
-        selectedItemColor: Color.fromRGBO(253, 202, 29, 1),
-        currentIndex: widget.screen,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: "Details"),
-          BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.truck), label: "Tracking")
-        ],
-      ),
+        backgroundColor:LightColors.kLightYellow,
+          unselectedItemColor: Color(0xFF3F5521),
+          selectedItemColor: Color.fromRGBO(253, 202, 29, 1),
+          currentIndex: widget.screen,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: "Details"),
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: "Tracking")
+          ]),
     );
   }
 }

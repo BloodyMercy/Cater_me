@@ -107,10 +107,8 @@ class _OrderState extends State<Order> {
     final addresses = Provider.of<AdressProvider>(context, listen: true);
     // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
-    final orderProvider =
-        Provider.of<OrderCaterProvider>(context, listen: true);
-    final packageProvider =
-        Provider.of<PackagesProvider>(context, listen: true);
+    final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
+    final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
 
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -241,12 +239,16 @@ class _OrderState extends State<Order> {
                                               address.typeofeventcontroller
                                                       .text ==
                                                   "") {
+
                                             const SnackBar(
                                               content: Text(
                                                   "please fill the empty fields "),
+
                                             );
                                             // );
                                           } else {
+
+                                           // else{
                                             orderProvider.spets = value;
                                             setState(() {
                                               //  orderProvider.spets=value;
@@ -258,6 +260,7 @@ class _OrderState extends State<Order> {
                                                 curve: Curves.linear,
                                               );
                                             });
+                                          //  }
                                           }
                                         }
 
@@ -375,7 +378,7 @@ class _OrderState extends State<Order> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
+                                     orderProvider.spets>5?   Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           mainAxisAlignment:
@@ -394,16 +397,24 @@ class _OrderState extends State<Order> {
                                                       .height *
                                                   0.02,
                                             ),
-                                            Text(
-                                              '*(VAT included )',
+                                           orderProvider.vatshisha>0.0? Text(
+                                              '*(VAT Shisha ${orderProvider.vatshisha})',
                                               style: TextStyle(
                                                 fontSize: 10,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black,
                                               ),
-                                            ),
+                                            ):Container(),
+                                          orderProvider.vatfood>0.0?  Text(
+                                              '*(VAT food and beverage   ${orderProvider.vatfood})',
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                            ):Container(),
                                           ],
-                                        ),
+                                        ):Container(),
                                         ElevatedButton(
                                             onPressed: () async {
                                               if (orderProvider.spets == 1) {
@@ -460,13 +471,40 @@ class _OrderState extends State<Order> {
                                                     ),
                                                   );
                                                 } else {
-                                                  await address.checktime();
-                                                  if (address.hours.isDaberni)
-                                                    orderProvider.serviceId = 2;
-                                                  orderProvider.spets++;
+                                                  if (address.form) {
+                                                    if (address.name.text ==
+                                                        "" ||
+                                                        address.phone.text ==
+                                                            "") {
+                                                      _key.currentState
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              "please fill the empty fields "),
+                                                        ),
+                                                      );
+                                                    }
+                                                    else {
+                                                      await address.checktime();
+                                                      if (address.hours.isDaberni)
+                                                        orderProvider.serviceId =
+                                                        2;
+                                                      orderProvider.spets++;
 
-                                                  _animateToIndex(
-                                                      orderProvider.spets);
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                  }
+                                                  else {
+                                                    await address.checktime();
+                                                    if (address.hours.isDaberni)
+                                                      orderProvider.serviceId =
+                                                      2;
+                                                    orderProvider.spets++;
+
+                                                    _animateToIndex(
+                                                        orderProvider.spets);
+                                                  }
                                                 }
                                               } else if (orderProvider.spets ==
                                                   6) {
@@ -485,11 +523,7 @@ class _OrderState extends State<Order> {
                                                                 .length;
                                                         i++) {
                                                       print(i);
-                                                      if (orderProvider
-                                                              .choosebillFriend[
-                                                                  i]
-                                                              .price ==
-                                                          0) {
+                                                      if (orderProvider.choosebillFriend[i].price == 0) {
                                                         _key.currentState
                                                             .showSnackBar(
                                                           const SnackBar(

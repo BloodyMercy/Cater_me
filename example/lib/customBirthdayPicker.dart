@@ -75,7 +75,7 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
     FocusNode focusNode = FocusNode();
     double height = MediaQuery.of(context).size.height;
     return Container(
-        // padding: const EdgeInsets.all(20.0),
+         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
           controller: widget.controller,

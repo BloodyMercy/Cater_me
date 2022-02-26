@@ -105,12 +105,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   ],
                 )
                 : Center(
-                    child: ElevatedButton(
-                      onPressed: () {
+                    child:InkWell(
+
+
+                      onTap: () {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
-                      child: Center(child: Image.asset("images/nocardsyet.png")),
+                      child:Container(color:Colors.transparent,child: Image.asset("images/nocardsyet.png")),
                     ),
                   ),
       ),

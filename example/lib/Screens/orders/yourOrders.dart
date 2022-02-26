@@ -69,9 +69,7 @@ class _YourOrdersState extends State<YourOrders> {
                   color: LightColors.kLightYellow,
                         child: ListView.builder(
                         itemBuilder: (context, index) {
-                          return
-
-                            GestureDetector(
+                          return GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(

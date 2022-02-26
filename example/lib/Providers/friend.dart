@@ -45,14 +45,22 @@ FriendModel _FriendCreated = FriendModel();
 
 
 
-  createNewFriend() async {
+ Future<bool> createNewFriend() async {
 
     _FriendCreated=await  FriendServices.CreateFriend(
   namecontroller.text.toString(),
      int.parse(phonecontroller.text.toString()),
       emailcontroller.text.toString(),
     );
-    _listFriends.insert(0, _FriendCreated);
+    if(_FriendCreated.id!=0) {
+      _listFriends.insert(0, _FriendCreated);
+      return true;
+    }
+    else{
+      return false;
+    }
+
+
     namecontroller.text="";
     phonecontroller.text="";
     emailcontroller.text="";

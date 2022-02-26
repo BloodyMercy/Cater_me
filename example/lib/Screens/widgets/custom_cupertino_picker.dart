@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/occasion.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/model/address/city.dart';
 import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
@@ -148,6 +149,12 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
 
                           Navigator.of(context).pop();
                         }
+                        if (widget.label == 'Gender') {
+                          final authProvider = Provider.of<UserProvider>(context,listen: false);
+                      authProvider.genderselected.text=widget.items[widget.selectedValue].toString();
+
+                          Navigator.of(context).pop();
+                        }
                       },
                       padding: EdgeInsets.symmetric(
                         horizontal: 16.0,
@@ -228,7 +235,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
     return Container(
       height: MediaQuery.of(context).size.height/11,
      // margin: EdgeInsets.only(bottom: 5),
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
           color: Colors.white, //white
           borderRadius: BorderRadius.all(Radius.circular(5))),

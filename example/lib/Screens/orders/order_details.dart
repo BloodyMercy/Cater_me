@@ -103,12 +103,21 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    "${order.items[i].item}  ",
+                                                    style: TextStyle(
+                                                        color: blackColor,
+                                                        fontWeight:
+                                                            FontWeight.normal),
+                                                  ),
+                                                ),
                                                 Text(
-                                                  "${order.items[i].item}  ",
+                                                  " qty: ${order.items[i].quantity}  ",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
-                                                          FontWeight.normal),
+                                                      FontWeight.normal),
                                                 ),
                                                 SizedBox(
                                                   height: MediaQuery.of(context)
@@ -117,7 +126,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                       0.03,
                                                 ),
                                                 Text(
-                                                  "SAR ${order.items[i].price}",
+                                                  "total:  ${order.items[i].price}",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:

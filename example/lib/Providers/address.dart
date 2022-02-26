@@ -123,6 +123,7 @@ List<String> _listcityname=[];
   TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
   TextEditingController typeofeventcontrollerstring=TextEditingController();
+  TextEditingController genderselected=TextEditingController();
   TextEditingController name=TextEditingController();
   TextEditingController phone=TextEditingController();
   timeSpanService _spanService =timeSpanService();

@@ -33,7 +33,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
   }
 
   bool loading = false;
-
+  var _key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     FocusNode focusnode = FocusNode();
@@ -43,6 +43,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
     var _mediaQueryText = MediaQuery.of(context).size.height;
     return Card(
+      key: _key,
       child: SingleChildScrollView(
         child: Container(
           color: LightColors.kLightYellow,
@@ -187,13 +188,40 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                               });
                               // reset!=null?
                             } else {
-                              await friends.createNewFriend();
+                              if(await friends.createNewFriend()) {
+                                setState(() {
+                                  loading = false;
+                                });
 
-                              setState(() {
-                                loading = false;
-                              });
+                                Navigator.of(context).pop();
+                              }
+                              else{
+                                setState(() {
+                                  loading = false;
+                                });
+                                showDialog(
+                                  context: this.context,
+                                  builder: (BuildContext
+                                  context) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                          "error "),
+                                      content: const Text(
+                                          "friend already exists!"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                            child:
+                                            const Text(
+                                                "Ok"),
+                                            onPressed: () =>
+                                                Navigator.pop(
+                                                    context))
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
 
-                              Navigator.of(context).pop();
                             }
                           },
                           child: Text(

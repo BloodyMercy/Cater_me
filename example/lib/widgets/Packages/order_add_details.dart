@@ -23,13 +23,17 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
 
   bool selected = false;
   bool loading = false;
-
+  int count = 1;
   getData() async {
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     await pack.getpacakgesby(pack.packages.id);
     setState(() {
       loading = false;
     });
+    setState(() {
+      count=widget.food.min;
+    });
+
   }
 
   ItemOrders a = ItemOrders();
@@ -40,7 +44,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
     super.initState();
   }
 
-  int count = 1;
+
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +195,12 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                       onPressed: () {
                                         setState(() {
                                           if (count != 0) {
-                                            count--;
+                                            if(count>widget.food.min) {
+                                              setState(() {
+                                               count= count - widget.food.increment;
+                                              });
+
+                                            }
                                           }
                                         });
                                       },
@@ -200,7 +209,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                         color: Color.fromRGBO(63, 85, 33, 1),
                                       )),
                                   Text(
-                                    "$count",
+                                    "${count}",
                                     style: TextStyle(
                                       color: Color.fromRGBO(63, 85, 33, 1),
                                       fontSize: 30,
@@ -208,9 +217,11 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        setState(() {
-                                          count++;
-                                        });
+                                        if(count<widget.food.max) {
+                                          setState(() {
+                                           count= count + widget.food.increment;
+                                          });
+                                        }
                                       },
                                       icon: Icon(
                                         Icons.add_circle,
@@ -233,9 +244,11 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                       a.itemDetails = widget.food.itemDetails;
                                       a.title = widget.food.title;
                                       a.quantity = count;
+
                                       a.price=widget.food.price;
                                       a.totalprice = count * widget.food.price;
-                                      orderprovider.addItems(a);
+                                      a.tax=widget.food.tax;
+                                      orderprovider.addItems(a,widget.food.isShisha);
                                       Navigator.of(context).pop(false);
                                     }
 

@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/Order.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
@@ -162,23 +163,56 @@ class _NavigationBarState extends State<Navigationbar> {
     }
     sh.setBool("startintro", false);
   }
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => CustomDialog(
+        title: "Are you sure you want to exit?",
+        description: "",
+        button1: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.grey,
+            ),
+            onPressed: () {
+              // clearAlldata();
+
+              //  Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            child: Text("yes")),
+        oneOrtwo: true,
+        button2: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text("No"),
+        ),
+      ),
+    )) ??
+        false;
+  }
   @override
   Widget build(BuildContext context){
     final packageprovider=Provider.of<PackagesProvider>(context,listen: true);
 
-    return Stack(
-      children: <Widget>[
-        AnimatedOpacity(
-          opacity: (packageprovider.loading )? 1.0 : 0.2,
-          duration: Duration(milliseconds: 500),
-          child: buildbody(context),
-        ),
-        AnimatedOpacity(
-          opacity: (packageprovider.loading ) ? 0.0 : 1.0,
-          duration: Duration(milliseconds: 500),
-          child: buildLoading(context),
-        ),
-      ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Stack(
+        children: <Widget>[
+
+
+          AnimatedOpacity(
+            opacity: (packageprovider.loading )? 1.0 : 0.2,
+            duration: Duration(milliseconds: 500),
+            child: buildbody(context),
+          ),
+          AnimatedOpacity(
+            opacity: (packageprovider.loading ) ? 0.0 : 1.0,
+            duration: Duration(milliseconds: 500),
+            child: buildLoading(context),
+          ),
+        ],
+      ),
     );
   }
   Widget buildLoading(BuildContext context){
@@ -223,6 +257,9 @@ class _NavigationBarState extends State<Navigationbar> {
               onPressed: () {
                 address.clearAddressController();
                 orderCaterprovider.spets=1;
+                orderCaterprovider.vatshisha=0.0;
+                orderCaterprovider.vatfood=0.0;
+
                 orderCaterprovider.totale=0.0;
                 orderCaterprovider.choosebillFriend=[];
                 orderCaterprovider.choosebillFriend=[];

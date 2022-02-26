@@ -10,6 +10,8 @@ int tax = 0;
   int quantity = 0;
   double totalprice=0.0;
   bool isfavorite = false;
+  bool isShisha = false;
+
   List<Details> itemDetails = [];
 
   ItemOrders();
@@ -23,6 +25,7 @@ int tax = 0;
     description = json['description']??"not found";
     price = double.parse(json['price'].toString())??0.0;
     isfavorite = json['isFavorite']??false;
+
     if (json['itemDetails'] != null) {
       itemDetails = [];
       json['itemDetails'].forEach((v) {

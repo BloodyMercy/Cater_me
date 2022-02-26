@@ -411,43 +411,56 @@ class _SignupScreenState extends State<SignupScreen> {
                               ]),
                               keyboardType: TextInputType.phone,
                             ),
-                             DropdownButton(
-                              underline: const SizedBox(),
-                              focusColor: Colors.white,
-                              hint: Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Text(
-                                  "Gender",
-                                  style:
-                                  Theme.of(context).textTheme.headline4,
-                                ),
-                              ),
-                              dropdownColor: Colors.white,
-                              iconSize: 36,
-                              isExpanded: true,
-                              style: const TextStyle(
-                                  color: Colors.black54, fontSize: 15),
-                              value: genderChoose,
-                              onChanged: (newValue) {
-                                authProvider.gender.text = newValue as String;
-                                setState(() {
-                                  genderChoose = newValue as String;
-                                      (value) => value == null
-                                      ? 'Please fill in your gender'
-                                      : null;
-                                });
-                              },
-                              items: listGender.map((valueItem) {
-                                return DropdownMenuItem(
-                                  value: valueItem['id'].toString(),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(15.0),
-                                    child:
-                                    Text(valueItem['gender'].toString()),
-                                  ),
-                                );
-                              }).toList(),
+                            CustomCupertinoPicker(
+
+                              label: "Gender",
+                              items: ["Female","Male"],
+                             // events: address.regular.events,
+                              selectedValue: 0,
+                              inputType: TextInputType.text,
+                              controller: authProvider.genderselected,
                             ),
+                      // InputDecorator(
+                      //   decoration: const InputDecoration(border: OutlineInputBorder()),
+                      //   child: DropdownButtonHideUnderline(
+                      //     child: DropdownButton(
+                      //
+                      //         underline: const SizedBox(),
+                      //         focusColor: Colors.white,
+                      //         hint: Padding(
+                      //           padding: const EdgeInsets.only(left: 15.0),
+                      //           child: Text(
+                      //             "Gender",
+                      //             style:
+                      //             Theme.of(context).textTheme.headline4,
+                      //           ),
+                      //         ),
+                      //         dropdownColor: Colors.white,
+                      //         iconSize: 36,
+                      //         isExpanded: true,
+                      //         style: const TextStyle(
+                      //             color: Colors.black54, fontSize: 15),
+                      //         value: genderChoose,
+                      //         onChanged: (newValue) {
+                      //           authProvider.gender.text = newValue as String;
+                      //           setState(() {
+                      //             genderChoose = newValue as String;
+                      //                 (value) => value == null
+                      //                 ? 'Please fill in your gender'
+                      //                 : null;
+                      //           });
+                      //         },
+                      //         items: listGender.map((valueItem) {
+                      //           return DropdownMenuItem(
+                      //             value: valueItem['id'].toString(),
+                      //             child: Padding(
+                      //               padding: const EdgeInsets.all(15.0),
+                      //               child:
+                      //               Text(valueItem['gender'].toString()),
+                      //             ),
+                      //           );
+                      //         }).toList(),
+                      //       ))),
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomBirthdayPicker(
@@ -533,7 +546,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 });
                                 // reset!=null?
                               } else {
-                                if (await authProvider.signUp(image,DateFormat.yMd().format(_selectedDay).toString())) {
+                                if (await authProvider.signUp(image,address.evendatecontroller.text)) {
                                   setState(() {
                                     _loading = false;
                                   });

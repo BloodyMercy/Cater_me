@@ -16,7 +16,7 @@ class OrderCaterProvider extends ChangeNotifier{
   List<TextEditingController> _controllers = [];
 
   List<TextEditingController> get controllers => _controllers;
-
+  double _vatshisha=0.0;
   set controllers(List<TextEditingController> value) {
     _controllers = value;
   }
@@ -34,6 +34,20 @@ updateprocefreind(double a,int index){
 
 
 }
+
+  double get vatshisha => _vatshisha;
+  double _vatfood=0.0;
+
+  double get vatfood => _vatfood;
+
+  set vatfood(double value) {
+    _vatfood = value;
+  }
+
+  set vatshisha(double value) {
+    _vatshisha = value;
+  }
+
   Future<CreditCardsModel> sendtokeknpayemnt(String a) async{
 
     CreditCardsModel card=new  CreditCardsModel();
@@ -77,9 +91,7 @@ updateprocefreind(double a,int index){
   }
   Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
 
-    List<Map<String,dynamic>> mapitem=[
-
-    ];
+    List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
   //  Strinmapitems="[\r\n ";
     for(int i=0;i<itemOrders.length;i++){
@@ -94,8 +106,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
   controllers.removeAt(i);
   choosebillFriend.removeAt(i);
 }
-      mapitemf.add({"friendId":choosebillFriend[i].id,
-        "amount":int.parse(controllers[i].text)  });
+      mapitemf.add({"friendId":choosebillFriend[i].id,"amount":int.parse(controllers[i].text)  });
     }
 
     try{
@@ -211,10 +222,19 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
     _itemOrders = value;
   }
 
-  addItems(ItemOrders item){
-    _itemOrders.add(item);
+  addItems(ItemOrders item,bool a){
+
    // subTotal=subTotal+item.totalprice;
     totale= totale+item.totalprice;
+    if(a) {
+      vatshisha = vatshisha + item.tax;
+      item.isShisha=true;
+    }
+    else {
+      vatfood = vatfood + item.tax;
+      item.isShisha=false;
+    }
+    _itemOrders.add(item);
     notifyListeners();
   }
 
@@ -237,6 +257,10 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
  removeItems(ItemOrders item){
     _itemOrders.remove(item);
+    if(item.isShisha)
+      vatshisha=vatshisha-item.tax;
+    else
+      vatfood=vatfood-item.tax;
     totale= totale-item.totalprice;
     notifyListeners();
   }

@@ -10,7 +10,8 @@ int id;
   double price = 0;
   bool isfavorite = false;
   List<Details> itemDetails = [];
-
+int min=1,max=1000,increment=5;
+bool isShisha=false;
   Package(this.id, this.image, this.title, this.description, this.price,
       this.isfavorite, this.itemDetails);
 
@@ -22,6 +23,10 @@ int id;
     description = json['description']??"not found";
     price = double.parse(json['price'].toString())??0.0;
     isfavorite = json['isFavorite']??false;
+    min=json["min"]??1;
+   max=json["max"]??1000;
+    increment=json["increment"]??1;
+   isShisha=json["isShisha"]??false;
     if (json['itemDetails'] != null) {
       itemDetails = [];
       json['itemDetails'].forEach((v) {
