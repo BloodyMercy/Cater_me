@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
       listitemssearch.add(package.listItems[i].title.toLowerCase());
     }
     package.loading = true;
-  }
+  }iver
 
   Future getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
