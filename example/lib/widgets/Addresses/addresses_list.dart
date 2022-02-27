@@ -126,7 +126,13 @@ class _AddressesListState extends State<AddressesList> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int i) {
-                        return Card(
+                        return InkWell(onTap:(){
+                          setState(() {
+                            _value = i;
+                            orderprovider.valueIndex = i;
+                          });
+                          orderprovider.value = widget.address[i];
+                        },child:Card(
                           color: LightColors.kLightYellow2,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
@@ -141,11 +147,7 @@ class _AddressesListState extends State<AddressesList> {
                                   groupValue: orderprovider.valueIndex,
                                   value: i,
                                   onChanged: (value) {
-                                    setState(() {
-                                      _value = i;
-                                      orderprovider.valueIndex = i;
-                                    });
-                                    orderprovider.value = widget.address[i];
+
                                   },
                                 ),
                                 Expanded(
@@ -278,14 +280,17 @@ class _AddressesListState extends State<AddressesList> {
                               ],
                             ),
                           ),
-                        );
+                        ));
                       },
                       childCount: widget.address.length,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: TextButton(
-                      onPressed: () => _startAddNewAddress(context),
+                      onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => ConfirmLocation()));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -310,8 +315,10 @@ class _AddressesListState extends State<AddressesList> {
                         primary: Colors.white,
                       ),
                     ),
-                  )
-                ],
+                  ),
+    SliverToBoxAdapter(
+    child:Container(height: MediaQuery.of(context).size.height/3,))
+    ],
               ));
   }
 }

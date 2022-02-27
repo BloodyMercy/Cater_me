@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'dart:io' show Platform;
 
 class AppointmentSuccess extends StatefulWidget {
   final int id;
@@ -23,7 +24,7 @@ class AppointmentSuccess extends StatefulWidget {
 class _AppointmentSuccessState extends State<AppointmentSuccess> {
   var _key = GlobalKey<ScaffoldState>();
   final f = new DateFormat('MM/dd/yyyy hh:mm');
-  AudioCache _audioCache;
+  AudioCache _audioCache = AudioCache();
 
 //  Widget svg = SvgPicture.asset('assets/images/reset_success.svg');
   // Widget svg1 = SvgPicture.asset('assets/images/cube.svg');
@@ -32,6 +33,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     // startinto();
     playaudio();
     //  inAppMessaging(context,SplashScreen());
@@ -42,7 +44,11 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
       prefix: 'audio/',
       fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
     );
-    _audioCache.play('car.mpeg');
+    if (Platform.isIOS) {
+      _audioCache.fixedPlayer?.notificationService.startHeadlessService();
+    }
+    _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
+
   }
 
   @override

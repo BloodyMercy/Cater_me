@@ -25,14 +25,15 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
   bool loading = false;
   int count = 1;
   getData() async {
+    setState(() {
+      count=widget.food.min;
+    });
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     await pack.getpacakgesby(pack.packages.id);
     setState(() {
       loading = false;
     });
-    setState(() {
-      count=widget.food.min;
-    });
+
 
   }
 

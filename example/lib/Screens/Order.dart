@@ -184,6 +184,7 @@ class _OrderState extends State<Order> {
               body: true
                   ? SingleChildScrollView(
                       child: Container(
+
                         decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
@@ -369,11 +370,9 @@ class _OrderState extends State<Order> {
                             ),
                             Expanded(
                               child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 9,
-                                  // color: Colors.yellow,
+                                       // color: Colors.yellow,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
+                                      horizontal: 10),
                                   child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -398,7 +397,7 @@ class _OrderState extends State<Order> {
                                                   0.02,
                                             ),
                                            orderProvider.vatshisha>0.0? Text(
-                                              '*(VAT Shisha ${orderProvider.vatshisha})',
+                                              '*(Shisha VAT 100%)',
                                               style: TextStyle(
                                                 fontSize: 10,
                                                 fontWeight: FontWeight.bold,
@@ -406,7 +405,7 @@ class _OrderState extends State<Order> {
                                               ),
                                             ):Container(),
                                           orderProvider.vatfood>0.0?  Text(
-                                              '*(VAT food and beverage   ${orderProvider.vatfood})',
+                                              '*(VAT 15%)',
                                               style: TextStyle(
                                                 fontSize: 10,
                                                 fontWeight: FontWeight.bold,
