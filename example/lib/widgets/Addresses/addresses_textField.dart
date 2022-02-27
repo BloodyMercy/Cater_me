@@ -170,13 +170,13 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return "Street can't be empty";
-                            } else
-                              return null;
-                          },
+                          ///autovalidateMode: AutovalidateMode.onUserInteraction,
+                          // validator: (value) {
+                          //   if (value.isEmpty) {
+                          //     return "Street can't be empty";
+                          //   } else
+                          //     return null;
+                          // },
                           // keyboardType: TextInputType.number,
                           controller: adress.streetcontroller,
                           // focusNode: focusNode,
@@ -241,13 +241,13 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return "Building can't be empty";
-                            } else
-                              return null;
-                          },
+                        //  autovalidateMode: AutovalidateMode.onUserInteraction,
+                          // validator: (value) {
+                          //   if (value.isEmpty) {
+                          //     return "Building can't be empty";
+                          //   } else
+                          //     return null;
+                          // },
                           // keyboardType: TextInputType.number,
                           controller: adress.buildingcontroller,
                           // focusNode: focusNode,
