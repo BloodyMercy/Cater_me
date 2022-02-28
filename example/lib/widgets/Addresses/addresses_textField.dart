@@ -311,13 +311,13 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return "Floor can't be empty";
-                            } else
-                              return null;
-                          },
+                          // autovalidateMode: AutovalidateMode.onUserInteraction,
+                          // validator: (value) {
+                          //   if (value.isEmpty) {
+                          //     return "Floor can't be empty";
+                          //   } else
+                          //     return null;
+                          // },
                           // keyboardType: TextInputType.number,
                           keyboardType: TextInputType.phone,
 
