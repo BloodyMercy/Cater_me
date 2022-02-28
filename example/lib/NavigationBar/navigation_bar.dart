@@ -15,7 +15,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/notificaition/services/notification_service.dart';
 import 'package:CaterMe/widgets/homepage.dart';
-import 'package:audioplayers/audioplayers.dart';
+
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _NavigationBarState extends State<Navigationbar> {
   NotificationServices notificationService = NotificationServices();
 
 
-   AudioCache _audioCache;
+   //AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
     OccasionListView(),

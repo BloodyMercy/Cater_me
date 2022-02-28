@@ -36,6 +36,7 @@
 	<string>this permition is required to the application to run normaly</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
