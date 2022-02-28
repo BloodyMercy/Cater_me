@@ -415,7 +415,8 @@ class _OrderState extends State<Order> {
                                             ):Container(),
                                           ],
                                         ):Container(),
-                                        ElevatedButton(
+                                        !loadingnext
+                                            ? ElevatedButton(
                                             onPressed: () async {
                                               setState(() {
                                                 loadingnext=true;
@@ -669,8 +670,7 @@ class _OrderState extends State<Order> {
                                                 loadingnext=false;
                                               });
                                             },
-                                            child:!loadingnext
-                                                ? const Text(
+                                            child: const Text(
                                                     'Next',
                                                     style: TextStyle(
                                                       fontSize: 18,
@@ -679,7 +679,7 @@ class _OrderState extends State<Order> {
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
-                                                  ):CircularProgressIndicator()
+                                                  )
 
 
                                             // style: ElevatedButton.styleFrom(
@@ -694,7 +694,7 @@ class _OrderState extends State<Order> {
                                             //   primary: const Color.fromRGBO(63, 85, 33, 1),
                                             //
                                             // );
-                                            ),
+                                            ):CircularProgressIndicator(),
                                       ])),
                             ),
                           ],
