@@ -106,55 +106,59 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                       Row(
                         children: <Widget>[
                           _itemCount != 0
-                              ? Container(
-                              decoration: BoxDecoration(
-                                color:  Color.fromRGBO(253, 202, 29, 1),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              height: 30,
-                              width: 30,
-                              child: IconButton(
+                              ? Expanded(
+                                child: Container(
+                                decoration: BoxDecoration(
+                                  color:  Color.fromRGBO(253, 202, 29, 1),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                height: 30,
+                                width: 30,
+                                child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    icon:  Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
+                                    onPressed: () async{
+                                      setState(() {
+                                       // if(widget.cart.status!="Package"){
+                                          if(_itemCount>0){
+
+                                            setState(() {
+                                              _itemCount--;
+                                              widget.cart.quantity=_itemCount;
+                                              //_cartP.modifyquantity(_itemCount, widget.index);
+                                            } );
+                                            _cartP.itemOrders[widget.index]=widget.cart;
+                                            _cartP.modifyItemsmoins(_itemCount, widget.index);
+
+                                          }
+                                      });}
+                                )),
+                              )
+                              :
+                          Expanded(
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  color:  Color.fromRGBO(253, 202, 29, 1),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                height: 30,
+                                width: 30,
+                                child: IconButton(
                                   padding: EdgeInsets.zero,
                                   icon:  Icon(
                                     Icons.remove,
                                     color: Colors.white,
                                     size: 18,
                                   ),
-                                  onPressed: () async{
-                                    setState(() {
-                                     // if(widget.cart.status!="Package"){
-                                        if(_itemCount>0){
+                                  onPressed: () {
 
-                                          setState(() {
-                                            _itemCount--;
-                                            widget.cart.quantity=_itemCount;
-                                            //_cartP.modifyquantity(_itemCount, widget.index);
-                                          } );
-                                          _cartP.itemOrders[widget.index]=widget.cart;
-                                          _cartP.modifyItemsmoins(_itemCount, widget.index);
-
-                                        }
-                                    });}
-                              ))
-                              :
-                          Container(
-                              decoration: BoxDecoration(
-                                color:  Color.fromRGBO(253, 202, 29, 1),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              height: 30,
-                              width: 30,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                icon:  Icon(
-                                  Icons.remove,
-                                  color: Colors.white,
-                                  size: 18,
-                                ),
-                                onPressed: () {
-
-                                },
-                              )),
+                                  },
+                                )),
+                          ),
                           SizedBox(
                             width: 15,
                           ),
