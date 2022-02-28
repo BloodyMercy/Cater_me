@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
+import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/address.dart';
@@ -116,12 +117,8 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                   address.buildingcontroller.text=widget.address[index].buildingName;
                                   address.floornumbercontroller.text=widget.address[index].floorNumber.toString();
 
-                                  showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      context: ctx,
-                                      builder: (_) {
-                                        return AddressesTextField((){} ,context);
-                                      });
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
+
 
                                 }, icon: Icon(FontAwesomeIcons.solidEdit,color: Color(0xFF3F5521),size: 20)),
                                 IconButton(

@@ -416,6 +416,7 @@ class _OrderState extends State<Order> {
                                         ):Container(),
                                         ElevatedButton(
                                             onPressed: () async {
+
                                               if (orderProvider.spets == 1) {
                                                 if (orderProvider.value.id ==
                                                     0) {

@@ -174,10 +174,10 @@ class _NavigationBarState extends State<Navigationbar> {
               primary: Colors.grey,
             ),
             onPressed: () {
-              // clearAlldata();
 
-              //  Navigator.of(context).pop();
               Navigator.of(context).pop();
+              Navigator.of(context).pop();
+
             },
             child: Text("yes")),
         oneOrtwo: true,
