@@ -54,6 +54,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
       ),
       initialDateTime: _chosenDate,
       minDateTime: DateTime.now(),
+      maxDateTime:DateTime(DateTime.now().year+1) ,
       dateFormat: 'MMMM-yyyy-dd',
       onClose: () {},
       onCancel: () => print('onCancel'),
