@@ -175,8 +175,8 @@ class _NavigationBarState extends State<Navigationbar> {
             ),
             onPressed: () {
 
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
+              Navigator.pop(context,true);
+
 
             },
             child: Text("yes")),
