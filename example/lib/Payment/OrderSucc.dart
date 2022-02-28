@@ -42,17 +42,17 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
   var audio = AudioPlayer();
   playaudio() async {
     print("play audio");
-    audio.play(
-        'https://caterme.azurewebsites.net/uploads/caterme_car_sound.mpeg');
+    // audio.play(
+    //     'https://caterme.azurewebsites.net/uploads/caterme_car_sound.mpeg');
 
-    // _audioCache = AudioCache(
-    //   prefix: 'audio/',
-    //   fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
-    // );
-    // if (Platform.isIOS) {
-    //   _audioCache.fixedPlayer?.notificationService.startHeadlessService();
-    // }
-    // _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
+    _audioCache = AudioCache(
+      prefix: 'audio/',
+      fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
+    );
+    if (Platform.isIOS) {
+      _audioCache.fixedPlayer?.notificationService.startHeadlessService();
+    }
+    _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
 
   }
 
