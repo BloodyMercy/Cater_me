@@ -75,7 +75,7 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
     FocusNode focusNode = FocusNode();
     double height = MediaQuery.of(context).size.height;
     return Container(
-         padding: const EdgeInsets.all(10.0),
+         // padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
           controller: widget.controller,
@@ -89,7 +89,8 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
                 size: 20,
               ),
               contentPadding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.04),
+                  left: MediaQuery.of(context).size.width *
+                      0.4),
               alignLabelWithHint: true,
               prefixIcon: Icon(Icons.calendar_today),
               labelStyle: TextStyle(
