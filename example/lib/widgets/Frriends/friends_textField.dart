@@ -72,13 +72,8 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       child: TextFormField(
                         controller: friends.emailcontroller,
                         focusNode: focusNode,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (email) {
-                          if (isEmailValid(email)) {
-                            return null;
-                          } else
-                            return "Please enter a valid email";
-                        },
+                      //  autovalidateMode: AutovalidateMode.onUserInteraction,
+
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: mediaQuery.size.width * 0.04),
