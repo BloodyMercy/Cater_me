@@ -39,15 +39,20 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     //  inAppMessaging(context,SplashScreen());
   }
   AudioCache _audioCache = AudioCache();
+  var audio = AudioPlayer();
   playaudio() async {
-    _audioCache = AudioCache(
-      prefix: 'audio/',
-      fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
-    );
-    if (Platform.isIOS) {
-      _audioCache.fixedPlayer?.notificationService.startHeadlessService();
-    }
-    _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
+    print("play audio");
+    audio.play(
+        'https://caterme.azurewebsites.net/uploads/caterme_car_sound.mpeg');
+
+    // _audioCache = AudioCache(
+    //   prefix: 'audio/',
+    //   fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
+    // );
+    // if (Platform.isIOS) {
+    //   _audioCache.fixedPlayer?.notificationService.startHeadlessService();
+    // }
+    // _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
 
   }
 
