@@ -24,7 +24,7 @@ class AppointmentSuccess extends StatefulWidget {
 class _AppointmentSuccessState extends State<AppointmentSuccess> {
   var _key = GlobalKey<ScaffoldState>();
   final f = new DateFormat('MM/dd/yyyy hh:mm');
-  AudioCache _audioCache = AudioCache();
+
 
 //  Widget svg = SvgPicture.asset('assets/images/reset_success.svg');
   // Widget svg1 = SvgPicture.asset('assets/images/cube.svg');
@@ -38,7 +38,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     playaudio();
     //  inAppMessaging(context,SplashScreen());
   }
-
+  AudioCache _audioCache = AudioCache();
   playaudio() async {
     _audioCache = AudioCache(
       prefix: 'audio/',
