@@ -27,6 +27,7 @@ class _OrderState extends State<Order> {
   ScrollController _verticatl = ScrollController();
   var _key = GlobalKey<ScaffoldState>();
 
+  bool loadingnext=false;
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   double barheight = 0.0;
@@ -416,6 +417,9 @@ class _OrderState extends State<Order> {
                                         ):Container(),
                                         ElevatedButton(
                                             onPressed: () async {
+                                              setState(() {
+                                                loadingnext=true;
+                                              });
 
                                               if (orderProvider.spets == 1) {
                                                 if (orderProvider.value.id ==
@@ -660,8 +664,12 @@ class _OrderState extends State<Order> {
                                                 _animateToIndex(
                                                     orderProvider.spets);
                                               }
+
+                                              setState(() {
+                                                loadingnext=false;
+                                              });
                                             },
-                                            child: orderProvider.spets != 7
+                                            child:!loadingnext
                                                 ? const Text(
                                                     'Next',
                                                     style: TextStyle(
@@ -671,17 +679,8 @@ class _OrderState extends State<Order> {
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
-                                                  )
-                                                : const Text(
-                                                    'Done',
-                                                    style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontFamily:
-                                                          'BerlinSansFB',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  )
+                                                  ):CircularProgressIndicator()
+
 
                                             // style: ElevatedButton.styleFrom(
                                             //   padding: EdgeInsets.fromLTRB(
