@@ -320,7 +320,7 @@ class _NavigationBarState extends State<Navigationbar> {
                    // badgeContent:Text("3"),
                     child: Icon(
                       Icons.backpack,size: 25,
-                      color: Theme.of(context).primaryColor,
+                    //  color: Theme.of(context).primaryColor,
                     ),
                 ),
                 label: 'Orders',

@@ -378,14 +378,14 @@ class _OrderState extends State<Order> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                     orderProvider.spets>5?   Column(
+                                     orderProvider.spets>3?   Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              "Total: ${details.totale.toStringAsFixed(3)} SAR",
+                                              "Total: ${details.totale.toStringAsFixed(2)} SAR",
                                               style: const TextStyle(
                                                   fontSize: 18,
                                                   fontFamily: 'BerlinSansFB',

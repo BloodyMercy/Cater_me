@@ -52,7 +52,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     if (Platform.isIOS) {
       _audioCache.fixedPlayer?.notificationService.startHeadlessService();
     }
-    _audioCache.play('car.mpeg').onError((error, stackTrace) {print("error audio: $error");});
+    _audioCache.play('car.mp3').onError((error, stackTrace) {print("error audio: $error");});
 
   }
 

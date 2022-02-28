@@ -58,8 +58,9 @@ class _ReguarScreenState extends State<ReguarScreen> {
     });
     // controllersearch.text="p";
     setState(() {
-      loading = false;
+      loading = false; address.value2Index=0;
     });
+
   }
 
   @override
@@ -273,10 +274,12 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     (states) => colorCustom),
                                 // value: 'female',
                                 value: 0,
-                                groupValue: address.value2Index,
+
+                                groupValue: _value,
                                 onChanged: (value) {
                                   setState(() {
                                     address.form = false;
+                                    _value=value;
                                     address.value2Index = value;
                                   });
                                 },
@@ -293,8 +296,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                 value: 1,
                                 groupValue: address.value2Index,
                                 onChanged: (value) {
+                                 // print(value);
                                   setState(() {
                                     address.form = true;
+                                    _value=value;
                                     address.value2Index = value;
                                   });
                                 },

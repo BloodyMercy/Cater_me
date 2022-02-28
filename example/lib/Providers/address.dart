@@ -249,8 +249,9 @@ return em.message;
     latitude: latitudenumbercontroller.text,
 
     );
-  if(_addressCreated.id==0)
+  if(_addressCreated.id!=0)
   _listaddress.insert(0,_addressCreated);
+
   notifyListeners();
   }
   bool _loadingCity=false;
@@ -322,13 +323,15 @@ notifyListeners();
 
 
 
- static int _value2Index = 0;
+ int _value2Index = 0;
+
 
   int get value2Index => _value2Index;
 
   set value2Index(int value) {
     _value2Index = value;
   }
+
   static int _value1Index = -1;
 
   int get value1Index => _value1Index;

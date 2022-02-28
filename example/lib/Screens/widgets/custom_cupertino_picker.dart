@@ -129,6 +129,9 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           adress.numberofguestcontroller.text = widget
                               .numberOfGuests[widget.selectedValue].id
                               .toString();
+                          adress.numberofguestcontrollerstring.text = widget
+                              .numberOfGuests[widget.selectedValue].title
+                              .toString();
                           Navigator.of(context).pop();
                         }
                         if (widget.label == "Type Of Event") {
@@ -137,6 +140,8 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
 
                           adress.typeofeventcontroller.text =
                               widget.events[widget.selectedValue].id.toString();
+                          adress.typeofeventcontrollerstring.text =
+                              widget.events[widget.selectedValue].name.toString();
                           Navigator.of(context).pop();
                         }
                         if (widget.label == 'Type of Occasion') {
