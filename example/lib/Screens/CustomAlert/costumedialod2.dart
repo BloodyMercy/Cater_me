@@ -77,7 +77,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                       child: Text(
-                        "Do you want free chairs equipment?",
+                        "Without chairs equipment",
                         style: TextStyle(
                           color: !order.check1?Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -102,7 +102,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                         child:  Text(
-                          "Do you want free tables equipment?",
+                          "Without tables equipment?",
                           style: TextStyle(
                             color: !order.check2?Color.fromRGBO(
                                 149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -127,7 +127,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                         child: Text(
-                          "Do you want free catering service: plates, forks, knifes,….?",
+                          "Without catering services",
                           style: TextStyle(
                             color: !order.check3? Color.fromRGBO(
                                 149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -151,7 +151,7 @@ class CustomDialog2 extends StatelessWidget {
                   Container(width: width/50,),
                   Expanded(
                       child:  Text(
-                        "Do you want to donate the rest of the food?",
+                        "Don't donate the rest of food ",
                         style: TextStyle(
                           color: !order.check4? Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),

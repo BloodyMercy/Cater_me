@@ -682,7 +682,7 @@ class _OrderState extends State<Order> {
                                                   );
 
                                                 }
-                                              }else if (orderProvider.spets==5){
+                                              }else if (orderProvider.spets==5 && orderProvider.vatshisha==0.0){
                                                 int itemcount= 0 ;
                                                 for(int i =0 ; i<orderProvider.itemOrders.length;i++){
                                                   if(orderProvider.itemOrders[i].isShisha){
