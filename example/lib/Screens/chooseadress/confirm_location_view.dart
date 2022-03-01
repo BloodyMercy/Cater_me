@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:geolocator/geolocator.dart';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
@@ -11,6 +11,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'package:geocoding/geocoding.dart';
 
 class ConfirmLocation extends StatefulWidget {
 
@@ -55,7 +56,19 @@ bool loading=false;
         ),
       ));
 
+      getcityname(currLocation);
     });
+  }
+  getcityname(Position potion) async {
+
+    List<Placemark> placemarks = await placemarkFromCoordinates(potion.longitude, potion.latitude);
+   print( placemarks[0].name);
+   print( placemarks[0].street);
+   print( placemarks[0].administrativeArea);
+   print( placemarks[0].country);
+   print( placemarks[0].locality);
+   print( placemarks[0].thoroughfare);
+   print( placemarks[0].isoCountryCode);
 
   }
   String cityselected="";
