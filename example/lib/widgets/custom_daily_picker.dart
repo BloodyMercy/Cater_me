@@ -48,7 +48,6 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
               color: Colors.white,
               child:
               CupertinoDatePicker(
-                use24hFormat: false,
                 mode: CupertinoDatePickerMode.time,
                 onDateTimeChanged: (value) {
                   _chosenDate=value;
