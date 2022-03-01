@@ -193,7 +193,7 @@ await occasion.getAllOccasionType();
                                     });
                                     Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
-                                        builder: (context) => const OccasionAdded(),
+                                        builder: (context) => OccasionAdded(occasion.nameofoccasioncontroller.text.toString(),occasion.datechosencontroller.text.toString()),
                                       ),
                                     );
                                   }

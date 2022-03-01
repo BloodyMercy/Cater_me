@@ -378,12 +378,20 @@ class _OrderState extends State<Order> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                     orderProvider.spets>3?   Column(
+                                        orderProvider.spets>1?  IconButton(onPressed: (){
+
+                                          orderProvider.spets = orderProvider.spets-1;
+                                          _animateToIndex(orderProvider.spets);
+
+                                        }, icon: Icon(Icons.arrow_back,size: 35,color: Color.fromRGBO(63, 85, 33, 1))):Container(),
+
+                                        orderProvider.spets>3?   Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
+
                                             Text(
                                               "Total: ${details.totale.toStringAsFixed(2)} SAR",
                                               style: const TextStyle(
@@ -603,9 +611,9 @@ class _OrderState extends State<Order> {
 
                                                   int a = await orderProvider
                                                       .makeorder(
-                                                          date: address
+                                                          date: (address
                                                               .evendatecontroller
-                                                              .text
+                                                              .text)
                                                               .replaceAll(
                                                             RegExp(
                                                                 '[^A-Za-z0-9]'),
@@ -659,7 +667,49 @@ class _OrderState extends State<Order> {
                                                     );
                                                   }
                                                 }
-                                              } else {
+                                              } else if(orderProvider.spets==4){
+                                                if(orderProvider.itemOrders.length>0){
+
+                                                  orderProvider.spets++;
+                                                }else{
+
+                                                  _key.currentState
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          "please add a package"),
+                                                    ),
+                                                  );
+
+                                                }
+                                              }else if (orderProvider.spets==5){
+                                                int itemcount= 0 ;
+                                                for(int i =0 ; i<orderProvider.itemOrders.length;i++){
+                                                  if(orderProvider.itemOrders[i].isShisha){
+                                                    itemcount++;
+                                                  }
+                                                  if(itemcount==5)
+                                                  break;
+                                                }
+
+                                                if(itemcount<5){
+                                                  _key.currentState
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          "minmun quantity for shisha is 5"),
+                                                    ),
+                                                  );
+
+                                                }
+                                                else{
+                                                  orderProvider.spets++;
+
+                                                  _animateToIndex(
+                                                      orderProvider.spets);
+                                                }
+
+                                              }else{
                                                 orderProvider.spets++;
 
                                                 _animateToIndex(

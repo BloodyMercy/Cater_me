@@ -58,7 +58,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
     });
     // controllersearch.text="p";
     setState(() {
-      loading = false; address.value2Index=0;
+      loading = false;
+     _value= address.value2Index;
     });
 
   }
@@ -152,185 +153,277 @@ class _ReguarScreenState extends State<ReguarScreen> {
     var screenHeight = MediaQuery.of(context).size.height;
     FocusNode focusNode = FocusNode();
     return address.load
-        ? SingleChildScrollView(
-            child: Container(
-              color: LightColors.kLightYellow,
-              height: screenHeight * 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 30.0),
-                child: Column(
-                  children: [
-                    SizedBox(height: screenHeight * 0.03),
-                    Form(
-                      key: formkey,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: TextFormField(
-                                style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal,
-                                    fontFamily: 'BerlinSansFB'),
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        left:
-                                            MediaQuery.of(context).size.width *
-                                                0.04),
-                                    alignLabelWithHint: true,
-                                    labelStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            focusNode.hasFocus ? 18 : 16.0,
-                                        //I believe the size difference here is 6.0 to account padding
-                                        color: focusNode.hasFocus
-                                            ? Color(0xFF3F5521)
-                                            : Colors.grey),
-                                    labelText: 'Event Name',
-                                    hintStyle: TextStyle(
-                                        color: Colors.black87,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'BerlinSansFB'),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
+        ? GestureDetector(
+      onTap: (){
+        FocusScopeNode currentfocus = FocusScope.of(context);
+        if(!currentfocus.hasPrimaryFocus){
+          currentfocus.unfocus();
+        }
+      },
+          child: SingleChildScrollView(
+              child: Container(
+                color: LightColors.kLightYellow,
+                height: screenHeight * 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 30.0),
+                  child: Column(
+                    children: [
+                      SizedBox(height: screenHeight * 0.03),
+                      Form(
+                        key: formkey,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'BerlinSansFB'),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left:
+                                              MediaQuery.of(context).size.width *
+                                                  0.04),
+                                      alignLabelWithHint: true,
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                              focusNode.hasFocus ? 18 : 16.0,
+                                          //I believe the size difference here is 6.0 to account padding
+                                          color: focusNode.hasFocus
+                                              ? Color(0xFF3F5521)
+                                              : Colors.grey),
+                                      labelText: 'Event Name',
+                                      hintStyle: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
                                         borderSide: const BorderSide(
-                                          color: Color(0xFF3F5521),
-                                        ))),
-                                controller: address.eventnamecontroller,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFF3F5521),
+                                          ))),
+                                  controller: address.eventnamecontroller,
 
-                                // autovalidateMode: AutovalidateMode.onUserInteraction,
-                                keyboardType: TextInputType.text),
-                          ),
-                          // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
-
-                          SizedBox(height: screenHeight * 0.02),
-
-                          Container(
-                            height: MediaQuery.of(context).size.height / 8,
-                            child: CustomDatePickerFormField(
-                              label: "Event Date",
-                              controller: address.evendatecontroller,
+                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.text),
                             ),
-                          ),
+                            // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
 
-                          Container(
-                            height: MediaQuery.of(context).size.height / 8,
-                            child: CustomDailyDate(
-                              label: "Event Time",
-                              controller: address.DailyDatecontroller,
+                            SizedBox(height: screenHeight * 0.02),
+
+                            Container(
+                              height: MediaQuery.of(context).size.height / 8,
+                              child: CustomDatePickerFormField(
+                                label: "Event Date",
+                                controller: address.evendatecontroller,
+                              ),
                             ),
-                          ),
 
-                          CustomCupertinoPicker(
-                            label: "Numbers Of Guests",
-                            items: address.listnamenumber,
-                            numberOfGuests: address.regular.numberOfGuests,
-                            selectedValue: 1,
-                            inputType: TextInputType.number,
-                            controller: address.numberofguestcontrollerstring,
-                          ),
-
-                          SizedBox(height: screenHeight * 0.02),
-
-                          CustomCupertinoPicker(
-                            label: "Type Of Event",
-                            items: address.listnameevent,
-                            events: address.regular.events,
-                            selectedValue: 0,
-                            inputType: TextInputType.number,
-                            controller: address.typeofeventcontrollerstring,
-                          ),
-
-                          SizedBox(height: screenHeight * 0.03),
-                          Center(
-                            child: Text(
-                              'Contact Person',
-                              style: TextStyle(
-                                  color: Color(0xFF3F5521),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                            Container(
+                              height: MediaQuery.of(context).size.height / 8,
+                              child: CustomDailyDate(
+                                label: "Event Time",
+                                controller: address.DailyDatecontroller,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: screenHeight * 0.03),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Radio(
-                                toggleable: true,
-                                fillColor: MaterialStateColor.resolveWith(
-                                    (states) => colorCustom),
-                                // value: 'female',
-                                value: 0,
+                            CustomCupertinoPicker(
+                              label: "Numbers Of Guests",
+                              items: address.listnamenumber,
+                              numberOfGuests: address.regular.numberOfGuests,
+                              selectedValue: 1,
+                              inputType: TextInputType.number,
+                              controller: address.numberofguestcontrollerstring,
+                            ),
 
-                                groupValue: _value,
-                                onChanged: (value) {
-                                  setState(() {
-                                    address.form = false;
-                                    _value=value;
-                                    address.value2Index = value;
-                                  });
-                                },
-                              ),
-                              Text('Me'),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width / 10,
-                              ),
-                              Radio(
-                                fillColor: MaterialStateColor.resolveWith(
-                                    (states) => colorCustom),
-                                toggleable: true,
-                                // value: 'female',
-                                value: 1,
-                                groupValue: address.value2Index,
-                                onChanged: (value) {
-                                 // print(value);
-                                  setState(() {
-                                    address.form = true;
-                                    _value=value;
-                                    address.value2Index = value;
-                                  });
-                                },
-                              ),
-                              Text('Others'),
-                            ],
-                          ),
+                            SizedBox(height: screenHeight * 0.02),
 
-                          address.form
-                              ? customTextFieldicon(
+                            CustomCupertinoPicker(
+                              label: "Type Of Event",
+                              items: address.listnameevent,
+                              events: address.regular.events,
+                              selectedValue: 0,
+                              inputType: TextInputType.number,
+                              controller: address.typeofeventcontrollerstring,
+                            ),
+
+                            SizedBox(height: screenHeight * 0.03),
+                            Center(
+                              child: Text(
+                                'Contact Person',
+                                style: TextStyle(
+                                    color: Color(0xFF3F5521),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(height: screenHeight * 0.03),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Radio(
+                                  toggleable: true,
+                                  fillColor: MaterialStateColor.resolveWith(
+                                      (states) => colorCustom),
+                                  // value: 'female',
+                                  value: 0,
+
+                                  groupValue: _value,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      address.form = false;
+                                      _value=value;
+                                      address.value2Index = value;
+                                    });
+                                  },
+                                ),
+                                Text('Me'),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width / 10,
+                                ),
+                                Radio(
+                                  fillColor: MaterialStateColor.resolveWith(
+                                      (states) => colorCustom),
+                                  toggleable: true,
+                                  // value: 'female',
+                                  value: 1,
+                                  groupValue: address.value2Index,
+                                  onChanged: (value) {
+                                   // print(value);
+                                    setState(() {
+                                      address.form = true;
+                                      _value=value;
+                                      address.value2Index = value;
+                                    });
+                                  },
+                                ),
+                                Text('Others'),
+                              ],
+                            ),
+
+                            address.form
+                                ?       Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'BerlinSansFB'),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left:
+                                          MediaQuery.of(context).size.width *
+                                              0.04),
+                                      alignLabelWithHint: true,
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                          focusNode.hasFocus ? 18 : 16.0,
+                                          //I believe the size difference here is 6.0 to account padding
+                                          color: focusNode.hasFocus
+                                              ? Color(0xFF3F5521)
+                                              : Colors.grey),
+                                      labelText: 'Name',
+                                      hintStyle: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFF3F5521),
+                                          ))),
                                   controller: address.name,
-                                  label: 'Name',
-                                  icon: Icon(Icons.person),
-                                )
-                              : Container(),
-                          SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
-                          address.form
-                              ? customTextFieldPhone(
-                                  controller: address.phone,
-                                  label: 'Phone Number',
-                                  icon: Icon(Icons.phone),
-                                )
-                              : Container(),
-                        ],
+
+                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.text),
+                            )
+                                : Container(),
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                            address.form
+                                ?       Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'BerlinSansFB'),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left:
+                                          MediaQuery.of(context).size.width *
+                                              0.04),
+                                      alignLabelWithHint: true,
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                          focusNode.hasFocus ? 18 : 16.0,
+                                          //I believe the size difference here is 6.0 to account padding
+                                          color: focusNode.hasFocus
+                                              ? Color(0xFF3F5521)
+                                              : Colors.grey),
+                                      labelText: 'Phone Number',
+                                      hintStyle: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFF3F5521),
+                                          ))),
+                                  controller: address.eventnamecontroller,
+
+                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.phone),
+                            )
+                                : Container(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          )
+        )
         : Center(
             child: CircularProgressIndicator(),
           );

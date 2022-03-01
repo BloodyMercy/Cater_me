@@ -18,19 +18,20 @@ class RelatedOffersScreen extends StatefulWidget {
 class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
   final foods = Fake_Data;
 
-  bool loading = true;
+  bool loading = false;
 
   getData() async {
+
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
-    await pack.getallpacakgesorder(
-        orderprovider.serviceId,
+    await pack.getallpacakgesorder(orderprovider.serviceId,
         int.parse(address.typeofeventcontroller.text.toString()),
-        );
+        int.parse(address.numberofguestcontroller.text.toString(),
+        ));
     setState(() {
-      loading = false;
+      loading = true;
     });
   }
 
@@ -56,10 +57,12 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
     return Column(
       children: [
+    loading?
         Container(
           color: LightColors.kLightYellow,
             height: screenHeight * 0.63,
-            child: !pack.allpackagesorder.isEmpty
+
+            child:  !pack.allpackagesorder.isEmpty
                 ? ListView.separated(
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) => Padding(
@@ -112,7 +115,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                   )
                 : Center(
                     child: Text('no packages available'),
-                  )),
+                  )):Center(child: CircularProgressIndicator(),),
       ],
     );
   }

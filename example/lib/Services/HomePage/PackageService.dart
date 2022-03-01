@@ -13,7 +13,7 @@ import '../ApiLink.dart';
 
 class PackageService{
 
-  static Future<Map<String, dynamic>> getPackagesrder(int id,int id2) async{
+  static Future<Map<String, dynamic>> getPackagesrder(int id,int id2,int id3) async{
     List<Package> l=[];
     try {
 
@@ -23,7 +23,7 @@ class PackageService{
 
       var headers = {
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
-      var request = http.Request('GET', Uri.parse(ApiLink.GetPackagesorder+"/$id/$id2"));
+      var request = http.Request('GET', Uri.parse(ApiLink.GetPackagesorder+"/$id/$id2/$id3"));
 
       request.headers.addAll(headers);
 

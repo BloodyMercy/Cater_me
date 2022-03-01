@@ -179,7 +179,7 @@ class _NavigationBarState extends State<Navigationbar> {
 
 
             },
-            child: Text("yes")),
+            child: Text("Done")),
         oneOrtwo: true,
         button2: ElevatedButton(
           onPressed: () {

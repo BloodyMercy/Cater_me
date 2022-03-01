@@ -27,12 +27,18 @@ class OrderByIdService {
     }
   }
 
-  Future<bool> Donate(int id) async{
+  Future<bool> Donate(int id,bool a,bool a1,bool a2,bool a3) async{
      try{
        SharedPreferences prefs = await SharedPreferences.getInstance();
        var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
        var request = http.Request('POST', Uri.parse(ApiLink.DonateFood+"/$id"));
        request.headers.addAll(headers);
+       request.body=jsonEncode({
+         'isDonatingFood': a.toString(),
+         'isNeedChair': a1.toString(),
+         'isNeedTables': a2.toString(),
+         'isNeedCateringService': a3.toString()
+       });
        http.StreamedResponse responses = await request.send();
        var response = await http.Response.fromStream(responses);
        if(response.statusCode==200){

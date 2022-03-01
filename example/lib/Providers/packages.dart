@@ -131,10 +131,10 @@ String get nbnotification => _nbnotification;
   set nbnotification(String value) {
     _nbnotification = value;
   }
-Future<void>  getallpacakgesorder(int id,int id2)async {
+Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
   loading=false;
 //notifyListeners();
-  _alldata=await PackageService.getPackagesrder(id,id2);
+  _alldata=await PackageService.getPackagesrder(id,id2,id3);
 
 
     if( _alldata['packages']!=null) {

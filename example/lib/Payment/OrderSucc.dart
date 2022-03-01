@@ -13,6 +13,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'dart:io' show Platform;
 
+import '../Screens/CustomAlert/costumedialod2.dart';
+
 class AppointmentSuccess extends StatefulWidget {
   final int id;
   AppointmentSuccess(this.id);
@@ -234,23 +236,11 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        builder: (BuildContext context) => CustomDialog(
+                        builder: (BuildContext context) => CustomDialog2(
                           title: "Success",
                           description:
                               "Do You Want To Donate The Rest Of Your Food?",
-                          button1: ElevatedButton(
-                            style:
-                            ElevatedButton.styleFrom(primary: Colors.grey),
-                            onPressed: () {
 
-                              Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                    builder: (context) => Navigationbar(0),
-                                  ),
-                                      (route) => false);
-                            },
-                            child: Text('No'),
-                          ),
                           button2: ElevatedButton(
                             style:
                             ElevatedButton.styleFrom(primary: colorCustom),
@@ -268,7 +258,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                                 },
                               );
 
-                              await order.donate(widget.id);
+                              await order.donate(widget.id,);
 
                               Navigator.pop(context);
                               Navigator.of(context).pushAndRemoveUntil(
@@ -282,7 +272,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
 
 
                             },
-                            child: Text('Yes'),
+                            child: Text('Done'),
                           ),
                           oneOrtwo: true,
                         ),

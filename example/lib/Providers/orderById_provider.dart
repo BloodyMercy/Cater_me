@@ -5,6 +5,16 @@ import 'package:flutter/cupertino.dart';
 class OrderByIdProvider extends ChangeNotifier{
   OrderByIdService _orderByIdService=OrderByIdService();
   List<OrderDetailsModel> _orderListDetails=[];
+bool _check1 =false ;
+bool _check2 =false ;
+bool _check3 =false ;
+bool _check4 =false ;
+
+  OrderByIdService get orderByIdService => _orderByIdService;
+
+  set orderByIdService(OrderByIdService value) {
+    _orderByIdService = value;
+  }
 
   OrderDetailsModel _orderDetails=OrderDetailsModel();
 
@@ -108,8 +118,36 @@ bool _buttonDonate=false;
   }
 
   donate(int id) async{
-  bool donate= await _orderByIdService.Donate(id);
+  bool donate= await _orderByIdService.Donate(id,check1,check2,check3,check4);
    notifyListeners();
    return donate;
+  }
+
+  bool get check1 => _check1;
+
+  set check1(bool value) {
+    _check1 = value;
+    notifyListeners();
+  }
+
+  bool get check2 => _check2;
+
+  set check2(bool value) {
+    _check2 = value;
+    notifyListeners();
+  }
+
+  bool get check3 => _check3;
+
+  set check3(bool value) {
+    _check3 = value;
+    notifyListeners();
+  }
+
+  bool get check4 => _check4;
+
+  set check4(bool value) {
+    _check4 = value;
+    notifyListeners();
   }
 }
