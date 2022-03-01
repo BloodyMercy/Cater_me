@@ -100,7 +100,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                 height: MediaQuery.of(context).size.height / 2,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('images/Samcater.png'),
+                      image: _serpres.serviceId==1? AssetImage('example/images/orderTracking/sammdaberni.png'):AssetImage('example/images/orderTracking/sammcaterme.png'),
                       fit: BoxFit.contain
                   ),
                   borderRadius: BorderRadius.circular(50),
