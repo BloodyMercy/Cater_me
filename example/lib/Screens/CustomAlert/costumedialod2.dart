@@ -77,7 +77,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                       child: Text(
-                        "Without chairs equipment",
+                        "Without equipment",
                         style: TextStyle(
                           color: !order.check1?Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -102,7 +102,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                         child:  Text(
-                          "Without tables equipment?",
+                          "Without service team",
                           style: TextStyle(
                             color: !order.check2?Color.fromRGBO(
                                 149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -110,31 +110,7 @@ class CustomDialog2 extends StatelessWidget {
                           ),)),
                   ],
                 )),
-            Container(height: height/100),
-            GestureDetector(
-                onTap: (){
-                  order.check3=!order.check3;
-                },
-                child:Row(
-                  children: [
-                    Icon(
-                      Icons.check_circle_outlined,
 
-                      color: !order.check3?Color.fromRGBO(
-                          149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
-                      size: 20,
-                    ),
-                    Container(width: width/50,),
-                    Expanded(
-                        child: Text(
-                          "Without catering services",
-                          style: TextStyle(
-                            color: !order.check3? Color.fromRGBO(
-                                149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
-                            fontSize: 20,
-                          ),)),
-                  ],
-                )),
             Container(height: height/100),
             GestureDetector(
               onTap: (){

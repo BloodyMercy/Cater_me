@@ -261,12 +261,16 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                               await order.donate(widget.id,);
 
                               Navigator.pop(context);
-                              Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                    builder: (context) => DonationAdded(),
-                                  ),
-                                      (route) => false);
-
+                              if(order.check4){
+                                Navigator.of(context).pop();
+                              }
+                              else {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => DonationAdded(),
+                                    ),
+                                        (route) => false);
+                              }
 
 
 
