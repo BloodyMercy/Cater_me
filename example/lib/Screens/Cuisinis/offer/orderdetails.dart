@@ -218,7 +218,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 ) {
                                   orderprovider.totalssha =
                                       orderprovider.totalssha + a.quantity;
-                                  a.ispack = true;
+                                  a.ispack = false;
                                 }
                                 a.id = widget.food.id;
                                 a.image = widget.food.image;
