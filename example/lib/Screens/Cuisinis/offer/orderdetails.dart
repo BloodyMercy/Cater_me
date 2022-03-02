@@ -217,7 +217,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 if(widget.food.isShisha
                                 ) {
                                   orderprovider.totalssha =
-                                      orderprovider.totalssha + 1;
+                                      orderprovider.totalssha + a.quantity;
                                   a.ispack = true;
                                 }
                                 a.id = widget.food.id;
@@ -230,6 +230,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.price=widget.food.price;
                                 a.totalprice = count * widget.food.price;
                                 a.tax=widget.food.tax;
+
 
                                 orderprovider.addItems(a,widget.food.isShisha);
                                 Navigator.of(context).pop(false);
