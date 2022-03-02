@@ -521,49 +521,82 @@ class _OrderState extends State<Order> {
                                                 }
                                               } else if (orderProvider.spets ==
                                                   6) {
-                                                if (orderProvider
-                                                        .itemOrders.length >
-                                                    0) {
-                                                  bool a = false;
-                                                  if (orderProvider
-                                                          .choosebillFriend
-                                                          .length >
-                                                      0) {
-                                                    for (int i = 0;
-                                                        i <
-                                                            orderProvider
-                                                                .choosebillFriend
-                                                                .length;
-                                                        i++) {
-                                                      print(i);
-                                                      if (orderProvider.choosebillFriend[i].price == 0) {
-                                                        _key.currentState
-                                                            .showSnackBar(
-                                                          const SnackBar(
-                                                            content: Text(
-                                                                "share bill cannot be empty"),
-                                                          ),
-                                                        );
-                                                        a = true;
-                                                        break;
-                                                      }
-                                                    }
-                                                  }
 
-                                                  if (!a) {
-                                                    orderProvider.spets++;
-                                                    _animateToIndex(
-                                                        orderProvider.spets);
-                                                  }
-                                                } else {
+                                                if (orderProvider
+                                                    .totalpackage == 0) {
+
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
                                                       content: Text(
-                                                          "no items to order"),
+                                                          "no package to order"),
+                                                    ),
+                                                  );
+
+                                                }
+                                                else if(orderProvider.totalssha
+                                                ==0){
+                                                  _key.currentState
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          "no shisha to order"),
                                                     ),
                                                   );
                                                 }
+
+                                                else{
+    if (orderProvider
+        .itemOrders.length >
+    0 ) {
+
+
+    bool a = false;
+    if (orderProvider
+        .choosebillFriend
+        .length >
+    0) {
+    for (int i = 0;
+    i <
+    orderProvider
+        .choosebillFriend
+        .length;
+    i++) {
+    print(i);
+    if (orderProvider.choosebillFriend[i].price == 0) {
+    _key.currentState
+        .showSnackBar(
+    const SnackBar(
+    content: Text(
+    "share bill cannot be empty"),
+    ),
+    );
+    a = true;
+    break;
+    }
+    }
+    }
+
+    if (!a) {
+    orderProvider.spets++;
+    _animateToIndex(
+    orderProvider.spets);
+    }
+    } else {
+    _key.currentState
+        .showSnackBar(
+    const SnackBar(
+    content: Text(
+    "no items to order"),
+    ),
+    );
+    }
+
+
+    }
+
+
+
                                               } else if (orderProvider.spets ==
                                                   7) {
                                                 if (_creditCardss.credit.id ==
@@ -686,7 +719,7 @@ class _OrderState extends State<Order> {
                                                 int itemcount= 0 ;
                                                 for(int i =0 ; i<orderProvider.itemOrders.length;i++){
                                                   if(orderProvider.itemOrders[i].isShisha){
-                                                    itemcount++;
+                                                    itemcount=itemcount+orderProvider.itemOrders[i].quantity;
                                                   }
                                                   if(itemcount==5)
                                                   break;

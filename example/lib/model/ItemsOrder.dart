@@ -9,8 +9,10 @@ int tax = 0;
   double price = 0;
   int quantity = 0;
   double totalprice=0.0;
+int min=1,max=1000,increment=5;
   bool isfavorite = false;
   bool isShisha = false;
+  bool ispack=false;
 
   List<Details> itemDetails = [];
 
@@ -25,6 +27,9 @@ int tax = 0;
     description = json['description']??"not found";
     price = double.parse(json['price'].toString())??0.0;
     isfavorite = json['isFavorite']??false;
+   min = json['min']??1;
+    max = json['max']??1000;
+   increment = json['increment']??5;
 
     if (json['itemDetails'] != null) {
       itemDetails = [];

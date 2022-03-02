@@ -17,6 +17,15 @@ class OrderCaterProvider extends ChangeNotifier{
 
   List<TextEditingController> get controllers => _controllers;
   double _vatshisha=0.0;
+
+  int _totalssha=0;
+
+  int get totalssha => _totalssha;
+
+  set totalssha(int value) {
+    _totalssha = value;
+  }
+
   set controllers(List<TextEditingController> value) {
     _controllers = value;
   }
@@ -34,6 +43,14 @@ updateprocefreind(double a,int index){
 
 
 }
+int _totalpackage=0;
+int _totalshisha=0;
+
+  int get totalpackage => _totalpackage;
+
+  set totalpackage(int value) {
+    _totalpackage = value;
+  }
 
   double get vatshisha => _vatshisha;
   double _vatfood=0.0;
@@ -163,8 +180,8 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       //print()
       return 0;
     }
-    notifyListeners();
-    return 0;
+    // notifyListeners();
+    // return 0;
   }
 
   addcontroller(TextEditingController t){
@@ -256,6 +273,12 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
   }
 
  removeItems(ItemOrders item){
+    if(item.ispack)
+      totalpackage=totalpackage-1;
+    else
+      totalssha=totalpackage-1;
+
+
     _itemOrders.remove(item);
     if(item.isShisha)
       vatshisha=vatshisha-item.tax;
@@ -328,5 +351,9 @@ Address get value => _value;
     _valueIndex = value;
   }
 
+  int get totalshisha => _totalshisha;
 
+  set totalshisha(int value) {
+    _totalshisha = value;
+  }
 }
