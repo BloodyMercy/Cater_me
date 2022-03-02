@@ -59,8 +59,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
     // controllersearch.text="p";
     setState(() {
       loading = false;
-     _value= address.value2Index;
+     //_value= address.value2Index;
     });
+    if(address.value2Index==1)
+      _value=address.value2Index;
 
   }
 
@@ -302,7 +304,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                   toggleable: true,
                                   // value: 'female',
                                   value: 1,
-                                  groupValue: address.value2Index,
+                                  groupValue: _value,
                                   onChanged: (value) {
                                    // print(value);
                                     setState(() {
@@ -409,7 +411,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           borderSide: const BorderSide(
                                             color: Color(0xFF3F5521),
                                           ))),
-                                  controller: address.eventnamecontroller,
+                                  controller: address.phone,
 
                                   // autovalidateMode: AutovalidateMode.onUserInteraction,
                                   keyboardType: TextInputType.phone),

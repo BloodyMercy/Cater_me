@@ -32,11 +32,11 @@ class AddressService{
       respons.fields.addAll({
   //    'Id': prefs.getString("token").toString(),
       'Title': addresstitle,
-      'CityId': city,
+      'City': city,
       'Street': street,
       'BuildingName': building,
       'FloorNumber': floor,
-      'CountryId': country,
+      'Country': country,
         'longitude':longitude,
         'latitude':latitude,
       });

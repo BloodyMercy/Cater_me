@@ -36,8 +36,8 @@ bool loading=false;
   }
 
   void getCurrentLocation() async{
-
-    await Geolocator.getCurrentPosition().then((currLocation) async {
+   // await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high).then((currLocation) async {
       setState(() {
         currentLatLng =
         new LatLng(currLocation.latitude, currLocation.longitude);
@@ -56,19 +56,24 @@ bool loading=false;
         ),
       ));
 
-      getcityname(currLocation);
+  await    getcityname(currLocation.latitude,currLocation.longitude);
     });
   }
-  getcityname(Position potion) async {
+ Future<void> getcityname(double a,double b) async {
+    final address=Provider.of<AdressProvider>(context,listen: false);
 
-    List<Placemark> placemarks = await placemarkFromCoordinates(potion.longitude, potion.latitude);
-   print( placemarks[0].name);
-   print( placemarks[0].street);
-   print( placemarks[0].administrativeArea);
-   print( placemarks[0].country);
-   print( placemarks[0].locality);
-   print( placemarks[0].thoroughfare);
-   print( placemarks[0].isoCountryCode);
+    List<Placemark> placemarks = await placemarkFromCoordinates(a, b);
+print(placemarks[0]);
+ address.countrycontrollerstring.text=placemarks[0].country;
+ address.countrycontroller.text=placemarks[0].country;
+ address.citycontrollerstring.text=placemarks[0].locality;
+ address.citycontroller.text=placemarks[0].locality;
+ address.streetcontroller.text=placemarks[0].street;
+
+
+    setState(() {
+
+    });
 
   }
   String cityselected="";
@@ -172,16 +177,17 @@ bool loading=false;
 
         onPressed: ()async{
           _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
-
+          getcityname(double.parse(address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()) );
           //address.loading=true;
          // address.notifyListeners();
+
 
 
           address.createOrUpdate=0;
           address.addresstitlecontroller.clear();
           // address.countrycontroller.clear();
-          address.citycontrollerstring.clear();
-          address.streetcontroller.clear();
+        //  address.citycontrollerstring.clear();
+         // address.streetcontroller.clear();
           address.buildingcontroller.clear();
           address.floornumbercontroller.clear();
           showModalBottomSheet(
@@ -299,9 +305,13 @@ bool loading=false;
       //     ],
       //   ),
         onCameraMove: (position){
-          address.latitudenumbercontroller.text=position.target.latitude.toString();
-          address.longtituenumbercontroller.text=position.target.longitude.toString();
-          // setState(() {
+          if(position!=null) {
+            address.latitudenumbercontroller.text =
+                position.target.latitude.toString();
+            address.longtituenumbercontroller.text =
+                position.target.longitude.toString();
+
+          }  // setState(() {
           //   markers.add(Marker(markerId: markerId,position: position.target));
           // });
         },

@@ -17,19 +17,19 @@ class AddressesTextField extends StatefulWidget {
 }
 
 class _AddressesTextFields extends State<AddressesTextField> {
-  final contactNameController = TextEditingController();
-  final emailController = TextEditingController();
-  final phoneNumberController = TextEditingController();
-  final countryController = TextEditingController();
-  final cityController = TextEditingController();
-  final addressTitleController = TextEditingController();
+  // final contactNameController = TextEditingController();
+  // final emailController = TextEditingController();
+  // final phoneNumberController = TextEditingController();
+  // final countryController = TextEditingController();
+  // final cityController = TextEditingController();
+  // final addressTitleController = TextEditingController();
 
   bool loadingfinal = false;
   bool loading = true;
 
   getdata() async {
     final adress = Provider.of<AdressProvider>(context, listen: false);
-    await adress.getallcountry();
+    //await adress.getallcountry();
     setState(() {
       loading = false;
     });
@@ -75,6 +75,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
+
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
@@ -142,30 +143,134 @@ class _AddressesTextFields extends State<AddressesTextField> {
 
                       SizedBox(height: _mediaQueryText * 0.03),
 
-                      adress.listcountry.length != 0
-                          ? CustomCupertinoPicker(
-                              label: 'Country',
-                              items: adress.listcountryname,
-                              country: adress.listcountry,
-                              selectedValue: 0,
-                              inputType: TextInputType.number,
-                              controller: adress.countrycontrollerstring,
-                            )
-                          : Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Title can't be empty";
+                            } else
+                              return null;
+                          },
+                          // keyboardType: TextInputType.number,
+                          controller: adress.countrycontroller,
+                          enabled: false,
+                          // focusNode: focusNode,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  left:
+                                  MediaQuery.of(context).size.width * 0.04),
+                              alignLabelWithHint: true,
+                              labelStyle: TextStyle(
+                                  fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                  //I believe the size difference here is 6.0 to account padding
+                                  color: focusNode.hasFocus
+                                      ? Color(0xFF3F5521)
+                                      : Colors.grey),
+                              labelText: 'Country',
+                              hintStyle: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                  color: redColor,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                  color: redColor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521),
+                                  ))),
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'BerlinSansFB'),
+                        ),
+                      ),
                       SizedBox(height: _mediaQueryText * 0.03),
 
-                      adress.listcity.length != 0
-                          ? CustomCupertinoPicker(
-                              label: 'City',
-                              items: adress.listcityname,
-                              city: adress.listcity,
-                              selectedValue: 0,
-                              inputType: TextInputType.number,
-                              controller: adress.citycontrollerstring,
-                            )
-                          : Center(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Title can't be empty";
+                            } else
+                              return null;
+                          },
+                          enabled: false,
+                          // keyboardType: TextInputType.number,
+                          controller: adress.citycontroller,
+                          // focusNode: focusNode,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  left:
+                                  MediaQuery.of(context).size.width * 0.04),
+                              alignLabelWithHint: true,
+                              labelStyle: TextStyle(
+                                  fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                  //I believe the size difference here is 6.0 to account padding
+                                  color: focusNode.hasFocus
+                                      ? Color(0xFF3F5521)
+                                      : Colors.grey),
+                              labelText: 'City',
+                              hintStyle: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BerlinSansFB'),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                  color: redColor,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                  color: redColor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3F5521),
+                                  ))),
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'BerlinSansFB'),
+                        ),
+                      ),
                       SizedBox(height: _mediaQueryText * 0.03),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -192,6 +297,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText: "Street",
+                              enabled: false,
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,

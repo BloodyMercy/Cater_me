@@ -99,6 +99,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+
             Container(
               // color: Colors.white,
               height: 400.0, // Change as per your requirement
@@ -162,6 +163,12 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     return Scaffold(
       body: SafeArea(
           child: CustomScrollView(slivers: <Widget>[
+            SliverToBoxAdapter(
+                child: Center(
+                    child: Text("VAT  311085799400003",
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black)))),
             details.itemOrders.length == 0
                 ? SliverToBoxAdapter(
                     child: Center(

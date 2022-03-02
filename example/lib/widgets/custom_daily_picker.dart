@@ -20,7 +20,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
   // DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
   DateFormat _minuteFormat = DateFormat('m');
-  DateFormat _hourFormat = DateFormat('Hm');
+  DateFormat _hourFormat = DateFormat('h:mm a');
 
   DateTime _chosenDate=DateTime.now();
 

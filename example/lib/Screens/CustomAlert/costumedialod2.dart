@@ -151,7 +151,7 @@ class CustomDialog2 extends StatelessWidget {
                   Container(width: width/50,),
                   Expanded(
                       child:  Text(
-                        "Don't donate the rest of food ",
+                        "Don't donate the rest of food",
                         style: TextStyle(
                           color: !order.check4? Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),

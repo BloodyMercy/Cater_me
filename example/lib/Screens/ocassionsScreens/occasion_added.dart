@@ -7,11 +7,16 @@ import '../../Providers/address.dart';
 import '../../Providers/order_provider.dart';
 import '../Order.dart';
 
-class OccasionAdded extends StatelessWidget {
+class OccasionAdded extends StatefulWidget {
   String text1;
   String text2;
    OccasionAdded(this.text1,this.text2) ;
 
+  @override
+  State<OccasionAdded> createState() => _OccasionAddedState();
+}
+
+class _OccasionAddedState extends State<OccasionAdded> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -64,12 +69,7 @@ class OccasionAdded extends StatelessWidget {
               final address=Provider.of<AdressProvider>(context,listen: false);
               final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: false);
                   address.clearAddressController();
-              address
-                  .eventnamecontroller
-                  .text=text1;
-              address
-                  .evendatecontroller
-                  .text=text2;
+
 
 
               address.value2Index=-1;
@@ -83,6 +83,15 @@ class OccasionAdded extends StatelessWidget {
               orderCaterprovider.itemOrders=[];
             //  credit.value=-1;
               orderCaterprovider.serviceId=0;
+              address
+                  .eventnamecontroller
+                  .text=widget.text1;
+              address
+                  .evendatecontroller
+                  .text=widget.text2;
+              setState(() {
+
+              });
             //  orderCaterprovider.valueIndex=-1;
                   Navigator.of(context).push(
                 MaterialPageRoute(
@@ -107,6 +116,7 @@ class OccasionAdded extends StatelessWidget {
             ),
           ),
           ElevatedButton(
+
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -115,12 +125,13 @@ class OccasionAdded extends StatelessWidget {
               style: Theme.of(context).textTheme.headline1,
             ),
             style: ElevatedButton.styleFrom(
+
               elevation: 5,
               padding: EdgeInsets.symmetric(
                 horizontal: (mediaQuery.size.width * 0.3),
                 vertical: (mediaQuery.size.height * 0.02),
               ),
-              primary: Theme.of(context).primaryColor,
+              primary: Colors.black12,
               shape: new RoundedRectangleBorder(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
