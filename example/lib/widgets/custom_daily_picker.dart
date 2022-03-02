@@ -64,6 +64,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
     return Container(
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
+
           readOnly: true,
           controller: widget.controller,
           focusNode: focusNode,
