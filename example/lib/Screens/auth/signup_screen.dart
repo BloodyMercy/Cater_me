@@ -411,6 +411,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ]),
                               keyboardType: TextInputType.phone,
                             ),
+                            SizedBox(height: screenHeight * 0.015),
                             CustomCupertinoPicker(
 
                               label: "Gender",
@@ -420,6 +421,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               inputType: TextInputType.text,
                               controller: authProvider.genderselected,
                             ),
+                            SizedBox(height: screenHeight * 0.015),
                       // InputDecorator(
                       //   decoration: const InputDecoration(border: OutlineInputBorder()),
                       //   child: DropdownButtonHideUnderline(
@@ -478,7 +480,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
 
                             ),
-                            SizedBox(height: screenHeight * 0.015),
+                            // SizedBox(height: screenHeight * 0.015),
                             // SizedBox(height: _mediaQuery * 0.03),
                             Padding(
                               padding: const EdgeInsets.only(left: 20),
@@ -529,9 +531,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: screenHeight * 0.01,
-                    ),
+                    // SizedBox(
+                    //   height: screenHeight * 0.01,
+                    // ),
                     !_loading
                         ? ElevatedButton(
                             onPressed: () async {

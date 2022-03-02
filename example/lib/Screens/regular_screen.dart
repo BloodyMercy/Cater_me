@@ -365,7 +365,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                   keyboardType: TextInputType.text),
                             )
                                 : Container(),
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
                             address.form
                                 ?       Padding(
                               padding: const EdgeInsets.all(10.0),
