@@ -275,7 +275,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
  removeItems(ItemOrders item){
     if(item.ispack)
       totalpackage=totalpackage-1;
-    else {
+   if(item.isShisha) {
       totalssha = totalssha- item.quantity;
     }
 
