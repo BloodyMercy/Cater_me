@@ -730,7 +730,7 @@ class _OrderState extends State<Order> {
                                                       .showSnackBar(
                                                     const SnackBar(
                                                       content: Text(
-                                                          "minmun quantity for shisha is 5"),
+                                                          "minimun quantity for shisha is 5"),
                                                     ),
                                                   );
 
