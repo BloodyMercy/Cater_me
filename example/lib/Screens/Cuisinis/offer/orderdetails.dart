@@ -217,7 +217,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 if(widget.food.isShisha
                                 ) {
                                   orderprovider.totalssha =
-                                      orderprovider.totalssha + a.quantity;
+                                      orderprovider.totalssha + count;
                                   a.ispack = false;
                                 }
                                 a.id = widget.food.id;
