@@ -54,9 +54,9 @@ class NotificationServices {
 
     final IOSInitializationSettings iOSInitializationSettings =
         IOSInitializationSettings(
-      defaultPresentAlert: true,
-      defaultPresentBadge: true,
-      defaultPresentSound: true,
+      defaultPresentAlert: false,
+      defaultPresentBadge: false,
+      defaultPresentSound: false,
     );
 
     final InitializationSettings initializationSettings =
