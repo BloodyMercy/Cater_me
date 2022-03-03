@@ -268,7 +268,9 @@ class _NavigationBarState extends State<Navigationbar> {
                 orderCaterprovider.totalssha=0;
                 orderCaterprovider.totalpackage=0;
                 credit.value=-1;
-                orderCaterprovider.serviceId=0;
+                orderCaterprovider.serviceId=1;
+                address.form=false;
+                address.value2Index=1;
               // orderCaterprovider.
 address.phone.text="";
 address.name.text="";
