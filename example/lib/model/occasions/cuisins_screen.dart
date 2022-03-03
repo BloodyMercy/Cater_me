@@ -1,10 +1,5 @@
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/cuisines.dart';
-
-import 'package:CaterMe/model/cuisins.dart';
-
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

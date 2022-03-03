@@ -1,6 +1,5 @@
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';

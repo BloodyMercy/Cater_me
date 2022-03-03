@@ -1,6 +1,5 @@
 import 'package:CaterMe/Driver/auth/driver_resetpassword.dart';
 import 'package:CaterMe/Driver/screens/DriverHome.dart';
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

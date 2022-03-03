@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
-import 'newlogin/screens/loginScreen.dart';
 
 class ConfirmEmailSent extends StatelessWidget {
   const ConfirmEmailSent({Key key}) : super(key: key);

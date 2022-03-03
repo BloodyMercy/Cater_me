@@ -1,4 +1,3 @@
-import 'package:CaterMe/Providers/cuisines.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';

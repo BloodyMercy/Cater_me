@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-
-
 import 'package:CaterMe/Driver/model/RestCallAPi.dart';
 import 'package:CaterMe/Driver/services/apilink.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

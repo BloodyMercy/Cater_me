@@ -1,7 +1,5 @@
 
-import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/food.dart';
-
 import 'package:flutter/material.dart';
 
 import 'food_details_screen.dart';

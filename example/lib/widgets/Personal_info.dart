@@ -3,11 +3,9 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../customBirthdayPicker.dart';
-import '../custom_date_picker_form_field.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key key}) : super(key: key);

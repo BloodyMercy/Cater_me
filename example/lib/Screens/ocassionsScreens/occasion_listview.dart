@@ -1,7 +1,6 @@
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/colors/colors.dart';
-import 'package:CaterMe/model/occasions/occasiontype.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

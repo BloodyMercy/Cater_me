@@ -147,6 +147,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: CuisineProvider()),
         ChangeNotifierProvider.value(value: OccasionProvider()),
         ChangeNotifierProvider.value(value: OrderProvider()),
+
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
       ],

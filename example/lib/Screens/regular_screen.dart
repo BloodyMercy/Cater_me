@@ -1,12 +1,9 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
-import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
-import 'package:CaterMe/Screens/widgets/costumTextFieldIcon.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
-import 'package:CaterMe/widgets/CustomTextFieldPhone.dart';
 import 'package:CaterMe/widgets/custom_daily_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

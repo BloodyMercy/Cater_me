@@ -13,10 +13,7 @@ import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../../customBirthdayPicker.dart';
-import '../../custom_date_picker_form_field.dart';
 import '../occasion/theme/colors/light_colors.dart';
-import 'newlogin/screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key key}) : super(key: key);
@@ -137,6 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   void showPicker(ctx) {
+    final address = Provider.of<AdressProvider>(context, listen: false);
     DatePicker.showDatePicker(
 
       ctx,
@@ -161,6 +159,10 @@ class _SignupScreenState extends State<SignupScreen> {
             _chosenDay = _dayFormat.format(dateTime);
             _chosenMonth = _monthFormat.format(dateTime);
             _chosenYear = _yearFormat.format(dateTime);
+            address.evendatecontroller.text = _dateFormat.format(dateTime);
+
+
+
 
           },
         );

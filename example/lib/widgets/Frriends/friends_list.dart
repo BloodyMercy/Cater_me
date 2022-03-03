@@ -3,7 +3,6 @@ import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

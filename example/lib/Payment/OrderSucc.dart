@@ -1,17 +1,15 @@
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
+import 'dart:io' show Platform;
+
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
-import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/appointment/donation.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'dart:io' show Platform;
 
 import '../Screens/CustomAlert/costumedialod2.dart';
 

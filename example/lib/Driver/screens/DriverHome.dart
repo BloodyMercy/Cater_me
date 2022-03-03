@@ -1,10 +1,7 @@
 import 'package:CaterMe/Driver/auth/driver_login.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
-import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/Screens/orders/order_details.dart';
-import 'package:CaterMe/Screens/orders/order_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

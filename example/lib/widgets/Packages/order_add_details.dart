@@ -1,11 +1,9 @@
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 
 class OrderAdsDetail extends StatefulWidget {

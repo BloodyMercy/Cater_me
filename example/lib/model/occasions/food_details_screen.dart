@@ -1,9 +1,7 @@
 
-import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/food.dart';
-
-import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   Food food;

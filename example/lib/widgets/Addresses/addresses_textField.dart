@@ -1,7 +1,4 @@
 import 'package:CaterMe/Providers/address.dart';
-import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
-import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
-import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

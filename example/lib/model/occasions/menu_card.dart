@@ -1,8 +1,6 @@
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
-
-import 'package:flutter/material.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 
 import '../menu.dart';
 import 'cuisins_list.dart';
