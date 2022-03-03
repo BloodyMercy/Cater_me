@@ -535,7 +535,7 @@ class _OrderState extends State<Order> {
 
                                                 }
                                                 else if(orderProvider.totalssha
-                                                ==0){
+                                                <5 && orderProvider.vatshisha!=0.0){
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(

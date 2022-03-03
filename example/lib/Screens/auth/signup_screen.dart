@@ -7,6 +7,7 @@ import 'package:CaterMe/Screens/greeting.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../../customBirthdayPicker.dart';
 import '../../custom_date_picker_form_field.dart';
+import '../occasion/theme/colors/light_colors.dart';
 import 'newlogin/screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -41,7 +43,16 @@ class _SignupScreenState extends State<SignupScreen> {
       print('Failed : $e');
     }
   }
+  FocusNode _focusNode = FocusNode();
+  DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
+  DateFormat _monthFormat = DateFormat('MMMM');
+  DateFormat _yearFormat = DateFormat('yyyy');
+  DateFormat _dayFormat = DateFormat('dd');
 
+  DateTime _chosenDate = DateTime.now();
+  String _chosenMonth = "";
+  String _chosenYear = "";
+  String _chosenDay = "";
   String password = '',
       mobile = '',
       confirmPassword = '',
@@ -125,7 +136,37 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _loading = false;
 
   @override
+  void showPicker(ctx) {
+    DatePicker.showDatePicker(
 
+      ctx,
+      onMonthChangeStartWithFirstDate: true,
+      pickerTheme: DateTimePickerTheme(
+        showTitle: false,
+        backgroundColor: LightColors.kLightYellow2,
+        itemTextStyle: TextStyle(
+          color: Color(0xFF3F5521),
+        ),
+      ),
+      initialDateTime: _chosenDate,
+      maxDateTime: DateTime.now(),
+      minDateTime: DateTime(1950),
+      dateFormat: 'MMMM-yyyy-dd',
+      onClose: () {},
+      onCancel: () => print('onCancel'),
+      onChange: (dateTime, List<int> index) {
+        setState(
+              () {
+            _chosenDate = dateTime;
+            _chosenDay = _dayFormat.format(dateTime);
+            _chosenMonth = _monthFormat.format(dateTime);
+            _chosenYear = _yearFormat.format(dateTime);
+
+          },
+        );
+      },
+    );
+  }
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
     // final user = Provider.of<UserProvider>(context, listen: true);
@@ -134,12 +175,17 @@ class _SignupScreenState extends State<SignupScreen> {
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
+
+
       key: _scaffKey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              IconButton(onPressed: (){
+                Navigator.pop(context);
+              }, icon: Icon(Icons.chevron_left ,color: Colors.black,size: 30,)),
               GestureDetector(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
@@ -422,56 +468,62 @@ class _SignupScreenState extends State<SignupScreen> {
                               controller: authProvider.genderselected,
                             ),
                             SizedBox(height: screenHeight * 0.015),
-                      // InputDecorator(
-                      //   decoration: const InputDecoration(border: OutlineInputBorder()),
-                      //   child: DropdownButtonHideUnderline(
-                      //     child: DropdownButton(
-                      //
-                      //         underline: const SizedBox(),
-                      //         focusColor: Colors.white,
-                      //         hint: Padding(
-                      //           padding: const EdgeInsets.only(left: 15.0),
-                      //           child: Text(
-                      //             "Gender",
-                      //             style:
-                      //             Theme.of(context).textTheme.headline4,
-                      //           ),
-                      //         ),
-                      //         dropdownColor: Colors.white,
-                      //         iconSize: 36,
-                      //         isExpanded: true,
-                      //         style: const TextStyle(
-                      //             color: Colors.black54, fontSize: 15),
-                      //         value: genderChoose,
-                      //         onChanged: (newValue) {
-                      //           authProvider.gender.text = newValue as String;
-                      //           setState(() {
-                      //             genderChoose = newValue as String;
-                      //                 (value) => value == null
-                      //                 ? 'Please fill in your gender'
-                      //                 : null;
-                      //           });
-                      //         },
-                      //         items: listGender.map((valueItem) {
-                      //           return DropdownMenuItem(
-                      //             value: valueItem['id'].toString(),
-                      //             child: Padding(
-                      //               padding: const EdgeInsets.all(15.0),
-                      //               child:
-                      //               Text(valueItem['gender'].toString()),
-                      //             ),
-                      //           );
-                      //         }).toList(),
-                      //       ))),
+
                             Container(
-                              height: MediaQuery.of(context).size.height / 8,
-                              child: CustomBirthdayPicker(
+                              height: MediaQuery.of(context).size.height/11,
+                              // margin: EdgeInsets.only(bottom: 5),
+                              padding: EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                  color: Colors.white, //white
+                                  borderRadius: BorderRadius.all(Radius.circular(5))),
+                              child: TextFormField(
 
-                                label: "Birthdate",
 
+
+                                decoration: InputDecoration(
+
+
+                                    suffixIcon:Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Colors.black,
+                                      size: 24,
+                                    ) ,
+
+                                    alignLabelWithHint: true,
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'BerlinSansFB',
+                                        fontSize: _focusNode.hasFocus ? 20 : 18.0,//I believe the size difference here is 6.0 to account padding
+                                        color:
+                                        _focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                                    labelText: "birthdate",
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      borderSide: const BorderSide(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Color(0xFF3F5521),
+                                        ))),
+                                style: TextStyle(color: Colors.black),
+
+                                focusNode: _focusNode,
                                 controller: address.evendatecontroller,
+                                onTap: () {
+                                  _focusNode.unfocus();
+                                  showPicker(context);
+                                },
+                                readOnly: true,
+
+
                               ),
-                            ),
+                            )
+                        ,
                             SizedBox(height: screenHeight * 0.015),
                             Container(
                               decoration: BoxDecoration(

@@ -230,6 +230,8 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.price=widget.food.price;
                                 a.totalprice = count * widget.food.price;
                                 a.tax=widget.food.tax;
+                                a.min=widget.food.min;
+                                a.max=widget.food.max;
 
 
                                 orderprovider.addItems(a,widget.food.isShisha);

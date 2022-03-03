@@ -22,7 +22,8 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
   DateFormat _monthFormat = DateFormat('MMMM');
   DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
-
+  DateFormat alpha = DateFormat.yMMMMd('en_US');
+TextEditingController lol =TextEditingController();
   DateTime _chosenDate = DateTime.now();
   String _chosenMonth = "";
   String _chosenYear = "";
@@ -66,6 +67,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
             _chosenMonth = _monthFormat.format(dateTime);
             _chosenYear = _yearFormat.format(dateTime);
             widget.controller.text = _dateFormat.format(dateTime);
+            lol.text=alpha.format(dateTime);
           },
         );
       },
@@ -80,7 +82,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
-          controller: widget.controller,
+          controller: lol,
           focusNode: focusNode,
           onTap: () {
             showPicker(context);

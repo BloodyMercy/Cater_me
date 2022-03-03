@@ -289,7 +289,11 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
     notifyListeners();
   }
 modifyItems(int count,int index){
-
+  // if(  _itemOrders[index].ispack)
+  //   totalpackage=totalpackage-1;
+  // if(  _itemOrders[index].isShisha) {
+  //   totalssha = totalssha- item.quantity;
+  // }
   _itemOrders[index].quantity=count;
   totale= totale-  _itemOrders[index].totalprice;
   _itemOrders[index].totalprice=count*_itemOrders[index].price;

@@ -146,13 +146,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return "Title can't be empty";
-                            } else
-                              return null;
-                          },
+
                           // keyboardType: TextInputType.number,
                           controller: adress.countrycontroller,
                           enabled: false,
@@ -211,13 +205,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return "Title can't be empty";
-                            } else
-                              return null;
-                          },
+
                           enabled: false,
                           // keyboardType: TextInputType.number,
                           controller: adress.citycontroller,
@@ -491,29 +479,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   setState(() {
                                     loadingfinal = true;
                                   });
-                                  if (adress.countrycontroller.text.isEmpty ||
-                                          adress.citycontroller.text.isEmpty
-                                      // adress.addresstitlecontroller.text.isEmpty ||
-                                      // adress.streetcontroller.text.isEmpty ||
-                                      // adress.buildingcontroller.text.isEmpty ||
-                                      // adress.floornumbercontroller.text.isEmpty
-                                      ) {
-                                    setState(() {
-                                      loadingfinal = false;
-                                    });
 
-                                    ScaffoldMessenger.of(widget.main)
-                                        .showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          "Add Address Failed!",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                    );
-
-                                    return;
-                                  } else {
                                     adress.loading = true;
                                     if (adress.createOrUpdate == 0) {
                                       await adress.createAddress();
@@ -561,7 +527,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         // Navigator.of(context).pop();
                                       }
                                     }
-                                  }
+
                                 }
 
                                 // Navigator.of(context).pop();
