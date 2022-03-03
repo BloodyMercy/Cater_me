@@ -1,5 +1,6 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,19 +21,29 @@ class _OccasionAddedState extends State<OccasionAdded> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    return Container(
-      color:LightColors.kLightYellow,
-      child: Column(
+    return Scaffold(
+      body:
+
+       Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
-            height: mediaQuery.size.height * 0.02,
+
+          Padding(
+            padding: const EdgeInsets.only(top: 27,left: 15),
+            child: Align(alignment: Alignment.topLeft,
+                child: IconButton(onPressed:(){
+                  Navigator.of(context).pop(); }
+                 , icon: Icon(Icons.close),color:colorCustom,)),
           ),
+          // SizedBox(
+          //   height: mediaQuery.size.height * 0.02,
+          // ),
           Column(
             children: [
+
               Center(
                   child: Image.asset('images/occasionadded.png',
-                      height: 350, width: 250)),
+                      fit: BoxFit.contain,)),
               // SizedBox(
               //   height: mediaQuery.size.height * 0.08,
               // ),
@@ -100,7 +111,7 @@ class _OccasionAddedState extends State<OccasionAdded> {
               );
             },
             child: Text(
-              "place order",
+              "Event Planning",
               style: Theme.of(context).textTheme.headline1,
             ),
             style: ElevatedButton.styleFrom(
@@ -115,28 +126,28 @@ class _OccasionAddedState extends State<OccasionAdded> {
               ),
             ),
           ),
-          ElevatedButton(
-
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text(
-              "CLOSE",
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            style: ElevatedButton.styleFrom(
-
-              elevation: 5,
-              padding: EdgeInsets.symmetric(
-                horizontal: (mediaQuery.size.width * 0.3),
-                vertical: (mediaQuery.size.height * 0.02),
-              ),
-              primary: Colors.black12,
-              shape: new RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-              ),
-            ),
-          ),
+          // ElevatedButton(
+          //
+          //   onPressed: () {
+          //     Navigator.of(context).pop();
+          //   },
+          //   child: Text(
+          //     "CLOSE",
+          //     style: Theme.of(context).textTheme.headline1,
+          //   ),
+          //   style: ElevatedButton.styleFrom(
+          //
+          //     elevation: 5,
+          //     padding: EdgeInsets.symmetric(
+          //       horizontal: (mediaQuery.size.width * 0.3),
+          //       vertical: (mediaQuery.size.height * 0.02),
+          //     ),
+          //     primary: Colors.black12,
+          //     shape: new RoundedRectangleBorder(
+          //       borderRadius: const BorderRadius.all(Radius.circular(10)),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
