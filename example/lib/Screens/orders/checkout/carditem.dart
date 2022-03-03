@@ -124,10 +124,10 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                                     onPressed: () async{
                                       setState(() {
                                        // if(widget.cart.status!="Package"){
-                                          if(_itemCount>0){
+                                          if(_itemCount>widget.cart.min){
 
                                             setState(() {
-                                              _itemCount--;
+                                              _itemCount=_itemCount-widget.cart.increment;
                                               widget.cart.quantity=_itemCount;
                                               //_cartP.modifyquantity(_itemCount, widget.index);
                                             } );
@@ -186,20 +186,25 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                                   size: 18,
                                 ),
                                 onPressed: (){
-                                 // setState(() {
-                                   // if(widget.cart.status!="Package") {
-                                     // if(_itemCount <int.parse(widget.cart.)){
-
-                                   setState(() {
-    _itemCount++;
+    // setState(() {
+    // if(widget.cart.status!="Package") {
+    // if(_itemCount <int.parse(widget.cart.)){
+    if(_itemCount<widget.cart
+        .max){
+    setState(() {
+    _itemCount=_itemCount+widget.cart.increment;
     widget.cart.quantity=_itemCount;
     //_cartP.modifyquantity(_itemCount, widget.index);
     } );
 
+
     _cartP.modifyItems(_itemCount, widget.index);
+    }
                                         //_cartP.modifyquantity(_itemCount, widget.index);
                                      // }
                                   }
+
+
 
                             ),
                           )

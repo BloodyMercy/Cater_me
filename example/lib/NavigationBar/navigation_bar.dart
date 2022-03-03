@@ -23,6 +23,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Providers/orderById_provider.dart';
 import '../SplachScreen.dart';
 
 
@@ -231,7 +232,7 @@ class _NavigationBarState extends State<Navigationbar> {
     final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
     final address=Provider.of<AdressProvider>(context,listen: true);
     final credit=Provider.of<CreditCardsProvider>(context,listen: true);
-
+    final order = Provider.of<OrderByIdProvider>(context, listen: true);
     return
       Scaffold(
 
@@ -264,9 +265,17 @@ class _NavigationBarState extends State<Navigationbar> {
                 orderCaterprovider.choosebillFriend=[];
                 orderCaterprovider.choosebillFriend=[];
                 orderCaterprovider.itemOrders=[];
+                orderCaterprovider.totalssha=0;
+                orderCaterprovider.totalpackage=0;
                 credit.value=-1;
                 orderCaterprovider.serviceId=0;
-
+              // orderCaterprovider.
+address.phone.text="";
+address.name.text="";
+order.check1=false;
+order.check2=false;
+order.check3=false;
+order.check4=false;
                // orderCaterprovider.listFriend=[];
                 address.value2Index=-1;
                 orderCaterprovider.valueIndex=-1;

@@ -214,6 +214,12 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                             onPressed: () {
                               if (count == 0) {
                               } else {
+                                if(widget.food.isShisha
+                                ) {
+                                  orderprovider.totalssha =
+                                      orderprovider.totalssha + a.quantity;
+                                  a.ispack = false;
+                                }
                                 a.id = widget.food.id;
                                 a.image = widget.food.image;
                                 a.description = widget.food.description;
@@ -224,6 +230,8 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.price=widget.food.price;
                                 a.totalprice = count * widget.food.price;
                                 a.tax=widget.food.tax;
+
+
                                 orderprovider.addItems(a,widget.food.isShisha);
                                 Navigator.of(context).pop(false);
                               }

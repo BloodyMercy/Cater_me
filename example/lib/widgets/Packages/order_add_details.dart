@@ -197,6 +197,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                         setState(() {
                                           if (count != 0) {
                                             if(count>widget.food.min) {
+                                             // orderprovider.totalpackage=orderprovider.totalpackage-1;
                                               setState(() {
                                                count= count - widget.food.increment;
                                               });
@@ -219,6 +220,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                   IconButton(
                                       onPressed: () {
                                         if(count<widget.food.max) {
+                                        //  orderprovider.totalpackage=orderprovider.totalpackage+1;
                                           setState(() {
                                            count= count + widget.food.increment;
                                           });
@@ -238,6 +240,8 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                   onPressed: () {
                                     if (count == 0) {
                                     } else {
+                                      orderprovider.totalpackage=orderprovider.totalpackage+1;
+                                      a.ispack=true;
                                       a.id = widget.food.id;
                                       a.image = widget.food.image;
                                       a.description = widget.food.description;
@@ -249,6 +253,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                       a.price=widget.food.price;
                                       a.totalprice = count * widget.food.price;
                                       a.tax=widget.food.tax;
+
                                       orderprovider.addItems(a,widget.food.isShisha);
                                       Navigator.of(context).pop(false);
                                     }

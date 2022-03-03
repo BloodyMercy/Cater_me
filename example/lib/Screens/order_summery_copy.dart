@@ -207,7 +207,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   ),
                                 ),
                                 onDismissed: (direction) {
+
                                   details.removeItems(details.itemOrders[i]);
+
                                 },
                                 child: CartItemCard(details.itemOrders[i], i),
                               ),

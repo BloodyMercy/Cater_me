@@ -11,6 +11,7 @@ int id;
   bool isfavorite = false;
   List<Details> itemDetails = [];
 int min=1,max=1000,increment=5;
+
 bool isShisha=false;
   Package(this.id, this.image, this.title, this.description, this.price,
       this.isfavorite, this.itemDetails);
