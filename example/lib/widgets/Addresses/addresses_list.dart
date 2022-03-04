@@ -141,13 +141,18 @@ class _AddressesListState extends State<AddressesList> {
                             child: Row(
                               children: [
                                 Radio(
+
                                   fillColor: MaterialStateColor.resolveWith(
                                       (states) => colorCustom),
                                   toggleable: true,
                                   groupValue: orderprovider.valueIndex,
                                   value: i,
-                                  onChanged: (value) {
 
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _value = i;
+                                      orderprovider.valueIndex = i;
+                                    });
                                   },
                                 ),
                                 Expanded(
