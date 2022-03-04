@@ -6,11 +6,13 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/appointment/donation.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:CaterMe/widgets/homepage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../NavigationBar/navigation_bar.dart';
 import '../Screens/CustomAlert/costumedialod2.dart';
 
 class AppointmentSuccess extends StatefulWidget {
@@ -261,13 +263,13 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                               Navigator.pop(context);
                               if(order.check4){
                                 Navigator.of(context).pop();
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => Navigationbar(0),), (route) => false);
+
+
                               }
                               else {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => DonationAdded(),
-                                    ),
-                                        (route) => false);
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => DonationAdded(),), (route) => false);
+
                               }
 
 

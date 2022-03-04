@@ -28,7 +28,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
     final address = Provider.of<AdressProvider>(context, listen: false);
     await pack.getallpacakgesorder(orderprovider.serviceId,
         int.parse(address.typeofeventcontroller.text.toString()),
-        int.parse(address.numberofguestcontroller.text.toString(),
+        int.parse(address.numberofguestcontroller.text.toString()
         ));
     setState(() {
       loading = true;

@@ -131,6 +131,7 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                                               widget.cart.quantity=_itemCount;
                                               //_cartP.modifyquantity(_itemCount, widget.index);
                                             } );
+                                           _cartP.totalssha=_cartP.totalssha-widget.cart.increment;
                                             _cartP.itemOrders[widget.index]=widget.cart;
                                             _cartP.modifyItemsmoins(_itemCount, widget.index);
 
@@ -189,14 +190,15 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
     // setState(() {
     // if(widget.cart.status!="Package") {
     // if(_itemCount <int.parse(widget.cart.)){
-    if(_itemCount<widget.cart
-        .max){
+    if(_itemCount<widget.cart.max){
     setState(() {
     _itemCount=_itemCount+widget.cart.increment;
     widget.cart.quantity=_itemCount;
+
     //_cartP.modifyquantity(_itemCount, widget.index);
     } );
 
+    _cartP.totalssha=_cartP.totalssha+widget.cart.increment;
 
     _cartP.modifyItems(_itemCount, widget.index);
     }

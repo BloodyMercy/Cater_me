@@ -529,7 +529,7 @@ class _OrderState extends State<Order> {
                                                       .showSnackBar(
                                                     const SnackBar(
                                                       content: Text(
-                                                          "no package to order"),
+                                                          "please choose a package to order"),
                                                     ),
                                                   );
 
@@ -540,7 +540,7 @@ class _OrderState extends State<Order> {
                                                       .showSnackBar(
                                                     const SnackBar(
                                                       content: Text(
-                                                          "no shisha to order"),
+                                                          "you can't order less then 5 shisha"),
                                                     ),
                                                   );
                                                 }

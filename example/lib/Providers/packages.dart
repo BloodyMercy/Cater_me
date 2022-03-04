@@ -220,11 +220,11 @@ Future<void>  getonid(int id)async {
   notifyListeners();
 }
 
-Future<void>  getonidorder(int id,int idservice,bool a)async {
+Future<void>  getonidorder(int id,int idservice,int idnbguest,bool a)async {
     print(id);
   loading = false;
   // notifyListeners();
-  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,a);
+  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,idnbguest,a);
   loading = true;
   //         Cuisines.fromJson(_alldata['cuisine']);
   // _addonsall = List<Addonall>.from(

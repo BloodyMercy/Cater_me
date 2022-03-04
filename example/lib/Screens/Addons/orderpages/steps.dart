@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
@@ -35,10 +36,11 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
 
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
+    final address = Provider.of<AdressProvider>(context, listen: false);
     // await package.getcuisinsbyid(widget.id);
     if (_cuisin.addonsallorder.length > 0) {
       await _cuisin.getonidorder(
-          _cuisin.addonsallorder[0].id, orderprov.serviceId, false);
+          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false);
     }
     setState(() {
       loadingitems = false;
@@ -83,7 +85,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                           selected = index;
                         });
                         await _cuisin.getonidorder(_cuisin.addonsallorder[index].id,
-                            orderprov.serviceId, false);
+                            orderprov.serviceId, 0,false);
                         setState(() {
                           loadingitems = false;
                         });

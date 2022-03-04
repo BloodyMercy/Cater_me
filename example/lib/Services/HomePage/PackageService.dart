@@ -135,7 +135,7 @@ class PackageService{
   }
 
 
-  static Future<List<Package>> getOnsbyidorder(int id,int idservice,bool a) async{
+  static Future<List<Package>> getOnsbyidorder(int id,int idservice,int idnbguest,bool a) async{
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -145,9 +145,9 @@ class PackageService{
         'Authorization': 'Bearer ${prefs.getString("token")}'   };
       var request;
       if(a)
-      request = http.Request('GET', Uri.parse(ApiLink.GetItemByCuisine+"$id/$idservice"));
+      request = http.Request('GET', Uri.parse(ApiLink.GetItemByCuisine+"$id/$idservice/$idnbguest"));
       else
-         request = http.Request('GET', Uri.parse(ApiLink.GetItemByadd+"$id/$idservice"));
+         request = http.Request('GET', Uri.parse(ApiLink.GetItemByadd+"$id/$idservice/$idnbguest"));
       request.headers.addAll(headers);
 print(ApiLink.GetItemByadd+"$id/$idservice");
       http.StreamedResponse responses = await request.send();

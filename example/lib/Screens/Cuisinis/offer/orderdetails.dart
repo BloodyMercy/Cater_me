@@ -231,6 +231,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.tax=widget.food.tax;
                                 a.min=widget.food.min;
                                 a.max=widget.food.max;
+                                a.increment=widget.food.increment;
 
 
                                 orderprovider.addItems(a,widget.food.isShisha);

@@ -4,6 +4,8 @@ import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/address.dart';
+
 class AddOnOrderScreen extends StatefulWidget {
 int idons;
   AddOnOrderScreen(this.idons);
@@ -25,7 +27,9 @@ getdata();
   getdata(){
     final package = Provider.of<PackagesProvider>(context, listen: false);
     final order = Provider.of<OrderCaterProvider>(context, listen: false);
-    package.getonidorder(widget.idons, order.serviceId,false);
+    final address = Provider.of<AdressProvider>(context, listen: false);
+    package.getonidorder(widget.idons, order.serviceId, int.parse(address.numberofguestcontroller.text.toString()
+    ),false);
   }
   @override
   Widget build(BuildContext context) {
