@@ -30,7 +30,7 @@ bool loading=false;
   Future<void> _gotoLocation(double lat,double long) async {
     final GoogleMapController controller = await _controller.future;
 
-    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(lat, long), zoom: 20,tilt: 50.0,
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(lat, long), zoom: 15,tilt: 50.0,
       bearing: 45.0,)));
   }
 
@@ -172,115 +172,69 @@ print(placemarks[0]);
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: ElevatedButton(
+      floatingActionButton: Stack(
 
-        onPressed: ()async{
-          _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
-          getcityname(double.parse(address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()) );
-          //address.loading=true;
-         // address.notifyListeners();
+        children:[
 
+          Align(
+          alignment: Alignment.bottomCenter,
+          child: ElevatedButton(
 
-
-          address.createOrUpdate=0;
-          address.addresstitlecontroller.clear();
-          // address.countrycontroller.clear();
-        //  address.citycontrollerstring.clear();
-         // address.streetcontroller.clear();
-          address.buildingcontroller.clear();
-          address.floornumbercontroller.clear();
-          showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: (_) {
-              return AddressesTextField(_addNewAddress, context);
-            });
+            onPressed: ()async{
+              _gotoLocation(double.parse( address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()));
+              getcityname(double.parse(address.latitudenumbercontroller.text.toString()),double.parse(address.longtituenumbercontroller.text.toString()) );
+              //address.loading=true;
+             // address.notifyListeners();
 
 
 
-          // if(address.createOrUpdate==0){
-          //   await address.createAddress();
-          //   address.loading=false;
-          //   if( address.addressCreated.id==0){
-          //     // _scaffoldKey.currentState.showSnackBar();
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to add address")));
-          //   }else {
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Address added")));
-          //     await  Future.delayed(Duration(seconds: 2));
-          //     Navigator.of(context).pop();
-          //   }
-          // }else{
-          //   await address.updateAddresss();
-          //   address.loading=false;
-          //   print(address.addressUpdated);
-          //   if( address.addressUpdated.id!=0){
-          //
-          //
-          //     address.getAllAddress();
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("updated done ")));
-          //     await  Future.delayed(Duration(seconds: 2));
-          //     Navigator.of(context).pop();// ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
-          //
-          //
-          //
-          //   }else{
-          //     address.getAllAddress();
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Updated failed ")));
-          //     // Navigator.of(context).pop();
-          //   }
-          // }
+              address.createOrUpdate=0;
+              address.addresstitlecontroller.clear();
+              // address.countrycontroller.clear();
+            //  address.citycontrollerstring.clear();
+             // address.streetcontroller.clear();
+              address.buildingcontroller.clear();
+              address.floornumbercontroller.clear();
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (_) {
+                  return AddressesTextField(_addNewAddress, context);
+                });
 
+            },
+            child: Text(
+              "Confirm location",
+              style: const TextStyle(
+                  fontFamily: 'Ubuntu',
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF3F5521)
+              ),
+            ),
+            style: ButtonStyle(
 
-        },
-        child: Text(
-          "Confirm location",
-          style: const TextStyle(
-              fontFamily: 'Ubuntu',
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF3F5521)
+              backgroundColor:
+              MaterialStateProperty.all(
+                Color.fromRGBO(255, 255, 255, 1.0),
+              ),
+
+              minimumSize: MaterialStateProperty.all(Size(200, 50)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  )
+              ),),
           ),
-        ),
-        style: ButtonStyle(
-
-          backgroundColor:
-          MaterialStateProperty.all(
-            Color.fromRGBO(255, 255, 255, 1.0),
-          ),
-
-          minimumSize: MaterialStateProperty.all(Size(200, 50)),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              )
-          ),),
+        ),]
       ),
       backgroundColor:  Color(0xFF3F5521),
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   centerTitle: true,
-      //   backgroundColor: Colors.transparent,
-      //   title:  Text(
-      //     "Choose Address",
-      //     style: TextStyle(
-      //         color: Colors.white, fontFamily: 'Ubuntu', fontSize: 14),
-      //   ),
-      //   leading: IconButton(
-      //     icon:  Icon(Icons.arrow_back_ios),
-      //     onPressed: () {
-      //       Navigator.of(context).pop();
-      //     },
-      //   ),
-      //
-      //
-      //   actions: [
-      //
-      //   ],
-      //
-      // ),
 
       body:                Stack(children: <Widget>[
 
+
+
         GoogleMap(
+
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
         zoomControlsEnabled: false,
@@ -326,6 +280,15 @@ print(placemarks[0]);
           alignment: Alignment.center,
           child: Icon(Icons.place,size: 30,),
         ),
+        // Align(
+        //   alignment: Alignment.bottomLeft,
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: IconButton(onPressed: (){
+        //       Navigator.pop(context);
+        //     }, icon: Icon(Icons.chevron_left, size: 50,)),
+        //   ),
+        // ),
 
     ])
     );

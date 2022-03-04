@@ -4,10 +4,12 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../chat/pages/chat_page.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class Notifications extends StatefulWidget {
@@ -100,14 +102,37 @@ class _NotificationsState extends State<Notifications> {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (builder) => OrderId(
-                                          allNotification
-                                              .notificationlist[index].orderId,
-                                          1),
-                                    ),
-                                  );
+                                  if(  allNotification
+                                      .notificationlist[index]
+                                      .description.contains("Message"))
+
+                                    {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (builder) => ChatPage(
+                                            peerId: "admin",
+                                            peerAvatar: "",
+                                            peerNickname:
+                                            "Customer Service",
+                                          )
+                                            ,
+                                        ),
+                                      );
+                                    }
+
+
+                                    else {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (builder) =>
+                                            OrderId(
+                                                allNotification
+                                                    .notificationlist[index]
+                                                    .orderId,
+                                                1),
+                                      ),
+                                    );
+                                  }
                                   allNotification.markAsRead(
                                       allNotification.notificationlist[index].id);
                                   if (!allNotification
