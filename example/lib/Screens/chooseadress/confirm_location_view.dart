@@ -255,28 +255,28 @@ print(placemarks[0]);
           ),),
       ),
       backgroundColor:  Color(0xFF3F5521),
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        title:  Text(
-          "Choose Address",
-          style: TextStyle(
-              color: Colors.white, fontFamily: 'Ubuntu', fontSize: 14),
-        ),
-        leading: IconButton(
-          icon:  Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-
-
-        actions: [
-
-        ],
-
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   centerTitle: true,
+      //   backgroundColor: Colors.transparent,
+      //   title:  Text(
+      //     "Choose Address",
+      //     style: TextStyle(
+      //         color: Colors.white, fontFamily: 'Ubuntu', fontSize: 14),
+      //   ),
+      //   leading: IconButton(
+      //     icon:  Icon(Icons.arrow_back_ios),
+      //     onPressed: () {
+      //       Navigator.of(context).pop();
+      //     },
+      //   ),
+      //
+      //
+      //   actions: [
+      //
+      //   ],
+      //
+      // ),
 
       body:                Stack(children: <Widget>[
 
@@ -326,6 +326,7 @@ print(placemarks[0]);
           alignment: Alignment.center,
           child: Icon(Icons.place,size: 30,),
         ),
+
     ])
     );
   }
