@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (2)),
+      duration: Duration(seconds: (1)),
       vsync: this,
     );
   }
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     Timer(
-      Duration(milliseconds: 3300),
+      Duration(milliseconds: 4000),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) => appstate(),
