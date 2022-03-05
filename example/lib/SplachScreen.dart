@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (1)),
+      duration: Duration(seconds: (200)),
       vsync: this,
     );
   }
@@ -34,10 +34,10 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
           child: Image.asset(
-        "images/animation/catermegif.gif",
+        "images/animation/catermegifblack.gif",
         height: MediaQuery.of(context).size.height * 0.60,
         width: MediaQuery.of(context).size.width * 0.7,
       )),
