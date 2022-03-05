@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:CaterMe/main.dart';
@@ -19,26 +18,28 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (1)),
+      duration: Duration(seconds: (2)),
       vsync: this,
     );
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     Timer(
-        Duration(milliseconds: 3300),
-            () =>
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (BuildContext context) => appstate())));
+      Duration(milliseconds: 3300),
+      () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (BuildContext context) => appstate(),
+        ),
+      ),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(child:Image.asset(
+      body: Center(
+          child: Image.asset(
         "images/animation/catermegif.gif",
-        height: MediaQuery.of(context).size.height*3,
-        width: MediaQuery.of(context).size.width*2,
+        height: MediaQuery.of(context).size.height * 0.60,
+        width: MediaQuery.of(context).size.width * 0.7,
       )),
     );
   }
