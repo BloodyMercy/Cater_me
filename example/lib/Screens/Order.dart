@@ -27,7 +27,8 @@ class _OrderState extends State<Order> {
   ScrollController _verticatl = ScrollController();
   var _key = GlobalKey<ScaffoldState>();
 
-  bool loadingnext=false;
+  bool loadingnext = false;
+
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   double barheight = 0.0;
@@ -108,8 +109,10 @@ class _OrderState extends State<Order> {
     final addresses = Provider.of<AdressProvider>(context, listen: true);
     // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
-    final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
-    final packageProvider = Provider.of<PackagesProvider>(context, listen: true);
+    final orderProvider =
+        Provider.of<OrderCaterProvider>(context, listen: true);
+    final packageProvider =
+        Provider.of<PackagesProvider>(context, listen: true);
 
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -117,317 +120,297 @@ class _OrderState extends State<Order> {
     final address = Provider.of<AdressProvider>(context, listen: true);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        maintainBottomViewPadding: true,
-        child: WillPopScope(
-          onWillPop: _onWillPop,
-          child: GestureDetector(
-            onTap: () {
-              FocusScopeNode currentFocus = FocusScope.of(context);
+    return SafeArea(
+      maintainBottomViewPadding: true,
+      child: WillPopScope(
+        onWillPop: _onWillPop,
+        child: GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
 
-              if (!currentFocus.hasPrimaryFocus) {
-                currentFocus.unfocus();
-              }
-            },
-            child: Scaffold(
-              key: _key,
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
-                elevation: 0,
-                centerTitle: true,
-                backgroundColor: Colors.white,
-                title: const Text(
-                  "Order",
-                  style: const TextStyle(
-                      color: Color(0xFF3F5521),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25),
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Scaffold(
+            key: _key,
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              title: const Text(
+                "Order",
+                style: const TextStyle(
+                    color: Color(0xFF3F5521),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ),
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: const Color(0xFF3F5521),
                 ),
-                leading: IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    color: const Color(0xFF3F5521),
-                  ),
-                  onPressed: () async {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return CustomDialog(
-                            title: "Are you sure you want to exit?",
-                            description: "",
-                            button1: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.grey,
-                                ),
-                                onPressed: () {
-                                  orderProvider.spets = 1;
-
-                                  clearAlldata();
-
-                                  Navigator.of(context).pop();
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text("yes")),
-                            oneOrtwo: true,
-                            button2: ElevatedButton(
+                onPressed: () async {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomDialog(
+                          title: "Are you sure you want to exit?",
+                          description: "",
+                          button1: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey,
+                              ),
                               onPressed: () {
+                                orderProvider.spets = 1;
+
+                                clearAlldata();
+
+                                Navigator.of(context).pop();
                                 Navigator.of(context).pop();
                               },
-                              child: Text("No"),
-                            ),
-                          );
-                        });
-                  },
-                ),
+                              child: Text("yes")),
+                          oneOrtwo: true,
+                          button2: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text("No"),
+                          ),
+                        );
+                      });
+                },
               ),
-              body: true
-                  ? SingleChildScrollView(
-                      child: Container(
+            ),
+            body: true
+                ? Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          controller: _verticatl,
+                          child: CustomStepper(
+                            controller: _controller,
+                            onTap: (int value) {
+                              if (orderProvider.spets == 1) {
+                                if (orderProvider.value.id == 0) {
+                                  _key.currentState.showSnackBar(
+                                    const SnackBar(
+                                      content:
+                                          Text("please choose an address "),
+                                    ),
+                                  );
+                                } else {
+                                  orderProvider.spets = value;
+                                }
+                              }
+                              if (orderProvider.spets == 3) {
+                                if (orderProvider.value.id == 0) {
+                                  _key.currentState.showSnackBar(
+                                    const SnackBar(
+                                      content: const Text(
+                                          "please choose one from the following offers "),
+                                    ),
+                                  );
+                                  // orderProvider.spets=0;
+                                } else {
+                                  orderProvider.spets = value;
+                                }
+                              }
+                              if (orderProvider.spets == 2) {
+                                if (address.eventnamecontroller.text == "" ||
+                                    address.evendatecontroller.text == "" ||
+                                    address.numberofguestcontroller.text ==
+                                        "" ||
+                                    address.typeofeventcontroller.text == "") {
+                                  const SnackBar(
+                                    content:
+                                        Text("please fill the empty fields "),
+                                  );
+                                  // );
+                                } else {
+                                  // else{
+                                  orderProvider.spets = value;
+                                  setState(() {
+                                    //  orderProvider.spets=value;
 
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
+                                    _controller.animateTo(
+                                      0,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.linear,
+                                    );
+                                  });
+                                  //  }
+                                }
+                              }
+
+                              if (orderProvider.spets == 5) {
+                                setState(() {
+                                  _controller.animateTo(
+                                    0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.linear,
+                                  );
+                                });
+                              } else {
+                                orderProvider.spets = value;
+                              }
+                              if (orderProvider.spets == 6) {
+                                setState(() {
+                                  _controller.animateTo(
+                                    0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.linear,
+                                  );
+                                });
+                              } else {
+                                orderProvider.spets = value;
+                              }
+                              if (orderProvider.spets == 6) {
+                                bool a = false;
+                                for (int i = 0;
+                                    i < orderProvider.choosebillFriend.length;
+                                    i++) {
+                                  if (orderProvider.choosebillFriend[i].price ==
+                                      0) {
+                                    a = true;
+                                  }
+                                }
+                                if (a)
+                                  const SnackBar(
+                                    content:
+                                        Text("please fill the empty fields "),
+                                  );
+                                else
+                                  orderProvider.spets = value;
+                              }
+
+                              if (orderProvider.spets == 7) {
+                                setState(() {
+                                  _controller.animateTo(
+                                    0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.linear,
+                                  );
+                                });
+                              } else {
+                                orderProvider.spets = value;
+                              }
+                            },
+                            text: const [
+                              "Location",
+                              "Event Details",
+                              "Service",
+                              "Packages",
+                              "Add-Ons",
+                              "Checkout",
+                              "Payment"
+                            ],
+                            selected: orderProvider.spets,
+                          ),
                         ),
-                        width: MediaQuery.of(context).size.width,
-                        height: height * 0.88,
-                        child: Column(
-                          children: [
-                            Container(
-                              color: Colors.white,
-                              width: MediaQuery.of(context).size.width,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                controller: _verticatl,
-                                child: Column(
+                        const Divider(
+                          height: 20,
+                          thickness: 1,
+                          indent: 0,
+                          endIndent: 0,
+                          color: Color(0xFF3F5521),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height / 1.65,
+                          child: (orderProvider.spets == 1)
+                              ? AddAddressScreen()
+                              : (orderProvider.spets == 3)
+                                  ? RegularDaberneScreen()
+                                  : (orderProvider.spets == 2)
+                                      ? ReguarScreen(addresses.Friends)
+                                      : (orderProvider.spets == 4)
+                                          ? RelatedOffersScreen()
+                                          : (orderProvider.spets == 5)
+                                              ? AddonsCardoffer(0)
+                                              : (orderProvider.spets == 7)
+                                                  ? CreditCardsPage()
+                                                  : (orderProvider.spets == 6)
+                                                      ? OrderSummeryCopy(
+                                                          orderProvider.totale)
+                                                      : Container(),
+                        ),
+                        Expanded(
+                          child: Container(
+                              // color: Colors.yellow,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    CustomStepper(
-                                      controller: _controller,
-                                      onTap: (int value) {
-                                        if (orderProvider.spets == 1) {
-                                          if (orderProvider.value.id == 0) {
-                                            _key.currentState.showSnackBar(
-                                              const SnackBar(
-                                                content: Text(
-                                                    "please choose an address "),
+                                    orderProvider.spets > 1
+                                        ? IconButton(
+                                            onPressed: () {
+                                              orderProvider.spets =
+                                                  orderProvider.spets - 1;
+                                              _animateToIndex(
+                                                  orderProvider.spets);
+                                            },
+                                            icon: Icon(Icons.arrow_back,
+                                                size: 35,
+                                                color: Color.fromRGBO(
+                                                    63, 85, 33, 1)))
+                                        : Container(),
+                                    orderProvider.spets > 3
+                                        ? Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Total: ${details.totale.toStringAsFixed(2)} SAR",
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontFamily: 'BerlinSansFB',
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
-                                            );
-                                          } else {
-                                            orderProvider.spets = value;
-                                          }
-                                        }
-                                        if (orderProvider.spets == 3) {
-                                          if (orderProvider.value.id == 0) {
-                                            _key.currentState.showSnackBar(
-                                              const SnackBar(
-                                                content: const Text(
-                                                    "please choose one from the following offers "),
+                                              SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.02,
                                               ),
-                                            );
-                                            // orderProvider.spets=0;
-                                          } else {
-                                            orderProvider.spets = value;
-                                          }
-                                        }
-                                        if (orderProvider.spets == 2) {
-                                          if (address.eventnamecontroller
-                                                      .text ==
-                                                  "" ||
-                                              address.evendatecontroller.text ==
-                                                  "" ||
-                                              address.numberofguestcontroller
-                                                      .text ==
-                                                  "" ||
-                                              address.typeofeventcontroller
-                                                      .text ==
-                                                  "") {
-
-                                            const SnackBar(
-                                              content: Text(
-                                                  "please fill the empty fields "),
-
-                                            );
-                                            // );
-                                          } else {
-
-                                           // else{
-                                            orderProvider.spets = value;
-                                            setState(() {
-                                              //  orderProvider.spets=value;
-
-                                              _controller.animateTo(
-                                                0,
-                                                duration: const Duration(
-                                                    milliseconds: 500),
-                                                curve: Curves.linear,
-                                              );
-                                            });
-                                          //  }
-                                          }
-                                        }
-
-                                        if (orderProvider.spets == 5) {
-                                          setState(() {
-                                            _controller.animateTo(
-                                              0,
-                                              duration: const Duration(
-                                                  milliseconds: 500),
-                                              curve: Curves.linear,
-                                            );
-                                          });
-                                        } else {
-                                          orderProvider.spets = value;
-                                        }
-                                        if (orderProvider.spets == 6) {
-                                          setState(() {
-                                            _controller.animateTo(
-                                              0,
-                                              duration: const Duration(
-                                                  milliseconds: 500),
-                                              curve: Curves.linear,
-                                            );
-                                          });
-                                        } else {
-                                          orderProvider.spets = value;
-                                        }
-                                        if (orderProvider.spets == 6) {
-                                          bool a = false;
-                                          for (int i = 0;
-                                              i <
-                                                  orderProvider
-                                                      .choosebillFriend.length;
-                                              i++) {
-                                            if (orderProvider
-                                                    .choosebillFriend[i]
-                                                    .price ==
-                                                0) {
-                                              a = true;
-                                            }
-                                          }
-                                          if (a)
-                                            const SnackBar(
-                                              content: Text(
-                                                  "please fill the empty fields "),
-                                            );
-                                          else
-                                            orderProvider.spets = value;
-                                        }
-
-                                        if (orderProvider.spets == 7) {
-                                          setState(() {
-                                            _controller.animateTo(
-                                              0,
-                                              duration: const Duration(
-                                                  milliseconds: 500),
-                                              curve: Curves.linear,
-                                            );
-                                          });
-                                        } else {
-                                          orderProvider.spets = value;
-                                        }
-                                      },
-                                      text: const [
-                                        "Location",
-                                        "Event Details",
-                                        "Service",
-                                        "Packages",
-                                        "Add-Ons",
-                                        "Checkout",
-                                        "Payment"
-                                      ],
-                                      selected: orderProvider.spets,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Divider(
-                              height: 20,
-                              thickness: 1,
-                              indent: 0,
-                              endIndent: 0,
-                              color: Color(0xFF3F5521),
-                            ),
-                            Container(
-                              height: MediaQuery.of(context).size.height / 1.55,
-                              child: (orderProvider.spets == 1)
-                                  ? AddAddressScreen()
-                                  : (orderProvider.spets == 3)
-                                      ? RegularDaberneScreen()
-                                      : (orderProvider.spets == 2)
-                                          ? ReguarScreen(addresses.Friends)
-                                          : (orderProvider.spets == 4)
-                                              ? RelatedOffersScreen()
-                                              : (orderProvider.spets == 5)
-                                                  ? AddonsCardoffer(0)
-                                                  : (orderProvider.spets == 7)
-                                                      ? CreditCardsPage()
-                                                      : (orderProvider.spets ==
-                                                              6)
-                                                          ? OrderSummeryCopy(
-                                                              orderProvider
-                                                                  .totale)
-                                                          : Container(),
-                            ),
-                            Expanded(
-                              child: Container(
-                                       // color: Colors.yellow,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        orderProvider.spets>1?  IconButton(onPressed: (){
-
-                                          orderProvider.spets = orderProvider.spets-1;
-                                          _animateToIndex(orderProvider.spets);
-
-                                        }, icon: Icon(Icons.arrow_back,size: 35,color: Color.fromRGBO(63, 85, 33, 1))):Container(),
-
-                                        orderProvider.spets>3?   Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-
-                                            Text(
-                                              "Total: ${details.totale.toStringAsFixed(2)} SAR",
-                                              style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: 'BerlinSansFB',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.02,
-                                            ),
-                                           orderProvider.vatshisha>0.0? Text(
-                                              '*(Shisha VAT 100%)',
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                              ),
-                                            ):Container(),
-                                          orderProvider.vatfood>0.0?  Text(
-                                              '*(VAT 15%)',
-                                              style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                              ),
-                                            ):Container(),
-                                          ],
-                                        ):Container(),
-                                        !loadingnext
-                                            ? ElevatedButton(
+                                              orderProvider.vatshisha > 0.0
+                                                  ? Text(
+                                                      '*(Shisha VAT 100%)',
+                                                      style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.black,
+                                                      ),
+                                                    )
+                                                  : Container(),
+                                              orderProvider.vatfood > 0.0
+                                                  ? Text(
+                                                      '*(VAT 15%)',
+                                                      style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.black,
+                                                      ),
+                                                    )
+                                                  : Container(),
+                                            ],
+                                          )
+                                        : Container(),
+                                    !loadingnext
+                                        ? ElevatedButton(
                                             onPressed: () async {
                                               setState(() {
-                                                loadingnext=true;
+                                                loadingnext = true;
                                               });
 
                                               if (orderProvider.spets == 1) {
@@ -486,7 +469,7 @@ class _OrderState extends State<Order> {
                                                 } else {
                                                   if (address.form) {
                                                     if (address.name.text ==
-                                                        "" ||
+                                                            "" ||
                                                         address.phone.text ==
                                                             "") {
                                                       _key.currentState
@@ -496,23 +479,22 @@ class _OrderState extends State<Order> {
                                                               "please fill the empty fields "),
                                                         ),
                                                       );
-                                                    }
-                                                    else {
+                                                    } else {
                                                       await address.checktime();
-                                                      if (address.hours.isDaberni)
-                                                        orderProvider.serviceId =
-                                                        2;
+                                                      if (address
+                                                          .hours.isDaberni)
+                                                        orderProvider
+                                                            .serviceId = 2;
                                                       orderProvider.spets++;
 
                                                       _animateToIndex(
                                                           orderProvider.spets);
                                                     }
-                                                  }
-                                                  else {
+                                                  } else {
                                                     await address.checktime();
                                                     if (address.hours.isDaberni)
                                                       orderProvider.serviceId =
-                                                      2;
+                                                          2;
                                                     orderProvider.spets++;
 
                                                     _animateToIndex(
@@ -521,10 +503,9 @@ class _OrderState extends State<Order> {
                                                 }
                                               } else if (orderProvider.spets ==
                                                   6) {
-
                                                 if (orderProvider
-                                                    .totalpackage == 0) {
-
+                                                        .totalpackage ==
+                                                    0) {
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
@@ -532,10 +513,11 @@ class _OrderState extends State<Order> {
                                                           "please choose a package to order"),
                                                     ),
                                                   );
-
-                                                }
-                                                else if(orderProvider.totalssha
-                                                <5 && orderProvider.vatshisha!=0.0){
+                                                } else if (orderProvider
+                                                            .totalssha <
+                                                        5 &&
+                                                    orderProvider.vatshisha !=
+                                                        0.0) {
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
@@ -543,60 +525,55 @@ class _OrderState extends State<Order> {
                                                           "you can't order less then 5 shisha"),
                                                     ),
                                                   );
+                                                } else {
+                                                  if (orderProvider
+                                                          .itemOrders.length >
+                                                      0) {
+                                                    bool a = false;
+                                                    if (orderProvider
+                                                            .choosebillFriend
+                                                            .length >
+                                                        0) {
+                                                      for (int i = 0;
+                                                          i <
+                                                              orderProvider
+                                                                  .choosebillFriend
+                                                                  .length;
+                                                          i++) {
+                                                        print(i);
+                                                        if (orderProvider
+                                                                .choosebillFriend[
+                                                                    i]
+                                                                .price ==
+                                                            0) {
+                                                          _key.currentState
+                                                              .showSnackBar(
+                                                            const SnackBar(
+                                                              content: Text(
+                                                                  "share bill cannot be empty"),
+                                                            ),
+                                                          );
+                                                          a = true;
+                                                          break;
+                                                        }
+                                                      }
+                                                    }
+
+                                                    if (!a) {
+                                                      orderProvider.spets++;
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                  } else {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                        content: Text(
+                                                            "no items to order"),
+                                                      ),
+                                                    );
+                                                  }
                                                 }
-
-                                                else{
-    if (orderProvider
-        .itemOrders.length >
-    0 ) {
-
-
-    bool a = false;
-    if (orderProvider
-        .choosebillFriend
-        .length >
-    0) {
-    for (int i = 0;
-    i <
-    orderProvider
-        .choosebillFriend
-        .length;
-    i++) {
-    print(i);
-    if (orderProvider.choosebillFriend[i].price == 0) {
-    _key.currentState
-        .showSnackBar(
-    const SnackBar(
-    content: Text(
-    "share bill cannot be empty"),
-    ),
-    );
-    a = true;
-    break;
-    }
-    }
-    }
-
-    if (!a) {
-    orderProvider.spets++;
-    _animateToIndex(
-    orderProvider.spets);
-    }
-    } else {
-    _key.currentState
-        .showSnackBar(
-    const SnackBar(
-    content: Text(
-    "no items to order"),
-    ),
-    );
-    }
-
-
-    }
-
-
-
                                               } else if (orderProvider.spets ==
                                                   7) {
                                                 if (_creditCardss.credit.id ==
@@ -645,8 +622,8 @@ class _OrderState extends State<Order> {
                                                   int a = await orderProvider
                                                       .makeorder(
                                                           date: (address
-                                                              .evendatecontroller
-                                                              .text)
+                                                                  .evendatecontroller
+                                                                  .text)
                                                               .replaceAll(
                                                             RegExp(
                                                                 '[^A-Za-z0-9]'),
@@ -700,12 +677,13 @@ class _OrderState extends State<Order> {
                                                     );
                                                   }
                                                 }
-                                              } else if(orderProvider.spets==4){
-                                                if(orderProvider.itemOrders.length>0){
-
+                                              } else if (orderProvider.spets ==
+                                                  4) {
+                                                if (orderProvider
+                                                        .itemOrders.length >
+                                                    0) {
                                                   orderProvider.spets++;
-                                                }else{
-
+                                                } else {
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
@@ -713,19 +691,28 @@ class _OrderState extends State<Order> {
                                                           "please add a package"),
                                                     ),
                                                   );
-
                                                 }
-                                              }else if (orderProvider.spets==5 && orderProvider.vatshisha!=0.0){
-                                                int itemcount= 0 ;
-                                                for(int i =0 ; i<orderProvider.itemOrders.length;i++){
-                                                  if(orderProvider.itemOrders[i].isShisha){
-                                                    itemcount=itemcount+orderProvider.itemOrders[i].quantity;
+                                              } else if (orderProvider.spets ==
+                                                      5 &&
+                                                  orderProvider.vatshisha !=
+                                                      0.0) {
+                                                int itemcount = 0;
+                                                for (int i = 0;
+                                                    i <
+                                                        orderProvider
+                                                            .itemOrders.length;
+                                                    i++) {
+                                                  if (orderProvider
+                                                      .itemOrders[i].isShisha) {
+                                                    itemcount = itemcount +
+                                                        orderProvider
+                                                            .itemOrders[i]
+                                                            .quantity;
                                                   }
-                                                  if(itemcount==5)
-                                                  break;
+                                                  if (itemcount == 5) break;
                                                 }
 
-                                                if(itemcount<5){
+                                                if (itemcount < 5) {
                                                   _key.currentState
                                                       .showSnackBar(
                                                     const SnackBar(
@@ -733,16 +720,13 @@ class _OrderState extends State<Order> {
                                                           "minimun quantity for shisha is 5"),
                                                     ),
                                                   );
-
-                                                }
-                                                else{
+                                                } else {
                                                   orderProvider.spets++;
 
                                                   _animateToIndex(
                                                       orderProvider.spets);
                                                 }
-
-                                              }else{
+                                              } else {
                                                 orderProvider.spets++;
 
                                                 _animateToIndex(
@@ -750,20 +734,17 @@ class _OrderState extends State<Order> {
                                               }
 
                                               setState(() {
-                                                loadingnext=false;
+                                                loadingnext = false;
                                               });
                                             },
                                             child: const Text(
-                                                    'Next',
-                                                    style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontFamily:
-                                                          'BerlinSansFB',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  )
-
+                                              'Next',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontFamily: 'BerlinSansFB',
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            )
 
                                             // style: ElevatedButton.styleFrom(
                                             //   padding: EdgeInsets.fromLTRB(
@@ -777,17 +758,16 @@ class _OrderState extends State<Order> {
                                             //   primary: const Color.fromRGBO(63, 85, 33, 1),
                                             //
                                             // );
-                                            ):CircularProgressIndicator(),
-                                      ])),
-                            ),
-                          ],
+                                            )
+                                        : CircularProgressIndicator(),
+                                  ])),
                         ),
-                      ),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(),
+                      ],
                     ),
-            ),
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
           ),
         ),
       ),

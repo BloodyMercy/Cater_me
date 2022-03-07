@@ -55,68 +55,60 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
 
-    return Column(
-      children: [
-    loading?
-        Container(
-          color: LightColors.kLightYellow,
-            height: screenHeight * 0.63,
+    return loading?
+        !pack.allpackagesorder.isEmpty
+            ? ListView.separated(
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(
+                      top: 5.0, left: 20.0, right: 20.0),
+                  child: GestureDetector(
+                    child: FittedBox(
+                      child: Card(
 
-            child:  !pack.allpackagesorder.isEmpty
-                ? ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(
-                          top: 5.0, left: 20.0, right: 20.0),
-                      child: GestureDetector(
-                        child: FittedBox(
-                          child: Card(
-
-                            // clipBehavior: Clip.antiAlias,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            elevation: 12,
-                            child: Image.network(
-                                pack.allpackagesorder[index].image,
-                                fit: BoxFit.scaleDown,
-                                // width: double.maxFinite,
-                                height: screenHeight * 0.175,
-                                width: _width * 0.8),
-                          ),
+                        // clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Container(
-                                    alignment: Alignment.topLeft,
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.close,
-                                        color: Color.fromRGBO(63, 85, 33, 1),
-                                      ),
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(false),
-                                    ),
-                                  ),
-                                  content: setupAlertDialoadContainer(
-                                      context, pack, index),
-                                );
-                              });
-                        },
+                        elevation: 12,
+                        child: Image.network(
+                            pack.allpackagesorder[index].image,
+                            fit: BoxFit.scaleDown,
+                            // width: double.maxFinite,
+                            height: screenHeight * 0.175,
+                            width: _width * 0.8),
                       ),
                     ),
-                    separatorBuilder: (_, index) => SizedBox(
-                      height: screenHeight * 0.02,
-                    ),
-                    itemCount: pack.allpackagesorder.length,
-                  )
-                : Center(
-                    child: Text('no packages available'),
-                  )):Center(child: CircularProgressIndicator(),),
-      ],
-    );
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Container(
+                                alignment: Alignment.topLeft,
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.close,
+                                    color: Color.fromRGBO(63, 85, 33, 1),
+                                  ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(false),
+                                ),
+                              ),
+                              content: setupAlertDialoadContainer(
+                                  context, pack, index),
+                            );
+                          });
+                    },
+                  ),
+                ),
+                separatorBuilder: (_, index) => SizedBox(
+                  height: screenHeight * 0.02,
+                ),
+                itemCount: pack.allpackagesorder.length,
+              )
+            : Center(
+                child: Text('no packages available'),
+              ):Center(child: CircularProgressIndicator(),);
   }
 }
