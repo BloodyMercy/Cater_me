@@ -133,7 +133,7 @@ class ChatPageState extends State<ChatPage> {
       imageUrl = await snapshot.ref.getDownloadURL();
       setState(() {
         isLoading = false;
-        onSendMessage(imageUrl, TypeMessage.image);
+        onSendMessage(imageUrl, TypeMessage.voice);
       });
     } on FirebaseException catch (e) {
       setState(() {
@@ -172,7 +172,7 @@ class ChatPageState extends State<ChatPage> {
                     decoration: BoxDecoration(color: ColorConstants.themeColor, borderRadius: BorderRadius.circular(8)),
                     margin: EdgeInsets.only(bottom: isLastMessageRight(index) ? 20 : 10, right: 10),
                   )
-                : messageChat.type == TypeMessage.image
+                : messageChat.type == TypeMessage.voice
                     // Image
                     ? Container(
                         child: OutlinedButton(
@@ -283,7 +283,7 @@ class ChatPageState extends State<ChatPage> {
                               BoxDecoration(color: ColorConstants.primaryColor, borderRadius: BorderRadius.circular(8)),
                           margin: EdgeInsets.only(left: 10),
                         )
-                      : messageChat.type == TypeMessage.image
+                      : messageChat.type == TypeMessage.voice
                           ? Container(
                               child: TextButton(
                                 child: Material(

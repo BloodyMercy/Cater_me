@@ -31,16 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
     initPaymentSDK();
   }
 
-  paymentsdk() async{
-   bool a= await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53");
-
-   print(a);
-  bool b=  await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53", environment: Environment.LIVE);
-    print(b);
-   CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(number: "4242424242424242", name: "name", expiryMonth: "05", expiryYear: "21", cvv: "100");
-   print(response.token);
-  // print(response.token);
-  }
+  // paymentsdk() async{
+  //  bool a= await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53");
+  //
+  //  print(a);
+  // bool b=  await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53", environment: Environment.LIVE);
+  //   print(b);
+  //  CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(number: "4242424242424242", name: "name", expiryMonth: "05", expiryYear: "21", cvv: "100");
+  //  print(response.token);
+  // // print(response.token);
+  // }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPaymentSDK() async {
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("Add Card",style: Theme.of(context).textTheme.headline1,),centerTitle: true,
  actions: [
-               IconButton(icon: Icon(Icons.done),onPressed: _generateToken)
+               IconButton(icon: Icon(Icons.done),onPressed: _cardValidation)
 
  ]),
         body: SafeArea(
@@ -304,21 +304,30 @@ else {
       print("$cardNumber");
 
       bool isValid = await FlutterCheckoutPayment.isCardValid(number: number);
-
-      // Hide loading dialog
       Navigator.pop(context);
+      // Hide loading dialog
+      if(isValid) {
 
-      // Show result dialog
-      showDialog(
-        context: this.context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Validation? "),
-            content: Text("$isValid"),
-            actions: <Widget>[TextButton(child: Text("Close"), onPressed: () => Navigator.pop(context))],
-          );
-        },
-      );
+        _generateToken();
+      }
+      else {
+        // Navigator.pop(context);
+
+        // Show result dialog
+        showDialog(
+          context: this.context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Card not Valid "),
+              content: Text("$isValid"),
+              actions: <Widget>[
+                TextButton(child: Text("Close"),
+                    onPressed: () => Navigator.pop(context))
+              ],
+            );
+          },
+        );
+      }
     } catch (ex) {
       // Hide loading dialog
       Navigator.pop(context);

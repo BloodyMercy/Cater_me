@@ -233,6 +233,7 @@ print(placemarks[0]);
 
 
 
+
         GoogleMap(
 
         myLocationEnabled: true,
@@ -275,6 +276,21 @@ print(placemarks[0]);
         },
 
       ),
+
+
+              Padding(
+          padding: const EdgeInsets.only(top: 37,left: 15),
+          child:
+          Align(alignment: Alignment.topLeft,
+             child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(35)
+                  ),
+                child: IconButton(onPressed:(){
+                  Navigator.of(context).pop(); }
+                  , icon: Icon(Icons.close,size: 25,),color:Color(0xFF3F5521),))),),
+
+
 
         Align(
           alignment: Alignment.center,

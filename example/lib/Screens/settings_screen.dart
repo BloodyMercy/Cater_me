@@ -407,6 +407,7 @@ bool loadingimage=false;
                             ),
 
                             Divider(thickness: 1,),
+
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -545,6 +546,7 @@ bool loadingimage=false;
                                     ),
                                   ],
                                 ),
+
                                 Row(children: [
                                   Text("English",style:TextStyle(
                                       fontWeight: FontWeight.normal)),
@@ -558,6 +560,7 @@ bool loadingimage=false;
                         ),
                       ),
                     ),
+
 
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
