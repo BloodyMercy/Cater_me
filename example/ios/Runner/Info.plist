@@ -30,8 +30,6 @@
 	<string>this app need to access your camera</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This app needs to access your location</string>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs to access your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
