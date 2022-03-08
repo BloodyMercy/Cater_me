@@ -34,7 +34,7 @@ dependencies:
   introduction_screen:
   intl:
   form_field_validator:
-
+  flutter_rating_bar:
   auto_size_text:
   shared_preferences: ^2.0.12
   carousel_slider: ^4.0.0-nullsafety.0
@@ -69,6 +69,10 @@ dependencies:
   font_awesome_flutter:
   flutter_html: ^2.2.1
   audioplayers: ^0.20.1
+  animated_text_kit:
+  url_launcher:
+
+
 
   flutter_local_notifications: ^9.1.2
 

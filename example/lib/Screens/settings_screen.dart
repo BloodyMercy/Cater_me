@@ -7,6 +7,7 @@ import 'package:CaterMe/Screens/addresses_settings_screen.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
 import 'package:CaterMe/widgets/Personal_info.dart';
+import 'package:CaterMe/widgets/contact_us.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -602,7 +603,13 @@ class _TABBarState extends State<TABBar> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Contact_Us(),
+                              ),
+                            );
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
@@ -622,7 +629,7 @@ class _TABBarState extends State<TABBar> {
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
-                                      "About us ",
+                                      "Contact Us ",
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
