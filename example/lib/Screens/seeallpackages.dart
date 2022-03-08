@@ -23,7 +23,8 @@ class _seeAllPackages extends State<seeAllPackages> {
   seeAllPackages() async {
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     // _cuisin.loading = true;
-    await pack.getonid(widget.addOns);
+    // await pack.getonid(widget.addOns);
+    await pack.seeAllPackages();
     // _cuisin.loading = false;
     setState(() {
       loading=false;
@@ -56,7 +57,7 @@ class _seeAllPackages extends State<seeAllPackages> {
         // ),
         centerTitle: true,
         title: Text(
-          '${widget.title}',
+          'Texxxxxxxxxttttttttt',
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,
@@ -72,7 +73,7 @@ class _seeAllPackages extends State<seeAllPackages> {
         )
             : GridView(
           padding: const EdgeInsets.all(25),
-          children: getAddOns(pack.seeallpackages),
+          children: [Text("hola1"),Text("hola1"),Text("hola1"),],
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,
             childAspectRatio: 2.9 / 3,

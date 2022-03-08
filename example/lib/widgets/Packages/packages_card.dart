@@ -47,13 +47,10 @@ class _PackagesCardState extends State<PackagesCard> {
             ),
             InkWell(
               onTap: (){
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //       builder: (context) => seeAllPackages(),
-                //
-                // );
-                //
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => seeAllPackages(1,"ttillee"),
+                ));
               },
               child: Text('see all'),
             ),
