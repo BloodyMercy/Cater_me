@@ -98,7 +98,7 @@ class _seeAllPackages extends State<seeAllPackages> {
         ) : ListView.builder(
             itemCount: pack.seeallpackages.length,
             itemBuilder: (context, index) {
-              FittedBox(
+           return   FittedBox(
                 child: Card(
 
                   // clipBehavior: Clip.antiAlias,
@@ -107,7 +107,7 @@ class _seeAllPackages extends State<seeAllPackages> {
                   ),
                   elevation: 12,
                   child: Image.network(
-                      pack.allpackagesorder[index].image,
+                      pack.seeallpackages[index].image,
                       fit: BoxFit.scaleDown,
                       // width: double.maxFinite,
                       height: screenHeight * 0.175,

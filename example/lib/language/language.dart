@@ -1,0 +1,108 @@
+class LanguageTr{
+
+
+  static Map<String,Map<String,String>>   lg={
+
+    "ar":{
+      "Get Started":"ابدأ الأن",
+      "Email":"البريد الالكتروني",
+      "Password":"كلمة المرور",
+      "Forgot Password":"نسيت كلمة المرور",
+      "Log In":"تسجيل الدخول",
+      "Create New Account":"انشاء حساب جديد",
+      "Enter your email or your phone number":"أدخل بريدك الالكتروني أو رقم هاتفك",
+      "Email or Phone number":"البريد الالكتروني أو رقم الهاتف",
+      "Send":"ارسل",
+      "Name":"الاسم",
+      "Confirm Password":"تأكيد كلمة المرور ",
+      "Phone number":"رقم الهاتف",
+      "Gender":"الجنس",
+      "birthdate":"تاريخ الولادة",
+      "SignUp":"حساب جديد ",
+      "Already have an account?":"هل لديك حساب؟",
+      "Pick gender":"اختار الجنس",
+      "Female":"انثى",
+      "Male":"ذكر",
+      "Search":"بحث",
+      "Customer Service":"خدمة العملاء",
+      "Type your message...":"اكتب رسالتك",
+      "My Favorites":"مفضلاتي",
+      "Notifications":"اشعارات",
+      "Your Order Has Been Canceled Due to Payment Error":"تم الغاء طلبك بسبب خطأ في الدفع",
+      "Packages":"الحزم",
+      "See All":"اظهار الكل",
+      "Upcoming Occasions":"المناسبات القادمة ",
+      "Add an occasion":"اضف مناسبة",
+      "Shishas":"نراجيل",
+      "Add occasion":"اضف مناسبة",
+      "edit":"تعديل",
+      "Edit Occasion":"تعديل المناسبة",
+      "Name of Occasion":"اسم المناسبة",
+      "Type of Occasion ":"نوع المناسبة",
+      "SAR":"ر.س",
+      "Save the Date":"احفظ التاريخ",
+      "Rejected":"مرفوض",
+      "Received":"تم التلقي",
+      "Delivered":"تم التوصيل",
+      "Accetped":"تم القبول",
+      "Pending":"في الانتظار",
+      "Address":"العنوان",
+      "Personal Info":"معلومات شخصية",
+      "Reset Password":"اعادة تعيين كلمة المرور",
+      "My Address":"عنواني",
+      "My Credit Cards":"بطاقات الائتمان الخاصة بي",
+      "My Friends":"اصدقائي",
+      "Language":"اللغة",
+      "Contact Us":"تواصل معنا",
+      "Logout":"تسجيل الخروج",
+      "Full Name":"الاسم الكامل",
+      "Submit":"ارسال",
+      "Required":"مطلوب",
+      "Please enter email":"الرجاء ادخال البريد الالكتروني",
+      "Change Password":"تغيير كلمة المرور",
+      "Old Password":"كلمة المرور السابقة",
+      "New Password":"كلمة المرور الجديدة",
+      "Account Info":"معلومات الحساب",
+      "Save":"حفظ",
+      "Addresses":"العناوين",
+      "Do you want to delete this address":"هل تريد حذف هذا العنوان",
+      "Yes":"نعم",
+      "No":"كلا",
+      "Confirm location":"أكد الموقع",
+      "No Cards Added Yet":"لم تتم اضافة بطاقات بعد",
+      "Payment Details":"تفاصيل الدفع",
+      "How would you like to pay?":"كيف تريد الدفع",
+      "Delete Credit Card":"حذف بطاقة الائتمام",
+      "Are you sure you want to delte this card":"هل أنت متأكد أنك تريد حذف هذه البطاقة",
+      "Card number":"رقم البطاقة",
+      "Expired Date":"تاريخ انتهاء الصلاحية",
+      "CVV":"CVV",
+      "Card Holder":"حامل البطاقة",
+      "Add Card":"أضف بطاقة",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
+
+
+
+
+    },
+    "en":{
+
+    }
+
+
+
+};
+
+
+}

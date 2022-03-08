@@ -7,13 +7,13 @@ import 'package:lottie/lottie.dart';
 const _ktexts = ['Thank You For Using', 'CateMe'];
 
 class Contact_Us extends StatelessWidget {
-  // Future<void> launchUrl(String url) async {
-  //   if (await canLaunch(url)) {
-  //      launch(url);
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
+  Future<void> launchUrl(String url) async {
+    if (await canLaunch(url)) {
+       launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   // For Calling Button
 
@@ -73,7 +73,7 @@ class Contact_Us extends StatelessWidget {
           ),
           GestureDetector(
             onTap: ()async {
-              launch("tel: //$number");
+              launch("tel://$number");
 
             } ,
             child: Card(

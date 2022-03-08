@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:provider/provider.dart';
 
 class ConfirmLocation extends StatefulWidget {
@@ -38,40 +38,40 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
       bearing: 45.0,
     )));
   }
-requestlocation() async{
-  var status = await Permission.locationWhenInUse.status;
-  if(!status.isGranted){
-    var status = await Permission.locationWhenInUse.request();
-    if(status.isGranted){
-      var status = await Permission.locationAlways.request();
-      if(status.isGranted){
-        //Do some stuff
-      }else{
-        //Do another stuff
-      }
-    }else{
-      //The user deny the permission
-    }
-    if(status.isPermanentlyDenied){
-      //When the user previously rejected the permission and select never ask again
-      //Open the screen of settings
-      bool res = await openAppSettings();
-    }
-  }else{
-    //In use is available, check the always in use
-    var status = await Permission.locationAlways.status;
-    if(!status.isGranted){
-      var status = await Permission.locationAlways.request();
-      if(status.isGranted){
-        //Do some stuff
-      }else{
-        //Do another stuff
-      }
-    }else{
-      //previously available, do some stuff or nothing
-    }
-  }
-}
+// requestlocation() async{
+//   var status = await Permission.locationWhenInUse.status;
+//   if(!status.isGranted){
+//     var status = await Permission.locationWhenInUse.request();
+//     if(status.isGranted){
+//       var status = await Permission.locationAlways.request();
+//       if(status.isGranted){
+//         //Do some stuff
+//       }else{
+//         //Do another stuff
+//       }
+//     }else{
+//       //The user deny the permission
+//     }
+//     if(status.isPermanentlyDenied){
+//       //When the user previously rejected the permission and select never ask again
+//       //Open the screen of settings
+//       bool res = await openAppSettings();
+//     }
+//   }else{
+//     //In use is available, check the always in use
+//     var status = await Permission.locationAlways.status;
+//     if(!status.isGranted){
+//       var status = await Permission.locationAlways.request();
+//       if(status.isGranted){
+//         //Do some stuff
+//       }else{
+//         //Do another stuff
+//       }
+//     }else{
+//       //previously available, do some stuff or nothing
+//     }
+//   }
+// }
   void getCurrentLocation() async {
     // await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 

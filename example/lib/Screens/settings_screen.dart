@@ -7,7 +7,7 @@ import 'package:CaterMe/Screens/addresses_settings_screen.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
 import 'package:CaterMe/widgets/Personal_info.dart';
-import 'package:CaterMe/widgets/contact_us.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +15,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../widgets/contact_us.dart';
 import 'auth/login_screen.dart';
 import 'occasion/theme/colors/light_colors.dart';
 

@@ -232,6 +232,9 @@ class _HomePageState extends State<HomePage> {
                                                 Navigationbar(1),
                                           ),
                                         );
+
+
+                                        
                                       },
                                       child: Text(
                                         "See All",
