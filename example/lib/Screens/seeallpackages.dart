@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class seeAllPackages extends StatefulWidget {
-  int addOns;
+  // int addOns;
   String title;
 
-  seeAllPackages(this.addOns, this.title);
+  seeAllPackages(this.title);
 
   @override
   State<seeAllPackages> createState() => _seeAllPackages();
@@ -19,7 +19,9 @@ class _seeAllPackages extends State<seeAllPackages> {
     seeAllPackages();
     super.initState();
   }
-  bool loading=true;
+
+  bool loading = true;
+
   seeAllPackages() async {
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     // _cuisin.loading = true;
@@ -27,19 +29,37 @@ class _seeAllPackages extends State<seeAllPackages> {
     await pack.seeAllPackages();
     // _cuisin.loading = false;
     setState(() {
-      loading=false;
+      loading = false;
     });
-
   }
 
 
   @override
   Widget build(BuildContext context) {
+    var _width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    var screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height -
+        MediaQuery
+            .of(context)
+            .padding
+            .top -
+        MediaQuery
+            .of(context)
+            .padding
+            .bottom;
     final pack = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     PreferredSize appBar = PreferredSize(
       preferredSize: Size.fromHeight(
-        MediaQuery.of(context).size.height * 0.08,
+        MediaQuery
+            .of(context)
+            .size
+            .height * 0.08,
       ),
       child: AppBar(
         leading: IconButton(
@@ -57,10 +77,15 @@ class _seeAllPackages extends State<seeAllPackages> {
         // ),
         centerTitle: true,
         title: Text(
-          'Texxxxxxxxxttttttttt',
-          style: Theme.of(context).textTheme.headline1,
+          'Packages',
+          style: Theme
+              .of(context)
+              .textTheme
+              .headline1,
         ),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme
+            .of(context)
+            .primaryColor,
       ),
     );
     return Scaffold(
@@ -70,18 +95,29 @@ class _seeAllPackages extends State<seeAllPackages> {
         child: loading
             ? Center(
           child: CircularProgressIndicator(),
-        )
-            : GridView(
-          padding: const EdgeInsets.all(25),
-          children: [Text("hola1"),Text("hola1"),Text("hola1"),],
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 2.9 / 3,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 5,
-          ),
-        ),
-      ),
+        ) : ListView.builder(
+            itemCount: pack.seeallpackages.length,
+            itemBuilder: (context, index) {
+              FittedBox(
+                child: Card(
+
+                  // clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  elevation: 12,
+                  child: Image.network(
+                      pack.allpackagesorder[index].image,
+                      fit: BoxFit.scaleDown,
+                      // width: double.maxFinite,
+                      height: screenHeight * 0.175,
+                      width: _width * 0.8),
+                ),
+              );
+            }),),
+
     );
+
+
   }
 }

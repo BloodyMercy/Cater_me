@@ -49,7 +49,7 @@ class _PackagesCardState extends State<PackagesCard> {
               onTap: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                      builder: (context) => seeAllPackages(1,"ttillee"),
+                      builder: (context) => seeAllPackages("ttillee"),
                 ));
               },
               child: Text('see all'),
