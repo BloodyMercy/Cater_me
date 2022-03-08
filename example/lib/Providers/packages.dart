@@ -16,7 +16,15 @@ class PackagesProvider extends  ChangeNotifier{
 Packages _packages=new Packages();
  List<Package> _allpackages=[];
  List<Package> _allpackagesorder=[];
- Cuisines _cuisins=Cuisines();
+ List<Package> _seeallpackages = [];
+
+List<Package> get seeallpackages => _seeallpackages;
+
+  set seeallpackages(List<Package> value) {
+    _seeallpackages = value;
+  }
+
+  Cuisines _cuisins=Cuisines();
 int _selectedIndex= 0;
 List<Package> get allpackagesorder => _allpackagesorder;
 
@@ -29,7 +37,6 @@ List<Package> get allpackagesorder => _allpackagesorder;
   set allpackages(List<Package> value) {
     _allpackages = value;
   }
-
   List<Cuisins> _allcuisins=[];
 List<Package> _allons=[];
 List<Package> _allonsorder=[];
@@ -257,6 +264,22 @@ Future<void>  getpacakgesby(int id)async {
 
 
 }
+
+
+Future<void>  seeAllPackages()async {
+
+
+  _seeallpackages=await PackageService.seeAllPackages();
+
+
+
+  loading=true;
+
+  notifyListeners();
+
+
+}
+
 Future<void>  getpacakgesbyidorder(int idservice,int iditemtyp,int idnumberguest)async {
 
 //notifyListeners();

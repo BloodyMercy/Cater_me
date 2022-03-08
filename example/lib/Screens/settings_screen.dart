@@ -622,7 +622,7 @@ class _TABBarState extends State<TABBar> {
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
-                                      "About Us ",
+                                      "About us ",
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
