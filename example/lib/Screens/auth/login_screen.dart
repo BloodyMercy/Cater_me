@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../language/language.dart';
 import 'reset_password_screen.dart';
 import 'signup_screen.dart';
 
@@ -23,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool confObscure = true;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool loading = false;
+
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FocusNode focusNode =FocusNode();
+    FocusNode focusNode = FocusNode();
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
@@ -68,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 25.0),
                 child: Center(
                   child: Image(
@@ -86,11 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Center(
                       child: Form(
-                          key: formkey,
+                        key: formkey,
                         child: Column(children: [
                           TextFormField(
-
-
                               style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 15,
@@ -113,21 +113,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: Colors.red,
                                     ),
                                   ),
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
+                                  contentPadding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.04),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                  labelText: 'Email',
-                                  hintStyle:TextStyle(
+                                      fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                      //I believe the size difference here is 6.0 to account padding
+                                      color: focusNode.hasFocus
+                                          ? Color(0xFF3F5521)
+                                          : Colors.grey),
+                                  labelText:
+                                      '${LanguageTr.lg[authProvider.language]["Email"]}',
+                                  hintStyle: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'BerlinSansFB'),
-
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
@@ -137,96 +139,85 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-
                                       borderRadius: BorderRadius.circular(5.0),
                                       borderSide: const BorderSide(
                                         color: Color(0xFF3F5521),
                                       ))),
-                              controller:authProvider.email,
-
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              keyboardType: TextInputType.emailAddress
-                          ),
-
+                              controller: authProvider.email,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              keyboardType: TextInputType.emailAddress),
                           SizedBox(
                             height: screenHeight * 0.015,
                           ),
-
-
                           TextFormField(
-
-
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'BerlinSansFB'),
-                              decoration: InputDecoration(
-                                  prefixIcon: IconButton(
-                                    icon: Icon(
-                                      passObscure
-                                          ? Icons.lock_outlined
-                                          : Icons.lock_open_outlined,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        passObscure = !passObscure;
-                                      });
-                                    },
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'BerlinSansFB'),
+                            decoration: InputDecoration(
+                                prefixIcon: IconButton(
+                                  icon: Icon(
+                                    passObscure
+                                        ? Icons.lock_outlined
+                                        : Icons.lock_open_outlined,
                                   ),
-                                  focusedErrorBorder: OutlineInputBorder(
+                                  onPressed: () {
+                                    setState(() {
+                                      passObscure = !passObscure;
+                                    });
+                                  },
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                contentPadding: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width *
+                                        0.04),
+                                alignLabelWithHint: true,
+                                labelStyle: TextStyle(
+                                    fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                    //I believe the size difference here is 6.0 to account padding
+                                    color: focusNode.hasFocus
+                                        ? Color(0xFF3F5521)
+                                        : Colors.grey),
+                                labelText:  '${LanguageTr.lg[authProvider.language]["Password"]}',
+                                hintStyle: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB'),
+                                filled: true,
+                                fillColor: Colors.white,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5.0),
                                     borderSide: const BorderSide(
-                                      color: Colors.red,
-                                    ),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.red,
-                                    ),
-                                  ),
-                                  contentPadding:
-                                  EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-
-                                  alignLabelWithHint: true,
-                                  labelStyle: TextStyle(
-                                      fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
-                                      color:
-                                      focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                  labelText: 'Password',
-                                  hintStyle:TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'BerlinSansFB'),
-
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Color(0xFF3F5521),
-                                      ))),
-                              controller:authProvider.password,
-                             // validator: validatePass,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                                      color: Color(0xFF3F5521),
+                                    ))),
+                            controller: authProvider.password,
+                            // validator: validatePass,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
 
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: passObscure,
                           ),
-
-
-
-
-
                         ]),
                       ),
                     ),
@@ -241,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             textAlign: TextAlign.end,
                             overflow: TextOverflow.ellipsis,
                             text: TextSpan(
-                              text: 'Forgot Password ?',
+                              text:   '${LanguageTr.lg[authProvider.language]["Forgot Password"]}',
                               style: Theme.of(context).textTheme.headline3,
                             ),
                           ),
@@ -308,12 +299,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               }
                             },
-                            child: Text(
-                              'Log In',
-                              style: TextStyle(color: Colors.white,
-                                  fontWeight: FontWeight.bold,fontFamily: 'BerlinSansFB',
-                              fontSize: 16)
-                            ),
+                            child: Text( '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'BerlinSansFB',
+                                    fontSize: 16)),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(
                                   screenHeight * 0.14,
@@ -335,7 +326,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: InkWell(
                         child: FittedBox(
                           child: Text(
-                            'Create New Account',
+                            '${LanguageTr.lg[authProvider.language]["Create New Account"]}',
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),

@@ -5,6 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../language/language.dart';
 import 'confirm_email.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ bool loading=false;
     final authprovider=Provider.of<UserProvider>(context,listen:true);
     var appbar = AppBar(
       title: Text(
-        'Forgot Password',
+        '${LanguageTr.lg[authprovider.language]["Forgot Password"]}',
         style: TextStyle(fontWeight: FontWeight.bold,
         fontFamily: 'BerlinSansFB',
         fontSize: 16),
@@ -69,7 +70,7 @@ bool loading=false;
               children: [
                 SizedBox(height: screenHeight * 0.12),
                 Text(
-                  'Enter your email or your phone number',
+                  '${LanguageTr.lg[authprovider.language]["Enter your email or your phone number"]}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: screenHeight * 0.12),
@@ -103,7 +104,7 @@ bool loading=false;
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'Email or Phone number',
+                                hintText: '${LanguageTr.lg[authprovider.language][ "Email or Phone number"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -182,7 +183,7 @@ bool loading=false;
                         //   }
                         },
                         child: Text(
-                          'Send',
+                          '${LanguageTr.lg[authprovider.language][ "Send"]}',
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         style: ElevatedButton.styleFrom(
