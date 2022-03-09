@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
+
 class RegularDaberneScreen extends StatefulWidget {
   @override
   _RegularDaberneScreenState createState() => _RegularDaberneScreenState();
@@ -35,6 +38,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final orderProvider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     final addresProvider = Provider.of<AdressProvider>(context, listen: true);
@@ -70,7 +75,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     children: [
                       Image.asset('images/CaterMe.png',
                           height: screenHeight * 0.3),
-                      Text(" after ${addresProvider.hours.timespan} ",style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
+                      Text('${LanguageTr.lg[authProvider.language]["after"]}${addresProvider.hours.timespan}',
+                          style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
                     ],
                   ),
                 ],
@@ -106,7 +112,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                         child: SvgPicture.asset('images/daberni.svg',
                             height: screenHeight * 0.2),
                       ),
-                      Text(" before ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                      Text(" ${LanguageTr.lg[authProvider.language][ "before"]}, ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                     ],
                   ),
                 ],

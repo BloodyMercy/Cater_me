@@ -228,8 +228,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Icons.camera,
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
-                              title: const Text(
-                                'Camera',
+                              title:  Text(
+                                '${LanguageTr.lg[authProvider.language]["Camera"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontSize: 16,
@@ -246,8 +246,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Icons.image,
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
-                              title: const Text(
-                                'Gallery',
+                              title:  Text(
+                                '${LanguageTr.lg[authProvider.language]["Gallery"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontSize: 16,

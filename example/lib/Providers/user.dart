@@ -11,6 +11,8 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../language/language.dart';
+
 enum Status {
   Authenticated, //inside application
   Unauthenticated,
@@ -176,7 +178,7 @@ getdata();
     } catch (error) {
       //_status = Status.Unauthenticated;
 
-      _messagelogin = "error try again";
+      _messagelogin =    '${LanguageTr.lg[language]["Camera"]}';
 
       notifyListeners();
       return false;

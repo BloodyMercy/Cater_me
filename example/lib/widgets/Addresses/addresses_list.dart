@@ -7,6 +7,8 @@ import 'package:CaterMe/model/address_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import 'addresses_textField.dart';
 
 class AddressesList extends StatefulWidget {
@@ -75,6 +77,7 @@ class _AddressesListState extends State<AddressesList> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
@@ -98,7 +101,7 @@ class _AddressesListState extends State<AddressesList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Add An Address",
+                            '${LanguageTr.lg[authProvider.language]["Add an Address"]}',
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Color(0xFF3F5521),
@@ -200,7 +203,7 @@ class _AddressesListState extends State<AddressesList> {
                                               .style,
                                           children: <TextSpan>[
                                             TextSpan(
-                                                text: ' Street :',
+                                                text:  '${LanguageTr.lg[authProvider.language]["Street:"]}',
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -222,7 +225,7 @@ class _AddressesListState extends State<AddressesList> {
                                               .style,
                                           children: <TextSpan>[
                                             TextSpan(
-                                                text: ' Building :',
+                                                text: '${LanguageTr.lg[authProvider.language]["Building:"]}',
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -237,28 +240,14 @@ class _AddressesListState extends State<AddressesList> {
                                           ],
                                         ),
                                       ),
-                                      // Text(
-                                      //   "Building Name: ${widget.address[i].buildingName.toString()}",
-                                      //   style: const TextStyle(
-                                      //       fontSize: 15,
-                                      //       fontWeight: FontWeight.bold),
-                                      // ),
-                                      // Radio(
-                                      //   value: 5,
-                                      //   groupValue: _value,
-                                      //   onChanged: (value) {
-                                      //     setState(() {
-                                      //       _value = _value;
-                                      //     });
-                                      //   },
-                                      // ),
+
                                       RichText(
                                         text: TextSpan(
                                           style: DefaultTextStyle.of(context)
                                               .style,
                                           children: <TextSpan>[
                                             TextSpan(
-                                                text: ' Floor :',
+                                                text: '${LanguageTr.lg[authProvider.language]["Floor:"]}',
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -273,12 +262,7 @@ class _AddressesListState extends State<AddressesList> {
                                           ],
                                         ),
                                       ),
-                                      // Text(
-                                      //   "Floor Number: ${widget.address[i].floorNumber.toString()}",
-                                      //   style: const TextStyle(
-                                      //       fontSize: 15,
-                                      //       fontWeight: FontWeight.bold),
-                                      // ),
+
                                     ],
                                   ),
                                 ),
@@ -300,7 +284,7 @@ class _AddressesListState extends State<AddressesList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Add An Address",
+                            '${LanguageTr.lg[authProvider.language][ "Add an Address"]}',
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Color(0xFF3F5521),
