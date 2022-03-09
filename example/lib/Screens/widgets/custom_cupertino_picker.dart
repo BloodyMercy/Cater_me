@@ -9,6 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../language/language.dart';
+
 class CustomCupertinoPicker extends StatefulWidget {
   String label;
   TextInputType inputType;
@@ -69,6 +71,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
   }
 
   void showPicker(BuildContext ctx) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     showCupertinoModalPopup(
 
         context: ctx,
@@ -92,7 +95,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                     CupertinoButton(
 
                       child: Text(
-                        "Pick " + widget.label.toLowerCase(),
+                        "${LanguageTr.lg[authProvider.language]["Pick"]}" + widget.label.toLowerCase(),
                         style: TextStyle(
                             color: Color(0xFF3F5521), fontWeight: FontWeight.w300),
                       ),

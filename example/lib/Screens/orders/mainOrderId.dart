@@ -3,6 +3,10 @@ import 'package:CaterMe/Screens/orders/order_details.dart';
 import 'package:CaterMe/Screens/orders/order_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class OrderId extends StatefulWidget {
   int id;
@@ -25,10 +29,11 @@ class _OrderIdState extends State<OrderId> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     List<Widget> _screen = [DetailsOrder(widget.id), TrackingOrder(widget.id)];
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order Info",style: Theme.of(context).textTheme.headline1,),
+        title: Text('${LanguageTr.lg[authProvider.language]["Order Info" ]}',style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
       ),
       body: SafeArea(child: _screen[widget.screen]),
@@ -39,8 +44,8 @@ class _OrderIdState extends State<OrderId> {
           currentIndex: widget.screen,
           onTap: _onItemTapped,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: "Details"),
-            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: "Tracking")
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: '${LanguageTr.lg[authProvider.language][ "Details"]}',),
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: '${LanguageTr.lg[authProvider.language][ "Tracking"]}',),
           ]),
     );
   }

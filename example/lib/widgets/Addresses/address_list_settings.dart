@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class AddressesListSettings extends StatefulWidget {
   final List<Address> address;
 
@@ -25,6 +28,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context, listen: true);
     final orderprovider =
     Provider.of<OrderCaterProvider>(context, listen: true);
     final address=Provider.of<AdressProvider>(context,listen: true);
@@ -122,11 +126,11 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                 IconButton(
                                     onPressed: () {
                                      showDialog(context: context, builder: (BuildContext context)=>
-                                         CustomDialog(title: "Do you want to delete this address",
+                                         CustomDialog(title: '${LanguageTr.lg[user.language]["Do you want to delete this address"]}',
                                            description: "",
                                            button1:ElevatedButton(
                                              style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                             child: Text("Yes"),
+                                             child: Text('${LanguageTr.lg[user.language][ "Yes"]}',),
                                              onPressed: ()async{
                                                showDialog(
                                                  context: this.context,
@@ -162,7 +166,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
                                            button2: ElevatedButton(
                                              onPressed: (){
                                              Navigator.of(context).pop();
-                                             },child: Text("No"),
+                                             },child: Text('${LanguageTr.lg[user.language][ "No"]}',),
                                            ),
                                            oneOrtwo: true,
                                          )

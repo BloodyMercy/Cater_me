@@ -5,6 +5,9 @@ import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
+
 class AddNewOccasion extends StatefulWidget {
   int getposition =0 ;
    AddNewOccasion(this.getposition) ;
@@ -43,6 +46,7 @@ await occasion.getAllOccasionType();
   final _scaff = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
    final occasion = Provider.of<OccasionProvider>(context, listen: true);
 
     final mediaQuery = MediaQuery.of(context);
@@ -64,7 +68,7 @@ await occasion.getAllOccasionType();
 
           centerTitle: true,
           title: Text(
-            'Add An Occasion',
+            '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -100,7 +104,7 @@ await occasion.getAllOccasionType();
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
                                   color:
                                   focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                              labelText: 'Name of occasion',
+                              labelText: '${LanguageTr.lg[authProvider.language][ "Name of Occasion"]}',
                               hintStyle:TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -131,7 +135,7 @@ await occasion.getAllOccasionType();
                   // customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
 
                   CustomCupertinoPicker(
-                          label: 'Type of Occasion',
+                          label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion "]}',
                           items: occasion.listoccasiontypename,
                           listoccasiontype: occasion.listoccasiontype,
                           selectedValue: widget.getposition,
@@ -200,7 +204,7 @@ await occasion.getAllOccasionType();
                                 }
                               },
                               child: Text(
-                                'ADD',
+                                '${LanguageTr.lg[authProvider.language]["Add"]}',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                               style: ElevatedButton.styleFrom(

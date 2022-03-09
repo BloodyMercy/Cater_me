@@ -6,6 +6,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 
 import '../customBirthdayPicker.dart';
+import '../language/language.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key key}) : super(key: key);
@@ -75,7 +76,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            'Personal Info',
+            '${LanguageTr.lg[user.language]["Personal Info"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -114,7 +115,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         ? Color(0xFF3F5521)
                                         : Colors.grey,
                                   ),
-                                  labelText: 'Full Name',
+                                  labelText:  '${LanguageTr.lg[user.language]["Full Name"]}',
                                   hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -142,7 +143,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
                               ]),
                             ),
                             SizedBox(height: _mediaQuery * 0.03),
@@ -161,7 +162,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         ? Color(0xFF3F5521)
                                         : Colors.grey,
                                   ),
-                                  labelText: 'Email',
+                                  labelText: '${LanguageTr.lg[user.language]["Email"]}',
                                   hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -189,53 +190,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                EmailValidator(errorText: "Please enter email"),
-                                RequiredValidator(errorText: 'Required *'),
+                                EmailValidator(errorText: '${LanguageTr.lg[user.language]["Please enter email"]}',),
+                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
                               ]),
                               keyboardType: TextInputType.emailAddress,
                             ),
 
-                            // TextFormField(
-                            //   controller: user.email,
-                            //   decoration: InputDecoration(
-                            //       prefixIcon: Icon(Icons.mail_outline),
-                            //       contentPadding: EdgeInsets.only(
-                            //           left: MediaQuery.of(context).size.width *
-                            //               0.04),
-                            //       alignLabelWithHint: true,
-                            //       labelStyle: TextStyle(
-                            //           fontSize: focusNode.hasFocus ? 18 : 16.0,
-                            //           //I believe the size difference here is 6.0 to account padding
-                            //           color: focusNode.hasFocus
-                            //               ? Color(0xFF3F5521)
-                            //               : Colors.grey),
-                            //       labelText: "Email",
-                            //       hintStyle: TextStyle(
-                            //           color: Colors.white,
-                            //           fontSize: 15,
-                            //           fontWeight: FontWeight.bold,
-                            //           fontFamily: 'BerlinSansFB'),
-                            //       filled: true,
-                            //       fillColor: Colors.white,
-                            //       enabledBorder: OutlineInputBorder(
-                            //         borderRadius: BorderRadius.circular(5.0),
-                            //         borderSide: const BorderSide(
-                            //           color: Colors.grey,
-                            //         ),
-                            //       ),
-                            //       focusedBorder: OutlineInputBorder(
-                            //           borderRadius: BorderRadius.circular(5.0),
-                            //           borderSide: const BorderSide(
-                            //             color: Color(0xFF3F5521),
-                            //           ))),
-                            //   autovalidateMode:
-                            //       AutovalidateMode.onUserInteraction,
-                            //   validator: MultiValidator([
-                            //     EmailValidator(errorText: "Please enter email"),
-                            //     RequiredValidator(errorText: 'Required *'),
-                            //   ]),
-                            //   keyboardType: TextInputType.emailAddress,
-                            // ),
                             SizedBox(height: _mediaQuery * 0.03),
                             TextFormField(
                               controller: user.phoneNumber,
@@ -251,7 +211,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText: 'Phone number',
+                                labelText:'${LanguageTr.lg[user.language]["Phone Number"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -280,7 +240,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
                               ]),
                               keyboardType: TextInputType.phone,
                             ),
@@ -288,7 +248,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomBirthdayPicker(
-                                label: "Birthdate",
+                                label: '${LanguageTr.lg[user.language]["birthdate"]}',
                                 controller: address.evendatecontroller,
                               ),
                             ),
@@ -313,12 +273,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         });
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
-                                          content: Text('Cannot Update Info'),
+                                          content: Text( '${LanguageTr.lg[user.language]['Cannot Update Info']}',),
                                         ));
                                       }
                                     },
                                     child: Text(
-                                      'SUBMIT',
+                                      '${LanguageTr.lg[user.language]["Submit"]}',
                                       style:
                                           Theme.of(context).textTheme.headline1,
                                     ),
