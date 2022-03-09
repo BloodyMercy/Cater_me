@@ -15,6 +15,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'auth/login_screen.dart';
 import 'occasion/theme/colors/light_colors.dart';
@@ -173,8 +174,8 @@ class _TABBarState extends State<TABBar> {
                                         Icons.camera,
                                         color: Color.fromRGBO(63, 85, 33, 1),
                                       ),
-                                      title: const Text(
-                                        'Camera',
+                                      title:  Text(
+                                      '${LanguageTr.lg[personalInfo.language][ "Camera"]}',
                                         style: TextStyle(
                                           fontFamily: 'BerlinSansFB',
                                           fontSize: 14,
@@ -198,8 +199,8 @@ class _TABBarState extends State<TABBar> {
                                         Icons.image,
                                         color: Color.fromRGBO(63, 85, 33, 1),
                                       ),
-                                      title: const Text(
-                                        'Gallery',
+                                      title:  Text(
+                                        '${LanguageTr.lg[personalInfo.language][ "Gallery"]}',
                                         style: TextStyle(
                                           fontFamily: 'BerlinSansFB',
                                           fontSize: 14,
@@ -295,7 +296,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            "Personal Info",
+                                            '${LanguageTr.lg[personalInfo.language][ "Personal Info"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -347,7 +348,7 @@ class _TABBarState extends State<TABBar> {
                                         width: mediaQuery.size.width * 0.05,
                                       ),
                                       Text(
-                                        "Reset Password",
+                                        '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
                                         style: TextStyle(
                                             color: Color(0xFF3F5521),
                                             fontSize: 20,
@@ -410,7 +411,7 @@ class _TABBarState extends State<TABBar> {
                                           width: mediaQuery.size.width * 0.05,
                                         ),
                                         Text(
-                                          "My Addresses",
+                                          '${LanguageTr.lg[personalInfo.language]["My Address"]}',
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
@@ -465,7 +466,7 @@ class _TABBarState extends State<TABBar> {
                                           width: mediaQuery.size.width * 0.05,
                                         ),
                                         Text(
-                                          "My Credit Cards",
+                                          '${LanguageTr.lg[personalInfo.language][ "My Credit Cards"]}',
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
@@ -519,7 +520,7 @@ class _TABBarState extends State<TABBar> {
                                           width: mediaQuery.size.width * 0.05,
                                         ),
                                         Text(
-                                          "My Friends",
+                                          '${LanguageTr.lg[personalInfo.language][ "My Friends"]}',
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
@@ -572,7 +573,7 @@ class _TABBarState extends State<TABBar> {
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
-                                      "Language ",
+                                      '${LanguageTr.lg[personalInfo.language]["Language"]}',
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
@@ -630,7 +631,7 @@ class _TABBarState extends State<TABBar> {
                                       width: mediaQuery.size.width * 0.05,
                                     ),
                                     Text(
-                                      "Contact Us ",
+                                      '${LanguageTr.lg[personalInfo.language]["Contact Us"]}',
                                       style: TextStyle(
                                           color: Color(0xFF3F5521),
                                           fontSize: 20,
@@ -666,7 +667,7 @@ class _TABBarState extends State<TABBar> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return CustomDialog(
-                                      title: 'Sad to see you leave',
+                                      title:  '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
                                       description: "",
                                       oneOrtwo: true,
                                       button2: ElevatedButton(
@@ -693,7 +694,7 @@ class _TABBarState extends State<TABBar> {
                                                   (route) => false);
                                         },
                                         child: Text(
-                                          "Logout",
+                                          '${LanguageTr.lg[personalInfo.language]["Logout"]}',
                                           style: TextStyle(
                                               fontFamily: 'BerlinSansFB'),
                                         ),
@@ -702,7 +703,7 @@ class _TABBarState extends State<TABBar> {
                                         onPressed: () {
                                           Navigator.of(context).pop();
                                         },
-                                        child: Text("No",
+                                        child: Text( '${LanguageTr.lg[personalInfo.language]["No"]}',
                                             style: TextStyle(
                                                 fontFamily: 'BerlinSansFB')),
                                       ),
@@ -729,8 +730,8 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
                                       ),
-                                      const Text(
-                                        "Logout ",
+                                       Text(
+                                        '${LanguageTr.lg[personalInfo.language]["Logout"]}',
                                         style: TextStyle(
                                             color: Color(0xFF3F5521),
                                             fontSize: 20,

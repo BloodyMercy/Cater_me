@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/orderById_provider.dart';
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import 'const.dart';
 
 class CustomDialog2 extends StatelessWidget {
@@ -19,6 +21,7 @@ class CustomDialog2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -77,7 +80,8 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                       child: Text(
-                        "Without equipment",
+                        '${LanguageTr.lg[authProvider.language]["Without equipment"]}',
+
                         style: TextStyle(
                           color: !order.check1?Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -102,7 +106,8 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                         child:  Text(
-                          "Without service team",
+                          '${LanguageTr.lg[authProvider.language]["Without service team"]}',
+
                           style: TextStyle(
                             color: !order.check2?Color.fromRGBO(
                                 149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),
@@ -127,7 +132,7 @@ class CustomDialog2 extends StatelessWidget {
                   Container(width: width/50,),
                   Expanded(
                       child:  Text(
-                        "Don't donate the rest of food",
+                        '${LanguageTr.lg[authProvider.language]["Don’t donate the rest of the food"]}',
                         style: TextStyle(
                           color: !order.check4? Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),

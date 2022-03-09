@@ -1,12 +1,18 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class DonationAdded extends StatelessWidget {
   const DonationAdded({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       body: Container(
@@ -48,7 +54,7 @@ class DonationAdded extends StatelessWidget {
                 );
               },
               child: Text(
-                "CLOSE",
+                '${LanguageTr.lg[authProvider.language][ "Close"]}',
                 style: Theme.of(context).textTheme.headline1,
               ),
               style: ElevatedButton.styleFrom(

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class YourOrders extends StatefulWidget {
   const YourOrders({Key key}) : super(key: key);
 
@@ -51,10 +54,11 @@ class _YourOrdersState extends State<YourOrders> {
   }
 
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final orders = Provider.of<OrderProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("My Orders",style: Theme.of(context).textTheme.headline1,),
+        appBar: AppBar(title: Text('${LanguageTr.lg[authProvider.language][  "My Orders"]}',style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,),
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
@@ -119,7 +123,8 @@ class _YourOrdersState extends State<YourOrders> {
                                     height: 10,
                                   ),
                                   Text(
-                                    "Address: ${orders.listOrder[index].addressTitle}",
+
+                                    "${LanguageTr.lg[authProvider.language][ "Address"]}, ${orders.listOrder[index].addressTitle}",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.normal),

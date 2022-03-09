@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
+
 class EditOccasion extends StatefulWidget {
   Occasion  occ;
 
@@ -69,6 +72,7 @@ bool ispressed = false;
     //List<Occasion> occasion = occasionSS;
     final mediaQuery = MediaQuery.of(context);
     OccasionProvider occasion = Provider.of<OccasionProvider>(context, listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
@@ -105,7 +109,7 @@ bool ispressed = false;
 
           centerTitle: true,
           title: Text(
-            'Edit Occasion',
+            '${LanguageTr.lg[authProvider.language][ "Edit Occasion"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -119,10 +123,10 @@ bool ispressed = false;
                 children: [
                   SizedBox(height: mediaQuery.size.height * 0.07),
 
-                  customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
+                  customTextField(controller: occasion.nameofoccasioncontroller,label:'${LanguageTr.lg[authProvider.language][ "Name of Occasion"]}',),
 
                   CustomCupertinoPicker(
-                    label: 'Type of Occasion',
+                    label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion "]}',
                     items: occasion.listoccasiontypename,
                     listoccasiontype: occasion.listoccasiontype,
                     selectedValue: 0,
@@ -189,7 +193,7 @@ bool ispressed = false;
                           }
                         },
                         child: Text(
-                          'Save the Date',
+                          '${LanguageTr.lg[authProvider.language][ "Save the Date"]}',
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         style: ElevatedButton.styleFrom(

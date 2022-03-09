@@ -9,7 +9,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
 import '../custom_date_picker_form_field.dart';
+import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class ReguarScreen extends StatefulWidget {
@@ -87,6 +89,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   TextEditingController controllersearch = TextEditingController();
 
   Widget setupAlertDialoadContainer(context, List<FriendModel> l) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     return SingleChildScrollView(
@@ -148,6 +151,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
     FocusNode focusNode = FocusNode();
@@ -195,7 +199,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: 'Event Name',
+                                      labelText: '${LanguageTr.lg[authProvider.language]["Event Name "]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,
@@ -227,7 +231,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomDatePickerFormField(
-                                label: "Event Date",
+                                label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
                                 controller: address.evendatecontroller,
                               ),
                             ),
@@ -235,13 +239,15 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomDailyDate(
-                                label: "Event Time",
+                                label: '${LanguageTr.lg[authProvider.language]["Event Time "]}',
                                 controller: address.DailyDatecontroller,
                               ),
                             ),
 
                             CustomCupertinoPicker(
-                              label: "Numbers Of Guests",
+                              label:
+
+                              '${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
                               items: address.listnamenumber,
                               numberOfGuests: address.regular.numberOfGuests,
                               selectedValue: 1,
@@ -252,7 +258,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             SizedBox(height: screenHeight * 0.02),
 
                             CustomCupertinoPicker(
-                              label: "Type Of Event",
+                              label:
+                              '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
                               items: address.listnameevent,
                               events: address.regular.events,
                               selectedValue: 0,
@@ -263,7 +270,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             SizedBox(height: screenHeight * 0.03),
                             Center(
                               child: Text(
-                                'Contact Person',
+                                '${LanguageTr.lg[authProvider.language]["Contact Person"]}',
                                 style: TextStyle(
                                     color: Color(0xFF3F5521),
                                     fontWeight: FontWeight.bold,
@@ -291,7 +298,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     });
                                   },
                                 ),
-                                Text('Me'),
+                                Text('${LanguageTr.lg[authProvider.language]["Me"]}',),
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width / 10,
                                 ),
@@ -311,7 +318,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     });
                                   },
                                 ),
-                                Text('Others'),
+                                Text('${LanguageTr.lg[authProvider.language]["Others"]}',),
                               ],
                             ),
 
@@ -338,7 +345,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: 'Name',
+                                      labelText: '${LanguageTr.lg[authProvider.language]["Name"]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,
@@ -388,7 +395,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: 'Phone Number',
+                                      labelText: '${LanguageTr.lg[authProvider.language][ "Phone number"]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,

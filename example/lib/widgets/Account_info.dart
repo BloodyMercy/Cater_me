@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 
+import '../language/language.dart';
+
 class AccountInfo extends StatefulWidget {
   @override
   State<AccountInfo> createState() => _AccountInfoState();
@@ -41,17 +43,20 @@ class _AccountInfoState extends State<AccountInfo> {
   }
 
   String validatePass(value) {
+
     if (value.isEmpty) {
-      return 'Required *';
+      final user = Provider.of<UserProvider>(context, listen: false);
+      return '${LanguageTr.lg[user.language][ "Required"]}';
     } else {
       return null;
     }
   }
 
   String validateConfirmPass(value) {
+    final user = Provider.of<UserProvider>(context, listen: false);
     validatePass(value);
     if (value != newPassController.text) {
-      return "Passwords don't match";
+      return '${LanguageTr.lg[user.language][ "Passwords don't match"]}';
     } else {
       return null;
     }
@@ -80,7 +85,7 @@ class _AccountInfoState extends State<AccountInfo> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            'Account Info',
+            '${LanguageTr.lg[user.language][ "Account Info"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -104,7 +109,7 @@ class _AccountInfoState extends State<AccountInfo> {
                         SizedBox(height: _mediaQuery * 0.03),
                         FittedBox(
                           child: Text(
-                            'Change Password',
+                            '${LanguageTr.lg[user.language][ "Change Password"]}',
                             style: Theme.of(context).textTheme.headline2,
                           ),
                         ),
@@ -139,7 +144,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: "Old password",
+                              labelText: '${LanguageTr.lg[user.language]["Old Password"]}',
                               hintStyle: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -160,7 +165,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                   ))),
                           controller: user.oldPassword,
                           validator: MultiValidator([
-                            RequiredValidator(errorText: 'Required *'),
+                            RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
                             // EmailValidator(errorText: 'Not a valid password'),
                           ]),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -196,7 +201,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText: 'New Password',
+                                labelText: '${LanguageTr.lg[user.language][ "New Password"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -217,6 +222,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                     ))),
                             controller: user.password1,
                             validator: validatePass,
+
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction),
                         SizedBox(height: _mediaQuery * 0.03),
@@ -249,7 +255,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: 'Confirm Password',
+                              labelText: '${LanguageTr.lg[user.language][ "Confirm Password"]}',
                               hintStyle: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -273,7 +279,7 @@ class _AccountInfoState extends State<AccountInfo> {
                           validator: (value) {
                             if (user.password1.text !=
                                 user.confirmpassword.text) {
-                              return "Password dosen't match";
+                              return '${LanguageTr.lg[user.language][ "Password dosen't match"]}';
                             }
                             return null;
                           },
@@ -306,14 +312,14 @@ class _AccountInfoState extends State<AccountInfo> {
                                       });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
-                                        content: Text('Cannot update! Old password is wrong'),
+                                        content: Text('${LanguageTr.lg[user.language][ 'Cannot update! Old password is wrong']}',),
                                       ));
                                     }
                                     user.clearAllTextController();
                                   }
                                 },
                                 child: Text(
-                                  'SAVE',
+                                  '${LanguageTr.lg[user.language][ "Save"]}',
                                   style: Theme.of(context).textTheme.headline1,
                                 ),
                                 style: ElevatedButton.styleFrom(

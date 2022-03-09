@@ -13,10 +13,13 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../NavigationBar/navigation_bar.dart';
+import '../Providers/user.dart';
 import '../Screens/CustomAlert/costumedialod2.dart';
+import '../language/language.dart';
 
 class AppointmentSuccess extends StatefulWidget {
   final int id;
+
   AppointmentSuccess(this.id);
 
   @override
@@ -26,7 +29,6 @@ class AppointmentSuccess extends StatefulWidget {
 class _AppointmentSuccessState extends State<AppointmentSuccess> {
   var _key = GlobalKey<ScaffoldState>();
   final f = new DateFormat('MM/dd/yyyy hh:mm');
-
 
 //  Widget svg = SvgPicture.asset('assets/images/reset_success.svg');
   // Widget svg1 = SvgPicture.asset('assets/images/cube.svg');
@@ -40,8 +42,10 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     playaudio();
     //  inAppMessaging(context,SplashScreen());
   }
+
   AudioCache _audioCache = AudioCache();
   var audio = AudioPlayer();
+
   playaudio() async {
     print("play audio");
     // audio.play(
@@ -54,12 +58,15 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     if (Platform.isIOS) {
       _audioCache.fixedPlayer?.notificationService.startHeadlessService();
     }
-    _audioCache.play('car.mp3').onError((error, stackTrace) {print("error audio: $error");});
-
+    _audioCache.play('car.mp3').onError((error, stackTrace) {
+      print("error audio: $error");
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     final _serpres = Provider.of<OrderCaterProvider>(context, listen: true);
@@ -100,9 +107,10 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                 height: MediaQuery.of(context).size.height / 2,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: _serpres.serviceId!=1? AssetImage('images/orderTracking/sammdaberni.png'):AssetImage('images/orderTracking/sammcaterme.png'),
-                      fit: BoxFit.contain
-                  ),
+                      image: _serpres.serviceId != 1
+                          ? AssetImage('images/orderTracking/sammdaberni.png')
+                          : AssetImage('images/orderTracking/sammcaterme.png'),
+                      fit: BoxFit.contain),
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),
@@ -149,7 +157,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Order Details",
+                      '${LanguageTr.lg[authProvider.language]["Order Details"]}',
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'BerlinSansFB',
@@ -178,13 +186,12 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${address.eventnamecontroller.text }",
+                      "${address.eventnamecontroller.text}",
                       style: TextStyle(
                         color: Colors.black54,
                         fontFamily: 'BerlinSansFB',
                       ),
                     ),
-
                     Text(
                       "${_serpres.value.title}",
                       style: TextStyle(
@@ -192,37 +199,29 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                         fontFamily: 'BerlinSansFB',
                       ),
                     ),
-                     Text(
-                       "${address.evendatecontroller.text}",
-                       style: TextStyle(
-                         color: Colors.black54,
-                         fontFamily: 'BerlinSansFB',
-                       ),
-                     ),
-                     Text(
-                       "${address.DailyDatecontroller.text}",
-                       style: TextStyle(
-                         color: Colors.black54,
-                         fontFamily: 'BerlinSansFB',
-                       ),
-                     ),
-
-
+                    Text(
+                      "${address.evendatecontroller.text}",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontFamily: 'BerlinSansFB',
+                      ),
+                    ),
+                    Text(
+                      "${address.DailyDatecontroller.text}",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontFamily: 'BerlinSansFB',
+                      ),
+                    ),
                     _serpres.serviceId == 1
                         ? Image.asset(
-                      ('images/CaterMe.png'),
-                      height:
-                      MediaQuery.of(context).size.height *
-                          0.04,
-                    )
+                            ('images/CaterMe.png'),
+                            height: MediaQuery.of(context).size.height * 0.04,
+                          )
                         : Image.asset(
-                      'images/daberneLogo.png',
-                      height:
-                      MediaQuery.of(context).size.height *
-                          0.05,
-                    ),
-
-
+                            'images/daberneLogo.png',
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
                   ],
                 ),
               ),
@@ -237,46 +236,55 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => CustomDialog2(
-                          title: "Success",
+                          title:
+                              '${LanguageTr.lg[authProvider.language]["Success"]}',
                           description:
-                              "Do You Want To Donate The Rest Of Your Food?",
-
+                              '${LanguageTr.lg[authProvider.language]["Do You Want To Donate The Rest Of Your Food?"]}',
                           button2: ElevatedButton(
                             style:
-                            ElevatedButton.styleFrom(primary: colorCustom),
-                            onPressed: () async{
+                                ElevatedButton.styleFrom(primary: colorCustom),
+                            onPressed: () async {
                               showDialog(
                                 context: this.context,
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
                                   return WillPopScope(
-                                      onWillPop: () => Future<bool>.value(false),
+                                      onWillPop: () =>
+                                          Future<bool>.value(false),
                                       child: AlertDialog(
-                                        title: Text("Loading..."),
-                                        content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
+                                        title: Text( '${LanguageTr.lg[authProvider.language]["Loading"]}',),
+                                        content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              CircularProgressIndicator()
+                                            ]),
                                       ));
                                 },
                               );
 
-                              await order.donate(widget.id,);
+                              await order.donate(
+                                widget.id,
+                              );
 
                               Navigator.pop(context);
-                              if(order.check4){
+                              if (order.check4) {
                                 Navigator.of(context).pop();
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => Navigationbar(0),), (route) => false);
-
-
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => Navigationbar(0),
+                                    ),
+                                    (route) => false);
+                              } else {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => DonationAdded(),
+                                    ),
+                                    (route) => false);
                               }
-                              else {
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => DonationAdded(),), (route) => false);
-
-                              }
-
-
-
-
                             },
-                            child: Text('Done'),
+                            child: Text(
+                              '${LanguageTr.lg[authProvider.language]["Done"]}',
+                            ),
                           ),
                           oneOrtwo: true,
                         ),
@@ -288,7 +296,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       //     (Route<dynamic> route) => false);
                     },
                     child: Text(
-                      "Finish",
+                      '${LanguageTr.lg[authProvider.language]["Finish"]}',
+
                       style: TextStyle(
                         fontFamily: 'BerlinSansFB',
                         fontWeight: FontWeight.bold,

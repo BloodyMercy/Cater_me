@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class DetailsOrder extends StatefulWidget {
   int id;
 
@@ -61,6 +64,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
 
@@ -83,7 +87,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Invoice',
+                          '${LanguageTr.lg[authProvider.language][  "Invoice"]}',
                                 style: TextStyle(color: Colors.black),
                               ),SizedBox(height: 10,),
                               Card(
