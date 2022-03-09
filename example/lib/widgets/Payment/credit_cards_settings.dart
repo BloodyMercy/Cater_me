@@ -68,19 +68,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
           }, icon: Icon(Icons.add))
         ],
       ),
-        // _creditCards.list.length==0?Center(child: Container(
-        //   margin: const EdgeInsets.only(top: 24.0),
-        //   alignment: Alignment.center,
-        //   child: FloatingActionButton(
-        //     elevation: 2.0,
-        //     onPressed: () {
-        //       print("Add a credit card");
-        //     },
-        //     backgroundColor: colorCustom,
-        //     mini: false,
-        //     child: Icon(Icons.add),
-        //   ),
-        // ),)
+
       body: _creditCards.list.length==0?Center(child: Image.asset('images/nocardsyet.png')):_creditCards.loading?Center(child: CircularProgressIndicator(),):
       SafeArea(
         child:  Column(

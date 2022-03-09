@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
+import '../../Screens/occasion/theme/colors/light_colors.dart';
 import '../../language/language.dart';
 
 class CreditCardsPage extends StatefulWidget {
@@ -50,73 +51,78 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               )
             : _creditCards.list.length != 0
                 ? CustomScrollView(
-                  slivers: [
-                SliverToBoxAdapter(
-
-                  child: _buildTitleSection(
-
-                      title:'${LanguageTr.lg[authProvider.language][ "Payment Details"]}',
-                      subTitle:'${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}' ,),
-
-                ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int i) {
-                      return Container(
-                        child: Row(
-                          children: [
-                            Radio(
-                              fillColor:
-                                  MaterialStateColor.resolveWith(
-                                      (states) => colorCustom),
-                              toggleable: true,
-                              groupValue: _creditCards.value,
-                              value: i,
-                              onChanged: (value) {
-                                _creditCards.value=i;
-                                setState(() {
-                                  _value = i;
-                                });
-                                _creditCards.credit =
-                                    _creditCards.list[i];
-                              },
-                            ),
-                            _buildCreditCard(
-
-                              color:Colors.black,
-                              cardExpiration:
-                                  "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                              cardHolder:
-                                  _creditCards.list[i].ownerName,
-
-                              cardNumber:
-                                  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                            ),
-
-                          ],
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: _buildTitleSection(
+                          title:
+                              '${LanguageTr.lg[authProvider.language]["Payment Details"]}',
+                          subTitle:
+                              '${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}',
                         ),
-                      );
-                    },
-                    childCount: _creditCards.list.length,
-                  ),
-                ),
-                // SliverToBoxAdapter(
-                //   child:
-                //   _buildAddCardButton(
-                //       icon: Icon(Icons.add),
-                //       color: LightColors.kLightYellow2),
-                // )
-                  ],
-                )
+                      ),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int i) {
+                            return Container(
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    fillColor: MaterialStateColor.resolveWith(
+                                        (states) => colorCustom),
+                                    toggleable: true,
+                                    groupValue: _creditCards.value,
+                                    value: i,
+                                    onChanged: (value) {
+                                      _creditCards.value = i;
+                                      setState(() {
+                                        _value = i;
+                                      });
+                                      _creditCards.credit =
+                                          _creditCards.list[i];
+                                    },
+                                  ),
+                                  _buildCreditCard(
+                                    color: Colors.black,
+                                    cardExpiration:
+                                        "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                    cardHolder: _creditCards.list[i].ownerName,
+                                    cardNumber:
+                                        "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          childCount: _creditCards.list.length,
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                          child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+
+
+                        },
+                        icon: Icon(
+                          Icons.add,
+                          color: colorCustom,
+                        ),
+                      ))
+                    ],
+                  )
                 : Center(
-                    child:InkWell(
-
-
+                    child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
-                      child:Container(color:Colors.transparent,child: Image.asset("images/nocardsyet.png")),
+                      child: Container(
+                          color: Colors.transparent,
+                          child: Image.asset("images/nocardsyet.png")),
                     ),
                   ),
       ),
