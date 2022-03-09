@@ -71,6 +71,7 @@ dependencies:
   audioplayers: ^0.20.1
   animated_text_kit:
   url_launcher:
+  shimmer:
 
 
 
