@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import '../add_new_occasion.dart';
 import '../edit_occasion.dart';
 
@@ -48,6 +50,7 @@ class _OccasionListViewState extends State<OccasionListView> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final occasion = Provider.of<PackagesProvider>(context, listen: true);
     final occa = Provider.of<OccasionProvider>(context, listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
@@ -204,7 +207,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                         SizedBox(
                                           height: 20,
                                         ),
-                                        Text('edit',
+                                        Text('${LanguageTr.lg[authProvider.language]["edit"]}',
                                             //  locale: ,
                                             style: TextStyle(
                                                 color: Colors.black54,

@@ -27,6 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   File image;
+
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
     try {
@@ -41,6 +42,7 @@ class _SignupScreenState extends State<SignupScreen> {
       print('Failed : $e');
     }
   }
+
   FocusNode _focusNode = FocusNode();
   DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
   DateFormat _monthFormat = DateFormat('MMMM');
@@ -104,8 +106,10 @@ class _SignupScreenState extends State<SignupScreen> {
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
   ];
+
   // DateTime selectedDate = DateTime.now();
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
+
   // _datePicker() async {
   //   _newDate = (await showDatePicker(
   //     context: context,
@@ -137,7 +141,6 @@ class _SignupScreenState extends State<SignupScreen> {
   void showPicker(ctx) {
     final address = Provider.of<AdressProvider>(context, listen: false);
     DatePicker.showDatePicker(
-
       ctx,
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
@@ -155,41 +158,42 @@ class _SignupScreenState extends State<SignupScreen> {
       onCancel: () => print('onCancel'),
       onChange: (dateTime, List<int> index) {
         setState(
-              () {
+          () {
             _chosenDate = dateTime;
             _chosenDay = _dayFormat.format(dateTime);
             _chosenMonth = _monthFormat.format(dateTime);
             _chosenYear = _yearFormat.format(dateTime);
             address.evendatecontroller.text = _dateFormat.format(dateTime);
-
-
-
-
           },
         );
       },
     );
   }
+
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
 
     // final user = Provider.of<UserProvider>(context, listen: true);
     FocusNode focusNode = FocusNode();
-    final authProvider = Provider.of<UserProvider>(context,listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
-
-
       key: _scaffKey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(onPressed: (){
-                Navigator.pop(context);
-              }, icon: Icon(Icons.chevron_left ,color: Colors.black,size: 30,)),
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.chevron_left,
+                    color: Colors.black,
+                    size: 30,
+                  )),
               GestureDetector(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
@@ -278,11 +282,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon:Icon(Icons.person_outline_outlined),
-
-
-
-
+                                prefixIcon: Icon(Icons.person_outline_outlined),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -293,7 +293,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authProvider.language][ "Name"]}',
+                                hintText:
+                                    '${LanguageTr.lg[authProvider.language]["Name"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -311,10 +312,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                   Icons.mail_outline),
-
-
+                                prefixIcon: Icon(Icons.mail_outline),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -325,7 +323,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authProvider.language][ "Email"]}',
+                                hintText:
+                                    '${LanguageTr.lg[authProvider.language]["Email"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -367,20 +366,21 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authProvider.language]['Password' ]}',
+                                hintText:
+                                    '${LanguageTr.lg[authProvider.language]['Password']}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.password,
-                               validator: (val) {
+                              validator: (val) {
                                 if (val.isEmpty) {
                                   return 'Required ';
                                 } else if (val.length < 6) {
                                   return 'Password should be at least 6 characters';
                                 }
 
-                                return null;},
-
+                                return null;
+                              },
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: passObscure,
                             ),
@@ -388,7 +388,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             TextFormField(
                               autovalidateMode:
-                              AutovalidateMode.onUserInteraction,
+                                  AutovalidateMode.onUserInteraction,
                               onChanged: (value) => confirmPassword = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
@@ -414,15 +414,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authProvider.language][" Confirm Password"]}',
+                                hintText:
+                                    '${LanguageTr.lg[authProvider.language]["Confirm Password"]}',
                                 hintStyle:
-                                Theme.of(context).textTheme.headline4,
+                                    Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.confirmpassword,
-
                               validator: (val) {
-                                if (val.isEmpty)
-                                  return 'Confirm Password';
+                                if (val.isEmpty) return 'Confirm Password';
                                 if (val != authProvider.password.text)
                                   return 'Passwords do not match';
                                 return null;
@@ -436,10 +435,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                   Icons.phone),
-
-
+                                prefixIcon: Icon(Icons.phone),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -450,7 +446,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'Phone number',
+                                hintText:
+                                    '${LanguageTr.lg[authProvider.language]["Phone number"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -463,10 +460,13 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             SizedBox(height: screenHeight * 0.015),
                             CustomCupertinoPicker(
-
-                              label: "Gender",
-                              items: ["Female","Male"],
-                             // events: address.regular.events,
+                              label:
+                                  '${LanguageTr.lg[authProvider.language]["Gender"]}',
+                              items: [
+                                '${LanguageTr.lg[authProvider.language]["Female"]}',
+                                '${LanguageTr.lg[authProvider.language]["Male"]}',
+                              ],
+                              // events: address.regular.events,
                               selectedValue: 0,
                               inputType: TextInputType.text,
                               controller: authProvider.genderselected,
@@ -474,32 +474,31 @@ class _SignupScreenState extends State<SignupScreen> {
                             SizedBox(height: screenHeight * 0.015),
 
                             Container(
-                              height: MediaQuery.of(context).size.height/11,
+                              height: MediaQuery.of(context).size.height / 11,
                               // margin: EdgeInsets.only(bottom: 5),
                               padding: EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                   color: Colors.white, //white
-                                  borderRadius: BorderRadius.all(Radius.circular(5))),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5))),
                               child: TextFormField(
-
-
-
                                 decoration: InputDecoration(
-
-
-                                    suffixIcon:Icon(
+                                    suffixIcon: Icon(
                                       Icons.keyboard_arrow_down,
                                       color: Colors.black,
                                       size: 24,
-                                    ) ,
-
+                                    ),
                                     alignLabelWithHint: true,
                                     labelStyle: TextStyle(
                                         fontFamily: 'BerlinSansFB',
-                                        fontSize: _focusNode.hasFocus ? 20 : 18.0,//I believe the size difference here is 6.0 to account padding
-                                        color:
-                                        _focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                                    labelText: "birthdate",
+                                        fontSize:
+                                            _focusNode.hasFocus ? 20 : 18.0,
+                                        //I believe the size difference here is 6.0 to account padding
+                                        color: _focusNode.hasFocus
+                                            ? Color(0xFF3F5521)
+                                            : Colors.grey),
+                                    labelText:
+                                        '${LanguageTr.lg[authProvider.language]["birthdate"]}',
                                     filled: true,
                                     fillColor: Colors.white,
                                     enabledBorder: OutlineInputBorder(
@@ -509,13 +508,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                       ),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-
-                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
                                         borderSide: const BorderSide(
                                           color: Color(0xFF3F5521),
                                         ))),
                                 style: TextStyle(color: Colors.black),
-
                                 focusNode: _focusNode,
                                 controller: address.evendatecontroller,
                                 onTap: () {
@@ -523,24 +521,19 @@ class _SignupScreenState extends State<SignupScreen> {
                                   showPicker(context);
                                 },
                                 readOnly: true,
-
-
                               ),
-                            )
-                        ,
+                            ),
                             SizedBox(height: screenHeight * 0.015),
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
                               ),
-
                             ),
                             // SizedBox(height: screenHeight * 0.015),
                             // SizedBox(height: _mediaQuery * 0.03),
                             Padding(
                               padding: const EdgeInsets.only(left: 20),
-
 
                               // child: Row(
                               //   children: [
@@ -604,7 +597,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                 });
                                 // reset!=null?
                               } else {
-                                if (await authProvider.signUp(image,address.evendatecontroller.text)) {
+                                if (await authProvider.signUp(
+                                    image, address.evendatecontroller.text)) {
                                   setState(() {
                                     _loading = false;
                                   });
@@ -628,8 +622,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                 }
                               }
                             },
-                            child: const Text(
-                              'SignUp',
+                            child: Text(
+                              '${LanguageTr.lg[authProvider.language]["SignUp"]}',
                               style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold,
@@ -657,10 +651,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Center(
+                         Center(
                           child: FittedBox(
                             child: Text(
-                              'Already have an account?',
+                              '${LanguageTr.lg[authProvider.language]["Already have an account?"]}',
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'BerlinSansFB',
@@ -670,9 +664,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         InkWell(
-                          child: const FittedBox(
+                          child:  FittedBox(
                             child: Text(
-                              ' LogIn',
+                              '${LanguageTr.lg[authProvider.language]["Log In"]}',
                               style: TextStyle(
                                 decoration: TextDecoration.none,
                                 fontWeight: FontWeight.normal,
@@ -685,7 +679,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  LoginScreen(),
+                                builder: (context) => LoginScreen(),
                               ),
                             );
                           },

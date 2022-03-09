@@ -5,6 +5,8 @@ import 'package:CaterMe/widgets/Addresses/addresses_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'chooseadress/confirm_location_view.dart';
 
 class AddAddressSettingsScreen extends StatefulWidget {
@@ -80,6 +82,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context, listen: true);
     final address = Provider.of<AdressProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     var _mediaQuery = MediaQuery.of(context).size.height;
@@ -103,7 +106,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
           centerTitle: true,
           title: Text(
-            'Addresses',
+            '${LanguageTr.lg[user.language][ "Addresses"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,

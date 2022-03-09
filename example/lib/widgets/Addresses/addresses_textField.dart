@@ -3,6 +3,9 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class AddressesTextField extends StatefulWidget {
   final Function addAddress;
   BuildContext main;
@@ -51,7 +54,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
     final adress = Provider.of<AdressProvider>(context, listen: true);
-
+    final user = Provider.of<UserProvider>(context, listen: false);
     var _mediaQueryText = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       key: _scaffoldKey,
@@ -76,7 +79,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Title can't be empty";
+                              return '${LanguageTr.lg[user.language][ "Title can't be empty"]}';
                             } else
                               return null;
                           },
@@ -94,7 +97,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: 'Address Title',
+                              labelText: '${LanguageTr.lg[user.language][  "Address Title"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -159,7 +162,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: 'Country',
+                              labelText: '${LanguageTr.lg[user.language]["Country" ]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -218,7 +221,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: 'City',
+                              labelText:'${LanguageTr.lg[user.language][ "City"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -281,7 +284,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: "Street",
+                              labelText:'${LanguageTr.lg[user.language][ "Street"]}',
                               enabled: false,
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
@@ -353,7 +356,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: "Building",
+                              labelText: '${LanguageTr.lg[user.language][ "Building"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -425,7 +428,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: "Floor",
+                              labelText: '${LanguageTr.lg[user.language][ "Floor"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -489,12 +492,12 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content: Text(
-                                                    "Failed to add address")));
+                                                  '${LanguageTr.lg[user.language][" Failed to add address"]}',)));
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text("Address added")));
+                                                    Text('${LanguageTr.lg[user.language][ "Address added"]}',)));
                                         // await  Future.delayed(Duration(seconds: 2));
                                         Navigator.of(context).pop();
                                         Navigator.of(context).pop();
@@ -508,7 +511,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text("updated done ")));
+                                                    Text('${LanguageTr.lg[user.language][ "updated done"]}',)));
                                         //   await  Future.delayed(Duration(seconds: 2));
                                         Navigator.of(context)
                                             .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
@@ -520,7 +523,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text("Updated failed ")));
+                                                    Text('${LanguageTr.lg[user.language][ "Updated failed"]}',)));
                                         // Navigator.of(context).pop();
                                       }
                                     }
@@ -531,7 +534,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                               },
                               child: Text(
-                                'Next',
+                                '${LanguageTr.lg[user.language][ "Next"]}',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                               style: ElevatedButton.styleFrom(

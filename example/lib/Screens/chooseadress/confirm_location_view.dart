@@ -13,6 +13,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class ConfirmLocation extends StatefulWidget {
   //String  idprof;
   ConfirmLocation();
@@ -218,7 +221,7 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     final address = Provider.of<AdressProvider>(context, listen: true);
-
+    final user = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Stack(children: [
@@ -254,7 +257,7 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
                     });
               },
               child: Text(
-                "Confirm location",
+                '${LanguageTr.lg[user.language][ "Confirm location"]}',
                 style: const TextStyle(
                     fontFamily: 'Ubuntu',
                     fontWeight: FontWeight.w500,
