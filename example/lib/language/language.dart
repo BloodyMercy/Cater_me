@@ -106,7 +106,7 @@ class LanguageTr {
       "Ready to answer any and all questions":
           "جاهزين للاجابة على جميع الاسالة ",
       "Special Thank You For Using": "شكر خاص لك لاستخدام التطبيق",
-      "We’d Love to Hear From You": "نود السماع لك",
+      "We/’d Love to Hear From You": "نود السماع لك",
       "Sad to see you leave": "نحزن لرؤيتك تغادر",
       "User doesn’t exist": "المستخدم غير موجود",
       " You don't have any upcoming occasions ": "ليس لديك أي مناسبات قادمة ",
@@ -287,7 +287,7 @@ class LanguageTr {
       "Ready to answer any and all questions":
           " Ready to answer any and all questions ",
       "Special Thank You For Using": " Special Thank You For Using ",
-      "We’d Love to Hear From You": " We’d Love to Hear From You ",
+      "We/’d Love to Hear From You": " We’d Love to Hear From You ",
       "Sad to see you leave": " Sad to see you leave ",
       "User doesn’t exist": " User doesn’t exist",
       " You don't have any upcoming occasions ":
