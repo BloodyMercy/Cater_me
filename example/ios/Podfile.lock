@@ -347,7 +347,7 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - CheckoutEventLoggerKit (1.1.1)
-  - cloud_firestore (3.1.8):
+  - cloud_firestore (3.1.10):
     - Firebase/Firestore (= 8.11.0)
     - firebase_core
     - Flutter
@@ -362,14 +362,14 @@ PODS:
   - Firebase/Storage (8.11.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 8.11.0)
-  - firebase_core (1.12.0):
+  - firebase_core (1.13.1):
     - Firebase/CoreOnly (= 8.11.0)
     - Flutter
-  - firebase_messaging (11.2.6):
+  - firebase_messaging (11.2.8):
     - Firebase/Messaging (= 8.11.0)
     - firebase_core
     - Flutter
-  - firebase_storage (10.2.7):
+  - firebase_storage (10.2.9):
     - Firebase/Storage (= 8.11.0)
     - firebase_core
     - Flutter
@@ -617,11 +617,11 @@ SPEC CHECKSUMS:
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CheckoutEventLoggerKit: 18f1afe34ff217c3624396f2c2b4d26db8e6c2d9
-  cloud_firestore: 8bd22e19f6ccf3a0d1976ea298e0ce37c9ad5839
+  cloud_firestore: c6c42fe62809b7417aa3c45a6ef0c2812f7fb0d6
   Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
-  firebase_core: 443bccfd6aa6b42f07be365b500773dc69db2d87
-  firebase_messaging: 8dc3a6f069774a0bf4dac04dd79fdaffcb62e145
-  firebase_storage: 627bc138c31654fc1320b262e16e3fad770dea6f
+  firebase_core: 08f6a85f62060111de5e98d6a214810d11365de9
+  firebase_messaging: 36238f3d0b933af8c919aef608408aae06ba22e8
+  firebase_storage: 5b964cad5f351e9c35f8b0e0b878cdd095f30d09
   FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
   FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
   FirebaseFirestore: 3b2e4b532c68809b3df5f8d39d28b3398ffc196b
@@ -636,7 +636,7 @@ SPEC CHECKSUMS:
   Frames: 9090a075bd8fe0fc883e32e380cd09e41c9cc0bc
   geocoding: 32cfcdb16d38d907caaba65e2e42ad10d38bee58
   geolocator_apple: b741765c55dc21950e3e106e8b3584e55cf81ce5
-  google_maps_flutter: abdb8dee6c52d4be36ad131ee6ebfacd14417c5a
+  google_maps_flutter: fe98b02bbb6717c7297c7747b84c4ead2bc5fc3b
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleMaps: eb03e327edfd70b06de1e6e321653f73712df7ad
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1

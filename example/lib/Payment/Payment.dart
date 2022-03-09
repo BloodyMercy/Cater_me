@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 expiryDate: expiryDate,
                 cardHolderName: cardNameHolder,
                 cvvCode: cvv,
-                textStyle: TextStyle(color: Colors.white,fontSize: 17),
+                textStyle: TextStyle(color: Colors.black,fontSize: 17),
                 showBackView: cvvFocused,
                 height: 200,
                 width: 270,

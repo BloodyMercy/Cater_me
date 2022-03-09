@@ -92,6 +92,7 @@ class NotificationServices {
       body,
       notificationDetails,
       payload: payload,
+
     );
   }
 
