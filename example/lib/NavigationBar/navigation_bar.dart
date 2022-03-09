@@ -23,7 +23,9 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/orderById_provider.dart';
+import '../Providers/user.dart';
 import '../SplachScreen.dart';
+import '../language/language.dart';
 
 
 class Navigationbar extends StatefulWidget {
@@ -227,6 +229,8 @@ class _NavigationBarState extends State<Navigationbar> {
     );
   }
   Widget buildbody(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
     final address=Provider.of<AdressProvider>(context,listen: true);
@@ -311,17 +315,17 @@ order.check4=false;
             selectedItemColor:yellowColor,
             unselectedItemColor:  Theme.of(context).primaryColor,
             items: [
-              const BottomNavigationBarItem(
+               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.home,
                   size: 25, //Icon Size//Color Of Icon
                 ),
-                label: 'Home',
+                label:   '${LanguageTr.lg[authProvider.language]["Home"]}',
               ),
-              const BottomNavigationBarItem(
+               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.calendarCheck,
                   size: 25, //Icon Size
                 ),
-                label: 'Occasions',
+                label: '${LanguageTr.lg[authProvider.language]["Occasions"]}',
               ),
         package.nbnotification!="0"  ? BottomNavigationBarItem(
 
@@ -333,7 +337,7 @@ order.check4=false;
                     //  color: Theme.of(context).primaryColor,
                     ),
                 ),
-                label: 'Orders',
+                label: '${LanguageTr.lg[authProvider.language]["Order"]}',
               ):BottomNavigationBarItem(
           icon:  Icon(
 
@@ -343,12 +347,12 @@ order.check4=false;
               ),
           label: 'Orders',
         ),
-              const BottomNavigationBarItem(
+               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.solidUser,
                   size: 25, //Icon Size
 
                 ),
-                label: 'Settings',
+                label: '${LanguageTr.lg[authProvider.language]["Settings"]}',
               ),
             ],
             currentIndex: widget._selectedIndex,
