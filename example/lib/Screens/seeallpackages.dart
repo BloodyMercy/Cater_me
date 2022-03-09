@@ -3,6 +3,8 @@ import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/Packages/test_package_add_details.dart';
+
 class seeAllPackages extends StatefulWidget {
   // int addOns;
   String title;
@@ -99,7 +101,11 @@ class _seeAllPackages extends State<seeAllPackages> {
             itemCount: pack.seeallpackages.length,
             itemBuilder: (context, index) {
            return   FittedBox(
-                child: Card(
+                child:InkWell(onTap:(){
+             Navigator.of(context).push(MaterialPageRoute(
+               builder: (context) => packageAdsDetailTest(pack.seeallpackages[index]),
+             ));
+           },child: Card(
 
                   // clipBehavior: Clip.antiAlias,
                   shape: RoundedRectangleBorder(
@@ -113,7 +119,7 @@ class _seeAllPackages extends State<seeAllPackages> {
                       height: screenHeight * 0.175,
                       width: _width * 0.8),
                 ),
-              );
+              ));
             }),),
 
     );
