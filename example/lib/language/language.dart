@@ -7,6 +7,7 @@ class LanguageTr{
       "Get Started":"ابدأ الأن",
       "Email":"البريد الالكتروني",
       "Password":"كلمة المرور",
+      "Forgot Password?":"نسيت كلمة المرور؟",
       "Forgot Password":"نسيت كلمة المرور",
       "Log In":"تسجيل الدخول",
       "Create New Account":"انشاء حساب جديد",
@@ -97,7 +98,7 @@ class LanguageTr{
 
     },
     "en":{
-
+      "Email":"Email",
     }
 
 

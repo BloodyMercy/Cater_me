@@ -13,6 +13,7 @@ import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../language/language.dart';
 import '../occasion/theme/colors/light_colors.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -171,9 +172,10 @@ class _SignupScreenState extends State<SignupScreen> {
   }
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
+
     // final user = Provider.of<UserProvider>(context, listen: true);
     FocusNode focusNode = FocusNode();
-    final authProvider = Provider.of<UserProvider>(context);
+    final authProvider = Provider.of<UserProvider>(context,listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -291,7 +293,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'Name',
+                                hintText: '${LanguageTr.lg[authProvider.language][ "Name"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -323,7 +325,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'Email',
+                                hintText: '${LanguageTr.lg[authProvider.language][ "Email"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -365,7 +367,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'Password',
+                                hintText: '${LanguageTr.lg[authProvider.language]['Password' ]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
@@ -412,7 +414,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: 'ConfirmPassword',
+                                hintText: '${LanguageTr.lg[authProvider.language][" Confirm Password"]}',
                                 hintStyle:
                                 Theme.of(context).textTheme.headline4,
                               ),
