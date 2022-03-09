@@ -176,7 +176,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
             details.itemOrders.length == 0
                 ? SliverToBoxAdapter(
                     child: Center(
-                        child: Text('${LanguageTr.lg[authProvider.language][ "no items added"]}'
+                        child: Text('${LanguageTr.lg[authProvider.language]["no items added"]}'
                            ,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
@@ -236,7 +236,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               issearch = !issearch;
                             });
                           },
-                          child:  Text('${LanguageTr.lg[authProvider.language][ "Share Bill"]}'
+                          child:  Text('${LanguageTr.lg[authProvider.language]["Share Bill"]}'
                            ,
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
@@ -292,9 +292,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Text(
                                 details.listFriend.length > 0
-                                    ? '${LanguageTr.lg[authProvider.language]['Choose the friends you want to share the order with.']}'
+                                    ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
 
-                                    :'${LanguageTr.lg[authProvider.language]['No freind to share']}'
+                                    :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
                                 ,
                                 style: TextStyle(
                                     color: Theme.of(context).primaryColor,
@@ -308,7 +308,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               onPressed: () {
                                 _startAddNewFriend(context);
                               },
-                              child: Text('${LanguageTr.lg[authProvider.language][ 'Add Friend']}'
+                              child: Text('${LanguageTr.lg[authProvider.language]["Add Friend"]}'
                                 ,
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,

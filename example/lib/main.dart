@@ -196,6 +196,7 @@ class _MyAppState extends State<MyApp> {
 
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
+        ChangeNotifierProvider.value(value: ContactUsProvider()),
       ],
 
       child: MaterialApp(

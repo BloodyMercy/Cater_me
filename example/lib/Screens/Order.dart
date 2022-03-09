@@ -181,7 +181,7 @@ class _OrderState extends State<Order> {
                                 Navigator.of(context).pop();
                                 Navigator.of(context).pop();
                               },
-                              child: Text('${LanguageTr.lg[authProvider.language]["yes"]}'
+                              child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
                                   )),
                           oneOrtwo: true,
                           button2: ElevatedButton(
@@ -240,7 +240,7 @@ class _OrderState extends State<Order> {
                                     address.typeofeventcontroller.text == "") {
                                    SnackBar(
                                     content:
-                                        Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                        Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
                                             ),
                                   );
                                   // );
@@ -296,7 +296,7 @@ class _OrderState extends State<Order> {
                                 if (a)
                                    SnackBar(
                                     content:
-                                        Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                        Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
                                             ),
                                   );
                                 else
@@ -479,7 +479,7 @@ class _OrderState extends State<Order> {
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}'
                                                           ),
                                                     ),
                                                   );
@@ -493,7 +493,7 @@ class _OrderState extends State<Order> {
                                                           .showSnackBar(
                                                          SnackBar(
                                                           content: Text(
-                                                            '${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}',),
+                                                            '${LanguageTr.lg[authProvider.language][  "Please fill the empty fields"]}',),
                                                         ),
                                                       );
                                                     } else {

@@ -126,7 +126,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               widget.city[widget.selectedValue].name.toString();
                           Navigator.of(context).pop();
                         }
-                        if (widget.label == "Numbers Of Guests") {
+                        if (widget.label == "Number Of Guests") {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
                           adress.numberofguestcontroller.text = widget
@@ -200,7 +200,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           widget.city[widget.selectedValue].id.toString();
                     }
 
-                    if (widget.label == "Numbers Of Guests") {
+                    if (widget.label == "Number Of Guests") {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.numberofguestcontroller.text = widget

@@ -246,9 +246,9 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             ),
 
                             CustomCupertinoPicker(
-                              label:
+                              label:'${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
 
-                              '${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
+
                               items: address.listnamenumber,
                               numberOfGuests: address.regular.numberOfGuests,
                               selectedValue: 1,

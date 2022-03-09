@@ -2,13 +2,14 @@ import 'package:CaterMe/Providers/contact_us_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shimmer/shimmer.dart';
+
 
 const _ktexts = ['Special Thank You For Using', 'CaterMe'];
 
