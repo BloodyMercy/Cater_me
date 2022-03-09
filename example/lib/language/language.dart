@@ -127,8 +127,12 @@ class LanguageTr {
       "NO ORDERS ADDED YET": "لم تتم اضافة طلبات حتى الأن",
       "My Orders": "طلباتي",
       "Street:": "الشارع:",
+      "Street": "الشارع",
       "Building:": "البناء:",
+      "Building": "البناء",
+
       "Floor:": "الطابق:",
+      "Floor": "الطابق",
       "Order": "الطلب",
       "Location": "الموقع",
       "Event Details": "تفاصيل الحدث",

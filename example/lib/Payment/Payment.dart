@@ -11,6 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_checkout_payment/flutter_checkout_payment.dart';
 import 'package:provider/provider.dart';
+
+import '../Providers/user.dart';
+import '../language/language.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -58,8 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
-      appBar: AppBar(title: Text("Add Card",style: Theme.of(context).textTheme.headline1,),centerTitle: true,
+      appBar: AppBar(title: Text('${LanguageTr.lg[authProvider.language]["Add Card"]}'
+        ,style: Theme.of(context).textTheme.headline1,),centerTitle: true,
  actions: [
                IconButton(icon: Icon(Icons.done),onPressed: _cardValidation)
 

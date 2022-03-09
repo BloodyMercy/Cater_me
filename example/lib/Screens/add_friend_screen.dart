@@ -5,6 +5,8 @@ import 'package:CaterMe/widgets/Frriends/friends_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class AddFriendScreen extends StatefulWidget {
@@ -77,6 +79,8 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
     final mediaQuery = MediaQuery.of(context);
@@ -97,8 +101,8 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           elevation: 0,
 
           centerTitle: true,
-          title: Text(
-            'Add New Friend',
+          title: Text('${LanguageTr.lg[authProvider.language]['Add New Friend']}'
+            ,
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,

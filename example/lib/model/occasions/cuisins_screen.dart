@@ -3,6 +3,9 @@ import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 
 
 
@@ -42,6 +45,7 @@ package.clearData();
   }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
       final package=Provider.of<CuisineProvider>(context,listen: true);
     final mediaQuery = MediaQuery.of(context);
@@ -59,8 +63,8 @@ package.clearData();
           elevation: 0,
 
           centerTitle: true,
-          title: Text(
-            'Shishas',
+          title: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
+            ,
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,

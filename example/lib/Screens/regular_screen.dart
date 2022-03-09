@@ -152,6 +152,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final address = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight = MediaQuery.of(context).size.height;
     FocusNode focusNode = FocusNode();

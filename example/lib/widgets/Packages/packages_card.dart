@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../Providers/user.dart';
 import '../../Screens/seeallpackages.dart';
+import '../../language/language.dart';
 import 'package_card.dart';
 
 class PackagesCard extends StatefulWidget {
@@ -27,6 +29,8 @@ class _PackagesCardState extends State<PackagesCard> {
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     final packageprovider =
         Provider.of<PackagesProvider>(context, listen: true);
@@ -52,7 +56,8 @@ class _PackagesCardState extends State<PackagesCard> {
                       builder: (context) => seeAllPackages("ttillee"),
                 ));
               },
-              child: Text('see all'),
+              child: Text('${LanguageTr.lg[authProvider.language]["See All"]}'
+                  ),
             ),
           ],
         );
@@ -90,8 +95,8 @@ class _PackagesCardState extends State<PackagesCard> {
                           ),
                         )
                       : Center(
-                          child: Text(
-                          "No Packages",
+                          child: Text('${LanguageTr.lg[authProvider.language]["No Packages"]}'
+                          ,
                           style: TextStyle(color: Colors.black),
                         )),
                   Padding(

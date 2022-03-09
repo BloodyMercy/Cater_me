@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/address.dart';
+import '../Providers/user.dart';
+import '../language/language.dart';
 
 class AddOnOrderScreen extends StatefulWidget {
 int idons;
@@ -33,6 +35,8 @@ getdata();
   }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     final package = Provider.of<PackagesProvider>(context, listen: true);
 
@@ -48,7 +52,8 @@ getdata();
             crossAxisSpacing: 8,
             mainAxisSpacing: 5,
           ),
-        ):Center(child: Text("no Addons to display"),),
+        ):Center(child: Text('${LanguageTr.lg[authProvider.language]["no Addons to display"]}'
+            ),),
 
     );
   }

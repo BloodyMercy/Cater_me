@@ -6,6 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 class CreditCardsPage extends StatefulWidget {
   @override
   State<CreditCardsPage> createState() => _CreditCardsPageState();
@@ -35,6 +38,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final _creditCards =
         Provider.of<CreditCardsProvider>(context, listen: true);
     return Scaffold(
@@ -50,8 +55,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
                   child: _buildTitleSection(
 
-                      title: "Payment Details",
-                      subTitle: "How would you like to pay ?",),
+                      title:'${LanguageTr.lg[authProvider.language][ "Payment Details"]}',
+                      subTitle:'${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}' ,),
 
                 ),
                 SliverList(

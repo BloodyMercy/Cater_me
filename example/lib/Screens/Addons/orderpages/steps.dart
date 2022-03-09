@@ -7,6 +7,9 @@ import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Providers/user.dart';
+import '../../../language/language.dart';
+
 class AddonsCardoffer extends StatefulWidget {
   int id;
 
@@ -54,6 +57,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
   // final List<PageViewModel> pages = [
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final _cuisin = Provider.of<PackagesProvider>(context, listen: true);
 
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
@@ -132,7 +136,8 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                   );
                 },
               ))
-          : Center(child: Text("No Cuisines To Dispaly")),
+          : Center(child: Text('${LanguageTr.lg[authProvider.language]["No Cuisines To Dispaly"]}'
+         )),
       !loadingitems
           ? Container(
               height: mediaQuery.size.height * 0.6,

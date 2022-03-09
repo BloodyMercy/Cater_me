@@ -15,14 +15,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'Addons/orderpages/steps.dart';
 
+
 class Order extends StatefulWidget {
+
   @override
   _OrderState createState() => _OrderState();
 }
 
 class _OrderState extends State<Order> {
+
   final _controller = ScrollController();
   ScrollController _verticatl = ScrollController();
   var _key = GlobalKey<ScaffoldState>();
@@ -33,11 +38,15 @@ class _OrderState extends State<Order> {
 
   double barheight = 0.0;
 
+
   Future<bool> _onWillPop() async {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     return (await showDialog(
           context: context,
           builder: (context) => CustomDialog(
-            title: "Are you sure you want to exit?",
+            title: '${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}',
+
             description: "",
             button1: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -49,13 +58,13 @@ class _OrderState extends State<Order> {
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                 },
-                child: Text("yes")),
+                child: Text('${LanguageTr.lg[authProvider.language]["yes"]}')),
             oneOrtwo: true,
             button2: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("No"),
+              child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
             ),
           ),
         )) ??
@@ -104,6 +113,8 @@ class _OrderState extends State<Order> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final _creditCardss =
         Provider.of<CreditCardsProvider>(context, listen: true);
     final addresses = Provider.of<AdressProvider>(context, listen: true);
@@ -139,8 +150,8 @@ class _OrderState extends State<Order> {
               elevation: 0,
               centerTitle: true,
               backgroundColor: Colors.white,
-              title: const Text(
-                "Order",
+              title:  Text('${LanguageTr.lg[authProvider.language]["Order"]}'
+                ,
                 style: const TextStyle(
                     color: Color(0xFF3F5521),
                     fontWeight: FontWeight.bold,
@@ -156,7 +167,7 @@ class _OrderState extends State<Order> {
                       context: context,
                       builder: (BuildContext context) {
                         return CustomDialog(
-                          title: "Are you sure you want to exit?",
+                          title:'${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}' ,
                           description: "",
                           button1: ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -170,13 +181,14 @@ class _OrderState extends State<Order> {
                                 Navigator.of(context).pop();
                                 Navigator.of(context).pop();
                               },
-                              child: Text("yes")),
+                              child: Text('${LanguageTr.lg[authProvider.language]["yes"]}'
+                                  )),
                           oneOrtwo: true,
                           button2: ElevatedButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text("No"),
+                            child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
                           ),
                         );
                       });
@@ -197,10 +209,11 @@ class _OrderState extends State<Order> {
                               if (orderProvider.spets == 1) {
                                 if (orderProvider.value.id == 0) {
                                   _key.currentState.showSnackBar(
-                                    const SnackBar(
+                                     SnackBar(
                                       content:
-                                          Text("please choose an address "),
-                                    ),
+                                          Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
+                                             ),
+
                                   );
                                 } else {
                                   orderProvider.spets = value;
@@ -209,9 +222,9 @@ class _OrderState extends State<Order> {
                               if (orderProvider.spets == 3) {
                                 if (orderProvider.value.id == 0) {
                                   _key.currentState.showSnackBar(
-                                    const SnackBar(
-                                      content: const Text(
-                                          "please choose one from the following offers "),
+                                     SnackBar(
+                                      content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
+                                          ),
                                     ),
                                   );
                                   // orderProvider.spets=0;
@@ -225,9 +238,10 @@ class _OrderState extends State<Order> {
                                     address.numberofguestcontroller.text ==
                                         "" ||
                                     address.typeofeventcontroller.text == "") {
-                                  const SnackBar(
+                                   SnackBar(
                                     content:
-                                        Text("please fill the empty fields "),
+                                        Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                            ),
                                   );
                                   // );
                                 } else {
@@ -280,9 +294,10 @@ class _OrderState extends State<Order> {
                                   }
                                 }
                                 if (a)
-                                  const SnackBar(
+                                   SnackBar(
                                     content:
-                                        Text("please fill the empty fields "),
+                                        Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                            ),
                                   );
                                 else
                                   orderProvider.spets = value;
@@ -300,14 +315,16 @@ class _OrderState extends State<Order> {
                                 orderProvider.spets = value;
                               }
                             },
-                            text: const [
-                              "Location",
-                              "Event Details",
-                              "Service",
-                              "Packages",
-                              "Add-Ons",
-                              "Checkout",
-                              "Payment"
+                            text:  [
+                              '${LanguageTr.lg[authProvider.language]["Location"]}',
+                              '${LanguageTr.lg[authProvider.language]["Event Details"]}',
+                              '${LanguageTr.lg[authProvider.language]["Service"]}',
+                              '${LanguageTr.lg[authProvider.language]["Packages"]}',
+                              '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
+                              '${LanguageTr.lg[authProvider.language]["Checkout"]}',
+                              '${LanguageTr.lg[authProvider.language]["Payment"]}',
+
+
                             ],
                             selected: orderProvider.spets,
                           ),
@@ -368,7 +385,7 @@ class _OrderState extends State<Order> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "Total: ${details.totale.toStringAsFixed(2)} SAR",
+                                                "'${LanguageTr.lg[authProvider.language]["Total"]}',${details.totale.toStringAsFixed(2)} '${LanguageTr.lg[authProvider.language]["SAR"]}'",
                                                 style: const TextStyle(
                                                     fontSize: 18,
                                                     fontFamily: 'BerlinSansFB',
@@ -382,8 +399,8 @@ class _OrderState extends State<Order> {
                                                     0.02,
                                               ),
                                               orderProvider.vatshisha > 0.0
-                                                  ? Text(
-                                                      '*(Shisha VAT 100%)',
+                                                  ? Text('${LanguageTr.lg[authProvider.language]['*(Shisha VAT 100%)']}'
+                                                      ,
                                                       style: TextStyle(
                                                         fontSize: 10,
                                                         fontWeight:
@@ -393,8 +410,8 @@ class _OrderState extends State<Order> {
                                                     )
                                                   : Container(),
                                               orderProvider.vatfood > 0.0
-                                                  ? Text(
-                                                      '*(VAT 15%)',
+                                                  ? Text('${LanguageTr.lg[authProvider.language]['*(VAT 15%)']}'
+                                                      ,
                                                       style: TextStyle(
                                                         fontSize: 10,
                                                         fontWeight:
@@ -418,9 +435,9 @@ class _OrderState extends State<Order> {
                                                     0) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "please choose an address "),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
+                                                          ),
                                                     ),
                                                   );
                                                 } else {
@@ -434,9 +451,9 @@ class _OrderState extends State<Order> {
                                                     0) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: const Text(
-                                                          "please choose one from the following offers "),
+                                                     SnackBar(
+                                                      content:  Text('${LanguageTr.lg[authProvider.language]["Please choose one from the following offers "]}'
+                                                          ),
                                                     ),
                                                   );
                                                 } else {
@@ -461,9 +478,9 @@ class _OrderState extends State<Order> {
                                                         "") {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "please fill the empty fields "),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}'
+                                                          ),
                                                     ),
                                                   );
                                                 } else {
@@ -474,9 +491,9 @@ class _OrderState extends State<Order> {
                                                             "") {
                                                       _key.currentState
                                                           .showSnackBar(
-                                                        const SnackBar(
+                                                         SnackBar(
                                                           content: Text(
-                                                              "please fill the empty fields "),
+                                                            '${LanguageTr.lg[authProvider.language]["Please fill the empty fields "]}',),
                                                         ),
                                                       );
                                                     } else {
@@ -508,9 +525,9 @@ class _OrderState extends State<Order> {
                                                     0) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "please choose a package to order"),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please choose a package to order"]}'
+                                                         ),
                                                     ),
                                                   );
                                                 } else if (orderProvider
@@ -520,9 +537,9 @@ class _OrderState extends State<Order> {
                                                         0.0) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "you can't order less then 5 shisha"),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["you can’t order less than 5 shishas"]}'
+                                                          ),
                                                     ),
                                                   );
                                                 } else {
@@ -548,9 +565,9 @@ class _OrderState extends State<Order> {
                                                             0) {
                                                           _key.currentState
                                                               .showSnackBar(
-                                                            const SnackBar(
-                                                              content: Text(
-                                                                  "share bill cannot be empty"),
+                                                             SnackBar(
+                                                              content: Text('${LanguageTr.lg[authProvider.language]["share bill cannot be empty"]}'
+                                                                  ),
                                                             ),
                                                           );
                                                           a = true;
@@ -567,10 +584,11 @@ class _OrderState extends State<Order> {
                                                   } else {
                                                     _key.currentState
                                                         .showSnackBar(
-                                                      const SnackBar(
-                                                        content: Text(
-                                                            "no items to order"),
-                                                      ),
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["no items to order"]}'
+                                                        ),
+                                                          ),
+
                                                     );
                                                   }
                                                 }
@@ -580,9 +598,9 @@ class _OrderState extends State<Order> {
                                                     0) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "no credit cards selected"),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                         ),
                                                     ),
                                                   );
                                                 } else {
@@ -596,8 +614,8 @@ class _OrderState extends State<Order> {
                                                               Future<bool>.value(
                                                                   false),
                                                           child: AlertDialog(
-                                                            title: const Text(
-                                                                "Loading..."),
+                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                                ),
                                                             content: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -659,15 +677,15 @@ class _OrderState extends State<Order> {
                                                       builder: (BuildContext
                                                           context) {
                                                         return AlertDialog(
-                                                          title: const Text(
-                                                              "error "),
-                                                          content: const Text(
-                                                              "try again"),
+                                                          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
+                                                              ),
+                                                          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                             ),
                                                           actions: <Widget>[
                                                             TextButton(
                                                                 child:
-                                                                    const Text(
-                                                                        "Close"),
+                                                                     Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                                       ),
                                                                 onPressed: () =>
                                                                     Navigator.pop(
                                                                         context))
@@ -686,9 +704,9 @@ class _OrderState extends State<Order> {
                                                 } else {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "please add a package"),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please add a package"]}'
+                                                         ),
                                                     ),
                                                   );
                                                 }
@@ -715,9 +733,9 @@ class _OrderState extends State<Order> {
                                                 if (itemcount < 5) {
                                                   _key.currentState
                                                       .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                          "minimun quantity for shisha is 5"),
+                                                     SnackBar(
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["minimun quantity for shisha is 5"]}'
+                                                          ),
                                                     ),
                                                   );
                                                 } else {
@@ -737,8 +755,8 @@ class _OrderState extends State<Order> {
                                                 loadingnext = false;
                                               });
                                             },
-                                            child: const Text(
-                                              'Next',
+                                            child:  Text('${LanguageTr.lg[authProvider.language]['Next']}',
+
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontFamily: 'BerlinSansFB',

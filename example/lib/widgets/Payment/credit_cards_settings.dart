@@ -6,6 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
+
 
 class CreditCardsSettings extends StatefulWidget {
   @override
@@ -27,6 +30,8 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
   }final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final _creditCards=Provider.of<CreditCardsProvider>(context,listen: true);
     return Scaffold(
       key: _scaffoldKey,
@@ -49,8 +54,8 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         //   ),
         // ),
         centerTitle: true,
-        title: Text(
-          'My Credit Cards',
+        title: Text('${LanguageTr.lg[authProvider.language]['My Credit Cards']}',
+
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,
@@ -87,8 +92,9 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                   slivers: [
                     SliverToBoxAdapter(
                       child: _buildTitleSection(
-                          title: "Payment Details",
-                          subTitle: "How would you like to pay ?"),
+                          title: '${LanguageTr.lg[authProvider.language]["Payment Details"]}',
+
+                          subTitle:'${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}' ),
                     ),
                   SliverList(
                       delegate:
@@ -116,35 +122,38 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                       onPressed: () {
                                         _creditCards.valueIndex = i;
                                         showDialog(context: context, builder: (BuildContext context){
-                                          return CustomDialog(title: "Delete Credit Card", description: "Are you sure do you want to delete this card", button1: ElevatedButton(onPressed:  () async{
+                                          return CustomDialog(title:'${LanguageTr.lg[authProvider.language][ "Delete Credit Card"]}', description: '${LanguageTr.lg[authProvider.language][ "Are you sure do you want to delete this card"]}', button1: ElevatedButton(onPressed:  () async{
                                             _creditCards.loading=true;
                                             _creditCards.notifyListeners();
                                             Navigator.pop(context);
                                             var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
                                             if(delete=="deleted"){
                                               _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                  content: Text('Credit card Deleted')
+                                                  content: Text('${LanguageTr.lg[authProvider.language]['Credit card Deleted']}'),
+
                                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                 //   content: Text('Address Deleted'),
                                               ));
                                             }else{
                                               _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                  content: Text('Credit card cannot be deleted')
+                                                  content: Text('${LanguageTr.lg[authProvider.language]['Credit card cannot be deleted']}'),
+    )
                                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                 //   content: Text('Address Deleted'),
-                                              ));
+                                              );
                                             }
 
 
                                             await _creditCards.getAllCards();
                                             _creditCards.loading=false;
                                             _creditCards.notifyListeners();
-                                          },child: Text("yes"),), oneOrtwo: true,button2:  ElevatedButton(
+                                          },child: Text('${LanguageTr.lg[authProvider.language]['yes']}'),), oneOrtwo: true,button2:  ElevatedButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
 
                                               },
-                                              child: Text('NO')),);
+                                              child: Text('${LanguageTr.lg[authProvider.language]['NO']}'
+                                                  )),);
                                         });
 
 
@@ -168,10 +177,11 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       _buildDetailsBlock(
-                                        label: 'CARDHOLDER',
+                                        label: '${LanguageTr.lg[authProvider.language]['CARDHOLDER']}',
                                         value: _creditCards.list[i].ownerName,
                                       ),
-                                      _buildDetailsBlock(label: 'VALID THRU', value: "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
+                                      _buildDetailsBlock(label:  '${LanguageTr.lg[authProvider.language]['VALID THRU']}',
+                                       value: "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
                                     ],
                                   ),
                                 ],
@@ -225,6 +235,8 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
 
   // Build the title section
   Column _buildTitleSection({@required title, @required subTitle}) {
+    final authProvider = Provider.of<UserProvider>(context, listen: false);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -282,6 +294,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
               children: <Widget>[
                 _buildDetailsBlock(
                   label: 'CARDHOLDER',
+
                   value: cardHolder,
                 ),
                 _buildDetailsBlock(label: 'VALID THRU', value: "${DateFormat("MM/yy").format(DateTime.parse(cardExpiration))}"),
@@ -350,7 +363,8 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
       child: FloatingActionButton(
         elevation: 2.0,
         onPressed: () {
-          print("Add a credit card");
+          print(
+              "Add a credit card");
         },
         backgroundColor: color,
         mini: false,

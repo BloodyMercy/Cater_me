@@ -3,6 +3,8 @@ import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class MyFavorites extends StatefulWidget {
@@ -32,6 +34,8 @@ class _MyFavoritesState extends State<MyFavorites> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final package = Provider.of<PackagesProvider>(context, listen: true);
 
     final mediaQuery = MediaQuery.of(context);
@@ -51,8 +55,8 @@ class _MyFavoritesState extends State<MyFavorites> {
           elevation: 0,
 
           centerTitle: true,
-          title: Text(
-            'My Favorites',
+          title: Text('${LanguageTr.lg[authProvider.language]["My Favorites"]}',
+           
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,

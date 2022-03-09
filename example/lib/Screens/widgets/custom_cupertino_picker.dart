@@ -71,7 +71,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
   }
 
   void showPicker(BuildContext ctx) {
-    final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: false);
     showCupertinoModalPopup(
 
         context: ctx,

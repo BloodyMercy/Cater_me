@@ -1,5 +1,9 @@
+import 'package:CaterMe/Providers/contact_us_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../Providers/user.dart';
+import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,6 +25,9 @@ class Contact_Us extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final contact = Provider.of<ContactUsProvider>(context, listen: true);
+
     final String number = "00961 777777";
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
@@ -34,6 +41,11 @@ class Contact_Us extends StatelessWidget {
           iconSize: 40,
           color: Colors.white,
         ),
+        title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}'
+          ,
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       //End Appbar
       body: Column(
@@ -97,7 +109,7 @@ class Contact_Us extends StatelessWidget {
                       color: colorCustom,
                     ),
 
-                  title: Text('CaterMe@example.com',style: TextStyle(fontWeight: FontWeight.bold),),
+                  title: Text('${contact.UsContact.email}',style: TextStyle(fontWeight: FontWeight.bold),),
                   trailing: Icon(
                       Icons.chevron_right,
                       color: Color(0xFF3F5521),
@@ -126,7 +138,7 @@ class Contact_Us extends StatelessWidget {
                   child: AnimatedTextKit(
                     onTap: () {},
                     animatedTexts: [
-                      for (final txt in _ktexts)
+                      for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
                         FadeAnimatedText(txt,
                             textStyle: TextStyle(
                                 fontSize: 20,
@@ -143,12 +155,12 @@ class Contact_Us extends StatelessWidget {
 SizedBox(height: mediaQuery.size.height * 0.05,
 
 ),
-          Text(
-            "We'd Love to Hear From You",
+          Text('${LanguageTr.lg[authProvider.language]["We/’d Love to Hear From You"]}'
+            ,
             style: TextStyle(fontSize: 22),
           ),
-          Text(
-            "Ready to answer any and all questions",
+          Text('${LanguageTr.lg[authProvider.language]["Ready to answer any and all questions"]}'
+            ,
             style: TextStyle(color: Colors.grey, fontSize: 14),
           ),
           SizedBox(

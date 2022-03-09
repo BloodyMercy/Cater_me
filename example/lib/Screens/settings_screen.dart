@@ -88,6 +88,8 @@ class _TABBarState extends State<TABBar> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     // final updateImage = Provider.of<UserProvider>(context, listen: true);
     final personalInfo = Provider.of<UserProvider>(context, listen: true);
     var _mediaQueryText = MediaQuery.of(context).size.height;

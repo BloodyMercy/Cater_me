@@ -284,7 +284,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText:'${LanguageTr.lg[user.language][ "Street"]}',
+                              labelText:'${LanguageTr.lg[user.language]["Street"]}',
                               enabled: false,
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
@@ -356,7 +356,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language][ "Building"]}',
+                              labelText: '${LanguageTr.lg[user.language]["Building"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -428,7 +428,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language][ "Floor"]}',
+                              labelText: '${LanguageTr.lg[user.language]["Floor"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,

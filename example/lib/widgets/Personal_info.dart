@@ -211,7 +211,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText:'${LanguageTr.lg[user.language]["Phone Number"]}',
+                                labelText:'${LanguageTr.lg[user.language]["Phone number"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,

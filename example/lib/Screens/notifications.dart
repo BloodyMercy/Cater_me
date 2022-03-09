@@ -9,7 +9,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
 import '../chat/pages/chat_page.dart';
+import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class Notifications extends StatefulWidget {
@@ -52,6 +54,8 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
@@ -76,8 +80,8 @@ class _NotificationsState extends State<Notifications> {
             //   ),
             // ),
             centerTitle: true,
-            title: Text(
-              'Notifications',
+            title: Text('${LanguageTr.lg[authProvider.language]["Notifications"]}'
+              ,
               style: Theme.of(context).textTheme.headline1,
             ),
             backgroundColor: Theme.of(context).primaryColor,

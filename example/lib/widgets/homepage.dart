@@ -19,6 +19,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'Packages/test_package_add_details.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,6 +82,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
@@ -124,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                                       .primaryColor)),
                                           filled: true,
                                           fillColor: LightColors.kLightYellow2,
-                                          hintText: 'Search',
+                                          hintText: '${LanguageTr.lg[authProvider.language]["Search"]}',
                                           prefixIcon: const Icon(Icons.search),
                                           prefixIconColor:
                                               Theme.of(context).primaryColor,
@@ -146,8 +149,8 @@ class _HomePageState extends State<HomePage> {
                                                 builder: (context) => ChatPage(
                                                   peerId: "admin",
                                                   peerAvatar: "",
-                                                  peerNickname:
-                                                      "Customer Service",
+                                                  peerNickname:'${LanguageTr.lg[authProvider.language]["Customer Service"]}'
+                                                      ,
                                                 ),
                                               ),
                                             );
@@ -201,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                                   left: (mediaQuery.size.width * 0.035),
                                   top: mediaQuery.size.height * 0.05),
                               child: Text(
-                                'Packages',
+                                '${LanguageTr.lg[authProvider.language]["Packages"]}',
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
@@ -218,8 +221,8 @@ class _HomePageState extends State<HomePage> {
                                   // top: mediaQuery.size.height * 0.05
                                       ),
                                   child:
-                                  Text(
-                                    'Upcoming Occasions',
+                                  Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+
                                     style:
                                         Theme.of(context).textTheme.headline2,
                                   ),
@@ -236,8 +239,8 @@ class _HomePageState extends State<HomePage> {
 
                                         
                                       },
-                                      child: Text(
-                                        "See All",
+                                      child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
+                                        ,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'BerlinSansFB',
@@ -286,6 +289,7 @@ class _HomePageState extends State<HomePage> {
                                                                 .center,
                                                         children: [
                                                           Text(
+
                                                             DateFormat.MMM()
                                                                 .format(DateTime
                                                                     .now()),
@@ -321,8 +325,8 @@ class _HomePageState extends State<HomePage> {
                                                                   .size.width *
                                                               0.02),
                                                       child: FittedBox(
-                                                        child: Text(
-                                                          'You don\'t have any upcoming occasions ',
+                                                        child: Text( '${LanguageTr.lg[authProvider.language]["You don\'t have any upcoming occasions"]}'
+                                                          ,
                                                           style: TextStyle(
                                                               color: Theme.of(
                                                                       context)
@@ -354,8 +358,8 @@ class _HomePageState extends State<HomePage> {
                                                               Theme.of(context)
                                                                   .primaryColor,
                                                         ),
-                                                        Text(
-                                                          'Add an occasion ',
+                                                        Text('${LanguageTr.lg[authProvider.language]["Add an occasion"]}'
+                                                         ,
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -395,8 +399,8 @@ class _HomePageState extends State<HomePage> {
                                         padding: EdgeInsets.only(
                                             left: (mediaQuery.size.width * 0.04),
                                            ),
-                                        child: Text(
-                                          'Shishas',
+                                        child: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
+                                          ,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline2,
@@ -408,8 +412,9 @@ class _HomePageState extends State<HomePage> {
                                               right:
                                                   (mediaQuery.size.width * 0.04)),
                                           child: GestureDetector(
-                                              child: Text("See All",
-                                                  style: TextStyle(
+                                              child: Text('${LanguageTr.lg[authProvider.language]["See All"]}',
+
+                                          style: TextStyle(
                                                     fontSize: 12,
                                                     fontFamily: 'BerlinSansFB'
                                                   )),
@@ -486,7 +491,7 @@ class _HomePageState extends State<HomePage> {
                                   filled: true,
                                   fillColor:
                                       const Color.fromRGBO(232, 232, 232, 1),
-                                  hintText: 'Search',
+                                  hintText: '${LanguageTr.lg[authProvider.language]["Search"]}',
                                   prefixIcon: const Icon(Icons.search),
                                   prefixIconColor: Colors.black,
                                   hintStyle: TextStyle(

@@ -14,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../language/language.dart';
 import '../widgets/widgets.dart';
 import 'full_photo_page.dart';
 
@@ -144,16 +145,18 @@ class ChatPageState extends State<ChatPage> {
   }
 
   void onSendMessage(String content, int type) {
+    final authProvider = Provider.of<UserProvider>(context, listen: false);
     if (content.trim().isNotEmpty) {
       textEditingController.clear();
       chatProvider.sendMessage(content, type, groupChatId, currentUserId, peerId);
       listScrollController.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.easeOut);
     } else {
-      Fluttertoast.showToast(msg: 'Nothing to send', backgroundColor: ColorConstants.greyColor);
+      Fluttertoast.showToast(msg: '${LanguageTr.lg[authProvider.language]["Nothing to send"]}', backgroundColor: ColorConstants.greyColor);
     }
   }
 
   Widget buildItem(int index, DocumentSnapshot document) {
+
     if (document != null) {
       MessageChat messageChat = MessageChat.fromDocument(document);
       if (messageChat.idFrom == currentUserId) {
@@ -566,6 +569,7 @@ class ChatPageState extends State<ChatPage> {
 
   //keyboard
   Widget buildInput() {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Container(
       child: Row(
         children: <Widget>[
@@ -603,7 +607,7 @@ class ChatPageState extends State<ChatPage> {
                 style: TextStyle(color: ColorConstants.primaryColor, fontSize: 15),
                 controller: textEditingController,
                 decoration: InputDecoration.collapsed(
-                  hintText: 'Type your message...',
+                  hintText: '${LanguageTr.lg[authProvider.language]["Type your message..."]}',
                   hintStyle: TextStyle(color: ColorConstants.greyColor),
                 ),
                 focusNode: focusNode,

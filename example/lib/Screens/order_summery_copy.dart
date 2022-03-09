@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
+import '../Providers/user.dart';
+import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 import 'orders/checkout/carditem.dart';
 
@@ -155,6 +157,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   TextEditingController controllersearch = TextEditingController();
 
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
@@ -172,7 +176,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
             details.itemOrders.length == 0
                 ? SliverToBoxAdapter(
                     child: Center(
-                        child: Text("no items added",
+                        child: Text('${LanguageTr.lg[authProvider.language][ "no items added"]}'
+                           ,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 color: Colors.black))))
@@ -231,8 +236,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               issearch = !issearch;
                             });
                           },
-                          child: const Text(
-                            "Share Bill",
+                          child:  Text('${LanguageTr.lg[authProvider.language][ "Share Bill"]}'
+                           ,
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Colors.black,
@@ -287,8 +292,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Text(
                                 details.listFriend.length > 0
-                                    ? 'Choose the friends you want to share the order with.'
-                                    : 'No freind to share',
+                                    ? '${LanguageTr.lg[authProvider.language]['Choose the friends you want to share the order with.']}'
+
+                                    :'${LanguageTr.lg[authProvider.language]['No freind to share']}'
+                                ,
                                 style: TextStyle(
                                     color: Theme.of(context).primaryColor,
                                     fontFamily: 'BerlinSansFB'),
@@ -301,8 +308,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               onPressed: () {
                                 _startAddNewFriend(context);
                               },
-                              child: Text(
-                                'Add Friend',
+                              child: Text('${LanguageTr.lg[authProvider.language][ 'Add Friend']}'
+                                ,
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,
                                 fontFamily: 'BerlinSansFB',
@@ -413,7 +420,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                     setState(() {});
                                   },
                                   decoration: InputDecoration(
-                                    hintText: 'Price',
+                                    hintText: '${LanguageTr.lg[authProvider.language]['Price']}',
                                     fillColor: Colors.black,
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(

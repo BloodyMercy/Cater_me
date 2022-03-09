@@ -60,7 +60,7 @@ class ApiLink{
  static String DonateFoodss=host+"Orders/DonateOrder";
  static String ForgetPassword=host+"Accounts/ForgetPassword";
  static String getAllPackages = host+"Orders/GetAllPackages";
-
+ static String contactus=host+"Settings/GetContactUs";
 
 
 
