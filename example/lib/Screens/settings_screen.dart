@@ -4,6 +4,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/add_friend_screen.dart';
 import 'package:CaterMe/Screens/addresses_settings_screen.dart';
+import 'package:CaterMe/main.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
 import 'package:CaterMe/widgets/Personal_info.dart';
@@ -88,7 +89,7 @@ class _TABBarState extends State<TABBar> {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
 
     // final updateImage = Provider.of<UserProvider>(context, listen: true);
     final personalInfo = Provider.of<UserProvider>(context, listen: true);
@@ -584,7 +585,17 @@ class _TABBarState extends State<TABBar> {
                                     ),
                                   ],
                                 ),
-                                Row(
+                           InkWell(onTap :() async{
+                             MyApp.setLocale(context, Locale("ar", "AE"));
+
+                             // AppLocalizations.of(context)!.locale.toString()
+
+                             SharedPreferences _prefs= await SharedPreferences.getInstance();
+                             _prefs.setString("locale", "ar");
+                            // .language="ar";
+                             personalInfo.language="ar";
+
+                           },child:     Row(
                                   children: [
                                     Text("English",
                                         style: TextStyle(
@@ -593,7 +604,7 @@ class _TABBarState extends State<TABBar> {
                                       width: mediaQuery.size.width * 0.03,
                                     ),
                                   ],
-                                ),
+                                )),
                               ],
                             ),
                           ),

@@ -85,7 +85,7 @@ class PackageService {
         List<dynamic> responseData = json.decode(response.body);
 
         List<Package> posts = List<Package>.from(
-            responseData.map((model) => Package.fromJson(model))); //map to list
+            responseData.map((model) => Package.fromJson(model,"ar"))); //map to list
 
         return posts;
       } else if (response.statusCode == 401) {
@@ -120,7 +120,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
@@ -179,7 +179,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
@@ -211,7 +211,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
 
         //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
 
@@ -240,7 +240,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> s = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < s.length; i++) ld.add(Package.fromJson(s[i]));
+        for (int i = 0; i < s.length; i++) ld.add(Package.fromJson(s[i],"ar"));
 
         return ld;
       } else {
@@ -268,7 +268,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
 
         //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
 

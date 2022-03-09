@@ -152,7 +152,7 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
       //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
       _allpackagesorder = List<Package>.from(
-          _alldata['packages'].map((model) => Package.fromJson(model)));
+          _alldata['packages'].map((model) => Package.fromJson(model,"ar")));
       //  _nbnotification=_alldata["notificationCount"].toString();
     }
 
@@ -164,6 +164,7 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
 }
 
   Future<void>  getallpacakges(BuildContext c)async {
+
 loading=false;
 //notifyListeners();
     _alldata=await PackageService.getPackages();
@@ -185,7 +186,7 @@ loading=false;
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
        _listItems = List<Package>.from(
-          _alldata['dropDown'].map((model) => Package.fromJson(model)));
+          _alldata['dropDown'].map((model) => Package.fromJson(model,"ar")));
        _nbnotification=_alldata["notificationCount"].toString();
 
 

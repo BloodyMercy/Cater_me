@@ -13,7 +13,7 @@ class Addonall {
     if (json['items'] != null) {
       items = <Package>[];
       json['items'].forEach((v) {
-        items.add(new Package.fromJson(v));
+        items.add(new Package.fromJson(v,"ar"));
       });
     }
   }

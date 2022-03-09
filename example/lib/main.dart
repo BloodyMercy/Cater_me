@@ -17,6 +17,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,7 +76,6 @@ class _appstateState extends State<appstate> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
     //build context ?
@@ -120,11 +120,55 @@ class _appstateState extends State<appstate> {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
    MyApp({Key key}) : super(key: key);
+   static String lang ="en";
+   static void setLocale(BuildContext context, Locale newLocale) async {
+     _MyAppState state = context.findAncestorStateOfType< _MyAppState>();
+
+     var prefs = await SharedPreferences.getInstance();
+     prefs.setString('languageCode', newLocale.languageCode);
+     prefs.setString('countryCode', "");
+
+     state?.setState(() {
+       state._locale = newLocale;
+       state.languageCode=newLocale.languageCode;
+
+       // lang= newLocale.languageCode;
+     });
+
+   }
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
    SharedPreferences prefs;
+
    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
    FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+
+   Locale _locale = Locale("en", "US");
+   String languageCode="";
+   @override
+   void initState() {
+     super.initState();
+     this._fetchLocale().then((locale) {
+       setState(() {
+         this._locale = locale;
+         //  languageCode=locale.languageCode;
+       });
+     });
+   }
+   Future<Locale> _fetchLocale() async {
+     var prefs = await SharedPreferences.getInstance();
+
+     languageCode =  'en';
+     String countryCode = prefs.getString('countryCode') ?? '';
+
+     return Locale(languageCode, countryCode);
+   }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -140,6 +184,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(value: OrderStatusProvider()),
         ChangeNotifierProvider.value(value: OrderByIdProvider()),
+        ChangeNotifierProvider.value(value: ContactUsProvider()),
         ChangeNotifierProvider.value(value: NotificationProvider()),
         ChangeNotifierProvider.value(value: FriendsProvider()),
         ChangeNotifierProvider.value(value: UserProvider.statusfunction()),
@@ -151,9 +196,21 @@ class MyApp extends StatelessWidget {
 
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
-        ChangeNotifierProvider.value(value: ContactUsProvider()),
       ],
+
       child: MaterialApp(
+          localizationsDelegates: [
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale("en", "US"), // OR Locale('ar', 'AE') OR Other RTL locales
+            Locale('ar', 'AE')
+          ],
+          locale: _locale,
+
+
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Cater Me',
