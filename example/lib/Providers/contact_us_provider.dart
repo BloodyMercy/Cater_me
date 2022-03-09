@@ -11,7 +11,8 @@ class ContactUsProvider extends ChangeNotifier{
 
   ContactUsModel get UsContact => _UsContact;
 
-  set contact(ContactUsModel value) {
+
+  set UsContact(ContactUsModel value) {
     _UsContact = value;
   }
 

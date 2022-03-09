@@ -4,7 +4,7 @@ class ContactUsModel {
   String phoneNumber='';
 
 
-  ContactUsModel({this.id, this.email, this.phoneNumber, });
+  ContactUsModel();
 
   ContactUsModel.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;

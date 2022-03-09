@@ -155,6 +155,7 @@ class _AddressesListState extends State<AddressesList> {
                                     setState(() {
                                       _value = i;
                                       orderprovider.valueIndex = i;
+                                      orderprovider.value = widget.address[i];
                                     });
                                   },
                                 ),

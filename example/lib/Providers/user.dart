@@ -51,7 +51,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
   String _imageUrl="";
-  String _language = "ar";
+  String _language = "en";
 
 
   String get language => _language;

@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
 class ContactUsService {
-  Future<ContactUsModel>getallcontactus()async {
+  Future<ContactUsModel> getallcontactus()async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};

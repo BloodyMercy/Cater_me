@@ -12,7 +12,21 @@ import 'package:shimmer/shimmer.dart';
 
 const _ktexts = ['Special Thank You For Using', 'CaterMe'];
 
-class Contact_Us extends StatelessWidget {
+class Contact_Us extends StatefulWidget {
+  @override
+  State<Contact_Us> createState() => _Contact_UsState();
+}
+
+class _Contact_UsState extends State<Contact_Us> {
+  initState(){
+    getdata();
+  }
+  getdata(){
+    final contact = Provider.of<ContactUsProvider>(context, listen: false);
+
+
+   contact.getPersonalInfo();
+  }
   Future<void> launchUrl(String url) async {
     if (await canLaunch(url)) {
       launch(url);
@@ -22,7 +36,6 @@ class Contact_Us extends StatelessWidget {
   }
 
   // For Calling Button
-
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -109,7 +122,7 @@ class Contact_Us extends StatelessWidget {
                       color: colorCustom,
                     ),
 
-                  title: Text('${contact.UsContact.email}',style: TextStyle(fontWeight: FontWeight.bold),),
+                  title: Text(contact.UsContact.email,style: TextStyle(fontWeight: FontWeight.bold),),
                   trailing: Icon(
                       Icons.chevron_right,
                       color: Color(0xFF3F5521),
