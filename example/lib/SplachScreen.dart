@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: (200)),
+      duration: Duration(seconds: (1)),
       vsync: this,
     );
   }
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     Timer(
-      Duration(milliseconds: 4000),
+      Duration(milliseconds: 7000),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) => appstate(),
@@ -38,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
           child: Image.asset(
         "images/animation/CaterMeNewGif.gif",
-         height: MediaQuery.of(context).size.height * 0.10,
-         // width: MediaQuery.of(context).size.width * 0.7,
+         height: MediaQuery.of(context).size.height * 0.60,
+         width: MediaQuery.of(context).size.width * 0.7,
       )),
     );
   }

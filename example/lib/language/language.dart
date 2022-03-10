@@ -139,7 +139,7 @@ class LanguageTr {
       "Service": "الخدمة",
       "Password dosen't match": "كلمة المرور غير متطابقة",
       'Cannot update! Old password is wrong':
-          "لا يمكت التحديث!كلمة المرور السابقة خاطئة",
+          "لا يمكن التحديث!كلمة المرور السابقة خاطئة",
       "Add-Ons": "الاضافات",
       "Checkout": "الدفع",
       "credit card": "بطاقة الاتمان",
