@@ -34,7 +34,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs to access your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>this permition is required to the application to run normaly</string>
+	<string>CaterMe would like access to your photo gallery</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
