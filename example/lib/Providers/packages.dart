@@ -180,7 +180,7 @@ loading=false;
     else {
       if( _alldata['packages']!=null)
       _packages = Packages.fromJson( _alldata['packages']);
-      // if(_alldata['cuisine']!=null)
+       if(_alldata['cuisine']!=null)
        _cuisins = Cuisines.fromJson(_alldata['cuisine']);
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));

@@ -232,6 +232,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                       autovalidateMode:
                                                       AutovalidateMode
                                                           .onUserInteraction,
+                                                      controller: authProvider.email,
                                                       keyboardType:
                                                       TextInputType
                                                           .emailAddress),
@@ -355,6 +356,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                     keyboardType:
                                                     TextInputType
                                                         .visiblePassword,
+                                                    controller: authProvider.password,
                                                     //obscureText: passObscure,
                                                   ),
                                                 ]),
@@ -401,10 +403,10 @@ class _YourOrdersState extends State<YourOrders> {
                                               ElevatedButton(
                                                 onPressed: () async {
                                                   setState(() {
-                                                    //loading = true;
+                                                    loading = true;
                                                   });
-                                                  // final SharedPreferences sharedPreferences =
-                                                  //     await SharedPreferences.getInstance();
+                                                  final SharedPreferences sharedPreferences =
+                                                      await SharedPreferences.getInstance();
                                                   // sharedPreferences.setString(
                                                   //     'email', emailController.text);
 
@@ -416,7 +418,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                     });
                                                     // reset!=null?
                                                   } else {
-                                                    if (true) {
+                                                    if (await authProvider.LogIn()) {
                                                       print("logged");
                                                       setState(() {
                                                         // loading = false;
@@ -427,14 +429,20 @@ class _YourOrdersState extends State<YourOrders> {
                                                       sh.setBool(
                                                           "logged", true);
 
-                                                      Navigator.of(context).pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  Navigationbar(
-                                                                      0)),
-                                                              (Route<dynamic>
-                                                          route) =>
-                                                          false);
+                                                      // Navigator.of(context).pushAndRemoveUntil(
+                                                      //     MaterialPageRoute(
+                                                      //         builder: (context) =>
+                                                      //             Navigationbar(
+                                                      //                 0)),
+                                                      //         (Route<dynamic>
+                                                      //     route) =>
+                                                      //     false);
+
+                                                    await  refreshOrderData();
+                                                      setState(() {
+                                                        loading=false;
+                                                      });
+                                                      Navigator.of(context).pop();
                                                       //authProvider.status=Status.Authenticated;
                                                       setState(() {});
                                                     } else {

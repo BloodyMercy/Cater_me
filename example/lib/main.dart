@@ -267,7 +267,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:Navigationbar(3)
+        home:Navigationbar(0)
       ),
     );
   }
