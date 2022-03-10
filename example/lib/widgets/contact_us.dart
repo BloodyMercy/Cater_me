@@ -110,7 +110,8 @@ class _Contact_UsState extends State<Contact_Us> {
             height: mediaQuery.size.height * 0.01,
           ),
       GestureDetector(
-        onTap: () {},
+    onTap: () async {
+    launchUrl("Email//$_Contact_UsState");},
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(
@@ -133,25 +134,25 @@ class _Contact_UsState extends State<Contact_Us> {
               ),
             ),
 
+
           SizedBox(
-            height: mediaQuery.size.height * 0.10,
-          ),
-          SizedBox(
-            width: mediaQuery.size.height * 0.2,
+            width: mediaQuery.size.height * 0.15,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: AnimatedTextKit(
-              onTap: () {},
-              animatedTexts: [
-                for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
-                  FadeAnimatedText(txt,
-                      textStyle: TextStyle(
-                          fontSize: 20,
-                          color: colorCustom,
-                          fontWeight: FontWeight.bold))
-              ],
-              repeatForever: true,
+            child: Container(height: mediaQuery.size.height*0.1,
+              child: AnimatedTextKit(
+                onTap: () {},
+                animatedTexts: [
+                  for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
+                    FadeAnimatedText(txt,
+                        textStyle: TextStyle(
+                            fontSize: 20,
+                            color: colorCustom,
+                            fontWeight: FontWeight.bold))
+                ],
+                repeatForever: true,
+              ),
             ),
           ),
 
