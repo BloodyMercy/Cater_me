@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
@@ -9,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+
+import '../../Screens/auth/login_screen.dart';
 
 //
 // @override
@@ -93,7 +96,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
   Widget build(BuildContext context) {
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
-    final pack = Provider.of<PackagesProvider>(context, listen: true);
+    final pack = Provider.of<UserProvider>(context, listen: true);
     var qPortrait = MediaQuery.of(context).orientation;
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -109,48 +112,59 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                       borderRadius: BorderRadius.circular(150)),
                   child: IconButton(
                       onPressed: () async {
-                        setState(() {
-                          loading = true;
-                        });
 
-                        showDialog(
-                          context: this.context,
-                          barrierDismissible: false,
-                          builder: (BuildContext contexts) {
-                            return WillPopScope(
-                                // onWillPop: () => Future<bool>.value(false),
-                                child: AlertDialog(
-                              title: Text(
-                                "Loading...",
-                                style: TextStyle(color: yellowColor),
-                              ),
-                              content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    CircularProgressIndicator(
-                                      color: yellowColor,
-                                    )
-                                  ]),
-                            ));
-                          },
-                        );
-                        print("${widget.food.isfavorite}");
-                        await PackageService.favoriteitem(widget.food.id)
-                            .then((value) {
-                          if (value) {
-                            Navigator.pop(context);
-                            widget.food.isfavorite = !widget.food.isfavorite;
-                          }
-                          else{
-                            Navigator.pop(context);
-                          }
-                          setState(() {
-                            loading = false;
-                          });
-                        });
 
-                        print("${widget.food.isfavorite}");
-                      },
+    if(pack.status==Status.Unauthenticated)
+    {
+      Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (context) =>
+                  LoginScreen()));
+    }
+    else {
+    setState(() {
+    loading = true;
+    });
+
+    showDialog(
+    context: this.context,
+    barrierDismissible: false,
+    builder: (BuildContext contexts) {
+    return WillPopScope(
+    // onWillPop: () => Future<bool>.value(false),
+    child: AlertDialog(
+    title: Text(
+    "Loading...",
+    style: TextStyle(color: yellowColor),
+    ),
+    content: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: <Widget>[
+    CircularProgressIndicator(
+    color: yellowColor,
+    )
+    ]),
+    ));
+    },
+    );
+    print("${widget.food.isfavorite}");
+    await PackageService.favoriteitem(widget.food.id)
+        .then((value) {
+    if (value) {
+    Navigator.pop(context);
+    widget.food.isfavorite = !widget.food.isfavorite;
+    }
+    else{
+    Navigator.pop(context);
+    }
+    setState(() {
+    loading = false;
+    });
+    });
+
+    print("${widget.food.isfavorite}");
+
+    }    },
                       icon: Icon(
                         widget.food.isfavorite
                             ? FontAwesomeIcons.solidHeart

@@ -65,13 +65,7 @@ class _YourOrdersState extends State<YourOrders> {
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '${LanguageTr.lg[authProvider.language]["My Orders"]}',
-            style: Theme.of(context).textTheme.headline1,
-          ),
-          centerTitle: true,
-        ),
+
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
           child: Padding(

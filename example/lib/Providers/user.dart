@@ -58,6 +58,7 @@ class UserProvider with ChangeNotifier {
 
   set language(String value) {
     _language = value;
+    notifyListeners();
   }
 
   String get imageUrl => _imageUrl;
@@ -135,7 +136,7 @@ getdata();
     SharedPreferences sh=await SharedPreferences.getInstance();
     emailChat.text=sh.getString('email');
 
-
+language=sh.getString("locale")??"en";
 
     if(sh.getBool("logged")??false){
 

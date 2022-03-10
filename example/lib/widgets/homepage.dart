@@ -2,6 +2,7 @@ import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
@@ -61,13 +62,14 @@ class _HomePageState extends State<HomePage> {
 
   getalldata() async {
     final package = Provider.of<PackagesProvider>(context, listen: false);
-    package.loading = false;
+   // await package.cleardata();
+   // package.loading = false;
     await package.getallpacakges(context);
-
+    package.loading = true;
     for (int i = 0; i < package.listItems.length; i++) {
       listitemssearch.add(package.listItems[i].title.toLowerCase());
     }
-    package.loading = true;
+
   }
 
   Future getData() async {
@@ -144,6 +146,8 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       IconButton(
                                           onPressed: () {
+
+                                            authProvider.status==Status.Authenticated?
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) => ChatPage(
@@ -152,6 +156,10 @@ class _HomePageState extends State<HomePage> {
                                                   peerNickname:'${LanguageTr.lg[authProvider.language]["Customer Service"]}'
                                                       ,
                                                 ),
+                                              ),
+                                            ):  Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) => LoginScreen(),
                                               ),
                                             );
                                           },
@@ -183,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                        icon: Badge(
+                                        icon: authProvider.status==Status.Authenticated?Badge(
                                             badgeColor:
                                                 Color.fromRGBO(253, 202, 29, 1),
                                             badgeContent:
@@ -192,7 +200,11 @@ class _HomePageState extends State<HomePage> {
                                               Icons.notifications,
                                               color: Theme.of(context)
                                                   .primaryColor,
-                                            )),
+                                            )):Icon(
+                                          Icons.notifications,
+                                          color: Theme.of(context)
+                                              .primaryColor,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -347,8 +359,7 @@ class _HomePageState extends State<HomePage> {
                                                               MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        AddNewOccasion(
-                                                                            0),
+                                                                        LoginScreen()
                                                               ),
                                                             );
                                                           },

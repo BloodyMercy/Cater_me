@@ -8,6 +8,7 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/Order.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
@@ -250,7 +251,7 @@ class _NavigationBarState extends State<Navigationbar> {
           index: widget._selectedIndex,
           children: _widgetOptions,
         ),
-        floatingActionButton: authProvider.status == Status.Authenticated?SizedBox(
+        floatingActionButton: SizedBox(
           key: intro.keys[0],
           height: 55,
           width: 55,
@@ -264,36 +265,45 @@ class _NavigationBarState extends State<Navigationbar> {
               ),
               backgroundColor: Colors.transparent,
               onPressed: () {
-                address.clearAddressController();
-                orderCaterprovider.spets=1;
-                orderCaterprovider.vatshisha=0.0;
-                orderCaterprovider.vatfood=0.0;
+                if(authProvider.status == Status.Authenticated) {
+                  address.clearAddressController();
+                  orderCaterprovider.spets = 1;
+                  orderCaterprovider.vatshisha = 0.0;
+                  orderCaterprovider.vatfood = 0.0;
 
-                orderCaterprovider.totale=0.0;
-                orderCaterprovider.choosebillFriend=[];
-                orderCaterprovider.choosebillFriend=[];
-                orderCaterprovider.itemOrders=[];
-                orderCaterprovider.totalssha=0;
-                orderCaterprovider.totalpackage=0;
-                credit.value=-1;
-                orderCaterprovider.serviceId=1;
-                address.form=false;
-                address.value2Index=1;
-                // orderCaterprovider.
-                address.phone.text="";
-                address.name.text="";
-                order.check1=false;
-                order.check2=false;
-                order.check3=false;
-                order.check4=false;
-                // orderCaterprovider.listFriend=[];
-                address.value2Index=-1;
-                orderCaterprovider.valueIndex=-1;
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Order(),
-                  ),
-                );
+                  orderCaterprovider.totale = 0.0;
+                  orderCaterprovider.choosebillFriend = [];
+                  orderCaterprovider.choosebillFriend = [];
+                  orderCaterprovider.itemOrders = [];
+                  orderCaterprovider.totalssha = 0;
+                  orderCaterprovider.totalpackage = 0;
+                  credit.value = -1;
+                  orderCaterprovider.serviceId = 1;
+                  address.form = false;
+                  address.value2Index = 1;
+                  // orderCaterprovider.
+                  address.phone.text = "";
+                  address.name.text = "";
+                  order.check1 = false;
+                  order.check2 = false;
+                  order.check3 = false;
+                  order.check4 = false;
+                  // orderCaterprovider.listFriend=[];
+                  address.value2Index = -1;
+                  orderCaterprovider.valueIndex = -1;
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Order(),
+                    ),
+                  );
+                }
+                else{
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
+                    ),
+                  );
+                }
               },
               child: Container(
                   height:40,
@@ -305,441 +315,7 @@ class _NavigationBarState extends State<Navigationbar> {
                       color:Color.fromRGBO(253, 202, 29, 1), size: 35)),
             ),
           ),
-        ):
-        ElevatedButton(onPressed: (){
-          showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.white,
-            elevation: 0,
-            context: context,
-            builder: (context) {
-              return SafeArea(
-                child: Container(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 15.0),
-                        child: Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(
-                                  Icons.clear,
-                                  size: 30,
-                                )),
-                          ],
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                              EdgeInsets.only(left: 25.0),
-                              child: Center(
-                                child: Image(
-                                  image: AssetImage(
-                                      'images/logo.png'),
-                                  // width: 800,
-                                  height: MediaQuery.of(context)
-                                      .size
-                                      .height *
-                                      0.4,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                                height: screenHeight * 0.05),
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.only(
-                                  left: 37.0, right: 37.0),
-                              child: Column(
-                                children: [
-                                  Center(
-                                    child: Column(children: [
-                                      TextFormField(
-                                          style: const TextStyle(
-                                              color:
-                                              Colors.grey,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight
-                                                  .normal,
-                                              fontFamily:
-                                              'BerlinSansFB'),
-                                          decoration:
-                                          InputDecoration(
-                                              prefixIcon:
-                                              IconButton(
-                                                icon: const Icon(
-                                                    Icons
-                                                        .mail_outline),
-                                                onPressed:
-                                                    () {},
-                                              ),
-                                              focusedErrorBorder:
-                                              OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    5.0),
-                                                borderSide:
-                                                const BorderSide(
-                                                  color: Colors
-                                                      .red,
-                                                ),
-                                              ),
-                                              errorBorder:
-                                              OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    5.0),
-                                                borderSide:
-                                                const BorderSide(
-                                                  color: Colors
-                                                      .red,
-                                                ),
-                                              ),
-                                              contentPadding:
-                                              EdgeInsets.only(
-                                                  left: MediaQuery.of(context).size.width *
-                                                      0.04),
-                                              alignLabelWithHint:
-                                              true,
-                                              labelStyle:
-                                              TextStyle(
-                                                //fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                                //I believe the size difference here is 6.0 to account padding
-                                                  color:
-                                                  // focusNode.hasFocus
-                                                  //?
-                                                  Color(
-                                                      0xFF3F5521)
-                                                // : Colors.grey
-                                              ),
-                                              labelText:
-                                              '${LanguageTr.lg[authProvider.language]["Email"]}',
-                                              hintStyle: TextStyle(
-                                                  color: Colors
-                                                      .black87,
-                                                  fontSize:
-                                                  15,
-                                                  fontWeight:
-                                                  FontWeight
-                                                      .bold,
-                                                  fontFamily:
-                                                  'BerlinSansFB'),
-                                              filled: true,
-                                              fillColor:
-                                              Colors
-                                                  .white,
-                                              enabledBorder:
-                                              OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    5.0),
-                                                borderSide:
-                                                const BorderSide(
-                                                  color: Colors
-                                                      .grey,
-                                                ),
-                                              ),
-                                              focusedBorder:
-                                              OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                      5.0),
-                                                  borderSide:
-                                                  const BorderSide(
-                                                    color:
-                                                    Color(0xFF3F5521),
-                                                  ))),
-                                          //controller: authProvider.email,
-                                          autovalidateMode:
-                                          AutovalidateMode
-                                              .onUserInteraction,
-                                          keyboardType:
-                                          TextInputType
-                                              .emailAddress),
-                                      SizedBox(
-                                        height: screenHeight *
-                                            0.015,
-                                      ),
-                                      TextFormField(
-                                        style: const TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 15,
-                                            fontWeight:
-                                            FontWeight
-                                                .normal,
-                                            fontFamily:
-                                            'BerlinSansFB'),
-                                        decoration:
-                                        InputDecoration(
-                                            prefixIcon:
-                                            IconButton(
-                                              icon: Icon(
-                                                //passObscure
-                                                //?
-                                                  Icons
-                                                      .lock_outlined
-                                                //: Icons.lock_open_outlined,
-                                              ),
-                                              onPressed:
-                                                  () {
-                                                setState(
-                                                        () {
-                                                      //passObscure = !passObscure;
-                                                    });
-                                              },
-                                            ),
-                                            focusedErrorBorder:
-                                            OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius
-                                                  .circular(
-                                                  5.0),
-                                              borderSide:
-                                              const BorderSide(
-                                                color: Colors
-                                                    .red,
-                                              ),
-                                            ),
-                                            errorBorder:
-                                            OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius
-                                                  .circular(
-                                                  5.0),
-                                              borderSide:
-                                              const BorderSide(
-                                                color: Colors
-                                                    .red,
-                                              ),
-                                            ),
-                                            contentPadding: EdgeInsets.only(
-                                                left: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                    0.04),
-                                            alignLabelWithHint:
-                                            true,
-                                            labelStyle:
-                                            TextStyle(
-                                              //fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                              //I believe the size difference here is 6.0 to account padding
-                                                color: //focusNode.hasFocus
-                                                // ?
-                                                Color(
-                                                    0xFF3F5521)
-                                              //   : Colors.grey
-                                            ),
-                                            labelText:
-                                            '${LanguageTr.lg[authProvider.language]["Password"]}',
-                                            hintStyle: TextStyle(
-                                                color: Colors
-                                                    .black87,
-                                                fontSize:
-                                                15,
-                                                fontWeight:
-                                                FontWeight
-                                                    .bold,
-                                                fontFamily:
-                                                'BerlinSansFB'),
-                                            filled: true,
-                                            fillColor:
-                                            Colors
-                                                .white,
-                                            enabledBorder:
-                                            OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius
-                                                  .circular(
-                                                  5.0),
-                                              borderSide:
-                                              const BorderSide(
-                                                color: Colors
-                                                    .grey,
-                                              ),
-                                            ),
-                                            focusedBorder:
-                                            OutlineInputBorder(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    5.0),
-                                                borderSide:
-                                                const BorderSide(
-                                                  color:
-                                                  Color(0xFF3F5521),
-                                                ))),
-                                        //controller: authProvider.password,
-                                        // validator: validatePass,
-                                        autovalidateMode:
-                                        AutovalidateMode
-                                            .onUserInteraction,
-
-                                        keyboardType:
-                                        TextInputType
-                                            .visiblePassword,
-                                        //obscureText: passObscure,
-                                      ),
-                                    ]),
-                                  ),
-                                  SizedBox(
-                                    height: screenHeight * 0.01,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment
-                                        .stretch,
-                                    children: [
-                                      InkWell(
-                                        child: RichText(
-                                          textAlign:
-                                          TextAlign.end,
-                                          overflow: TextOverflow
-                                              .ellipsis,
-                                          text: TextSpan(
-                                            text:
-                                            '${LanguageTr.lg[authProvider.language]["Forgot Password?"]}',
-                                            style: Theme.of(
-                                                context)
-                                                .textTheme
-                                                .headline3,
-                                          ),
-                                        ),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder:
-                                                      (context) =>
-                                                  const ResetPasswordScreen()));
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: screenHeight * 0.06,
-                                  ),
-                                  // !loading
-                                  // ?
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      setState(() {
-                                        //loading = true;
-                                      });
-                                      // final SharedPreferences sharedPreferences =
-                                      //     await SharedPreferences.getInstance();
-                                      // sharedPreferences.setString(
-                                      //     'email', emailController.text);
-
-                                      if (false) {
-                                        // ignore: avoid_print
-                                        print('Not Validated');
-                                        setState(() {
-                                          //loading = false;
-                                        });
-                                        // reset!=null?
-                                      } else {
-                                        if (true) {
-                                          print("logged");
-                                          setState(() {
-                                            // loading = false;
-                                          });
-                                          SharedPreferences sh =
-                                          await SharedPreferences
-                                              .getInstance();
-                                          sh.setBool(
-                                              "logged", true);
-
-                                          Navigator.of(context).pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Navigationbar(
-                                                          0)),
-                                                  (Route<dynamic>
-                                              route) =>
-                                              false);
-                                          //authProvider.status=Status.Authenticated;
-                                          setState(() {});
-                                        }
-                                      }
-                                    },
-                                    child: Text('${LanguageTr.lg[authProvider.language]["Log In"]}',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight:
-                                            FontWeight.bold,
-                                            fontFamily:
-                                            'BerlinSansFB',
-                                            fontSize: 16)),
-                                    style: ElevatedButton
-                                        .styleFrom(
-                                      padding:
-                                      EdgeInsets.fromLTRB(
-                                          screenHeight *
-                                              0.14,
-                                          screenHeight *
-                                              0.02,
-                                          screenHeight *
-                                              0.14,
-                                          screenHeight *
-                                              0.02),
-                                      onPrimary:
-                                      const Color.fromRGBO(
-                                          255, 255, 255, 1),
-                                      primary: Theme.of(context)
-                                          .primaryColor,
-                                      shape:
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius
-                                            .circular(15.0),
-                                      ),
-                                    ),
-                                  ),
-                                  //: Center(child: CircularProgressIndicator()),
-                                  SizedBox(
-                                    height: screenHeight * 0.03,
-                                  ),
-                                  Center(
-                                    child: InkWell(
-                                      child: FittedBox(
-                                        child: Text(
-                                          '${LanguageTr.lg[authProvider.language]["Create New Account"]}',
-                                          style:
-                                          Theme.of(context)
-                                              .textTheme
-                                              .headline3,
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                            const SignupScreen(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        }, child: Text( '${LanguageTr.lg[authProvider.language]["Log In"]}',)),
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           color: LightColors.kLightYellow,

@@ -269,6 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // reset!=null?
                               } else {
                                 if (await authProvider.LogIn()) {
+                                  authProvider.status=Status.Authenticated;
                                   print("logged");
                                   setState(() {
                                     loading = false;

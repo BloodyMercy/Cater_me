@@ -60,7 +60,7 @@ class PackageService {
 
         return responseData;
       } else if (response.statusCode == 401) {
-        return {"status": "1"};
+        return {};
       } else {
         print(response.reasonPhrase);
         return {};

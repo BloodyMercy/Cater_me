@@ -20,6 +20,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Providers/occasion.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'auth/login_screen.dart';
@@ -283,7 +284,11 @@ class _TABBarState extends State<TABBar> {
                       )
                     : ElevatedButton(
                         onPressed: () {
-
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
                         },
                         child: Text(
                           '${LanguageTr.lg[personalInfo.language]["Log In"]}',
@@ -658,24 +663,45 @@ class _TABBarState extends State<TABBar> {
                                   ),
                                   InkWell(
                                       onTap: () async {
-                                        MyApp.setLocale(
-                                            context, Locale("ar", "AE"));
+                                        if(  personalInfo.language == "en") {
+                                          personalInfo.language ="ar";
 
-                                        // AppLocalizations.of(context)!.locale.toString()
+                                          MyApp.setLocale(
+                                              context, Locale("ar", "AE"));
 
-                                        SharedPreferences _prefs =
-                                            await SharedPreferences
-                                                .getInstance();
-                                        _prefs.setString("locale", "ar");
-                                        // .language="ar";
-                                        personalInfo.language = "ar";
+                                          // AppLocalizations.of(context)!.locale.toString()
+
+                                          SharedPreferences _prefs =
+                                          await SharedPreferences
+                                              .getInstance();
+                                          _prefs.setString("locale", "ar");
+                                          // .language="ar";
+
+                                        }
+                                        else{
+                                          personalInfo.language = "en";
+
+                                          MyApp.setLocale(context, Locale("en", "US"));
+
+                                          // AppLocalizations.of(context)!.locale.toString()
+
+                                          SharedPreferences _prefs =
+                                          await SharedPreferences
+                                              .getInstance();
+                                          _prefs.setString("locale", "en");
+                                          // .language="ar";
+
+                                        }
                                       },
                                       child: Row(
                                         children: [
-                                          Text("English",
+                                          personalInfo.language == "en"?   Text("English",
                                               style: TextStyle(
                                                   fontWeight:
-                                                      FontWeight.normal)),
+                                                      FontWeight.normal)):Text("arabic",
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.normal)),
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.03,
                                           ),
@@ -830,6 +856,9 @@ class _TABBarState extends State<TABBar> {
                                                     sharedPreferences =
                                                     await SharedPreferences
                                                         .getInstance();
+                                                final occa = Provider.of<OccasionProvider>(context, listen: false);
+                                                occa.all=[];
+                                                personalInfo.status=Status.Unauthenticated;
                                                 // sharedPreferences.remove('Email');
                                                 //  sharedPreferences.remove('Password');
                                                 personalInfo
@@ -844,7 +873,7 @@ class _TABBarState extends State<TABBar> {
                                                     .pushAndRemoveUntil(
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              LoginScreen(),
+                                                              Navigationbar(0),
                                                         ),
                                                         (route) => false);
                                               },
@@ -915,448 +944,7 @@ class _TABBarState extends State<TABBar> {
                                 ),
                               ),
                             )
-                          : Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Card(
-                                color: const Color.fromARGB(206, 255, 255, 255),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.white,
-                                      elevation: 0,
-                                      context: context,
-                                      builder: (context) {
-                                        return SafeArea(
-                                          child: Container(
-                                            child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 15.0),
-                                                  child: Row(
-                                                    children: [
-                                                      IconButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          icon: Icon(
-                                                            Icons.clear,
-                                                            size: 30,
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ),
-                                                SingleChildScrollView(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 25.0),
-                                                        child: Center(
-                                                          child: Image(
-                                                            image: AssetImage(
-                                                                'images/logo.png'),
-                                                            // width: 800,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.4,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                          height: screenHeight *
-                                                              0.05),
-                                                      Container(
-                                                        width: double.infinity,
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 37.0,
-                                                                right: 37.0),
-                                                        child: Column(
-                                                          children: [
-                                                            Center(
-                                                              child: Column(
-                                                                  children: [
-                                                                    TextFormField(
-                                                                        style: const TextStyle(
-                                                                            color: Colors
-                                                                                .grey,
-                                                                            fontSize:
-                                                                                15,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            fontFamily: 'BerlinSansFB'),
-                                                                        decoration: InputDecoration(
-                                                                            prefixIcon: IconButton(
-                                                                              icon: const Icon(Icons.mail_outline),
-                                                                              onPressed: () {},
-                                                                            ),
-                                                                            focusedErrorBorder: OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                              borderSide: const BorderSide(
-                                                                                color: Colors.red,
-                                                                              ),
-                                                                            ),
-                                                                            errorBorder: OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                              borderSide: const BorderSide(
-                                                                                color: Colors.red,
-                                                                              ),
-                                                                            ),
-                                                                            contentPadding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-                                                                            alignLabelWithHint: true,
-                                                                            labelStyle: TextStyle(
-                                                                                //fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                                                                //I believe the size difference here is 6.0 to account padding
-                                                                                color:
-                                                                                    // focusNode.hasFocus
-                                                                                    //?
-                                                                                    Color(0xFF3F5521)
-                                                                                // : Colors.grey
-                                                                                ),
-                                                                            labelText: "Email",
-                                                                            hintStyle: TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'BerlinSansFB'),
-                                                                            filled: true,
-                                                                            fillColor: Colors.white,
-                                                                            enabledBorder: OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                              borderSide: const BorderSide(
-                                                                                color: Colors.grey,
-                                                                              ),
-                                                                            ),
-                                                                            focusedBorder: OutlineInputBorder(
-                                                                                borderRadius: BorderRadius.circular(5.0),
-                                                                                borderSide: const BorderSide(
-                                                                                  color: Color(0xFF3F5521),
-                                                                                ))),
-                                                                        //controller: authProvider.email,
-                                                                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                                                                        keyboardType: TextInputType.emailAddress),
-                                                                    SizedBox(
-                                                                      height: screenHeight *
-                                                                          0.015,
-                                                                    ),
-                                                                    TextFormField(
-                                                                      style: const TextStyle(
-                                                                          color: Colors
-                                                                              .grey,
-                                                                          fontSize:
-                                                                              15,
-                                                                          fontWeight: FontWeight
-                                                                              .normal,
-                                                                          fontFamily:
-                                                                              'BerlinSansFB'),
-                                                                      decoration: InputDecoration(
-                                                                          prefixIcon: IconButton(
-                                                                            icon: Icon(
-                                                                                //passObscure
-                                                                                //?
-                                                                                Icons.lock_outlined
-                                                                                //: Icons.lock_open_outlined,
-                                                                                ),
-                                                                            onPressed:
-                                                                                () {
-                                                                              setState(() {
-                                                                                //passObscure = !passObscure;
-                                                                              });
-                                                                            },
-                                                                          ),
-                                                                          focusedErrorBorder: OutlineInputBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5.0),
-                                                                            borderSide:
-                                                                                const BorderSide(
-                                                                              color: Colors.red,
-                                                                            ),
-                                                                          ),
-                                                                          errorBorder: OutlineInputBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5.0),
-                                                                            borderSide:
-                                                                                const BorderSide(
-                                                                              color: Colors.red,
-                                                                            ),
-                                                                          ),
-                                                                          contentPadding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
-                                                                          alignLabelWithHint: true,
-                                                                          labelStyle: TextStyle(
-                                                                              //fontSize: focusNode.hasFocus ? 18 : 16.0,
-                                                                              //I believe the size difference here is 6.0 to account padding
-                                                                              color: //focusNode.hasFocus
-                                                                                  // ?
-                                                                                  Color(0xFF3F5521)
-                                                                              //   : Colors.grey
-                                                                              ),
-                                                                          labelText: 'Password',
-                                                                          hintStyle: TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'BerlinSansFB'),
-                                                                          filled: true,
-                                                                          fillColor: Colors.white,
-                                                                          enabledBorder: OutlineInputBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(5.0),
-                                                                            borderSide:
-                                                                                const BorderSide(
-                                                                              color: Colors.grey,
-                                                                            ),
-                                                                          ),
-                                                                          focusedBorder: OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                              borderSide: const BorderSide(
-                                                                                color: Color(0xFF3F5521),
-                                                                              ))),
-                                                                      //controller: authProvider.password,
-                                                                      // validator: validatePass,
-                                                                      autovalidateMode:
-                                                                          AutovalidateMode
-                                                                              .onUserInteraction,
-
-                                                                      keyboardType:
-                                                                          TextInputType
-                                                                              .visiblePassword,
-                                                                      //obscureText: passObscure,
-                                                                    ),
-                                                                  ]),
-                                                            ),
-                                                            SizedBox(
-                                                              height:
-                                                                  screenHeight *
-                                                                      0.01,
-                                                            ),
-                                                            Column(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .stretch,
-                                                              children: [
-                                                                InkWell(
-                                                                  child:
-                                                                      RichText(
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .end,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    text:
-                                                                        TextSpan(
-                                                                      text:
-                                                                          "Forgot Password",
-                                                                      style: Theme.of(
-                                                                              context)
-                                                                          .textTheme
-                                                                          .headline3,
-                                                                    ),
-                                                                  ),
-                                                                  onTap: () {
-                                                                    Navigator.push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                const ResetPasswordScreen()));
-                                                                  },
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            SizedBox(
-                                                              height:
-                                                                  screenHeight *
-                                                                      0.06,
-                                                            ),
-                                                            // !loading
-                                                            // ?
-                                                            ElevatedButton(
-                                                              onPressed:
-                                                                  () async {
-                                                                setState(() {
-                                                                  //loading = true;
-                                                                });
-                                                                // final SharedPreferences sharedPreferences =
-                                                                //     await SharedPreferences.getInstance();
-                                                                // sharedPreferences.setString(
-                                                                //     'email', emailController.text);
-
-                                                                if (false) {
-                                                                  // ignore: avoid_print
-                                                                  print(
-                                                                      'Not Validated');
-                                                                  setState(() {
-                                                                    //loading = false;
-                                                                  });
-                                                                  // reset!=null?
-                                                                } else {
-                                                                  if (true) {
-                                                                    print(
-                                                                        "logged");
-                                                                    setState(
-                                                                        () {
-                                                                      // loading = false;
-                                                                    });
-                                                                    SharedPreferences
-                                                                        sh =
-                                                                        await SharedPreferences
-                                                                            .getInstance();
-                                                                    sh.setBool(
-                                                                        "logged",
-                                                                        true);
-
-                                                                    Navigator.of(context).pushAndRemoveUntil(
-                                                                        MaterialPageRoute(
-                                                                            builder: (context) => Navigationbar(
-                                                                                0)),
-                                                                        (Route<dynamic>
-                                                                                route) =>
-                                                                            false);
-                                                                    //authProvider.status=Status.Authenticated;
-                                                                    setState(
-                                                                        () {});
-                                                                  } else {}
-                                                                }
-                                                              },
-                                                              child: Text(
-                                                                  'Log In',
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontFamily:
-                                                                          'BerlinSansFB',
-                                                                      fontSize:
-                                                                          16)),
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
-                                                                padding: EdgeInsets.fromLTRB(
-                                                                    screenHeight *
-                                                                        0.14,
-                                                                    screenHeight *
-                                                                        0.02,
-                                                                    screenHeight *
-                                                                        0.14,
-                                                                    screenHeight *
-                                                                        0.02),
-                                                                onPrimary:
-                                                                    const Color
-                                                                            .fromRGBO(
-                                                                        255,
-                                                                        255,
-                                                                        255,
-                                                                        1),
-                                                                primary: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15.0),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            //: Center(child: CircularProgressIndicator()),
-                                                            SizedBox(
-                                                              height:
-                                                                  screenHeight *
-                                                                      0.03,
-                                                            ),
-                                                            Center(
-                                                              child: InkWell(
-                                                                child:
-                                                                    FittedBox(
-                                                                  child: Text(
-                                                                    "Create New Account",
-                                                                    style: Theme.of(
-                                                                            context)
-                                                                        .textTheme
-                                                                        .headline3,
-                                                                  ),
-                                                                ),
-                                                                onTap: () {
-                                                                  Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              const SignupScreen(),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.03,
-                                            ),
-                                            const Icon(
-                                              FontAwesomeIcons.signOutAlt,
-                                              size: 20, //Icon Size
-                                              color: Color(
-                                                  0xFF3F5521), //Color Of Icon
-                                            ),
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.05,
-                                            ),
-                                            Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Log In"]}',
-                                              style: TextStyle(
-                                                  color: Color(0xFF3F5521),
-                                                  fontSize: 20,
-                                                  fontFamily: 'BerlinSansFB',
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(children: [
-                                          const Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                        ]),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                          : Container(),
                       // IconButton(
                       //     icon: Icon(Icons.add_circle_outlined),
                       //     onPressed: () {
