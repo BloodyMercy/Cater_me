@@ -104,7 +104,7 @@ class _appstateState extends State<appstate> {
           } else {
             switch (authProvider.status) {
               case Status.Unauthenticated:
-                return LoginScreen();
+                return Navigationbar(0);
 
               case Status.walkingpage:
                 return OnBoardingScreens();

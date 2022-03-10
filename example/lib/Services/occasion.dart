@@ -108,7 +108,7 @@ class OccasionService {
         return responseData;
       }
       else if (response.statusCode == 401) {
-        return {"status": "1"};
+        return {};
        // print("rifai200");
       }
       else {

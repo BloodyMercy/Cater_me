@@ -49,7 +49,7 @@ class NotificationServices {
 
   Future<void> init() async {
     final AndroidInitializationSettings androidInitializationSettings =
-        AndroidInitializationSettings("@mipmap/launcher_icon");
+        AndroidInitializationSettings("@mipmap/launcher_icon",);
 
     final IOSInitializationSettings iOSInitializationSettings =
         IOSInitializationSettings(
