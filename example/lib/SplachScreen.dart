@@ -37,9 +37,9 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: Colors.black,
       body: Center(
           child: Image.asset(
-        "images/animation/catermegifblack.gif",
-        height: MediaQuery.of(context).size.height * 0.60,
-        width: MediaQuery.of(context).size.width * 0.7,
+        "images/animation/CaterMeNewGif.gif",
+         height: MediaQuery.of(context).size.height * 0.10,
+         // width: MediaQuery.of(context).size.width * 0.7,
       )),
     );
   }

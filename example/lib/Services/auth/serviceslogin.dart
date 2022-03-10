@@ -18,57 +18,37 @@ class AuthModelSignin {
     Users users = Users();
     String _username = username;
     String _password = password;
-    // var data = {
-    //   'Email': username,
-    //   'Password': password,
-    //   'DeviceToken':deviceToken
-    // };
-    //map //json.encode
-    //json.decode
 
     try {
       var respons = http.MultipartRequest(
         'POST',
         Uri.parse(ApiLink.login),
       );
-      String token="";
-        await    FirebaseMessaging.instance.getToken().then((value) {
-          token = value.toString();
-          print("the token is $value");
+      String token = "";
+      await FirebaseMessaging.instance.getToken().then((value) {
+        token = value.toString();
+        print("the token is $value");
 
-token=token;
-
-        });
-        respons.fields.addAll({
+        token = token;
+      });
+      respons.fields.addAll({
         'Email': username,
         'Password': password,
         'DeviceToken': token,
       });
-      // final response = await http.post(Uri.parse("${ApiLink.login}"),///${ApiLink.login}
-      //     body: data,
-      //     );
 
       http.StreamedResponse responses = await respons.send();
       var response = await http.Response.fromStream(responses);
-      //print(response.statusCode);
-      // print("data");
-      if (response.statusCode == 200) {
-        // print(response);
-        //  final respStr = await response.stream.bytesToString();
-        //   print(respStr);
-        //print(response.body);
 
+      if (response.statusCode == 200) {
         Map<String, dynamic> responseData = json.decode(response.body);
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("token", responseData['token']);
 
-        //SharedPreferences image = await SharedPreferences.getInstance();
         prefs.setString('imageUrl', responseData['imageUrl']);
 
-      //  SharedPreferences name = await SharedPreferences.getInstance();
         prefs.setString('name', responseData['name']);
 
-    //    SharedPreferences phoneNumber = await SharedPreferences.getInstance();
         prefs.setString('phoneNumber', responseData['phoneNumber']);
         prefs.setString('email', responseData['email']);
         prefs.commit();
@@ -78,7 +58,7 @@ token=token;
         ErrorMessage em = ErrorMessage();
         em.response = true;
         em.message = "";
-        em.user=users;
+        em.user = users;
         //int id=responseData["id"];
 
         // push()
@@ -106,23 +86,18 @@ token=token;
     //return 0;
   }
 
-  static Future<ErrorMessage> updateProfile(
-
-      File image
-      ) async {
+  static Future<ErrorMessage> updateProfile(File image) async {
     try {
-
-
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
-   //   var request = http.Request('GET', Uri.parse(ApiLink.GetAllFriends));
+      //   var request = http.Request('GET', Uri.parse(ApiLink.GetAllFriends));
 
-      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.UpdateProfle));
+      var respons =
+          http.MultipartRequest('POST', Uri.parse(ApiLink.UpdateProfle));
       respons.headers.addAll(headers);
 
       // open a bytestream
-      if(image!=null) {
+      if (image != null) {
         var stream = new http.ByteStream(image.openRead());
         stream.cast();
         // get file length
@@ -135,10 +110,11 @@ token=token;
         //  var request = new http.MultipartRequest("POST", uri);
 
         // multipart that takes file
-       // var multipartFile = new http.MultipartFile('FormFile', stream, length, filename: basename(image.path));
-       // await http.MultipartFile.fromPath('FormFile', image.path);
+        // var multipartFile = new http.MultipartFile('FormFile', stream, length, filename: basename(image.path));
+        // await http.MultipartFile.fromPath('FormFile', image.path);
         // add file to multipart
-        respons.files.add(await http.MultipartFile.fromPath('FormFile', image.path));
+        respons.files
+            .add(await http.MultipartFile.fromPath('FormFile', image.path));
 
         // send
         //var response = await respons.send();
@@ -160,15 +136,14 @@ token=token;
         // prefs.setString("token", responseData['token']);
         prefs.setString('imageUrl', responseData['imageUrl']);
 
-
         // users = Users.fromJson(responseData);
         ErrorMessage em = ErrorMessage();
         em.response = true;
-        em.message =responseData['imageUrl'];
+        em.message = responseData['imageUrl'];
 
         return em;
       } else {
-       // Map<String, dynamic> responseData = json.decode(response.body);
+        // Map<String, dynamic> responseData = json.decode(response.body);
 
         ErrorMessage em = ErrorMessage();
         em.response = false;
@@ -185,10 +160,10 @@ token=token;
     }
   }
 
- static Future <bool> forgetPassword(String email) async {
+  static Future<bool> forgetPassword(String email) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var request = http.MultipartRequest(
-        'POST', Uri.parse(ApiLink.ForgetPassword));
+    var request =
+        http.MultipartRequest('POST', Uri.parse(ApiLink.ForgetPassword));
     request.fields.addAll({
       'identifier': email,
     });
@@ -200,10 +175,9 @@ token=token;
     if (response.statusCode == 200) {
       //print(await response.stream.bytesToString());
       return true;
-    }
-    else {
-     // print(response.reasonPhrase);
+    } else {
+      // print(response.reasonPhrase);
       return false;
     }
   }
-  }
+}

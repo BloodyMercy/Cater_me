@@ -47,6 +47,7 @@ class _Contact_UsState extends State<Contact_Us> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -55,8 +56,9 @@ class _Contact_UsState extends State<Contact_Us> {
           iconSize: 40,
           color: Colors.white,
         ),
-        title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}'
-          ,
+        title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}',
+
+
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,
