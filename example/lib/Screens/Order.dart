@@ -566,7 +566,7 @@ class _OrderState extends State<Order> {
                                                           _key.currentState
                                                               .showSnackBar(
                                                              SnackBar(
-                                                              content: Text('${LanguageTr.lg[authProvider.language]["share bill cannot be empty"]}'
+                                                              content: Text('${LanguageTr.lg[authProvider.language]["Please choose someone to share your bill with"]}'
                                                                   ),
                                                             ),
                                                           );

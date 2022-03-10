@@ -33,7 +33,7 @@ class LanguageTr {
       "See All": "اظهار الكل",
       "Upcoming Occasions": "المناسبات القادمة ",
       "Add an occasion": "اضف مناسبة",
-      "Shishas": "نراجيل",
+      "Shishas": "شيشة",
       "Add occasion": "اضف مناسبة",
       "edit": "تعديل",
       "Edit Occasion": "تعديل المناسبة",
@@ -130,7 +130,7 @@ class LanguageTr {
       "Street": "الشارع",
       "Building:": "البناء:",
       "Building": "البناء",
-
+      "Pax":"شخص",
       "Floor:": "الطابق:",
       "Floor": "الطابق",
       "Order": "الطلب",
@@ -181,10 +181,27 @@ class LanguageTr {
       "error try again": "خطأ, حاول مرة أخرى",
       "Order Details":"تفاصيل الطلب",
       "Do You Want To Donate The Rest Of Your Food?":"هل تريد التبرع ببقية طعامك؟",
-      "*(Shisha VAT 100%)":"*(نرجيلة ق.ض.م٪١٠٠)",
+      "*(Shisha VAT 100%)":"*(شيشة ق.ض.م٪١٠٠)",
       "*(VAT 15%)":"*(ق.ض.م 15%)",
       "yes":"نعم",
-      "No Packages": " No Packages ",//fix later!!!!!
+      "No Packages": "No Packages",//fix later!!!!!
+      "you can't order less than 5 shishas":"لا يمكنك طلب أقل من 5 شيشة",
+      "shisha": "شيشة",
+      "minimun quantity for shisha is 5":"أقل كمية شيشة هي ٥",
+      "Please choose someone to share your bill with":"الرجاء اختيار أحد لتشارك فاتورتك",
+      "no items to order":"لا توجد عناصر للطلب",
+      "no credit cards selected":"لم يتم اختيار أي بطاقة ااتمان",
+      "Loading...":"جاري التحميل . . .",
+      "error":"خطأ",
+      "try again":"حاول مجددا",
+      "please add a package":"الرجاء اضافة حزمة ",
+
+      "Choose the friends you want to share the order with.":"اختر الأصقاء لشاركتهم طلبك",
+      "No freind to share":"لا يوجد صديق للمشاركة",
+      "Add Friend":"أضف صديق",
+      "How would you like to pay ?":"كيف تريد الدفع؟ ",
+
+
 
     },
 
@@ -248,7 +265,7 @@ class LanguageTr {
       "Reset Password": "Reset Password",
       "My Address": "My Address",
       "My Credit Cards": "My Credit Cards",
-      "My Friends": "My Credit Cards",
+      "My Friends": "My Friends",
       "Language": "Language",
       "Contact Us": "Contact Us",
       "Logout": "Logout",
@@ -368,7 +385,7 @@ class LanguageTr {
       "Do You Want To Donate The Rest Of Your Food?":"Do You Want To Donate The Rest Of Your Food?",
       "*(Shisha VAT 100%)":"*(Shisha VAT 100%)",
       "*(VAT 15%)":"*(VAT 15%)",
-      "share bill cannot be empty":"share bill cannot be empty",
+      "Please choose someone to share your bill with":"Please choose someone to share your bill with",
       "no items to order":"no items to order",
       "no credit cards selected":"no credit cards selected",
       "Loading...":"Loading...",
