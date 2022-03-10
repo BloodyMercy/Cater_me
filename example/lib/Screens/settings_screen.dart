@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
+import 'package:CaterMe/Screens/Terms_and_Conditions/Terms_and_Conditions.dart';
 import 'package:CaterMe/Screens/add_friend_screen.dart';
 import 'package:CaterMe/Screens/addresses_settings_screen.dart';
 import 'package:CaterMe/Screens/auth/reset_password_screen.dart';
@@ -665,68 +666,129 @@ class _TABBarState extends State<TABBar> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Card(
-                                color: const Color.fromARGB(206, 255, 255, 255),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => Contact_Us(),
-                                      ),
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: Card(
+                                    color: const Color.fromARGB(206, 255, 255, 255),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20.0)),
+                                    child: Column(
                                       children: [
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.03,
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) => TermsAndConditions(),
+                                              ),
+                                            );
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width:
+                                                      mediaQuery.size.width * 0.03,
+                                                    ),
+                                                    Icon(
+                                                      Icons.article_rounded,
+                                                      size: 20, //Icon Size
+                                                      color: Color(
+                                                          0xFF3F5521), //Color Of Icon
+                                                    ),
+                                                    SizedBox(
+                                                      width:
+                                                      mediaQuery.size.width * 0.05,
+                                                    ),
+                                                    Text(
+                                                      'Terms & Conditions',
+                                                      style: TextStyle(
+                                                          color: Color(0xFF3F5521),
+                                                          fontSize: 20,
+                                                          fontFamily: 'BerlinSansFB',
+                                                          fontWeight:
+                                                          FontWeight.normal),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(children: [
+                                                  Icon(
+                                                    Icons.chevron_right,
+                                                    color: Color(0xFF3F5521),
+                                                  ),
+                                                  SizedBox(
+                                                    width: mediaQuery.size.width * 0.03,
+                                                  ),
+                                                ]),
+                                              ],
                                             ),
-                                            Icon(
-                                              FontAwesomeIcons.info,
-                                              size: 20, //Icon Size
-                                              color: Color(
-                                                  0xFF3F5521), //Color Of Icon
-                                            ),
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.05,
-                                            ),
-                                            Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Contact Us"]}',
-                                              style: TextStyle(
-                                                  color: Color(0xFF3F5521),
-                                                  fontSize: 20,
-                                                  fontFamily: 'BerlinSansFB',
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                        Row(children: [
-                                          Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
+                                        Divider(
+                                          thickness: 1,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) => Contact_Us(),
+                                              ),
+                                            );
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width:
+                                                      mediaQuery.size.width * 0.03,
+                                                    ),
+                                                    Icon(
+                                                      FontAwesomeIcons.info,
+                                                      size: 20, //Icon Size
+                                                      color: Color(
+                                                          0xFF3F5521), //Color Of Icon
+                                                    ),
+                                                    SizedBox(
+                                                      width:
+                                                      mediaQuery.size.width * 0.05,
+                                                    ),
+                                                    Text(
+                                                      '${LanguageTr.lg[personalInfo.language]["Contact Us"]}',
+                                                      style: TextStyle(
+                                                          color: Color(0xFF3F5521),
+                                                          fontSize: 20,
+                                                          fontFamily: 'BerlinSansFB',
+                                                          fontWeight:
+                                                          FontWeight.normal),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(children: [
+                                                  Icon(
+                                                    Icons.chevron_right,
+                                                    color: Color(0xFF3F5521),
+                                                  ),
+                                                  SizedBox(
+                                                    width: mediaQuery.size.width * 0.03,
+                                                  ),
+                                                ]),
+                                              ],
+                                            ),
                                           ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                        ]),
+                                        ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                               child: Card(
