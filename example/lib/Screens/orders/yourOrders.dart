@@ -25,7 +25,8 @@ class _YourOrdersState extends State<YourOrders> {
 
   Future getData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
-    await orders.getAllOrders();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    await orders.getAllOrders(sh.getString("locale"));
 
     setState(() {
       loading = false;
@@ -37,7 +38,8 @@ class _YourOrdersState extends State<YourOrders> {
     final orders = Provider.of<OrderProvider>(context, listen: false);
 
     await orders.clearData();
-    await orders.getAllOrders();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    await orders.getAllOrders(sh.getString("locale"));
     return;
   }
 
@@ -77,13 +79,9 @@ class _YourOrdersState extends State<YourOrders> {
                       )
                     : orders.listOrder.length == 0
                         ? authProvider.status == Status.Authenticated
-                            ? Column(
-                                children: [
-                                  Center(
-                                      child:
-                                          Image.asset('images/noorderyet.png')),
-                                ],
-                              )
+                            ? Center(
+                                child:
+                                    Image.asset('images/noorderyet.png'))
                             : Column(
                                 children: [
                                   Image.asset('images/noorderyet.png'),

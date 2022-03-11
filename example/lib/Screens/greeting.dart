@@ -9,7 +9,7 @@ class Greeting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userprovider=Provider.of<UserProvider>(context,listen: true);
+    final userprovider = Provider.of<UserProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     const double fontSize = 33;
     const String fontFamily = 'Berlin Sans FB';
@@ -22,6 +22,7 @@ class Greeting extends StatelessWidget {
         child: Column(
           children: [
             Row(
+
               children: [
                 Padding(
                   padding: EdgeInsets.only(left: mediaQuery.size.width * 0.1),
@@ -31,13 +32,19 @@ class Greeting extends StatelessWidget {
                       SizedBox(
                         height: mediaQuery.size.height * 0.38,
                       ),
-                      Text("Hi ${userprovider.name.text},",
-                          style: TextStyle(
+                      Text(
+                        "Hi ${userprovider.name.text},",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                        // overflow: TextOverflow.ellipsis,
 
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: fontFamily,
-                            fontSize: fontSize,
-                          )),
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontFamily: fontFamily,
+                          fontSize: fontSize,
+                        ),
+                      ),
                       Text("Welcome to ",
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
@@ -77,8 +84,10 @@ class Greeting extends StatelessWidget {
                         backgroundColor: MaterialStateProperty.all(
                             Theme.of(context).primaryColor)),
                     onPressed: () {
-                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                          Navigationbar(0)), (Route<dynamic> route) => false);
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => Navigationbar(0)),
+                          (Route<dynamic> route) => false);
                     },
                     child: Text(
                       "Continue",

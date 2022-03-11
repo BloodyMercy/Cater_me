@@ -134,7 +134,7 @@ class PackageService {
     }
   }
 
-  static Future<List<AddOn>> getitemsbycat(int id) async {
+  static Future<List<AddOn>> getitemsbycat(int id,String a) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -150,7 +150,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<AddOn> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(AddOn.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(AddOn.fromJson(l[i],a));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;

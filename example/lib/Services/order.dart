@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderServices {
-  Future<List<OrderModel>> getAllOrders() async {
+  Future<List<OrderModel>> getAllOrders(String a) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
@@ -18,7 +18,7 @@ class OrderServices {
         List<dynamic> responseData = json.decode(response.body);
         List<OrderModel> posts = List<OrderModel>.from(
           responseData.map(
-                (model) => OrderModel.fromJson(model),
+                (model) => OrderModel.fromJson(model,a),
           ),
         ); //map to list
         return posts;
@@ -32,7 +32,7 @@ class OrderServices {
     }
   }
 
-  Future<OrderModel> getOrdersById(int id) async {
+  Future<OrderModel> getOrdersById(int id,String a) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
@@ -42,7 +42,7 @@ class OrderServices {
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         Map<String,dynamic> responseData = json.decode(response.body);
-        OrderModel posts =  OrderModel.fromJson(responseData);
+        OrderModel posts =  OrderModel.fromJson(responseData,a);
         //map to list
         return posts;
       } else {

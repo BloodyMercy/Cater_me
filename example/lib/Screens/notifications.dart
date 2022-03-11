@@ -102,12 +102,7 @@ class _NotificationsState extends State<Notifications> {
                   ),
                 )
               : allNotification.notificationlist.length == 0? authProvider.status == Status.Authenticated
-                  ? Column(
-                    children: [
-                      Image.asset('images/nonotificationyet.png'),
-
-                    ],
-                  )
+                  ? Center(child: Image.asset('images/nonotificationyet.png'))
               : Column(
             children: [
               Image.asset('images/noorderyet.png'),

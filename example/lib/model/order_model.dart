@@ -40,7 +40,7 @@ class OrderModel {
         // tax
   });
 
-  OrderModel.fromJson(Map<String, dynamic> json) {
+  OrderModel.fromJson(Map<String, dynamic> json,String a) {
     id = json['id']??0;
     profileId = json['profileId']??0;
     addressId = json['addressId']??0;
@@ -54,6 +54,7 @@ class OrderModel {
     eventType = json['eventType']??"not found";
     eventDate = json['eventDate']??"not found";
     eventName = json['eventName']??"not found";
+
     numberOfGuests = json['numberOfGuests']??"not found";
 
   }

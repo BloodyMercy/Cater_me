@@ -290,8 +290,8 @@ return em.message;
     notifyListeners();
   }
 
-  getRegular() async {
-_regular=await _addressService.getRegular();
+  getRegular(String a) async {
+_regular=await _addressService.getRegular(a);
 List<String> _listnamenumberi=[];
 List<String> _listnameeventi=[];
 for(int i=0;i<_regular.numberOfGuests.length;i++){

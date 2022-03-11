@@ -8,8 +8,10 @@ class Addonall {
   Addonall();
 
   Addonall.fromJson(Map<String, dynamic> json) {
+
     id = json['id']??0;
     name = json['name']??"not found";
+
     if (json['items'] != null) {
       items = <Package>[];
       json['items'].forEach((v) {

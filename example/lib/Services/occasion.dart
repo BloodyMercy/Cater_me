@@ -56,7 +56,7 @@ class OccasionService {
   }
 
 
-  Future<List<OccassionType>> getAllOcasionType() async {
+  Future<List<OccassionType>> getAllOcasionType(String a) async {
     List<OccassionType> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -76,7 +76,7 @@ class OccasionService {
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
        l.add( OccassionType(id: -700, name: "Add occasion", image: ''));
         for (int i = 1; i < responseData.length; i++) {
-          l.add(OccassionType.fromJson(responseData[i]));
+          l.add(OccassionType.fromJson(responseData[i],a));
         }
         return l;
       }

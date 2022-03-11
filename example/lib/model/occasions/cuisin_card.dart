@@ -1,8 +1,10 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../language/language.dart';
 import 'cuisins_list.dart';
 
 class CuisinCard extends StatefulWidget {
@@ -28,7 +30,7 @@ class _CuisinCardState extends State<CuisinCard> {
   @override
   Widget build(BuildContext context) {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: true);
-
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
     //  height: 100,
@@ -61,6 +63,6 @@ class _CuisinCardState extends State<CuisinCard> {
         //     viewportFraction: 0.3,
         //   ),
         // )
-        : Center(child: Text("No Cuisines To Dispaly"));
+        : Center(child: Text('${LanguageTr.lg[authProvider.language]["No Shisha To Display"]}'));
   }
 }

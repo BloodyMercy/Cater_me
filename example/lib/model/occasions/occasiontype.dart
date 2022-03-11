@@ -4,10 +4,17 @@ class OccassionType {
 String image ;
   OccassionType({this.id, this.name, this.image});
 
-  OccassionType.fromJson(Map<String, dynamic> json) {
+  OccassionType.fromJson(Map<String, dynamic> json,String a) {
     id = json['id']??0;
-    name = json['title']??"not found";
-    image= json['image']??"not found";
+    if(a=="ar") {
+      name = json['titleAR'] ?? "غير معروف";
+      image = json['imageAR'] ?? "غير معروف";
+    }
+    else {
+      name = json['title'] ?? "not found";
+
+      image = json['image'] ?? "not found";
+    }
   }
 
 }

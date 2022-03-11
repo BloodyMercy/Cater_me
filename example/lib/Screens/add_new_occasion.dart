@@ -4,6 +4,7 @@ import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -24,9 +25,10 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
   bool loading = true;
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
+  SharedPreferences sh=await SharedPreferences.getInstance();
 
     await occasion.getallnewoccasion();
-await occasion.getAllOccasionType();
+await occasion.getAllOccasionType(sh.getString("locale"));
     occasion.typeofoccasioncontrollername.text=occasion.listoccasiontype[widget.getposition].name;
     occasion.typeofoccasioncontroller.text=occasion.listoccasiontype[widget.getposition].id.toString();
 

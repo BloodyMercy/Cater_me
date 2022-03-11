@@ -70,8 +70,10 @@ class AddOnCards extends StatelessWidget {
                             fontSize: 12,
                             color: Colors.black87,
                             fontWeight: FontWeight.bold),
-                      ),SizedBox(
-                        height: 5,
+                      ),
+
+                     SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
                       ),
                     ],
                   ),

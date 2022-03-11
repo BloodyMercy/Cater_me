@@ -8,6 +8,7 @@ import 'package:CaterMe/widgets/custom_daily_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../custom_date_picker_form_field.dart';
@@ -45,7 +46,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
-    await address.getRegular();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    await address.getRegular(sh.getString("locale"));
     final occasion = Provider.of<FriendsProvider>(context, listen: false);
     if (occasion.listFriends.length == 0) await occasion.getAllFriends();
     List<String> l = [];

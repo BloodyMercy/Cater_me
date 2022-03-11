@@ -168,7 +168,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                         label: '${LanguageTr.lg[authProvider.language]['CARDHOLDER']}',
                                         value: _creditCards.list[i].ownerName,
                                       ),
-                                      _buildDetailsBlock(label:  '${LanguageTr.lg[authProvider.language]['VALID THRU']}',
+                                      _buildDetailsBlock(label:  '${LanguageTr.lg[authProvider.language]["VALID THRU"]}',
                                        value: "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
                                     ],
                                   ),

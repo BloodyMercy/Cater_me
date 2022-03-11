@@ -249,7 +249,7 @@ print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:$e");
       return [];
     }
   }
-  Future<Regular> getRegular() async{
+  Future<Regular> getRegular(String a) async{
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -262,7 +262,7 @@ print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:$e");
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         Map<String,dynamic> responseData = json.decode(response.body);
-        Regular posts = Regular.fromJson(responseData);
+        Regular posts = Regular.fromJson(responseData,a);
         return posts;
       }
       else {

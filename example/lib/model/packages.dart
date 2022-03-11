@@ -21,7 +21,7 @@ bool isShisha=false;
     id = json['id']??0;
     image = json['image']??"not found";
     title = json['title']??"not found";
-    if(false)
+    if(a=="ar")
       description = json['descriptionAR']??"not found";
       else
     description = json['description']??"not found";

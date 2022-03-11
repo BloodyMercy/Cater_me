@@ -47,6 +47,9 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
     );
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     final pack = Provider.of<PackagesProvider>(context, listen: true);

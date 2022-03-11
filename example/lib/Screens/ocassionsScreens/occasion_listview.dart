@@ -28,7 +28,8 @@ class _OccasionListViewState extends State<OccasionListView> {
     //   await occasion.getalloccasions();
 
     final occa = Provider.of<OccasionProvider>(context, listen: false);
-    await occa.getAllOccasionType();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    await occa.getAllOccasionType(sh.getString("locale"));
     await occa.getallnewoccasion();
   }
 
@@ -45,7 +46,8 @@ class _OccasionListViewState extends State<OccasionListView> {
 
     occa.all.clear();
     occa.listoccasiontype.clear();
-    await occa.getAllOccasionType();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    await occa.getAllOccasionType(sh.getString("locale"));
     await occa.getallnewoccasion();
 
     return;

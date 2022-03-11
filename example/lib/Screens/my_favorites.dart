@@ -73,12 +73,7 @@ class _MyFavoritesState extends State<MyFavorites> {
             child: Center(
               child: !loading
                   ? package.listfavorite.length == 0 ?authProvider.status== Status.Authenticated
-                ? Column(
-                        children: [
-                          Image.asset("images/nofavorites.png"),
-
-                        ],
-                      )
+                ? Center(child: Image.asset("images/nofavorites.png"))
                   : Column(
                 children: [
                   Image.asset('images/noorderyet.png'),

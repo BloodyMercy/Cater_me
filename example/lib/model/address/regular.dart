@@ -8,20 +8,20 @@ class Regular {
   Regular(
      );
 
-  Regular.fromJson(Map<String, dynamic> json) {
+  Regular.fromJson(Map<String, dynamic> json,String a) {
    // percentageOfDaberni = json['percentageOfDaberni'];
     hoursOfDaberni = json['hoursOfDaberni']??0;
     tax = json['tax']==null?0:json['tax']??0;
     if (json['numberOfGuests'] != null) {
       numberOfGuests = <NumberOfGuests>[];
       json['numberOfGuests'].forEach((v) {
-        numberOfGuests.add(new NumberOfGuests.fromJson(v));
+        numberOfGuests.add(new NumberOfGuests.fromJson(v,a));
       });
     }
     if (json['events'] != null) {
       events = <Events>[];
       json['events'].forEach((v) {
-        events.add(new Events.fromJson(v));
+        events.add(new Events.fromJson(v,a));
       });
     }
   }
@@ -48,8 +48,12 @@ class NumberOfGuests {
 
   NumberOfGuests({this.id, this.title});
 
-  NumberOfGuests.fromJson(Map<String, dynamic> json) {
+  NumberOfGuests.fromJson(Map<String, dynamic> json,String a) {
     id = json['id']??0;
+    if(a=="ar"){
+      title = json['titleAR']??"غير معروف";
+    }else
+
     title = json['title']??"not found";
   }
 
@@ -67,8 +71,11 @@ class Events {
 
   Events({this.id, this.name});
 
-  Events.fromJson(Map<String, dynamic> json) {
+  Events.fromJson(Map<String, dynamic> json,String a) {
     id = json['id']??0;
+    if(a=="ar"){
+      name = json['nameAR']??'غير معروف';
+    }
     name = json['name']??'not found';
   }
 
