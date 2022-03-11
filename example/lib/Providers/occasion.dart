@@ -105,6 +105,9 @@ Occasion _occasioncreated=Occasion();
     if(_occasioncreated.id==0)
       return false;
       else {
+      nameofoccasioncontroller.text="";
+typeofoccasioncontroller.text="";
+    datechosencontroller.text="";
       List<Occasion> l = occa.all;
          // package.alloccasions;
       l.add(_occasioncreated);

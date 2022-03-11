@@ -108,7 +108,10 @@ class OccasionService {
         return responseData;
       }
       else if (response.statusCode == 401) {
-        return {};
+        Map<String, dynamic> responseData = json.decode(response.body);
+       // if(responseData.length>0)
+        return responseData;
+
        // print("rifai200");
       }
       else {
