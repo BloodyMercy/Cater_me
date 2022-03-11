@@ -19,6 +19,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -53,7 +54,9 @@ class _HomePageState extends State<HomePage> {
     //package.loading=false;
     // package.loading = false;
     await package.cleardata();
-    await package.getallpacakges(context);
+    SharedPreferences sh=await SharedPreferences.getInstance();
+
+    await package.getallpacakges(context,sh.getString("locale"));
 
     return;
   }
@@ -64,7 +67,9 @@ class _HomePageState extends State<HomePage> {
     final package = Provider.of<PackagesProvider>(context, listen: false);
    // await package.cleardata();
    // package.loading = false;
-    await package.getallpacakges(context);
+    SharedPreferences sh=await SharedPreferences.getInstance();
+
+    await package.getallpacakges(context,sh.getString("locale"));
     package.loading = true;
     for (int i = 0; i < package.listItems.length; i++) {
       listitemssearch.add(package.listItems[i].title.toLowerCase());

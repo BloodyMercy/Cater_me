@@ -19,18 +19,21 @@ class AddOn {
       title = json['titleAR'] ?? "غير معروف";
       image = json['imageAR'] ?? "غير معروف";
       description = json['descriptionAR'] ?? "غير معروف";
-    }else
+    } else {
 
-    image = json['image'] ?? "not found";
-    title = json['title'] ?? "not found";
-    description = json['description'] ?? "not found";
-    price = double.parse(json['price'].toString()) ?? 0.0;
-    isfavorite = json['isFavorite'] ?? false;
-    if (json['itemDetails'] != null) {
-      itemDetails = [];
-      json['itemDetails'].forEach((v) {
-        itemDetails.add(new Details.fromJson(v));
-      });
+      title = json['title'] ?? "not found";
+      image = json['image'] ?? "not found";
+      description = json['description'] ?? "not found";
     }
-  }
+
+      price = double.parse(json['price'].toString()) ?? 0.0;
+      isfavorite = json['isFavorite'] ?? false;
+      if (json['itemDetails'] != null) {
+        itemDetails = [];
+        json['itemDetails'].forEach((v) {
+          itemDetails.add(new Details.fromJson(v));
+        });
+      }
+    }
+
 }

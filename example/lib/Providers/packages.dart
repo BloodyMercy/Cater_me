@@ -137,7 +137,7 @@ String get nbnotification => _nbnotification;
   set nbnotification(String value) {
     _nbnotification = value;
   }
-Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
+Future<void>  getallpacakgesorder(int id,int id2,int id3,String a)async {
   loading=false;
 //notifyListeners();
   _alldata=await PackageService.getPackagesrder(id,id2,id3);
@@ -148,7 +148,7 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
       // if(_alldata['cuisine']!=null)
       // _cuisins = Cuisines.fromJson(_alldata['cuisine']);
       _addonsallorder = List<Addonall>.from(
-          _alldata['addons'].map((model) => Addonall.fromJson(model)));
+          _alldata['addons'].map((model) => Addonall.fromJson(model,a)));
       //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
       _allpackagesorder = List<Package>.from(
@@ -163,7 +163,7 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3)async {
   notifyListeners();
 }
 
-  Future<void>  getallpacakges(BuildContext c)async {
+  Future<void>  getallpacakges(BuildContext c,String a)async {
 
 loading=false;
 //notifyListeners();
@@ -182,7 +182,7 @@ loading=false;
       _packages = Packages.fromJson( _alldata['packages']);
        if(_alldata['cuisine']!=null)
        _cuisins = Cuisines.fromJson(_alldata['cuisine']);
-     _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model)));
+     _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model,a)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
        _listItems = List<Package>.from(

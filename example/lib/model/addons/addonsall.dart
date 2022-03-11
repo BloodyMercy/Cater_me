@@ -7,9 +7,12 @@ class Addonall {
 
   Addonall();
 
-  Addonall.fromJson(Map<String, dynamic> json) {
+  Addonall.fromJson(Map<String, dynamic> json,String a) {
 
     id = json['id']??0;
+    if(a=="ar"){
+      name = json['nameAR']??"غير معروف";
+    }else
     name = json['name']??"not found";
 
     if (json['items'] != null) {

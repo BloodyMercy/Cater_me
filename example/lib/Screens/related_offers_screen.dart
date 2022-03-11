@@ -5,6 +5,7 @@ import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'occasion/theme/colors/light_colors.dart';
 
@@ -26,10 +27,11 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
+    SharedPreferences sh=await SharedPreferences.getInstance();
     await pack.getallpacakgesorder(orderprovider.serviceId,
         int.parse(address.typeofeventcontroller.text.toString()),
         int.parse(address.numberofguestcontroller.text.toString()
-        ));
+        ),sh.getString("locale"),);
     setState(() {
       loading = true;
     });
