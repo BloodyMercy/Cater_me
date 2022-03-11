@@ -665,30 +665,30 @@ class _TABBarState extends State<TABBar> {
                                       onTap: () async {
                                         if(  personalInfo.language == "en") {
                                           personalInfo.language ="ar";
-
+                                          SharedPreferences _prefs =
+                                          await SharedPreferences
+                                              .getInstance();
+                                          _prefs.setString("locale", "ar");
                                           MyApp.setLocale(
                                               context, Locale("ar", "AE"));
 
                                           // AppLocalizations.of(context)!.locale.toString()
 
-                                          SharedPreferences _prefs =
-                                          await SharedPreferences
-                                              .getInstance();
-                                          _prefs.setString("locale", "ar");
+
                                           // .language="ar";
 
                                         }
                                         else{
                                           personalInfo.language = "en";
-
-                                          MyApp.setLocale(context, Locale("en", "US"));
-
-                                          // AppLocalizations.of(context)!.locale.toString()
-
                                           SharedPreferences _prefs =
                                           await SharedPreferences
                                               .getInstance();
                                           _prefs.setString("locale", "en");
+                                          MyApp.setLocale(context, Locale("en", "US"));
+
+                                          // AppLocalizations.of(context)!.locale.toString()
+
+
                                           // .language="ar";
 
                                         }

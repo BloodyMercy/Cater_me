@@ -28,7 +28,7 @@ bool isShisha=false;
       else {
       image = json['image']??"not found";
       title = json['title']??"not found";
-      description = json['description'] ?? "not found";
+      description = json['description'] ?? "not fou`nd";
     }
     price = double.parse(json['price'].toString())??0.0;
     isfavorite = json['isFavorite']??false;
