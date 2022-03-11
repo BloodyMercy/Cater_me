@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import 'editfriend.dart';
 
 class FriendsList extends StatefulWidget {
@@ -34,6 +36,7 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
 }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     final friend = Provider.of<FriendsProvider>(context, listen: true);
     var _mediaQuery = MediaQuery.of(context).size.height;
@@ -151,11 +154,14 @@ setState(() {
                                 ,size: 20,),
                               onTap: (){
                                 showDialog(context: context, builder: (BuildContext context)=>
-                                    CustomDialog(title: "Do you want to delete this friend",
+                                    CustomDialog( title: '${LanguageTr.lg[authProvider.language]["Do you want to delete this friend"]}',
+
+
                                       description: "",
                                       button1:ElevatedButton(
                                         style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                        child: Text("Yes"),
+                                        child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
+                                            ),
                                         onPressed: ()async{
                                           showDialog(
                                             context: this.context,
@@ -165,7 +171,7 @@ setState(() {
                                               return WillPopScope(
                                                 // onWillPop: () => Future<bool>.value(false),
                                                   child: AlertDialog(
-                                                    title: Text("Loading...",style: TextStyle(color: colorCustom),),
+                                                    title: Text('${LanguageTr.lg[authProvider.language]["Loading..."]}',style: TextStyle(color: colorCustom),),
                                                     content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
                                                   ));
                                             },
@@ -176,14 +182,16 @@ setState(() {
                                             Navigator.pop(context);
                                             Navigator.of(context).pop();
                                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                content: Text('Friend Deleted')));
+                                                content: Text('${LanguageTr.lg[authProvider.language]['Friend Deleted']}'
+                                                    )));
                                           }else{
                                             Navigator.pop(context);
                                             Navigator.of(context).pop();
 
 
                                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text('Friend cannot be Deleted'),
+                                              content: Text('${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}'
+                                                  ),
                                             ));
                                           }
                                         },
@@ -191,7 +199,8 @@ setState(() {
                                       button2: ElevatedButton(
                                         onPressed: (){
                                           Navigator.of(context).pop();
-                                        },child: Text("No"),
+                                        },child: Text('${LanguageTr.lg[authProvider.language]["No"]}'
+                                          ),
                                       ),
                                       oneOrtwo: true,
                                     )

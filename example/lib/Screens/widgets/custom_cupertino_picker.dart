@@ -95,7 +95,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                     CupertinoButton(
 
                       child: Text(
-                        "${LanguageTr.lg[authProvider.language]["Pick"]}" + widget.label.toLowerCase(),
+                        "${LanguageTr.lg[authProvider.language]["Pick "]} " + widget.label.toLowerCase(),
                         style: TextStyle(
                             color: Color(0xFF3F5521), fontWeight: FontWeight.w300),
                       ),

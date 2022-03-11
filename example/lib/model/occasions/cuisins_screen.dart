@@ -88,8 +88,8 @@ package.clearData();
                     mainAxisSpacing: 8,
                   ),
                 ):
-                Center(child:Text("No Shisha")),
-              ),
-    )));
+                Center(child:Text('${LanguageTr.lg[authProvider.language]["No Shishas To Display"]}',
+              ),)
+    ))));
   }
 }

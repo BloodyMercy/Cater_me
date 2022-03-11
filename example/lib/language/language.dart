@@ -121,7 +121,7 @@ class LanguageTr {
       "Tax": "ضريبة",
       "Sub Total": "المجموع الاجمالي",
       "Total": "المجموع",
-      "Add an Address": "أضف عنوان",
+      "Add an Address": "أضف عنوان  ",
       "Please choose an address": "الرجاء اختيار عنوان",
       "Are you sure you want to exit?": "هل أنت متأكد أنك تريد الخروج؟ ",
       "NO ORDERS ADDED YET": "لم تتم اضافة طلبات حتى الأن",
@@ -212,8 +212,10 @@ class LanguageTr {
       "بطاقات الخصم / الائتمان: يرجى قراءة شروط الاستخدام وإخلاء المسؤولية التالية بعناية قبل استخدام بطاقات الخصم / الائتمان: يقتصر إلغاء طلب العميل على مدة أقصاها 5 دقائق من وقت تقديم الطلب ، وقد يستغرق إجراء استرداد العميل 2-7 أيام عمل للمعالجة على بوابة الدفع البنكية لبطاقات الخصم / الائتمان. يجب على العميل المتابعة مع البنك في حالة حدوث أي تأخير في إعادة المبلغ إلى حساب العميل بالمبلغ الذي دفعه العميل مسبقًا. سنرسل بريدًا إلكترونيًا إلى العميل يحتوي على نسخة مطبوعة من إشعار الاسترداد المطبوع من بوابة الدفع البنكية لبطاقات الخصم / الائتمان كمرجع في حالة رغبة العميل في مراجعة البنك معه. متوفرة على أرقام الاتصال الخاصة بهم. يجب أن تنتمي بطاقات الائتمان أو الخصم المستخدمة في تقديم الطلبات من خلال بوابة الدفع عبر الإنترنت على موقع Cater me أو التطبيقات الخاصة بالمستخدم. خلافًا لذلك ، يجب على المستخدم الحصول على إذن قانوني من مالك البطاقة لإجراء المعاملة ، ويكون العميل مسؤولاً مسؤولية كاملة عن تقديم طلب باستخدام ميزة بطاقات الخصم / الائتمان بعد قراءة جميع الشروط والأحكام بعناية. ",
 "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
     "لديك الحق في إلغاء طلب لمدة تصل إلى 5 دقائق من تقديم الطلب على موقعنا على الإنترنت ، وبينما نبذل قصارى جهدنا لضمان الحفاظ على الأسعار والأوصاف الدقيقة ، فإننا نحتفظ بالحق في إلغاء أي طلب يستند إلى معلومات غير دقيقة قد يتم إلغاء أي طلب لاحقًا من قِبل Cater me بعد تلقيك تأكيدًا وتحتفظ Cater me بالحق في إلغاء أي طلب ، قبل أو بعد القبول ، وسوف تقوم بإخطارك على الفور بأي إلغاء من هذا القبيل.",
-
-
+      "No Shishas To Display":"لا شيشة لعرضها",
+      "Pick ":"اختر",
+      "Do you want to delete this friend":"هل تريد حذف هذا الصديق",
+      "Friend Deleted" :"تم حذف الصديق",
 
 
 
@@ -422,9 +424,12 @@ class LanguageTr {
   "Debit / Credit Cards: Please read the following terms of use and disclaimers carefully before using Debit / Credit Cards:The customer order cancellation is limited to a maximum time of 5 minutes from the time of placing the order.The customer refund procedure might take 2-7 working days to process on the Debit /Credit Cards bank payment gateway. The customer has to follow on with the bank in case of any delay in crediting back the customer’s account with the amount previously paid by the customer. We will send an email to the customer that contains a printout of the refund advice printed from Debit / Credit Cards bank payment gateway as reference in case the customer wants to revise the bank with.Customers using the Debit / Credit Cards facility are requested to be available on their respective contact numbers.Credit or Debit cards used in placing orders through the online payment gateway on Cater me website or applications must belong to the user. Otherwise, the user must attain the legal permission from the card owner to perform the transaction.The customer is entirely liable for placing an order using the Debit / Credit Cards facility after carefully reading all the terms & conditions.",
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
   "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.",
+      "No Shishas To Display":"No Shishas To Display",
+      "Do you want to delete this friend":"Do you want to delete this friend",
+      "Friend Deleted": "Friend Deleted",
 
 
 
-    }
+}
   };
 }
