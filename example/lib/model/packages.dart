@@ -22,7 +22,7 @@ bool isShisha=false;
     image = json['image']??"not found";
     title = json['title']??"not found";
     if(a=="ar")
-      description = json['descriptionAR']??"not found";
+      description = json['descriptionAR']??"غير معروف";
       else
     description = json['description']??"not found";
     price = double.parse(json['price'].toString())??0.0;

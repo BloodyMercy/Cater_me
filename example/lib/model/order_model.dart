@@ -50,6 +50,9 @@ class OrderModel {
     buildingName = json['buildingName']??"not found";
     floorNumber = json['floorNumber']??0;
     total = json['total'].toDouble()??0.0;
+    if(a=="ar"){
+      orderStatus = json['orderStatusAR']??"غير معروف";
+    }else
     orderStatus = json['orderStatus']??"not found";
     eventType = json['eventType']??"not found";
     eventDate = json['eventDate']??"not found";

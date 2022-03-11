@@ -213,7 +213,7 @@ class LanguageTr {
 "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
     "لديك الحق في إلغاء طلب لمدة تصل إلى 5 دقائق من تقديم الطلب على موقعنا على الإنترنت ، وبينما نبذل قصارى جهدنا لضمان الحفاظ على الأسعار والأوصاف الدقيقة ، فإننا نحتفظ بالحق في إلغاء أي طلب يستند إلى معلومات غير دقيقة قد يتم إلغاء أي طلب لاحقًا من قِبل Cater me بعد تلقيك تأكيدًا وتحتفظ Cater me بالحق في إلغاء أي طلب ، قبل أو بعد القبول ، وسوف تقوم بإخطارك على الفور بأي إلغاء من هذا القبيل.",
       "No Shishas To Display":"لا شيشة لعرضها",
-      "Pick ":"اختر",
+
       "Do you want to delete this friend":"هل تريد حذف هذا الصديق",
       "Friend Deleted" :"تم حذف الصديق",
 
