@@ -19,12 +19,17 @@ bool isShisha=false;
   Package.fromJson(Map<String, dynamic> json,String a) {
     tax = json['tax']==null?0:json['tax'];
     id = json['id']??0;
-    image = json['image']??"not found";
-    title = json['title']??"not found";
-    if(a=="ar")
-      description = json['descriptionAR']??"غير معروف";
-      else
-    description = json['description']??"not found";
+
+    if(a=="ar") {
+      image = json['imageAR']??"not found";
+      title = json['titleAR']??"not found";
+      description = json['descriptionAR'] ?? "غير معروف";
+    }
+      else {
+      image = json['image']??"not found";
+      title = json['title']??"not found";
+      description = json['description'] ?? "not found";
+    }
     price = double.parse(json['price'].toString())??0.0;
     isfavorite = json['isFavorite']??false;
     min=json["min"]??1;
