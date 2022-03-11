@@ -39,6 +39,9 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
 
 
     return SafeArea(child: Scaffold(
+
+
+
       appBar: AppBar(
         centerTitle: true,
         title: Text('${LanguageTr.lg[authProvider.language]['Terms & Conditions']}'
