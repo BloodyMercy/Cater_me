@@ -179,7 +179,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],prefs.getString("locale")));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
@@ -240,7 +240,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> s = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < s.length; i++) ld.add(Package.fromJson(s[i],"ar"));
+        for (int i = 0; i < s.length; i++) ld.add(Package.fromJson(s[i],prefs.getString("locale")));
 
         return ld;
       } else {
