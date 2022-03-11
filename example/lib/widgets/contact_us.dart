@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/contact_us_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:CaterMe/model/contact_us_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -42,7 +43,7 @@ class _Contact_UsState extends State<Contact_Us> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final contact = Provider.of<ContactUsProvider>(context, listen: true);
 
-    final String number = "00961 777777";
+
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -85,7 +86,7 @@ class _Contact_UsState extends State<Contact_Us> {
           ),
           GestureDetector(
             onTap: () async {
-              launchUrl("tel://$number");
+              launchUrl("tel://${contact.UsContact.phoneNumber}.");
             },
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -99,7 +100,7 @@ class _Contact_UsState extends State<Contact_Us> {
                         color: colorCustom,
                       ),
 
-                    title: Text(number,style: TextStyle(fontWeight: FontWeight.bold)),
+                    title: Text(contact.UsContact.phoneNumber,style: TextStyle(fontWeight: FontWeight.bold)),
                     trailing:Icon(
                         Icons.chevron_right,
                         color: Color(0xFF3F5521),
@@ -113,7 +114,7 @@ class _Contact_UsState extends State<Contact_Us> {
           ),
       GestureDetector(
     onTap: () async {
-    launchUrl("Email//$_Contact_UsState");},
+    launchUrl("mailto:${contact.UsContact.email}");},
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Card(

@@ -698,7 +698,7 @@ class _TABBarState extends State<TABBar> {
                                           personalInfo.language == "en"?   Text("English",
                                               style: TextStyle(
                                                   fontWeight:
-                                                      FontWeight.normal)):Text("arabic",
+                                                      FontWeight.normal)):Text("العربية",
                                               style: TextStyle(
                                                   fontWeight:
                                                   FontWeight.normal)),
@@ -750,8 +750,8 @@ class _TABBarState extends State<TABBar> {
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.05,
                                           ),
-                                          Text(
-                                            'Terms & Conditions',
+                                          Text('${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}'
+                                            ,
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
