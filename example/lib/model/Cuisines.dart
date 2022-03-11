@@ -7,13 +7,13 @@ class Cuisines {
 
   Cuisines();
 
-  Cuisines.fromJson(Map<dynamic, dynamic> json) {
+  Cuisines.fromJson(Map<dynamic, dynamic> json,String a) {
     id = json['id']??0;
     name = json['name']??'not found';
     if (json['categories'] != null) {
       categories = <Cuisins>[];
       json['categories'].forEach((v) {
-        categories.add(new Cuisins.fromJson(v));
+        categories.add(new Cuisins.fromJson(v,a));
       });
     }
   }

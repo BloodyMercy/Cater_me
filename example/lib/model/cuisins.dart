@@ -25,9 +25,15 @@ int id=0;
   //   return data;
   // }
 
-  Cuisins.fromJson(Map<String, dynamic> json) {
+  Cuisins.fromJson(Map<String, dynamic> json,a) {
     id = json['id']??0;
-    name = json['name']??'not found';
-    image=json['image']??'not found';
+    if(a=="ar") {
+      name = json['nameAR'] ?? 'not found';
+      image = json['imageAR'] ?? 'not found';
+    }else
+      {
+        name = json['name'] ?? 'not found';
+        image = json['image'] ?? 'not found';
+      }
   }
 }

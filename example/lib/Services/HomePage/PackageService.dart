@@ -297,7 +297,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Cuisins> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Cuisins.fromJson(l[i]));
+        for (int i = 0; i < l.length; i++) ld.add(Cuisins.fromJson(l[i],prefs.getString("locale")));
 
         //  List<Package> posts = List<Package>.from(responseData['packages']['items'].map((model)=> Package.fromJson(model)));  //map to list
 

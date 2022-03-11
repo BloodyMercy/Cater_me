@@ -7,13 +7,13 @@ class Packages {
 
 
 Packages();
-  Packages.fromJson(Map<dynamic, dynamic> json) {
+  Packages.fromJson(Map<dynamic, dynamic> json,String a) {
     id = json['id']??0;
     name = json['name']??"not found";
     if (json['items'] != null) {
       items = <Package>[];
       json['items'].forEach((v) {
-        items.add(new Package.fromJson(v,"ar"));
+        items.add(new Package.fromJson(v,a));
       });
     }
   }

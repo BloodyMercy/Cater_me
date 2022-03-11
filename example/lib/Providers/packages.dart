@@ -179,14 +179,13 @@ loading=false;
     }
     else {
       if( _alldata['packages']!=null)
-      _packages = Packages.fromJson( _alldata['packages']);
+      _packages = Packages.fromJson( _alldata['packages'],a);
        if(_alldata['cuisine']!=null)
-       _cuisins = Cuisines.fromJson(_alldata['cuisine']);
+       _cuisins = Cuisines.fromJson(_alldata['cuisine'],a);
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model,a)));
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
-       _listItems = List<Package>.from(
-          _alldata['dropDown'].map((model) => Package.fromJson(model,"ar")));
+       _listItems = List<Package>.from(_alldata['dropDown'].map((model) => Package.fromJson(model,a)));
        _nbnotification=_alldata["notificationCount"].toString();
 
 

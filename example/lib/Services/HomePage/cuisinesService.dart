@@ -26,7 +26,7 @@ class CuisinsService{
     if (response.statusCode == 200) {
       Map<String, dynamic> responseData = json.decode(response.body);
 
-      List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
+      List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model,prefs.getString("locale"))));  //map to list
       return posts;
     }
     else {
@@ -58,7 +58,7 @@ class CuisinsService{
    List<Cuisins> ld=[];
 
 for(int i=0;i<l.length;i++)
-  ld.add(Cuisins.fromJson(l[i]));
+  ld.add(Cuisins.fromJson(l[i],prefs.getString("locale")));
 
        // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;
