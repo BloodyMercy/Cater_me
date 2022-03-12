@@ -41,7 +41,7 @@ class NotificationServices {
   );
 
   static final IOSNotificationDetails _iOSNotificationDetails =
-      IOSNotificationDetails(sound: "ringnot",
+      IOSNotificationDetails(sound: "ringnot.wav",
         presentSound: true
 
 
