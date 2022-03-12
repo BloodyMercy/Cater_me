@@ -362,7 +362,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 size: 25,
 
               ),
-          label: 'Orders',
+          label: '${LanguageTr.lg[authProvider.language]["Order"]}',
         ),
                BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.solidUser,

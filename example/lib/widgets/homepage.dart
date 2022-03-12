@@ -342,7 +342,7 @@ class _HomePageState extends State<HomePage> {
                                                                   .size.width *
                                                               0.02),
                                                       child: FittedBox(
-                                                        child: Text( '${LanguageTr.lg[authProvider.language]["You don\'t have any upcoming occasions"]}'
+                                                        child: Text( '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}'
                                                           ,
                                                           style: TextStyle(
                                                               color: Theme.of(

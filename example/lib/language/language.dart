@@ -114,7 +114,7 @@ class LanguageTr {
       "We/’d Love to Hear From You": "نود السماع لك",
       "Sad to see you leave": "نحزن لرؤيتك تغادر",
       "User doesn’t exist": "المستخدم غير موجود",
-      " You don't have any upcoming occasions ": "ليس لديك أي مناسبات قادمة ",
+      "You don't have any upcoming occasions": "ليس لديك أي مناسبات قادمة ",
       "Home": "الصفحة الرئيسية",
       "Occasions": "المناسبات",
       "Orders": "الطلبات",
@@ -234,6 +234,7 @@ class LanguageTr {
 
 
     "en": {
+      "You don't have any upcoming occasions":"You don't have any upcoming occasions",
       "please choose one from the following offers":"please choose one from the following offers",
       "Event Date":"Event Date",
       "Payment":"Payment",

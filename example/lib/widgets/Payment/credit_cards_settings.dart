@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -17,11 +18,18 @@ class CreditCardsSettings extends StatefulWidget {
 
 class _CreditCardsSettingsState extends State<CreditCardsSettings> {
   int _value = -1;
+  String language;
   getAllData() async{
     var _creditCards = Provider.of<CreditCardsProvider>(context,listen: false);
     _creditCards.loading=true;
     await _creditCards.getAllCards();
     _creditCards.loading=false;
+
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    setState(() {
+      language = sh.getString('locale');
+    });
+
   }
 @override
   void initState() {
@@ -69,7 +77,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         ],
       ),
 
-      body: _creditCards.list.length==0?Center(child: Image.asset('images/nocardsyet.png')):_creditCards.loading?Center(child: CircularProgressIndicator(),):
+      body: _creditCards.list.length==0?Center(child: language=="en"?Image.asset('images/nocardsyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-10.png')):_creditCards.loading?Center(child: CircularProgressIndicator(),):
       SafeArea(
         child:  Column(
 

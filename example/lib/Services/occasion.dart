@@ -6,6 +6,7 @@ import 'package:CaterMe/model/occasions/occasiontype.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../language/language.dart';
 import 'ApiLink.dart';
 
 class OccasionService {
@@ -60,7 +61,7 @@ class OccasionService {
     List<OccassionType> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
+      
 
       var headers = {
         'Authorization': 'Bearer ${prefs.getString("token")}'
@@ -74,7 +75,7 @@ class OccasionService {
         List<dynamic> responseData = json.decode(response.body);
 
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
-       l.add( OccassionType(id: -700, name: "Add occasion", image: ''));
+       l.add( OccassionType(id: -700, name: '${LanguageTr.lg[prefs.getString("locale")]["Add occasion"]}', image: ''));
         for (int i = 1; i < responseData.length; i++) {
           l.add(OccassionType.fromJson(responseData[i],a));
         }

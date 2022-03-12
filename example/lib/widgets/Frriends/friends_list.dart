@@ -6,6 +6,7 @@ import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -22,6 +23,7 @@ class FriendsList extends StatefulWidget {
 
 class _FriendsListState extends State<FriendsList> {
 bool loading = true ;
+String language;
 void _EditFriend(BuildContext ctx,FriendModel a ) {
   showModalBottomSheet(
       isScrollControlled:true,
@@ -34,6 +36,19 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
         );
       });
 }
+getdata()async{
+  SharedPreferences sh = await SharedPreferences.getInstance();
+  setState(() {
+    language = sh.getString('locale');
+  });
+}
+
+@override
+  void initState() {
+    getdata();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -49,7 +64,7 @@ void _EditFriend(BuildContext ctx,FriendModel a ) {
         child: widget.friend.isEmpty
             ? Center(
              child: Container(
-               child: Image.asset('images/NoFriendsYet.png'),
+               child: language=="en"?Image.asset('images/NoFriendsYet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-05.png')
              ),
               )
             : loading?ListView.builder(

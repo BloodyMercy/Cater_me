@@ -73,6 +73,10 @@ class _AddressesListState extends State<AddressesList> {
     SharedPreferences sh=await SharedPreferences.getInstance();
      (sh.getString("locale"));
 
+     setState(() {
+       language = sh.getString("locale");
+     });
+
   }
   @override
   void initState() {

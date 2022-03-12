@@ -8,6 +8,7 @@ import 'package:CaterMe/model/address/address.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -25,7 +26,21 @@ class AddressesListSettings extends StatefulWidget {
 class _AddressesListSettingsState extends State<AddressesListSettings> {
   int _value = -1;
 
+String language;
 
+getdata()async{
+  SharedPreferences sh = await SharedPreferences.getInstance();
+  setState(() {
+    language = sh.getString('locale');
+  });
+
+}
+
+@override
+  void initState() {
+getdata();
+super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);
@@ -40,7 +55,7 @@ class _AddressesListSettingsState extends State<AddressesListSettings> {
       child: widget.address.isEmpty
           ? Center(
           child: Container(
-            child: Image.asset('images/NoAdresses.png'),
+            child: language=="en"?Image.asset('images/NoAdresses.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-04.png')
           ))
           : ListView.builder(
           itemCount: widget.address.length,

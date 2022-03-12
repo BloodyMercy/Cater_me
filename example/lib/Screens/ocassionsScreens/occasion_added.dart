@@ -2,6 +2,7 @@ import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/address.dart';
 import '../../Providers/order_provider.dart';
@@ -17,6 +18,23 @@ class OccasionAdded extends StatefulWidget {
 }
 
 class _OccasionAddedState extends State<OccasionAdded> {
+String language;
+  getData() async {
+
+
+    SharedPreferences sh=await SharedPreferences.getInstance();
+
+    setState(() {
+      language = sh.getString("locale");
+    });
+
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -41,8 +59,8 @@ class _OccasionAddedState extends State<OccasionAdded> {
             children: [
 
               Center(
-                  child: Image.asset('images/occasionadded.png',
-                      fit: BoxFit.contain,)),
+                  child: language=="en"?Image.asset('images/occasionadded.png'):Image.asset("images/no address yetعربي/no addresses yetبالعربي-03.png"),
+                      )
               // SizedBox(
               //   height: mediaQuery.size.height * 0.08,
               // ),

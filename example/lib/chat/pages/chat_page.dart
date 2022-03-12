@@ -720,7 +720,7 @@ class ChatPageState extends State<ChatPage> {
                     );
                   } else {
                     return Center(
-                      child: language=="en"?Image.asset('images/nochatyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-07')
+                      child: language=="en"?Image.asset('images/nochatyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-07.png')
 
                     );
                   }
