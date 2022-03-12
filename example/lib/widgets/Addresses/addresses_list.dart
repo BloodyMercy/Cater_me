@@ -95,7 +95,7 @@ class _AddressesListState extends State<AddressesList> {
             ? Column(
                 children: [
                   Center(
-                    child: language=="en" ?Image.asset('images/noaddresses.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-04.png')
+                    child: language=="en" ?Image.asset('images/NoAddressesYet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-04.png')
 
                   ),
                   Center(
