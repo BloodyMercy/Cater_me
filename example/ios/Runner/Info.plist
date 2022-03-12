@@ -27,13 +27,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>this app need to access your camera</string>
+	<string>this app need to access your camera to upload your profile photo</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs to access your location</string>
+	<string>This app needs to access your location to get your current address</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs to access your location</string>
+	<string>This app needs to access your location to get your current address</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>CaterMe would like access to your photo gallery</string>
+	<string>CaterMe would like access to your photo gallery to upload your profile photo</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
