@@ -19,6 +19,13 @@ class OrderCaterProvider extends ChangeNotifier{
   double _vatshisha=0.0;
 
   int _totalssha=0;
+bool _finaldonatesteps=false;
+
+  bool get finaldonatesteps => _finaldonatesteps;
+
+  set finaldonatesteps(bool value) {
+    _finaldonatesteps = value;
+  }
 
   int get totalssha => _totalssha;
 

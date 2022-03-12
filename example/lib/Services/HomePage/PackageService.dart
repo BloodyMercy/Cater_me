@@ -100,7 +100,7 @@ class PackageService {
   }
 
   static Future<List<Package>> getOnsbyidorder(
-      int id, int idservice, int idnbguest, bool a) async {
+      int id, int idservice, int idnbguest, bool a,String ar) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -120,7 +120,7 @@ class PackageService {
       if (response.statusCode == 200) {
         List<dynamic> l = json.decode(response.body);
         List<Package> ld = [];
-        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],"ar"));
+        for (int i = 0; i < l.length; i++) ld.add(Package.fromJson(l[i],ar));
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return ld;

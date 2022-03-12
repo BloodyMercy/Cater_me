@@ -152,7 +152,7 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3,String a)async {
       //  _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
 
       _allpackagesorder = List<Package>.from(
-          _alldata['packages'].map((model) => Package.fromJson(model,"ar")));
+          _alldata['packages'].map((model) => Package.fromJson(model,a)));
       //  _nbnotification=_alldata["notificationCount"].toString();
     }
 
@@ -227,11 +227,11 @@ Future<void>  getonid(int id)async {
   notifyListeners();
 }
 
-Future<void>  getonidorder(int id,int idservice,int idnbguest,bool a)async {
+Future<void>  getonidorder(int id,int idservice,int idnbguest,bool a,String ar)async {
     print(id);
   loading = false;
   // notifyListeners();
-  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,idnbguest,a);
+  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,idnbguest,a,ar);
   loading = true;
   //         Cuisines.fromJson(_alldata['cuisine']);
   // _addonsall = List<Addonall>.from(
