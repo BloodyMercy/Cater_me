@@ -34,13 +34,13 @@ class NotificationServices {
     channelDescription:
         "This channel is responsible for all the local notifications",
     playSound: true,
-     //   sound: RawResourceAndroidNotificationSound('lawgo_sound_notification'),
+        sound: RawResourceAndroidNotificationSound('ringnot'),
     priority: Priority.high,
     importance: Importance.high,
   );
 
   static final IOSNotificationDetails _iOSNotificationDetails =
-      IOSNotificationDetails();
+      IOSNotificationDetails(sound: "ringnot.aiff");
 
   final NotificationDetails notificationDetails = NotificationDetails(
     android: _androidNotificationDetails,
@@ -85,13 +85,18 @@ class NotificationServices {
         );
   }
 
+
   Future<void> showNotification(
       int id, String title, String body, String payload) async {
+
+
+
     await flutterLocalNotificationsPlugin.show(
       id,
       title,
       body,
       notificationDetails,
+
       payload: payload,
 
     );
