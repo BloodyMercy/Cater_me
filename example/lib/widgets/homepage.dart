@@ -404,7 +404,7 @@ class _HomePageState extends State<HomePage> {
                               Center(child: OccasionCard(Axis.horizontal)),
 
                                    SizedBox(height: MediaQuery.of(context).size.height*0.1),
-                          package.cuisins.id==0?    Container(
+                          package.cuisins.id!=0?    Container(
                                 child: Column(
                                     children: [
                                   Row(
