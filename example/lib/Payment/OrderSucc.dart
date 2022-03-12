@@ -233,63 +233,21 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       horizontal: MediaQuery.of(context).size.width / 25),
                   child: ElevatedButton(
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => CustomDialog2(
-                          title:
-                              '${LanguageTr.lg[authProvider.language]["Success"]}',
-                          description:
-                              '${LanguageTr.lg[authProvider.language]["Do You Want To Donate The Rest Of Your Food?"]}',
-                          button2: ElevatedButton(
-                            style:
-                                ElevatedButton.styleFrom(primary: colorCustom),
-                            onPressed: () async {
-                              showDialog(
-                                context: this.context,
-                                barrierDismissible: false,
-                                builder: (BuildContext context) {
-                                  return WillPopScope(
-                                      onWillPop: () =>
-                                          Future<bool>.value(false),
-                                      child: AlertDialog(
-                                        title: Text( '${LanguageTr.lg[authProvider.language]["Loading"]}',),
-                                        content: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: <Widget>[
-                                              CircularProgressIndicator()
-                                            ]),
-                                      ));
-                                },
-                              );
 
-                              await order.donate(
-                                widget.id,
-                              );
-
-                              Navigator.pop(context);
-                              if (order.check4) {
-                                Navigator.of(context).pop();
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => Navigationbar(0),
-                                    ),
-                                    (route) => false);
-                              } else {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => DonationAdded(),
-                                    ),
-                                    (route) => false);
-                              }
-                            },
-                            child: Text(
-                              '${LanguageTr.lg[authProvider.language]["Done"]}',
+                      if (!order.check4) {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => Navigationbar(0),
                             ),
-                          ),
-                          oneOrtwo: true,
-                        ),
-                      );
-
+                                (route) => false);
+                      } else {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => DonationAdded(),
+                            ),
+                                (route) => false);
+                      }
                       // Navigator.of(context).pushAndRemoveUntil(
                       //     MaterialPageRoute(
                       //         builder: (context) => Navigationbar(0)),

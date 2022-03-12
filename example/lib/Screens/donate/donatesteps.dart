@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../Payment/OrderSucc.dart';
+import '../../Providers/credit_card_provider.dart';
+import '../../Providers/orderById_provider.dart';
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 import '../CustomAlert/const.dart';
@@ -20,27 +23,31 @@ DonateStepsScreen(this.step);
 class _RegularDaberneScreenState extends State<DonateStepsScreen> {
   bool reg;
   bool dab;
-
+int st=0;
   @override
   void initState() {
     super.initState();
     reg = false;
     dab = false;
-    //  data();
+
+     data();
   }
 data(){
   final authProvider = Provider.of<UserProvider>(context, listen: false);
 
-  title=[];
-   desc=[];
+  title=["extra services"];
+  // desc=["Do you want catering equipment?","Do you want a service team?","Do you want to donate the rest of your food?"];
 }
-
+String desc="Do you want catering equipment?";
+String desc1="Do you want a service team?";
+String desc2="Do you want to donate the rest of your food?";
   bool loading = true;
   List<String> title=[];
-  List<String> desc=[];
+
 
   @override
   Widget build(BuildContext context) {
+    final order = Provider.of<OrderByIdProvider>(context, listen: true);
 
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
@@ -51,7 +58,7 @@ data(){
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Stack(
       children: <Widget>[
-        Container(
+      loading?  Container(
           padding: EdgeInsets.only(
             top: Consts.avatarRadius + Consts.padding,
             bottom: Consts.padding,
@@ -75,15 +82,15 @@ data(){
             mainAxisSize: MainAxisSize.min, // To make the card compact
             children: <Widget>[
               Text(
-               " title",
+              title[0],
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
                 ),textAlign: TextAlign.center,
               ),
               SizedBox(height: 16.0),
-              Text(
-                "description",
+                 Text(
+                desc,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16.0,
@@ -93,39 +100,274 @@ data(){
                Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Align(
+                loading==true?  Align(
                     alignment: Alignment.bottomRight,
                     child:ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: Colors.grey,
                         ),
-                        onPressed: () {
+                        onPressed: () async{
+                          setState(() {
+                            loading=false;
+                          });
+                          Future.delayed(const Duration(milliseconds: 500), () {
 
-                         // Navigator.pop(context,true);
+// Here you can write your code
 
+                            setState(() {
+                              loading=true;
+                              // Here you can write your code for open new view
+                            });
+
+                          });
+                          setState(() {
+                            st=st+1;
+                          });
+setState(() {
+  if(st==1)
+  desc=desc1;
+  if(st==2)
+    desc=desc2;
+});
+              if(st==1)
+                order.check1=true;
+              else if(st==2)
+                order.check2=true;
+              else if(st==3)
+                order.check4=true;
+if(st==3){
+  showDialog(
+    context: this.context,
+    barrierDismissible: false,
+    builder:
+        (BuildContext context) {
+      return WillPopScope(
+          onWillPop: () =>
+          Future<bool>.value(
+              false),
+          child: AlertDialog(
+            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+            ),
+            content: Column(
+                mainAxisSize:
+                MainAxisSize
+                    .min,
+                children: <
+                    Widget>[
+                  const CircularProgressIndicator()
+                ]),
+          ));
+    },
+  );
+  final _creditCards = Provider
+      .of<CreditCardsProvider>(
+      context,
+      listen: false);
+
+  final address = Provider.of<
+      AdressProvider>(
+      context,
+      listen: false);
+
+  int a = await orderProvider
+      .makeorder(
+      date: (address
+          .evendatecontroller
+          .text)
+          .replaceAll(
+        RegExp(
+            '[^A-Za-z0-9]'),
+        '-',
+      ),
+      type: address
+          .typeofeventcontroller
+          .text,
+      nb: address
+          .numberofguestcontroller
+          .text,
+      idcard: _creditCards
+          .credit.cardId,
+      contactname:
+      address.name.text,
+      contactphone: address
+          .phone.text,
+      eventname: address
+          .eventnamecontroller
+          .text);
+
+  Navigator.of(context).pop();
+  if (a != 0)
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                AppointmentSuccess(
+                    a)));
+  else {
+    showDialog(
+      context: this.context,
+      builder: (BuildContext
+      context) {
+        return AlertDialog(
+          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
+          ),
+          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+          ),
+          actions: <Widget>[
+            TextButton(
+                child:
+                Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                ),
+                onPressed: () =>
+                    Navigator.pop(
+                        context))
+          ],
+        );
+      },
+    );
+  }
+
+
+}
 
                         },
                         child: Text("Yes")),
-                  ),
-                  Align(
+                  ):Center(child:CircularProgressIndicator()),
+               loading==true?   Align(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: Colors.grey,
                         ),
-                        onPressed: () {
+                        onPressed: () async {
+                          setState(() {
+                            loading=false;
+                          });
+                          Future.delayed(const Duration(milliseconds: 500), () {
 
+// Here you can write your code
+
+                            setState(() {
+                              loading=true;
+                              // Here you can write your code for open new view
+                            });
+
+                          });
+st=st+1;
                        //   Navigator.pop(context,true);
+                          setState(() {
+                            widget.step=widget.step++;
+                          });
+
+                          // if(st==1)
+                          //   order.check1=true;
+                          // if(st==2)
+                          //   order.check2=true;
+                          // if(st==3)
+                          //   order.check4=true;
 
 
+
+if(st==3){
+  showDialog(
+    context: this.context,
+    barrierDismissible: false,
+    builder:
+        (BuildContext context) {
+      return WillPopScope(
+          onWillPop: () =>
+          Future<bool>.value(
+              false),
+          child: AlertDialog(
+            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+            ),
+            content: Column(
+                mainAxisSize:
+                MainAxisSize
+                    .min,
+                children: <
+                    Widget>[
+                  const CircularProgressIndicator()
+                ]),
+          ));
+    },
+  );
+  final _creditCards = Provider
+      .of<CreditCardsProvider>(
+      context,
+      listen: false);
+
+  final address = Provider.of<
+      AdressProvider>(
+      context,
+      listen: false);
+
+  int a = await orderProvider
+      .makeorder(
+      date: (address
+          .evendatecontroller
+          .text)
+          .replaceAll(
+        RegExp(
+            '[^A-Za-z0-9]'),
+        '-',
+      ),
+      type: address
+          .typeofeventcontroller
+          .text,
+      nb: address
+          .numberofguestcontroller
+          .text,
+      idcard: _creditCards
+          .credit.cardId,
+      contactname:
+      address.name.text,
+      contactphone: address
+          .phone.text,
+      eventname: address
+          .eventnamecontroller
+          .text);
+
+  Navigator.of(context).pop();
+  if (a != 0)
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                AppointmentSuccess(
+                    a)));
+  else {
+    showDialog(
+      context: this.context,
+      builder: (BuildContext
+      context) {
+        return AlertDialog(
+          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
+          ),
+          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+          ),
+          actions: <Widget>[
+            TextButton(
+                child:
+                Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                ),
+                onPressed: () =>
+                    Navigator.pop(
+                        context))
+          ],
+        );
+      },
+    );
+  }
+}
                         },
                         child: Text("No")),
-                  ),
+                  ):Container(),
                 ],
               )
             ],
           ),
-        ),
+        ):Center(child:CircularProgressIndicator()),
         // Positioned(
         //   left: Consts.padding,
         //   right: Consts.padding,

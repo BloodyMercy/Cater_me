@@ -286,6 +286,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   address.name.text = "";
                   order.check1 = false;
                   order.check2 = false;
+                  orderCaterprovider.finaldonatesteps=false;
                   order.check3 = false;
                   order.check4 = false;
                   // orderCaterprovider.listFriend=[];

@@ -381,7 +381,7 @@ class _OrderState extends State<Order> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       orderProvider.spets > 1
-                                          ? IconButton(
+                                          ? !orderProvider.finaldonatesteps?IconButton(
                                               onPressed: () {
                                                 orderProvider.spets =
                                                     orderProvider.spets - 1;
@@ -391,10 +391,10 @@ class _OrderState extends State<Order> {
                                               icon: Icon(Icons.arrow_back,
                                                   size: 35,
                                                   color: Color.fromRGBO(
-                                                      63, 85, 33, 1)))
+                                                      63, 85, 33, 1))):Container()
                                           : Container(),
                                       orderProvider.spets > 3
-                                          ? Column(
+                                          ? !orderProvider.finaldonatesteps?Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               mainAxisAlignment:
@@ -437,7 +437,7 @@ class _OrderState extends State<Order> {
                                                       )
                                                     : Container(),
                                               ],
-                                            )
+                                            ):Container()
                                           : Container(),
                                       !loadingnext
                                           ? !orderProvider.finaldonatesteps?ElevatedButton(
