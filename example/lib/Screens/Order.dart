@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
+import 'package:CaterMe/Screens/donate/donatesteps.dart';
 import 'package:CaterMe/Screens/order_summery_copy.dart';
 import 'package:CaterMe/Screens/regular_daberne_screen.dart';
 import 'package:CaterMe/Screens/regular_screen.dart';
@@ -361,6 +362,10 @@ class _OrderState extends State<Order> {
                                                 ? AddonsCardoffer(0)
                                                 : (orderProvider.spets == 7)
                                                     ? CreditCardsPage()
+                                : (orderProvider.spets == 8)
+                                ? DonateStepsScreen(0)
+
+
                                                     : (orderProvider.spets == 6)
                                                         ? OrderSummeryCopy(
                                                             orderProvider.totale)
@@ -435,7 +440,7 @@ class _OrderState extends State<Order> {
                                             )
                                           : Container(),
                                       !loadingnext
-                                          ? ElevatedButton(
+                                          ? !orderProvider.finaldonatesteps?ElevatedButton(
                                               onPressed: () async {
                                                 setState(() {
                                                   loadingnext = true;
@@ -603,8 +608,30 @@ class _OrderState extends State<Order> {
                                                       );
                                                     }
                                                   }
-                                                } else if (orderProvider.spets ==
-                                                    7) {
+                                                }
+                                                else if(orderProvider.spets ==
+                                                    7){
+                                                  if (_creditCardss.credit.id ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  else
+                                                    {
+                                                      orderProvider.finaldonatesteps=true;
+                                                      orderProvider.spets++;
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                }
+
+                                                else if (orderProvider.spets ==
+                                                    8) {
                                                   if (_creditCardss.credit.id ==
                                                       0) {
                                                     _key.currentState
@@ -787,7 +814,7 @@ class _OrderState extends State<Order> {
                                               //   primary: const Color.fromRGBO(63, 85, 33, 1),
                                               //
                                               // );
-                                              )
+                                              ):Container()
                                           : CircularProgressIndicator(),
                                     ])),
                           ),

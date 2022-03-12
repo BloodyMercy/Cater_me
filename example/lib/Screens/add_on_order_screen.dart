@@ -3,6 +3,7 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/address.dart';
 import '../Providers/user.dart';
@@ -26,12 +27,13 @@ class _AddOnOrderScreenState extends State<AddOnOrderScreen> {
 getdata();
 
   }
-  getdata(){
+  getdata() async {
     final package = Provider.of<PackagesProvider>(context, listen: false);
     final order = Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
+    SharedPreferences sh=await SharedPreferences.getInstance();
     package.getonidorder(widget.idons, order.serviceId, int.parse(address.numberofguestcontroller.text.toString()
-    ),false);
+    ),false,sh.getString("locale"));
   }
   @override
   Widget build(BuildContext context) {

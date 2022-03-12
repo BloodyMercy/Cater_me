@@ -6,6 +6,7 @@ import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Providers/user.dart';
 import '../../../language/language.dart';
@@ -40,10 +41,11 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     final _cuisin = Provider.of<PackagesProvider>(context, listen: false);
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
+    SharedPreferences sh=await SharedPreferences.getInstance();
     // await package.getcuisinsbyid(widget.id);
     if (_cuisin.addonsallorder.length > 0) {
       await _cuisin.getonidorder(
-          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false);
+          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false,sh.getString("ar"));
     }
     setState(() {
       loadingitems = false;
@@ -88,8 +90,9 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                           loadingitems = true;
                           selected = index;
                         });
+                        SharedPreferences sh=await SharedPreferences.getInstance();
                         await _cuisin.getonidorder(_cuisin.addonsallorder[index].id,
-                            orderprov.serviceId, 0,false);
+                            orderprov.serviceId, 0,false,sh.getString("locale"));
                         setState(() {
                           loadingitems = false;
                         });
