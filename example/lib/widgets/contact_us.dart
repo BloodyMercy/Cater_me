@@ -57,7 +57,7 @@ class _Contact_UsState extends State<Contact_Us> {
           iconSize: 40,
           color: Colors.white,
         ),
-        title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}',
+         title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}',
 
 
           style: Theme.of(context).textTheme.headline1,
@@ -100,7 +100,9 @@ class _Contact_UsState extends State<Contact_Us> {
                         color: colorCustom,
                       ),
 
-                    title: Text(contact.UsContact.phoneNumber,style: TextStyle(fontWeight: FontWeight.bold)),
+                    title: Text("Build by Christian Zakhour",
+                        // contact.UsContact.phoneNumber,
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     trailing:Icon(
                         Icons.chevron_right,
                         color: Color(0xFF3F5521),

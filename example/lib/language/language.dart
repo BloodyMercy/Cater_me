@@ -1,5 +1,9 @@
 class LanguageTr {
   static Map<String, Map<String, String>> lg = {
+
+
+
+
     "ar": {
       "Get Started": "ابدأ الأن",
       "Email": "البريد الالكتروني",
