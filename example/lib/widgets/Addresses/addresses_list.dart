@@ -6,6 +6,7 @@ import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/address_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -59,20 +60,26 @@ class _AddressesListState extends State<AddressesList> {
         });
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
 
-//getdata();
-  }
 
-  getdata() {
+  String language;
+
+  getdata() async{
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
 
     _value = orderprovider.valueIndex;
     print(_value);
+    SharedPreferences sh=await SharedPreferences.getInstance();
+     (sh.getString("locale"));
+
+  }
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+
+
   }
 
   @override
@@ -88,7 +95,7 @@ class _AddressesListState extends State<AddressesList> {
             ? Column(
                 children: [
                   Center(
-                    child: Image.asset('images/noaddresses.png'),
+                    child: language=="en" ?Image.asset('images/noaddresses.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-04.png')
 
                   ),
                   Center(

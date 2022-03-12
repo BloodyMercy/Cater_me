@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class OrderReceived extends StatelessWidget {
+class OrderReceived extends StatefulWidget {
   const OrderReceived({Key key}) : super(key: key);
 
+  @override
+  State<OrderReceived> createState() => _OrderReceivedState();
+}
+
+class _OrderReceivedState extends State<OrderReceived> {
+  String language;
+
+  getdata()async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
+  }
+
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: Image.asset("images/orderrecieved.png"));
+    return Center(child: language=="en"?Image.asset("images/orderrecieved.png"):Image.asset("images/order tracking/1.png"));
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,

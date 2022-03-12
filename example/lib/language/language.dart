@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+
       "Get Started": "ابدأ الأن",
       "Email": "البريد الالكتروني",
       "Password": "كلمة المرور",

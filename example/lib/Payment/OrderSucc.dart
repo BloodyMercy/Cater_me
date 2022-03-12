@@ -11,6 +11,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../NavigationBar/navigation_bar.dart';
 import '../Providers/user.dart';
@@ -41,6 +42,14 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     // startinto();
     playaudio();
     //  inAppMessaging(context,SplashScreen());
+  }
+  String language;
+  getData() async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
   }
 
   AudioCache _audioCache = AudioCache();
@@ -108,8 +117,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: _serpres.serviceId != 1
-                          ? AssetImage('images/orderTracking/sammdaberni.png')
-                          : AssetImage('images/orderTracking/sammcaterme.png'),
+                          ? language=="en" ?AssetImage('images/orderTracking/sammdaberni.png')
+                          : AssetImage('images/orderTracking/sammcaterme.png'):AssetImage('images/samarabic.png'),
                       fit: BoxFit.contain),
                   borderRadius: BorderRadius.circular(50),
                 ),

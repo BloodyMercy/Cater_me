@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../Screens/occasion/theme/colors/light_colors.dart';
@@ -20,14 +21,20 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   int selectedIndex = -1;
   bool addcard = false;
   bool loading = true;
-
+  String language;
   getAllData() async {
     var _creditCards = Provider.of<CreditCardsProvider>(context, listen: false);
     // _creditCards.loading=true;
     await _creditCards.getAllCards();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
     // _creditCards.loading=false;
     setState(() {
       loading = false;
+
     });
   }
 
@@ -122,7 +129,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       },
                       child: Container(
                           color: Colors.transparent,
-                          child: Image.asset("images/nocardsyet.png")),
+                          child: language=="en" ?Image.asset("images/nocardsyet.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-10.png")),
                     ),
                   ),
       ),

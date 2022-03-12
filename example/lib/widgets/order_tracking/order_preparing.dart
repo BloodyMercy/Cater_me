@@ -1,14 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class OrderPreparing extends StatelessWidget {
+class OrderPreparing extends StatefulWidget {
   const OrderPreparing({Key key}) : super(key: key);
+
+  @override
+  State<OrderPreparing> createState() => _OrderPreparingState();
+}
+
+class _OrderPreparingState extends State<OrderPreparing> {
+
+  String language;
+
+  getdata()async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
+  }
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: Image.asset("images/orderprepare.png",height:MediaQuery.of(context).size.height*1,));
+    return Center(child: language=="en"?Image.asset("images/orderprepare.png",height:MediaQuery.of(context).size.height*1,):Image.asset("images/order tracking/2.png",height:MediaQuery.of(context).size.height*1,));
     //   Expanded(
     //   child: Container(
     //     color:LightColors.kLightYellow,

@@ -13,6 +13,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../language/language.dart';
 import '../widgets/widgets.dart';
@@ -69,6 +70,15 @@ class ChatPageState extends State<ChatPage> {
     focusNode.addListener(onFocusChange);
     listScrollController.addListener(_scrollListener);
     readLocal();
+    getdata();
+  }
+  String language;
+  getdata()async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
   }
 
   _scrollListener() {
@@ -710,7 +720,7 @@ class ChatPageState extends State<ChatPage> {
                     );
                   } else {
                     return Center(
-                      child: Image.asset('images/nochatyet.png'),
+                      child: language=="en"?Image.asset('images/nochatyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-07')
 
                     );
                   }

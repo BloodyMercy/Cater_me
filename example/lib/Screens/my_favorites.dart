@@ -20,11 +20,17 @@ class MyFavorites extends StatefulWidget {
 
 class _MyFavoritesState extends State<MyFavorites> {
   bool loading = true;
-
+String language;
 
   getData() async {
+
     final package = Provider.of<PackagesProvider>(context, listen: false);
+    SharedPreferences sh=await SharedPreferences.getInstance();
+     (sh.getString("locale"));
     await package.getAllFavorite();
+    setState(() {
+      language = sh.getString("locale");
+    });
     setState(() {
       loading = false;
     });
@@ -38,6 +44,7 @@ class _MyFavoritesState extends State<MyFavorites> {
 
   @override
   Widget build(BuildContext context) {
+
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     final package = Provider.of<PackagesProvider>(context, listen: true);
@@ -72,11 +79,12 @@ class _MyFavoritesState extends State<MyFavorites> {
           child: SafeArea(
             child: Center(
               child: !loading
+
                   ? package.listfavorite.length == 0 ?authProvider.status== Status.Authenticated
-                ? Center(child: Image.asset("images/nofavorites.png"))
+                ? Center(child: language=="en" ?Image.asset("images/nofavorites.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-01.png"))
                   : Column(
                 children: [
-                  Image.asset('images/noorderyet.png'),
+                  language=="en" ?Image.asset("images/nofavorites.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-01.png"),
                   ElevatedButton(
                     onPressed: () {
                       showModalBottomSheet(

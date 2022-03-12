@@ -23,11 +23,16 @@ class YourOrders extends StatefulWidget {
 class _YourOrdersState extends State<YourOrders> {
   bool loading = true;
 
+  String language;
+
+
   Future getData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
     SharedPreferences sh=await SharedPreferences.getInstance();
     await orders.getAllOrders(sh.getString("locale"));
-
+setState(() {
+  language=sh.getString("locale");
+});
     setState(() {
       loading = false;
     });
@@ -86,10 +91,10 @@ class _YourOrdersState extends State<YourOrders> {
                         ? authProvider.status == Status.Authenticated
                             ? Center(
                                 child:
-                                    Image.asset('images/noorderyet.png'))
+                                   language=="en" ?Image.asset('images/noorderyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-09.png'))
                             : Column(
                                 children: [
-                                  Image.asset('images/noorderyet.png'),
+                                  language=="en" ?Image.asset('images/noorderyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-09.png'),
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.of(context).push(

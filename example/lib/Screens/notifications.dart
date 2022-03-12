@@ -28,12 +28,17 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
   bool loading = true;
-
+String language;
   getData() async {
     final allNotification =
         Provider.of<NotificationProvider>(context, listen: false);
     await allNotification.getAllNotifications();
+    SharedPreferences sh=await SharedPreferences.getInstance();
+     (sh.getString("locale"));
 
+     setState(() {
+       language = sh.getString("locale");
+     });
     setState(() {
       loading = false;
     });
@@ -102,10 +107,10 @@ class _NotificationsState extends State<Notifications> {
                   ),
                 )
               : allNotification.notificationlist.length == 0? authProvider.status == Status.Authenticated
-                  ? Center(child: Image.asset('images/nonotificationyet.png'))
+                  ? Center(child: language=="en" ?Image.asset('images/nonotificationyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png'))
               : Column(
             children: [
-              Image.asset('images/noorderyet.png'),
+              language=="en" ?Image.asset('images/nonotificationyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png'),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(

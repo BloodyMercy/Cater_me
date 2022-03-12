@@ -22,7 +22,7 @@ class OccasionListView extends StatefulWidget {
 
 class _OccasionListViewState extends State<OccasionListView> {
   bool loading = false;
-
+ String language;
   getData() async {
     // final occasion = Provider.of<PackagesProvider>(context, listen: false);
     //   await occasion.getalloccasions();
@@ -31,6 +31,9 @@ class _OccasionListViewState extends State<OccasionListView> {
     SharedPreferences sh=await SharedPreferences.getInstance();
     await occa.getAllOccasionType(sh.getString("locale"));
     await occa.getallnewoccasion();
+    setState(() {
+      language=sh.getString("locale");
+    });
   }
 
   @override
@@ -144,7 +147,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                 ? SliverToBoxAdapter(
                     child: Column(
                       children: [
-                        Image.asset('images/NoOccassionsYet.png'),
+                        language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-06.png'),
                        authProvider.status==Status.Unauthenticated? ElevatedButton(onPressed: (){
                           Navigator.of(context).push(
                             MaterialPageRoute(

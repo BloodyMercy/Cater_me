@@ -1,15 +1,37 @@
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class OrderDelivered extends StatelessWidget {
+class OrderDelivered extends StatefulWidget {
   const OrderDelivered({Key key}) : super(key: key);
+
+  @override
+  State<OrderDelivered> createState() => _OrderDeliveredState();
+}
+
+class _OrderDeliveredState extends State<OrderDelivered> {
+  String language;
+
+  getdata()async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
+  }
+
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Image.asset('images/orderdlv.png',height: MediaQuery.of(context).size.height*0.8,);
+    return language=="en"?Image.asset('images/orderdlv.png',height: MediaQuery.of(context).size.height*0.8,):Image.asset('images/order tracking/1.png',height: MediaQuery.of(context).size.height*0.8,)
     //   Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,

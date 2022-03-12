@@ -2,12 +2,35 @@ import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 
-class DonationAdded extends StatelessWidget {
+class DonationAdded extends StatefulWidget {
   const DonationAdded({Key key}) : super(key: key);
+
+  @override
+  State<DonationAdded> createState() => _DonationAddedState();
+}
+
+class _DonationAddedState extends State<DonationAdded> {
+
+  String language;
+
+  getdata()async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    (sh.getString("locale"));
+    setState(() {
+      language = sh.getString("locale");
+    });
+  }
+
+  @override
+  void initState() {
+    getdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +50,9 @@ class DonationAdded extends StatelessWidget {
 
               children: [
                 Center(
-                    child: Image.asset('images/Donated.png',
-                        fit: BoxFit.contain,)),
+                    child: language=="en"?Image.asset('images/Donated.png',
+                        fit: BoxFit.contain,):Image.asset('images/no address yetعربي/no addresses yetبالعربي-02',
+                      fit: BoxFit.contain,)),
                 // SizedBox(
                 //   height: mediaQuery.size.height * 0.08,
                 // ),

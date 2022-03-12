@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -43,6 +44,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     for (int i = 0; i < occasion.listFriends.length; i++) {
       l.add(occasion.listFriends[i].name);
     }
+
     setState(() {
       listFriendssearch = l;
     });
