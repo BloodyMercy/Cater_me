@@ -51,7 +51,7 @@ class _DonationAddedState extends State<DonationAdded> {
               children: [
                 Center(
                     child: language=="en"?Image.asset('images/Donated.png',
-                        fit: BoxFit.contain,):Image.asset('images/no address yetعربي/no addresses yetبالعربي-02',
+                        fit: BoxFit.contain,):Image.asset('images/no address yetعربي/no addresses yetبالعربي-02.png',
                       fit: BoxFit.contain,)),
                 // SizedBox(
                 //   height: mediaQuery.size.height * 0.08,
