@@ -221,6 +221,11 @@ class LanguageTr {
 
       "Do you want to delete this friend":"هل تريد حذف هذا الصديق",
       "Friend Deleted" :"تم حذف الصديق",
+      "Do you want catering equipment?":"هل تريد معدات تقديم الطعام؟",
+      "Do you want a service team?":"هل تريد فريق خدمة؟",
+      "Do you want to donate the rest of your food?":"هل تريد التبرع بباقي الطعام؟",
+      "extra services":"خدمات إضافية",
+
 
 
 
@@ -435,7 +440,10 @@ class LanguageTr {
       "No Shishas To Display":"No Shishas To Display",
       "Do you want to delete this friend":"Do you want to delete this friend",
       "Friend Deleted": "Friend Deleted",
-
+      "Do you want catering equipment?":"Do you want catering equipment?",
+      "Do you want a service team?":"Do you want a service team?",
+      "Do you want to donate the rest of your food?":"Do you want to donate the rest of your food?",
+      "extra services":"extra services",
 
 
 }

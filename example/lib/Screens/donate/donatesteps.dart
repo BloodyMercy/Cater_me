@@ -32,15 +32,22 @@ int st=0;
 
      data();
   }
+  String desc="";
+  String desc1="";
+  String desc2="";
 data(){
   final authProvider = Provider.of<UserProvider>(context, listen: false);
 
-  title=["extra services"];
-  // desc=["Do you want catering equipment?","Do you want a service team?","Do you want to donate the rest of your food?"];
+  title=['${LanguageTr.lg[authProvider.language]["extra services"]}'];
+  setState(() {
+
+
+  String desc='${LanguageTr.lg[authProvider.language]["Do you want catering equipment?"]}';
+  String desc1='${LanguageTr.lg[authProvider.language]["Do you want a service team?"]}';
+  String desc2='${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}';
+}); // desc=["Do you want catering equipment?","Do you want a service team?","Do you want to donate the rest of your food?"];
 }
-String desc="Do you want catering equipment?";
-String desc1="Do you want a service team?";
-String desc2="Do you want to donate the rest of your food?";
+
   bool loading = true;
   List<String> title=[];
 
@@ -231,7 +238,7 @@ if(st==3){
 }
 
                         },
-                        child: Text("Yes")),
+                        child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
                   ):Center(child:CircularProgressIndicator()),
                loading==true?   Align(
                     alignment: Alignment.bottomRight,
@@ -361,7 +368,7 @@ if(st==3){
   }
 }
                         },
-                        child: Text("No")),
+                        child: Text('${LanguageTr.lg[authProvider.language]["No"]}')),
                   ):Container(),
                 ],
               )

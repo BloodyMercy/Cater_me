@@ -31,7 +31,7 @@ class _OrderDeliveredState extends State<OrderDelivered> {
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return language=="en"?Image.asset('images/orderdlv.png',height: MediaQuery.of(context).size.height*0.8,):Image.asset('images/order tracking/1.png',height: MediaQuery.of(context).size.height*0.8,)
+    return language=="en"?Image.asset('images/orderdlv.png',height: MediaQuery.of(context).size.height*0.8,):Image.asset('images/order tracking/1.png',height: MediaQuery.of(context).size.height*0.8,);
     //   Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,

@@ -28,7 +28,7 @@ class _OrderCancelState extends State<OrderCancel> {
   Widget build(BuildContext context) {
     // final mediaquerywidth = MediaQuery.of(context).size.width;
     // final mediaqueryheight = MediaQuery.of(context).size.height;
-    return language=="en"?Image.asset('images/ordercancled.png',height: MediaQuery.of(context).size.height*0.8,):Image.asset('images/order tracking/5.png',height: MediaQuery.of(context).size.height*0.8,)
+    return language=="en"?Image.asset('images/ordercancled.png',height: MediaQuery.of(context).size.height*0.8,):Image.asset('images/order tracking/5.png',height: MediaQuery.of(context).size.height*0.8,);
 
   }
 }
