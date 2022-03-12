@@ -404,7 +404,7 @@ class _HomePageState extends State<HomePage> {
                               Center(child: OccasionCard(Axis.horizontal)),
 
                                    SizedBox(height: MediaQuery.of(context).size.height*0.1),
-                              Container(
+                          package.cuisins.id==0?    Container(
                                 child: Column(
                                     children: [
                                   Row(
@@ -454,7 +454,7 @@ class _HomePageState extends State<HomePage> {
                                   //  SizedBox(height:mediaQuery.size.height * 0.212,
                                   //  child:adss[1]),
                                 ]),
-                              ),
+                              ):Container(),
                               SizedBox(height: mediaQuery.size.height*0.05,)
 
                             ]),

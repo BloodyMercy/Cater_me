@@ -34,13 +34,18 @@ class NotificationServices {
     channelDescription:
         "This channel is responsible for all the local notifications",
     playSound: true,
+
         sound: RawResourceAndroidNotificationSound('ringnot'),
     priority: Priority.high,
     importance: Importance.high,
   );
 
   static final IOSNotificationDetails _iOSNotificationDetails =
-      IOSNotificationDetails(sound: "ringnot.aiff");
+      IOSNotificationDetails(sound: "ringnot",
+        presentSound: true
+
+
+      );
 
   final NotificationDetails notificationDetails = NotificationDetails(
     android: _androidNotificationDetails,
@@ -56,7 +61,7 @@ class NotificationServices {
 
       defaultPresentAlert: true,
       defaultPresentBadge: true,
-      defaultPresentSound: true,
+      defaultPresentSound: false,
     );
 
     final InitializationSettings initializationSettings =
@@ -96,6 +101,7 @@ class NotificationServices {
       title,
       body,
       notificationDetails,
+
 
       payload: payload,
 

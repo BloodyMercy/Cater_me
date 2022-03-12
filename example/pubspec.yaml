@@ -137,7 +137,8 @@ flutter:
     - images/audio/car.mp3
     - audio/car.mpeg
     - audio/car.mp3
-    - sound/
+    - sound/ringnot.mp3
+    - sound/ringnot.wav
 
 
   #   - images/a_dot_ham.jpeg
