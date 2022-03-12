@@ -364,6 +364,7 @@ class _OrderState extends State<Order> {
                               ? DonateStepsScreen(0)
 
 
+
                                                   : (orderProvider.spets == 6)
                                                       ? OrderSummeryCopy(
                                                           orderProvider.totale)
