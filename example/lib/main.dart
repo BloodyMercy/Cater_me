@@ -167,7 +167,7 @@ class _MyAppState extends State<MyApp> {
      languageCode =  'en';
      String countryCode = prefs.getString('countryCode') ?? '';
 
-     return Locale(languageCode, countryCode);
+     return Locale(prefs.getString("locale"), countryCode);
    }
   // This widget is the root of your application.
   @override
