@@ -51,7 +51,7 @@ class AddOnCards extends StatelessWidget {
                     style: TextStyle(
 
                       color: Colors.black87,
-                      fontSize: 15,
+                      fontSize: 12,
                         fontWeight: FontWeight.normal,
                     //  fontFamily:
                     ),
