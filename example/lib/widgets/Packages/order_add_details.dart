@@ -25,16 +25,18 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
   int count = 1;
   String lg="";
   getData() async {
+    SharedPreferences rifai=await SharedPreferences.getInstance();
     setState(() {
       count=widget.food.min;
     });
-    final pack = Provider.of<PackagesProvider>(context, listen: false);
-    await pack.getpacakgesby(pack.packages.id);
-    SharedPreferences rifai=await SharedPreferences.getInstance();
     setState(() {
       loading = false;
       lg=rifai.getString("locale");
     });
+    final pack = Provider.of<PackagesProvider>(context, listen: false);
+    await pack.getpacakgesby(pack.packages.id);
+
+
 
 
   }

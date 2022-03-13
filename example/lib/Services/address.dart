@@ -33,8 +33,11 @@ class AddressService{
       //   print(value);
       // });
       var response = await http.Response.fromStream(responses);
-      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+
+      print(response.statusCode);
+      print(response.body);
       if (response.statusCode == 200) {
+        print(response.body);
         String  responseData = json.decode(response.body);
         //  SharedPreferences prefs = await SharedPreferences.getInstance();
    if(responseData == true) {

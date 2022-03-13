@@ -41,6 +41,8 @@ class PackageService {
     }
   }
 
+
+
   static Future<Map<String, dynamic>> getPackages() async {
     List<Package> l = [];
     try {
@@ -281,6 +283,42 @@ class PackageService {
       return [];
     }
   }
+
+
+  static Future<bool> getDistance(int id) async {
+
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
+
+
+
+      var request = http.Request('POST', Uri.parse(ApiLink.getDistance + '${id.toString()}'));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+      print(response.statusCode);
+      print(json.decode(response.body));
+      if (response.statusCode == 200) {
+      bool l = json.decode(response.body);
+      return l;
+      }
+      else {
+ return false;
+
+
+
+
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+
 
   static Future<List<Cuisins>> getCuisbyid(int id) async {
     List<Package> l = [];

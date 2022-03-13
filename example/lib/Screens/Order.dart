@@ -402,7 +402,7 @@ class _OrderState extends State<Order> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "${LanguageTr.lg[authProvider.language]["Total"]}${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
+                                                "${LanguageTr.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
                                                 style: const TextStyle(
                                                     fontSize: 18,
                                                     fontFamily: 'BerlinSansFB',
@@ -460,20 +460,19 @@ class _OrderState extends State<Order> {
                                                 } else {
 
 
-                                                  // if(await orderProvider.getdistance()) {
-                                                  //   orderProvider.spets++;
-                                                  //   _animateToIndex(
-                                                  //       orderProvider.spets);
-                                                  // }
-                                                 // else{
+                                                  if(await orderProvider.getdistance()) {
+                                                    orderProvider.spets++;
+                                                    _animateToIndex(
+                                                        orderProvider.spets);
+                                                  }
+                                                  else{
                                                     _key.currentState
                                                         .showSnackBar(
                                                       SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
                                                         ),
                                                       ),
-                                                    );
-                                               //   }
+                                                    );}
                                                 }
                                               } else if (orderProvider.spets ==
                                                   3) {
@@ -635,9 +634,109 @@ class _OrderState extends State<Order> {
                                                     ),
                                                   );
                                                 }
+                                                else if(orderProvider.finaldonatestepsCancel){
+                                                  showDialog(
+                                                    context: this.context,
+                                                    barrierDismissible: false,
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return WillPopScope(
+                                                          onWillPop: () =>
+                                                          Future<bool>.value(
+                                                              false),
+                                                          child: AlertDialog(
+                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                            ),
+                                                            content: Column(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                                children: <
+                                                                    Widget>[
+                                                                  const CircularProgressIndicator()
+                                                                ]),
+                                                          ));
+                                                    },
+                                                  );
+                                                  final _creditCards = Provider
+                                                      .of<CreditCardsProvider>(
+                                                      context,
+                                                      listen: false);
+                                                  final order = Provider.of<OrderByIdProvider>(context, listen: false);
+
+                                                  final address = Provider.of<
+                                                      AdressProvider>(
+                                                      context,
+                                                      listen: false);
+
+                                                  int a = await orderProvider
+                                                      .makeorder(
+                                                      date: (address
+                                                          .evendatecontroller
+                                                          .text)
+                                                          .replaceAll(
+                                                        RegExp(
+                                                            '[^A-Za-z0-9]'),
+                                                        '-',
+                                                      ),
+                                                      type: address
+                                                          .typeofeventcontroller
+                                                          .text,
+                                                      nb: address
+                                                          .numberofguestcontroller
+                                                          .text,
+                                                      idcard: _creditCards
+                                                          .credit.cardId,
+                                                      contactname:
+                                                      address.name.text,
+                                                      contactphone: address
+                                                          .phone.text,
+                                                      eventname: address
+                                                          .eventnamecontroller
+                                                          .text,
+                                                      bool1: order.check1,
+                                                      bool2: order.check2,
+                                                      bool3: order.check4,
+                                                  );
+                                                  Navigator.of(context).pop();
+                                                  if (a != 0)
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                AppointmentSuccess(
+                                                                    a)));
+                                                  else {
+                                                    // showDialog(
+                                                    //   context: this.context,
+                                                    //   builder: (BuildContext
+                                                    //       context) {
+                                                    // return AlertDialog(
+                                                    //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                    //       ),
+                                                    //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                    //      ),
+                                                    //   actions: <Widget>[
+                                                    //     TextButton(
+                                                    //         child:
+                                                    //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                    //                ),
+                                                    //         onPressed: () =>
+                                                    //             Navigator.pop(
+                                                    //                 context))
+                                                    //   ],
+                                                    // );
+
+
+                                                    // },
+                                                    // );
+                                                  }
+
+                                                      }
                                                 else
                                                   {
                                                     orderProvider.finaldonatesteps=true;
+                                                    orderProvider.finaldonatestepsCancel=true;
                                                     orderProvider.spets++;
                                                     _animateToIndex(
                                                         orderProvider.spets);
@@ -724,27 +823,29 @@ class _OrderState extends State<Order> {
                                                                 AppointmentSuccess(
                                                                     a)));
                                                   else {
-                                                    showDialog(
-                                                      context: this.context,
-                                                      builder: (BuildContext
-                                                          context) {
-                                                        return AlertDialog(
-                                                          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
-                                                              ),
-                                                          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                             ),
-                                                          actions: <Widget>[
-                                                            TextButton(
-                                                                child:
-                                                                     Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                                       ),
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        context))
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
+                                                    // showDialog(
+                                                    //   context: this.context,
+                                                    //   builder: (BuildContext
+                                                    //       context) {
+                                                        // return AlertDialog(
+                                                        //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                        //       ),
+                                                        //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                        //      ),
+                                                        //   actions: <Widget>[
+                                                        //     TextButton(
+                                                        //         child:
+                                                        //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                        //                ),
+                                                        //         onPressed: () =>
+                                                        //             Navigator.pop(
+                                                        //                 context))
+                                                        //   ],
+                                                        // );
+
+
+                                                      // },
+                                                    // );
                                                   }
                                                 }
                                               } else if (orderProvider.spets ==

@@ -28,9 +28,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await _creditCards.getAllCards();
     SharedPreferences sh=await SharedPreferences.getInstance();
     (sh.getString("locale"));
-    setState(() {
+
+  //  setState(() {
       language = sh.getString("locale");
-    });
+  //  });
     // _creditCards.loading=false;
     setState(() {
       loading = false;

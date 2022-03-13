@@ -278,6 +278,8 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.itemOrders = [];
                   orderCaterprovider.totalssha = 0;
                   orderCaterprovider.totalpackage = 0;
+                  orderCaterprovider.finaldonatesteps=false;
+                  orderCaterprovider.finaldonatestepsCancel=false;
                   credit.value = -1;
                   orderCaterprovider.serviceId = 1;
                   address.form = false;

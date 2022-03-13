@@ -200,7 +200,14 @@ if(st==3){
           .phone.text,
       eventname: address
           .eventnamecontroller
-          .text);
+          .text,
+    bool1: order.check1,
+    bool2: order.check2,
+    bool3: order.check4,
+
+
+
+  );
 
   Navigator.of(context).pop();
   if (a != 0)
@@ -211,27 +218,12 @@ if(st==3){
                 AppointmentSuccess(
                     a)));
   else {
-    showDialog(
-      context: this.context,
-      builder: (BuildContext
-      context) {
-        return AlertDialog(
-          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
-          ),
-          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-          ),
-          actions: <Widget>[
-            TextButton(
-                child:
-                Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                ),
-                onPressed: () =>
-                    Navigator.pop(
-                        context))
-          ],
-        );
-      },
-    );
+    orderProvider.spets--;
+    orderProvider.finaldonatesteps=false;
+   // orderProvider.spets--;
+    // _animateToIndex(
+    //     orderProvider.spets);
+
   }
 
 
@@ -333,7 +325,9 @@ if(st==3){
           .phone.text,
       eventname: address
           .eventnamecontroller
-          .text);
+          .text,  bool1: order.check1,
+    bool2: order.check2,
+    bool3: order.check4,);
 
   Navigator.of(context).pop();
   if (a != 0)
@@ -344,27 +338,9 @@ if(st==3){
                 AppointmentSuccess(
                     a)));
   else {
-    showDialog(
-      context: this.context,
-      builder: (BuildContext
-      context) {
-        return AlertDialog(
-          title:  Text('${LanguageTr.lg[authProvider.language]["error "]}'
-          ),
-          content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-          ),
-          actions: <Widget>[
-            TextButton(
-                child:
-                Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                ),
-                onPressed: () =>
-                    Navigator.pop(
-                        context))
-          ],
-        );
-      },
-    );
+    orderProvider.spets--;
+    orderProvider.finaldonatesteps=false;
+  //  orderProvider.spets--;
   }
 }
                         },

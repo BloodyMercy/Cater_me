@@ -57,7 +57,7 @@ TextEditingController lol =TextEditingController();
       minDateTime: DateTime.now(),
       maxDateTime: DateTime(DateTime.now().year+1),
       dateFormat: 'MMMM-yyyy-dd',
-      onClose: () {},
+      onClose: () { },
       onCancel: () => print('onCancel'),
       onChange: (dateTime, List<int> index) {
         setState(
@@ -82,7 +82,7 @@ TextEditingController lol =TextEditingController();
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
-          controller: lol,
+          controller: widget.controller,
           focusNode: focusNode,
           onTap: () {
             showPicker(context);

@@ -230,6 +230,8 @@ class LanguageTr {
       "qty":"الكميّة",
       "Bill sharing":"تقاسم الفاتورة",
       "Donate":"تبرّع",
+      "Sorry! We are fully booked.":" أسفون، الحجز كامل.",
+
 
 
 
@@ -239,6 +241,7 @@ class LanguageTr {
 
 
     "en": {
+      "Sorry! We are fully booked.":"Sorry! We are fully booked.",
       "Bill sharing":"Bill sharing",
       "qty":"qty",
       "Event Planning":"Event Planning",

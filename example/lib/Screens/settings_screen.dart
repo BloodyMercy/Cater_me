@@ -886,7 +886,7 @@ class _TABBarState extends State<TABBar> {
                                                     .pushAndRemoveUntil(
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              Navigationbar(0),
+                                                             SplashScreen(),
                                                         ),
                                                         (route) => false);
                                               },

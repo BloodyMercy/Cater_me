@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:CaterMe/Services/ApiLink.dart';
+import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/Services/address.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
@@ -21,6 +22,13 @@ class OrderCaterProvider extends ChangeNotifier{
 
   int _totalssha=0;
 bool _finaldonatesteps=false;
+bool _finaldonatestepsCancel=false;
+
+  bool get finaldonatestepsCancel => _finaldonatestepsCancel;
+
+  set finaldonatestepsCancel(bool value) {
+    _finaldonatestepsCancel = value;
+  }
 
   bool get finaldonatesteps => _finaldonatesteps;
 
@@ -38,6 +46,10 @@ bool _finaldonatesteps=false;
 
   set controllers(List<TextEditingController> value) {
     _controllers = value;
+  }
+  Future<bool> getdistance()async{
+    return await PackageService.getDistance(value.id);
+
   }
 updateprocefreind(double a,int index){
     print("i update");
@@ -116,7 +128,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
+  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -163,6 +175,10 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         },
         "paymentFriend": mapitemf,
         "cardId": idcard,
+        "isDonatingFood": bool3,
+        "isNeedChair": bool2,
+        "isNeedTables": bool2,
+        "isNeedCateringService": bool1,
 
       });
 
@@ -171,6 +187,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      print("ssssssssssssssssssssssssssssssssss${ json.decode(response.body)}");
 
       if (response.statusCode == 200) {
        int responseData = json.decode(response.body);

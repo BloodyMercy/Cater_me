@@ -1,5 +1,6 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/SplachScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool confObscure = true;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool loading = false;
+
+
 
   bool validate() {
     if (formkey.currentState != null) {
@@ -281,7 +284,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              Navigationbar(0)),
+                                              SplashScreen()),
                                       (Route<dynamic> route) => false);
                                   //authProvider.status=Status.Authenticated;
                                   setState(() {});

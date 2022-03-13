@@ -35,7 +35,7 @@ class NotificationServices {
         "This channel is responsible for all the local notifications",
     playSound: true,
 
-        sound: RawResourceAndroidNotificationSound('ringnot'),
+        // sound: RawResourceAndroidNotificationSound('ringnot'),
     priority: Priority.high,
     importance: Importance.high,
   );
