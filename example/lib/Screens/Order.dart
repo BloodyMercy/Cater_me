@@ -460,12 +460,12 @@ class _OrderState extends State<Order> {
                                                 } else {
 
 
-                                                  if(await orderProvider.getdistance()) {
-                                                    orderProvider.spets++;
-                                                    _animateToIndex(
-                                                        orderProvider.spets);
-                                                  }
-                                                  else{
+                                                  // if(await orderProvider.getdistance()) {
+                                                  //   orderProvider.spets++;
+                                                  //   _animateToIndex(
+                                                  //       orderProvider.spets);
+                                                  // }
+                                                 // else{
                                                     _key.currentState
                                                         .showSnackBar(
                                                       SnackBar(
@@ -473,7 +473,7 @@ class _OrderState extends State<Order> {
                                                         ),
                                                       ),
                                                     );
-                                                  }
+                                               //   }
                                                 }
                                               } else if (orderProvider.spets ==
                                                   3) {
@@ -713,7 +713,7 @@ class _OrderState extends State<Order> {
                                                               .phone.text,
                                                           eventname: address
                                                               .eventnamecontroller
-                                                              .text,order.check1,order.check2,order.check4);
+                                                              .text);
 
                                                   Navigator.of(context).pop();
                                                   if (a != 0)

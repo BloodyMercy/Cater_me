@@ -27,14 +27,7 @@ bool _finaldonatesteps=false;
   set finaldonatesteps(bool value) {
     _finaldonatesteps = value;
   }
-Future<bool> getdistance(){
-    bool a= AddressService().getdistance(value.id);
 
-
-
-
- return a;
-}
 
 
   int get totalssha => _totalssha;
@@ -123,7 +116,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -170,10 +163,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         },
         "paymentFriend": mapitemf,
         "cardId": idcard,
-        "isDonatingFood": bool3,
-        "isNeedChair": bool2,
-        "isNeedTables": bool2,
-        "isNeedCateringService": bool1
+
       });
 
       request.headers.addAll(headers);
