@@ -1,6 +1,10 @@
 import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class AddOnCardOrder extends StatelessWidget {
   Package addOn;
@@ -15,6 +19,8 @@ class AddOnCardOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     // final pack = Provider.of<PackagesProvider>(context, listen: true);
     var mediaQuery = MediaQuery.of(context);
     return Center(
@@ -72,8 +78,7 @@ class AddOnCardOrder extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Text(
-                                    'SAR ${this.addOn.price}',
+                                  Text("${LanguageTr.lg[authProvider.language]["SAR"]}${this.addOn.price}",
                                     style: Theme.of(context).textTheme.headline2,
                                   ),
                                   //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))

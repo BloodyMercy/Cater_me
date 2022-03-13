@@ -5,6 +5,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Providers/user.dart';
+import '../../../language/language.dart';
+
 
 
 
@@ -32,6 +35,7 @@ class _CartItemCardState extends State<CartItemCard> {
   @override
   Widget build(BuildContext context) {
 final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
+final authProvider = Provider.of<UserProvider>(context, listen: true);
 
 
     return Container(
@@ -217,8 +221,7 @@ final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
                 ),
                 Row(
                   children: [
-                    Text(
-                      "SAR ${widget.cart.totalprice.toStringAsFixed(2)}",
+                    Text("${LanguageTr.lg[authProvider.language]["SAR"]}${widget.cart.totalprice.toStringAsFixed(2)}",
                       style:  TextStyle(
                         color: Color(0xFF3F5521),
                         fontSize: 15

@@ -2,6 +2,10 @@ import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class AddOnCards extends StatelessWidget {
   Package addOn;
@@ -10,6 +14,8 @@ class AddOnCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     var mediaQuery = MediaQuery.of(context);
     return Center(
         child: InkWell(
@@ -64,8 +70,7 @@ class AddOnCards extends StatelessWidget {
                   Column(
                     children: [
 
-                      Text(
-                        'SAR ${this.addOn.price}',
+                      Text("${LanguageTr.lg[authProvider.language]["SAR"]}${this.addOn.price}",
                         style: TextStyle(
                             fontSize: 12,
                             color: Colors.black87,

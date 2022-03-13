@@ -12,6 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../Screens/auth/login_screen.dart';
+import '../../language/language.dart';
 
 //
 // @override
@@ -94,6 +95,8 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     final pack = Provider.of<UserProvider>(context, listen: true);
@@ -237,8 +240,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              "SAR ${widget.food.price.toString()}",
+                            Text("${LanguageTr.lg[authProvider.language]["SAR"]}${widget.food.price.toString()}",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
