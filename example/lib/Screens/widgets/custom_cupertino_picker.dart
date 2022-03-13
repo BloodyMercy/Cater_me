@@ -101,7 +101,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       ),
 
                       onPressed: () {
-                        if (widget.label == 'Country') {
+                        if (widget.label == '${LanguageTr.lg[authProvider.language]["Country"]}') {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
                           adress.listcityname.clear();
@@ -117,7 +117,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           Navigator.of(context).pop();
                         }
 
-                        if (widget.label == "City") {
+                        if (widget.label == "${LanguageTr.lg[authProvider.language]["City"]}") {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
                           adress.citycontroller.text =
@@ -126,7 +126,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               widget.city[widget.selectedValue].name.toString();
                           Navigator.of(context).pop();
                         }
-                        if (widget.label == "Number Of Guests") {
+                        if (widget.label == "${LanguageTr.lg[authProvider.language]["Number Of Guests"]}") {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
                           adress.numberofguestcontroller.text = widget
@@ -137,7 +137,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               .toString();
                           Navigator.of(context).pop();
                         }
-                        if (widget.label == "Type Of Event") {
+                        if (widget.label == "${LanguageTr.lg[authProvider.language]["Type Of Event"]}") {
                           final adress =
                               Provider.of<AdressProvider>(ctx, listen: false);
 
@@ -147,7 +147,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                               widget.events[widget.selectedValue].name.toString();
                           Navigator.of(context).pop();
                         }
-                        if (widget.label == 'Type of Occasion') {
+                        if (widget.label == "${LanguageTr.lg[authProvider.language]["Type of Occasion"]}") {
                           final occa=Provider.of<OccasionProvider>(context,listen: false);
                           occa.typeofoccasioncontroller.text =
                               widget.listoccasiontype[widget.selectedValue].id.toString();
@@ -157,7 +157,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
 
                           Navigator.of(context).pop();
                         }
-                        if (widget.label == 'Gender') {
+                        if (widget.label == "${LanguageTr.lg[authProvider.language]["Gender"]}") {
                           final authProvider = Provider.of<UserProvider>(context,listen: false);
                       authProvider.genderselected.text=widget.items[widget.selectedValue].toString();
 
@@ -183,7 +183,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       widget.controller.text =
                           widget.items[widget.selectedValue];
                     });
-                    if (widget.label == 'Country') {
+                    if (widget.label == '${LanguageTr.lg[authProvider.language]["Country"]}') {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.listcityname.clear();
@@ -193,14 +193,14 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       adress
                           .getallcity(widget.country[widget.selectedValue].id);
                     }
-                    if (widget.label == 'City') {
+                    if (widget.label =='${LanguageTr.lg[authProvider.language]["City"]}' ) {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.citycontroller.text =
                           widget.city[widget.selectedValue].id.toString();
                     }
 
-                    if (widget.label == "Number Of Guests") {
+                    if (widget.label == '${LanguageTr.lg[authProvider.language]["Number Of Guests"]}') {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.numberofguestcontroller.text = widget
@@ -210,7 +210,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           .numberOfGuests[widget.selectedValue].title
                           .toString();
                     }
-                    if (widget.label == "Type Of Event") {
+                    if (widget.label == '${LanguageTr.lg[authProvider.language]["Type Of Event"]}') {
                       final adress =
                           Provider.of<AdressProvider>(ctx, listen: false);
                       adress.typeofeventcontroller.text =
@@ -219,7 +219,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                           widget.events[widget.selectedValue].name.toString();
                     }
 
-                    if (widget.label == 'Type of Occasion') {
+                    if (widget.label == '${LanguageTr.lg[authProvider.language]["Type of Occasion"]}') {
                       final occa=Provider.of<OccasionProvider>(context,listen: false);
                       occa.typeofoccasioncontroller.text =
                           widget.listoccasiontype[widget.selectedValue].id.toString();
