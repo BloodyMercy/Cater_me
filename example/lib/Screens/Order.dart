@@ -400,7 +400,7 @@ class _OrderState extends State<Order> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "${LanguageTr.lg[authProvider.language]["Total"]},${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
+                                                "${LanguageTr.lg[authProvider.language]["Total"]}${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
                                                 style: const TextStyle(
                                                     fontSize: 18,
                                                     fontFamily: 'BerlinSansFB',
