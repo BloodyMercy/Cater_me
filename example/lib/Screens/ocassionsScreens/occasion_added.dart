@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/address.dart';
 import '../../Providers/order_provider.dart';
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import '../Order.dart';
 
 class OccasionAdded extends StatefulWidget {
@@ -38,6 +40,7 @@ String language;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
       body:
 
@@ -82,7 +85,7 @@ String language;
     // orderCaterprovider.choosebillFriend=[];
     // orderCaterprovider.itemOrders=[];
     // credit.value=-1;
-    // orderCaterprovider.serviceId=0;
+    // orderCaterprovider.serviceId=0;z
     //
     // // orderCaterprovider.listFriend=[];
     // address.value2Index=-1;
@@ -128,7 +131,7 @@ String language;
               );
             },
             child: Text(
-              "Event Planning",
+              '${LanguageTr.lg[authProvider.language][ "Name of Occasion"]}',
               style: Theme.of(context).textTheme.headline1,
             ),
             style: ElevatedButton.styleFrom(

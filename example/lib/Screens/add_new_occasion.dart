@@ -143,7 +143,7 @@ await occasion.getAllOccasionType(sh.getString("locale"));
                   // customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
 
                   CustomCupertinoPicker(
-                          label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion "]}',
+                          label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion"]}',
                           items: occasion.listoccasiontypename,
                           listoccasiontype: occasion.listoccasiontype,
                           selectedValue: widget.getposition,

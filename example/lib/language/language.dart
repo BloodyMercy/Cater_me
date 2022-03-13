@@ -5,7 +5,7 @@ class LanguageTr {
 
 
     "ar": {
-
+      "Event Planning":"تخطيط لحدث",
       "Get Started": "ابدأ الأن",
       "Email": "البريد الالكتروني",
       "Password": "كلمة المرور",
@@ -24,7 +24,7 @@ class LanguageTr {
       "birthdate": "تاريخ الولادة",
       "SignUp": "حساب جديد ",
       "Already have an account?": "هل لديك حساب؟",
-      "Pick ": "اختار",
+      "Pick": "اختار",
       "Female": "انثى",
       "Male": "ذكر",
       "Search": "بحث",
@@ -43,7 +43,7 @@ class LanguageTr {
       "edit": "تعديل",
       "Edit Occasion": "تعديل المناسبة",
       "Name of Occasion": "اسم المناسبة",
-      "Type of Occasion ": "نوع المناسبة",
+      "Type of Occasion": "نوع المناسبة",
       "SAR": "ر.س",
       "Save the Date": "احفظ التاريخ",
       "Rejected": "مرفوض",
@@ -235,6 +235,7 @@ class LanguageTr {
 
 
     "en": {
+      "Event Planning":"Event Planning",
       "You don't have any upcoming occasions":"You don't have any upcoming occasions",
       "please choose one from the following offers":"please choose one from the following offers",
       "Event Date":"Event Date",
@@ -280,7 +281,7 @@ class LanguageTr {
       "edit": "edit",
       "Edit Occasion": "Edit Occasion",
       "Name of Occasion": "Name of Occasion",
-      "Type of Occasion ": "Type of Occasion",
+      "Type of Occasion": "Type of Occasion",
       "SAR": "SAR",
       "Save the Date": "Save the Date",
       "Rejected": "Rejected",
