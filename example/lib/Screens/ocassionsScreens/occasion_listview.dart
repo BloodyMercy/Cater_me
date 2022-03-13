@@ -147,7 +147,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                 ? SliverToBoxAdapter(
                     child: Column(
                       children: [
-                        language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-06.png'),
+                        language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/nooccasionyetAR.png'),
                        authProvider.status==Status.Unauthenticated? ElevatedButton(onPressed: (){
                           Navigator.of(context).push(
                             MaterialPageRoute(

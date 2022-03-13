@@ -13,88 +13,69 @@ class Greeting extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     const double fontSize = 33;
     const String fontFamily = 'Berlin Sans FB';
+    userprovider.name.text="ahmad rifai";
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
-        alignment: Alignment.topLeft,
+        alignment: Alignment.center,
         height: mediaQuery.size.height,
         color: Colors.white,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
+            Text(
+              "Hi ${userprovider.name.text},",
 
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: mediaQuery.size.width * 0.1),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: mediaQuery.size.height * 0.38,
-                      ),
-                      Text(
-                        "Hi ${userprovider.name.text},",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: false,
-                        // overflow: TextOverflow.ellipsis,
+             // overflow: TextOverflow.ellipsis,
+            //  softWrap: false,
+              // overflow: TextOverflow.ellipsis,
 
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontFamily: fontFamily,
-                          fontSize: fontSize,
-                        ),
-                      ),
-                      Text("Welcome to ",
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: fontFamily,
-                            fontSize: fontSize,
-                          )),
-                      const Text(
-                        "Cater me",
-                        style: TextStyle(
-                          color: Color.fromRGBO(253, 202, 29, 1),
-                          fontFamily: fontFamily,
-                          fontSize: fontSize,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontFamily: fontFamily,
+                fontSize: fontSize,
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: mediaQuery.size.height * 0.18,
-                ),
-                ElevatedButton(
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(
-                            const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)))),
-                        padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(
-                              vertical: (mediaQuery.size.height * 0.074) * 0.3,
-                              horizontal: (mediaQuery.size.width * 0.25)),
-                        ),
-                        backgroundColor: MaterialStateProperty.all(
-                            Theme.of(context).primaryColor)),
-                    onPressed: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (context) => Navigationbar(0)),
-                          (Route<dynamic> route) => false);
-                    },
-                    child: Text(
-                      "Continue",
-                      style: Theme.of(context).textTheme.headline1,
-                    )),
-              ],
-            )
+              Text("Welcome to ",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontFamily: fontFamily,
+                  fontSize: fontSize,
+                )),
+               Text(
+              "Cater me",
+              style: TextStyle(
+                color: Color.fromRGBO(253, 202, 29, 1),
+                fontFamily: fontFamily,
+                fontSize: fontSize,
+              ),
+            ),
+            SizedBox(
+              height: mediaQuery.size.height * 0.18,
+            ),
+            ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15)))),
+                    padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(
+                          vertical: (mediaQuery.size.height * 0.074) * 0.3,
+                          horizontal: (mediaQuery.size.width * 0.25)),
+                    ),
+                    backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).primaryColor)),
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => Navigationbar(0)),
+                      (Route<dynamic> route) => false);
+                },
+                child: Text(
+                  "Continue",
+                  style: Theme.of(context).textTheme.headline1,
+                ))
           ],
         ),
       ),

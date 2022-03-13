@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -21,8 +22,14 @@ class _SplashScreenState extends State<SplashScreen>
       duration: Duration(seconds: (1)),
       vsync: this,
     );
+    chechkdata();
   }
+chechkdata() async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
 
+    if(sh.getString("locale")==null)
+      sh.setString("locale", "en");
+}
   @override
   Widget build(BuildContext context) {
     Timer(
