@@ -68,16 +68,14 @@ class _HomePageState extends State<HomePage> {
    // await package.cleardata();
    // package.loading = false;
     SharedPreferences sh=await SharedPreferences.getInstance();
-if(package.allpackages.length==0) {
+
   await package.getallpacakges(context, sh.getString("locale"));
   package.loading = true;
   for (int i = 0; i < package.listItems.length; i++) {
     listitemssearch.add(package.listItems[i].title.toLowerCase());
   }
-}
-else{
-  package.loading = true;
-}
+
+
   }
 
   Future getData() async {
