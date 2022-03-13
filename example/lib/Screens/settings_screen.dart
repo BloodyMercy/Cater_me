@@ -21,6 +21,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/occasion.dart';
+import '../Providers/packages.dart';
+import '../SplachScreen.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'auth/login_screen.dart';
@@ -671,7 +673,13 @@ class _TABBarState extends State<TABBar> {
                                           _prefs.setString("locale", "ar");
                                           MyApp.setLocale(
                                               context, Locale("ar", "AE"));
+                                          Navigator.of(context).pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SplashScreen(),
+                                            ),
 
+                                                  (Route<dynamic> route) => false   );
                                           // AppLocalizations.of(context)!.locale.toString()
 
 
@@ -684,8 +692,13 @@ class _TABBarState extends State<TABBar> {
                                           await SharedPreferences
                                               .getInstance();
                                           _prefs.setString("locale", "en");
-                                          MyApp.setLocale(context, Locale("en", "US"));
-
+                                        MyApp.setLocale(context, Locale("en", "US"));
+                                          Navigator.of(context).pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SplashScreen(),
+                                            ),
+                                                  (Route<dynamic> route) => false  );
                                           // AppLocalizations.of(context)!.locale.toString()
 
 

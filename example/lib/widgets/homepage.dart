@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
   getalldata() async {
     final package = Provider.of<PackagesProvider>(context, listen: false);
    // await package.cleardata();
-   // package.loading = false;
+  // package.loading = false;
     SharedPreferences sh=await SharedPreferences.getInstance();
 
   await package.getallpacakges(context, sh.getString("locale"));
@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
   Future getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     await occasion.getallnewoccasion();
+   // await occasion.getAllOccasionType(a);
 
     setState(() {
       loading = false;
