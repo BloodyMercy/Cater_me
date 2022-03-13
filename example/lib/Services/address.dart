@@ -11,6 +11,49 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'ApiLink.dart';
 
 class AddressService{
+
+
+  Future<bool> getdistance(int id) async {
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var respons = http.MultipartRequest('POST', Uri.parse(ApiLink.getDistance));
+      respons.headers.addAll(headers);
+      respons.fields.addAll({
+        //    'Id': prefs.getString("token").toString(),
+        "AddressId":id.toString(),
+      });
+
+      // open a bytestream
+
+      http.StreamedResponse responses = await respons.send();
+      // responses.stream.transform(utf8.decoder).listen((value) {
+      //   print(value);
+      // });
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+        String  responseData = json.decode(response.body);
+        //  SharedPreferences prefs = await SharedPreferences.getInstance();
+   if(responseData == true) {
+     return true;
+   }else{
+     return false;
+   }
+
+      } else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+
  Future<Address> createAddress({
      String addresstitle,
      String country,

@@ -61,6 +61,7 @@ class ApiLink{
  static String ForgetPassword=host+"Accounts/ForgetPassword";
  static String getAllPackages = host+"Orders/GetAllPackages";
  static String contactus=host+"Settings/GetContactUs";
+ static String getDistance = host+"Orders/IsInCoverage/:AddressId";
 
 
 

@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Providers/orderById_provider.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
 import 'Addons/orderpages/steps.dart';
@@ -457,9 +458,22 @@ class _OrderState extends State<Order> {
                                                     ),
                                                   );
                                                 } else {
-                                                  orderProvider.spets++;
-                                                  _animateToIndex(
-                                                      orderProvider.spets);
+
+
+                                                  if(await orderProvider.getdistance()) {
+                                                    orderProvider.spets++;
+                                                    _animateToIndex(
+                                                        orderProvider.spets);
+                                                  }
+                                                  else{
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
                                                 }
                                               } else if (orderProvider.spets ==
                                                   3) {
@@ -674,7 +688,7 @@ class _OrderState extends State<Order> {
                                                           AdressProvider>(
                                                       context,
                                                       listen: false);
-
+                                                  final order = Provider.of<OrderByIdProvider>(context, listen: false);
                                                   int a = await orderProvider
                                                       .makeorder(
                                                           date: (address
@@ -699,7 +713,7 @@ class _OrderState extends State<Order> {
                                                               .phone.text,
                                                           eventname: address
                                                               .eventnamecontroller
-                                                              .text);
+                                                              .text,order.check1,order.check2,order.check4);
 
                                                   Navigator.of(context).pop();
                                                   if (a != 0)
