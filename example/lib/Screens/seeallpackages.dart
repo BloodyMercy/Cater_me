@@ -1,8 +1,10 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../language/language.dart';
 import '../widgets/Packages/test_package_add_details.dart';
 
 class seeAllPackages extends StatefulWidget {
@@ -55,6 +57,7 @@ class _seeAllPackages extends State<seeAllPackages> {
             .padding
             .bottom;
     final pack = Provider.of<PackagesProvider>(context, listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     PreferredSize appBar = PreferredSize(
       preferredSize: Size.fromHeight(
@@ -79,7 +82,7 @@ class _seeAllPackages extends State<seeAllPackages> {
         // ),
         centerTitle: true,
         title: Text(
-          'Packages',
+          '${LanguageTr.lg[authProvider.language]["Packages"]}',
           style: Theme
               .of(context)
               .textTheme

@@ -162,7 +162,7 @@ class _CustomStepperState extends State<CustomStepper> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      height:70,
+      height:MediaQuery.of(context).size.height * 0.1,
 
       child: SingleChildScrollView(
         physics:ClampingScrollPhysics(),
@@ -175,6 +175,7 @@ class _CustomStepperState extends State<CustomStepper> {
           child: Stack(
             children: [
               Container(
+
                 margin: EdgeInsets.only(top:50),
                 child: Row(
                   children: [...buildStepperText()],

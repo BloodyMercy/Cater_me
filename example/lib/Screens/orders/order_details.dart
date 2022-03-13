@@ -4,6 +4,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -25,11 +26,13 @@ class _DetailsOrderState extends State<DetailsOrder> {
   bool loading = true;
   bool donate = false;
   bool rejected = false;
-
-  getData() async {
+String language="";
+getData() async {
     final orders = Provider.of<OrderByIdProvider>(context, listen: false);
     await orders.getOrderById(widget.id);
-    await orders.getOrderItems();
+    SharedPreferences sh =await SharedPreferences.getInstance(); 
+    language=sh.getString("locale");
+    await orders.getOrderItems(sh.getString("locale"));
     await orders.getOrderPaymentFreind();
     print(orders.items.length);
     final orderStatus =
@@ -87,7 +90,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                          '${LanguageTr.lg[authProvider.language][  "Invoice"]}',
+                          '${LanguageTr.lg[authProvider.language]["Invoice"]}',
                                 style: TextStyle(color: Colors.black),
                               ),SizedBox(height: 10,),
                               Card(
@@ -117,7 +120,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  " qty: ${order.items[i].quantity}  ",
+                                                  " ${LanguageTr.lg[authProvider.language]["qty"]} ${order.items[i].quantity}  ",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -130,7 +133,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                       0.03,
                                                 ),
                                                 Text(
-                                                  "total:  ${order.items[i].price}",
+                                                  "${LanguageTr.lg[authProvider.language]["Total"]}  ${order.items[i].price}",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -167,13 +170,13 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "Tax",
+                                            '${LanguageTr.lg[authProvider.language]["Tax"]}',
                                             style: TextStyle(
                                                 color: blackColor,
                                                 fontWeight: FontWeight.normal),
                                           ),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -189,12 +192,12 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("SubTotal",
+                                          Text('${LanguageTr.lg[authProvider.language]["SubTotal"]}',
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["subTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["SubTotal"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -210,12 +213,12 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("Total",
+                                          Text('${LanguageTr.lg[authProvider.language]["Total"]}',
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "SAR ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["Total"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -235,7 +238,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                           padding: const EdgeInsets.all(8),
                           child: Column(
                             children: [
-                              Text('Payments',style:TextStyle(color:Colors.black)),
+                              Text('${LanguageTr.lg[authProvider.language]["Bill sharing"]}',style:TextStyle(color:Colors.black)),
                               SizedBox(height: 10,),
                               Card(
                                 elevation: 5,
@@ -270,7 +273,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "SAR ${order.paymentFreind[index].amount}",
+                                                        "${LanguageTr.lg[authProvider.language]["SAR"]} ${order.paymentFreind[index].amount}",
                                                         style: TextStyle(
                                                             color: blackColor,
                                                             fontWeight:
@@ -311,7 +314,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                         child: Column(
                                           children: [
                                             Text(
-                                              "Do you want to donate your food?",
+                                              '${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline1
@@ -333,7 +336,7 @@ class _DetailsOrderState extends State<DetailsOrder> {
                                                       setState(() {});
                                                     },
                                                     child: Text(
-                                                      "Donate",
+                                                      '${LanguageTr.lg[authProvider.language]["Donate"]}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .headline1,

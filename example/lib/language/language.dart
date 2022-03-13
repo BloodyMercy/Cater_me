@@ -109,7 +109,7 @@ class LanguageTr {
       "Camera": "الكاميرا",
       "Gallery": "الاستديو",
       "Ready to answer any and all questions":
-          "جاهزين للاجابة على جميع الاسالة ",
+          "جاهزين للاجابة على جميع الاسألة ",
       "Special Thank You For Using": "شكر خاص لك لاستخدام التطبيق",
       "We/’d Love to Hear From You": "نود السماع لك",
       "Sad to see you leave": "نحزن لرؤيتك تغادر",
@@ -124,7 +124,7 @@ class LanguageTr {
       "Order Info": "معلومات الطلب",
       "Invoice": "الفاتورة",
       "Tax": "ضريبة",
-      "Sub Total": "المجموع الاجمالي",
+      "SubTotal": "المجموع الاجمالي",
       "Total": "المجموع",
       "Add an Address": "أضف عنوان  ",
       "Please choose an address": "الرجاء اختيار عنوان",
@@ -156,11 +156,12 @@ class LanguageTr {
       "Number Of Guests": "عدد الضيوف",
       "Type Of Event": "نوع الحدث",
       "Contact Person": "الشخص الذي يمكن التواصل معه",
+      "Share bill":"",
       "Me": "أنا",
       "Others": "اخرين",
       "Pick numbers of guests": "اختر عدد الضيوف",
       "Pick type of event": "اختر نوع الحدث",
-      "Please fill the empty fields": "الرجاء املا الحقول الفارغة",
+      "Please fill the empty fields": "الرجاء املأ الحقول الفارغة",
       "after": "بعد",
       "before": "قبل",
       "Price": "السعر",
@@ -226,6 +227,9 @@ class LanguageTr {
       "Do you want to donate the rest of your food?":"هل تريد التبرع بباقي الطعام؟",
       "extra services":"خدمات إضافية",
       "Payment":"دفع",
+      "qty":"الكميّة",
+      "Bill sharing":"تقاسم الفاتورة",
+      "Donate":"تبرّع",
 
 
 
@@ -235,6 +239,8 @@ class LanguageTr {
 
 
     "en": {
+      "Bill sharing":"Bill sharing",
+      "qty":"qty",
       "Event Planning":"Event Planning",
       "You don't have any upcoming occasions":"You don't have any upcoming occasions",
       "please choose one from the following offers":"please choose one from the following offers",
@@ -447,6 +453,7 @@ class LanguageTr {
       "Do you want a service team?":"Do you want a service team?",
       "Do you want to donate the rest of your food?":"Do you want to donate the rest of your food?",
       "extra services":"extra services",
+      "Donate":"Donate",
 
 
 }

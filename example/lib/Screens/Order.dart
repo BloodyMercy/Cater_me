@@ -211,6 +211,7 @@ class _OrderState extends State<Order> {
                             child: Column(
                               children: [
                                 CustomStepper(
+
                                   controller: _controller,
                                   onTap: (int value) {
                                     if (orderProvider.spets == 1) {

@@ -20,13 +20,13 @@ class OrderDetailsModel {
         this.tax,
         this.isDonated});
 
-  OrderDetailsModel.fromJson(Map<String, dynamic> json) {
+  OrderDetailsModel.fromJson(Map<String, dynamic> json,String a) {
     addressId = json['addressId']??0;
     serviceId = json['serviceId']??0;
     if (json['orderItems'] != null) {
       orderItems = <OrderItems>[];
       json['orderItems'].forEach((v) {
-        orderItems.add(new OrderItems.fromJson(v));
+        orderItems.add(new OrderItems.fromJson(v,a));
       });
     }
     event = json['event'] != null ? new Event.fromJson(json['event']) : null;
@@ -52,7 +52,10 @@ class OrderItems {
 
   OrderItems({this.item, this.quantity, this.price, this.total, this.tax});
 
-  OrderItems.fromJson(Map<String, dynamic> json) {
+  OrderItems.fromJson(Map<String, dynamic> json,String a) {
+    if(a=="ar"){
+      item = json['itemAR']??"غير معروف";
+    }else
     item = json['item']??"not found";
     quantity = json['quantity']??0;
     price = json['price'].toDouble()??0.0;
