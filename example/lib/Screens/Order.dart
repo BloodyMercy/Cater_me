@@ -340,9 +340,9 @@ class _OrderState extends State<Order> {
                           ),
                         ),
                         const Divider(
-                          height: 20,
+                          height: 30,
                           thickness: 1,
-                          indent: 0,
+                          indent: 1,
                           endIndent: 0,
                           color: Color(0xFF3F5521),
                         ),
