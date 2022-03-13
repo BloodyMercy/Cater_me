@@ -42,9 +42,9 @@ data(){
   setState(() {
 
 
-  String desc='${LanguageTr.lg[authProvider.language]["Do you want catering equipment?"]}';
-  String desc1='${LanguageTr.lg[authProvider.language]["Do you want a service team?"]}';
-  String desc2='${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}';
+   desc='${LanguageTr.lg[authProvider.language]["Do you want catering equipment?"]}';
+   desc1='${LanguageTr.lg[authProvider.language]["Do you want a service team?"]}';
+   desc2='${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}';
 }); // desc=["Do you want catering equipment?","Do you want a service team?","Do you want to donate the rest of your food?"];
 }
 
