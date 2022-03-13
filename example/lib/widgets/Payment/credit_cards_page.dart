@@ -71,32 +71,43 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int i) {
                             return Container(
-                              child: Row(
-                                children: [
-                                  Radio(
-                                    fillColor: MaterialStateColor.resolveWith(
-                                        (states) => colorCustom),
-                                    toggleable: true,
-                                    groupValue: _creditCards.value,
-                                    value: i,
-                                    onChanged: (value) {
-                                      _creditCards.value = i;
-                                      setState(() {
-                                        _value = i;
-                                      });
-                                      _creditCards.credit =
-                                          _creditCards.list[i];
-                                    },
-                                  ),
-                                  _buildCreditCard(
-                                    color: Colors.black,
-                                    cardExpiration:
-                                        "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                                    cardHolder: _creditCards.list[i].ownerName,
-                                    cardNumber:
-                                        "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                  ),
-                                ],
+                              child:
+                              InkWell(
+                                onTap: (){
+                                  _creditCards.value = i;
+                                  setState(() {
+                                    _value = i;
+                                  });
+                                  _creditCards.credit =
+                                  _creditCards.list[i];
+                                },
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                      fillColor: MaterialStateColor.resolveWith(
+                                          (states) => colorCustom),
+                                      toggleable: true,
+                                      groupValue: _creditCards.value,
+                                      value: i,
+                                      onChanged: (value) {
+                                        _creditCards.value = i;
+                                        setState(() {
+                                          _value = i;
+                                        });
+                                        _creditCards.credit =
+                                            _creditCards.list[i];
+                                      },
+                                    ),
+                                    _buildCreditCard(
+                                      color: Colors.black,
+                                      cardExpiration:
+                                          "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                      cardHolder: _creditCards.list[i].ownerName,
+                                      cardNumber:
+                                          "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },

@@ -5,6 +5,7 @@ import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderAdsDetail extends StatefulWidget {
   Package food;
@@ -22,14 +23,17 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
   bool selected = false;
   bool loading = false;
   int count = 1;
+  String lg="";
   getData() async {
     setState(() {
       count=widget.food.min;
     });
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     await pack.getpacakgesby(pack.packages.id);
+    SharedPreferences rifai=await SharedPreferences.getInstance();
     setState(() {
       loading = false;
+      lg=rifai.getString("locale");
     });
 
 
@@ -39,7 +43,9 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
 
   @override
   void initState() {
-    getData();
+    getData(
+
+    );
     super.initState();
   }
 
@@ -138,9 +144,10 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                             children: [
                               Container(
                                   height: constraints.maxHeight * 0.03,
-                                  child: const FittedBox(
-                                      child: Text(
-                                    "PRICE",
+                                  child:  FittedBox(
+                                      child: Text(lg=="en"?
+                                    "PRICE":"السعر"
+                                        ,
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontFamily: 'BerlinSansFB',
@@ -259,8 +266,9 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                                     }
 
                                   },
-                                  child:  Text(
-                                    'ADD',
+                                  child:  Text(lg=="en"?
+                                    'ADD':"اضف"
+                                    ,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'BerlinSansFB'),

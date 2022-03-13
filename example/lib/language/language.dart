@@ -24,7 +24,7 @@ class LanguageTr {
       "birthdate": "تاريخ الولادة",
       "SignUp": "حساب جديد ",
       "Already have an account?": "هل لديك حساب؟",
-      "Pick ": "اختار الجنس",
+      "Pick ": "اختار",
       "Female": "انثى",
       "Male": "ذكر",
       "Search": "بحث",
@@ -225,6 +225,7 @@ class LanguageTr {
       "Do you want a service team?":"هل تريد فريق خدمة؟",
       "Do you want to donate the rest of your food?":"هل تريد التبرع بباقي الطعام؟",
       "extra services":"خدمات إضافية",
+      "Payment":"دفع",
 
 
 

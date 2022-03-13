@@ -5,6 +5,7 @@ import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderAdscuisDetail extends StatefulWidget {
   Package food;
@@ -21,9 +22,13 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
 
   bool selected = false;
   bool loading = false;
+  String lg="";
 
-  getData() async {
-    setState(() {
+  getData(
+
+      ) async {
+    SharedPreferences root=await SharedPreferences.getInstance();
+    setState(() {lg=root.getString("locale");
       count =widget.food.min;
     });
     // final pack = Provider.of<PackagesProvider>(context, listen: false);
@@ -119,9 +124,11 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                       children: [
                         Container(
                             height: constraints.maxHeight * 0.03,
-                            child: const FittedBox(
+                            child:  FittedBox(
                                 child: Text(
-                                  "PRICE",
+                                  lg=="en"?
+                                  "PRICE":"السعر"
+                                  ,
                                   style: const TextStyle(
                                       fontSize: 18,
                                       fontFamily: 'BerlinSansFB',
@@ -239,8 +246,9 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                               }
 
                             },
-                            child:  Text(
-                              'ADD',
+                            child:  Text(lg=="en"?
+                            'ADD':"اضف"
+                              ,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'BerlinSansFB'),

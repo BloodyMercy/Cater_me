@@ -75,7 +75,7 @@ class Events {
     id = json['id']??0;
     if(a=="ar"){
       name = json['nameAR']??'غير معروف';
-    }
+    }else
     name = json['name']??'not found';
   }
 
