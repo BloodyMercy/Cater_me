@@ -183,7 +183,7 @@ loading=false;
        if(_alldata['cuisine']!=null)
        _cuisins = Cuisines.fromJson(_alldata['cuisine'],a);
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model,a)));
-      _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model)));
+      _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model,a)));
 
        _listItems = List<Package>.from(_alldata['dropDown'].map((model) => Package.fromJson(model,a)));
        _nbnotification=_alldata["notificationCount"].toString();
@@ -196,10 +196,10 @@ loading=true;
   }
 
 
-Future<void>  getalloccasions()async {
+Future<void>  getalloccasions(String a)async {
   loading=false;
 //notifyListeners();
-  _alloccasions=await PackageService.AllOccasions();
+  _alloccasions=await PackageService.AllOccasions(a);
 
   loading=true;
   notifyListeners();

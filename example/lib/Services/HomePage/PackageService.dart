@@ -375,7 +375,7 @@ class PackageService {
     }
   }
 
-  static Future<List<Occasion>> AllOccasions() async {
+  static Future<List<Occasion>> AllOccasions(String a) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -391,7 +391,7 @@ class PackageService {
         List<dynamic> responseData = json.decode(responses.body);
         List<Occasion> posts = List<Occasion>.from(
           responseData.map(
-            (model) => Occasion.fromJson(model),
+            (model) => Occasion.fromJson(model,a),
           ),
         ); //map to list
         return posts;

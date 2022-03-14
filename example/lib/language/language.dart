@@ -90,7 +90,8 @@ class LanguageTr {
       "Card number": "رقم البطاقة",
       "Expired Date": "تاريخ انتهاء الصلاحية",
       "CVV": "CVV",
-      "Card Holder": "حامل البطاقة",
+      "CARDHOLDER":"حامل البطاقة",
+      "C": "حامل البطاقة",
       "Add Card": "أضف بطاقة",
       "Card not Valid": "البطاقة غير صالحة",
       "Close": "اغلق",
@@ -235,6 +236,7 @@ class LanguageTr {
       "Sorry! We are fully booked.":" أسفون، الحجز كامل.",
       "Are you sure do you want to delete this card?":"هل أنت متأكد أنك تريد حذف هذه البطاقة؟",
       "Credit card cannot be deleted":"لا يمكن حذف بطاقة الائتمان",
+      "Card Holder":"حامل البطاقة",
 
 
 

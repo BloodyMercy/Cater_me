@@ -16,6 +16,7 @@ class OccasionService {
     String name,
     int typeId,
     String date,
+    String a,
   }) async {
     Occasion occasion = Occasion();
     try {
@@ -44,7 +45,7 @@ class OccasionService {
         Map<String, dynamic> responseData = json.decode(response.body);
         //  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        occasion = Occasion.fromJsonadd(responseData);
+        occasion = Occasion.fromJsonadd(responseData,a);
         return occasion;
       } else {
         print(response.reasonPhrase);
@@ -125,7 +126,7 @@ class OccasionService {
     }
   }
 
-  update({int id, String name, int typeId, String date }) async {
+  update({int id, String name, int typeId, String date,String a }) async {
     Occasion occasion = Occasion();
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -147,7 +148,7 @@ class OccasionService {
       if (response.statusCode == 200) {
         Map<String, dynamic> responseData = json.decode(response.body);
 
-        occasion = Occasion.fromJson(responseData);
+        occasion = Occasion.fromJson(responseData,a);
         return true;
       } else {
         print(response.reasonPhrase);

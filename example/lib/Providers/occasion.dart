@@ -139,7 +139,7 @@ typeofoccasioncontroller.text="";
 
 
 bool loading=false;
-  Future<void>  getallnewoccasion()async {
+  Future<void>  getallnewoccasion(String a)async {
     loading=false;
 //notifyListeners();
     _alldata=await OccasionService.getallnewoccasions();
@@ -152,7 +152,7 @@ print("not data");
       print(_alldata['all']);
      // _today = List<Occasion>.from(_alldata['today'].map((model) => Occasion.fromJsonadd(model)));
      // _thisWeek = List<Occasion>.from(_alldata['thisWeek'].map((model) => Occasion.fromJsonadd(model)));
-      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model)));
+      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model,a)));
 
 
 

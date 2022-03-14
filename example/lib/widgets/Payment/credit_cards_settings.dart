@@ -173,7 +173,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       _buildDetailsBlock(
-                                        label: '${LanguageTr.lg[authProvider.language]['CARDHOLDER']}',
+                                        label: '${LanguageTr.lg[authProvider.language]["Card Holder"]}',
                                         value: _creditCards.list[i].ownerName,
                                       ),
                                       _buildDetailsBlock(label:  '${LanguageTr.lg[authProvider.language]["VALID THRU"]}',

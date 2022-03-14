@@ -5,6 +5,7 @@ import 'package:CaterMe/model/occasion.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -123,10 +124,10 @@ bool ispressed = false;
                 children: [
                   SizedBox(height: mediaQuery.size.height * 0.07),
 
-                  customTextField(controller: occasion.nameofoccasioncontroller,label:'${LanguageTr.lg[authProvider.language][ "Name of Occasion"]}',),
+                  customTextField(controller: occasion.nameofoccasioncontroller,label:'${LanguageTr.lg[authProvider.language]["Name of Occasion"]}',),
 
                   CustomCupertinoPicker(
-                    label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion "]}',
+                    label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion"]}',
                     items: occasion.listoccasiontypename,
                     listoccasiontype: occasion.listoccasiontype,
                     selectedValue: 0,
@@ -165,7 +166,9 @@ bool ispressed = false;
 
                             bool a =
                             await occasion.updateoccation(idss: widget.occ.id);
-                            await occasion.getallnewoccasion();
+                            SharedPreferences sh=await SharedPreferences.getInstance();
+
+                            await occasion.getallnewoccasion(sh.getString("locale"));
                             if (!a)
                             {
                               setState(() {

@@ -27,7 +27,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
   SharedPreferences sh=await SharedPreferences.getInstance();
 
-    await occasion.getallnewoccasion();
+    await occasion.getallnewoccasion(sh.getString("locale"));
 await occasion.getAllOccasionType(sh.getString("locale"));
     occasion.nameofoccasioncontroller.text="";
     occasion.datechosencontroller.text="";
@@ -199,7 +199,9 @@ await occasion.getAllOccasionType(sh.getString("locale"));
                                     );  }
                                   else {
                                     occasion.cleardata();
-                                    await occasion.getallnewoccasion();
+                                    SharedPreferences sh=await SharedPreferences.getInstance();
+
+                                    await occasion.getallnewoccasion(sh.getString("locale"));
                                     setState(() {
                                       ispressed = false;
                                     });
