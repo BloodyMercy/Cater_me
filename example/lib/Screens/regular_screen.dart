@@ -240,6 +240,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
                               child: CustomDatePickerFormField(
                                 label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
                                 controller: address.evendatecontroller,
+                                controllerlan: address.evendatelancontroller,
+                                lang:authProvider.language
                               ),
                             ),
 
@@ -248,6 +250,8 @@ class _ReguarScreenState extends State<ReguarScreen> {
                               child: CustomDailyDate(
                                 label: '${LanguageTr.lg[authProvider.language]["Event Time "]}',
                                 controller: address.DailyDatecontroller,
+                                controllerlan: address.DailyDatelancontroller,
+                                lang:authProvider.language
                               ),
                             ),
 

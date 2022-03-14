@@ -5,8 +5,10 @@ import 'package:intl/intl.dart';
 
 class CustomDailyDate extends StatefulWidget {
   String label;
+  String lang;
   TextEditingController controller = TextEditingController();
-  CustomDailyDate({ this.label ,  this.controller});
+  TextEditingController controllerlan = TextEditingController();
+  CustomDailyDate({ this.label ,this.lang,  this.controller,this.controllerlan});
 
   @override
   State<CustomDailyDate> createState() => _CustomDailyDateState();
@@ -21,6 +23,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
   DateFormat _dayFormat = DateFormat('dd');
   DateFormat _minuteFormat = DateFormat('m');
   DateFormat _hourFormat = DateFormat('h:mm a');
+  DateFormat _hourFormatlang = DateFormat('h:mm a');
 
   DateTime _chosenDate=DateTime.now();
 
@@ -29,6 +32,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
   void initState() {
     // TODO: implement initState
     super.initState();
+_hourFormatlang = DateFormat('h:mm a',widget.lang);
     _chosenDate = DateTime.now();
 
   }
@@ -53,6 +57,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
                 onDateTimeChanged: (value) {
                   _chosenDate=value;
                   widget.controller.text=_hourFormat.format(value).toString();
+                  widget.controllerlan.text=_hourFormatlang.format(value).toString();
                 },
                 initialDateTime: DateTime.now(),
               ));
@@ -67,7 +72,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
         child: TextFormField(
 
           readOnly: true,
-          controller: widget.controller,
+          controller: widget.controllerlan,
           focusNode: focusNode,
           onTap: ()  {
 
