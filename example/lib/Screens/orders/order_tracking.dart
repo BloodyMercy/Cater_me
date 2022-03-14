@@ -8,6 +8,8 @@ import 'package:CaterMe/widgets/order_tracking/order_received.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../widgets/order_tracking/OTP_Pending.dart';
+
 class TrackingOrder extends StatefulWidget {
   int id;
 
@@ -59,16 +61,19 @@ class _TrackingOrderState extends State<TrackingOrder> {
             )
             : Column(
               children: [
-                orderStatus.orderStatus.statusId == 2
+                orderStatus.orderStatus.statusId == 3
                     ?  OrderPreparing()
                     : Container(),
-                orderStatus.orderStatus.statusId == 3
+                orderStatus.orderStatus.statusId == 4
                     ?  OrderOnTheWay()
                     : Container(),
-                orderStatus.orderStatus.statusId == 1
+                orderStatus.orderStatus.statusId == 6
                     ? OrderReceived()
                     : Container(),
-                orderStatus.orderStatus.statusId == 4
+                orderStatus.orderStatus.statusId == 1
+                    ? OTPPending()
+                    : Container(),
+                orderStatus.orderStatus.statusId == 5
                     ? OrderDelivered()
                     : Container(),
                 orderStatus.orderStatus.statusId == 5?

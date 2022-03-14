@@ -30,7 +30,7 @@ class _OrderPreparingState extends State<OrderPreparing> {
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: language=="en"?Image.asset("images/orderprepare.png",height:MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain):Image.asset("images/order tracking/2.png",height:MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
+    return Center(child: language=="en"?Image.asset("images/new order tracking english/PreparingOrder.png",height:MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain):Image.asset("images/order trackingArabic/3.png",height:MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
     //   Expanded(
     //   child: Container(
     //     color:LightColors.kLightYellow,

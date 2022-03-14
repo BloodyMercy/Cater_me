@@ -61,7 +61,7 @@ class _YourOrdersState extends State<YourOrders> {
     if (orderStatus == "تم تلقي طلبك") return Color(0xFFEAB316);
     if (orderStatus == "Rejected") return Color(0xFFEA4D47);
     if (orderStatus == "تم رفض الطلب") return Color(0xFFEA4D47);
-    if (orderStatus == "On The Way ") return Color(0xFFEAB316);
+    if (orderStatus == "On The Way") return Color(0xFFEAB316);
     if (orderStatus == "على الطريق") return Color(0xFFEAB316);
     if (orderStatus == "Delivered") return Color(0xFF3F5521);
     if (orderStatus == "تم التوصيل") return Color(0xFF3F5521);

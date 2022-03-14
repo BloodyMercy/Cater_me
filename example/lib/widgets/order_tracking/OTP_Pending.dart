@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OrderReceived extends StatefulWidget {
-  const OrderReceived({Key key}) : super(key: key);
+class OTPPending extends StatefulWidget {
+  const OTPPending({Key key}) : super(key: key);
 
   @override
-  State<OrderReceived> createState() => _OrderReceivedState();
+  State<OTPPending> createState() => _OTPPending();
 }
 
-class _OrderReceivedState extends State<OrderReceived> {
+class _OTPPending extends State<OTPPending> {
   String language;
 
   getdata()async{
@@ -28,7 +28,7 @@ class _OrderReceivedState extends State<OrderReceived> {
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: language=="en"?Image.asset("images/new order tracking english/OrderReceived.png",height: MediaQuery.of(context).size.height*0.75):Image.asset("images/order tracking/5.png",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
+    return Center(child: language=="en"?Image.asset("images/new order tracking english/OTPPending.png",fit:BoxFit.contain,height: MediaQuery.of(context).size.height*0.75):Image.asset("images/order tracking/1.png",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,
