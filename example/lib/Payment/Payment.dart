@@ -164,7 +164,7 @@ print(response.token);
    //   Navigator.pop(context);
       final address = Provider.of<OrderCaterProvider>(context, listen: false);
 
-CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token);
+CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token,cardNameHolder);
 if(card.id==0){
 
 

@@ -218,8 +218,8 @@ if(st==3){
                 AppointmentSuccess(
                     a)));
   else {
-    orderProvider.spets--;
-    orderProvider.finaldonatesteps=false;
+    // orderProvider.spets--;
+    // orderProvider.finaldonatesteps=false;
    // orderProvider.spets--;
     // _animateToIndex(
     //     orderProvider.spets);
@@ -325,7 +325,8 @@ if(st==3){
           .phone.text,
       eventname: address
           .eventnamecontroller
-          .text,  bool1: order.check1,
+          .text,
+    bool1: order.check1,
     bool2: order.check2,
     bool3: order.check4,);
 
@@ -338,8 +339,8 @@ if(st==3){
                 AppointmentSuccess(
                     a)));
   else {
-    orderProvider.spets--;
-    orderProvider.finaldonatesteps=false;
+    // orderProvider.spets--;
+    // orderProvider.finaldonatesteps=false;
   //  orderProvider.spets--;
   }
 }

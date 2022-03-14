@@ -87,7 +87,7 @@ int _totalshisha=0;
     _vatshisha = value;
   }
 
-  Future<CreditCardsModel> sendtokeknpayemnt(String a) async{
+  Future<CreditCardsModel> sendtokeknpayemnt(String a,String name) async{
 
     CreditCardsModel card=new  CreditCardsModel();
     try{
@@ -102,6 +102,7 @@ int _totalshisha=0;
       request = http.MultipartRequest('POST', Uri.parse(ApiLink.AddCreditCards));
       request.fields.addAll({
         'token':a.toString() ,
+        "name":name,
 
 
 
@@ -166,7 +167,6 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         "event": {
           "eventName": eventname,
           "eventDate":date,
-         // "eventTime":date,
           "eventTypeId":int.parse(type),
           "numberOfGuestsId": int.parse(nb),
           "contactPersonName":contactname??"",
@@ -186,8 +186,6 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
-      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
-      print("ssssssssssssssssssssssssssssssssss${ json.decode(response.body)}");
 
       if (response.statusCode == 200) {
        int responseData = json.decode(response.body);
