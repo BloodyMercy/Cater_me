@@ -37,41 +37,74 @@ TextEditingController lol =TextEditingController();
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
     _chosenDay = _dayFormat.format(_chosenDate);
+    widget.controller.text=_dateFormat.format(_chosenDate);
   }
 
   @override
   void showPicker(ctx) {
-    DatePicker.showDatePicker(
+    showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                minimumYear: DateTime.now().year,
+                maximumYear:DateTime.now().year+1,
 
-      ctx,
-      onMonthChangeStartWithFirstDate: true,
-      pickerTheme: DateTimePickerTheme(
+                //maximumDate: DateTime(DateTime.now().year+1),
 
-        showTitle: false,
-        backgroundColor: LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color: Color(0xFF3F5521),
-        ),
-      ),
-      initialDateTime: _chosenDate,
-      minDateTime: DateTime.now(),
-      maxDateTime: DateTime(DateTime.now().year+1),
-      dateFormat: 'MMMM-yyyy-dd',
-      onClose: () {},
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(
-          () {
-            _chosenDate = dateTime;
-            _chosenDay = _dayFormat.format(dateTime);
-            _chosenMonth = _monthFormat.format(dateTime);
-            _chosenYear = _yearFormat.format(dateTime);
-            widget.controller.text = _dateFormat.format(dateTime);
-            lol.text=alpha.format(dateTime);
-          },
-        );
-      },
-    );
+                onDateTimeChanged: (value) {
+                  // _chosenDate = dateTime;
+                  // _chosenDay = _dayFormat.format(dateTime);
+                  // _chosenMonth = _monthFormat.format(dateTime);
+                  // _chosenYear = _yearFormat.format(dateTime);
+                  // widget.controller.text = _dateFormat.format(dateTime);
+                 // lol.text=alpha.format(dateTime);
+                  _chosenDate=value;
+                  widget.controller.text=_dateFormat.format(value).toString();
+                },
+                initialDateTime: DateTime.now(),
+              ));
+        });
+    // DatePicker.showDatePicker(
+    //
+    //   ctx,
+    //   onMonthChangeStartWithFirstDate: true,
+    //   pickerTheme: DateTimePickerTheme(
+    //
+    //     showTitle: false,
+    //     backgroundColor: LightColors.kLightYellow2,
+    //     itemTextStyle: TextStyle(
+    //       color: Color(0xFF3F5521),
+    //     ),
+    //   ),
+    //   locale: DateTimePickerLocale.ar,
+    //   initialDateTime: _chosenDate,
+    //   minDateTime: DateTime.now(),
+    //   maxDateTime: DateTime(DateTime.now().year+1),
+    //
+    //   onClose: () {},
+    //   onCancel: () => print('onCancel'),
+    //   onChange: (dateTime, List<int> index) {
+    //     setState(
+    //       () {
+    //         _chosenDate = dateTime;
+    //         _chosenDay = _dayFormat.format(dateTime);
+    //         _chosenMonth = _monthFormat.format(dateTime);
+    //         _chosenYear = _yearFormat.format(dateTime);
+    //         widget.controller.text = _dateFormat.format(dateTime);
+    //         lol.text=alpha.format(dateTime);
+    //       },
+    //     );
+    //   },
+    // );
   }
 
   @override

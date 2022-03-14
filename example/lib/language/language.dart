@@ -241,6 +241,7 @@ class LanguageTr {
       "VALID THRU":"صالح لغاية",
       "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا"
 
+"Not a valid email":"ليس بريدًا إلكترونيًا صالحًا",
 
 
 
