@@ -49,6 +49,7 @@ class _CustomDailyDateState extends State<CustomDailyDate> {
               child:
               CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.time,
+
                 onDateTimeChanged: (value) {
                   _chosenDate=value;
                   widget.controller.text=_hourFormat.format(value).toString();
