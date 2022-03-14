@@ -28,7 +28,7 @@ class _OrderOnTheWayState extends State<OrderOnTheWay> {
   Widget build(BuildContext context) {
     // final mediaquerywidth = MediaQuery.of(context).size.width;
     // final mediaqueryheight = MediaQuery.of(context).size.height;
-    return language=="en"?Image.asset('images/orderintheway.png',height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain):Image.asset('images/order tracking/3.png',height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain);
+    return language=="en"?Image.asset("images/new order tracking english/OrderIsOnTheWay.png",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain):Image.asset("images/order trackingArabic/4.png",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain);
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,

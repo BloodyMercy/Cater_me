@@ -7,9 +7,10 @@ import 'Screens/occasion/theme/colors/light_colors.dart';
 
 class CustomDatePickerFormField extends StatefulWidget {
   String label;
+  String localelg;
   TextEditingController controller = TextEditingController();
 
-  CustomDatePickerFormField({this.label, this.controller});
+  CustomDatePickerFormField({this.label,this.localelg, this.controller});
 
   @override
   State<CustomDatePickerFormField> createState() =>
@@ -18,11 +19,11 @@ class CustomDatePickerFormField extends StatefulWidget {
 
 class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
   FocusNode _focusNode = FocusNode();
-  DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
+  DateFormat _dateFormat = DateFormat.yMMMMd("ar");
   DateFormat _monthFormat = DateFormat('MMMM');
   DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
-  DateFormat alpha = DateFormat.yMMMMd('en_US');
+  DateFormat alpha = DateFormat.yMMMMd("ar");
 TextEditingController lol =TextEditingController();
   DateTime _chosenDate = DateTime.now();
   String _chosenMonth = "";
@@ -54,10 +55,11 @@ TextEditingController lol =TextEditingController();
         ),
       ),
       initialDateTime: _chosenDate,
+
       minDateTime: DateTime.now(),
       maxDateTime: DateTime(DateTime.now().year+1),
       dateFormat: 'MMMM-yyyy-dd',
-      onClose: () { },
+      onClose: () {},
       onCancel: () => print('onCancel'),
       onChange: (dateTime, List<int> index) {
         setState(
