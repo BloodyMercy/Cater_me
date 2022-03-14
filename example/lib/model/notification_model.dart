@@ -8,10 +8,15 @@ class notificationModel {
 
   notificationModel();
 
-  notificationModel.fromJson(Map<String, dynamic> json) {
+  notificationModel.fromJson(Map<String, dynamic> json,String a) {
     id = json['id']??0;
     orderId = json['orderId']??0;
     title = json['title']??"not found";
+
+    if(a=="ar"){
+      description = json['descriptionAR']??"غير معروف";
+    }else
+
     description = json['description']??"not found";
     seen=json['seen']??false;
     date = json['date']?? false;

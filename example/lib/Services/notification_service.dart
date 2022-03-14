@@ -12,6 +12,7 @@ class NotificationService {
   Future<notificationModel> createNotification({
      String Title,
      String Body,
+    String a,
 
   }) async {
     notificationModel NotificationModel=notificationModel();
@@ -40,7 +41,7 @@ class NotificationService {
         Map<String, dynamic> responseData = json.decode(response.body);
         //  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        NotificationModel = notificationModel.fromJson(responseData);
+        NotificationModel = notificationModel.fromJson(responseData,a);
         return NotificationModel;
 
       } else {
@@ -53,7 +54,7 @@ class NotificationService {
     }
   }
 
-  Future<List<notificationModel>> getAllNotifications() async {
+  Future<List<notificationModel>> getAllNotifications(String a) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
@@ -65,7 +66,7 @@ class NotificationService {
         List<dynamic> responseData = json.decode(response.body);
         List<notificationModel> posts = List<notificationModel>.from(
           responseData.map(
-                (model) => notificationModel.fromJson(model),
+                (model) => notificationModel.fromJson(model,a),
           ),
         ); //map to list
         return posts;

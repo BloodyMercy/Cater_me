@@ -32,8 +32,9 @@ String language;
   getData() async {
     final allNotification =
         Provider.of<NotificationProvider>(context, listen: false);
-    await allNotification.getAllNotifications();
     SharedPreferences sh=await SharedPreferences.getInstance();
+    await allNotification.getAllNotifications(sh.getString("locale"));
+
      (sh.getString("locale"));
 
      setState(() {
@@ -54,9 +55,9 @@ String language;
   Future refreshdata() async {
     final allNotification =
     Provider.of<NotificationProvider>(context, listen: false);
-
+    SharedPreferences sh=await SharedPreferences.getInstance();
     await allNotification.ClearAllNotifications();
-    await allNotification.getAllNotifications();
+    await allNotification.getAllNotifications(sh.getString("locale"));
 
     return;
   }
