@@ -11,6 +11,7 @@ class Occasion {
 
 Occasion.fromJson(Map<String, dynamic> json) {
   id = json['id']??0;
+
   date = json['date']??"not found";
   name = json['title']??"not found";
   type = json['type']??"not found";

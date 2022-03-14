@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/edit_occasion.dart';
 import 'package:CaterMe/model/occasion.dart';
@@ -7,6 +8,8 @@ import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../language/language.dart';
 
 class OccasionCard extends StatefulWidget {
 
@@ -30,6 +33,8 @@ class _OccasionCardState extends State<OccasionCard> {
   Widget build(BuildContext context) {
     // final occasion=Provider.of<OccasionProvider>(context,listen:true);
     final package=Provider.of<PackagesProvider>(context,listen:true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     // List<Occasion> occc=getOccasionsToday(occasion.today);
     List<Occasion> occa=getOccasionsToday(package.occasions);
     final mediaQuery = MediaQuery.of(context);
@@ -122,7 +127,7 @@ class _OccasionCardState extends State<OccasionCard> {
                     .primaryColor,
               ),
               Text(
-                'Add an occasion ',
+                  "${LanguageTr.lg[authProvider.language]["Add an occasion"]}",
                 style: TextStyle(
                     fontWeight:
                     FontWeight

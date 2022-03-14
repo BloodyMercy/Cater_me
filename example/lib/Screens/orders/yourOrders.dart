@@ -25,14 +25,13 @@ class _YourOrdersState extends State<YourOrders> {
 
   String language;
 
-
   Future getData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
-    SharedPreferences sh=await SharedPreferences.getInstance();
+    SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.getAllOrders(sh.getString("locale"));
-setState(() {
-  language=sh.getString("locale");
-});
+    setState(() {
+      language = sh.getString("locale");
+    });
     setState(() {
       loading = false;
     });
@@ -43,7 +42,7 @@ setState(() {
     final orders = Provider.of<OrderProvider>(context, listen: false);
 
     await orders.clearData();
-    SharedPreferences sh=await SharedPreferences.getInstance();
+    SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.getAllOrders(sh.getString("locale"));
     return;
   }
@@ -56,16 +55,18 @@ setState(() {
 
   @override
   Color _getColorByEvent(String orderStatus) {
-    if (orderStatus == "Preparing") return Color(0xFF3F5521);
-    if (orderStatus == "جاري التحضير") return Color(0xFF3F5521);
-    if (orderStatus == "Received") return Color(0xFF3F5521);
-    if (orderStatus == "تم تلقي طلبك") return Color(0xFF3F5521);
+    if (orderStatus == "Preparing") return Color(0xFFEAB316);
+    if (orderStatus == "جاري التحضير") return Color(0xFFEAB316);
+    if (orderStatus == "Received") return Color(0xFFEAB316);
+    if (orderStatus == "تم تلقي طلبك") return Color(0xFFEAB316);
     if (orderStatus == "Rejected") return Color(0xFFEA4D47);
     if (orderStatus == "تم رفض الطلب") return Color(0xFFEA4D47);
     if (orderStatus == "On The Way ") return Color(0xFFEAB316);
-    if (orderStatus == "على الطريق ") return Color(0xFFEAB316);
-    if (orderStatus == "Delivered") return Color(0xFF272833);
-    if (orderStatus ==" تم التوصيل") return Color(0xFF272833);
+    if (orderStatus == "على الطريق") return Color(0xFFEAB316);
+    if (orderStatus == "Delivered") return Color(0xFF3F5521);
+    if (orderStatus == "تم التوصيل") return Color(0xFF3F5521);
+    if (orderStatus == "OTP Pending") return Color(0xFFEAB316);
+    if (orderStatus == "بانتظار الرمز التحققي") return Color(0xFFEAB316);
 
     return Colors.blue;
   }
@@ -77,7 +78,6 @@ setState(() {
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
       child: Scaffold(
-
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
           child: Padding(
@@ -90,17 +90,22 @@ setState(() {
                     : orders.listOrder.length == 0
                         ? authProvider.status == Status.Authenticated
                             ? Center(
-                                child:
-                                   language=="en" ?Image.asset('images/noorderyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-09.png'))
+                                child: language == "en"
+                                    ? Image.asset('images/noorderyet.png')
+                                    : Image.asset(
+                                        'images/no address yetعربي/no addresses yetبالعربي-09.png'))
                             : Column(
                                 children: [
-                                  language=="en" ?Image.asset('images/noorderyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-09.png'),
+                                  language == "en"
+                                      ? Image.asset('images/noorderyet.png')
+                                      : Image.asset(
+                                          'images/no address yetعربي/no addresses yetبالعربي-09.png'),
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                              LoginScreen()));
+                                                  LoginScreen()));
                                     },
                                     child: Text(
                                       '${LanguageTr.lg[authProvider.language]["Log In"]}',
