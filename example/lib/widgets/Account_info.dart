@@ -56,7 +56,7 @@ class _AccountInfoState extends State<AccountInfo> {
     final user = Provider.of<UserProvider>(context, listen: false);
     validatePass(value);
     if (value != newPassController.text) {
-      return '${LanguageTr.lg[user.language][ "Passwords don't match"]}';
+      return '${LanguageTr.lg[user.language]["Passwords don't match"]}';
     } else {
       return null;
     }

@@ -70,7 +70,7 @@ class AddOnCards extends StatelessWidget {
                   Column(
                     children: [
 
-                      Text("${LanguageTr.lg[authProvider.language]["SAR"]}${this.addOn.price}",
+                      Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
                         style: TextStyle(
                             fontSize: 12,
                             color: Colors.black87,

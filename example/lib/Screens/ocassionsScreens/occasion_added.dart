@@ -62,7 +62,7 @@ String language;
             children: [
 
               Center(
-                  child: language=="en"?Image.asset('images/occasionadded.png'):Image.asset("images/no address yetعربي/no addresses yetبالعربي-03.png"),
+                  child: language=="en"?Image.asset('images/occasionadded.png',fit:BoxFit.contain):Image.asset("images/no address yetعربي/no addresses yetبالعربي-03.png",fit:BoxFit.contain),
                       )
               // SizedBox(
               //   height: mediaQuery.size.height * 0.08,
@@ -131,18 +131,19 @@ String language;
               );
             },
             child: Text(
-              '${LanguageTr.lg[authProvider.language][ "Name of Occasion"]}',
+              '${LanguageTr.lg[authProvider.language]["Order"]}',
               style: Theme.of(context).textTheme.headline1,
             ),
             style: ElevatedButton.styleFrom(
-              elevation: 5,
-              padding: EdgeInsets.symmetric(
-                horizontal: (mediaQuery.size.width * 0.3),
-                vertical: (mediaQuery.size.height * 0.02),
-              ),
+              padding: EdgeInsets.fromLTRB(
+                  mediaQuery.size.height  * 0.14,
+                  mediaQuery.size.height * 0.02,
+                  mediaQuery.size.height * 0.14,
+                  mediaQuery.size.height * 0.02),
+              onPrimary: const Color.fromRGBO(255, 255, 255, 1),
               primary: Theme.of(context).primaryColor,
-              shape: new RoundedRectangleBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
               ),
             ),
           ),
