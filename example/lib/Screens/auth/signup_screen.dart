@@ -290,7 +290,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                  left: screenHeight * 0.03,
+                                  // left: screenHeight * 0.03,
                                   bottom: screenHeight * 0.025,
                                   top: screenHeight * 0.025,
                                 ),
@@ -321,7 +321,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -364,7 +364,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.01,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -375,7 +375,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               controller: authProvider.password,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return 'Required ';
+                                  return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
                                 } else if (val.length < 6) {
                                   return 'Password should be at least 6 characters';
                                 }
@@ -412,7 +412,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -444,7 +444,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
