@@ -7,9 +7,11 @@ import 'Screens/occasion/theme/colors/light_colors.dart';
 
 class CustomDatePickerFormField extends StatefulWidget {
   String label;
+  String lang;
   TextEditingController controller = TextEditingController();
+  TextEditingController controllerlan = TextEditingController();
 
-  CustomDatePickerFormField({this.label, this.controller});
+  CustomDatePickerFormField({this.label,this.lang, this.controller,this.controllerlan});
 
   @override
   State<CustomDatePickerFormField> createState() =>
@@ -19,6 +21,7 @@ class CustomDatePickerFormField extends StatefulWidget {
 class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
   FocusNode _focusNode = FocusNode();
   DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
+  DateFormat _dateFormatlan = DateFormat('yyyy-MM-dd');
   DateFormat _monthFormat = DateFormat('MMMM');
   DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
@@ -33,6 +36,7 @@ TextEditingController lol =TextEditingController();
   void initState() {
     // TODO: implement initState
     super.initState();
+    _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
     _chosenDate = DateTime.now();
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
@@ -69,6 +73,7 @@ TextEditingController lol =TextEditingController();
                  // lol.text=alpha.format(dateTime);
                   _chosenDate=value;
                   widget.controller.text=_dateFormat.format(value).toString();
+                  widget.controllerlan.text=_dateFormatlan.format(value).toString();
                 },
                 initialDateTime: DateTime.now(),
               ));
@@ -115,7 +120,7 @@ TextEditingController lol =TextEditingController();
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
-          controller: widget.controller,
+          controller: widget.controllerlan,
           focusNode: focusNode,
           onTap: () {
             showPicker(context);

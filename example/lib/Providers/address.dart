@@ -118,8 +118,10 @@ List<String> _listcityname=[];
 
   TextEditingController eventnamecontroller=TextEditingController();
   TextEditingController evendatecontroller=TextEditingController();
+  TextEditingController evendatelancontroller=TextEditingController();
   TextEditingController numberofguestcontroller=TextEditingController();
   TextEditingController DailyDatecontroller=TextEditingController();
+  TextEditingController DailyDatelancontroller=TextEditingController();
   TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
   TextEditingController typeofeventcontrollerstring=TextEditingController();
@@ -161,8 +163,10 @@ clearAddressController(){
       latitudenumbercontroller.clear();
        eventnamecontroller.clear();
        evendatecontroller.clear();
+       evendatelancontroller.clear();
       numberofguestcontroller.clear();
        DailyDatecontroller.clear();
+       DailyDatelancontroller.clear();
        numberofguestcontrollerstring.clear();
        typeofeventcontroller.clear();
       typeofeventcontrollerstring.clear();
