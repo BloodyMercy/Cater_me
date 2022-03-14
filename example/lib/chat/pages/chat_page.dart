@@ -75,7 +75,7 @@ class ChatPageState extends State<ChatPage> {
   String language;
   getdata()async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-    (sh.getString("locale"));
+  //  (sh.getString("locale"));
     setState(() {
       language = sh.getString("locale");
     });
