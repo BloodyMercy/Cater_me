@@ -171,10 +171,11 @@ class _NavigationBarState extends State<Navigationbar> {
     sh.setBool("startintro", false);
   }
   Future<bool> _onWillPop() async {
+    final authProvider = Provider.of<UserProvider>(context, listen: false);
     return (await showDialog(
       context: context,
       builder: (context) => CustomDialog(
-        title: "Are you sure you want to exit?",
+        title: '${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}',
         description: "",
         button1: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -186,13 +187,13 @@ class _NavigationBarState extends State<Navigationbar> {
 
 
             },
-            child: Text("Done")),
+            child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
         oneOrtwo: true,
         button2: ElevatedButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text("No"),
+          child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
         ),
       ),
     )) ??

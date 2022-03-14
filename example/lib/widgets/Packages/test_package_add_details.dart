@@ -234,7 +234,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                         child: Row(
                           children: [
                             Text(
-                              "Price: ",
+                              "${LanguageTr.lg[authProvider.language]["Price"]}:",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',

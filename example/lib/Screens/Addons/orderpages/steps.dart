@@ -66,8 +66,8 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
 
     final mediaQuery = MediaQuery.of(context);
     Widget buildCards(CuisinsCard card, int index) => Container(
-          width: 20,
-          height: 20,
+          width: mediaQuery.size.width*0.1,
+          height: mediaQuery.size.height*0.1,
           child: card,
         );
     // List card = getCuisins(_cuisinprovider.cuisinsbyid);
@@ -127,7 +127,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                                 '${_cuisin.addonsallorder[index].name}',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'BerlinSansFB',
                                 ),

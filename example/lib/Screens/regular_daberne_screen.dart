@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
     final addresProvider = Provider.of<AdressProvider>(context, listen: true);
     if (addresProvider.hours.isDaberni) {
       orderProvider.serviceId = 2;
+    } if (!addresProvider.hours.isDaberni) {
+      orderProvider.serviceId = 1;
     }
     setState(() {});
   }
@@ -74,7 +77,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                   Column(
                     children: [
                       Image.asset('images/CaterMe.png',
-                          height: screenHeight * 0.3),
+                          height: screenHeight * 0.25,),
                       Text('${LanguageTr.lg[authProvider.language]["after"]}${addresProvider.hours.timespan}',
                           style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
                     ],

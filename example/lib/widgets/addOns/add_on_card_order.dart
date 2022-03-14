@@ -1,4 +1,5 @@
 import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -58,8 +59,8 @@ class AddOnCardOrder extends StatelessWidget {
                 children: [
                   Image.network(
                     this.addOn.image,
-                    height: 100,
-                    width: 100,
+                    height: 75,
+                    width: 75,
                   ),
                   Padding(
                     padding:
@@ -70,16 +71,26 @@ class AddOnCardOrder extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${this.addOn.title}',
-                                maxLines: 2,
-                                style: Theme.of(context).textTheme.headline2,
-                                overflow: TextOverflow.ellipsis,
+                              Padding(
+                                padding: const EdgeInsets.only(right:8.0),
+                                child: Text(
+                                  '${this.addOn.title}',
+                                  maxLines: 2,
+                                  style:  TextStyle(
+                                      color: colorCustom,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BerlinSansFB'),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                               Row(
                                 children: [
-                                  Text("${LanguageTr.lg[authProvider.language]["SAR"]}${this.addOn.price}",
-                                    style: Theme.of(context).textTheme.headline2,
+                                  Padding(
+                                    padding: const EdgeInsets.only(right:8.0),
+                                    child: Text("${LanguageTr.lg[authProvider.language]["SAR"]}${this.addOn.price}",
+                                      style: Theme.of(context).textTheme.headline2,
+                                    ),
                                   ),
                                   //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))
                                 ],
