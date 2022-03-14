@@ -34,8 +34,8 @@ class NotificationProvider  extends ChangeNotifier{
     _notificationlist.add(_createnotification);//zedra 3l list la tsir updated
     notifyListeners();
   }
-  getAllNotifications()async{
-    _notificationlist=await _notificationService.getAllNotifications();
+  getAllNotifications(String a)async{
+    _notificationlist=await _notificationService.getAllNotifications(a);
     notifyListeners();
   }
 
