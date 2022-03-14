@@ -109,7 +109,7 @@ class _AccountInfoState extends State<AccountInfo> {
                         SizedBox(height: _mediaQuery * 0.03),
                         FittedBox(
                           child: Text(
-                            '${LanguageTr.lg[user.language][ "Change Password"]}',
+                            '${LanguageTr.lg[user.language]["Change Password"]}',
                             style: Theme.of(context).textTheme.headline2,
                           ),
                         ),
@@ -201,7 +201,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText: '${LanguageTr.lg[user.language][ "New Password"]}',
+                                labelText: '${LanguageTr.lg[user.language]["New Password"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -255,7 +255,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language][ "Confirm Password"]}',
+                              labelText: '${LanguageTr.lg[user.language]["Confirm Password"]}',
                               hintStyle: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -279,7 +279,7 @@ class _AccountInfoState extends State<AccountInfo> {
                           validator: (value) {
                             if (user.password1.text !=
                                 user.confirmpassword.text) {
-                              return '${LanguageTr.lg[user.language][ "Password dosen't match"]}';
+                              return '${LanguageTr.lg[user.language]["Password dosen't match"]}';
                             }
                             return null;
                           },
