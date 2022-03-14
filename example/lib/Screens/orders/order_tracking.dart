@@ -48,9 +48,9 @@ class _TrackingOrderState extends State<TrackingOrder> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: loading
-            ? SingleChildScrollView(
-              child: Center(
+        child: SingleChildScrollView(
+              child:  loading
+                  ?Center(
                 child: Container(
                     color: LightColors.kLightYellow,
                     child: Center(
@@ -59,8 +59,8 @@ class _TrackingOrderState extends State<TrackingOrder> {
                       ),
                     ),
                   ),
-              ),
-            )
+              )
+
             : Column(
               children: [
                 orderStatus.orderStatus.statusId == 3
@@ -87,7 +87,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
 
                 // CustomStepperOrder(text: ["text","text"],selected: 1,),
               ],
-            ),
+            )),
       ),
     );
   }

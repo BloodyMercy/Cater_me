@@ -239,6 +239,7 @@ class LanguageTr {
       "VAT  311085799400003":"ق.ض.م    311085799400003",
       "Card Holder":"حامل البطاقة",
       "VALID THRU":"صالح لغاية",
+      "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا"
 
 
 
@@ -249,6 +250,7 @@ class LanguageTr {
 
 
     "en": {
+      "Not a valid email":"Not a valid email",
       "Password dosen't match":"Password dosen't match",
      " Credit card cannot be deleted":"Credit card cannot be deleted",
       "Passwords don't match":"Passwords don't match",

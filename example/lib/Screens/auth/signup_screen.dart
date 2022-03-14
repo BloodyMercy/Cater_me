@@ -282,7 +282,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.person_outline_outlined),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right:40.0),
+                                  child: Icon(Icons.person_outline_outlined),
+                                ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -299,7 +302,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     Theme.of(context).textTheme.headline4,
                               ),
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a valid Name'),
                               ]),
                               keyboardType: TextInputType.emailAddress,
@@ -312,7 +315,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.mail_outline),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right:40.0),
+                                  child: Icon(Icons.mail_outline),
+                                ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -330,8 +336,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.email,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
-                                EmailValidator(errorText: 'Not a valid email'),
+                                RequiredValidator(errorText:'${LanguageTr.lg[authProvider.language]["Required"]}',),
+                                EmailValidator(errorText: '${LanguageTr.lg[authProvider.language]["Not a valid email"]}',),
                               ]),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -344,17 +350,20 @@ class _SignupScreenState extends State<SignupScreen> {
                               onChanged: (value) => password = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
-                                prefixIcon: IconButton(
-                                  icon: Icon(
-                                    passObscure
-                                        ? Icons.lock_outlined
-                                        : Icons.lock_open_outlined,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right:40.0),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      passObscure
+                                          ? Icons.lock_outlined
+                                          : Icons.lock_open_outlined,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        passObscure = !passObscure;
+                                      });
+                                    },
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      passObscure = !passObscure;
-                                    });
-                                  },
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
@@ -363,7 +372,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    left: screenHeight * 0.04,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -392,17 +401,20 @@ class _SignupScreenState extends State<SignupScreen> {
                               onChanged: (value) => confirmPassword = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
-                                prefixIcon: IconButton(
-                                  icon: Icon(
-                                    confObscure
-                                        ? Icons.lock_outlined
-                                        : Icons.lock_open_outlined,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right:40.0),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      confObscure
+                                          ? Icons.lock_outlined
+                                          : Icons.lock_open_outlined,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        confObscure = !confObscure;
+                                      });
+                                    },
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      confObscure = !confObscure;
-                                    });
-                                  },
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
@@ -411,7 +423,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    left: screenHeight * 0.04,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -435,7 +447,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.phone),
+                                prefixIcon: Padding(
+                                  padding:const EdgeInsets.only(right:40.0),
+                                  child: Icon(Icons.phone),
+                                ),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -454,7 +469,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               controller: authProvider.phoneNumber,
                               validator: MultiValidator([
                                 RequiredValidator(errorText: 'Required *'),
-                                // EmailValidator(errorText: 'Not a Phone number'),
+                                // EmailValidator(errorText: 'Not a Phone number,
                               ]),
                               keyboardType: TextInputType.phone,
                             ),

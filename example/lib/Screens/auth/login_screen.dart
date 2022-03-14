@@ -100,9 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fontWeight: FontWeight.normal,
                                   fontFamily: 'BerlinSansFB'),
                               decoration: InputDecoration(
-                                  prefixIcon: IconButton(
-                                    icon: const Icon(Icons.mail_outline),
-                                    onPressed: () {},
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.only(right:15.0),
+                                    child: IconButton(
+                                      icon: const Icon(Icons.mail_outline),
+                                      onPressed: () {},
+                                    ),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5.0),
@@ -160,17 +163,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'BerlinSansFB'),
                             decoration: InputDecoration(
-                                prefixIcon: IconButton(
-                                  icon: Icon(
-                                    passObscure
-                                        ? Icons.lock_outlined
-                                        : Icons.lock_open_outlined,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right:15.0),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      passObscure
+                                          ? Icons.lock_outlined
+                                          : Icons.lock_open_outlined,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        passObscure = !passObscure;
+                                      });
+                                    },
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      passObscure = !passObscure;
-                                    });
-                                  },
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
