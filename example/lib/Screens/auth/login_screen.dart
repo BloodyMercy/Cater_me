@@ -3,6 +3,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,9 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String validatePass(value) {
     if (value.trim().isEmpty) {
+
       return "this field is required";
     }
     if (value.trim().length < 6) {
+      final authProvider = Provider.of<UserProvider>(context, listen: false);
+
       return "this field should be at least 6 character";
     }
     if (!RegExp(r"[A-Z]").hasMatch(value) == true ||
@@ -147,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: Color(0xFF3F5521),
                                       ))),
                               controller: authProvider.email,
+
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.emailAddress),
@@ -214,6 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: Color(0xFF3F5521),
                                     ))),
                             controller: authProvider.password,
+
                             // validator: validatePass,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,

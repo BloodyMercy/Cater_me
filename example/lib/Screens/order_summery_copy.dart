@@ -293,7 +293,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             Padding(
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Text(
-                                details.listFriend.length > 0
+                                frnd.listFriends.length > 0
                                     ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
 
                                     :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
