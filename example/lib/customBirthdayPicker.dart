@@ -88,11 +88,9 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
                 Icons.keyboard_arrow_down_sharp,
                 size: 20,
               ),
-              contentPadding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width *
-                      0.4),
+
               alignLabelWithHint: true,
-              prefixIcon: Icon(Icons.calendar_today),
+            prefixIcon: Icon(Icons.calendar_today),
               labelStyle: TextStyle(
                   fontSize: focusNode.hasFocus ? 18 : 16.0,
                   //I believe the size difference here is 6.0 to account padding

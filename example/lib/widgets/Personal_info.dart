@@ -249,7 +249,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomBirthdayPicker(
                                 label: '${LanguageTr.lg[user.language]["birthdate"]}',
-                                controller: address.evendatecontroller,
+                                controller: user.birthday,
                               ),
                             ),
                             SizedBox(height: _mediaQuery * 0.07),
