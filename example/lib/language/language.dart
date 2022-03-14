@@ -5,6 +5,8 @@ class LanguageTr {
 
 
     "ar": {
+
+      "Credit card Deleted":"",
       "Event Planning":"تخطيط لحدث",
       "Get Started": "ابدأ الأن",
       "Email": "البريد الالكتروني",
@@ -231,6 +233,8 @@ class LanguageTr {
       "Bill sharing":"تقاسم الفاتورة",
       "Donate":"تبرّع",
       "Sorry! We are fully booked.":" أسفون، الحجز كامل.",
+      "Are you sure do you want to delete this card?":"هل أنت متأكد أنك تريد حذف هذه البطاقة؟",
+      "Credit card cannot be deleted":"",
 
 
 
@@ -241,6 +245,13 @@ class LanguageTr {
 
 
     "en": {
+     " Credit card cannot be deleted":"Credit card cannot be deleted",
+      "Passwords don't match":"Passwords don't match",
+      "Credit card Deleted":"Credit card Deleted",
+      "Address added":"Address added",
+      "Are you sure do you want to delete this card?":"Are you sure do you want to delete this card?",
+      "Failed to add address":"Failed to add address",
+      "Title can't be empty":"Title can't be empty",
       "Sorry! We are fully booked.":"Sorry! We are fully booked.",
       "Bill sharing":"Bill sharing",
       "qty":"qty",

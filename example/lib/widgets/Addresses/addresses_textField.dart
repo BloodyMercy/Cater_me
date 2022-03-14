@@ -79,7 +79,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return '${LanguageTr.lg[user.language][ "Title can't be empty"]}';
+                              return '${LanguageTr.lg[user.language]["Title can't be empty"]}';
                             } else
                               return null;
                           },
@@ -492,12 +492,12 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content: Text(
-                                                  '${LanguageTr.lg[user.language][" Failed to add address"]}',)));
+                                                  '${LanguageTr.lg[user.language]["Failed to add address"]}',)));
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text('${LanguageTr.lg[user.language][ "Address added"]}',)));
+                                                    Text('${LanguageTr.lg[user.language]["Address added"]}',)));
                                         // await  Future.delayed(Duration(seconds: 2));
                                         Navigator.of(context).pop();
                                         Navigator.of(context).pop();
@@ -511,7 +511,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text('${LanguageTr.lg[user.language][ "updated done"]}',)));
+                                                    Text('${LanguageTr.lg[user.language]["updated done"]}',)));
                                         //   await  Future.delayed(Duration(seconds: 2));
                                         Navigator.of(context)
                                             .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
@@ -523,7 +523,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content:
-                                                    Text('${LanguageTr.lg[user.language][ "Updated failed"]}',)));
+                                                    Text('${LanguageTr.lg[user.language]["Updated failed"]}',)));
                                         // Navigator.of(context).pop();
                                       }
                                     }
@@ -534,7 +534,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                               },
                               child: Text(
-                                '${LanguageTr.lg[user.language][ "Next"]}',
+                                '${LanguageTr.lg[user.language]["Next"]}',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                               style: ElevatedButton.styleFrom(

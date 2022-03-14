@@ -13,7 +13,7 @@ class Greeting extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     const double fontSize = 33;
     const String fontFamily = 'Berlin Sans FB';
-    userprovider.name.text="ahmad rifai";
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(

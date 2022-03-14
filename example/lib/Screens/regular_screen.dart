@@ -233,6 +233,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
+                              // child: CustomDatePickerFormField(
+                              //   label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
+                              //   controller: address.evendatecontroller,
+                              // ),
                               child: CustomDatePickerFormField(
                                 label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
                                 controller: address.evendatecontroller,

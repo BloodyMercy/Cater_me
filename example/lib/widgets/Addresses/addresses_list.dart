@@ -71,7 +71,7 @@ class _AddressesListState extends State<AddressesList> {
     _value = orderprovider.valueIndex;
     print(_value);
     SharedPreferences sh=await SharedPreferences.getInstance();
-     (sh.getString("locale"));
+
 
      setState(() {
        language = sh.getString("locale");
@@ -296,7 +296,7 @@ class _AddressesListState extends State<AddressesList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '${LanguageTr.lg[authProvider.language][ "Add an Address"]}',
+                            '${LanguageTr.lg[authProvider.language]["Add an Address"]}',
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Color(0xFF3F5521),

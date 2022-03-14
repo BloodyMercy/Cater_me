@@ -118,14 +118,14 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                       onPressed: () {
                                         _creditCards.valueIndex = i;
                                         showDialog(context: context, builder: (BuildContext context){
-                                          return CustomDialog(title:'${LanguageTr.lg[authProvider.language][ "Delete Credit Card"]}', description: '${LanguageTr.lg[authProvider.language][ "Are you sure do you want to delete this card"]}', button1: ElevatedButton(onPressed:  () async{
+                                          return CustomDialog(title:'${LanguageTr.lg[authProvider.language][ "Delete Credit Card"]}', description: '${LanguageTr.lg[authProvider.language]["Are you sure do you want to delete this card?"]}', button1: ElevatedButton(onPressed:  () async{
                                             _creditCards.loading=true;
                                             _creditCards.notifyListeners();
                                             Navigator.pop(context);
                                             var delete = await  _creditCards.deleteCard(_creditCards.list[i].id);
                                             if(delete=="deleted"){
                                               _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                                  content: Text('${LanguageTr.lg[authProvider.language]['Credit card Deleted']}'),
+                                                  content: Text('${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'),
 
                                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                 //   content: Text('Address Deleted'),
@@ -143,12 +143,12 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                             await _creditCards.getAllCards();
                                             _creditCards.loading=false;
                                             _creditCards.notifyListeners();
-                                          },child: Text('${LanguageTr.lg[authProvider.language]['yes']}'),), oneOrtwo: true,button2:  ElevatedButton(
+                                          },child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'),), oneOrtwo: true,button2:  ElevatedButton(
                                               onPressed: () {
                                                 Navigator.pop(context);
 
                                               },
-                                              child: Text('${LanguageTr.lg[authProvider.language]['NO']}'
+                                              child: Text('${LanguageTr.lg[authProvider.language]["No"]}'
                                                   )),);
                                         });
 
