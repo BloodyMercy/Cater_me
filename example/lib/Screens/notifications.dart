@@ -107,10 +107,10 @@ String language;
                   ),
                 )
               : allNotification.notificationlist.length == 0? authProvider.status == Status.Authenticated
-                  ? Center(child: language=="en" ?Image.asset('images/nonotificationyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png'))
+                  ? Center(child: language=="en" ?Image.asset('images/nonotificationyet.png',fit:BoxFit.contain):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png',fit:BoxFit.contain))
               : Column(
             children: [
-              language=="en" ?Image.asset('images/nonotificationyet.png'):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png'),
+              language=="en" ?Image.asset('images/nonotificationyet.png',fit:BoxFit.contain):Image.asset('images/no address yetعربي/no addresses yetبالعربي-08.png',fit:BoxFit.contain),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(

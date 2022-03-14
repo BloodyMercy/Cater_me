@@ -28,7 +28,7 @@ class _OrderReceivedState extends State<OrderReceived> {
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: language=="en"?Image.asset("images/orderrecieved.png"):Image.asset("images/order tracking/1.png"));
+    return Center(child: language=="en"?Image.asset("images/orderrecieved.png",fit:BoxFit.contain,height: MediaQuery.of(context).size.height*0.75):Image.asset("images/order tracking/1.png",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,
