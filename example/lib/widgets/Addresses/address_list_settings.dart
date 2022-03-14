@@ -49,6 +49,7 @@ super.initState();
     final address=Provider.of<AdressProvider>(context,listen: true);
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
+
     return Container(
 
       height: _mediaQuery * 0.87,
@@ -155,7 +156,7 @@ super.initState();
                                                    return WillPopScope(
                                                      // onWillPop: () => Future<bool>.value(false),
                                                        child: AlertDialog(
-                                                         title: Text("Loading...",style: TextStyle(color: colorCustom),),
+                                                         title: Text("'${LanguageTr.lg[user.language]["Loading"]}'",style: TextStyle(color: colorCustom),),
                                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
                                                        ));
                                                  },
