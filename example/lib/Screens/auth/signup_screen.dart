@@ -228,7 +228,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Icons.camera,
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
-                              title:  Text(
+                              title: Text(
                                 '${LanguageTr.lg[authProvider.language]["Camera"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
@@ -246,7 +246,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Icons.image,
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
-                              title:  Text(
+                              title: Text(
                                 '${LanguageTr.lg[authProvider.language]["Gallery"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
@@ -290,16 +290,17 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
-                                    bottom: screenHeight * 0.025,
-                                    top: screenHeight * 0.025),
+                                  left: screenHeight * 0.03,
+                                  bottom: screenHeight * 0.025,
+                                  top: screenHeight * 0.025,
+                                ),
                                 hintText:
                                     '${LanguageTr.lg[authProvider.language]["Name"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText:  '${LanguageTr.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a valid Name'),
                               ]),
                               keyboardType: TextInputType.emailAddress,
@@ -330,8 +331,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.email,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
-                                EmailValidator(errorText: 'Not a valid email'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
+                                EmailValidator(errorText: '${LanguageTr.lg[authProvider.language]["Not a valid email"]}',),
                               ]),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -421,9 +422,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.confirmpassword,
                               validator: (val) {
-                                if (val.isEmpty) return 'Confirm Password';
+                                if (val.isEmpty) return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
                                 if (val != authProvider.password.text)
-                                  return 'Passwords do not match';
+                                  return '${LanguageTr.lg[authProvider.language]["Password dosen't match"]}';
                                 return null;
                               },
                               keyboardType: TextInputType.visiblePassword,
@@ -453,7 +454,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.phoneNumber,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a Phone number'),
                               ]),
                               keyboardType: TextInputType.phone,
@@ -651,7 +652,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                         Center(
+                        Center(
                           child: FittedBox(
                             child: Text(
                               '${LanguageTr.lg[authProvider.language]["Already have an account?"]}',
@@ -664,7 +665,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                         ),
                         InkWell(
-                          child:  FittedBox(
+                          child: FittedBox(
                             child: Text(
                               '${LanguageTr.lg[authProvider.language]["Log In"]}',
                               style: TextStyle(
