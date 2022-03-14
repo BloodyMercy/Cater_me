@@ -134,9 +134,9 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: Colors.red,
                                 ),
                               ),
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.01),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -191,9 +191,9 @@ class _AccountInfoState extends State<AccountInfo> {
                                     color: Colors.red,
                                   ),
                                 ),
-                                contentPadding: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width *
-                                        0.04),
+                                // contentPadding: EdgeInsets.only(
+                                //     left: MediaQuery.of(context).size.width *
+                                //         0.01),
                                 alignLabelWithHint: true,
                                 labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -245,9 +245,9 @@ class _AccountInfoState extends State<AccountInfo> {
                                   color: Colors.red,
                                 ),
                               ),
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.01),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,

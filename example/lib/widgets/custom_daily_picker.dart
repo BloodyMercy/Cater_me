@@ -83,8 +83,8 @@ _hourFormatlang = DateFormat('h:mm a',widget.lang);
 suffixIcon: Icon(Icons.keyboard_arrow_down_sharp, size: 20,),
 
 
-              contentPadding:
-              EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+              // contentPadding:
+              // EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
 
               alignLabelWithHint: true,
               labelStyle: TextStyle(
