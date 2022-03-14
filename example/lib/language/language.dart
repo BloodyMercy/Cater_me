@@ -205,7 +205,7 @@ class LanguageTr {
       "try again":"حاول مجددا",
       "please add a package":"الرجاء اضافة حزمة ",
 
-      "Choose the friends you want to share the order with.":"اختر الأصقاء لشاركتهم طلبك",
+      "Choose the friends you want to share the order with.":"اختر الاصدقاء الذين تريد مشاركة الطلب معهم",
       "No freind to share":"لا يوجد صديق للمشاركة",
       "Add Friend":"أضف صديق",
       "How would you like to pay ?":"كيف تريد الدفع؟ ",
@@ -236,7 +236,9 @@ class LanguageTr {
       "Sorry! We are fully booked.":" أسفون، الحجز كامل.",
       "Are you sure do you want to delete this card?":"هل أنت متأكد أنك تريد حذف هذه البطاقة؟",
       "Credit card cannot be deleted":"لا يمكن حذف بطاقة الائتمان",
+      "VAT  311085799400003":"ق.ض.م    311085799400003",
       "Card Holder":"حامل البطاقة",
+      "VALID THRU":"صالح لغاية",
 
 
 
@@ -471,6 +473,7 @@ class LanguageTr {
       "Do you want to donate the rest of your food?":"Do you want to donate the rest of your food?",
       "extra services":"extra services",
       "Donate":"Donate",
+      "VAT  311085799400003":"VAT  311085799400003",
 
 
 }

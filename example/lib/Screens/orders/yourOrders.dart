@@ -94,7 +94,7 @@ class _YourOrdersState extends State<YourOrders> {
                                     ? Image.asset('images/noorderyet.png')
                                     : Image.asset(
                                         'images/no address yetعربي/no addresses yetبالعربي-09.png'))
-                            : Column(
+                            : Column(mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   language == "en"
                                       ? Image.asset('images/noorderyet.png')

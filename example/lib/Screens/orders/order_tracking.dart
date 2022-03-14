@@ -48,14 +48,16 @@ class _TrackingOrderState extends State<TrackingOrder> {
       body: SafeArea(
         child: loading
             ? SingleChildScrollView(
-              child: Container(
-                  color: LightColors.kLightYellow,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF3F5521),
+              child: Center(
+                child: Container(
+                    color: LightColors.kLightYellow,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xFF3F5521),
+                      ),
                     ),
                   ),
-                ),
+              ),
             )
             : Column(
               children: [

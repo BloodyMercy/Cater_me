@@ -171,7 +171,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
           child: CustomScrollView(slivers: <Widget>[
             SliverToBoxAdapter(
                 child: Center(
-                    child: Text("VAT  311085799400003",
+                    child: Text('${LanguageTr.lg[authProvider.language]["VAT  311085799400003"]}',
+
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.black)))),
@@ -293,7 +294,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             Padding(
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Text(
-                                details.listFriend.length > 0
+                              frnd.listFriends.length > 0
                                     ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
 
                                     :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
@@ -306,7 +307,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             SizedBox(
                               height: mediaQuery.size.height * 0.02,
                             ),
-                            TextButton(
+                            frnd.listFriends.length > 0?  TextButton(
                               onPressed: () {
                                 _startAddNewFriend(context);
                               },
@@ -317,7 +318,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 fontFamily: 'BerlinSansFB',
                                 ),
                               ),
-                            )
+                            ):Container()
                           ],
                         ),
                       )

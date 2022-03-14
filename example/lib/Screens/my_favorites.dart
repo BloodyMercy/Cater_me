@@ -83,7 +83,7 @@ String language;
 
                   ? package.listfavorite.length == 0 ?authProvider.status== Status.Authenticated
                 ? Center(child: language=="en"?Image.asset("images/nofavorites.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-01.png"))
-                  : Column(
+                  : Column(mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   language=="en" ?Image.asset("images/nofavorites.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-01.png"),
                   ElevatedButton(

@@ -110,28 +110,30 @@ class _OccasionListViewState extends State<OccasionListView> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      occa.listoccasiontype[index].id == -700
-                                          ? Icon(
-                                              Icons.add,
-                                              size: 40,
-                                              color: colorCustom,
-                                            )
-                                          : Image.network(
-                                              occa.listoccasiontype[index]
-                                                  .image,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.2,
-                                            ),
-                                      Text(
-                                        occa.listoccasiontype[index].name,
-                                        style: TextStyle(fontSize: 18),
-                                      )
-                                    ],
+                                  Center(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        occa.listoccasiontype[index].id == -700
+                                            ? Icon(
+                                                Icons.add,
+                                                size: 40,
+                                                color: colorCustom,
+                                              )
+                                            : Image.network(
+                                                occa.listoccasiontype[index]
+                                                    .image,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.2,
+                                              ),
+                                        Text(
+                                          occa.listoccasiontype[index].name,
+                                          style: TextStyle(fontSize: 18),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -146,7 +148,7 @@ class _OccasionListViewState extends State<OccasionListView> {
             ),
             occa.all.length == 0
                 ? SliverToBoxAdapter(
-                    child: Column(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/nooccasionyetAR.png'),
                        authProvider.status==Status.Unauthenticated? ElevatedButton(onPressed: (){

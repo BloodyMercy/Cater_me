@@ -528,7 +528,7 @@ class _HomePageState extends State<HomePage> {
                     //items
                     Container(
                       color: LightColors.kLightYellow,
-                      height: mediaQuery.size.height / 1.2,
+                      height: mediaQuery.size.height / 1.35,
                       child: ListView.builder(
                         padding: const EdgeInsets.all(25),
                         itemCount: package.listItems.length,

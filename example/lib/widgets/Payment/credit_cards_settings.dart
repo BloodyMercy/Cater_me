@@ -168,12 +168,13 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                           fontSize: 21,
                                           fontFamily: 'CourrierPrime'),
                                     ),
+
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       _buildDetailsBlock(
-                                        label: '${LanguageTr.lg[authProvider.language]["Card Holder"]}',
+                                        label: '${LanguageTr.lg[authProvider.language]["CARDHOLDER"]}',
                                         value: _creditCards.list[i].ownerName,
                                       ),
                                       _buildDetailsBlock(label:  '${LanguageTr.lg[authProvider.language]["VALID THRU"]}',
