@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   contentPadding: EdgeInsets.only(
                                       left: MediaQuery.of(context).size.width *
-                                          0.04),
+                                          0.01),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
                                       fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -154,7 +154,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
-                              keyboardType: TextInputType.emailAddress),
+                              keyboardType: TextInputType.emailAddress
+                          ),
+
+
                           SizedBox(
                             height: screenHeight * 0.015,
                           ),
@@ -176,6 +179,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       passObscure = !passObscure;
                                     });
                                   },
+
+
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
@@ -191,7 +196,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 contentPadding: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width *
-                                        0.04),
+                                        0.01),
+
                                 alignLabelWithHint: true,
                                 labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
