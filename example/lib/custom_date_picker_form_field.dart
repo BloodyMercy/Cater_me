@@ -130,8 +130,8 @@ TextEditingController lol =TextEditingController();
                 Icons.keyboard_arrow_down_sharp,
                 size: 20,
               ),
-              contentPadding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.04),
+              // contentPadding: EdgeInsets.only(
+              //     left: MediaQuery.of(context).size.width * 0.01),
               alignLabelWithHint: true,
               labelStyle: TextStyle(
                   fontSize: focusNode.hasFocus ? 18 : 16.0,

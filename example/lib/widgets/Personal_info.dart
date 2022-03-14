@@ -106,7 +106,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   prefixIcon: Icon(Icons.person),
                                   contentPadding: EdgeInsets.only(
                                       left: MediaQuery.of(context).size.width *
-                                          0.04),
+                                          0.01),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -153,7 +153,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   prefixIcon: Icon(Icons.mail_outline),
                                   contentPadding: EdgeInsets.only(
                                       left: MediaQuery.of(context).size.width *
-                                          0.04),
+                                          0.01),
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -203,7 +203,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                 prefixIcon: Icon(Icons.phone),
                                 contentPadding: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width *
-                                        0.04),
+                                        0.01),
                                 alignLabelWithHint: true,
                                 labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
