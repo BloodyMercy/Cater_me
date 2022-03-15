@@ -307,7 +307,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             SizedBox(
                               height: mediaQuery.size.height * 0.02,
                             ),
-                            frnd.listFriends.length > 0?  TextButton(
+                            TextButton(
                               onPressed: () {
                                 _startAddNewFriend(context);
                               },
@@ -318,7 +318,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 fontFamily: 'BerlinSansFB',
                                 ),
                               ),
-                            ):Container()
+                            )
                           ],
                         ),
                       )

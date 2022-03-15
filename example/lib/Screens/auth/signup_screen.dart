@@ -13,6 +13,7 @@ import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../SplachScreen.dart';
 import '../../language/language.dart';
 import '../occasion/theme/colors/light_colors.dart';
 
@@ -602,11 +603,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                   setState(() {
                                     _loading = false;
                                   });
-                                  Navigator.push(
+                                  Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Greeting(),
+                                      builder: (context) => SplashScreen(),
                                     ),
+                                          (Route<dynamic> route) => false
                                   );
                                 } else {
                                   setState(() {

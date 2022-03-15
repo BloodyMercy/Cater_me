@@ -48,7 +48,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
 
   getData() async {
     SharedPreferences sh = await SharedPreferences.getInstance();
-    (sh.getString("locale"));
+   /// (sh.getString("locale"));
     setState(() {
       language = sh.getString("locale");
     });
@@ -126,7 +126,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               Spacer(
                 flex: 1,
               ),
-              Container(
+            authProvider.language=="en"?  Container(
                 // width: MediaQuery.of(context).size.width / 4,
                   height: MediaQuery
                       .of(context)
@@ -134,19 +134,37 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       .height / 2,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: language == "en"
-                          ? _serpres.serviceId != 1
+                      image:  _serpres.serviceId != 1
 
-                          ? AssetImage('images/orderTracking/sammdaberni.png')
-                          : AssetImage('images/orderTracking/sammcaterme.png')
-                          :  _serpres.serviceId != 1
-                          ? AssetImage('images/samarabic.png')
-                          : AssetImage('images/samarabic.png'),
+                          ? AssetImage('images/orderTracking/sammcaterme.png')
+                          : AssetImage('images/orderTracking/sammcaterme.png'),
+                          // :  _serpres.serviceId != 1
+                          // ? AssetImage('images/samarabic.png')
+                          // : AssetImage('images/samarabic.png'),
                       fit: BoxFit.contain,
                     ),
                     borderRadius: BorderRadius.circular(50),
                   ),
+              ): Container(
+              // width: MediaQuery.of(context).size.width / 4,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 2,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image:  _serpres.serviceId != 1
+
+                      // ? AssetImage('images/orderTracking/sammcaterme.png')
+                      // : AssetImage('images/orderTracking/sammcaterme.png'),
+                  // :  _serpres.serviceId != 1
+                  ? AssetImage('images/samarabic.png')
+                  : AssetImage('images/samarabic.png'),
+                  fit: BoxFit.contain,
+                ),
+                borderRadius: BorderRadius.circular(50),
               ),
+            ),
               Container(
                 padding: EdgeInsets.symmetric(
                     vertical: MediaQuery

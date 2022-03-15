@@ -878,9 +878,12 @@ class _TABBarState extends State<TABBar> {
                                                     .clearAllTextController();
                                                 bool a = sharedPreferences
                                                     .getBool("startintro");
+                                                bool aw = sharedPreferences
+                                                    .getBool("wlkdone");
                                                 sharedPreferences.clear();
                                                 sharedPreferences.setBool(
                                                     "startintro", a);
+                                                sharedPreferences.setBool("wlkdone",aw);
 
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(

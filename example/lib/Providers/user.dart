@@ -85,7 +85,7 @@ class UserProvider with ChangeNotifier {
     _birthDate = value;
   }
 
-  Status _status=Status.Unauthenticated;
+  Status _status=Status.walkingpage;
 
 
   Status get status => _status;
@@ -145,11 +145,15 @@ language=sh.getString("locale")??"en";
       notifyListeners();
     }
 
-   else if(sh.getBool("wlkdone")??false){
+   else if(!(sh.getBool("wlkdone")??false)){
 
-      _status=Status.Unauthenticated;
+      _status=Status.walkingpage;
       notifyListeners();
 
+    }
+   else{
+      _status=Status.Authenticated;
+      notifyListeners();
     }
 
 
@@ -205,6 +209,7 @@ language=sh.getString("locale")??"en";
       );
       getdata();
       _messageSignUp = u.message;
+      status=Status.Authenticated;
 
       notifyListeners();
       return u.response;
