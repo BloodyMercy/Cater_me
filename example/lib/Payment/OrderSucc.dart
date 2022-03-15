@@ -118,7 +118,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   image: DecorationImage(
                       image: _serpres.serviceId != 1
                           ? language=="en" ?AssetImage('images/orderTracking/sammdaberni.png')
-                         :AssetImage('images/samarabic.png') : AssetImage('images/orderTracking/sammcaterme.png'),
+                         :AssetImage('images/orderTracking/sammdaberni.png') : AssetImage('images/orderTracking/sammcaterme.png'),
                       fit: BoxFit.contain),
                   borderRadius: BorderRadius.circular(50),
                 ),

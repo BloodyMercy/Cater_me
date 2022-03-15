@@ -69,7 +69,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
                 orderStatus.orderStatus.statusId == 4
                     ?  OrderOnTheWay()
                     : Container(),
-                orderStatus.orderStatus.statusId == 6
+                orderStatus.orderStatus.statusId == 2
                     ? OrderReceived()
                     : Container(),
                 orderStatus.orderStatus.statusId == 1
@@ -78,7 +78,7 @@ class _TrackingOrderState extends State<TrackingOrder> {
                 orderStatus.orderStatus.statusId == 5
                     ? OrderDelivered()
                     : Container(),
-                orderStatus.orderStatus.statusId == 5?
+                orderStatus.orderStatus.statusId == 6?
 
                 OrderCancel():Container(),
 
