@@ -466,13 +466,42 @@ class _OrderState extends State<Order> {
                                                         orderProvider.spets);
                                                   }
                                                   else{
-                                                    _key.currentState
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
-                                                        ),
-                                                      ),
-                                                    );}
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) {
+                                                          return CustomDialog(
+                                                            title:
+                                                            '${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                            description: "",
+                                                            oneOrtwo: true,
+                                                            // button2: ElevatedButton(
+                                                            //   onPressed: () {},
+                                                            //   child: Text(
+                                                            //     '${LanguageTr.lg[authProvider.language]["Logout"]}',
+                                                            //     style: TextStyle(
+                                                            //         fontFamily: 'BerlinSansFB'),
+                                                            //   ),
+                                                            // ),
+                                                            button1: ElevatedButton(
+                                                              onPressed: () {
+                                                                Navigator.of(context).pop();
+                                                              },
+                                                              child: Text(
+                                                                  '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                      'BerlinSansFB')),
+                                                            ),
+                                                          );
+                                                        });
+                                                  }
+                                                    // _key.currentState
+                                                    //     .showSnackBar(
+                                                    //   SnackBar(
+                                                    //     content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                    //     ),
+                                                    //   ),
+                                                    // );}
                                                 }
                                               } else if (orderProvider.spets ==
                                                   3) {
