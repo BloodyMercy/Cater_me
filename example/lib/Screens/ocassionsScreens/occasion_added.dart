@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/address.dart';
+import '../../Providers/occasion.dart';
 import '../../Providers/order_provider.dart';
 import '../../Providers/user.dart';
 import '../../language/language.dart';
@@ -52,7 +53,14 @@ String language;
             padding: const EdgeInsets.only(top: 27,left: 15),
             child: Align(alignment: Alignment.topLeft,
                 child: IconButton(onPressed:(){
-                  Navigator.of(context).pop(); }
+                  final occasion = Provider.of<OccasionProvider>(context, listen: false);
+
+                  occasion.nameofoccasioncontroller.text="";
+                  occasion.typeofoccasioncontroller.text="";
+                  occasion.datechosencontroller.text="";
+
+                  Navigator.of(context).pop();
+                  }
                  , icon: Icon(Icons.close),color:colorCustom,)),
           ),
           // SizedBox(
@@ -120,6 +128,7 @@ String language;
               address
                   .evendatecontroller
                   .text=widget.text2;
+              address.evendatelancontroller.text=widget.text2;
               setState(() {
 
               });

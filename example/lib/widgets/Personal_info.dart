@@ -250,7 +250,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               child: CustomBirthdayPicker(
                                 label: '${LanguageTr.lg[user.language]["birthdate"]}',
                                 controller: user.birthday,
-                                controllerlan: user.birthday,
+                                controllerlan: user.birthdaylan,
                                 lan: user.language,
                               ),
                             ),

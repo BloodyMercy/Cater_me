@@ -31,6 +31,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController name = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController birthday = TextEditingController();
+  TextEditingController birthdaylan = TextEditingController();
   TextEditingController gender = TextEditingController();
   TextEditingController zipcode = TextEditingController();
   TextEditingController cityname = TextEditingController();
@@ -104,8 +105,12 @@ class UserProvider with ChangeNotifier {
     phoneNumber.text=_personalInfo.phoneNumber;
     birthDate=_personalInfo.birthDate;
     //birthday.text=_personalInfo.birthDate;
-    if(_personalInfo.birthDate!="")
-    birthday.text= DateFormat("dd-MM-yyyy").format(DateTime.parse(_personalInfo.birthDate));
+    if(_personalInfo.birthDate!="") {
+      birthday.text = DateFormat("dd-MM-yyyy").format(
+          DateTime.parse(_personalInfo.birthDate));
+      birthdaylan.text = DateFormat("dd-MM-yyyy").format(
+          DateTime.parse(_personalInfo.birthDate));
+    }
     imageUrl=_personalInfo.imageUrl;
     notifyListeners();
   }
@@ -276,7 +281,7 @@ imageUrl=u.message;
         name.text.toString(),
         email.text.toString(),
         phoneNumber.text.toString(),
-        _birthDate
+        birthday.text
       );
       _messageUpdateInfo = msg.message;
       notifyListeners();

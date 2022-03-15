@@ -202,7 +202,7 @@ await occasion.getAllOccasionType(sh.getString("locale"));
 
                                     );  }
                                   else {
-                                    occasion.cleardata();
+                                   // occasion.cleardata();
                                     SharedPreferences sh=await SharedPreferences.getInstance();
 
                                     await occasion.getallnewoccasion(sh.getString("locale"));
