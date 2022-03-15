@@ -196,7 +196,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '${DateFormat.MMM().format(DateTime.parse(occa.all[index].date))}',
+                                        '${DateFormat.MMM(authProvider.language).format(DateTime.parse(occa.all[index].date))}',
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 30,

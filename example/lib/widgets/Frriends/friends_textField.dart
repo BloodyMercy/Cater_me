@@ -80,8 +80,8 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       //  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                left: mediaQuery.size.width * 0.04),
+                            // contentPadding: EdgeInsets.only(
+                            //     left: mediaQuery.size.width * 0.04),
                             alignLabelWithHint: true,
                             labelStyle: TextStyle(
                                 fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -139,8 +139,8 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 borderSide:  BorderSide(
                                   color: redColor,
                                 )),
-                            contentPadding: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width * 0.04),
+                            // contentPadding: EdgeInsets.only(
+                            //     left: MediaQuery.of(context).size.width * 0.04),
                             alignLabelWithHint: true,
                             labelStyle: TextStyle(
                                 fontSize: focusnode.hasFocus ? 18 : 16.0,

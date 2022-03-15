@@ -87,9 +87,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           controller: adress.addresstitlecontroller,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -152,9 +152,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           enabled: false,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                  MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //     MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -211,9 +211,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           controller: adress.citycontroller,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                  MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //     MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -274,9 +274,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           controller: adress.streetcontroller,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -346,9 +346,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           controller: adress.buildingcontroller,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -418,9 +418,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           controller: adress.floornumbercontroller,
                           // focusNode: focusNode,
                           decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(
-                                  left:
-                                      MediaQuery.of(context).size.width * 0.04),
+                              // contentPadding: EdgeInsets.only(
+                              //     left:
+                              //         MediaQuery.of(context).size.width * 0.04),
                               alignLabelWithHint: true,
                               labelStyle: TextStyle(
                                   fontSize: focusNode.hasFocus ? 18 : 16.0,

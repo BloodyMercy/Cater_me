@@ -86,8 +86,8 @@ readOnly: widget.read,
 
 
 
-                contentPadding:
-                EdgeInsets.only(left: mediaQuery.size.width * 0.04),
+                // contentPadding:
+                // EdgeInsets.only(left: mediaQuery.size.width * 0.04),
 
               alignLabelWithHint: true,
               labelStyle: TextStyle(

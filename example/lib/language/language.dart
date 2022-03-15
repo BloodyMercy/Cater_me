@@ -239,7 +239,8 @@ class LanguageTr {
       "VAT  311085799400003":"ق.ض.م    311085799400003",
       "Card Holder":"حامل البطاقة",
       "VALID THRU":"صالح لغاية",
-      "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا"
+      "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا"    ,
+      "Your food is donated":"تم التبرع بالطعام الخاص بك",
 
 "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا",
 
@@ -477,6 +478,7 @@ class LanguageTr {
       "extra services":"extra services",
       "Donate":"Donate",
       "VAT  311085799400003":"VAT  311085799400003",
+      "Your food is donated":"Your food is donated",
 
 
 }

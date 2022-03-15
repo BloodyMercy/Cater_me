@@ -1,6 +1,9 @@
 import 'package:CaterMe/model/occasion.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
 
 class OccasionsCard extends StatelessWidget {
   Occasion occasions;
@@ -9,6 +12,8 @@ class OccasionsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     return Column(children: [
       SizedBox(
         width: mediaQuery.size.width * 0.8,
@@ -35,12 +40,12 @@ class OccasionsCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '${DateFormat.MMM().format(DateTime.parse(this.occasions.date))}',
+                          '${DateFormat.MMM(authProvider.language).format(DateTime.parse(this.occasions.date))}',
                           style: const TextStyle(
                               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                            '${DateFormat.d().format(DateTime.parse(this.occasions.date))}',
+                            '${DateFormat.d(authProvider.language).format(DateTime.parse(this.occasions.date))}',
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold))
                       ],

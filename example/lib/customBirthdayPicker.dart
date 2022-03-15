@@ -7,9 +7,11 @@ import 'Screens/occasion/theme/colors/light_colors.dart';
 
 class CustomBirthdayPicker extends StatefulWidget {
   String label;
+  String lan;
   TextEditingController controller = TextEditingController();
+  TextEditingController controllerlan = TextEditingController();
 
-  CustomBirthdayPicker({this.label, this.controller});
+  CustomBirthdayPicker({this.label,this.lan, this.controller,this.controllerlan});
 
   @override
   State<CustomBirthdayPicker> createState() => _CustomBirthdayPicker();
@@ -18,6 +20,7 @@ class CustomBirthdayPicker extends StatefulWidget {
 class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
   FocusNode _focusNode = FocusNode();
   DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
+  DateFormat _dateFormatlan = DateFormat('yyyy-MM-dd');
   DateFormat _monthFormat = DateFormat('MMMM');
   DateFormat _yearFormat = DateFormat('yyyy');
   DateFormat _dayFormat = DateFormat('dd');
@@ -32,6 +35,7 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
     // TODO: implement initState
     super.initState();
     _chosenDate = DateTime.now();
+    _dateFormatlan = DateFormat.yMMMd(widget.lan);
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
     _chosenDay = _dayFormat.format(_chosenDate);
@@ -39,35 +43,39 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
 
   @override
   void showPicker(ctx) {
-    DatePicker.showDatePicker(
+    showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
 
-      ctx,
-      onMonthChangeStartWithFirstDate: true,
-      pickerTheme: DateTimePickerTheme(
-        showTitle: false,
-        backgroundColor: LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color: Color(0xFF3F5521),
-        ),
-      ),
-      initialDateTime: _chosenDate,
-     maxDateTime: DateTime.now(),
-      minDateTime: DateTime(1950),
-      dateFormat: 'MMMM-yyyy-dd',
-      onClose: () {},
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(
-          () {
-            _chosenDate = dateTime;
-            _chosenDay = _dayFormat.format(dateTime);
-            _chosenMonth = _monthFormat.format(dateTime);
-            _chosenYear = _yearFormat.format(dateTime);
-            widget.controller.text = _dateFormat.format(dateTime);
-          },
-        );
-      },
-    );
+                maximumYear:DateTime.now().year,
+
+
+                //maximumDate: DateTime(DateTime.now().year+1),
+
+                onDateTimeChanged: (value) {
+                  // _chosenDate = dateTime;
+                  // _chosenDay = _dayFormat.format(dateTime);
+                  // _chosenMonth = _monthFormat.format(dateTime);
+                  // _chosenYear = _yearFormat.format(dateTime);
+                  // widget.controller.text = _dateFormat.format(dateTime);
+                  // lol.text=alpha.format(dateTime);
+                 // _chosenDate=value;
+                  widget.controller.text=_dateFormat.format(value).toString();
+                  widget.controllerlan.text=_dateFormatlan.format(value).toString();
+                },
+                initialDateTime: DateTime.now(),
+              ));
+        });
   }
 
   @override
@@ -78,7 +86,7 @@ class _CustomBirthdayPicker extends State<CustomBirthdayPicker> {
          // padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
-          controller: widget.controller,
+          controller: widget.controllerlan,
           focusNode: focusNode,
           onTap: () {
             showPicker(context);

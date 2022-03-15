@@ -299,8 +299,8 @@ getData() async {
                                   ? Center(
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "Your food is donated",
+                                        child: Text("${LanguageTr.lg[authProvider.language]["Your food is donated"]}",
+
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline1

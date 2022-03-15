@@ -221,6 +221,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                       color: Color(0xFF3F5521),
                                     ))),
                             controller: user.password1,
+                            obscureText: true,
                             validator: validatePass,
 
                             autovalidateMode:

@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   bool isSearch = false;
 
   Intro intro;
+ // String language="";
 
   @override
   void initState() {
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> {
   List<String> listitemssearch = [];
 
   Future refreshdata() async {
+
     final package = Provider.of<PackagesProvider>(context, listen: false);
     //package.loading=false;
     // package.loading = false;
@@ -64,10 +66,13 @@ class _HomePageState extends State<HomePage> {
   TextEditingController controllersearch = TextEditingController();
 
   getalldata() async {
+    SharedPreferences sh=await SharedPreferences.getInstance();
+
+
     final package = Provider.of<PackagesProvider>(context, listen: false);
    // await package.cleardata();
   // package.loading = false;
-    SharedPreferences sh=await SharedPreferences.getInstance();
+  //  SharedPreferences sh=await SharedPreferences.getInstance();
 
   await package.getallpacakges(context, sh.getString("locale"));
   package.loading = true;
@@ -311,7 +316,7 @@ class _HomePageState extends State<HomePage> {
                                                         children: [
                                                           Text(
 
-                                                            DateFormat.MMM()
+                                                            DateFormat.MMM(authProvider.language)
                                                                 .format(DateTime
                                                                     .now()),
                                                             style: const TextStyle(
@@ -323,7 +328,7 @@ class _HomePageState extends State<HomePage> {
                                                                         .bold),
                                                           ),
                                                           Text(
-                                                              DateFormat.d()
+                                                              DateFormat.d(authProvider.language)
                                                                   .format(DateTime
                                                                       .now()),
                                                               style: const TextStyle(

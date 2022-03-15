@@ -250,6 +250,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               child: CustomBirthdayPicker(
                                 label: '${LanguageTr.lg[user.language]["birthdate"]}',
                                 controller: user.birthday,
+                                controllerlan: user.birthday,
+                                lan: user.language,
                               ),
                             ),
                             SizedBox(height: _mediaQuery * 0.07),

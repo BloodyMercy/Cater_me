@@ -138,6 +138,8 @@ class _NavigationBarState extends State<Navigationbar> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
+
     startinto();
  //   playaudio();
     inAppMessaging(context,SplashScreen());
