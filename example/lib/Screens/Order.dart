@@ -20,6 +20,7 @@ import '../Providers/orderById_provider.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
 import 'Addons/orderpages/steps.dart';
+import 'CustomAlert3/CustomAlert3.dart';
 
 
 class Order extends StatefulWidget {
@@ -469,29 +470,31 @@ class _OrderState extends State<Order> {
                                                     showDialog(
                                                         context: context,
                                                         builder: (BuildContext context) {
-                                                          return CustomDialog(
+                                                          return CustomDialog3(
                                                             title:
                                                             '${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
                                                             description: "",
                                                             oneOrtwo: true,
-                                                            // button2: ElevatedButton(
-                                                            //   onPressed: () {},
-                                                            //   child: Text(
-                                                            //     '${LanguageTr.lg[authProvider.language]["Logout"]}',
-                                                            //     style: TextStyle(
-                                                            //         fontFamily: 'BerlinSansFB'),
-                                                            //   ),
-                                                            // ),
-                                                            button1: ElevatedButton(
+                                                            button2: ElevatedButton(
                                                               onPressed: () {
                                                                 Navigator.of(context).pop();
                                                               },
                                                               child: Text(
-                                                                  '${LanguageTr.lg[authProvider.language]["Close"]}',
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                      'BerlinSansFB')),
+                                                                '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                                style: TextStyle(
+                                                                    fontFamily: 'BerlinSansFB'),
+                                                              ),
                                                             ),
+                                                            // button1: ElevatedButton(
+                                                            //   onPressed: () {
+                                                            //     Navigator.of(context).pop();
+                                                            //   },
+                                                            //   child: Text(
+                                                            //       '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                            //       style: TextStyle(
+                                                            //           fontFamily:
+                                                            //           'BerlinSansFB')),
+                                                            // ),
                                                           );
                                                         });
                                                   }
