@@ -240,7 +240,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text("${LanguageTr.lg[authProvider.language]["SAR"]}${widget.food.price.toString()}",
+                            Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
