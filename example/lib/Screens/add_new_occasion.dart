@@ -172,10 +172,13 @@ await occasion.getAllOccasionType(sh.getString("locale"));
                                     occasion.nameofoccasioncontroller.text ==
                                         "") {
                                   _scaff.currentState.showSnackBar(
-                                    const SnackBar(
+                                     SnackBar(
                                       content:
-                                          Text("you cant add empty occasion"),
+                                          Text(            '${LanguageTr.lg[authProvider.language]["you can’t add an empty occasion"]}',
+                                          ),
                                     ),
+
+
                                   );
                                 } else {
                                   setState(() {
@@ -191,9 +194,10 @@ await occasion.getAllOccasionType(sh.getString("locale"));
                                         ispressed=false;
                                       });
                                     _scaff.currentState.showSnackBar(
-                                      const SnackBar(
+                                       SnackBar(
                                         content: Text(
-                                            "Please fill all the fields"),
+                                          '${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}',
+                                        ),
                                       ),
 
                                     );  }
