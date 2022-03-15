@@ -43,9 +43,11 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     playaudio();
     //  inAppMessaging(context,SplashScreen());
   }
+
   String language;
-  getData() async{
-    SharedPreferences sh=await SharedPreferences.getInstance();
+
+  getData() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
     (sh.getString("locale"));
     setState(() {
       language = sh.getString("locale");
@@ -62,7 +64,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
 
     _audioCache = AudioCache(
       prefix: 'audio/',
-      fixedPlayer: AudioPlayer()..setReleaseMode(ReleaseMode.STOP),
+      fixedPlayer: AudioPlayer()
+        ..setReleaseMode(ReleaseMode.STOP),
     );
     if (Platform.isIOS) {
       _audioCache.fixedPlayer?.notificationService.startHeadlessService();
@@ -77,14 +80,26 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     var screenHeight =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+        MediaQuery
+            .of(context)
+            .size
+            .height - MediaQuery
+            .of(context)
+            .padding
+            .top;
     final _serpres = Provider.of<OrderCaterProvider>(context, listen: true);
 
     final address = Provider.of<AdressProvider>(context, listen: true);
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Scaffold(
       key: _key,
       backgroundColor: Colors.transparent,
@@ -113,23 +128,38 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               ),
               Container(
                 // width: MediaQuery.of(context).size.width / 4,
-                height: MediaQuery.of(context).size.height / 2,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: _serpres.serviceId != 1
-                          ? language=="en" ?AssetImage('images/orderTracking/sammdaberni.png')
-                         :AssetImage('images/orderTracking/sammdaberni.png') : AssetImage('images/orderTracking/sammcaterme.png'),
-                      fit: BoxFit.contain),
-                  borderRadius: BorderRadius.circular(50),
-                ),
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height / 2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: language == "en"
+                          ? _serpres.serviceId != 1
+
+                          ? AssetImage('images/orderTracking/sammdaberni.png')
+                          : AssetImage('images/orderTracking/sammcaterme.png')
+                          :  _serpres.serviceId != 1
+                          ? AssetImage('images/samarabic.png')
+                          : AssetImage('images/samarabic.png'),
+                      fit: BoxFit.contain,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
               ),
               Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height / 50),
+                    vertical: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 50),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 22),
+                    horizontal: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 22),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -159,14 +189,21 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               //       vertical: MediaQuery.of(context).size.height * 0.020),
               // ),
               Container(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 20),
+                    horizontal: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${LanguageTr.lg[authProvider.language]["Order Details"]}',
+                      '${LanguageTr.lg[authProvider
+                          .language]["Order Details"]}',
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'BerlinSansFB',
@@ -177,11 +214,20 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               ),
               Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: MediaQuery.of(context).size.height / 100),
+                    vertical: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 100),
               ),
               Container(
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height / 4,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 1.1,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     //color: Color(0xff9FACBD),
@@ -189,7 +235,10 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                       color: Color(0xff9FACBD),
                     )),
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 25),
+                    horizontal: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 25),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,13 +273,19 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     ),
                     _serpres.serviceId == 1
                         ? Image.asset(
-                            ('images/CaterMe.png'),
-                            height: MediaQuery.of(context).size.height * 0.04,
-                          )
+                      ('images/CaterMe.png'),
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.04,
+                    )
                         : Image.asset(
-                            'images/daberneLogo.png',
-                            height: MediaQuery.of(context).size.height * 0.05,
-                          ),
+                      'images/daberneLogo.png',
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.05,
+                    ),
                   ],
                 ),
               ),
@@ -239,10 +294,12 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   width: width,
                   height: height / 13,
                   padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width / 25),
+                      horizontal: MediaQuery
+                          .of(context)
+                          .size
+                          .width / 25),
                   child: ElevatedButton(
                     onPressed: () {
-
                       if (!order.check4) {
                         Navigator.of(context).pop();
                         Navigator.of(context).pushAndRemoveUntil(
@@ -264,7 +321,6 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     },
                     child: Text(
                       '${LanguageTr.lg[authProvider.language]["Finish"]}',
-
                       style: TextStyle(
                         fontFamily: 'BerlinSansFB',
                         fontWeight: FontWeight.bold,
@@ -278,7 +334,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                           screenHeight * 0.14,
                           screenHeight * 0.02),
                       onPrimary: const Color.fromRGBO(255, 255, 255, 1),
-                      primary: Theme.of(context).primaryColor,
+                      primary: Theme
+                          .of(context)
+                          .primaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),

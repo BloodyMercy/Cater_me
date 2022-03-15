@@ -282,10 +282,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(right:40.0),
-                                  child: Icon(Icons.person_outline_outlined),
-                                ),
+                                prefixIcon: Icon(Icons.person_outline_outlined),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -293,7 +290,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.01,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -315,10 +312,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(right:40.0),
-                                  child: Icon(Icons.mail_outline),
-                                ),
+                                prefixIcon: Icon(Icons.mail_outline),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -326,7 +320,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.01,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -350,20 +344,17 @@ class _SignupScreenState extends State<SignupScreen> {
                               onChanged: (value) => password = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(right:40.0),
-                                  child: IconButton(
-                                    icon: Icon(
-                                      passObscure
-                                          ? Icons.lock_outlined
-                                          : Icons.lock_open_outlined,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        passObscure = !passObscure;
-                                      });
-                                    },
+                                prefixIcon: IconButton(
+                                  icon: Icon(
+                                    passObscure
+                                        ? Icons.lock_outlined
+                                        : Icons.lock_open_outlined,
                                   ),
+                                  onPressed: () {
+                                    setState(() {
+                                      passObscure = !passObscure;
+                                    });
+                                  },
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
@@ -372,7 +363,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.04,
+                                    // left: screenHeight * 0.01,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -401,20 +392,17 @@ class _SignupScreenState extends State<SignupScreen> {
                               onChanged: (value) => confirmPassword = value,
                               decoration: InputDecoration(
                                 errorStyle: const TextStyle(fontSize: 10),
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(right:40.0),
-                                  child: IconButton(
-                                    icon: Icon(
-                                      confObscure
-                                          ? Icons.lock_outlined
-                                          : Icons.lock_open_outlined,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        confObscure = !confObscure;
-                                      });
-                                    },
+                                prefixIcon: IconButton(
+                                  icon: Icon(
+                                    confObscure
+                                        ? Icons.lock_outlined
+                                        : Icons.lock_open_outlined,
                                   ),
+                                  onPressed: () {
+                                    setState(() {
+                                      confObscure = !confObscure;
+                                    });
+                                  },
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
@@ -423,7 +411,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.04,
+                                    // left: screenHeight * 0.01,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
@@ -447,10 +435,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               decoration: InputDecoration(
-                                prefixIcon: Padding(
-                                  padding:const EdgeInsets.only(right:40.0),
-                                  child: Icon(Icons.phone),
-                                ),
+                                prefixIcon: Icon(Icons.phone),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -458,7 +443,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 contentPadding: EdgeInsets.only(
-                                    left: screenHeight * 0.03,
+                                    // left: screenHeight * 0.04,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:

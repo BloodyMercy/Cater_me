@@ -320,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'BerlinSansFB',
-                                    fontSize: 16)),
+                                    fontSize: 15)),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(
                                   screenHeight * 0.14,
