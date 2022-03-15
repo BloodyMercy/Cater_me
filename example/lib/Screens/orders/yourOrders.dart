@@ -177,7 +177,7 @@ class _YourOrdersState extends State<YourOrders> {
                                               height: 10,
                                             ),
                                             Text(
-                                              "${LanguageTr.lg[authProvider.language]["Address"]}, ${orders.listOrder[index].addressTitle}",
+                                              "${LanguageTr.lg[authProvider.language]["Address:"]} ${orders.listOrder[index].addressTitle}",
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight:

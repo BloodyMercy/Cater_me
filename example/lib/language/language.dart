@@ -54,6 +54,7 @@ class LanguageTr {
       "Accetped": "تم القبول",
       "Pending": "في الانتظار",
       "Address": "العنوان",
+      "Address:": "العنوان:",
       "Personal Info": "معلومات شخصية",
       "Reset Password": "اعادة تعيين كلمة المرور",
       "My Address": "عنواني",
@@ -242,7 +243,7 @@ class LanguageTr {
       "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا"    ,
       "Your food is donated":"تم التبرع بالطعام الخاص بك",
 
-"Not a valid email":"ليس بريدًا إلكترونيًا صالحًا",
+      "friend already exists!":"الصديق موجود بالفعل!",
       "Address Deleted":"تم حذف العنوان",
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
 
@@ -254,6 +255,7 @@ class LanguageTr {
 
 
     "en": {
+      "Address:":"Address:",
       "Not a valid email":"Not a valid email",
       "Password dosen't match":"Password dosen't match",
      " Credit card cannot be deleted":"Credit card cannot be deleted",

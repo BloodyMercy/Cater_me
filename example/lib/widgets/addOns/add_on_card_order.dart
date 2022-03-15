@@ -25,13 +25,15 @@ class AddOnCardOrder extends StatelessWidget {
     // final pack = Provider.of<PackagesProvider>(context, listen: true);
     var mediaQuery = MediaQuery.of(context);
     return Center(
-      child: Card(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: Card(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
           ),
-        ),
-        child: InkWell(
+          child: InkWell(
             onTap: () {
               showDialog(
                   context: context,
@@ -53,7 +55,7 @@ class AddOnCardOrder extends StatelessWidget {
             },
             child: Container(
               // width: mediaQuery.size.width*0.8 ,
-              height: mediaQuery.size.height * 0.35,
+              height: mediaQuery.size.height * 0.25,
 
               child: Column(
                 children: [
@@ -72,11 +74,11 @@ class AddOnCardOrder extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(right:8.0),
+                                padding: const EdgeInsets.only(right: 8.0),
                                 child: Text(
                                   '${this.addOn.title}',
                                   maxLines: 2,
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       color: colorCustom,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
@@ -87,11 +89,14 @@ class AddOnCardOrder extends StatelessWidget {
                               Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(right:8.0),
-                                    child: Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
-                                      style: Theme.of(context).textTheme.headline2,
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      "${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
                                     ),
                                   ),
+
                                   //   IconButton(onPressed: (){}, icon: Icon(Icons.add_circle, color: Theme.of(context).primaryColor,))
                                 ],
                               )
@@ -102,8 +107,13 @@ class AddOnCardOrder extends StatelessWidget {
                     ),
                   ),
                 ],
+
               ),
-            )),
+
+            ),
+          ),
+
+        ),
       ),
     );
   }
