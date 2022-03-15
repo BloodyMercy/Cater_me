@@ -129,7 +129,7 @@ bool get loading => _loading;
 
 
 
-String _nbnotification="";
+String _nbnotification="0";
 
 
 
