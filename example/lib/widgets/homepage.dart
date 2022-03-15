@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getalldata();
     getData();
+
   }
 
   bool loading = false;

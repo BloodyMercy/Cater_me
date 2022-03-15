@@ -100,7 +100,7 @@ class _Contact_UsState extends State<Contact_Us> {
                         color: colorCustom,
                       ),
 
-                    title: Text("091872632",
+                    title: Text(contact.UsContact.phoneNumber,
                         // contact.UsContact.phoneNumber,
                         style: TextStyle(fontWeight: FontWeight.bold)),
                     trailing:Icon(

@@ -156,7 +156,7 @@ super.initState();
                                                    return WillPopScope(
                                                      // onWillPop: () => Future<bool>.value(false),
                                                        child: AlertDialog(
-                                                         title: Text("'${LanguageTr.lg[user.language]["Loading"]}'",style: TextStyle(color: colorCustom),),
+                                                         title: Text("${LanguageTr.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
                                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
                                                        ));
                                                  },
@@ -167,14 +167,16 @@ super.initState();
                                                  Navigator.pop(context);
                                                  Navigator.of(context).pop();
                                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                     content: Text('Address Deleted')));
+                                                     content: Text("${LanguageTr.lg[user.language]["Address Deleted"]}"
+                                                         )));
                                                }else{
                                                  Navigator.pop(context);
                                                  Navigator.of(context).pop();
 
 
                                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                   content: Text('Address cannot be Deleted'),
+                                                   content: Text("${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
+                                                       ),
                                                  ));
                                                }
                                              },

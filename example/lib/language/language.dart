@@ -243,6 +243,8 @@ class LanguageTr {
       "Your food is donated":"تم التبرع بالطعام الخاص بك",
 
 "Not a valid email":"ليس بريدًا إلكترونيًا صالحًا",
+      "Address Deleted":"تم حذف العنوان",
+      "Address cannot be Deleted":"لا يمكن حذف العنوان",
 
 
 
@@ -479,6 +481,9 @@ class LanguageTr {
       "Donate":"Donate",
       "VAT  311085799400003":"VAT  311085799400003",
       "Your food is donated":"Your food is donated",
+      "SubTotal":"SubTotal",
+      "Address Deleted":"Address Deleted",
+      "Address cannot be Deleted":"Address cannot be Deleted",
 
 
 }
