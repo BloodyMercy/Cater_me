@@ -35,7 +35,7 @@ String language;
     SharedPreferences sh=await SharedPreferences.getInstance();
     await allNotification.getAllNotifications(sh.getString("locale"));
 
-     (sh.getString("locale"));
+
 
      setState(() {
        language = sh.getString("locale");
@@ -174,6 +174,7 @@ String language;
                                     i--;
                                     package.nbnotification = i.toString();
                                   }
+
                                 },
                                 child: Card(
                                   color: LightColors.kLightYellow2,

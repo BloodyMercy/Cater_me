@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                             badgeColor:
                                                 Color.fromRGBO(253, 202, 29, 1),
                                             badgeContent:
-                                                Text(package.nbnotification, style: TextStyle(fontSize: 10),),
+                                                Text(int.parse(package.nbnotification.toString())>99?"99+":package.nbnotification , style: TextStyle(fontSize: 10),),
                                             child: Icon(
                                               Icons.notifications,
                                               color: Theme.of(context)

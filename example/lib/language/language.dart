@@ -5,7 +5,7 @@ class LanguageTr {
 
 
     "ar": {
-
+      "Update the Date":"تحديث التاريخ",
       "Credit card Deleted":"تم حذف بطاقة الائتمان",
       "Event Planning":"تخطيط لحدث",
       "Get Started": "ابدأ الأن",
@@ -255,6 +255,7 @@ class LanguageTr {
 
 
     "en": {
+      "Update the Date":"Update the Date",
       "Address:":"Address:",
       "Not a valid email":"Not a valid email",
       "Password dosen't match":"Password dosen't match",

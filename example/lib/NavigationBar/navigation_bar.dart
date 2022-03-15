@@ -351,7 +351,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 ),
                 label: '${LanguageTr.lg[authProvider.language]["Occasions"]}',
               ),
-        package.nbnotification!="0"  ? BottomNavigationBarItem(
+            package.nbnotification!="0"  ? BottomNavigationBarItem(
 
                 icon:  Badge(
                     badgeColor: Color.fromRGBO(253, 202, 29, 1),
