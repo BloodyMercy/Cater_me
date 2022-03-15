@@ -90,7 +90,7 @@ bool ispressed = false;
                 loading=false;
               });
               Navigator.pop(context);
-            } , icon: Icon(FontAwesomeIcons.trash))
+            } , icon: Icon(FontAwesomeIcons.trash, size: 17,))
           ],
           leading: IconButton(
             onPressed: () {
@@ -196,12 +196,12 @@ bool ispressed = false;
                           }
                         },
                         child: Text(
-                          '${LanguageTr.lg[authProvider.language][ "Save the Date"]}',
+                          '${LanguageTr.lg[authProvider.language][ "Update the Date"]}',
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
-                            horizontal: (mediaQuery.size.width * 0.3),
+                            horizontal: (mediaQuery.size.width * 0.25),
                             vertical: (mediaQuery.size.height * 0.02),
                           ),
                           shape: RoundedRectangleBorder(

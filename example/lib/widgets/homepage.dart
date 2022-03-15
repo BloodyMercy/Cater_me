@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                             badgeColor:
                                                 Color.fromRGBO(253, 202, 29, 1),
                                             badgeContent:
-                                                Text(package.nbnotification),
+                                                Text(package.nbnotification, style: TextStyle(fontSize: 10),),
                                             child: Icon(
                                               Icons.notifications,
                                               color: Theme.of(context)
@@ -413,7 +413,7 @@ class _HomePageState extends State<HomePage> {
                                   : Container(),
                               Center(child: OccasionCard(Axis.horizontal)),
 
-                                   SizedBox(height: MediaQuery.of(context).size.height*0.1),
+                              //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
                           package.cuisins.id!=0?    Container(
                                 child: Column(
                                     children: [

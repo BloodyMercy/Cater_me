@@ -7,10 +7,12 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/personal_info_provider.dart';
+import 'package:CaterMe/Screens/Terms_and_Conditions/Terms_and_Conditions.dart';
 import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
+import 'package:CaterMe/widgets/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -267,7 +269,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:SplashScreen()
+        home:Navigationbar(0)
       ),
     );
   }
