@@ -115,59 +115,52 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                       borderRadius: BorderRadius.circular(150)),
                   child: IconButton(
                       onPressed: () async {
+                        if (pack.status == Status.Unauthenticated) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                        } else {
+                          setState(() {
+                            loading = true;
+                          });
 
+                          showDialog(
+                            context: this.context,
+                            barrierDismissible: false,
+                            builder: (BuildContext contexts) {
+                              return WillPopScope(
+                                  // onWillPop: () => Future<bool>.value(false),
+                                  child: AlertDialog(
+                                title: Text(
+                                  "Loading...",
+                                  style: TextStyle(color: yellowColor),
+                                ),
+                                content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      CircularProgressIndicator(
+                                        color: yellowColor,
+                                      )
+                                    ]),
+                              ));
+                            },
+                          );
+                          print("${widget.food.isfavorite}");
+                          await PackageService.favoriteitem(widget.food.id)
+                              .then((value) {
+                            if (value) {
+                              Navigator.pop(context);
+                              widget.food.isfavorite = !widget.food.isfavorite;
+                            } else {
+                              Navigator.pop(context);
+                            }
+                            setState(() {
+                              loading = false;
+                            });
+                          });
 
-    if(pack.status==Status.Unauthenticated)
-    {
-      Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) =>
-                  LoginScreen()));
-    }
-    else {
-    setState(() {
-    loading = true;
-    });
-
-    showDialog(
-    context: this.context,
-    barrierDismissible: false,
-    builder: (BuildContext contexts) {
-    return WillPopScope(
-    // onWillPop: () => Future<bool>.value(false),
-    child: AlertDialog(
-    title: Text(
-    "Loading...",
-    style: TextStyle(color: yellowColor),
-    ),
-    content: Column(
-    mainAxisSize: MainAxisSize.min,
-    children: <Widget>[
-    CircularProgressIndicator(
-    color: yellowColor,
-    )
-    ]),
-    ));
-    },
-    );
-    print("${widget.food.isfavorite}");
-    await PackageService.favoriteitem(widget.food.id)
-        .then((value) {
-    if (value) {
-    Navigator.pop(context);
-    widget.food.isfavorite = !widget.food.isfavorite;
-    }
-    else{
-    Navigator.pop(context);
-    }
-    setState(() {
-    loading = false;
-    });
-    });
-
-    print("${widget.food.isfavorite}");
-
-    }    },
+                          print("${widget.food.isfavorite}");
+                        }
+                      },
                       icon: Icon(
                         widget.food.isfavorite
                             ? FontAwesomeIcons.solidHeart
@@ -240,7 +233,8 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
+                            Text(
+                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
@@ -249,7 +243,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           ],
                         ),
                       ),
-                   //   Container(height: 100,),
+                      //   Container(height: 100,),
                       Html(
                         data: widget.food.description,
                         style: {
@@ -260,7 +254,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           )
                         },
                       ),
-                    //  Container(height: 100,),
+                      //  Container(height: 100,),
                     ],
                   ),
                 ),

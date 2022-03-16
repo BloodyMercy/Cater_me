@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/packages.dart';
@@ -22,7 +23,7 @@ class AddOnCardOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
-
+    final pack = Provider.of<PackagesProvider>(context, listen: true);
     // final pack = Provider.of<PackagesProvider>(context, listen: true);
     var mediaQuery = MediaQuery.of(context);
     return Center(
@@ -68,8 +69,8 @@ class AddOnCardOrder extends StatelessWidget {
                         width: 75,
                       ),
                       Padding(
-                        padding:
-                            EdgeInsets.only(left: (mediaQuery.size.width * 0.035)),
+                        padding: EdgeInsets.only(
+                            left: (mediaQuery.size.width * 0.035)),
                         child: Row(
                           children: [
                             Expanded(
@@ -92,11 +93,13 @@ class AddOnCardOrder extends StatelessWidget {
                                   Row(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(right: 8.0),
+                                        padding:
+                                            const EdgeInsets.only(right: 8.0),
                                         child: Text(
                                           "${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
-                                          style:
-                                              Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                         ),
                                       ),
 
@@ -110,24 +113,18 @@ class AddOnCardOrder extends StatelessWidget {
                         ),
                       ),
                     ],
-
                   ),
-
-                ),
-              ),
-
-            ),
-            Positioned(
-              left: mediaQuery.size.width*0.3,
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  FontAwesomeIcons.solidHeart,
-                  color: yellowColor,
-                  size: 20,
                 ),
               ),
             ),
+            addOn.isfavorite? Positioned(
+              left: mediaQuery.size.width * 0.3,
+              child: Icon(
+                FontAwesomeIcons.solidHeart,
+                color: yellowColor,
+                size: 20,
+              ),
+            ):Container(),
           ],
         ),
       ),

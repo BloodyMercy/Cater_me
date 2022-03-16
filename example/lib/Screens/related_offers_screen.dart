@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
+import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,14 @@ import '../colors/colors.dart';
 
 class RelatedOffersScreen extends StatefulWidget {
   RelatedOffersScreen({Key key}) : super(key: key);
+  Package fav;
 
   @override
   State<RelatedOffersScreen> createState() => _RelatedOffersScreenState();
 }
 
 class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
+
   final foods = Fake_Data;
 
   bool loading = false;
@@ -46,6 +49,9 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
   }
 
   Widget setupAlertDialoadContainer(context, PackagesProvider pack, int index) {
+
+
+
     return OrderAdsDetail(
       pack.allpackagesorder[index],
     );
@@ -54,6 +60,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
   @override
   Widget build(BuildContext context) {
     final pack = Provider.of<PackagesProvider>(context, listen: true);
+    final fav = Provider.of<OrderCaterProvider>(context, listen: true);
     var _width = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
@@ -84,17 +91,16 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8),
                             ),
-                            Positioned(
+                           pack.allpackagesorder[index].isfavorite? Positioned(
                               left: _width * 0.7,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  FontAwesomeIcons.solidHeart,
-                                  color: yellowColor,
-                                  size: 20,
-                                ),
+                              child: Icon(
+
+                                FontAwesomeIcons.solidHeart,
+                                color: yellowColor,
+                                size: 20,
                               ),
-                            ),
+
+                            ):Container(),
                           ])),
                     ),
                     onTap: () {

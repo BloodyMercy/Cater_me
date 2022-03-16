@@ -95,11 +95,7 @@ class _PackagesCardState extends State<PackagesCard> {
                             viewportFraction: 1,
                           ),
                         )
-                      : Center(
-                          child: Text('${LanguageTr.lg[authProvider.language]["No Packages"]}'
-                          ,
-                          style: TextStyle(color: Colors.black),
-                        )),
+                      : Container(),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: mediaQuery.size.height * 0.03,

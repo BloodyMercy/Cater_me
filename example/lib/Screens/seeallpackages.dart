@@ -37,34 +37,18 @@ class _seeAllPackages extends State<seeAllPackages> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    var _width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var screenHeight = MediaQuery
-        .of(context)
-        .size
-        .height -
-        MediaQuery
-            .of(context)
-            .padding
-            .top -
-        MediaQuery
-            .of(context)
-            .padding
-            .bottom;
+    var _width = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
     final pack = Provider.of<PackagesProvider>(context, listen: true);
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     PreferredSize appBar = PreferredSize(
       preferredSize: Size.fromHeight(
-        MediaQuery
-            .of(context)
-            .size
-            .height * 0.08,
+        MediaQuery.of(context).size.height * 0.08,
       ),
       child: AppBar(
         leading: IconButton(
@@ -83,14 +67,9 @@ class _seeAllPackages extends State<seeAllPackages> {
         centerTitle: true,
         title: Text(
           '${LanguageTr.lg[authProvider.language]["Packages"]}',
-          style: Theme
-              .of(context)
-              .textTheme
-              .headline1,
+          style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Theme
-            .of(context)
-            .primaryColor,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
     );
     return Scaffold(
@@ -99,34 +78,34 @@ class _seeAllPackages extends State<seeAllPackages> {
         color: Colors.white,
         child: loading
             ? Center(
-          child: CircularProgressIndicator(),
-        ) : ListView.builder(
-            itemCount: pack.seeallpackages.length,
-            itemBuilder: (context, index) {
-           return   FittedBox(
-                child:InkWell(onTap:(){
-             Navigator.of(context).push(MaterialPageRoute(
-               builder: (context) => packageAdsDetailTest(pack.seeallpackages[index]),
-             ));
-           },child: Card(
-
-                  // clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  elevation: 12,
-                  child: Image.network(
-                      pack.seeallpackages[index].image,
-                      fit: BoxFit.scaleDown,
-                      // width: double.maxFinite,
-                      height: screenHeight * 0.175,
-                      width: _width * 0.8),
-                ),
-              ));
-            }),),
-
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: pack.seeallpackages.length,
+                itemBuilder: (context, index) {
+                  return FittedBox(
+                      child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            packageAdsDetailTest(pack.seeallpackages[index]),
+                      ));
+                    },
+                    child: Card(
+                      // clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      elevation: 12,
+                      child: Image.network(pack.seeallpackages[index].image,
+                          fit: BoxFit.scaleDown,
+                          // width: double.maxFinite,
+                          height: screenHeight * 0.175,
+                          width: _width * 0.8),
+                    ),
+                  ));
+                }),
+      ),
     );
-
-
   }
 }

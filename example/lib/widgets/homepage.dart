@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
   Future refreshdata() async {
 
     final package = Provider.of<PackagesProvider>(context, listen: false);
+
     //package.loading=false;
     // package.loading = false;
     await package.cleardata();
@@ -226,29 +227,32 @@ class _HomePageState extends State<HomePage> {
                                 )
                               ],
                             ),
-                            Padding(
+                            package.listItems.isEmpty?Container(): Padding(
                               padding: EdgeInsets.only(
                                   left: (mediaQuery.size.width * 0.035),
                                   top: mediaQuery.size.height * 0.05),
                               child: Text(
-                                '${LanguageTr.lg[authProvider.language]["Packages"]}',
+                               '${LanguageTr.lg[authProvider.language]["Packages"]}',
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
-                            Center(child: PackagesCard()),
+                            package.listItems.isEmpty?Container():  Center(child: PackagesCard()),
                             SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
+
+                                      Padding(
                                     padding: EdgeInsets.only(
                                   left: (mediaQuery.size.width * 0.04),
                                   // top: mediaQuery.size.height * 0.05
                                       ),
-                                  child:
-                                  Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+                                        child: package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
+                                            0))?Container():Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+
+
 
                                     style:
                                         Theme.of(context).textTheme.headline2,
@@ -266,7 +270,8 @@ class _HomePageState extends State<HomePage> {
 
                                         
                                       },
-                                      child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
+                                      child: package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
+                                          0))?Container():Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
                                         ,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -275,9 +280,9 @@ class _HomePageState extends State<HomePage> {
                                       ))
                                 ],
                               ),
-                              ((getOccasionsToday(package.occasions).length ==
+                              package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
                                       0))
-                                  ? Padding(
+                                  ?Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal:
                                             mediaQuery.size.width * 0.01,

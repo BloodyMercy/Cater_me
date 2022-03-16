@@ -42,7 +42,19 @@ class AddOnCards extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),),
                 elevation: 4,
                 child: Image.network(
+
                   this.addOn.image,
+                  loadingBuilder: ((context, child, loadingProgress) {
+                    if(loadingProgress==null)return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes
+                            : null,
+                      ),
+                    );
+                  }),
                   height: 100,
                   width: 200,
 
