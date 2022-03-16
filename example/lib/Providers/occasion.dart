@@ -24,6 +24,7 @@ Occasion _occasioncreated=Occasion();
 
   List<OccassionType> get listoccasiontype => _listoccasiontype;
 
+
   set listoccasiontype(List<OccassionType> value) {
     _listoccasiontype = value;
   }
@@ -151,7 +152,7 @@ print("not data");
       print(_alldata['all']);
      // _today = List<Occasion>.from(_alldata['today'].map((model) => Occasion.fromJsonadd(model)));
      // _thisWeek = List<Occasion>.from(_alldata['thisWeek'].map((model) => Occasion.fromJsonadd(model)));
-      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model,a)));
+      _all = List<Occasion>.from(_alldata['all'].map((model) => Occasion.fromJsonadd(model,a))).reversed;
 
 
 

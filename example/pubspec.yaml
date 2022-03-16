@@ -34,6 +34,7 @@ dependencies:
   flutter_checkout_payment:
     path: ../
   introduction_screen:
+
   intl:
   form_field_validator:
   flutter_rating_bar:
@@ -74,7 +75,7 @@ dependencies:
   audioplayers: ^0.20.1
   animated_text_kit:
   url_launcher:
-  shimmer:
+
 
 
 
