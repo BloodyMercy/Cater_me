@@ -534,7 +534,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                               },
                               child: Text(
-                                '${LanguageTr.lg[user.language]["Next"]}',
+                                '${LanguageTr.lg[user.language]["Save"]}',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                               style: ElevatedButton.styleFrom(

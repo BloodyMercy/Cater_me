@@ -77,8 +77,8 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                   Column(
                     children: [
                       Image.asset('images/CaterMe.png',
-                          height: screenHeight * 0.25,),
-                      Text('${LanguageTr.lg[authProvider.language]["after"]}${addresProvider.hours.timespan}',
+                          height: screenHeight * 0.28,),
+                      Text('${LanguageTr.lg[authProvider.language]["after"]} ${addresProvider.hours.timespan}',
                           style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
                     ],
                   ),
@@ -113,9 +113,9 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                         //     color: dab? Theme.of(context).primaryColor: Colors.white,
                         //   ),),
                         child: SvgPicture.asset('images/daberni.svg',
-                            height: screenHeight * 0.2),
+                            height: screenHeight * 0.15),
                       ),
-                      Text(" ${LanguageTr.lg[authProvider.language][ "before"]}, ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                      Text(" ${LanguageTr.lg[authProvider.language][ "before"]} ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                     ],
                   ),
                 ],
