@@ -20,11 +20,10 @@ class AddOnCards extends StatelessWidget {
     return Center(
         child: InkWell(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => packageAdsDetailTest(addOn)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => packageAdsDetailTest(addOn)));
       },
       child: Card(
-
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20),
@@ -34,44 +33,41 @@ class AddOnCards extends StatelessWidget {
           height: mediaQuery.size.height * 0.25,
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
-
             children: [
               Card(
-
-          shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 elevation: 4,
                 child: Image.network(
-
                   this.addOn.image,
                   loadingBuilder: ((context, child, loadingProgress) {
-                    if(loadingProgress==null)return child;
+                    if (loadingProgress == null) return child;
                     return Center(
                       child: CircularProgressIndicator(
+                        strokeWidth: 1,
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes
+                                loadingProgress.expectedTotalBytes
                             : null,
                       ),
                     );
                   }),
                   height: 100,
                   width: 200,
-
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(left:2.0),
+                  padding: const EdgeInsets.only(left: 2.0),
                   child: Text(
                     '${this.addOn.title}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-
                       color: Colors.black87,
                       fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                    //  fontFamily:
+                      fontWeight: FontWeight.normal,
+                      //  fontFamily:
                     ),
                   ),
                 ),
@@ -81,15 +77,14 @@ class AddOnCards extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-
-                      Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
+                      Text(
+                        "${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
                         style: TextStyle(
                             fontSize: 12,
                             color: Colors.black87,
                             fontWeight: FontWeight.bold),
                       ),
-
-                     SizedBox(
+                      SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
                     ],
