@@ -98,9 +98,9 @@ class _AddressesListState extends State<AddressesList> {
         Provider.of<OrderCaterProvider>(context, listen: true);
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
-    return Container(
+    return !loading? Container(
         height: _mediaQuery * 0.68,
-        child: !loading?widget.address.isEmpty
+        child:widget.address.isEmpty
             ? Column(
                 children: [
                   Center(
@@ -325,6 +325,6 @@ class _AddressesListState extends State<AddressesList> {
     SliverToBoxAdapter(
     child:Container(height: MediaQuery.of(context).size.height/3,))
     ],
-              ):Center(child: CircularProgressIndicator()));
+              )):Center(child: CircularProgressIndicator());
   }
 }
