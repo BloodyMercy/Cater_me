@@ -571,6 +571,18 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Image.network(
                                               package.listItems[index].image,
+                                              loadingBuilder: ((context, child, loadingProgress) {
+                                                if (loadingProgress == null) return child;
+                                                return Center(
+                                                  child: CircularProgressIndicator(
+                                                    strokeWidth: 1,
+                                                    value: loadingProgress.expectedTotalBytes != null
+                                                        ? loadingProgress.cumulativeBytesLoaded /
+                                                        loadingProgress.expectedTotalBytes
+                                                        : null,
+                                                  ),
+                                                );
+                                              }),
                                               height: 100,
                                               width: 100,
                                             ),

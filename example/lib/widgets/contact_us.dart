@@ -20,13 +20,17 @@ class Contact_Us extends StatefulWidget {
 
 class _Contact_UsState extends State<Contact_Us> {
   initState(){
+
     getdata();
   }
-  getdata(){
+  getdata()async{
     final contact = Provider.of<ContactUsProvider>(context, listen: false);
+    await contact.getPersonalInfo();
+  setState(() {
+    loading=false;
+  });
 
 
-   contact.getPersonalInfo();
   }
   Future<void> launchUrl(String url) async {
     if (await canLaunch(url)) {
@@ -35,7 +39,7 @@ class _Contact_UsState extends State<Contact_Us> {
       throw 'Could not launch $url';
     }
   }
-
+bool loading=true;
   // For Calling Button
   @override
   Widget build(BuildContext context) {
@@ -64,7 +68,8 @@ class _Contact_UsState extends State<Contact_Us> {
         backgroundColor: Theme.of(context).primaryColor,
       ),
       //End Appbar
-      body: Column(
+      body:!loading?
+      Column(
         children: [
 
           Padding(
@@ -154,7 +159,8 @@ SizedBox(height: mediaQuery.size.height * 0.05,
             height: mediaQuery.size.height * 0.01,),
 
         ],
-      ),
+      ):
+          Center(child: CircularProgressIndicator()),
     );
   }
 }

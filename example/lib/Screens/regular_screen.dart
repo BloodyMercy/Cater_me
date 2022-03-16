@@ -203,6 +203,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
                                       labelText: '${LanguageTr.lg[authProvider.language]["Event Name "]}',
+
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,
@@ -214,6 +215,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                         borderRadius: BorderRadius.circular(5.0),
                                         borderSide: const BorderSide(
                                           color: Colors.grey,
+                                          
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
@@ -277,6 +279,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                 label:
                                 '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
                                 items: address.listnameevent,
+
                                 events: address.regular.events,
                                 selectedValue: 0,
                                 inputType: TextInputType.number,
@@ -317,7 +320,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                 ),
                                 Text('${LanguageTr.lg[authProvider.language]["Me"]}',),
                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 10,
+                                  width: MediaQuery.of(context).size.width / 12,
                                 ),
                                 Radio(
                                   fillColor: MaterialStateColor.resolveWith(
