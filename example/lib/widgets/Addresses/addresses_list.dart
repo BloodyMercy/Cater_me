@@ -100,7 +100,7 @@ class _AddressesListState extends State<AddressesList> {
     var _mediaQuery = MediaQuery.of(context).size.height;
     return Container(
         height: _mediaQuery * 0.68,
-        child: widget.address.isEmpty
+        child: !loading?widget.address.isEmpty
             ? Column(
                 children: [
                   Center(
@@ -325,6 +325,6 @@ class _AddressesListState extends State<AddressesList> {
     SliverToBoxAdapter(
     child:Container(height: MediaQuery.of(context).size.height/3,))
     ],
-              ));
+              ):Center(child: CircularProgressIndicator()));
   }
 }
