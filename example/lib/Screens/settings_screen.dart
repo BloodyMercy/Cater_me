@@ -8,6 +8,7 @@ import 'package:CaterMe/Screens/add_friend_screen.dart';
 import 'package:CaterMe/Screens/addresses_settings_screen.dart';
 import 'package:CaterMe/Screens/auth/reset_password_screen.dart';
 import 'package:CaterMe/Screens/auth/signup_screen.dart';
+import 'package:CaterMe/Screens/saved_orders.dart';
 import 'package:CaterMe/main.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
@@ -627,12 +628,12 @@ class _TABBarState extends State<TABBar> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: GestureDetector(
                                         onTap: () {
-                                          // Navigator.of(context).push(
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) =>
-                                          //         AddFriendScreen(),
-                                          //   ),
-                                          // );
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SavedOrders(),
+                                            ),
+                                          );
                                         },
                                         child: Row(
                                           mainAxisAlignment:
@@ -655,7 +656,7 @@ class _TABBarState extends State<TABBar> {
                                                       0.05,
                                                 ),
                                                 Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["My Orders"]}',
+                                                  'Saved Orders',
                                                   style: TextStyle(
                                                       color: Color(0xFF3F5521),
                                                       fontSize: 20,
