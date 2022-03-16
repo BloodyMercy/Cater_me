@@ -322,16 +322,19 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
 
 
               Padding(
-          padding: const EdgeInsets.only(top: 37,left: 15),
+          padding: const EdgeInsets.only(top: 35,left: 13),
           child:
           Align(alignment: Alignment.topLeft,
-             child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35)
-                  ),
-                child: IconButton(onPressed:(){
-                  Navigator.of(context).pop(); }
-                  , icon: Icon(Icons.close,size: 25,),color:Color(0xFF3F5521),))),),
+             child: Container(width: 50,height: 50,
+               child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(45),
+
+                    ),
+                  child: IconButton(onPressed:(){
+                    Navigator.of(context).pop(); }
+                    , icon: Icon(Icons.close,size: 25,),color:Color(0xFF3F5521),)),
+             )),),
 
 
 

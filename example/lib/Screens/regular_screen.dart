@@ -181,7 +181,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: TextFormField(
                                   style: const TextStyle(
                                       color: Colors.grey,
@@ -229,10 +229,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             ),
                             // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
 
-                            SizedBox(height: screenHeight * 0.02),
+
 
                             Container(
-                              height: MediaQuery.of(context).size.height / 8,
+                              height: MediaQuery.of(context).size.height / 12,
                               // child: CustomDatePickerFormField(
                               //   label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
                               //   controller: address.evendatecontroller,
@@ -245,8 +245,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
                               ),
                             ),
 
+
+
                             Container(
-                              height: MediaQuery.of(context).size.height / 8,
+                              height: MediaQuery.of(context).size.height / 12,
                               child: CustomDailyDate(
                                 label: '${LanguageTr.lg[authProvider.language]["Event Time "]}',
                                 controller: address.DailyDatecontroller,
@@ -255,30 +257,34 @@ class _ReguarScreenState extends State<ReguarScreen> {
                               ),
                             ),
 
-                            CustomCupertinoPicker(
-                              label:'${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
+                            Container(height: MediaQuery.of(context).size.height / 12,
+                              child: CustomCupertinoPicker(
+                                label:'${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
 
 
-                              items: address.listnamenumber,
-                              numberOfGuests: address.regular.numberOfGuests,
-                              selectedValue: 1,
-                              inputType: TextInputType.number,
-                              controller: address.numberofguestcontrollerstring,
+                                items: address.listnamenumber,
+                                numberOfGuests: address.regular.numberOfGuests,
+                                selectedValue: 1,
+                                inputType: TextInputType.number,
+                                controller: address.numberofguestcontrollerstring,
+                              ),
                             ),
 
-                            SizedBox(height: screenHeight * 0.02),
 
-                            CustomCupertinoPicker(
-                              label:
-                              '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
-                              items: address.listnameevent,
-                              events: address.regular.events,
-                              selectedValue: 0,
-                              inputType: TextInputType.number,
-                              controller: address.typeofeventcontrollerstring,
+
+                            Container(height: MediaQuery.of(context).size.height / 12,
+                              child: CustomCupertinoPicker(
+                                label:
+                                '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
+                                items: address.listnameevent,
+                                events: address.regular.events,
+                                selectedValue: 0,
+                                inputType: TextInputType.number,
+                                controller: address.typeofeventcontrollerstring,
+                              ),
                             ),
 
-                            SizedBox(height: screenHeight * 0.03),
+                            SizedBox(height: screenHeight * 0.01),
                             Center(
                               child: Text(
                                 '${LanguageTr.lg[authProvider.language]["Contact Person"]}',
@@ -288,7 +294,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     fontSize: 20),
                               ),
                             ),
-                            SizedBox(height: screenHeight * 0.03),
+                            SizedBox(height: screenHeight * 0.01),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

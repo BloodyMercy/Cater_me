@@ -136,7 +136,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                     // radius: 25.0,
                                     backgroundImage: NetworkImage(l[index].image),
                                     backgroundColor: Colors.transparent,
-                                    radius: screenHeight * 0.04,
+                                    radius: screenHeight * 1,
                                   ),
                                   Text(l[index].name),
                                 ],
@@ -219,7 +219,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   details.removeItems(details.itemOrders[i]);
 
                                 },
-                                child: CartItemCard(details.itemOrders[i], i),
+                                child: CartItemCard(
+                                    details.itemOrders[i], i),
                               ),
                             ),
                           ],

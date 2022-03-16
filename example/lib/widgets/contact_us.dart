@@ -3,7 +3,6 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/contact_us_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
@@ -70,14 +69,10 @@ class _Contact_UsState extends State<Contact_Us> {
 
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Shimmer.fromColors(
-                child: Image.asset(
-                  'images/CaterMe.png',
-                  height: mediaQuery.size.height * 0.15,
-                ),
-                baseColor: Colors.grey[200],
-                direction: ShimmerDirection.ltr,
-                highlightColor: colorCustom),
+            child: Image.asset(
+              'images/CaterMe.png',
+              height: mediaQuery.size.height * 0.15,
+            ),
 
             // Animation shimer finish
           ),
@@ -90,51 +85,34 @@ class _Contact_UsState extends State<Contact_Us> {
             },
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Card(
-                color: const Color.fromARGB(206, 255, 255, 255),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: ListTile(
-                    leading: Icon(
-                        Icons.call,
-                        color: colorCustom,
-                      ),
+              child: ListTile(
+                  leading: Icon(
+                      Icons.call,
+                      color: colorCustom,
+                    ),
 
-                    title: Text(contact.UsContact.phoneNumber,
-                        // contact.UsContact.phoneNumber,
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    trailing:Icon(
-                        Icons.chevron_right,
-                        color: Color(0xFF3F5521),
-                      ),
-                    )),
+                  title: Text(contact.UsContact.phoneNumber,
+                      // contact.UsContact.phoneNumber,
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+
+                  ),
               ),
             ),
 
-          SizedBox(
-            height: mediaQuery.size.height * 0.01,
-          ),
+
       GestureDetector(
     onTap: () async {
     launchUrl("mailto:${contact.UsContact.email}");},
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Card(
-                color: const Color.fromARGB(206, 255, 255, 255),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: ListTile(
-                  leading:Icon(
-                      Icons.email,
-                      color: colorCustom,
-                    ),
-
-                  title: Text(contact.UsContact.email,style: TextStyle(fontWeight: FontWeight.bold),),
-                  trailing: Icon(
-                      Icons.chevron_right,
-                      color: Color(0xFF3F5521),
-                    ),
+              child: ListTile(
+                leading:Icon(
+                    Icons.email,
+                    color: colorCustom,
                   ),
+
+                title: Text(contact.UsContact.email,style: TextStyle(fontWeight: FontWeight.bold),),
+
                 ),
               ),
             ),
