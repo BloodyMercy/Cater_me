@@ -122,6 +122,7 @@ Occasion _occasioncreated=Occasion();
     _listoccasiontype = await _occasionService.getAllOcasionType(a);
     List<String> listname=[];
    for(int i=0;i<_listoccasiontype.length;i++){
+     if(_listoccasiontype[i].id!=-700)
       listname.add(_listoccasiontype[i].name);
    }
     _listoccasiontypename=listname;

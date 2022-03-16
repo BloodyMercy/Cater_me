@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'on_boarding_contant.dart';
 
-class Body extends StatefulWidget {
+class  Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
 }

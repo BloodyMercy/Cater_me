@@ -150,14 +150,14 @@ language=sh.getString("locale")??"en";
       notifyListeners();
     }
 
-   else if(!(sh.getBool("wlkdone")??false)){
+   else if(!(sh.getBool("wlkdone")??true)){
 
       _status=Status.walkingpage;
       notifyListeners();
 
     }
    else{
-      _status=Status.Authenticated;
+      _status=Status.Unauthenticated;
       notifyListeners();
     }
 
