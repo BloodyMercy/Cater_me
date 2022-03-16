@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
+import 'cartpage/CartCard.dart';
 import 'occasion/theme/colors/light_colors.dart';
 import 'orders/checkout/carditem.dart';
 
@@ -219,8 +220,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   details.removeItems(details.itemOrders[i]);
 
                                 },
-                                child: CartItemCard(
-                                    details.itemOrders[i], i),
+                                child: CartCard(
+                                   card: details.itemOrders[i], index:i),
                               ),
                             ),
                           ],

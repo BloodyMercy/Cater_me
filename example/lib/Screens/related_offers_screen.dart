@@ -90,7 +90,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   width: _width * 0.8,
                                 child: CachedNetworkImage(
                                   placeholder: (context, url) =>
-                                  const CircularProgressIndicator(),
+                                   CircularProgressIndicator(),
                                     imageUrl: pack.allpackagesorder[index].image
                                 ),
                               // child: Image.network(

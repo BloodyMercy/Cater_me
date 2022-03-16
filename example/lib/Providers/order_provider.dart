@@ -129,7 +129,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -167,6 +167,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         "event": {
           "eventName": eventname,
           "eventDate":date,
+
           "eventTypeId":int.parse(type),
           "numberOfGuestsId": int.parse(nb),
           "contactPersonName":contactname??"",

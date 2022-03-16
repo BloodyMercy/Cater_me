@@ -186,9 +186,11 @@ loading=false;
       _packages = Packages.fromJson( _alldata['packages'],a);
        if(_alldata['cuisine']!=null)
        _cuisins = Cuisines.fromJson(_alldata['cuisine'],a);
+      if(_alldata['addons']!=null)
      _addonsall = List<Addonall>.from(_alldata['addons'].map((model) => Addonall.fromJson(model,a)));
+      if(_alldata['occasions']!=null)
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model,a)));
-
+      if(_alldata['dropDown']!=null)
        _listItems = List<Package>.from(_alldata['dropDown'].map((model) => Package.fromJson(model,a)));
        _nbnotification=_alldata["notificationCount"].toString();
 

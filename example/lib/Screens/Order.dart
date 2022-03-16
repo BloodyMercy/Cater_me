@@ -713,6 +713,7 @@ class _OrderState extends State<Order> {
                                                             '[^A-Za-z0-9]'),
                                                         '-',
                                                       ),
+
                                                       type: address
                                                           .typeofeventcontroller
                                                           .text,

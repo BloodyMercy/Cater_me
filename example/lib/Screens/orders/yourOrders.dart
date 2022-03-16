@@ -80,10 +80,10 @@ class _YourOrdersState extends State<YourOrders> {
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
-      child: Scaffold(
-        body: RefreshIndicator(
-          onRefresh: refreshOrderData,
-          child: Padding(
+      child:RefreshIndicator(
+        onRefresh: refreshOrderData,
+        child:  Scaffold(
+        body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 child: loading
