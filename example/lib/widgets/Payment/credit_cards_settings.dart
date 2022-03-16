@@ -22,13 +22,13 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
   getAllData() async {
     var _creditCards = Provider.of<CreditCardsProvider>(context, listen: false);
     _creditCards.loading = true;
-    await _creditCards.getAllCards();
-    _creditCards.loading = false;
-
     SharedPreferences sh = await SharedPreferences.getInstance();
     setState(() {
       language = sh.getString('locale');
-    });
+    }); await _creditCards.getAllCards();
+    _creditCards.loading = false;
+
+
   }
 
   @override
@@ -79,18 +79,14 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
               icon: Icon(Icons.add))
         ],
       ),
-      body: _creditCards.list.length == 0
+      body:  _creditCards.list.length == 0
           ? Center(
-              child: language == "en"
-                  ? Image.asset('images/nocardsyet.png')
-                  : Image.asset(
-                      'images/no address yetعربي/no addresses yetبالعربي-10.png'),
+              child:!_creditCards.loading
+                  ? Image.asset( language == "en"?'images/nocardsyet.png':'images/no address yetعربي/no addresses yetبالعربي-10.png')
+                  : CircularProgressIndicator(),
             )
-          : _creditCards.loading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SafeArea(
+          :
+              SafeArea(
                   child: Column(
                     children: <Widget>[
                       Expanded(

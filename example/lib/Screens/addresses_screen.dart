@@ -85,7 +85,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         SizedBox(
           height: mediaQuery.size.height * 0.6,
           child: SingleChildScrollView(
-            child: Column(
+            child:!loading? Column(
               children: [
                 // !loading
                 //     ?
@@ -98,7 +98,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                     //       ),
                     //     )),
               ],
-            ),
+            ):Center(child:CircularProgressIndicator()),
           ),
         ),
 
