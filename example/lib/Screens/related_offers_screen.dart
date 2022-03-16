@@ -4,10 +4,11 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'occasion/theme/colors/light_colors.dart';
+import '../colors/colors.dart';
 
 class RelatedOffersScreen extends StatefulWidget {
   RelatedOffersScreen({Key key}) : super(key: key);
@@ -22,16 +23,17 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
   bool loading = false;
 
   getData() async {
-
     final pack = Provider.of<PackagesProvider>(context, listen: false);
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
-    SharedPreferences sh=await SharedPreferences.getInstance();
-    await pack.getallpacakgesorder(orderprovider.serviceId,
-        int.parse(address.typeofeventcontroller.text.toString()),
-        int.parse(address.numberofguestcontroller.text.toString()
-        ),sh.getString("locale"),);
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    await pack.getallpacakgesorder(
+      orderprovider.serviceId,
+      int.parse(address.typeofeventcontroller.text.toString()),
+      int.parse(address.numberofguestcontroller.text.toString()),
+      sh.getString("locale"),
+    );
     setState(() {
       loading = true;
     });
@@ -49,9 +51,6 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
     );
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     final pack = Provider.of<PackagesProvider>(context, listen: true);
@@ -60,37 +59,52 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
 
-    return loading?
-        !pack.allpackagesorder.isEmpty
+    return loading
+        ? !pack.allpackagesorder.isEmpty
             ? ListView.separated(
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(
-                      top: 5.0, left: 20.0, right: 20.0),
+                  padding:
+                      const EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
                   child: GestureDetector(
                     child: FittedBox(
                       child: Card(
 
-
-                        // clipBehavior: Clip.antiAlias,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        elevation: 12,
-
-                        child: Stack(
-                          children:[
-
+                          // clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          elevation: 12,
+                          child:
+                            Stack(
+                              children: [
 
 
-                            Image.network(
-                              pack.allpackagesorder[index].image,
-                              fit: BoxFit.scaleDown,
-                              // width: double.maxFinite,
-                              height: screenHeight * 0.175,
-                              width: _width * 0.8),
-                        ]),
-                      ),
+                            Container(
+                              child: Image.network(
+                                  pack.allpackagesorder[index].image,
+                                  fit: BoxFit.scaleDown,
+                                  // width: double.maxFinite,
+                                  height: screenHeight * 0.175,
+                                  width: _width * 0.8),
+                            ),
+
+
+                                   Container(
+                                    alignment: Alignment.topLeft,
+
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        FontAwesomeIcons.solidHeart,
+                                        color: yellowColor,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+
+
+                          ])),
                     ),
                     onTap: () {
                       showDialog(
@@ -122,6 +136,9 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
               )
             : Center(
                 child: Text('no packages available'),
-              ):Center(child: CircularProgressIndicator(),);
+              )
+        : Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }
