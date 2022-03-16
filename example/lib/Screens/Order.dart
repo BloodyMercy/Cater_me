@@ -135,843 +135,845 @@ class _OrderState extends State<Order> {
     final address = Provider.of<AdressProvider>(context, listen: true);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return WillPopScope(
-      onWillPop: _onWillPop,
-      child: GestureDetector(
-        onTap: () {
-          FocusScopeNode currentFocus = FocusScope.of(context);
+    return SafeArea(
+      child: WillPopScope(
+        onWillPop: _onWillPop,
+        child: GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
 
-          if (!currentFocus.hasPrimaryFocus) {
-            currentFocus.unfocus();
-          }
-        },
-        child: Scaffold(
-          key: _key,
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            title:  Text('${LanguageTr.lg[authProvider.language]["Order"]}'
-              ,
-              style: const TextStyle(
-                  color: Color(0xFF3F5521),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25),
-            ),
-            leading: IconButton(
-              icon: const Icon(
-                Icons.close,
-                color: const Color(0xFF3F5521),
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Scaffold(
+            key: _key,
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              title:  Text('${LanguageTr.lg[authProvider.language]["Order"]}'
+                ,
+                style: const TextStyle(
+                    color: Color(0xFF3F5521),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
               ),
-              onPressed: () async {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CustomDialog(
-                        title:'${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}' ,
-                        description: "",
-                        button1: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
-                            ),
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: const Color(0xFF3F5521),
+                ),
+                onPressed: () async {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomDialog(
+                          title:'${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}' ,
+                          description: "",
+                          button1: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey,
+                              ),
+                              onPressed: () {
+                                orderProvider.spets = 1;
+
+                                clearAlldata();
+
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
+                                  )),
+                          oneOrtwo: true,
+                          button2: ElevatedButton(
                             onPressed: () {
-                              orderProvider.spets = 1;
-
-                              clearAlldata();
-
-                              Navigator.of(context).pop();
                               Navigator.of(context).pop();
                             },
-                            child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
-                                )),
-                        oneOrtwo: true,
-                        button2: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
-                        ),
-                      );
-                    });
-              },
+                            child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
+                          ),
+                        );
+                      });
+                },
+              ),
             ),
-          ),
-          body: true
-              ? SingleChildScrollView(
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: height * 0.88,
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            controller: _verticatl,
-                            child: Column(
-                              children: [
-                                CustomStepper(
+            body: true
+                ? SingleChildScrollView(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: height * 0.88,
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              controller: _verticatl,
+                              child: Column(
+                                children: [
+                                  CustomStepper(
 
-                                  controller: _controller,
-                                  onTap: (int value) {
-                                    if (orderProvider.spets == 1) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
+                                    controller: _controller,
+                                    onTap: (int value) {
+                                      if (orderProvider.spets == 1) {
+                                        if (orderProvider.value.id == 0) {
+                                          _key.currentState.showSnackBar(
+                                             SnackBar(
+                                              content:
+                                                  Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
+                                                     ),
+
+                                          );
+                                        } else {
+                                          orderProvider.spets = value;
+                                        }
+                                      }
+                                      if (orderProvider.spets == 3) {
+                                        if (orderProvider.value.id == 0) {
+                                          _key.currentState.showSnackBar(
+                                             SnackBar(
+                                              content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
+                                                  ),
+                                            ),
+                                          );
+                                          // orderProvider.spets=0;
+                                        } else {
+                                          orderProvider.spets = value;
+                                        }
+                                      }
+                                      if (orderProvider.spets == 2) {
+                                        if (address.eventnamecontroller.text == "" ||
+                                            address.evendatecontroller.text == "" ||
+                                            address.numberofguestcontroller.text ==
+                                                "" ||
+                                            address.typeofeventcontroller.text == "") {
                                            SnackBar(
                                             content:
-                                                Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
-                                                   ),
+                                                Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                                    ),
+                                          );
+                                          // );
+                                        } else {
+                                          // else{
+                                          orderProvider.spets = value;
+                                          setState(() {
+                                            //  orderProvider.spets=value;
 
-                                        );
-                                      } else {
-                                        orderProvider.spets = value;
+                                            _controller.animateTo(
+                                              0,
+                                              duration:
+                                                  const Duration(milliseconds: 500),
+                                              curve: Curves.linear,
+                                            );
+                                          });
+                                          //  }
+                                        }
                                       }
-                                    }
-                                    if (orderProvider.spets == 3) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
-                                           SnackBar(
-                                            content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
-                                                ),
-                                          ),
-                                        );
-                                        // orderProvider.spets=0;
-                                      } else {
-                                        orderProvider.spets = value;
-                                      }
-                                    }
-                                    if (orderProvider.spets == 2) {
-                                      if (address.eventnamecontroller.text == "" ||
-                                          address.evendatecontroller.text == "" ||
-                                          address.numberofguestcontroller.text ==
-                                              "" ||
-                                          address.typeofeventcontroller.text == "") {
-                                         SnackBar(
-                                          content:
-                                              Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
-                                                  ),
-                                        );
-                                        // );
-                                      } else {
-                                        // else{
-                                        orderProvider.spets = value;
+
+                                      if (orderProvider.spets == 5) {
                                         setState(() {
-                                          //  orderProvider.spets=value;
-
                                           _controller.animateTo(
                                             0,
-                                            duration:
-                                                const Duration(milliseconds: 500),
+                                            duration: const Duration(milliseconds: 500),
                                             curve: Curves.linear,
                                           );
                                         });
-                                        //  }
-                                      }
-                                    }
-
-                                    if (orderProvider.spets == 5) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 6) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 6) {
-                                      bool a = false;
-                                      for (int i = 0;
-                                          i < orderProvider.choosebillFriend.length;
-                                          i++) {
-                                        if (orderProvider.choosebillFriend[i].price ==
-                                            0) {
-                                          a = true;
-                                        }
-                                      }
-                                      if (a)
-                                         SnackBar(
-                                          content:
-                                              Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
-                                                  ),
-                                        );
-                                      else
+                                      } else {
                                         orderProvider.spets = value;
-                                    }
+                                      }
+                                      if (orderProvider.spets == 6) {
+                                        setState(() {
+                                          _controller.animateTo(
+                                            0,
+                                            duration: const Duration(milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
+                                        });
+                                      } else {
+                                        orderProvider.spets = value;
+                                      }
+                                      if (orderProvider.spets == 6) {
+                                        bool a = false;
+                                        for (int i = 0;
+                                            i < orderProvider.choosebillFriend.length;
+                                            i++) {
+                                          if (orderProvider.choosebillFriend[i].price ==
+                                              0) {
+                                            a = true;
+                                          }
+                                        }
+                                        if (a)
+                                           SnackBar(
+                                            content:
+                                                Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                                    ),
+                                          );
+                                        else
+                                          orderProvider.spets = value;
+                                      }
 
-                                    if (orderProvider.spets == 7) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                  },
-                                  text:  [
-                                    '${LanguageTr.lg[authProvider.language]["Location"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Event Details"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Service"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Packages"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Checkout"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Payment"]}',
+                                      if (orderProvider.spets == 7) {
+                                        setState(() {
+                                          _controller.animateTo(
+                                            0,
+                                            duration: const Duration(milliseconds: 500),
+                                            curve: Curves.linear,
+                                          );
+                                        });
+                                      } else {
+                                        orderProvider.spets = value;
+                                      }
+                                    },
+                                    text:  [
+                                      '${LanguageTr.lg[authProvider.language]["Location"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Event Details"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Service"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Packages"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Checkout"]}',
+                                      '${LanguageTr.lg[authProvider.language]["Payment"]}',
 
 
-                                  ],
-                                  selected: orderProvider.spets,
-                                ),
-                              ],
+                                    ],
+                                    selected: orderProvider.spets,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        const Divider(
-                          height: 30,
-                          thickness: 1,
-                          indent: 1,
-                          endIndent: 0,
-                          color: Color(0xFF3F5521),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height / 1.65,
-                          child: (orderProvider.spets == 1)
-                              ? AddAddressScreen()
-                              : (orderProvider.spets == 3)
-                                  ? RegularDaberneScreen()
-                                  : (orderProvider.spets == 2)
-                                      ? ReguarScreen(addresses.Friends)
-                                      : (orderProvider.spets == 4)
-                                          ? RelatedOffersScreen()
-                                          : (orderProvider.spets == 5)
-                                              ? AddonsCardoffer(0)
-                                              : (orderProvider.spets == 7)
-                                                  ? CreditCardsPage()
-                              : (orderProvider.spets == 8)
-                              ? DonateStepsScreen(0)
+                          const Divider(
+                            height: 30,
+                            thickness: 1,
+                            indent: 1,
+                            endIndent: 0,
+                            color: Color(0xFF3F5521),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height / 1.65,
+                            child: (orderProvider.spets == 1)
+                                ? AddAddressScreen()
+                                : (orderProvider.spets == 3)
+                                    ? RegularDaberneScreen()
+                                    : (orderProvider.spets == 2)
+                                        ? ReguarScreen(addresses.Friends)
+                                        : (orderProvider.spets == 4)
+                                            ? RelatedOffersScreen()
+                                            : (orderProvider.spets == 5)
+                                                ? AddonsCardoffer(0)
+                                                : (orderProvider.spets == 7)
+                                                    ? CreditCardsPage()
+                                : (orderProvider.spets == 8)
+                                ? DonateStepsScreen(0)
 
 
 
-                                                  : (orderProvider.spets == 6)
-                                                      ? OrderSummeryCopy(
-                                                          orderProvider.totale)
-                                                      : Container(),
-                        ),
-                        Expanded(
-                          child: Container(
-                              // color: Colors.yellow,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    orderProvider.spets > 1
-                                        ? !orderProvider.finaldonatesteps?IconButton(
-                                            onPressed: () {
-                                              orderProvider.spets =
-                                                  orderProvider.spets - 1;
-                                              _animateToIndex(
-                                                  orderProvider.spets);
-                                            },
-                                            icon: Icon(Icons.arrow_back,
-                                                size: 35,
-                                                color: Color.fromRGBO(
-                                                    63, 85, 33, 1))):Container()
-                                        : Container(),
-                                    orderProvider.spets > 3
-                                        ? !orderProvider.finaldonatesteps?Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "${LanguageTr.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.02,
-                                              ),
-                                              orderProvider.vatshisha > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]['*(Shisha VAT 100%)']}'
-                                                      ,
-                                                      style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.black,
+                                                    : (orderProvider.spets == 6)
+                                                        ? OrderSummeryCopy(
+                                                            orderProvider.totale)
+                                                        : Container(),
+                          ),
+                          Expanded(
+                            child: Container(
+                                // color: Colors.yellow,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      orderProvider.spets > 1
+                                          ? !orderProvider.finaldonatesteps?IconButton(
+                                              onPressed: () {
+                                                orderProvider.spets =
+                                                    orderProvider.spets - 1;
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              },
+                                              icon: Icon(Icons.arrow_back,
+                                                  size: 35,
+                                                  color: Color.fromRGBO(
+                                                      63, 85, 33, 1))):Container()
+                                          : Container(),
+                                      orderProvider.spets > 3
+                                          ? !orderProvider.finaldonatesteps?Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${LanguageTr.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontFamily: 'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.02,
+                                                ),
+                                                orderProvider.vatshisha > 0.0
+                                                    ? Text('${LanguageTr.lg[authProvider.language]['*(Shisha VAT 100%)']}'
+                                                        ,
+                                                        style: TextStyle(
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.black,
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                                orderProvider.vatfood > 0.0
+                                                    ? Text('${LanguageTr.lg[authProvider.language]['*(VAT 15%)']}'
+                                                        ,
+                                                        style: TextStyle(
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.black,
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            ):Container()
+                                          : Container(),
+                                      !loadingnext
+                                          ? !orderProvider.finaldonatesteps?ElevatedButton(
+                                              onPressed: () async {
+                                                setState(() {
+                                                  loadingnext = true;
+                                                });
+
+                                                if (orderProvider.spets == 1) {
+                                                  if (orderProvider.value.id ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
+                                                            ),
                                                       ),
-                                                    )
-                                                  : Container(),
-                                              orderProvider.vatfood > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]['*(VAT 15%)']}'
-                                                      ,
-                                                      style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.black,
+                                                    );
+                                                  } else {
+
+
+                                                    if(await orderProvider.getdistance()) {
+                                                      orderProvider.spets++;
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                    else{
+                                                      showDialog(
+                                                          context: context,
+                                                          builder: (BuildContext context) {
+                                                            return CustomDialog3(
+                                                              title:
+                                                              '${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                              description: "",
+                                                              oneOrtwo: true,
+                                                              button2: ElevatedButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(context).pop();
+                                                                },
+                                                                child: Text(
+                                                                  '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                                  style: TextStyle(
+                                                                      fontFamily: 'BerlinSansFB'),
+                                                                ),
+                                                              ),
+                                                              // button1: ElevatedButton(
+                                                              //   onPressed: () {
+                                                              //     Navigator.of(context).pop();
+                                                              //   },
+                                                              //   child: Text(
+                                                              //       '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                              //       style: TextStyle(
+                                                              //           fontFamily:
+                                                              //           'BerlinSansFB')),
+                                                              // ),
+                                                            );
+                                                          });
+                                                    }
+                                                      // _key.currentState
+                                                      //     .showSnackBar(
+                                                      //   SnackBar(
+                                                      //     content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                      //     ),
+                                                      //   ),
+                                                      // );}
+                                                  }
+                                                } else if (orderProvider.spets ==
+                                                    3) {
+                                                  if (orderProvider.serviceId ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content:  Text('${LanguageTr.lg[authProvider.language]["Please choose one from the following offers "]}'
+                                                            ),
                                                       ),
-                                                    )
-                                                  : Container(),
-                                            ],
-                                          ):Container()
-                                        : Container(),
-                                    !loadingnext
-                                        ? !orderProvider.finaldonatesteps?ElevatedButton(
-                                            onPressed: () async {
-                                              setState(() {
-                                                loadingnext = true;
-                                              });
-
-                                              if (orderProvider.spets == 1) {
-                                                if (orderProvider.value.id ==
-                                                    0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
-                                                          ),
-                                                    ),
-                                                  );
-                                                } else {
-
-
-                                                  if(await orderProvider.getdistance()) {
+                                                    );
+                                                  } else {
                                                     orderProvider.spets++;
+
                                                     _animateToIndex(
                                                         orderProvider.spets);
                                                   }
-                                                  else{
-                                                    showDialog(
-                                                        context: context,
-                                                        builder: (BuildContext context) {
-                                                          return CustomDialog3(
-                                                            title:
-                                                            '${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
-                                                            description: "",
-                                                            oneOrtwo: true,
-                                                            button2: ElevatedButton(
-                                                              onPressed: () {
-                                                                Navigator.of(context).pop();
-                                                              },
-                                                              child: Text(
-                                                                '${LanguageTr.lg[authProvider.language]["Close"]}',
-                                                                style: TextStyle(
-                                                                    fontFamily: 'BerlinSansFB'),
-                                                              ),
+                                                } else if (orderProvider.spets ==
+                                                    2) {
+                                                  if (address.eventnamecontroller
+                                                              .text ==
+                                                          "" ||
+                                                      address.evendatecontroller
+                                                              .text ==
+                                                          "" ||
+                                                      address.numberofguestcontroller
+                                                              .text ==
+                                                          "" ||
+                                                      address.typeofeventcontroller
+                                                              .text ==
+                                                          "") {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}'
                                                             ),
-                                                            // button1: ElevatedButton(
-                                                            //   onPressed: () {
-                                                            //     Navigator.of(context).pop();
-                                                            //   },
-                                                            //   child: Text(
-                                                            //       '${LanguageTr.lg[authProvider.language]["Close"]}',
-                                                            //       style: TextStyle(
-                                                            //           fontFamily:
-                                                            //           'BerlinSansFB')),
-                                                            // ),
-                                                          );
-                                                        });
-                                                  }
-                                                    // _key.currentState
-                                                    //     .showSnackBar(
-                                                    //   SnackBar(
-                                                    //     content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
-                                                    //     ),
-                                                    //   ),
-                                                    // );}
-                                                }
-                                              } else if (orderProvider.spets ==
-                                                  3) {
-                                                if (orderProvider.serviceId ==
-                                                    0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content:  Text('${LanguageTr.lg[authProvider.language]["Please choose one from the following offers "]}'
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    if (address.form) {
+                                                      if (address.name.text ==
+                                                              "" ||
+                                                          address.phone.text ==
+                                                              "") {
+                                                        _key.currentState
+                                                            .showSnackBar(
+                                                           SnackBar(
+                                                            content: Text(
+                                                              '${LanguageTr.lg[authProvider.language][  "Please fill the empty fields"]}',),
                                                           ),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  orderProvider.spets++;
+                                                        );
+                                                      } else {
+                                                        await address.checktime();
+                                                        if (address
+                                                            .hours.isDaberni)
+                                                          orderProvider
+                                                              .serviceId = 2;
+                                                        orderProvider.spets++;
 
-                                                  _animateToIndex(
-                                                      orderProvider.spets);
-                                                }
-                                              } else if (orderProvider.spets ==
-                                                  2) {
-                                                if (address.eventnamecontroller
-                                                            .text ==
-                                                        "" ||
-                                                    address.evendatecontroller
-                                                            .text ==
-                                                        "" ||
-                                                    address.numberofguestcontroller
-                                                            .text ==
-                                                        "" ||
-                                                    address.typeofeventcontroller
-                                                            .text ==
-                                                        "") {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}'
-                                                          ),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  if (address.form) {
-                                                    if (address.name.text ==
-                                                            "" ||
-                                                        address.phone.text ==
-                                                            "") {
+                                                        _animateToIndex(
+                                                            orderProvider.spets);
+                                                      }
+                                                    } else {
+                                                      await address.checktime();
+                                                      if (address.hours.isDaberni)
+                                                        orderProvider.serviceId =
+                                                            2;
+                                                      orderProvider.spets++;
+
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                  }
+                                                } else if (orderProvider.spets ==
+                                                    6) {
+                                                  if (orderProvider
+                                                          .totalpackage ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "please choose a package to order"]}'
+                                                           ),
+                                                      ),
+                                                    );
+                                                  } else if (orderProvider
+                                                              .totalssha <
+                                                          5 &&
+                                                      orderProvider.vatshisha !=
+                                                          0.0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["you can’t order less than 5 shishas"]}'
+                                                            ),
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    if (orderProvider
+                                                            .itemOrders.length >
+                                                        0) {
+                                                      bool a = false;
+                                                      if (orderProvider
+                                                              .choosebillFriend
+                                                              .length >
+                                                          0) {
+                                                        for (int i = 0;
+                                                            i <
+                                                                orderProvider
+                                                                    .choosebillFriend
+                                                                    .length;
+                                                            i++) {
+                                                          print(i);
+                                                          if (orderProvider
+                                                                  .choosebillFriend[
+                                                                      i]
+                                                                  .price ==
+                                                              0) {
+                                                            _key.currentState
+                                                                .showSnackBar(
+                                                               SnackBar(
+                                                                content: Text('${LanguageTr.lg[authProvider.language]["Please choose someone to share your bill with"]}'
+                                                                    ),
+                                                              ),
+                                                            );
+                                                            a = true;
+                                                            break;
+                                                          }
+                                                        }
+                                                      }
+
+                                                      if (!a) {
+                                                        orderProvider.spets++;
+                                                        _animateToIndex(
+                                                            orderProvider.spets);
+                                                      }
+                                                    } else {
                                                       _key.currentState
                                                           .showSnackBar(
                                                          SnackBar(
-                                                          content: Text(
-                                                            '${LanguageTr.lg[authProvider.language][  "Please fill the empty fields"]}',),
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      await address.checktime();
-                                                      if (address
-                                                          .hours.isDaberni)
-                                                        orderProvider
-                                                            .serviceId = 2;
-                                                      orderProvider.spets++;
+                                                          content: Text('${LanguageTr.lg[authProvider.language]["no items to order"]}'
+                                                          ),
+                                                            ),
 
+                                                      );
+                                                    }
+                                                  }
+                                                }
+                                                else if(orderProvider.spets ==
+                                                    7){
+                                                  if (_creditCardss.credit.id ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  else if(orderProvider.finaldonatestepsCancel){
+                                                    showDialog(
+                                                      context: this.context,
+                                                      barrierDismissible: false,
+                                                      builder:
+                                                          (BuildContext context) {
+                                                        return WillPopScope(
+                                                            onWillPop: () =>
+                                                            Future<bool>.value(
+                                                                false),
+                                                            child: AlertDialog(
+                                                              title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                              ),
+                                                              content: Column(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                                  children: <
+                                                                      Widget>[
+                                                                    const CircularProgressIndicator()
+                                                                  ]),
+                                                            ));
+                                                      },
+                                                    );
+                                                    final _creditCards = Provider
+                                                        .of<CreditCardsProvider>(
+                                                        context,
+                                                        listen: false);
+                                                    final order = Provider.of<OrderByIdProvider>(context, listen: false);
+
+                                                    final address = Provider.of<
+                                                        AdressProvider>(
+                                                        context,
+                                                        listen: false);
+
+                                                    int a = await orderProvider
+                                                        .makeorder(
+                                                        date: (address
+                                                            .evendatecontroller
+                                                            .text)
+                                                            .replaceAll(
+                                                          RegExp(
+                                                              '[^A-Za-z0-9]'),
+                                                          '-',
+                                                        ),
+                                                        type: address
+                                                            .typeofeventcontroller
+                                                            .text,
+                                                        nb: address
+                                                            .numberofguestcontroller
+                                                            .text,
+                                                        idcard: _creditCards
+                                                            .credit.cardId,
+                                                        contactname:
+                                                        address.name.text,
+                                                        contactphone: address
+                                                            .phone.text,
+                                                        eventname: address
+                                                            .eventnamecontroller
+                                                            .text,
+                                                        bool1: order.check1,
+                                                        bool2: order.check2,
+                                                        bool3: order.check4,
+                                                    );
+                                                    Navigator.of(context).pop();
+                                                    if (a != 0)
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  AppointmentSuccess(
+                                                                      a)));
+                                                    else {
+                                                      // showDialog(
+                                                      //   context: this.context,
+                                                      //   builder: (BuildContext
+                                                      //       context) {
+                                                      // return AlertDialog(
+                                                      //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                      //       ),
+                                                      //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                      //      ),
+                                                      //   actions: <Widget>[
+                                                      //     TextButton(
+                                                      //         child:
+                                                      //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                      //                ),
+                                                      //         onPressed: () =>
+                                                      //             Navigator.pop(
+                                                      //                 context))
+                                                      //   ],
+                                                      // );
+
+
+                                                      // },
+                                                      // );
+                                                    }
+
+                                                        }
+                                                  else
+                                                    {
+                                                      orderProvider.finaldonatesteps=true;
+                                                      orderProvider.finaldonatestepsCancel=true;
+                                                      orderProvider.spets++;
                                                       _animateToIndex(
                                                           orderProvider.spets);
                                                     }
-                                                  } else {
-                                                    await address.checktime();
-                                                    if (address.hours.isDaberni)
-                                                      orderProvider.serviceId =
-                                                          2;
-                                                    orderProvider.spets++;
-
-                                                    _animateToIndex(
-                                                        orderProvider.spets);
-                                                  }
                                                 }
-                                              } else if (orderProvider.spets ==
-                                                  6) {
-                                                if (orderProvider
-                                                        .totalpackage ==
-                                                    0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please choose a package to order"]}'
-                                                         ),
-                                                    ),
-                                                  );
-                                                } else if (orderProvider
-                                                            .totalssha <
-                                                        5 &&
-                                                    orderProvider.vatshisha !=
-                                                        0.0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["you can’t order less than 5 shishas"]}'
-                                                          ),
-                                                    ),
-                                                  );
-                                                } else {
+
+                                                else if (orderProvider.spets ==
+                                                    8) {
+                                                  if (_creditCardss.credit.id ==
+                                                      0) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                           ),
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    showDialog(
+                                                      context: this.context,
+                                                      barrierDismissible: false,
+                                                      builder:
+                                                          (BuildContext context) {
+                                                        return WillPopScope(
+                                                            onWillPop: () =>
+                                                                Future<bool>.value(
+                                                                    false),
+                                                            child: AlertDialog(
+                                                              title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                                  ),
+                                                              content: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: <
+                                                                      Widget>[
+                                                                    const CircularProgressIndicator()
+                                                                  ]),
+                                                            ));
+                                                      },
+                                                    );
+                                                    final _creditCards = Provider
+                                                        .of<CreditCardsProvider>(
+                                                            context,
+                                                            listen: false);
+
+                                                    final address = Provider.of<
+                                                            AdressProvider>(
+                                                        context,
+                                                        listen: false);
+                                                    final order = Provider.of<OrderByIdProvider>(context, listen: false);
+                                                    int a = await orderProvider
+                                                        .makeorder(
+                                                            date: (address
+                                                                    .evendatecontroller
+                                                                    .text)
+                                                                .replaceAll(
+                                                              RegExp(
+                                                                  '[^A-Za-z0-9]'),
+                                                              '-',
+                                                            ),
+                                                            type: address
+                                                                .typeofeventcontroller
+                                                                .text,
+                                                            nb: address
+                                                                .numberofguestcontroller
+                                                                .text,
+                                                            idcard: _creditCards
+                                                                .credit.cardId,
+                                                            contactname:
+                                                                address.name.text,
+                                                            contactphone: address
+                                                                .phone.text,
+                                                            eventname: address
+                                                                .eventnamecontroller
+                                                                .text);
+
+                                                    Navigator.of(context).pop();
+                                                    if (a != 0)
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  AppointmentSuccess(
+                                                                      a)));
+                                                    else {
+                                                      // showDialog(
+                                                      //   context: this.context,
+                                                      //   builder: (BuildContext
+                                                      //       context) {
+                                                          // return AlertDialog(
+                                                          //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                          //       ),
+                                                          //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                          //      ),
+                                                          //   actions: <Widget>[
+                                                          //     TextButton(
+                                                          //         child:
+                                                          //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                          //                ),
+                                                          //         onPressed: () =>
+                                                          //             Navigator.pop(
+                                                          //                 context))
+                                                          //   ],
+                                                          // );
+
+
+                                                        // },
+                                                      // );
+                                                    }
+                                                  }
+                                                } else if (orderProvider.spets ==
+                                                    4) {
                                                   if (orderProvider
                                                           .itemOrders.length >
                                                       0) {
-                                                    bool a = false;
-                                                    if (orderProvider
-                                                            .choosebillFriend
-                                                            .length >
-                                                        0) {
-                                                      for (int i = 0;
-                                                          i <
-                                                              orderProvider
-                                                                  .choosebillFriend
-                                                                  .length;
-                                                          i++) {
-                                                        print(i);
-                                                        if (orderProvider
-                                                                .choosebillFriend[
-                                                                    i]
-                                                                .price ==
-                                                            0) {
-                                                          _key.currentState
-                                                              .showSnackBar(
-                                                             SnackBar(
-                                                              content: Text('${LanguageTr.lg[authProvider.language]["Please choose someone to share your bill with"]}'
-                                                                  ),
-                                                            ),
-                                                          );
-                                                          a = true;
-                                                          break;
-                                                        }
-                                                      }
-                                                    }
-
-                                                    if (!a) {
-                                                      orderProvider.spets++;
-                                                      _animateToIndex(
-                                                          orderProvider.spets);
-                                                    }
+                                                    orderProvider.spets++;
                                                   } else {
                                                     _key.currentState
                                                         .showSnackBar(
                                                        SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language]["no items to order"]}'
-                                                        ),
-                                                          ),
-
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "please add a package"]}'
+                                                           ),
+                                                      ),
                                                     );
                                                   }
-                                                }
-                                              }
-                                              else if(orderProvider.spets ==
-                                                  7){
-                                                if (_creditCardss.credit.id ==
-                                                    0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                else if(orderProvider.finaldonatestepsCancel){
-                                                  showDialog(
-                                                    context: this.context,
-                                                    barrierDismissible: false,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return WillPopScope(
-                                                          onWillPop: () =>
-                                                          Future<bool>.value(
-                                                              false),
-                                                          child: AlertDialog(
-                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
-                                                            ),
-                                                            content: Column(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                                children: <
-                                                                    Widget>[
-                                                                  const CircularProgressIndicator()
-                                                                ]),
-                                                          ));
-                                                    },
-                                                  );
-                                                  final _creditCards = Provider
-                                                      .of<CreditCardsProvider>(
-                                                      context,
-                                                      listen: false);
-                                                  final order = Provider.of<OrderByIdProvider>(context, listen: false);
-
-                                                  final address = Provider.of<
-                                                      AdressProvider>(
-                                                      context,
-                                                      listen: false);
-
-                                                  int a = await orderProvider
-                                                      .makeorder(
-                                                      date: (address
-                                                          .evendatecontroller
-                                                          .text)
-                                                          .replaceAll(
-                                                        RegExp(
-                                                            '[^A-Za-z0-9]'),
-                                                        '-',
-                                                      ),
-                                                      type: address
-                                                          .typeofeventcontroller
-                                                          .text,
-                                                      nb: address
-                                                          .numberofguestcontroller
-                                                          .text,
-                                                      idcard: _creditCards
-                                                          .credit.cardId,
-                                                      contactname:
-                                                      address.name.text,
-                                                      contactphone: address
-                                                          .phone.text,
-                                                      eventname: address
-                                                          .eventnamecontroller
-                                                          .text,
-                                                      bool1: order.check1,
-                                                      bool2: order.check2,
-                                                      bool3: order.check4,
-                                                  );
-                                                  Navigator.of(context).pop();
-                                                  if (a != 0)
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AppointmentSuccess(
-                                                                    a)));
-                                                  else {
-                                                    // showDialog(
-                                                    //   context: this.context,
-                                                    //   builder: (BuildContext
-                                                    //       context) {
-                                                    // return AlertDialog(
-                                                    //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
-                                                    //       ),
-                                                    //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                    //      ),
-                                                    //   actions: <Widget>[
-                                                    //     TextButton(
-                                                    //         child:
-                                                    //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                    //                ),
-                                                    //         onPressed: () =>
-                                                    //             Navigator.pop(
-                                                    //                 context))
-                                                    //   ],
-                                                    // );
-
-
-                                                    // },
-                                                    // );
+                                                } else if (orderProvider.spets ==
+                                                        5 &&
+                                                    orderProvider.vatshisha !=
+                                                        0.0) {
+                                                  int itemcount = 0;
+                                                  for (int i = 0;
+                                                      i <
+                                                          orderProvider
+                                                              .itemOrders.length;
+                                                      i++) {
+                                                    if (orderProvider
+                                                        .itemOrders[i].isShisha) {
+                                                      itemcount = itemcount +
+                                                          orderProvider
+                                                              .itemOrders[i]
+                                                              .quantity;
+                                                    }
+                                                    if (itemcount == 5) break;
                                                   }
 
-                                                      }
-                                                else
-                                                  {
-                                                    orderProvider.finaldonatesteps=true;
-                                                    orderProvider.finaldonatestepsCancel=true;
+                                                  if (itemcount < 5) {
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                       SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["minimun quantity for shisha is 5"]}'
+                                                            ),
+                                                      ),
+                                                    );
+                                                  } else {
                                                     orderProvider.spets++;
+
                                                     _animateToIndex(
                                                         orderProvider.spets);
                                                   }
-                                              }
-
-                                              else if (orderProvider.spets ==
-                                                  8) {
-                                                if (_creditCardss.credit.id ==
-                                                    0) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
-                                                         ),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  showDialog(
-                                                    context: this.context,
-                                                    barrierDismissible: false,
-                                                    builder:
-                                                        (BuildContext context) {
-                                                      return WillPopScope(
-                                                          onWillPop: () =>
-                                                              Future<bool>.value(
-                                                                  false),
-                                                          child: AlertDialog(
-                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
-                                                                ),
-                                                            content: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                children: <
-                                                                    Widget>[
-                                                                  const CircularProgressIndicator()
-                                                                ]),
-                                                          ));
-                                                    },
-                                                  );
-                                                  final _creditCards = Provider
-                                                      .of<CreditCardsProvider>(
-                                                          context,
-                                                          listen: false);
-
-                                                  final address = Provider.of<
-                                                          AdressProvider>(
-                                                      context,
-                                                      listen: false);
-                                                  final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                  int a = await orderProvider
-                                                      .makeorder(
-                                                          date: (address
-                                                                  .evendatecontroller
-                                                                  .text)
-                                                              .replaceAll(
-                                                            RegExp(
-                                                                '[^A-Za-z0-9]'),
-                                                            '-',
-                                                          ),
-                                                          type: address
-                                                              .typeofeventcontroller
-                                                              .text,
-                                                          nb: address
-                                                              .numberofguestcontroller
-                                                              .text,
-                                                          idcard: _creditCards
-                                                              .credit.cardId,
-                                                          contactname:
-                                                              address.name.text,
-                                                          contactphone: address
-                                                              .phone.text,
-                                                          eventname: address
-                                                              .eventnamecontroller
-                                                              .text);
-
-                                                  Navigator.of(context).pop();
-                                                  if (a != 0)
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AppointmentSuccess(
-                                                                    a)));
-                                                  else {
-                                                    // showDialog(
-                                                    //   context: this.context,
-                                                    //   builder: (BuildContext
-                                                    //       context) {
-                                                        // return AlertDialog(
-                                                        //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
-                                                        //       ),
-                                                        //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                        //      ),
-                                                        //   actions: <Widget>[
-                                                        //     TextButton(
-                                                        //         child:
-                                                        //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                        //                ),
-                                                        //         onPressed: () =>
-                                                        //             Navigator.pop(
-                                                        //                 context))
-                                                        //   ],
-                                                        // );
-
-
-                                                      // },
-                                                    // );
-                                                  }
-                                                }
-                                              } else if (orderProvider.spets ==
-                                                  4) {
-                                                if (orderProvider
-                                                        .itemOrders.length >
-                                                    0) {
-                                                  orderProvider.spets++;
-                                                } else {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please add a package"]}'
-                                                         ),
-                                                    ),
-                                                  );
-                                                }
-                                              } else if (orderProvider.spets ==
-                                                      5 &&
-                                                  orderProvider.vatshisha !=
-                                                      0.0) {
-                                                int itemcount = 0;
-                                                for (int i = 0;
-                                                    i <
-                                                        orderProvider
-                                                            .itemOrders.length;
-                                                    i++) {
-                                                  if (orderProvider
-                                                      .itemOrders[i].isShisha) {
-                                                    itemcount = itemcount +
-                                                        orderProvider
-                                                            .itemOrders[i]
-                                                            .quantity;
-                                                  }
-                                                  if (itemcount == 5) break;
-                                                }
-
-                                                if (itemcount < 5) {
-                                                  _key.currentState
-                                                      .showSnackBar(
-                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["minimun quantity for shisha is 5"]}'
-                                                          ),
-                                                    ),
-                                                  );
                                                 } else {
                                                   orderProvider.spets++;
 
                                                   _animateToIndex(
                                                       orderProvider.spets);
                                                 }
-                                              } else {
-                                                orderProvider.spets++;
 
-                                                _animateToIndex(
-                                                    orderProvider.spets);
-                                              }
+                                                setState(() {
+                                                  loadingnext = false;
+                                                });
+                                              },
+                                              child:  Text('${LanguageTr.lg[authProvider.language]['Next']}',
 
-                                              setState(() {
-                                                loadingnext = false;
-                                              });
-                                            },
-                                            child:  Text('${LanguageTr.lg[authProvider.language]['Next']}',
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: 'BerlinSansFB',
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              )
 
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            )
-
-                                            // style: ElevatedButton.styleFrom(
-                                            //   padding: EdgeInsets.fromLTRB(
-                                            //     width * 0.1,
-                                            //     screenHeight * 0.03,
-                                            //     width * 0.1,
-                                            //     screenHeight * 0.03,
-                                            //   ),
-                                            //   onPrimary:
-                                            //       const Color.fromRGBO(255, 255, 255, 1),
-                                            //   primary: const Color.fromRGBO(63, 85, 33, 1),
-                                            //
-                                            // );
-                                            ):Container()
-                                        : CircularProgressIndicator(),
-                                  ])),
-                        ),
-                      ],
+                                              // style: ElevatedButton.styleFrom(
+                                              //   padding: EdgeInsets.fromLTRB(
+                                              //     width * 0.1,
+                                              //     screenHeight * 0.03,
+                                              //     width * 0.1,
+                                              //     screenHeight * 0.03,
+                                              //   ),
+                                              //   onPrimary:
+                                              //       const Color.fromRGBO(255, 255, 255, 1),
+                                              //   primary: const Color.fromRGBO(63, 85, 33, 1),
+                                              //
+                                              // );
+                                              ):Container()
+                                          : CircularProgressIndicator(),
+                                    ])),
+                          ),
+                        ],
+                      ),
                     ),
+                )
+                : const Center(
+                    child: CircularProgressIndicator(),
                   ),
-              )
-              : const Center(
-                  child: CircularProgressIndicator(),
-                ),
+          ),
         ),
       ),
     );

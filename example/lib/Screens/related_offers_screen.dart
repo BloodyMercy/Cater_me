@@ -75,11 +75,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           elevation: 12,
-                          child:
-                            Stack(
-                              children: [
-
-
+                          child: Stack(children: [
                             Container(
                               child: Image.network(
                                   pack.allpackagesorder[index].image,
@@ -88,22 +84,17 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8),
                             ),
-
-
-                                   Container(
-                                    alignment: Alignment.topLeft,
-
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        FontAwesomeIcons.solidHeart,
-                                        color: yellowColor,
-                                        size: 20,
-                                      ),
-                                    ),
-                                  ),
-
-
+                            Positioned(
+                              left: _width * 0.7,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  FontAwesomeIcons.solidHeart,
+                                  color: yellowColor,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
                           ])),
                     ),
                     onTap: () {
