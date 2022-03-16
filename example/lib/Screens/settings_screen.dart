@@ -620,6 +620,68 @@ class _TABBarState extends State<TABBar> {
                                         ),
                                       ),
                                     ),
+                                    Divider(
+                                      thickness: 1,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          // Navigator.of(context).push(
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) =>
+                                          //         AddFriendScreen(),
+                                          //   ),
+                                          // );
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                                Icon(
+                                                  Icons.backpack,size: 20,
+                                                    color: Color(0xFF3F5521),
+
+
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.05,
+                                                ),
+                                                Text(
+                                                  '${LanguageTr.lg[personalInfo.language]["My Orders"]}',
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
