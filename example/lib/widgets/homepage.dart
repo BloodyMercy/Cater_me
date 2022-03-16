@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                                 )
                               ],
                             ),
-                            package.listItems.isEmpty?Container(): Padding(
+                             Padding(
                               padding: EdgeInsets.only(
                                   left: (mediaQuery.size.width * 0.035),
                                   top: mediaQuery.size.height * 0.05),
@@ -246,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
-                            package.listItems.isEmpty?Container():  Center(child: PackagesCard()),
+                             Center(child: PackagesCard()),
                             SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
                               Row(
@@ -259,8 +259,7 @@ class _HomePageState extends State<HomePage> {
                                   left: (mediaQuery.size.width * 0.04),
                                   // top: mediaQuery.size.height * 0.05
                                       ),
-                                        child: package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
-                                            0))?Container():Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+                                        child: Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
 
 
 
@@ -280,8 +279,7 @@ class _HomePageState extends State<HomePage> {
 
                                         
                                       },
-                                      child: package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
-                                          0))?Container():Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
+                                      child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
                                         ,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
