@@ -62,7 +62,8 @@ class _PackagesCardState extends State<PackagesCard> {
           ],
         );
     List<PackageCard> card = getPackages();
-    return SizedBox(
+    return Container(
+      color:Colors.white,
       // width: mediaQuery.size.width * 90,
       child: !loading
           ? Card(

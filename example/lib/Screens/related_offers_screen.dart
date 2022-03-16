@@ -76,6 +76,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         elevation: 12,
+
                         child: Image.network(
                             pack.allpackagesorder[index].image,
                             fit: BoxFit.scaleDown,
