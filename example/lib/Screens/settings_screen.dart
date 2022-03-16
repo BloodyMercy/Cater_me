@@ -695,7 +695,81 @@ class _TABBarState extends State<TABBar> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(25),
+                                      ),
+                                    ),
+                                    title:
+                                        Center(
+                                          child: Text('Choose language', style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 19,)),
+                                        ),
+                                      actions: [
+                                      Padding(
+                                        padding:  EdgeInsets.symmetric(horizontal:_mediaWidth*0.08),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            TextButton(
+                                              child: Text('Arabic'),
+                                              onPressed: () async {
+                                                personalInfo.language ="ar";
+                                                        SharedPreferences _prefs =
+                                                        await SharedPreferences
+                                                            .getInstance();
+                                                        _prefs.setString("locale", "ar");
+                                                        MyApp.setLocale(
+                                                            context, Locale("ar", "AE"));
+                                                        Navigator.of(context).pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                SplashScreen(),
+                                                          ),
+
+                                                                (Route<dynamic> route) => false   );
+                                                        // AppLocalizations.of(context)!.locale.toString()
+
+
+                                                        // .language="ar";
+                                              },
+                                            ),
+                                            TextButton(
+                                              child: Text('English',),
+                                              onPressed: () async {
+                                                personalInfo.language = "en";
+                                                SharedPreferences _prefs =
+                                                    await SharedPreferences
+                                                    .getInstance();
+                                                _prefs.setString(
+                                                    "locale", "en");
+                                                MyApp.setLocale(context,
+                                                    Locale("en", "US"));
+                                                Navigator.of(context)
+                                                    .pushAndRemoveUntil(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SplashScreen(),
+                                                    ),
+                                                        (Route<
+                                                        dynamic> route) => false);
+                                                // AppLocalizations.of(context)!.locale.toString()
+
+
+                                                // .language="ar";                                              },
+                                              } ),
+                                          ],),
+                                      )
+
+                                    ],
+                                  )
+                              );
+                            },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
@@ -726,63 +800,63 @@ class _TABBarState extends State<TABBar> {
                                       ),
                                     ],
                                   ),
-                                  InkWell(
-                                      onTap: () async {
-                                        if(  personalInfo.language == "en") {
-                                          personalInfo.language ="ar";
-                                          SharedPreferences _prefs =
-                                          await SharedPreferences
-                                              .getInstance();
-                                          _prefs.setString("locale", "ar");
-                                          MyApp.setLocale(
-                                              context, Locale("ar", "AE"));
-                                          Navigator.of(context).pushAndRemoveUntil(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SplashScreen(),
-                                            ),
-
-                                                  (Route<dynamic> route) => false   );
-                                          // AppLocalizations.of(context)!.locale.toString()
-
-
-                                          // .language="ar";
-
-                                        }
-                                        else{
-                                          personalInfo.language = "en";
-                                          SharedPreferences _prefs =
-                                          await SharedPreferences
-                                              .getInstance();
-                                          _prefs.setString("locale", "en");
-                                        MyApp.setLocale(context, Locale("en", "US"));
-                                          Navigator.of(context).pushAndRemoveUntil(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SplashScreen(),
-                                            ),
-                                                  (Route<dynamic> route) => false  );
-                                          // AppLocalizations.of(context)!.locale.toString()
-
-
-                                          // .language="ar";
-
-                                        }
-                                      },
-                                      child: Row(
-                                        children: [
-                                          personalInfo.language == "en"?   Text("English",
-                                              style: TextStyle(
-                                                  fontWeight:
-                                                      FontWeight.normal)):Text("العربية",
-                                              style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight.normal)),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                        ],
-                                      )),
+                                  // InkWell(
+                                  //     onTap: () async {
+                                  //       if(  personalInfo.language == "en") {
+                                  //         personalInfo.language ="ar";
+                                  //         SharedPreferences _prefs =
+                                  //         await SharedPreferences
+                                  //             .getInstance();
+                                  //         _prefs.setString("locale", "ar");
+                                  //         MyApp.setLocale(
+                                  //             context, Locale("ar", "AE"));
+                                  //         Navigator.of(context).pushAndRemoveUntil(
+                                  //           MaterialPageRoute(
+                                  //             builder: (context) =>
+                                  //                 SplashScreen(),
+                                  //           ),
+                                  //
+                                  //                 (Route<dynamic> route) => false   );
+                                  //         // AppLocalizations.of(context)!.locale.toString()
+                                  //
+                                  //
+                                  //         // .language="ar";
+                                  //
+                                  //       }
+                                  //       else{
+                                  //         personalInfo.language = "en";
+                                  //         SharedPreferences _prefs =
+                                  //         await SharedPreferences
+                                  //             .getInstance();
+                                  //         _prefs.setString("locale", "en");
+                                  //       MyApp.setLocale(context, Locale("en", "US"));
+                                  //         Navigator.of(context).pushAndRemoveUntil(
+                                  //           MaterialPageRoute(
+                                  //             builder: (context) =>
+                                  //                 SplashScreen(),
+                                  //           ),
+                                  //                 (Route<dynamic> route) => false  );
+                                  //         // AppLocalizations.of(context)!.locale.toString()
+                                  //
+                                  //
+                                  //         // .language="ar";
+                                  //
+                                  //       }
+                                  //     },
+                                  //     child: Row(
+                                  //       children: [
+                                  //         personalInfo.language == "en"?   Text("English",
+                                  //             style: TextStyle(
+                                  //                 fontWeight:
+                                  //                     FontWeight.normal)):Text("العربية",
+                                  //             style: TextStyle(
+                                  //                 fontWeight:
+                                  //                 FontWeight.normal)),
+                                  //         SizedBox(
+                                  //           width: mediaQuery.size.width * 0.03,
+                                  //         ),
+                                  //       ],
+                                  //     )),
                                 ],
                               ),
                             ),

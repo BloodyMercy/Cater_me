@@ -118,6 +118,7 @@ class AddOnCardOrder extends StatelessWidget {
               ),
             ),
             addOn.isfavorite? Positioned(
+              top: mediaQuery.size.height * 0.15,
               left: mediaQuery.size.width * 0.3,
               child: Icon(
                 FontAwesomeIcons.solidHeart,

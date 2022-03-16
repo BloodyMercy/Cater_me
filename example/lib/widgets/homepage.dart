@@ -179,11 +179,21 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             );
                                           },
-                                          icon: Icon(
-                                            Icons.chat,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          )),
+                                  icon: authProvider.status==Status.Authenticated?Badge(
+                                      badgeColor:
+                                      Color.fromRGBO(253, 202, 29, 1),
+                                      badgeContent:
+                                      Text(int.parse(package.nbnotification.toString())>99?"99+":package.nbnotification , style: TextStyle(fontSize: 10),),
+                                      child:Icon(
+                                        Icons.chat,
+                                        color:
+                                        Theme.of(context).primaryColor,
+                                      )):Icon(
+                                    Icons.chat,
+                                    color:
+                                    Theme.of(context).primaryColor,
+                                  ),
+                                ),
                                       IconButton(
                                         onPressed: () {
                                           Navigator.of(context).push(
