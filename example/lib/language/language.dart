@@ -306,7 +306,7 @@ class LanguageTr {
       "Your Order Has Been Canceled Due to Payment Error":
           "Your Order Has Been Canceled Due to Payment Error",
       "Packages": "Packages",
-      "No Packages": "مافي باقات",
+      "No Packages": "No Packages",
       "See All": "See All",
       "Upcoming Occasions": "Upcoming Occasions",
       "Add an occasion": "Add an occasion",
