@@ -578,14 +578,17 @@ class _HomePageState extends State<HomePage> {
                                         // width: mediaQuery.size.width*0.8 ,
                                         height: mediaQuery.size.height * 0.1,
                                         child: Row(
+
                                           children: [
                                             Image.network(
                                               package.listItems[index].image,
                                               loadingBuilder: ((context, child, loadingProgress) {
+
                                                 if (loadingProgress == null) return child;
+
                                                 return Center(
                                                   child: CircularProgressIndicator(
-                                                    strokeWidth: 1,
+                                                    // strokeWidth: 1,
                                                     value: loadingProgress.expectedTotalBytes != null
                                                         ? loadingProgress.cumulativeBytesLoaded /
                                                         loadingProgress.expectedTotalBytes
@@ -595,6 +598,7 @@ class _HomePageState extends State<HomePage> {
                                               }),
                                               height: 100,
                                               width: 100,
+
                                             ),
                                             SizedBox(
                                               width: MediaQuery.of(context)

@@ -121,8 +121,21 @@ class _OccasionListViewState extends State<OccasionListView> {
                                                 color: colorCustom,
                                               )
                                             : Image.network(
+
                                                 occa.listoccasiontype[index]
                                                     .image,
+                                          loadingBuilder: ((context, child, loadingProgress) {
+                                            if (loadingProgress == null) return child;
+                                            return Center(
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 1,
+                                                value: loadingProgress.expectedTotalBytes != null
+                                                    ? loadingProgress.cumulativeBytesLoaded /
+                                                    loadingProgress.expectedTotalBytes
+                                                    : null,
+                                              ),
+                                            );
+                                          }),
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -258,6 +271,18 @@ class _OccasionListViewState extends State<OccasionListView> {
                                 Expanded(
                                   child: Image.network(
                                     occa.all[index].image,
+                                    loadingBuilder: ((context, child, loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 1,
+                                          value: loadingProgress.expectedTotalBytes != null
+                                              ? loadingProgress.cumulativeBytesLoaded /
+                                              loadingProgress.expectedTotalBytes
+                                              : null,
+                                        ),
+                                      );
+                                    }),
                                     // width:
                                     //     MediaQuery.of(context).size.width / 5.5,
                                   ),

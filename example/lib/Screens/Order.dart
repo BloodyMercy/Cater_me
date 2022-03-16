@@ -61,7 +61,7 @@ class _OrderState extends State<Order> {
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                 },
-                child: Text('${LanguageTr.lg[authProvider.language]["yes"]}')),
+                child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
             oneOrtwo: true,
             button2: ElevatedButton(
               onPressed: () {

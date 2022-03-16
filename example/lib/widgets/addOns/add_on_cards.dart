@@ -1,5 +1,6 @@
 import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,23 +40,31 @@ class AddOnCards extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 elevation: 4,
-                child: Image.network(
-                  this.addOn.image,
-                  loadingBuilder: ((context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 1,
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes
-                            : null,
-                      ),
-                    );
-                  }),
-                  height: 100,
-                  width: 200,
+                child: CachedNetworkImage(
+                  placeholder: (context, url) =>
+                  const CircularProgressIndicator(),
+                    imageUrl: this.addOn.image
+
+
                 ),
+                // child: Image.network(
+                //   this.addOn.image,
+                //   height: 100,
+                //   width: 200,
+                //   loadingBuilder: ((context, child, loadingProgress) {
+                //     if (loadingProgress == null) return child;
+                //     return Center(
+                //       child: CircularProgressIndicator(
+                //         strokeWidth: 1,
+                //         value: loadingProgress.expectedTotalBytes != null
+                //             ? loadingProgress.cumulativeBytesLoaded /
+                //                 loadingProgress.expectedTotalBytes
+                //             : null,
+                //       ),
+                //     );
+                //   }),
+                //
+                // ),
               ),
               Expanded(
                 child: Padding(

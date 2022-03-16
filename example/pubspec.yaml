@@ -45,6 +45,7 @@ dependencies:
   path_provider:
   path:
   http: any
+  cached_network_image:
   provider:
   flutter_cupertino_datetime_picker: ^2.0.1
   firebase_core: ^1.10.5

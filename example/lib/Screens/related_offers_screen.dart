@@ -4,6 +4,7 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -80,12 +81,31 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           elevation: 12,
                           child: Stack(children: [
                             Container(
-                              child: Image.network(
-                                  pack.allpackagesorder[index].image,
-                                  fit: BoxFit.scaleDown,
-                                  // width: double.maxFinite,
                                   height: screenHeight * 0.175,
-                                  width: _width * 0.8),
+                                  width: _width * 0.8,
+                                child: CachedNetworkImage(
+                                  placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                                    imageUrl: pack.allpackagesorder[index].image
+                                ),
+                              // child: Image.network(
+                              //     pack.allpackagesorder[index].image,
+                              //     loadingBuilder: ((context, child, loadingProgress) {
+                              //       if (loadingProgress == null) return child;
+                              //       return Center(
+                              //         child: CircularProgressIndicator(
+                              //           strokeWidth: 1,
+                              //           value: loadingProgress.expectedTotalBytes != null
+                              //               ? loadingProgress.cumulativeBytesLoaded /
+                              //               loadingProgress.expectedTotalBytes
+                              //               : null,
+                              //         ),
+                              //       );
+                              //     }),
+                              //     fit: BoxFit.scaleDown,
+                              //     // width: double.maxFinite,
+                              //     height: screenHeight * 0.175,
+                              //     width: _width * 0.8),
                             ),
                             pack.allpackagesorder[index].isfavorite
                                 ? Positioned(

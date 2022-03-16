@@ -64,6 +64,8 @@ class _AddressesListState extends State<AddressesList> {
 
   String language;
 
+  bool loading=true;
+
   getdata() async{
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: false);
@@ -76,6 +78,9 @@ class _AddressesListState extends State<AddressesList> {
      setState(() {
        language = sh.getString("locale");
      });
+    setState(() {
+      loading=false;
+    });
 
   }
   @override
