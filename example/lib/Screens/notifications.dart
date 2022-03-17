@@ -227,7 +227,7 @@ String language;
                                                     ),
                                                     SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
                                                     Text(
-                                                        '${DateFormat.yMd().add_jm().format(DateTime.parse(allNotification.notificationlist[index].date))}',
+                                                        '${DateFormat.yMd(language).add_jm().format(DateTime.parse(allNotification.notificationlist[index].date))}',
                                                       style: TextStyle(
                                                           fontSize: 13,
                                                           color: Colors.black26),
