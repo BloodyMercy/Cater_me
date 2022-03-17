@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 
 import 'package:CaterMe/Services/ApiLink.dart';
@@ -21,8 +22,8 @@ class OrderCaterProvider extends ChangeNotifier{
   double _vatshisha=0.0;
 
   int _totalssha=0;
-bool _finaldonatesteps=false;
-bool _finaldonatestepsCancel=false;
+  bool _finaldonatesteps=false;
+  bool _finaldonatestepsCancel=false;
 
   bool get finaldonatestepsCancel => _finaldonatestepsCancel;
 
@@ -51,7 +52,7 @@ bool _finaldonatestepsCancel=false;
     return await PackageService.getDistance(value.id);
 
   }
-updateprocefreind(double a,int index){
+  updateprocefreind(double a,int index){
     print("i update");
     // // FriendModel f=new FriendModel();
     // f.id = choosebillFriend[index].id;
@@ -59,14 +60,14 @@ updateprocefreind(double a,int index){
     // f.email= choosebillFriend[index].email;
     // f.image= choosebillFriend[index].image;
     choosebillFriend[index].price=a;
-   // choosebillFriend.removeAt(index);
-   // choosebillFriend.insert(index, f);
+    // choosebillFriend.removeAt(index);
+    // choosebillFriend.insert(index, f);
     notifyListeners();
 
 
-}
-int _totalpackage=0;
-int _totalshisha=0;
+  }
+  int _totalpackage=0;
+  int _totalshisha=0;
 
   int get totalpackage => _totalpackage;
 
@@ -114,10 +115,10 @@ int _totalshisha=0;
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-       Map<String,dynamic> responseData = json.decode(response.body);
-       card=CreditCardsModel.fromJson(responseData);  //map to list
-       // return posts;
-    return card;
+        Map<String,dynamic> responseData = json.decode(response.body);
+        card=CreditCardsModel.fromJson(responseData);  //map to list
+        // return posts;
+        return card;
       }
       else {
         print(response.reasonPhrase);
@@ -133,7 +134,7 @@ int _totalshisha=0;
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
-  //  Strinmapitems="[\r\n ";
+    //  Strinmapitems="[\r\n ";
     for(int i=0;i<itemOrders.length;i++){
 
       mapitem.add(
@@ -141,13 +142,19 @@ int _totalshisha=0;
             "quantity":itemOrders[i].quantity}
       );
     }
-    for(int i=0;i<choosebillFriend.length;i++){
-if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text=="0"){
-  controllers.removeAt(i);
-  choosebillFriend.removeAt(i);
-}
-      mapitemf.add({"friendId":choosebillFriend[i].id,"amount":int.parse(controllers[i].text)  });
-    }
+    for(int i=0;i<choosebillFriend.length;i++) {
+      if(choosebillFriend[i].id==-69){}else{
+        if (controllers[i].text.isEmpty || controllers[i].text == null ||
+            controllers[i].text == "0") {
+          controllers.removeAt(i);
+          choosebillFriend.removeAt(i);
+        }
+
+        mapitemf.add({
+          "friendId": choosebillFriend[i].id,
+          "amount": int.parse(controllers[i].text)
+        });
+      }  }
 
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -158,7 +165,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
         'Authorization': 'Bearer ${prefs.getString("token")}','Content-Type': 'application/json'   };
       var request;
 
-        request = http.Request('POST', Uri.parse(ApiLink.makeorder));
+      request = http.Request('POST', Uri.parse(ApiLink.makeorder));
 
       request.body = json.encode({
         "addressId": value.id,
@@ -189,7 +196,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-       int responseData = json.decode(response.body);
+        int responseData = json.decode(response.body);
         // List<dynamic> l = json.decode(response.body);
         // List<AddOn> ld=[];
         // for(int i=0;i<l.length;i++)
@@ -268,7 +275,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
   addItems(ItemOrders item,bool a){
 
-   // subTotal=subTotal+item.totalprice;
+    // subTotal=subTotal+item.totalprice;
     totale= totale+item.totalprice;
     if(a) {
       vatshisha = vatshisha + item.tax;
@@ -287,7 +294,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
     notifyListeners();
   }
- removefriend(FriendModel item){
+  removefriend(FriendModel item){
     _choosebillFriend.remove(item);
 
     notifyListeners();
@@ -299,10 +306,10 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
 
   }
 
- removeItems(ItemOrders item){
+  removeItems(ItemOrders item){
     if(item.ispack)
       totalpackage=totalpackage-1;
-   if(item.isShisha) {
+    if(item.isShisha) {
       totalssha = totalssha- item.quantity;
     }
 
@@ -315,19 +322,19 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
     totale= totale-item.totalprice;
     notifyListeners();
   }
-modifyItems(int count,int index){
-  // if(  _itemOrders[index].ispack)
-  //   totalpackage=totalpackage-1;
-  // if(  _itemOrders[index].isShisha) {
-  //   totalssha = totalssha- item.quantity;
-  // }
-  _itemOrders[index].quantity=count;
-  totale= totale-  _itemOrders[index].totalprice;
-  _itemOrders[index].totalprice=count*_itemOrders[index].price;
-  // _itemOrders.remove(item);
-  // subTotal=subTotal+(count*_itemOrders[index].price);
-  totale= totale+  _itemOrders[index].totalprice;
-  notifyListeners();
+  modifyItems(int count,int index){
+    // if(  _itemOrders[index].ispack)
+    //   totalpackage=totalpackage-1;
+    // if(  _itemOrders[index].isShisha) {
+    //   totalssha = totalssha- item.quantity;
+    // }
+    _itemOrders[index].quantity=count;
+    totale= totale-  _itemOrders[index].totalprice;
+    _itemOrders[index].totalprice=count*_itemOrders[index].price;
+    // _itemOrders.remove(item);
+    // subTotal=subTotal+(count*_itemOrders[index].price);
+    totale= totale+  _itemOrders[index].totalprice;
+    notifyListeners();
   }
   modifyItemsmoins(int count,int index){
 
@@ -335,7 +342,7 @@ modifyItems(int count,int index){
     totale= totale-  _itemOrders[index].totalprice;
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
     // _itemOrders.remove(item);
-   // subTotal=subTotal+(count*_itemOrders[index].price);
+    // subTotal=subTotal+(count*_itemOrders[index].price);
     totale= totale+  _itemOrders[index].totalprice;
     notifyListeners();
   }
@@ -349,11 +356,11 @@ modifyItems(int count,int index){
 
 
   int _serviceId = 1;
-int _spets = 1;
-Address _value=Address();
+  int _spets = 1;
+  Address _value=Address();
 
 
-Address get value => _value;
+  Address get value => _value;
 
   set value(Address value) {
     _value = value;
@@ -389,3 +396,5 @@ Address get value => _value;
     _totalshisha = value;
   }
 }
+
+

@@ -1,3 +1,4 @@
+
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/model/friend_model.dart';
@@ -28,17 +29,19 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
   @override
   bool loading = false;
-
+  bool adonce=false ;
   @override
   void initState() {
     super.initState();
     getData();
 
   }
-
+  String imageurl="";
   List<String> listFriendssearch = [];
 
   getData() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    imageurl=_prefs.getString("imageUrl");
     final occasion = Provider.of<FriendsProvider>(context, listen: false);
     if (occasion.listFriends.length == 0) await occasion.getAllFriends();
     List<String> l = [];
@@ -58,9 +61,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     final frnd = Provider.of<FriendsProvider>(context, listen: true);
 
     return (await showDialog(
-            context: context,
-            builder: (context) =>
-                setupAlertDialoadContainer(context, frnd.listFriends))) ??
+        context: context,
+        builder: (context) =>
+            setupAlertDialoadContainer(context, frnd.listFriends))) ??
         false;
   }
 
@@ -68,11 +71,11 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
   List<FriendModel> _friend = [];
 
   void _addNewFriend(
-    // String id,
-    String fullName,
-    String email,
-    String phoneNumber,
-  ) async {
+      // String id,
+      String fullName,
+      String email,
+      String phoneNumber,
+      ) async {
     final newFriend = FriendModel();
     await getData();
     setState(() {
@@ -114,37 +117,37 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                 itemCount: frnd.listFriends.length,
                 itemBuilder: (BuildContext context, int index) {
                   return listFriendssearch[index]
-                          .contains(controllersearch.text.toLowerCase())
+                      .contains(controllersearch.text.toLowerCase())
                       ? CheckboxListTile(
-                          activeColor: Theme.of(context).primaryColor,
-                          value: details.choosebillFriend
-                              .contains(frnd.listFriends[index]),
-                          onChanged: (val) {
-                            if (val == true)
-                              details.addfriend(frnd.listFriends[index]);
-                            else
-                              details.removefriend(frnd.listFriends[index]);
-                          },
-                          title: Card(
-                            color: LightColors.kLightYellow2,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    // radius: 25.0,
-                                    backgroundImage: NetworkImage(l[index].image),
-                                    backgroundColor: Colors.transparent,
-                                    radius: screenHeight * 1,
-                                  ),
-                                  Text(l[index].name),
-                                ],
-                              ),
+                    activeColor: Theme.of(context).primaryColor,
+                    value: details.choosebillFriend
+                        .contains(frnd.listFriends[index]),
+                    onChanged: (val) {
+                      if (val == true)
+                        details.addfriend(frnd.listFriends[index]);
+                      else
+                        details.removefriend(frnd.listFriends[index]);
+                    },
+                    title: Card(
+                      color: LightColors.kLightYellow2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: [
+                            CircleAvatar(
+                              // radius: 25.0,
+                              backgroundImage: NetworkImage(l[index].image),
+                              backgroundColor: Colors.transparent,
+                              radius: screenHeight * 1,
                             ),
-                          ),
-                        )
+                            Text(l[index].name),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                       : Container();
                 },
               ),
@@ -179,268 +182,305 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             color: Colors.black)))),
             details.itemOrders.length == 0
                 ? SliverToBoxAdapter(
-                    child: Center(
-                        child: Text('${LanguageTr.lg[authProvider.language]["no items added"]}'
-                           ,
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black))))
+                child: Center(
+                    child: Text('${LanguageTr.lg[authProvider.language]["no items added"]}'
+                        ,
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black))))
                 : SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int i) {
-                        final item = details.itemOrders[i];
-                        if (i > details.itemOrders.length) return null;
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int i) {
+                  final item = details.itemOrders[i];
+                  if (i > details.itemOrders.length) return null;
 
-                        return Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10.0),
-                              child:
-                                  // widget.data[index].status=="Package"?Container( child: CartItemCard(widget.data[index] , index),):
-                                  Dismissible(
-                                key: UniqueKey(),
-                                direction: DismissDirection.endToStart,
-                                background: Container(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20),
-                                  decoration: BoxDecoration(
-                                    color: Color.fromRGBO(232, 232, 232, 1.0),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Spacer(),
-                                      SvgPicture.asset(
-                                          'images/iconphase2/Trash.svg'),
-                                      //  (image: Icons.delete);
-                                    ],
-                                  ),
-                                ),
-                                onDismissed: (direction) {
-
-                                  details.removeItems(details.itemOrders[i]);
-
-                                },
-                                child: CartCard(
-                                   card: details.itemOrders[i], index:i),
-                              ),
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        child:
+                        // widget.data[index].status=="Package"?Container( child: CartItemCard(widget.data[index] , index),):
+                        Dismissible(
+                          key: UniqueKey(),
+                          direction: DismissDirection.endToStart,
+                          background: Container(
+                            padding:
+                            EdgeInsets.symmetric(horizontal: 20),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(232, 232, 232, 1.0),
                             ),
-                          ],
-                        ); // you can add your available item here
-                      },
-                      childCount: details.itemOrders.length,
-                    ),
-                  ),
+                            child: Row(
+                              children: [
+                                Spacer(),
+                                SvgPicture.asset(
+                                    'images/iconphase2/Trash.svg'),
+                                //  (image: Icons.delete);
+                              ],
+                            ),
+                          ),
+                          onDismissed: (direction) {
+
+                            details.removeItems(details.itemOrders[i]);
+
+                          },
+                          child: CartCard(
+                              card: details.itemOrders[i], index:i),
+                        ),
+                      ),
+                    ],
+                  ); // you can add your available item here
+                },
+                childCount: details.itemOrders.length,
+              ),
+            ),
             issearch
                 ? SliverToBoxAdapter(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              issearch = !issearch;
-                            });
-                          },
-                          child:  Text('${LanguageTr.lg[authProvider.language]["Share Bill"]}'
-                           ,
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'BerlinSansFB'),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                        )
-                      ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        issearch = !issearch;
+                      });
+                    },
+                    child:  Text('${LanguageTr.lg[authProvider.language]["Share Bill"]}'
+                      ,
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'BerlinSansFB'),
                     ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.04,
                   )
+                ],
+              ),
+            )
                 : SliverToBoxAdapter(child: Container()),
 
             SliverToBoxAdapter(
                 child: !issearch
                     ? Container(
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    // Navigator.pop(context);
-                                    setState(() {
-                                      issearch = true;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
-                                IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        issearch = true;
-                                      });
-                                      //  Navigator.pop(context);
-                                    },
-                                    icon: Icon(
-                                      Icons.check,
-                                      color: Theme.of(context).primaryColor,
-                                    ))
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15.0),
-                              child: Text(
-                              frnd.listFriends.length > 0
-                                    ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              details.controllers.clear();
 
-                                    :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
-                                ,
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontFamily: 'BerlinSansFB'),
-                              ),
+                              for(int c=0; c<details.choosebillFriend.length; c++){
+                                TextEditingController alpha = TextEditingController();
+                                alpha.text=(details.totale/details.choosebillFriend.length).toString();
+                                details.addcontroller(alpha);
+
+                              }
+
+                              // Navigator.pop(context);
+                              setState(() {
+                                issearch = true;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              color: Theme.of(context).primaryColor,
                             ),
-                            SizedBox(
-                              height: mediaQuery.size.height * 0.02,
-                            ),
-                            TextButton(
+                          ),
+                          IconButton(
                               onPressed: () {
-                                _startAddNewFriend(context);
+                                details.controllers.clear();
+
+                                for(int c=0; c<details.choosebillFriend.length; c++){
+                                  TextEditingController alpha = TextEditingController();
+                                  alpha.text=(details.totale/details.choosebillFriend.length).toString();
+                                  details.addcontroller(alpha);
+
+                                }
+
+                                setState(() {
+                                  issearch = true;
+                                });
+                                //  Navigator.pop(context);
                               },
-                              child: Text('${LanguageTr.lg[authProvider.language]["Add Friend"]}'
-                                ,
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                fontFamily: 'BerlinSansFB',
-                                ),
-                              ),
-                            )
-                          ],
+                              icon: Icon(
+                                Icons.check,
+                                color: Theme.of(context).primaryColor,
+                              ))
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: Text(
+                          frnd.listFriends.length > 0
+                              ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
+
+                              :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
+                          ,
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: 'BerlinSansFB'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: mediaQuery.size.height * 0.02,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          _startAddNewFriend(context);
+                        },
+                        child: Text('${LanguageTr.lg[authProvider.language]["Add Friend"]}'
+                          ,
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontFamily: 'BerlinSansFB',
+                          ),
                         ),
                       )
+                    ],
+                  ),
+                )
                     : Container()),
             !issearch
                 ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return frnd.listFriends[index].name
-                              .contains(controllersearch.text.toLowerCase())
-                          ? CheckboxListTile(
-                              activeColor: Theme.of(context).primaryColor,
-                              value: details.choosebillFriend
-                                  .contains(frnd.listFriends[index]),
-                              onChanged: (val) {
-                                if (val == true)
-                                  details.addfriend(frnd.listFriends[index]);
-                                else
-                                  details
-                                      .removefriend(frnd.listFriends[index]);
-                              },
-                              title: Card(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor: Colors.transparent,
-                                        // radius: screenHeight * 0.04,
-                                        radius: 25.0,
-                                        child: ClipRRect(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return frnd.listFriends[index].name
+                        .contains(controllersearch.text.toLowerCase())
+                        ? CheckboxListTile(
+                      activeColor: Theme.of(context).primaryColor,
+                      value: details.choosebillFriend
+                          .contains(frnd.listFriends[index]),
+                      onChanged: (val) {
+                        if (val == true){
+                          if(!adonce){
+                            FriendModel you = FriendModel();
+                            you.name="you";
+                            you.id=-69;
+                            you.image=imageurl;
+                            details.addfriend(you);
+                            adonce=true;
+                          }
+                          details.addfriend(frnd.listFriends[index]);}
+                        else {
+                          details
+                              .removefriend(frnd.listFriends[index]);
+                          if(details.choosebillFriend.length==1){
+                            details.choosebillFriend.clear();
+                            adonce=false;
+                          }
+                        }    },
+                      title: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                // radius: screenHeight * 0.04,
+                                radius: 25.0,
+                                child: ClipRRect(
 
-                                          child: Image.network(
+                                  child: Image.network(
 
-                                              frnd.listFriends[index].image),
-                                          borderRadius:
-                                              BorderRadius.circular(50.0),
-                                        ),
-                                      ),
-                                      Container(width:mediaQuery.size.width *0.5,child: Text(frnd.listFriends[index].name)),
-                                    ],
-                                  ),
+                                      frnd.listFriends[index].image),
+                                  borderRadius:
+                                  BorderRadius.circular(50.0),
                                 ),
                               ),
-                            )
-                          : Container();
-                    },
-                    childCount: frnd.listFriends.length,
-                  ))
+                              Container(
+                                  width:mediaQuery.size.width *0.5,
+                                  child: Text(frnd.listFriends[index].name)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                        : Container();
+                  },
+                  childCount: frnd.listFriends.length,
+                ))
                 : SliverToBoxAdapter(child: Container()),
 
             issearch
                 ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        details.addcontroller(new TextEditingController());
-                        //  final item = ;
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
 
-                        return ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              radius: screenHeight * 0.04,
-                              backgroundImage:NetworkImage(
-                                  details.choosebillFriend[index].image),
-                            ),
-                            title: Text(details.choosebillFriend[index].name),
-                            trailing: SizedBox(
-                                height: mediaQuery.size.height / 20,
-                                width: mediaQuery.size.width / 3,
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    double sum = 0.0;
-                                    for (int i = 0;
-                                        i < details.controllers.length;
-                                        i++) {
-                                      if (details
-                                              .controllers[i].text.isEmpty ||
-                                          details.controllers[i].text ==
-                                              null) {
-                                        details.updateprocefreind(0, index);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: screenHeight * 0.04,
+                          backgroundImage:NetworkImage(
+                              details.choosebillFriend[index].image),
+                        ),
+                        title: Text(details.choosebillFriend[index].name),
+                        trailing: SizedBox(
+                            height: mediaQuery.size.height / 20,
+                            width: mediaQuery.size.width / 3,
+                            child: TextFormField(
+                              enabled: index!=0,
+                              onChanged: (value) {
+                                double sum = 0.0;
+                                details.controllers[0].text="0";
+                                for (int i = 0;
+                                i < details.controllers.length;
+                                i++) {
+                                  if (details
+                                      .controllers[i].text.isEmpty ||
+                                      details.controllers[i].text ==
+                                          null) {
+                                    details.updateprocefreind(0, index);
 
-                                      } else {
-                                        sum += double.parse(
-                                            details.controllers[i].text);
-                                      }
-                                    }
-                                    double lastinput = double.parse(
-                                        details.controllers[index].text);
-                                    if (sum > details.totale) {
-                                      details.controllers[index].text =
-                                          (details.totale - (sum - lastinput))
-                                              .toString();
-                                      details.updateprocefreind(details.totale - (sum - lastinput), index);
-                                    }
-                                    else{
+                                  } else {
+                                    sum += double.parse(
+                                        details.controllers[i].text);
+                                  }
+                                }
+                                double lastinput = double.parse(
+                                    details.controllers[index].text);
+                                if (sum > details.totale) {
+                                  details.controllers[index].text =
+                                      (details.totale - (sum - lastinput))
+                                          .toString();
+                                  details.updateprocefreind(details.totale - (sum - lastinput), index);
+                                }
+                                else{
 
-                                      details.updateprocefreind( lastinput, index);
+                                  details.controllers[0].text =(details.totale-sum).toString();
+                                  details.updateprocefreind( details.totale-sum, 0);
+                                  details.updateprocefreind( lastinput, index);
 
-                                    }
-                                    setState(() {});
-                                  },
-                                  decoration: InputDecoration(
-                                    hintText: '${LanguageTr.lg[authProvider.language]['Price']}',
-                                    fillColor: Colors.black,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                          color: Colors.black, width: 1.0),
-                                      borderRadius:
-                                          BorderRadius.circular(25.0),
-                                    ),
-                                  ),
-                                  keyboardType: TextInputType.number,
-                                  controller: details.controllers[index],
-                                ))); // you can add your unavailable item here
-                      },
-                      childCount: details.choosebillFriend.length,
-                    ),
-                  )
+                                }
+                                setState(() {});
+                              },
+                              decoration: InputDecoration(
+                                hintText: '${LanguageTr.lg[authProvider.language]['Price']}',
+                                fillColor: Colors.black,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Colors.black, width: 1.0),
+                                  borderRadius:
+                                  BorderRadius.circular(25.0),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                              controller: details.controllers[index],
+                            ))),
+                  ); // you can add your unavailable item here
+                },
+                childCount: details.choosebillFriend.length,
+              ),
+            )
                 : SliverToBoxAdapter(child: Container()),
 //              SliverToBoxAdapter(child:  Column(
 //                crossAxisAlignment: CrossAxisAlignment.start,
