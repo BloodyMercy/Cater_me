@@ -141,13 +141,19 @@ int _totalshisha=0;
             "quantity":itemOrders[i].quantity}
       );
     }
-    for(int i=0;i<choosebillFriend.length;i++){
-if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text=="0"){
-  controllers.removeAt(i);
-  choosebillFriend.removeAt(i);
-}
-      mapitemf.add({"friendId":choosebillFriend[i].id,"amount":int.parse(controllers[i].text)  });
-    }
+    for(int i=0;i<choosebillFriend.length;i++) {
+      if(choosebillFriend[i].id==-69){}else{
+        if (controllers[i].text.isEmpty || controllers[i].text == null ||
+            controllers[i].text == "0") {
+          controllers.removeAt(i);
+          choosebillFriend.removeAt(i);
+        }
+
+        mapitemf.add({
+          "friendId": choosebillFriend[i].id,
+          "amount": int.parse(controllers[i].text)
+        });
+      }  }
 
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
