@@ -11,7 +11,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 
+import '../Providers/user.dart';
 import '../colors/colors.dart';
+import '../language/language.dart';
 
 class RelatedOffersScreen extends StatefulWidget {
   RelatedOffersScreen({Key key}) : super(key: key);
@@ -61,6 +63,8 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final pack = Provider.of<PackagesProvider>(context, listen: true);
     final fav = Provider.of<OrderCaterProvider>(context, listen: true);
     var _width = MediaQuery.of(context).size.width;
@@ -87,32 +91,41 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           // elevation: 12,
                           child: Stack(children: [
 
-                            Container(
-                                  height: screenHeight * 0.175,
-                                  width: _width * 0.8,
-                                // child: CachedNetworkImage(
-                                //   placeholder: (context, url) =>
-                                //    CircularProgressIndicator(),
-                                //     imageUrl: pack.allpackagesorder[index].image
-                                // ),
-                              child: Image.network(
-                                  pack.allpackagesorder[index].image,
-                                  // loadingBuilder: ((context, child, loadingProgress) {
-                                  //   if (loadingProgress == null) return child;
-                                  //   return Center(
-                                  //     child: CircularProgressIndicator(
-                                  //       strokeWidth: 1,
-                                  //       value: loadingProgress.expectedTotalBytes != null
-                                  //           ? loadingProgress.cumulativeBytesLoaded /
-                                  //           loadingProgress.expectedTotalBytes
-                                  //           : null,
-                                  //     ),
-                                  //   );
-                                  // }),
-                                  fit: BoxFit.scaleDown,
-                                  // width: double.maxFinite,
-                                  height: screenHeight * 0.175,
-                                  width: _width * 0.8),
+                            Card(elevation: 10,
+                              child: Container(
+                                    height: screenHeight * 0.225,
+                                    width: _width * 0.8,
+                                  // child: CachedNetworkImage(
+                                  //   placeholder: (context, url) =>
+                                  //    CircularProgressIndicator(),
+                                  //     imageUrl: pack.allpackagesorder[index].image
+                                  // ),
+                                child: Column(children:[
+                                   Image.network(
+
+                                      pack.allpackagesorder[index].image,
+                                      // loadingBuilder: ((context, child, loadingProgress) {
+                                      //   if (loadingProgress == null) return child;
+                                      //   return Center(
+                                      //     child: CircularProgressIndicator(
+                                      //       strokeWidth: 1,
+                                      //       value: loadingProgress.expectedTotalBytes != null
+                                      //           ? loadingProgress.cumulativeBytesLoaded /
+                                      //           loadingProgress.expectedTotalBytes
+                                      //           : null,
+                                      //     ),
+                                      //   );
+                                      // }),
+                                      fit: BoxFit.scaleDown,
+                                      // width: double.maxFinite,
+                                      height: screenHeight * 0.175,
+                                      width: _width * 0.8),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${pack.allpackagesorder[index].price}",),
+                                ]),
+                              ),
                             ),
 
                             // pack.allpackagesorder[index].isfavorite

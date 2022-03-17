@@ -274,18 +274,18 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
 
 
-                            Container(height: MediaQuery.of(context).size.height / 12,
-                              child: CustomCupertinoPicker(
-                                label:
-                                '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
-                                items: address.listnameevent,
-
-                                events: address.regular.events,
-                                selectedValue: 0,
-                                inputType: TextInputType.number,
-                                controller: address.typeofeventcontrollerstring,
-                              ),
-                            ),
+                            // Container(height: MediaQuery.of(context).size.height / 12,
+                            //   child: CustomCupertinoPicker(
+                            //     label:
+                            //     '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
+                            //     items: address.listnameevent,
+                            //
+                            //     events: address.regular.events,
+                            //     selectedValue: 0,
+                            //     inputType: TextInputType.number,
+                            //     controller: address.typeofeventcontrollerstring,
+                            //   ),
+                            // ),
 
                             SizedBox(height: screenHeight * 0.01),
                             Center(

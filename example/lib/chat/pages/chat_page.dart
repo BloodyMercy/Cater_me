@@ -659,6 +659,7 @@ class ChatPageState extends State<ChatPage> {
           // Edit text
           Flexible(
             child: Container(
+
               child: TextField(
                 onSubmitted: (value) {
                   onSendMessage(textEditingController.text, TypeMessage.text);
@@ -692,7 +693,7 @@ class ChatPageState extends State<ChatPage> {
         ],
       ),
       width: double.infinity,
-      height: 50,
+      height: 75,
       decoration: BoxDecoration(
           border: Border(
               top: BorderSide(color: ColorConstants.greyColor2, width: 0.5)),

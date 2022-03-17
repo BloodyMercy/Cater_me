@@ -536,10 +536,7 @@ String url3ds="";
                                                         "" ||
                                                     address.numberofguestcontroller
                                                             .text ==
-                                                        "" ||
-                                                    address.typeofeventcontroller
-                                                            .text ==
-                                                        "") {
+                                                        ""  ){
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
