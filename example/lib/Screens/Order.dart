@@ -148,7 +148,7 @@ class _OrderState extends State<Order> {
         child: Scaffold(
 
           key: _key,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
             centerTitle: true,
