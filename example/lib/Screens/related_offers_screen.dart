@@ -112,17 +112,17 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8),
                             ),
-                            pack.allpackagesorder[index].isfavorite
-                                ? Positioned(
-                              top:screenHeight * 0.13,
-                                    left: _width * 0.7,
-                                    child: Icon(
-                                      FontAwesomeIcons.solidHeart,
-                                      color: yellowColor,
-                                      size: 20,
-                                    ),
-                                  )
-                                : Container(),
+                            // pack.allpackagesorder[index].isfavorite
+                            //     ? Positioned(
+                            //   top:screenHeight * 0.13,
+                            //         left: _width * 0.7,
+                            //         child: Icon(
+                            //           FontAwesomeIcons.solidHeart,
+                            //           color: yellowColor,
+                            //           size: 20,
+                            //         ),
+                            //       )
+                            //     : Container(),
                           ])),
                     ),
                     onTap: () {

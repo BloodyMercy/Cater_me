@@ -116,6 +116,7 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
+
                               children: [
                                 SizedBox(
                                     width: mediaQuery.size.width * 0.6,
@@ -159,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                                     )),
                                 Expanded(
                                   child: Row(
+
                                     children: [
                                       IconButton(
                                           onPressed: () {
@@ -186,20 +188,20 @@ class _HomePageState extends State<HomePage> {
                                     Theme.of(context).primaryColor,
                                   ),
                                 ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MyFavorites(),
-                                            ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.favorite,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
+                                      // IconButton(
+                                      //   onPressed: () {
+                                      //     Navigator.of(context).push(
+                                      //       MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             MyFavorites(),
+                                      //       ),
+                                      //     );
+                                      //   },
+                                      //   icon: Icon(
+                                      //     Icons.favorite,
+                                      //     color: Theme.of(context).primaryColor,
+                                      //   ),
+                                      // ),
                                       IconButton(
                                         onPressed: () {
                                           Navigator.of(context).push(
@@ -234,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                                   left: (mediaQuery.size.width * 0.035),
                                   top: mediaQuery.size.height * 0.05),
                               child: Text(
-                               '${LanguageTr.lg[authProvider.language]["Packages"]}',
+                               '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
@@ -280,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                                       ))
                                 ],
                               ),
-                              package.occasions.isEmpty?Container():((getOccasionsToday(package.occasions).length ==
+                            ((getOccasionsToday(package.occasions).length ==
                                       0))
                                   ?Padding(
                                       padding: EdgeInsets.symmetric(

@@ -331,7 +331,7 @@ class _OrderState extends State<Order> {
                                     '${LanguageTr.lg[authProvider.language]["Location"]}',
                                     '${LanguageTr.lg[authProvider.language]["Event Details"]}',
                                     '${LanguageTr.lg[authProvider.language]["Service"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Packages"]}',
+                                    '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
                                     '${LanguageTr.lg[authProvider.language]["Payment"]}',

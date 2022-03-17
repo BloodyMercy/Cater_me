@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Menus":"القوائم",
       "Update the Date":"تحديث التاريخ",
       "Credit card Deleted":"تم حذف بطاقة الائتمان",
       "Event Planning":"تخطيط لحدث",
@@ -256,6 +257,7 @@ class LanguageTr {
 
 
     "en": {
+      "Menus":"Menus",
       "Update the Date":"Update the Date",
       "Address:":"Address:",
       "Not a valid email":"Not a valid email",
