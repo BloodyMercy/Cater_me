@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/Cuisinis/offer/orderdetails.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/packages.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -63,11 +64,18 @@ class AddOnCardOrder extends StatelessWidget {
 
                   child: Column(
                     children: [
-                      Image.network(
-                        this.addOn.image,
-                        height: 75,
-                        width: 75,
+                     CachedNetworkImage(
+                         height: 75,
+                         width: 75,
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          imageUrl: this.addOn.image,
                       ),
+                      // Image.network(
+                      //   this.addOn.image,
+                      //   height: 75,
+                      //   width: 75,
+                      // ),
                       Padding(
                         padding: EdgeInsets.only(
                             left: (mediaQuery.size.width * 0.035)),

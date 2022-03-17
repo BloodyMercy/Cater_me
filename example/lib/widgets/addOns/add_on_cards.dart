@@ -42,7 +42,7 @@ class AddOnCards extends StatelessWidget {
                 elevation: 4,
                 child: CachedNetworkImage(
                   placeholder: (context, url) =>
-                  const CircularProgressIndicator(),
+                   CircularProgressIndicator(),
                     imageUrl: this.addOn.image
 
 
