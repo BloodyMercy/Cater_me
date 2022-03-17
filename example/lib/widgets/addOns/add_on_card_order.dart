@@ -11,7 +11,7 @@ import '../../Providers/user.dart';
 import '../../language/language.dart';
 
 class AddOnCardOrder extends StatelessWidget {
-  Package addOn;
+  Package          addOn;
 
   AddOnCardOrder(this.addOn);
 

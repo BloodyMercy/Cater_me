@@ -9,6 +9,7 @@ import 'package:CaterMe/Screens/addresses_settings_screen.dart';
 import 'package:CaterMe/Screens/auth/reset_password_screen.dart';
 import 'package:CaterMe/Screens/auth/signup_screen.dart';
 import 'package:CaterMe/Screens/saved_orders.dart';
+import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/main.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
@@ -656,7 +657,7 @@ class _TABBarState extends State<TABBar> {
                                                       0.05,
                                                 ),
                                                 Text(
-                                                  'Saved Orders',
+                                                  '${LanguageTr.lg[personalInfo.language]["Saved Orders"]}',
                                                   style: TextStyle(
                                                       color: Color(0xFF3F5521),
                                                       fontSize: 20,
@@ -781,12 +782,8 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
-                                      Icon(
-                                        FontAwesomeIcons.language,
-                                        size: 20, //Icon Size
-                                        color:
-                                            Color(0xFF3F5521), //Color Of Icon
-                                      ),
+                                      Image.asset('images/language icon-01.png',height: MediaQuery.of(context).size.height*0.025),
+                                      // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
                                       ),

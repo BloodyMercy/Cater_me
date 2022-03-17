@@ -167,7 +167,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       },
                       child: Container(
                           color: Colors.transparent,
-                          child: language=="en" ?Image.asset("images/nocardsyet.png"):Image.asset("images/no address yetعربي/no addresses yetبالعربي-10.png")),
+                          child: language=="en" ?Image.asset("images/CreditCardNewImage/no cards added yet in english.png"):Image.asset("images/CreditCardNewImage/no cards yet in arabic.png")),
                     ),
                   ),
       ),
