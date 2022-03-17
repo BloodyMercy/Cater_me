@@ -1,10 +1,13 @@
 import 'package:CaterMe/Providers/friend.dart';
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../language/language.dart';
 
 class editfriend extends StatefulWidget {
   FriendModel alpha;
@@ -45,7 +48,7 @@ class _FreindsTextFieldState extends State<editfriend> {
 
     final friends = Provider.of<FriendsProvider>(context, listen: false);
     friends.namecontroller.text=widget.alpha.name;
-    friends.emailcontroller.text=widget.alpha.email;
+    // friends.emailcontroller.text=widget.alpha.email;
     friends.phonecontroller.text=widget.alpha.phoneNumber;
     setState(() {
 
@@ -55,6 +58,8 @@ class _FreindsTextFieldState extends State<editfriend> {
   Widget build(BuildContext context) {
     FocusNode focusnode =FocusNode();
     final friends = Provider.of<FriendsProvider>(context, listen: true);
+    final personalInfo = Provider.of<UserProvider>(context, listen: true);
+
 
 
     var _mediaQueryText = MediaQuery
@@ -81,10 +86,10 @@ class _FreindsTextFieldState extends State<editfriend> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(height: _mediaQueryText * 0.06),
-                  customTextField(read: false,label:'Full Name' ,controller:friends.namecontroller ,),
+                  customTextField(read: false,label:'${LanguageTr.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
 
                   //     SizedBox(height: _mediaQueryText * 0.02),
-                  customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
+                  // customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
 
                   Container(
                       padding: const EdgeInsets.all(10.0),
@@ -100,15 +105,15 @@ class _FreindsTextFieldState extends State<editfriend> {
 
 
 
-                            contentPadding:
-                            EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
+                            // contentPadding:
+                            // EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04),
 
                             alignLabelWithHint: true,
                             labelStyle: TextStyle(
                                 fontSize: focusnode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
                                 color:
                                 focusnode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                            labelText: 'Phone Number',
+                            labelText: '${LanguageTr.lg[personalInfo.language]["Phone number"]}',
                             hintStyle:TextStyle(
                                 color: Colors.black87,
                                 fontSize: 15,
@@ -162,7 +167,7 @@ class _FreindsTextFieldState extends State<editfriend> {
                         });
                     //    final friends = Provider.of<FriendsProvider>(context, listen: false);
                         friends.namecontroller.text="";
-                        friends.emailcontroller.text="";
+                        // friends.emailcontroller.text="";
                         friends.phonecontroller.text="";
                         Navigator.of(context).pop();
                       }
@@ -170,7 +175,7 @@ class _FreindsTextFieldState extends State<editfriend> {
 
 
                     child: Text(
-                      'Edit',
+                      '${LanguageTr.lg[personalInfo.language]["edit"]}',
                       style: Theme
                           .of(context)
                           .textTheme
