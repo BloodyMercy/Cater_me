@@ -19,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Providers/orderById_provider.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
+import '../webview/webview.dart';
 import 'Addons/orderpages/steps.dart';
 import 'CustomAlert3/CustomAlert3.dart';
 
@@ -40,7 +41,7 @@ class _OrderState extends State<Order> {
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   double barheight = 0.0;
-
+String url3ds="";
 
   Future<bool> _onWillPop() async {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -366,7 +367,7 @@ class _OrderState extends State<Order> {
                                               : (orderProvider.spets == 7)
                                                   ? CreditCardsPage()
                               : (orderProvider.spets == 8)
-                              ? DonateStepsScreen(0)
+                              ? InAppWebViewPage(url3ds)
 
 
 
@@ -668,7 +669,7 @@ class _OrderState extends State<Order> {
                                                     ),
                                                   );
                                                 }
-                                                else if(orderProvider.finaldonatestepsCancel){
+                                                else if(true){
                                                   showDialog(
                                                     context: this.context,
                                                     barrierDismissible: false,
@@ -703,7 +704,7 @@ class _OrderState extends State<Order> {
                                                       context,
                                                       listen: false);
 
-                                                  int a = await orderProvider
+                                                 String a = await orderProvider
                                                       .makeorder(
                                                       date: (address
                                                           .evendatecontroller
@@ -735,37 +736,46 @@ class _OrderState extends State<Order> {
                                                       bool3: order.check4,
                                                   );
                                                   Navigator.of(context).pop();
-                                                  if (a != 0)
+                                                  if (a == "Success")
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
-                                                                    a)));
+                                                                   0)));
+                                                  else if(a=="error"){
+
+                                                    showDialog(
+                                                      context: this.context,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                    return AlertDialog(
+                                                      title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                          ),
+                                                      content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                         ),
+                                                      actions: <Widget>[
+                                                        TextButton(
+                                                            child:
+                                                                 Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                                   ),
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    context))
+                                                      ],
+                                                    );
+
+
+                                                    },
+                                                    );
+                                                  }
                                                   else {
-                                                    // showDialog(
-                                                    //   context: this.context,
-                                                    //   builder: (BuildContext
-                                                    //       context) {
-                                                    // return AlertDialog(
-                                                    //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
-                                                    //       ),
-                                                    //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                    //      ),
-                                                    //   actions: <Widget>[
-                                                    //     TextButton(
-                                                    //         child:
-                                                    //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                    //                ),
-                                                    //         onPressed: () =>
-                                                    //             Navigator.pop(
-                                                    //                 context))
-                                                    //   ],
-                                                    // );
-
-
-                                                    // },
-                                                    // );
+setState(() {
+  url3ds=a;
+});
+                                                    orderProvider.spets++;
+                                                    _animateToIndex(
+                                                        orderProvider.spets);
                                                   }
 
                                                       }
@@ -824,7 +834,7 @@ class _OrderState extends State<Order> {
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                  int a = await orderProvider
+                                                 String a = await orderProvider
                                                       .makeorder(
                                                           date: (address
                                                                   .evendatecontroller
@@ -857,7 +867,7 @@ class _OrderState extends State<Order> {
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
-                                                                    a)));
+                                                                    0)));
                                                   else {
                                                     // showDialog(
                                                     //   context: this.context,

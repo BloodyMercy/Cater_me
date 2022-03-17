@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:CaterMe/Services/ApiLink.dart';
@@ -22,8 +21,8 @@ class OrderCaterProvider extends ChangeNotifier{
   double _vatshisha=0.0;
 
   int _totalssha=0;
-  bool _finaldonatesteps=false;
-  bool _finaldonatestepsCancel=false;
+bool _finaldonatesteps=false;
+bool _finaldonatestepsCancel=false;
 
   bool get finaldonatestepsCancel => _finaldonatestepsCancel;
 
@@ -52,7 +51,7 @@ class OrderCaterProvider extends ChangeNotifier{
     return await PackageService.getDistance(value.id);
 
   }
-  updateprocefreind(double a,int index){
+updateprocefreind(double a,int index){
     print("i update");
     // // FriendModel f=new FriendModel();
     // f.id = choosebillFriend[index].id;
@@ -60,14 +59,14 @@ class OrderCaterProvider extends ChangeNotifier{
     // f.email= choosebillFriend[index].email;
     // f.image= choosebillFriend[index].image;
     choosebillFriend[index].price=a;
-    // choosebillFriend.removeAt(index);
-    // choosebillFriend.insert(index, f);
+   // choosebillFriend.removeAt(index);
+   // choosebillFriend.insert(index, f);
     notifyListeners();
 
 
-  }
-  int _totalpackage=0;
-  int _totalshisha=0;
+}
+int _totalpackage=0;
+int _totalshisha=0;
 
   int get totalpackage => _totalpackage;
 
@@ -115,10 +114,10 @@ class OrderCaterProvider extends ChangeNotifier{
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-        Map<String,dynamic> responseData = json.decode(response.body);
-        card=CreditCardsModel.fromJson(responseData);  //map to list
-        // return posts;
-        return card;
+       Map<String,dynamic> responseData = json.decode(response.body);
+       card=CreditCardsModel.fromJson(responseData);  //map to list
+       // return posts;
+    return card;
       }
       else {
         print(response.reasonPhrase);
@@ -130,11 +129,11 @@ class OrderCaterProvider extends ChangeNotifier{
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<String>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
-    //  Strinmapitems="[\r\n ";
+  //  Strinmapitems="[\r\n ";
     for(int i=0;i<itemOrders.length;i++){
 
       mapitem.add(
@@ -165,7 +164,7 @@ class OrderCaterProvider extends ChangeNotifier{
         'Authorization': 'Bearer ${prefs.getString("token")}','Content-Type': 'application/json'   };
       var request;
 
-      request = http.Request('POST', Uri.parse(ApiLink.makeorder));
+        request = http.Request('POST', Uri.parse(ApiLink.makeorder));
 
       request.body = json.encode({
         "addressId": value.id,
@@ -196,7 +195,7 @@ class OrderCaterProvider extends ChangeNotifier{
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-        int responseData = json.decode(response.body);
+    String responseData = response.body;
         // List<dynamic> l = json.decode(response.body);
         // List<AddOn> ld=[];
         // for(int i=0;i<l.length;i++)
@@ -208,11 +207,11 @@ class OrderCaterProvider extends ChangeNotifier{
       }
       else {
         print(response.reasonPhrase);
-        return 0;
+        return "error";
       }
     }catch(e){
       //print()
-      return 0;
+      return "error";
     }
     // notifyListeners();
     // return 0;
@@ -275,7 +274,7 @@ class OrderCaterProvider extends ChangeNotifier{
 
   addItems(ItemOrders item,bool a){
 
-    // subTotal=subTotal+item.totalprice;
+   // subTotal=subTotal+item.totalprice;
     totale= totale+item.totalprice;
     if(a) {
       vatshisha = vatshisha + item.tax;
@@ -294,7 +293,7 @@ class OrderCaterProvider extends ChangeNotifier{
 
     notifyListeners();
   }
-  removefriend(FriendModel item){
+ removefriend(FriendModel item){
     _choosebillFriend.remove(item);
 
     notifyListeners();
@@ -306,10 +305,10 @@ class OrderCaterProvider extends ChangeNotifier{
 
   }
 
-  removeItems(ItemOrders item){
+ removeItems(ItemOrders item){
     if(item.ispack)
       totalpackage=totalpackage-1;
-    if(item.isShisha) {
+   if(item.isShisha) {
       totalssha = totalssha- item.quantity;
     }
 
@@ -322,19 +321,19 @@ class OrderCaterProvider extends ChangeNotifier{
     totale= totale-item.totalprice;
     notifyListeners();
   }
-  modifyItems(int count,int index){
-    // if(  _itemOrders[index].ispack)
-    //   totalpackage=totalpackage-1;
-    // if(  _itemOrders[index].isShisha) {
-    //   totalssha = totalssha- item.quantity;
-    // }
-    _itemOrders[index].quantity=count;
-    totale= totale-  _itemOrders[index].totalprice;
-    _itemOrders[index].totalprice=count*_itemOrders[index].price;
-    // _itemOrders.remove(item);
-    // subTotal=subTotal+(count*_itemOrders[index].price);
-    totale= totale+  _itemOrders[index].totalprice;
-    notifyListeners();
+modifyItems(int count,int index){
+  // if(  _itemOrders[index].ispack)
+  //   totalpackage=totalpackage-1;
+  // if(  _itemOrders[index].isShisha) {
+  //   totalssha = totalssha- item.quantity;
+  // }
+  _itemOrders[index].quantity=count;
+  totale= totale-  _itemOrders[index].totalprice;
+  _itemOrders[index].totalprice=count*_itemOrders[index].price;
+  // _itemOrders.remove(item);
+  // subTotal=subTotal+(count*_itemOrders[index].price);
+  totale= totale+  _itemOrders[index].totalprice;
+  notifyListeners();
   }
   modifyItemsmoins(int count,int index){
 
@@ -342,7 +341,7 @@ class OrderCaterProvider extends ChangeNotifier{
     totale= totale-  _itemOrders[index].totalprice;
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
     // _itemOrders.remove(item);
-    // subTotal=subTotal+(count*_itemOrders[index].price);
+   // subTotal=subTotal+(count*_itemOrders[index].price);
     totale= totale+  _itemOrders[index].totalprice;
     notifyListeners();
   }
@@ -356,11 +355,11 @@ class OrderCaterProvider extends ChangeNotifier{
 
 
   int _serviceId = 1;
-  int _spets = 1;
-  Address _value=Address();
+int _spets = 1;
+Address _value=Address();
 
 
-  Address get value => _value;
+Address get value => _value;
 
   set value(Address value) {
     _value = value;
@@ -396,5 +395,3 @@ class OrderCaterProvider extends ChangeNotifier{
     _totalshisha = value;
   }
 }
-
-
