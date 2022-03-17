@@ -23,7 +23,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
   void _addNewFriend(
     // String id,
     String fullName,
-    String email,
+    // String email,
     String phoneNumber,
   ) {
     final newFriend = FriendModel();

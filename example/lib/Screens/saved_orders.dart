@@ -35,6 +35,7 @@ class _SavedOrdersState extends State<SavedOrders> {
 
   Future refreshOrderData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
+
     SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.clearData();
 
@@ -79,7 +80,7 @@ class _SavedOrdersState extends State<SavedOrders> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Saved Orders',style: Theme.of(context).textTheme.headline1,),
+          title: Text('${LanguageTr.lg[authProvider.language]["Saved Orders"]}',),
         ),
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
