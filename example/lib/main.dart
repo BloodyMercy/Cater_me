@@ -11,6 +11,7 @@ import 'package:CaterMe/Screens/Terms_and_Conditions/Terms_and_Conditions.dart';
 import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:CaterMe/webview/webview.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

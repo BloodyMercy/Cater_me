@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                        icon: authProvider.status==Status.Authenticated?Badge(
+                                        icon: int.parse(package.nbnotification.toString())!=0?Badge(
                                             badgeColor:
                                                 Color.fromRGBO(253, 202, 29, 1),
                                             badgeContent:

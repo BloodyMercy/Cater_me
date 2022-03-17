@@ -129,7 +129,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<String>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -141,13 +141,19 @@ int _totalshisha=0;
             "quantity":itemOrders[i].quantity}
       );
     }
-    for(int i=0;i<choosebillFriend.length;i++){
-if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text=="0"){
-  controllers.removeAt(i);
-  choosebillFriend.removeAt(i);
-}
-      mapitemf.add({"friendId":choosebillFriend[i].id,"amount":int.parse(controllers[i].text)  });
-    }
+    for(int i=0;i<choosebillFriend.length;i++) {
+      if(choosebillFriend[i].id==-69){}else{
+        if (controllers[i].text.isEmpty || controllers[i].text == null ||
+            controllers[i].text == "0") {
+          controllers.removeAt(i);
+          choosebillFriend.removeAt(i);
+        }
+
+        mapitemf.add({
+          "friendId": choosebillFriend[i].id,
+          "amount": int.parse(controllers[i].text)
+        });
+      }  }
 
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -189,7 +195,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-       int responseData = json.decode(response.body);
+    String responseData = response.body;
         // List<dynamic> l = json.decode(response.body);
         // List<AddOn> ld=[];
         // for(int i=0;i<l.length;i++)
@@ -201,11 +207,11 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       }
       else {
         print(response.reasonPhrase);
-        return 0;
+        return "error";
       }
     }catch(e){
       //print()
-      return 0;
+      return "error";
     }
     // notifyListeners();
     // return 0;
