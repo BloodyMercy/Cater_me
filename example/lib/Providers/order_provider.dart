@@ -129,7 +129,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<String>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -189,7 +189,7 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       var response = await http.Response.fromStream(responses);
 
       if (response.statusCode == 200) {
-       int responseData = json.decode(response.body);
+    String responseData = response.body;
         // List<dynamic> l = json.decode(response.body);
         // List<AddOn> ld=[];
         // for(int i=0;i<l.length;i++)
@@ -201,11 +201,11 @@ if(controllers[i].text.isEmpty||controllers[i].text==null||controllers[i].text==
       }
       else {
         print(response.reasonPhrase);
-        return 0;
+        return "error";
       }
     }catch(e){
       //print()
-      return 0;
+      return "error";
     }
     // notifyListeners();
     // return 0;

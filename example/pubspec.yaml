@@ -65,13 +65,15 @@ dependencies:
   image_picker:
   cloud_firestore:
   fluttertoast: 8.0.6
+  flutter_inappwebview: ^5.3.2
   firebase_storage:
   sqflite: ^2.0.2
+  webview_flutter: ^3.0.1
   photo_view:
   get: ^4.1.4
   lottie: ^1.2.1
   font_awesome_flutter:
-  flutter_html: ^2.2.1
+  flutter_html:
   audioplayers: ^0.20.1
   animated_text_kit:
   url_launcher:
