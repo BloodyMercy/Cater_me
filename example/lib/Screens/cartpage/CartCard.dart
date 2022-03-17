@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../Providers/order_provider.dart';
 import '../../Providers/user.dart';
+import '../../language/language.dart';
 import '../../model/ItemsOrder.dart';
 
 
@@ -92,7 +93,7 @@ class _CartCardState extends State<CartCard> {
 
               Text(
 
-                "${widget.card.price}\$",
+                "${widget.card.price} ${LanguageTr.lg[authProvider.language]["SAR"]}",
 
                 style: TextStyle(
                   fontFamily: 'Geomanist',

@@ -77,14 +77,16 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                       const EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
                   child: GestureDetector(
                     child: FittedBox(
-                      child: Card(
+                      child: Container(
+
 
                           // clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          elevation: 12,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: BorderRadius.circular(15),
+                          // ),
+                          // elevation: 12,
                           child: Stack(children: [
+
                             Container(
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8,
@@ -112,6 +114,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8),
                             ),
+
                             // pack.allpackagesorder[index].isfavorite
                             //     ? Positioned(
                             //   top:screenHeight * 0.13,

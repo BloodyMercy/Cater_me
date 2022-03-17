@@ -21,7 +21,7 @@ class OccasionListView extends StatefulWidget {
 }
 
 class _OccasionListViewState extends State<OccasionListView> {
-  bool loading = false;
+  bool loading = true;
  String language;
   getData() async {
     // final occasion = Provider.of<PackagesProvider>(context, listen: false);
@@ -34,6 +34,10 @@ class _OccasionListViewState extends State<OccasionListView> {
 
     setState(() {
       language=sh.getString("locale");
+
+    });
+    setState(() {
+      loading = false;
     });
   }
 
@@ -47,14 +51,18 @@ class _OccasionListViewState extends State<OccasionListView> {
   Future refreshocasionData() async {
     //   final occasion = Provider.of<PackagesProvider>(context, listen: false);
     final occa = Provider.of<OccasionProvider>(context, listen: false);
-
+    setState(() {
+      loading=true;
+    });
     occa.all.clear();
     occa.listoccasiontype.clear();
     SharedPreferences sh=await SharedPreferences.getInstance();
     await occa.getAllOccasionType(sh.getString("locale"));
     await occa.getallnewoccasion(sh.getString("locale"));
 
-    return;
+   setState(() {
+     loading=false;
+   });
   }
 
   @override
@@ -163,8 +171,11 @@ class _OccasionListViewState extends State<OccasionListView> {
                 ? SliverToBoxAdapter(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/nooccasionyetAR.png'),
-                       authProvider.status==Status.Unauthenticated? ElevatedButton(onPressed: (){
+
+                      !loading?  language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/nooccasionyetAR.png'):Center(
+                        child: CircularProgressIndicator(),
+                      ),
+    authProvider.status==Status.Unauthenticated? ElevatedButton(onPressed: (){
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => LoginScreen(),
@@ -296,9 +307,10 @@ class _OccasionListViewState extends State<OccasionListView> {
                       );
                     },
                     childCount: occa.all.length,
-                  ))
+                  ),
+            )
           ],
-        ),
+        )
       ),
     );
   }

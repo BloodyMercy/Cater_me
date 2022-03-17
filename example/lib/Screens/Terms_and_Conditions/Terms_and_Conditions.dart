@@ -46,8 +46,10 @@ initState(){
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-            '${LanguageTr.lg[authProvider.language]['Terms & Conditions']}'),
-      ),
+            '${LanguageTr.lg[authProvider.language]['Terms & Conditions']}',
+        style:Theme.of(context).textTheme.headline1,
+        ),),
+
       body: ListView.builder(
           itemCount: 3,
           itemBuilder: (context, index) => Container(

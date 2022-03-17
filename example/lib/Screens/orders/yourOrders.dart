@@ -40,11 +40,16 @@ class _YourOrdersState extends State<YourOrders> {
 
   Future refreshOrderData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
+    setState(() {
+      loading=true;
+    });
     SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.clearData();
 
     await orders.getAllOrders(sh.getString("locale"));
-    return;
+    setState(() {
+      loading=false;
+    });
   }
 
   @override

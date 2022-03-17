@@ -781,11 +781,15 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
-                                      Icon(
-                                        FontAwesomeIcons.language,
-                                        size: 20, //Icon Size
-                                        color:
-                                            Color(0xFF3F5521), //Color Of Icon
+                                      Card(
+                                        child: ImageIcon(
+                                          AssetImage(
+                                          "images/language2-01.png",),
+                                          size: 30,
+                                          //Icon Size
+                                          color:
+                                              Color(0xFF3F5521), //Color Of Icon
+                                        ),
                                       ),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
@@ -994,14 +998,15 @@ class _TABBarState extends State<TABBar> {
                                   onTap: () {
                                     showDialog(
                                         context: context,
-                                        builder: (BuildContext context) {
+                                        builder: (BuildContext cxt) {
                                           return CustomDialog(
                                             title:
                                                 '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
                                             description: "",
                                             oneOrtwo: true,
                                             button2: ElevatedButton(
-                                              onPressed: () async {
+                                              onPressed: ()  async{
+                                                Navigator.of(context).pop();
                                                 final SharedPreferences
                                                     sharedPreferences =
                                                     await SharedPreferences
@@ -1025,10 +1030,14 @@ class _TABBarState extends State<TABBar> {
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(
                                                         MaterialPageRoute(
+
                                                           builder: (context) =>
                                                              SplashScreen(),
+
                                                         ),
+
                                                         (route) => false);
+
                                               },
                                               child: Text(
                                                 '${LanguageTr.lg[personalInfo.language]["Logout"]}',

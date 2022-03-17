@@ -202,7 +202,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: '${LanguageTr.lg[authProvider.language]["Event Name "]}',
+                                      labelText: '${LanguageTr.lg[authProvider.language]["Event Description"]}',
 
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
@@ -215,7 +215,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                         borderRadius: BorderRadius.circular(5.0),
                                         borderSide: const BorderSide(
                                           color: Colors.grey,
-                                          
+
                                         ),
                                       ),
                                       focusedBorder: OutlineInputBorder(

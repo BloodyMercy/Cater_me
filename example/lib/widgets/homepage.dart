@@ -282,9 +282,7 @@ class _HomePageState extends State<HomePage> {
                                       ))
                                 ],
                               ),
-                            ((getOccasionsToday(package.occasions).length ==
-                                      0))
-                                  ?Padding(
+                              ((getOccasionsToday(package.occasions).length ==0))?    Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal:
                                             mediaQuery.size.width * 0.01,
@@ -373,7 +371,7 @@ class _HomePageState extends State<HomePage> {
                                                     ),
                                                     Row(
                                                       children: [
-                                                        IconButton(
+                                                        authProvider.status == Status.Authenticated?    IconButton(
                                                           onPressed: () {
                                                             Navigator.of(
                                                                     context)
@@ -381,15 +379,33 @@ class _HomePageState extends State<HomePage> {
                                                               MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        LoginScreen()
+                                                                        AddNewOccasion(
+                                                                            0),
                                                               ),
                                                             );
                                                           },
-                                                          icon: const Icon(Icons
+                                                          icon:  Icon(Icons
                                                               .add_circle_outline_rounded),
                                                           color:
                                                               Theme.of(context)
                                                                   .primaryColor,
+                                                        ):IconButton(
+                                                          onPressed: () {
+                                                            Navigator.of(
+                                                                context)
+                                                                .push(
+                                                              MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                    LoginScreen()
+                                                              ),
+                                                            );
+                                                          },
+                                                          icon:  Icon(Icons
+                                                              .add_circle_outline_rounded),
+                                                          color:
+                                                          Theme.of(context)
+                                                              .primaryColor,
                                                         ),
                                                         Text('${LanguageTr.lg[authProvider.language]["Add an occasion"]}'
                                                          ,
@@ -412,12 +428,12 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        Center(
-                                            child:
-                                                OccasionCard(Axis.horizontal)),
+                                        // Center(
+                                        //     child:
+                                        //         OccasionCard(Axis.horizontal)),
                                       ]),
-                                    )
-                                  : Container(),
+                                    ):
+
                               Center(child: OccasionCard(Axis.horizontal)),
 
                               //     SizedBox(height: MediaQuery.of(context).size.height*0.005),

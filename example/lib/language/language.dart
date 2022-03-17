@@ -27,7 +27,7 @@ class LanguageTr {
       "birthdate": "متى ولدت ",
       "SignUp": "اعمل لك حساب جديد ",
       "Already have an account?": "عندك حساب ؟",
-      "Pick": "حدد جنسك ",
+      "Pick": "حدد",
       "Female": "بنت",
       "Male": "ولد",
       "Search": "ابحث هنا",
@@ -164,7 +164,7 @@ class LanguageTr {
       "Share bill":"شارك فاتورتك",
       "Me": "أنا",
       "Others": "شي غير",
-      "Pick numbers of guests": "اختار عدد معازيمك",
+      "Pick number of guests": "اختار عدد معازيمك",
       "Pick type of event": "اختار نوع المناسبه",
       "Please fill the empty fields": "املا الخانات الفاضيه",
       "after": "بعد",
@@ -247,6 +247,8 @@ class LanguageTr {
       "friend already exists!":"الصديق موجود بالفعل!",
       "Address Deleted":"تم حذف العنوان",
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
+      "Event Description":"وصف الحدث",
+
 
 
 
@@ -425,8 +427,8 @@ class LanguageTr {
       "Me": "Me",
       "Others": "Others",
       "Pick":"Pick",
-      "Pick numbers of guests": "Pick numbers of guests",
-      "Pick type of event": "Pick type of even",
+      "Pick number of guests": "Pick numbers of guests",
+      "Pick type of event": "Pick type of event",
       "Please fill the empty fields": "Please fill the empty fields",
       "after": "after",
       "before": "before",
@@ -490,6 +492,7 @@ class LanguageTr {
       "SubTotal":"SubTotal",
       "Address Deleted":"Address Deleted",
       "Address cannot be Deleted":"Address cannot be Deleted",
+      "Event Description":"Event Description",
 
 
 }

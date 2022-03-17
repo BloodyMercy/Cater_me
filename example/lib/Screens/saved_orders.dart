@@ -79,7 +79,7 @@ class _SavedOrdersState extends State<SavedOrders> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Saved Orders'),
+          title: Text('Saved Orders',style: Theme.of(context).textTheme.headline1,),
         ),
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
