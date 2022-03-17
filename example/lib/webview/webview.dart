@@ -9,19 +9,25 @@ class InAppWebViewPage extends StatefulWidget {
 
 class _InAppWebViewPageState extends State<InAppWebViewPage> {
   InAppWebViewController webView;
-  String iframeUrl = "https://www.google.com/";
+  String iframeUrl = "https://www.youtube.com/embed/vlkNcHDFnGA";
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
+        // appBar: AppBar(
+        //     title: Text("InAppWebView")
+        // ),
+        body: Container(
+            child: Column(children: <Widget>[
 
-        body: Center(
-            child: Container(
-              height:MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: InAppWebView(
-                initialData: InAppWebViewInitialData(
-                    data: """
+             /// Container(height: 200,),
+
+
+              Expanded(
+                child: Container(
+                  child: InAppWebView(
+                    initialData: InAppWebViewInitialData(
+                        data: """
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,28 +36,49 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Flutter InAppWebView</title>
     </head>
-    <body>
-        <iframe src="$iframeUrl" width="100%" height="100% frameborder="0" allowfullscreen></iframe>
+    <body style="height:100vh">
+        <iframe src="${widget.url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
     </body>
 </html>"""
+                    ),
+                    initialOptions: InAppWebViewGroupOptions(
+                        crossPlatform: InAppWebViewOptions(
+                           // debuggingEnabled: true,
+                            // set this to true if you are using window.open to open a new window with JavaScript
+                            javaScriptCanOpenWindowsAutomatically: true
+                        ),
+                        android: AndroidInAppWebViewOptions(
+                          // on Android you need to set supportMultipleWindows to true,
+                          // otherwise the onCreateWindow event won't be called
+                            supportMultipleWindows: true
+                        )
+                    ),
+                    onWebViewCreated: (InAppWebViewController controller) {
+                    //  _webViewController = controller;
+                    },
+
+
+
+
+                    // initialHeaders: {},
+                    // initialOptions: InAppWebViewWidgetOptions(
+                    //   inAppWebViewOptions: InAppWebViewOptions(
+                    //     debuggingEnabled: true,
+                    //   ),
+                    // ),
+                    // onWebViewCreated: (InAppWebViewController controller) {
+                    //   webView = controller;
+                    // },
+                    // onLoadStart: (InAppWebViewController controller, String url) {
+                    //
+                    // },
+                    // onLoadStop: (InAppWebViewController controller, String url) {
+                    //
+                    // },
+                  ),
                 ),
-                // initialHeaders: {},
-                // initialOptions: InAppWebViewWidgetOptions(
-                //   inAppWebViewOptions: InAppWebViewOptions(
-                //     debuggingEnabled: true,
-                //   ),
-                // ),
-                // onWebViewCreated: (InAppWebViewController controller) {
-                //   webView = controller;
-                // },
-                // onLoadStart: (InAppWebViewController controller, String url) {
-                //
-                // },
-                // onLoadStop: (InAppWebViewController controller, String url) {
-                //
-                // },
               ),
-            ))
+            ]))
     );
   }
 }
