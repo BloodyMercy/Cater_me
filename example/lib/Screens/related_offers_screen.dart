@@ -88,29 +88,29 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                             Container(
                                   height: screenHeight * 0.175,
                                   width: _width * 0.8,
-                                child: CachedNetworkImage(
-                                  placeholder: (context, url) =>
-                                   CircularProgressIndicator(),
-                                    imageUrl: pack.allpackagesorder[index].image
-                                ),
-                              // child: Image.network(
-                              //     pack.allpackagesorder[index].image,
-                              //     loadingBuilder: ((context, child, loadingProgress) {
-                              //       if (loadingProgress == null) return child;
-                              //       return Center(
-                              //         child: CircularProgressIndicator(
-                              //           strokeWidth: 1,
-                              //           value: loadingProgress.expectedTotalBytes != null
-                              //               ? loadingProgress.cumulativeBytesLoaded /
-                              //               loadingProgress.expectedTotalBytes
-                              //               : null,
-                              //         ),
-                              //       );
-                              //     }),
-                              //     fit: BoxFit.scaleDown,
-                              //     // width: double.maxFinite,
-                              //     height: screenHeight * 0.175,
-                              //     width: _width * 0.8),
+                                // child: CachedNetworkImage(
+                                //   placeholder: (context, url) =>
+                                //    CircularProgressIndicator(),
+                                //     imageUrl: pack.allpackagesorder[index].image
+                                // ),
+                              child: Image.network(
+                                  pack.allpackagesorder[index].image,
+                                  // loadingBuilder: ((context, child, loadingProgress) {
+                                  //   if (loadingProgress == null) return child;
+                                  //   return Center(
+                                  //     child: CircularProgressIndicator(
+                                  //       strokeWidth: 1,
+                                  //       value: loadingProgress.expectedTotalBytes != null
+                                  //           ? loadingProgress.cumulativeBytesLoaded /
+                                  //           loadingProgress.expectedTotalBytes
+                                  //           : null,
+                                  //     ),
+                                  //   );
+                                  // }),
+                                  fit: BoxFit.scaleDown,
+                                  // width: double.maxFinite,
+                                  height: screenHeight * 0.175,
+                                  width: _width * 0.8),
                             ),
                             pack.allpackagesorder[index].isfavorite
                                 ? Positioned(
