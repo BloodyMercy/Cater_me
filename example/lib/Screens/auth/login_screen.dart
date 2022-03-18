@@ -289,9 +289,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     loading = false;
                                   });
-                                  SharedPreferences sh =
-                                      await SharedPreferences.getInstance();
-                                  sh.setBool("logged", true);
+
 
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(

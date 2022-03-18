@@ -432,71 +432,8 @@ class _TABBarState extends State<TABBar> {
                                     ),
                                   ),
                                   Divider(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => SetupItems(),
-                                        ),
-                                      );
-                                    },
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.03,
-                                                  ),
-                                                  Icon(
-                                                    FontAwesomeIcons.solidUser,
-                                                    size: 20,
-                                                    //Icon Size
-                                                    color: Color(
-                                                        0xFF3F5521), //Color Of Icon
-                                                  ),
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.05,
-                                                  ),
-                                                  Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["Personal Info"]}',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF3F5521),
-                                                        fontSize: 20,
-                                                        fontFamily:
-                                                            'BerlinSansFB',
-                                                        fontWeight:
-                                                            FontWeight.normal),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(children: [
-                                                Icon(
-                                                  Icons.chevron_right,
-                                                  color: Color(0xFF3F5521),
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                              ]),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(),
+
+
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
