@@ -141,6 +141,7 @@ class _YourOrdersState extends State<YourOrders> {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 20, horizontal: 20),
                                         child: Column(
+
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
@@ -149,13 +150,15 @@ class _YourOrdersState extends State<YourOrders> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Text(
-                                                    orders.listOrder[index]
-                                                        .eventName,
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
+                                                Expanded(
+                                                  child: Text(
+                                                      orders.listOrder[index]
+                                                          .eventName,
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold)),
+                                                ),
                                                 Text(
                                                   orders.listOrder[index]
                                                       .orderStatus,
