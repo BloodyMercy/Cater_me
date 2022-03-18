@@ -80,6 +80,7 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
                         // )
                     ),
                     onWebViewCreated: (InAppWebViewController controller) {
+
                     //  _webViewController = controller;
                     },
 
