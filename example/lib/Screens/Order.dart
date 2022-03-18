@@ -125,6 +125,7 @@ String url3ds="";
     final _creditCardss =
         Provider.of<CreditCardsProvider>(context, listen: true);
     final addresses = Provider.of<AdressProvider>(context, listen: true);
+
     // final address = Provider.of<OrderCaterProvider>(context, listen: true);
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final orderProvider =
@@ -433,7 +434,7 @@ String url3ds="";
                                                     )
                                                   : Container(),
                                               orderProvider.vatfood > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]["VAT included 15%"]}'
+                                                  ? Text('${LanguageTr.lg[authProvider.language]["*(VAT included 15%)"]}'
                                                       ,
                                                       style: TextStyle(
                                                         fontSize: 10,
@@ -706,7 +707,7 @@ String url3ds="";
                                                         bool2: order.check2,
                                                         bool3: order.check4,
                                                       );
-
+Navigator.of(context).pop();
                                                       if(a!=0) {
                                                         orderProvider.orderid=a;
                                                         orderProvider.spets++;
@@ -740,6 +741,7 @@ String url3ds="";
                                                   );
                                                 }
                                                 else if(true){
+                                                //  await orderProvider.paymentverify
                                                   showDialog(
                                                     context: this.context,
                                                     barrierDismissible: false,
@@ -774,53 +776,46 @@ String url3ds="";
                                                       context,
                                                       listen: false);
 
-                                                // String a = await orderProvider
-                                                //       .makeorder();
-                                                  String a="";
+                                            await orderProvider.getPlaceOrderId(orderProvider.orderid.toString(),_creditCards.credit.cardId) ;
+
+
                                                   Navigator.of(context).pop();
-                                                  if (a == "Success")
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AppointmentSuccess(
-                                                                   0)));
-                                                  else if(a=="error"){
 
-                                                    showDialog(
-                                                      context: this.context,
-                                                      builder: (BuildContext
-                                                          context) {
-                                                    return AlertDialog(
-                                                      title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+
+                                               //   else {
+
+                                                  if(orderProvider.paymentverify.isNotEmpty) {
+                                                    if(orderProvider.paymentverify["msg"]=="error"){
+                                                      _key.currentState
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text('${LanguageTr.lg[authProvider.language][ "error to place order"]}'
                                                           ),
-                                                      content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                         ),
-                                                      actions: <Widget>[
-                                                        TextButton(
-                                                            child:
-                                                                 Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                                   ),
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    context))
-                                                      ],
-                                                    );
-
-
-                                                    },
+                                                        ),
+                                                      );
+                                                    }
+                                                    else {
+                                                      setState(() {
+                                                        url3ds = orderProvider
+                                                            .paymentverify["msg"];
+                                                      });
+                                                      orderProvider.spets++;
+                                                      _animateToIndex(
+                                                          orderProvider.spets);
+                                                    }
+                                                  }
+                                                  else{
+                                                    _key.currentState
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text('${LanguageTr.lg[authProvider.language][ "error to place order"]}'
+                                                        ),
+                                                      ),
                                                     );
                                                   }
-                                                  else {
-setState(() {
-  url3ds=a;
-});
-                                                    orderProvider.spets++;
-                                                    _animateToIndex(
-                                                        orderProvider.spets);
                                                   }
 
-                                                      }
+                                                  //    }
                                                 else
                                                   {
                                                     orderProvider.finaldonatesteps=true;
@@ -876,63 +871,73 @@ setState(() {
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                 int a = await orderProvider
-                                                      .makeorder(
-                                                          date: (address
-                                                                  .evendatecontroller
-                                                                  .text)
-                                                              .replaceAll(
-                                                            RegExp(
-                                                                '[^A-Za-z0-9]'),
-                                                            '-',
-                                                          ),
-                                                          type: address
-                                                              .typeofeventcontroller
-                                                              .text,
-                                                          nb: address
-                                                              .numberofguestcontroller
-                                                              .text,
-                                                          idcard: _creditCards
-                                                              .credit.cardId,
-                                                          contactname:
-                                                              address.name.text,
-                                                          contactphone: address
-                                                              .phone.text,
-                                                          eventname: address
-                                                              .eventnamecontroller
-                                                              .text);
+                                                  await orderProvider.getotpverify();
+                                              //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
-                                                  if (a != 0)
+                                                  if (orderProvider.otpVerify["statusId"]==1)
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
                                                                     0)));
+                                                  else if(orderProvider.otpVerify["statusId"]==0)
+                                                      {
+                                                        showDialog(
+                                                          context: this.context,
+                                                          builder: (BuildContext
+                                                          context) {
+                                                            return AlertDialog(
+                                                              title:  Text('${LanguageTr.lg[authProvider.language]["otp verification"]}'
+                                                              ),
+                                                              content:  Text('${LanguageTr.lg[authProvider.language][ "otp not valid"]}'
+                                                              ),
+                                                              actions: <Widget>[
+                                                                TextButton(
+                                                                    child:
+                                                                    Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                                    ),
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            context))
+                                                              ],
+                                                            );
+
+
+                                                          },
+                                                        );
+
+
+                                                      }
                                                   else {
+
+
+
+                                                    orderProvider.spets--;
+
                                                     // showDialog(
                                                     //   context: this.context,
                                                     //   builder: (BuildContext
                                                     //       context) {
-                                                        // return AlertDialog(
-                                                        //   title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
-                                                        //       ),
-                                                        //   content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
-                                                        //      ),
-                                                        //   actions: <Widget>[
-                                                        //     TextButton(
-                                                        //         child:
-                                                        //              Text('${LanguageTr.lg[authProvider.language]["Close"]}'
-                                                        //                ),
-                                                        //         onPressed: () =>
-                                                        //             Navigator.pop(
-                                                        //                 context))
-                                                        //   ],
-                                                        // );
-
-
-                                                      // },
+                                                    //     return AlertDialog(
+                                                    //       title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                    //           ),
+                                                    //       content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                    //          ),
+                                                    //       actions: <Widget>[
+                                                    //         TextButton(
+                                                    //             child:
+                                                    //                  Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                    //                    ),
+                                                    //             onPressed: () =>
+                                                    //                 Navigator.pop(
+                                                    //                     context))
+                                                    //       ],
+                                                    //     );
+                                                    //
+                                                    //
+                                                    //   },
                                                     // );
                                                   }
                                                 }

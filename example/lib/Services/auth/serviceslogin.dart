@@ -46,6 +46,7 @@ class AuthModelSignin {
         prefs.setString("token", responseData['token']);
 
         prefs.setString('imageUrl', responseData['imageUrl']);
+        prefs.setString('iduser', responseData['imageUrl']);
 
         prefs.setString('name', responseData['name']);
 

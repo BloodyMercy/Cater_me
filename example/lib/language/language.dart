@@ -199,7 +199,7 @@ class LanguageTr {
       "*(VAT included 15%)":"متضمن ضريبة القيمة المضافة 15٪",
       "*(VAT 15%)":"ضريبه ١٥ ٪",
       "yes":"ايه",
-      "No Packages": "مافي باقات",//fix later!!!!!
+      "No Packages": "مافي باقات",
       "you can't order less than 5 shishas":"اطلب ٥ شيش اقل شي",
       "shisha": "شيشة",
       "minimun quantity for shisha is 5":"ماتقدر تطلب اقل من ٥ شيش",
@@ -264,6 +264,7 @@ class LanguageTr {
 
 
     "en": {
+      "*(VAT included 15%)":"*(VAT included 15%)",
       "Saved Orders":"Saved Orders",
       "VAT included 15%":"VAT included 15%",
       "Menus":"Menus",

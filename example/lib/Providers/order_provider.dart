@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/Services/address.dart';
+import 'package:CaterMe/Services/otpVerify.dart';
 import 'package:CaterMe/Services/placeOrderId.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
@@ -19,7 +20,14 @@ class OrderCaterProvider extends ChangeNotifier{
   List<TextEditingController> _controllers = [];
   int _orderid=0;
   Map<String,dynamic> _paymentverify={};
+  Map<String,dynamic>_otpVerify = {};
 
+
+  Map<String, dynamic> get otpVerify => _otpVerify;
+
+  set otpVerify(Map<String, dynamic> value) {
+    _otpVerify = value;
+  }
 
   Map<String, dynamic> get paymentverify => _paymentverify;
 
@@ -217,7 +225,7 @@ int _totalshisha=0;
         // for(int i=0;i<l.length;i++)
         //   ld.add(AddOn.fromJson(l[i]));
         var i=responseData;
-
+orderid=int.parse(i);
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return int.parse(i);
       }
@@ -236,6 +244,12 @@ int _totalshisha=0;
   getPlaceOrderId(String id1,String id2) async{
 
     paymentverify=await placeOrderId.PlaceOrderId(id1, id2);
+    notifyListeners();
+  }
+
+  getotpverify() async{
+
+    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"]);
     notifyListeners();
   }
 

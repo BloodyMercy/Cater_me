@@ -10,11 +10,11 @@ class placeOrderId {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
-      var request=http.Request('POST',Uri.parse(ApiLink.makeorder+"/$idPlaceOrder1"+"/$idPlaceOrder2"));
+      var request=http.Request('POST',Uri.parse(ApiLink.checkorder+"/$idPlaceOrder1"));
       request.headers.addAll(headers);
 
       request.body=json.encode({
-        "addressId":idPlaceOrder1,
+
         "serviceId":idPlaceOrder2
       });
 
