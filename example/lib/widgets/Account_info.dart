@@ -25,7 +25,8 @@ class _AccountInfoState extends State<AccountInfo> {
   bool validateText() {
     if (formkey.currentState != null) {
       if (newPassController.text != confirmPassController.text) {
-        print("passwords don't match");
+        final user = Provider.of<UserProvider>(context, listen: false);
+        print('${LanguageTr.lg[user.language][ "Passwords don't match"]}');
         return false;
       }
       if (formkey.currentState.validate()) {
@@ -302,7 +303,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                         await user.ResetPassword();
                                     print(resetPassword);
                                     if (resetPassword) {
-                                      print("Reset succeed");
+                                      print('${LanguageTr.lg[user.language]["Reset succeed"]}');
                                       setState(() {
                                         loadingButton = false;
                                       });
@@ -313,7 +314,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                       });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
-                                        content: Text('${LanguageTr.lg[user.language][ 'Cannot update! Old password is wrong']}',),
+                                        content: Text('${LanguageTr.lg[user.language]["Cannot update! Old password is wrong"]}',),
                                       ));
                                     }
                                     user.clearAllTextController();

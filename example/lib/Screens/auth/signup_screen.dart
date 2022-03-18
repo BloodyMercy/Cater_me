@@ -637,9 +637,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(
-                                  screenHeight * 0.14,
+                                  screenHeight * 0.10,
                                   screenHeight * 0.02,
-                                  screenHeight * 0.14,
+                                  screenHeight * 0.10,
                                   screenHeight * 0.02),
                               onPrimary: const Color.fromRGBO(255, 255, 255, 1),
                               primary: Theme.of(context).primaryColor,

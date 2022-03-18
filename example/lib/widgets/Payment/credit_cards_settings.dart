@@ -180,7 +180,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                         .showSnackBar(
                                                                             SnackBar(
                                                                       content: Text(
-                                                                          '${LanguageTr.lg[authProvider.language]['Credit card cannot be deleted']}'),
+                                                                          '${LanguageTr.lg[authProvider.language]["Credit card cannot be deleted"]}'),
                                                                     )
                                                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                                             //   content: Text('Address Deleted'),
