@@ -22,6 +22,7 @@ import '../language/language.dart';
 import '../webview/webview.dart';
 import 'Addons/orderpages/steps.dart';
 import 'CustomAlert3/CustomAlert3.dart';
+import 'check out/SetupItems.dart';
 
 
 class Order extends StatefulWidget {
@@ -37,6 +38,7 @@ class _OrderState extends State<Order> {
   var _key = GlobalKey<ScaffoldState>();
 
   bool loadingnext = false;
+
 
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
 
@@ -334,7 +336,7 @@ String url3ds="";
                                   text:  [
                                     '${LanguageTr.lg[authProvider.language]["Location"]}',
                                     '${LanguageTr.lg[authProvider.language]["Event Details"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Service"]}',
+                                   orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Service"]}',
                                     '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
@@ -523,7 +525,16 @@ String url3ds="";
                                                           ),
                                                     ),
                                                   );
-                                                } else {
+                                                }
+
+                                                else if( !details.setup)
+                                                  {
+                                                    details.setup=true;
+
+                                                  }
+                                                else{
+
+
 
 
                                                   orderProvider.spets++;
@@ -891,7 +902,7 @@ Navigator.of(context).pop();
                                                             return AlertDialog(
                                                               title:  Text('${LanguageTr.lg[authProvider.language]["otp verification"]}'
                                                               ),
-                                                              content:  Text('${LanguageTr.lg[authProvider.language][ "otp not valid"]}'
+                                                              content:  Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'
                                                               ),
                                                               actions: <Widget>[
                                                                 TextButton(

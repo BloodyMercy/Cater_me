@@ -22,6 +22,8 @@ class OrderCaterProvider extends ChangeNotifier{
   Map<String,dynamic> _paymentverify={};
  int _otpVerify =0;
 
+  bool setup=false;
+
 
   int get otpVerify => _otpVerify;
 

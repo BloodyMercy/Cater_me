@@ -912,11 +912,11 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
-                                      Image.asset('images/language-01.png',fit: BoxFit.contain,
+                                      Image.asset('images/language-01.png',
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.025),
+                                              0.020),
                                       // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
@@ -934,10 +934,13 @@ class _TABBarState extends State<TABBar> {
 
                                   ),
                                   Row(
-                                    children: [Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xFF3F5521),
+                                    children: [
+                                      Padding(padding: EdgeInsets.only(right: 16),
+                                        child: Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
                                     ),
+                                      ),
                                   ]),
                                   // InkWell(
                                   //     onTap: () async {
