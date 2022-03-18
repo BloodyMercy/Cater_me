@@ -159,7 +159,7 @@ class _NavigationBarState extends State<Navigationbar> {
       0,
       borderRadius: BorderRadius.circular(64),
     );
-    if(true) {
+    if(sh.getBool("startintro")??true) {
       Timer(
         Duration(
           seconds: 3,
