@@ -3,23 +3,66 @@ import 'dart:convert';
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/Services/address.dart';
+import 'package:CaterMe/Services/otpVerify.dart';
 import 'package:CaterMe/Services/placeOrderId.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model/setup_items_model.dart';
 
 class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];
   List<FriendModel> _listFriend=[];
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
+  List _setupItemModelId = [];
+
+  List get setupItemModelId => _setupItemModelId;
+
+  set setupItemModelId(List value) {
+    _setupItemModelId = value;
+  }
+
+  List<setupItemsModel> get setupItemmodel => _setupItemModelId;
+  set setupItemmodel(List<setupItemsModel> value) {
+    _setupItemModelId = value;
+  }
+
+  List<int> _setupOrderList=[];
+
+  List<int> get setupOrderList => _setupOrderList;
+
+  set setupOrderList(List<int> value) {
+    _setupOrderList = value;
+  }
+
+  addid(int a){
+    setupOrderList.add(a);
+    notifyListeners();
+}
+removeid(int a){
+    setupOrderList.remove(a);
+    notifyListeners();
+}
+
   int _orderid=0;
   Map<String,dynamic> _paymentverify={};
+ int _otpVerify =0;
 
+  bool setup=false;
+
+
+  int get otpVerify => _otpVerify;
+
+  set otpVerify(int value) {
+    _otpVerify = value;
+  }
 
   Map<String, dynamic> get paymentverify => _paymentverify;
 
@@ -145,7 +188,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3,})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -196,6 +239,7 @@ int _totalshisha=0;
           "contactPersonPhoneNumber":contactphone??"",
 
         },
+        "setupItems":setupItemModelId,
         "paymentFriend": mapitemf,
         //"cardId": idcard,
         "isDonatingFood": bool3,
@@ -217,7 +261,7 @@ int _totalshisha=0;
         // for(int i=0;i<l.length;i++)
         //   ld.add(AddOn.fromJson(l[i]));
         var i=responseData;
-
+orderid=int.parse(i);
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
         return int.parse(i);
       }
@@ -236,6 +280,12 @@ int _totalshisha=0;
   getPlaceOrderId(String id1,String id2) async{
 
     paymentverify=await placeOrderId.PlaceOrderId(id1, id2);
+    notifyListeners();
+  }
+
+  getotpverify() async{
+
+    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString());
     notifyListeners();
   }
 
