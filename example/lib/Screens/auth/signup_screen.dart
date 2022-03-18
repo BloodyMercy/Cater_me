@@ -147,6 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
     DatePicker.showDatePicker(
       ctx,
       locale: g=="en"?DateTimePickerLocale.en_us:DateTimePickerLocale.ar,
+
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
         showTitle: false,
@@ -379,7 +380,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               controller: authProvider.password,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return 'Required ';
+                                  return '${LanguageTr.lg[authProvider.language]["Required"]}';
                                 } else if (val.length < 6) {
                                   return 'Password should be at least 6 characters';
                                 }
@@ -426,7 +427,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.confirmpassword,
                               validator: (val) {
-                                if (val.isEmpty) return 'Confirm Password';
+                                if (val.isEmpty) return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
                                 if (val != authProvider.password.text)
                                   return 'Passwords do not match';
                                 return null;
@@ -458,7 +459,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.phoneNumber,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a Phone number,
                               ]),
                               keyboardType: TextInputType.phone,
