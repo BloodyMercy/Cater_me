@@ -47,7 +47,7 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
         <title>Flutter InAppWebView</title>
     </head>
     <body style="height:100vh">
-        <iframe src="${iframeUrl}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        <iframe src="${widget.url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
     </body>
 </html>"""
                     ),
