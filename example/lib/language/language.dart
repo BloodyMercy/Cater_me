@@ -258,6 +258,7 @@ class LanguageTr {
       "otp not valid":" الرمز غير صالح",
       "Close":"اغلاق",
       "Setup":"التجهيزات",
+      "OTP Verification":"التحقق من الرمز",
 
 
 
@@ -511,6 +512,7 @@ class LanguageTr {
       "otp verification":"otp verification",
       "otp not valid":"otp not valid",
       "Close":"Close",
+      "OTP Verify":"OTP Verify",
 
 
 
