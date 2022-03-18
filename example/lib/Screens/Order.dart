@@ -773,8 +773,9 @@ String url3ds="";
                                                       context,
                                                       listen: false);
 
-                                                int a = await orderProvider
-                                                      .makeorder();
+                                                // String a = await orderProvider
+                                                //       .makeorder();
+                                                  String a="";
                                                   Navigator.of(context).pop();
                                                   if (a == "Success")
                                                     Navigator.pushReplacement(

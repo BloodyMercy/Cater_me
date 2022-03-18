@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
 class placeOrderId {
-  Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2)async {
+ static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};

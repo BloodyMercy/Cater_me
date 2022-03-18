@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/Services/address.dart';
+import 'package:CaterMe/Services/placeOrderId.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
@@ -17,6 +18,14 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
   int _orderid=0;
+  Map<String,dynamic> _paymentverify={};
+
+
+  Map<String, dynamic> get paymentverify => _paymentverify;
+
+  set paymentverify(Map<String, dynamic> value) {
+    _paymentverify = value;
+  }
 
   int get orderid => _orderid;
 
@@ -223,6 +232,13 @@ int _totalshisha=0;
     // notifyListeners();
     // return 0;
   }
+
+  getPlaceOrderId(String id1,String id2) async{
+
+    paymentverify=await placeOrderId.PlaceOrderId(id1, id2);
+    notifyListeners();
+  }
+
 
   addcontroller(TextEditingController t){
     controllers.add(t);
