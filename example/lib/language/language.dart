@@ -513,7 +513,7 @@ class LanguageTr {
       "otp verification":"otp verification",
       "otp not valid":"otp not valid",
       "Close":"Close",
-      "OTP Verify":"OTP Verify",
+      "OTP Verification":"OTP Verification",
       "error to place order":"error to place order",
 
 
