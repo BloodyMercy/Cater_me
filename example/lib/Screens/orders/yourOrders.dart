@@ -141,6 +141,7 @@ class _YourOrdersState extends State<YourOrders> {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 20, horizontal: 20),
                                         child: Column(
+
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
