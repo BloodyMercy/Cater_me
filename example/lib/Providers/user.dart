@@ -179,6 +179,9 @@ language=sh.getString("locale")??"en";
 
 
       if(u.response){
+        SharedPreferences sh =
+        await SharedPreferences.getInstance();
+        sh.setBool("logged", true);
         getdata();
         _status=Status.Authenticated;
 
