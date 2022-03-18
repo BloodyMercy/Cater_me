@@ -11,8 +11,8 @@ class OrderCancel extends StatefulWidget {
 class _OrderCancelState extends State<OrderCancel> {
   String language;
 
-  getdata()async{
-    SharedPreferences sh=await SharedPreferences.getInstance();
+  getdata() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
     (sh.getString("locale"));
     setState(() {
       language = sh.getString("locale");
@@ -21,14 +21,26 @@ class _OrderCancelState extends State<OrderCancel> {
 
   @override
   void initState() {
-   getdata();
+    getdata();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     // final mediaquerywidth = MediaQuery.of(context).size.width;
     // final mediaqueryheight = MediaQuery.of(context).size.height;
-    return language=="en"?Image.asset('images/ordercancled.png',height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain):Image.asset('images/order tracking/5.png',height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain);
+    return Column(mainAxisAlignment: MainAxisAlignment.center,
+        children:[
+          SizedBox(
+            height: MediaQuery.of(context).size.height*0.15,
+          ),
 
+      language == "en"
+        ? Image.asset('images/ordercancled.png',
+            height: MediaQuery.of(context).size.height * 0.75,
+            fit: BoxFit.contain)
+        : Image.asset('images/order tracking/5.png',
+            height: MediaQuery.of(context).size.height * 0.75,
+            fit: BoxFit.contain)]);
   }
 }
