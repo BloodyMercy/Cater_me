@@ -32,7 +32,7 @@ class ApiLink{
  static String DeleteFriends=host+'Friends/DeleteFriend';
  static String GetAllFavorite=host+'Favorites/GetAllFavorites';
  static String GetAllOrders=host+"Orders/GetUserOrders";
- static String GetAllOrdersById=host+"Orders/GetUserOrderById";
+ static String GetAllOrdersById=host+"Orders/CheckTrackingStatus";
  static String CreateOccasions=host+"Occasions/CreateOccasion";
  static String GetAllOccasionsType=host+"Occasions/GetOccasionTypes";
  static String GETALLPACKAGEORDER=host+"Orders/GetPackageByOrder/";
