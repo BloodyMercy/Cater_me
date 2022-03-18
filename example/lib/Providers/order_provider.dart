@@ -9,6 +9,7 @@ import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -206,6 +207,7 @@ int _totalshisha=0;
           "contactPersonPhoneNumber":contactphone??"",
 
         },
+        "setupItems":[],
         "paymentFriend": mapitemf,
         //"cardId": idcard,
         "isDonatingFood": bool3,
