@@ -17,7 +17,7 @@ class OccasionsCard extends StatelessWidget {
     return Column(children: [
       SizedBox(
         width: mediaQuery.size.width * 0.8,
-        height: mediaQuery.size.height * 0.15,
+        height: mediaQuery.size.height * 0.17,
         child: Card(
           shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
@@ -27,8 +27,8 @@ class OccasionsCard extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                height: mediaQuery.size.height * 0.15,
-                      width: mediaQuery.size.width * 0.23,
+                height: mediaQuery.size.height * 0.18,
+                      width: mediaQuery.size.width * 0.25,
                 child: Card(
                   color: Theme.of(context).primaryColor,
                     shape: const RoundedRectangleBorder(

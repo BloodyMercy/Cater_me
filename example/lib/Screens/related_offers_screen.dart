@@ -93,7 +93,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
                             Card(elevation: 10,
                               child: Container(
-                                    height: screenHeight * 0.225,
+                                    height: screenHeight * 0.235,
                                     width: _width * 0.8,
                                   // child: CachedNetworkImage(
                                   //   placeholder: (context, url) =>
