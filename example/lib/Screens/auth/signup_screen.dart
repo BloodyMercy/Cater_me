@@ -12,6 +12,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../SplachScreen.dart';
 import '../../language/language.dart';
@@ -139,10 +140,13 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _loading = false;
 
   @override
-  void showPicker(ctx) {
+  Future<void> showPicker(ctx) async {
     final address = Provider.of<AdressProvider>(context, listen: false);
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    String g= _pref.getString("locale")??"en";
     DatePicker.showDatePicker(
       ctx,
+      locale: g=="en"?DateTimePickerLocale.en_us:DateTimePickerLocale.ar,
 
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
