@@ -28,6 +28,7 @@ import '../SplachScreen.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'auth/login_screen.dart';
+import 'check out/SetupItems.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class TABBar extends StatefulWidget {
@@ -430,6 +431,125 @@ class _TABBarState extends State<TABBar> {
                                       ),
                                     ),
                                   ),
+                                  Divider(),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => SetupItems(),
+                                        ),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.03,
+                                                  ),
+                                                  Icon(
+                                                    FontAwesomeIcons.solidUser,
+                                                    size: 20,
+                                                    //Icon Size
+                                                    color: Color(
+                                                        0xFF3F5521), //Color Of Icon
+                                                  ),
+                                                  SizedBox(
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.05,
+                                                  ),
+                                                  Text(
+                                                    '${LanguageTr.lg[personalInfo.language]["Personal Info"]}',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xFF3F5521),
+                                                        fontSize: 20,
+                                                        fontFamily:
+                                                            'BerlinSansFB',
+                                                        fontWeight:
+                                                            FontWeight.normal),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ]),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => AccountInfo(),
+                                          ),
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width: mediaQuery.size.width *
+                                                    0.03,
+                                              ),
+                                              Icon(
+                                                Icons.vpn_key_sharp,
+                                                color: Color(0xFF3F5521),
+                                              ),
+                                              SizedBox(
+                                                width: mediaQuery.size.width *
+                                                    0.05,
+                                              ),
+                                              Text(
+                                                '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
+                                                style: TextStyle(
+                                                    color: Color(0xFF3F5521),
+                                                    fontSize: 20,
+                                                    fontFamily: 'BerlinSansFB',
+                                                    fontWeight:
+                                                        FontWeight.normal),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(children: [
+                                            Icon(
+                                              Icons.chevron_right,
+                                              color: Color(0xFF3F5521),
+                                            ),
+                                            SizedBox(
+                                              width:
+                                                  mediaQuery.size.width * 0.03,
+                                            ),
+                                          ]),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             )
@@ -700,76 +820,86 @@ class _TABBarState extends State<TABBar> {
                               showDialog(
                                   context: context,
                                   builder: (_) => AlertDialog(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(25),
-                                      ),
-                                    ),
-                                    title:
-                                        Center(
-                                          child: Text('Choose language', style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 19,)),
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
                                         ),
-                                      actions: [
-                                      Padding(
-                                        padding:  EdgeInsets.symmetric(horizontal:_mediaWidth*0.08),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            TextButton(
-                                              child: Text('Arabic'),
-                                              onPressed: () async {
-                                                personalInfo.language ="ar";
-                                                        SharedPreferences _prefs =
+                                        title: Center(
+                                          child: Text('Choose language',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 19,
+                                              )),
+                                        ),
+                                        actions: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: _mediaWidth * 0.08),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextButton(
+                                                  child: Text('Arabic'),
+                                                  onPressed: () async {
+                                                    personalInfo.language =
+                                                        "ar";
+                                                    SharedPreferences _prefs =
                                                         await SharedPreferences
                                                             .getInstance();
-                                                        _prefs.setString("locale", "ar");
-                                                        MyApp.setLocale(
-                                                            context, Locale("ar", "AE"));
-                                                        Navigator.of(context).pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                SplashScreen(),
-                                                          ),
+                                                    _prefs.setString(
+                                                        "locale", "ar");
+                                                    MyApp.setLocale(context,
+                                                        Locale("ar", "AE"));
+                                                    Navigator.of(context)
+                                                        .pushAndRemoveUntil(
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  SplashScreen(),
+                                                            ),
+                                                            (Route<dynamic>
+                                                                    route) =>
+                                                                false);
+                                                    // AppLocalizations.of(context)!.locale.toString()
 
-                                                                (Route<dynamic> route) => false   );
-                                                        // AppLocalizations.of(context)!.locale.toString()
-
-
-                                                        // .language="ar";
-                                              },
-                                            ),
-                                            TextButton(
-                                              child: Text('English',),
-                                              onPressed: () async {
-                                                personalInfo.language = "en";
-                                                SharedPreferences _prefs =
-                                                    await SharedPreferences
-                                                    .getInstance();
-                                                _prefs.setString(
-                                                    "locale", "en");
-                                                MyApp.setLocale(context,
-                                                    Locale("en", "US"));
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          SplashScreen(),
+                                                    // .language="ar";
+                                                  },
+                                                ),
+                                                TextButton(
+                                                    child: Text(
+                                                      'English',
                                                     ),
-                                                        (Route<
-                                                        dynamic> route) => false);
-                                                // AppLocalizations.of(context)!.locale.toString()
+                                                    onPressed: () async {
+                                                      personalInfo.language =
+                                                          "en";
+                                                      SharedPreferences _prefs =
+                                                          await SharedPreferences
+                                                              .getInstance();
+                                                      _prefs.setString(
+                                                          "locale", "en");
+                                                      MyApp.setLocale(context,
+                                                          Locale("en", "US"));
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                              MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        SplashScreen(),
+                                                              ),
+                                                              (Route<dynamic>
+                                                                      route) =>
+                                                                  false);
+                                                      // AppLocalizations.of(context)!.locale.toString()
 
-
-                                                // .language="ar";                                              },
-                                              } ),
-                                          ],),
-                                      )
-
-                                    ],
-                                  )
-                              );
+                                                      // .language="ar";                                              },
+                                                    }),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -782,7 +912,11 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
-                                      Image.asset('images/language-01.png',height: MediaQuery.of(context).size.height*0.027),
+                                      Image.asset('images/language-01.png',fit: BoxFit.contain,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.025),
                                       // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
@@ -795,8 +929,16 @@ class _TABBarState extends State<TABBar> {
                                             fontFamily: 'BerlinSansFB',
                                             fontWeight: FontWeight.normal),
                                       ),
+
                                     ],
+
                                   ),
+                                  Row(
+                                    children: [Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xFF3F5521),
+                                    ),
+                                  ]),
                                   // InkWell(
                                   //     onTap: () async {
                                   //       if(  personalInfo.language == "en") {
@@ -897,8 +1039,8 @@ class _TABBarState extends State<TABBar> {
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.05,
                                           ),
-                                          Text('${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}'
-                                            ,
+                                          Text(
+                                            '${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -916,6 +1058,7 @@ class _TABBarState extends State<TABBar> {
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.03,
                                           ),
+
                                         ],
                                       ),
                                     ],
@@ -1003,9 +1146,13 @@ class _TABBarState extends State<TABBar> {
                                                     sharedPreferences =
                                                     await SharedPreferences
                                                         .getInstance();
-                                                final occa = Provider.of<OccasionProvider>(context, listen: false);
-                                                occa.all=[];
-                                                personalInfo.status=Status.Unauthenticated;
+                                                final occa = Provider.of<
+                                                        OccasionProvider>(
+                                                    context,
+                                                    listen: false);
+                                                occa.all = [];
+                                                personalInfo.status =
+                                                    Status.Unauthenticated;
                                                 // sharedPreferences.remove('Email');
                                                 //  sharedPreferences.remove('Password');
                                                 personalInfo
@@ -1017,13 +1164,14 @@ class _TABBarState extends State<TABBar> {
                                                 sharedPreferences.clear();
                                                 sharedPreferences.setBool(
                                                     "startintro", a);
-                                                sharedPreferences.setBool("wlkdone",aw);
+                                                sharedPreferences.setBool(
+                                                    "wlkdone", aw);
 
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                             SplashScreen(),
+                                                              SplashScreen(),
                                                         ),
                                                         (route) => false);
                                               },

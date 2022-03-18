@@ -1,16 +1,37 @@
 import 'package:CaterMe/Services/orderById.dart';
 import 'package:CaterMe/model/orderById.dart';
+import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class OrderByIdProvider extends ChangeNotifier{
   OrderByIdService _orderByIdService=OrderByIdService();
   List<OrderDetailsModel> _orderListDetails=[];
-bool _check1 =false ;
+  List<setupItemsModel> _setupItemmodel=[];
+  List _setupItemModelId = [];
+
+  List get setupItemModelId => _setupItemModelId;
+
+  set setupItemModelId(List value) {
+    _setupItemModelId = value;
+  }
+
+  List<setupItemsModel> get setupItemmodel => _setupItemmodel;
+
+  set setupItemmodel(List<setupItemsModel> value) {
+    _setupItemmodel = value;
+  }
+
+  bool _check1 =false ;
 bool _check2 =false ;
 bool _check3 =false ;
 bool _check4 =false ;
 
   OrderByIdService get orderByIdService => _orderByIdService;
+
+  getItemModel(String a) async{
+    setupItemmodel=await orderByIdService.getallsetupItems(a);
+    notifyListeners();
+  }
 
   set orderByIdService(OrderByIdService value) {
     _orderByIdService = value;

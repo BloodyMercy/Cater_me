@@ -124,6 +124,7 @@ List<String> _listcityname=[];
   TextEditingController DailyDatelancontroller=TextEditingController();
   TextEditingController numberofguestcontrollerstring=TextEditingController();
   TextEditingController typeofeventcontroller=TextEditingController();
+
   TextEditingController typeofeventcontrollerstring=TextEditingController();
   TextEditingController genderselected=TextEditingController();
   TextEditingController name=TextEditingController();

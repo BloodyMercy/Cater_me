@@ -252,6 +252,7 @@ class LanguageTr {
       "Address Deleted":"تم حذف العنوان",
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
       "Event Description":"وصف الحدث",
+      "Free":"مجانا",
 
 
 
@@ -499,6 +500,7 @@ class LanguageTr {
       "Address Deleted":"Address Deleted",
       "Address cannot be Deleted":"Address cannot be Deleted",
       "Event Description":"Event Description",
+      "Free":"Free",
 
 
 }

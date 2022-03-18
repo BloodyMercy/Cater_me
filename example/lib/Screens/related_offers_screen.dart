@@ -35,6 +35,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
         Provider.of<OrderCaterProvider>(context, listen: false);
     final address = Provider.of<AdressProvider>(context, listen: false);
     SharedPreferences sh = await SharedPreferences.getInstance();
+   // address.typeofeventcontroller.text="1";
     await pack.getallpacakgesorder(
       orderprovider.serviceId,
       int.parse(address.typeofeventcontroller.text.toString()),

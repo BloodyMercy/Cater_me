@@ -95,6 +95,7 @@ String url3ds="";
 
   getData() async {
     final address = Provider.of<AdressProvider>(context, listen: false);
+    address.typeofeventcontroller.text="1";
     SharedPreferences sh=await SharedPreferences.getInstance();
     await address.getRegular(sh.getString("locale"));
   }
@@ -995,8 +996,8 @@ setState(() {
                                                 loadingnext = false;
                                               });
                                             },
-                                            child:  Text('${LanguageTr.lg[authProvider.language]['Next']}',
-
+                                            child:
+                                            Text('${LanguageTr.lg[authProvider.language]['Next']}',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontFamily: 'BerlinSansFB',
