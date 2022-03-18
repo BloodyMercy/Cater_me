@@ -259,6 +259,7 @@ class LanguageTr {
       "Close":"اغلاق",
       "Setup":"التجهيزات",
       "OTP Verification":"التحقق من الرمز",
+      "error to place order":"خطأ في تقديم الطلب",
 
 
 
@@ -513,6 +514,7 @@ class LanguageTr {
       "otp not valid":"otp not valid",
       "Close":"Close",
       "OTP Verify":"OTP Verify",
+      "error to place order":"error to place order",
 
 
 

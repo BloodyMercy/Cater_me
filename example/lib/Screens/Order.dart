@@ -341,7 +341,7 @@ String url3ds="";
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
                                     '${LanguageTr.lg[authProvider.language]["Payment"]}',
-                                    '${LanguageTr.lg[authProvider.language]["OTP Verify"]}',
+                                    '${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
 
 
                                   ],
