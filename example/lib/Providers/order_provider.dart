@@ -11,6 +11,7 @@ import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,7 +23,7 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
   List _setupItemModelId = [];
-
+  //InAppWebViewController _webview=new InAppWebViewController();
   List get setupItemModelId => _setupItemModelId;
 
   set setupItemModelId(List value) {
@@ -284,9 +285,9 @@ orderid=int.parse(i);
     notifyListeners();
   }
 
-  getotpverify() async{
+  getotpverify(String a) async{
 
-    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString());
+    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString(),a);
     notifyListeners();
   }
 

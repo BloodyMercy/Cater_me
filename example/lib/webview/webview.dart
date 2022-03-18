@@ -16,7 +16,9 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
     // TODO: implement initState
     super.initState();
 
+
   }
+  InAppWebViewController _webViewController;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,13 +83,15 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
                     ),
                     onWebViewCreated: (InAppWebViewController controller) {
 
-                    //  _webViewController = controller;
+                      _webViewController = controller;
+
                     },
 
                     onLoadStart: (InAppWebViewController controller, url) {
                       // setState(() {
                       //   _con.url = url;
                       // });
+
                       if (url == "return_url") {
                         //close the webview
                         //_con.webView.goBack();
@@ -102,11 +106,13 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
                     },
                     onLoadError: (InAppWebViewController controller, Uri url, int code,
                         String message) {
-                      print("");
+                      print("eroor web view");
                     },
                     onLoadStop: (InAppWebViewController controller,  url) async {
-print("");
+                      print(url);
+controller.getUrl().then((value) => print(value));
                     },
+
 
 
                     // initialHeaders: {},
@@ -127,6 +133,14 @@ print("");
                   ),
                 ),
               ),
+
+              // InkWell(
+              //   onTap: (){
+              //     _webViewController.getUrl().then((value) => print(value));
+              //   },
+              //   child:Text("next"))
+
+
             ]))
     );
   }

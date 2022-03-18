@@ -6,12 +6,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
 class OtpVerify {
-  static Future<int> Otpverify(String id)async {
+  static Future<int> Otpverify(String id,String session)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
-      var request=http.Request('GET',Uri.parse(ApiLink.GetOrderStatus+"/$id"));
+      var request=http.Request('POST',Uri.parse(ApiLink.GetOrderStatus+"/$id"));
       request.headers.addAll(headers);
+      request.bodyFields={
+        "url":session
+      };
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {

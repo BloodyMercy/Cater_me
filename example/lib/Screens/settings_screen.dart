@@ -1048,11 +1048,14 @@ class _TABBarState extends State<TABBar> {
                                                     .getBool("startintro");
                                                 bool aw = sharedPreferences
                                                     .getBool("wlkdone")??false;
+                                                String l = sharedPreferences
+                                                    .getString("locale")??"en";
                                                 sharedPreferences.clear();
                                                 sharedPreferences.setBool(
                                                     "startintro", a);
                                                 sharedPreferences.setBool(
                                                     "wlkdone", aw);
+                                                sharedPreferences.setString("locale", l);
 
 
                                                 Navigator.of(context)

@@ -144,6 +144,9 @@ class _SignupScreenState extends State<SignupScreen> {
     final address = Provider.of<AdressProvider>(context, listen: false);
     SharedPreferences _pref = await SharedPreferences.getInstance();
     String g= _pref.getString("locale")??"en";
+
+
+
     DatePicker.showDatePicker(
       ctx,
       locale: g=="en"?DateTimePickerLocale.en_us:DateTimePickerLocale.ar,
@@ -159,7 +162,7 @@ class _SignupScreenState extends State<SignupScreen> {
       initialDateTime: _chosenDate,
       maxDateTime: DateTime.now(),
       minDateTime: DateTime(1950),
-      dateFormat: 'MMMM-yyyy-dd',
+    dateFormat: 'MMMM-yyyy-dd',
       onClose: () {},
       onCancel: () => print('onCancel'),
       onChange: (dateTime, List<int> index) {

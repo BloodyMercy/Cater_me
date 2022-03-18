@@ -883,7 +883,7 @@ Navigator.of(context).pop();
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                  await orderProvider.getotpverify();
+                                                  await orderProvider.getotpverify(url3ds);
                                               //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
