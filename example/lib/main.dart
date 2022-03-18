@@ -33,6 +33,8 @@ import 'Providers/occasion.dart';
 import 'Providers/packages.dart';
 import 'Providers/user.dart';
 import 'Screens/auth/login_screen.dart';
+import 'Screens/check out/SetupItems.dart';
+
 import 'chat/providers/chat_provider.dart';
 import 'colors/colors.dart';
 import 'notificaition/services/notification_service.dart';

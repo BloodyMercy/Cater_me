@@ -622,9 +622,9 @@ class _TABBarState extends State<TABBar> {
                                         ),
                                       ),
                                     ),
-                                    Divider(
-                                      thickness: 1,
-                                    ),
+                                    // Divider(
+                                    //   thickness: 1,
+
                                     // Padding(
                                     //   padding: const EdgeInsets.all(8.0),
                                     //   child: GestureDetector(
