@@ -16,6 +16,13 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _listFriend=[];
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
+  int _orderid=0;
+
+  int get orderid => _orderid;
+
+  set orderid(int value) {
+    _orderid = value;
+  }
 
   List<TextEditingController> get controllers => _controllers;
   double _vatshisha=0.0;
@@ -129,7 +136,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<String>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -181,7 +188,7 @@ int _totalshisha=0;
 
         },
         "paymentFriend": mapitemf,
-        "cardId": idcard,
+        //"cardId": idcard,
         "isDonatingFood": bool3,
         "isNeedChair": bool2,
         "isNeedTables": bool2,
@@ -203,15 +210,15 @@ int _totalshisha=0;
         var i=responseData;
 
         // List<Cuisins> posts = List<Cuisins>.from(responseData['cuisine']['categories'].map((model)=> Cuisins.fromJson(model)));  //map to list
-        return i;
+        return int.parse(i);
       }
       else {
         print(response.reasonPhrase);
-        return "error";
+        return 0;
       }
     }catch(e){
       //print()
-      return "error";
+      return 0;
     }
     // notifyListeners();
     // return 0;

@@ -120,6 +120,7 @@ String url3ds="";
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
+
     final _creditCardss =
         Provider.of<CreditCardsProvider>(context, listen: true);
     final addresses = Provider.of<AdressProvider>(context, listen: true);
@@ -640,9 +641,78 @@ String url3ds="";
                                                     }
 
                                                     if (!a) {
-                                                      orderProvider.spets++;
-                                                      _animateToIndex(
-                                                          orderProvider.spets);
+                                                      showDialog(
+                                                        context: this.context,
+                                                        barrierDismissible: false,
+                                                        builder:
+                                                            (BuildContext context) {
+                                                          return WillPopScope(
+                                                              onWillPop: () =>
+                                                              Future<bool>.value(
+                                                                  false),
+                                                              child: AlertDialog(
+                                                                title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                                ),
+                                                                content: Column(
+                                                                    mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                    children: <
+                                                                        Widget>[
+                                                                      const CircularProgressIndicator()
+                                                                    ]),
+                                                              ));
+                                                        },
+                                                      );
+                                                      final _creditCards = Provider
+                                                          .of<CreditCardsProvider>(
+                                                          context,
+                                                          listen: false);
+                                                      final order = Provider.of<OrderByIdProvider>(context, listen: false);
+
+                                                      final address = Provider.of<
+                                                          AdressProvider>(
+                                                          context,
+                                                          listen: false);
+
+                                                     int a = await orderProvider
+                                                          .makeorder(
+                                                        date: (address
+                                                            .evendatecontroller
+                                                            .text)
+                                                            .replaceAll(
+                                                          RegExp(
+                                                              '[^A-Za-z0-9]'),
+                                                          '-',
+                                                        ),
+
+                                                        type: address
+                                                            .typeofeventcontroller
+                                                            .text,
+                                                        nb: address
+                                                            .numberofguestcontroller
+                                                            .text,
+                                                      //  idcard: _creditCards.credit.cardId,
+                                                        contactname:
+                                                        address.name.text,
+                                                        contactphone: address
+                                                            .phone.text,
+                                                        eventname: address
+                                                            .eventnamecontroller
+                                                            .text,
+                                                        // eventtime:address.
+                                                        bool1: order.check1,
+                                                        bool2: order.check2,
+                                                        bool3: order.check4,
+                                                      );
+
+                                                      if(a!=0) {
+                                                        orderProvider.orderid=a;
+                                                        orderProvider.spets++;
+                                                        _animateToIndex(
+                                                            orderProvider
+                                                                .spets);
+                                                      }
                                                     }
                                                   } else {
                                                     _key.currentState
@@ -703,37 +773,8 @@ String url3ds="";
                                                       context,
                                                       listen: false);
 
-                                                 String a = await orderProvider
-                                                      .makeorder(
-                                                      date: (address
-                                                          .evendatecontroller
-                                                          .text)
-                                                          .replaceAll(
-                                                        RegExp(
-                                                            '[^A-Za-z0-9]'),
-                                                        '-',
-                                                      ),
-
-                                                      type: address
-                                                          .typeofeventcontroller
-                                                          .text,
-                                                      nb: address
-                                                          .numberofguestcontroller
-                                                          .text,
-                                                      idcard: _creditCards
-                                                          .credit.cardId,
-                                                      contactname:
-                                                      address.name.text,
-                                                      contactphone: address
-                                                          .phone.text,
-                                                      eventname: address
-                                                          .eventnamecontroller
-                                                          .text,
-                                                     // eventtime:address.
-                                                      bool1: order.check1,
-                                                      bool2: order.check2,
-                                                      bool3: order.check4,
-                                                  );
+                                                int a = await orderProvider
+                                                      .makeorder();
                                                   Navigator.of(context).pop();
                                                   if (a == "Success")
                                                     Navigator.pushReplacement(
@@ -833,7 +874,7 @@ setState(() {
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                 String a = await orderProvider
+                                                 int a = await orderProvider
                                                       .makeorder(
                                                           date: (address
                                                                   .evendatecontroller
