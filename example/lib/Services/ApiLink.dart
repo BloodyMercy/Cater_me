@@ -37,7 +37,7 @@ class ApiLink{
  static String GetAllOccasionsType=host+"Occasions/GetOccasionTypes";
  static String GETALLPACKAGEORDER=host+"Orders/GetPackageByOrder/";
  static String GETALLADDONSEORDER=host+"Orders/GetPackageByOrder/";
- static String GetOrderStatus=host+"Orders/CheckOrderStatus";
+ static String GetOrderStatus=host+"Orders/CheckTrackingStatus";
  static String GetItemByCuisine=host+"Orders/GetItemByCuisine/";
  static String GetItemByadd=host+"Orders/GetItemByAddons/";
  static String Createfriends=host+"Friends/CreateFriend";

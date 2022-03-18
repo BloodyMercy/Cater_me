@@ -94,7 +94,7 @@ Map<String,dynamic> _orderbyId={};
 
   Future getOrderItems(String a) async{
 
-    if(orderbyId['orderItems'].length!=0){
+    if(orderbyId['orderItems']!=null){
       _items=List<OrderItems>.from(orderbyId['orderItems'].map((model)=> OrderItems.fromJson(model,a)));
      // return orderbyId['orderItems'].forEach((element) {
      //    items.add(element);
