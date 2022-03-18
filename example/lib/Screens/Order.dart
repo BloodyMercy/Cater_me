@@ -875,14 +875,14 @@ Navigator.of(context).pop();
                                               //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
-                                                  if (orderProvider.otpVerify["statusId"]==1)
+                                                  if (orderProvider.otpVerify==1)
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
                                                                     0)));
-                                                  else if(orderProvider.otpVerify["statusId"]==0)
+                                                  else if(orderProvider.otpVerify==0)
                                                       {
                                                         showDialog(
                                                           context: this.context,

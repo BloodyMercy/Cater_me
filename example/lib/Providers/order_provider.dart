@@ -20,12 +20,12 @@ class OrderCaterProvider extends ChangeNotifier{
   List<TextEditingController> _controllers = [];
   int _orderid=0;
   Map<String,dynamic> _paymentverify={};
-  Map<String,dynamic>_otpVerify = {};
+ int _otpVerify =0;
 
 
-  Map<String, dynamic> get otpVerify => _otpVerify;
+  int get otpVerify => _otpVerify;
 
-  set otpVerify(Map<String, dynamic> value) {
+  set otpVerify(int value) {
     _otpVerify = value;
   }
 
@@ -249,7 +249,7 @@ orderid=int.parse(i);
 
   getotpverify() async{
 
-    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"]);
+    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString());
     notifyListeners();
   }
 

@@ -13,10 +13,10 @@ class placeOrderId {
       var request=http.Request('POST',Uri.parse(ApiLink.checkorder+"/$idPlaceOrder1"));
       request.headers.addAll(headers);
 
-      request.body=json.encode({
+      request.bodyFields={
 
-        "serviceId":idPlaceOrder2
-      });
+        "cardId":idPlaceOrder2
+      };
 
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);
