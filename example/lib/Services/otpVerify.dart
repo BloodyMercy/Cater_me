@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
-class otpVerify {
-  Future<Map<String,dynamic>> OtpVerify(String id)async {
+class OtpVerify {
+  static Future<Map<String,dynamic>> Otpverify(String id)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
