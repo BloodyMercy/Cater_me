@@ -143,6 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final address = Provider.of<AdressProvider>(context, listen: false);
     DatePicker.showDatePicker(
       ctx,
+
       onMonthChangeStartWithFirstDate: true,
       pickerTheme: DateTimePickerTheme(
         showTitle: false,
@@ -375,7 +376,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               controller: authProvider.password,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return 'Required ';
+                                  return '${LanguageTr.lg[authProvider.language]["Required"]}';
                                 } else if (val.length < 6) {
                                   return 'Password should be at least 6 characters';
                                 }
@@ -422,7 +423,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.confirmpassword,
                               validator: (val) {
-                                if (val.isEmpty) return 'Confirm Password';
+                                if (val.isEmpty) return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
                                 if (val != authProvider.password.text)
                                   return 'Passwords do not match';
                                 return null;
@@ -454,7 +455,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               controller: authProvider.phoneNumber,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a Phone number,
                               ]),
                               keyboardType: TextInputType.phone,
@@ -633,9 +634,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(
-                                  screenHeight * 0.14,
+                                  screenHeight * 0.10,
                                   screenHeight * 0.02,
-                                  screenHeight * 0.14,
+                                  screenHeight * 0.10,
                                   screenHeight * 0.02),
                               onPrimary: const Color.fromRGBO(255, 255, 255, 1),
                               primary: Theme.of(context).primaryColor,
