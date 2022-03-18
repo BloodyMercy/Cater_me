@@ -31,7 +31,7 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This app needs to access your location to get your current address andd tracking your order</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs to access your location to get your current address</string>
+	<string>Location is required to find out where you are</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>CaterMe would like access to your photo gallery to upload your profile photo</string>
 	<key>UIBackgroundModes</key>

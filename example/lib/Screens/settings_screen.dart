@@ -378,125 +378,9 @@ class _TABBarState extends State<TABBar> {
                                     ),
                                   ),
                                   Divider(),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => AccountInfo(),
-                                          ),
-                                        );
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.03,
-                                              ),
-                                              Icon(
-                                                Icons.vpn_key_sharp,
-                                                color: Color(0xFF3F5521),
-                                              ),
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.05,
-                                              ),
-                                              Text(
-                                                '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
-                                                style: TextStyle(
-                                                    color: Color(0xFF3F5521),
-                                                    fontSize: 20,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight:
-                                                        FontWeight.normal),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(children: [
-                                            Icon(
-                                              Icons.chevron_right,
-                                              color: Color(0xFF3F5521),
-                                            ),
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.03,
-                                            ),
-                                          ]),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Divider(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => SetupItems(),
-                                        ),
-                                      );
-                                    },
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.03,
-                                                  ),
-                                                  Icon(
-                                                    FontAwesomeIcons.solidUser,
-                                                    size: 20,
-                                                    //Icon Size
-                                                    color: Color(
-                                                        0xFF3F5521), //Color Of Icon
-                                                  ),
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.05,
-                                                  ),
-                                                  Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["Personal Info"]}',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF3F5521),
-                                                        fontSize: 20,
-                                                        fontFamily:
-                                                            'BerlinSansFB',
-                                                        fontWeight:
-                                                            FontWeight.normal),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(children: [
-                                                Icon(
-                                                  Icons.chevron_right,
-                                                  color: Color(0xFF3F5521),
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                              ]),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(),
+
+
+
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
@@ -912,11 +796,11 @@ class _TABBarState extends State<TABBar> {
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.03,
                                       ),
-                                      Image.asset('images/language-01.png',fit: BoxFit.contain,
+                                      Image.asset('images/language-01.png',
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.025),
+                                              0.020),
                                       // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
                                       SizedBox(
                                         width: mediaQuery.size.width * 0.05,
@@ -934,10 +818,13 @@ class _TABBarState extends State<TABBar> {
 
                                   ),
                                   Row(
-                                    children: [Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xFF3F5521),
+                                    children: [
+                                      Padding(padding: EdgeInsets.only(right: 16),
+                                        child: Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
                                     ),
+                                      ),
                                   ]),
                                   // InkWell(
                                   //     onTap: () async {
@@ -1160,12 +1047,13 @@ class _TABBarState extends State<TABBar> {
                                                 bool a = sharedPreferences
                                                     .getBool("startintro");
                                                 bool aw = sharedPreferences
-                                                    .getBool("wlkdone");
+                                                    .getBool("wlkdone")??false;
                                                 sharedPreferences.clear();
                                                 sharedPreferences.setBool(
                                                     "startintro", a);
                                                 sharedPreferences.setBool(
                                                     "wlkdone", aw);
+
 
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(

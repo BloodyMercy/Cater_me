@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Setup":"Setup",
 
       "Saved Orders":"الطلبات المحفوظة",
 
@@ -253,6 +254,12 @@ class LanguageTr {
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
       "Event Description":"وصف الحدث",
       "Free":"مجانا",
+      "otp verification":"التحقق من الرمز",
+      "otp not valid":" الرمز غير صالح",
+      "Close":"اغلاق",
+      "Setup":"التجهيزات",
+      "OTP Verification":"التحقق من الرمز",
+      "error to place order":"خطأ في تقديم الطلب",
 
 
 
@@ -264,6 +271,7 @@ class LanguageTr {
 
 
     "en": {
+      "Setup":"Setup",
       "*(VAT included 15%)":"*(VAT included 15%)",
       "Saved Orders":"Saved Orders",
       "VAT included 15%":"VAT included 15%",
@@ -502,6 +510,13 @@ class LanguageTr {
       "Address cannot be Deleted":"Address cannot be Deleted",
       "Event Description":"Event Description",
       "Free":"Free",
+      "otp verification":"otp verification",
+      "otp not valid":"otp not valid",
+      "Close":"Close",
+      "OTP Verification":"OTP Verification",
+      "error to place order":"error to place order",
+
+
 
 
 }

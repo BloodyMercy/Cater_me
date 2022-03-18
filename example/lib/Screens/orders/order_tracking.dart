@@ -53,10 +53,8 @@ class _TrackingOrderState extends State<TrackingOrder> {
                   ?Center(
                 child: Container(
                     color: LightColors.kLightYellow,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xFF3F5521),
-                      ),
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF3F5521),
                     ),
                   ),
               )

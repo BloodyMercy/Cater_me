@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/orderById_provider.dart';
+import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +47,7 @@ class _SetupItemsState extends State<SetupItems> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final order=Provider.of<OrderByIdProvider>(context,listen: true);
+    final orderCater=Provider.of<OrderCaterProvider>(context,listen: true);
     return SafeArea(
       child: Scaffold(
 
@@ -71,9 +73,9 @@ class _SetupItemsState extends State<SetupItems> {
              _isChecked[index]=val;
             });
             if(val==true){
-              order.setupItemModelId.add(order.setupItemmodel[index].id);
+              orderCater.setupItemModelId.add(order.setupItemmodel[index].id);
             }else{
-              order.setupItemModelId.removeWhere((element) => element==order.setupItemmodel[index].id);
+              orderCater.setupItemModelId.removeWhere((element) => element==order.setupItemmodel[index].id);
             }
           });
         },itemCount: order.setupItemmodel.length,)),

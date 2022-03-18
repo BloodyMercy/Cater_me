@@ -162,7 +162,7 @@ class _NavigationBarState extends State<Navigationbar> {
     if(sh.getBool("startintro")??true) {
       Timer(
         Duration(
-          milliseconds: 500,
+          seconds: 3,
         ),
             () {
           /// start the intro
@@ -286,6 +286,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.finaldonatesteps=false;
                   orderCaterprovider.finaldonatestepsCancel=false;
                   credit.value = -1;
+                  orderCaterprovider.setup=false;
                   orderCaterprovider.serviceId = 1;
                   address.form = false;
                   address.valueIndex = -1;

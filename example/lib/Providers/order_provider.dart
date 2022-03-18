@@ -9,23 +9,58 @@ import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model/setup_items_model.dart';
 
 class OrderCaterProvider extends ChangeNotifier{
   List<ItemOrders> _itemOrders = [];
   List<FriendModel> _listFriend=[];
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
+  List _setupItemModelId = [];
+
+  List get setupItemModelId => _setupItemModelId;
+
+  set setupItemModelId(List value) {
+    _setupItemModelId = value;
+  }
+
+  List<setupItemsModel> get setupItemmodel => _setupItemModelId;
+  set setupItemmodel(List<setupItemsModel> value) {
+    _setupItemModelId = value;
+  }
+
+  List<int> _setupOrderList=[];
+
+  List<int> get setupOrderList => _setupOrderList;
+
+  set setupOrderList(List<int> value) {
+    _setupOrderList = value;
+  }
+
+  addid(int a){
+    setupOrderList.add(a);
+    notifyListeners();
+}
+removeid(int a){
+    setupOrderList.remove(a);
+    notifyListeners();
+}
+
   int _orderid=0;
   Map<String,dynamic> _paymentverify={};
-  Map<String,dynamic>_otpVerify = {};
+ int _otpVerify =0;
+
+  bool setup=false;
 
 
-  Map<String, dynamic> get otpVerify => _otpVerify;
+  int get otpVerify => _otpVerify;
 
-  set otpVerify(Map<String, dynamic> value) {
+  set otpVerify(int value) {
     _otpVerify = value;
   }
 
@@ -111,7 +146,7 @@ int _totalshisha=0;
     _vatshisha = value;
   }
 
-  Future<CreditCardsModel> sendtokeknpayemnt(String a,String name) async{
+  Future<CreditCardsModel> sendtokeknpayemnt(String a,String name,String cvv) async{
 
     CreditCardsModel card=new  CreditCardsModel();
     try{
@@ -127,6 +162,7 @@ int _totalshisha=0;
       request.fields.addAll({
         'token':a.toString() ,
         "name":name,
+        "cvv":cvv
 
 
 
@@ -153,7 +189,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3})async {
+  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3,})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -204,6 +240,7 @@ int _totalshisha=0;
           "contactPersonPhoneNumber":contactphone??"",
 
         },
+        "setupItems":setupItemModelId,
         "paymentFriend": mapitemf,
         //"cardId": idcard,
         "isDonatingFood": bool3,
@@ -249,7 +286,7 @@ orderid=int.parse(i);
 
   getotpverify() async{
 
-    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"]);
+    otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString());
     notifyListeners();
   }
 

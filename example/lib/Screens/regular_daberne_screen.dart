@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:CaterMe/Screens/check%20out/SetupItems.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,13 +17,13 @@ class RegularDaberneScreen extends StatefulWidget {
 class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
   bool reg;
   bool dab;
-bool setup;
+
   @override
   void initState() {
     super.initState();
     reg = false;
     dab = false;
-    setup=false;
+
     //  data();
   }
 
@@ -38,18 +39,19 @@ bool setup;
     setState(() {});
   }
 
-  bool loading = true;
+
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final ordercater = Provider.of<OrderCaterProvider>(context, listen: true);
 
     final orderProvider =
         Provider.of<OrderCaterProvider>(context, listen: true);
     final addresProvider = Provider.of<AdressProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    return Padding(
+    return !ordercater.setup?Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
       child: Center(
         child: Column(
@@ -125,6 +127,9 @@ bool setup;
           ],
         ),
       ),
-    );
+    )
+        :SetupItems();
+
+
   }
 }
