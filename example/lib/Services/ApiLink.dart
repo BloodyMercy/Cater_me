@@ -50,7 +50,7 @@ class ApiLink{
  static String UpdatePersonalInfo=host+"Accounts/UpdateProfile";
  static String ResetPassword=host+"Accounts/ResetPassword";
  static String DeleteAddress=host+"Addresses/DeleteAddress";
- static String makeorder=host+"Checkout/RequestPayment";
+ static String makeorder=host+"Orders/PlaceOrder";
  static String GetAllCreditCards=host+"Checkout/GetAllCreditCards";
  static String DeleteCreditCards=host+"Checkout/DeleteCreditCard";
  static String AddCreditCards=host+"Checkout/AddCreditCard";
@@ -63,6 +63,7 @@ class ApiLink{
  static String contactus=host+"Settings/GetContactUs";
  static String getDistance = host+"Orders/IsInCoverage/";
  static String setupitems=host+"Settings/GetOrderSettings";
+ static String checkorder=host+"Checkout/RequestPayment";
 
 
 
