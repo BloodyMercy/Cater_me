@@ -12,6 +12,12 @@ class placeOrderId {
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request=http.Request('POST',Uri.parse(ApiLink.makeorder+"/$idPlaceOrder1"+"/$idPlaceOrder2"));
       request.headers.addAll(headers);
+
+      request.body=json.encode({
+        "addressId":idPlaceOrder1,
+        "serviceId":idPlaceOrder2
+      });
+
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
