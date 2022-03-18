@@ -61,8 +61,9 @@ TextEditingController lol =TextEditingController();
                 mode: CupertinoDatePickerMode.date,
                 minimumYear: DateTime.now().year,
                 maximumYear:DateTime.now().year+1,
+                minimumDate: DateTime.now(),
 
-                //maximumDate: DateTime(DateTime.now().year+1),
+                maximumDate: DateTime(DateTime.now().year+1),
 
                 onDateTimeChanged: (value) {
                   // _chosenDate = dateTime;

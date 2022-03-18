@@ -433,7 +433,7 @@ String url3ds="";
                                                     )
                                                   : Container(),
                                               orderProvider.vatfood > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]["VAT included 15%"]}'
+                                                  ? Text('${LanguageTr.lg[authProvider.language]["*(VAT included 15%)"]}'
                                                       ,
                                                       style: TextStyle(
                                                         fontSize: 10,

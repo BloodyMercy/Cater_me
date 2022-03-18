@@ -123,7 +123,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                                 Radius.circular(20),
                               ),
                             ),
-                            width: mediaQuery.size.height * 0.25,
+                            width: mediaQuery.size.height * 0.30,
                             height: mediaQuery.size.height / 8,
                             child: FittedBox(
                               child: Text(

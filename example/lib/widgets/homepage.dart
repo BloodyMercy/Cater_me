@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
 
                               children: [
                                 SizedBox(
-                                    width: mediaQuery.size.width * 0.6,
+                                    width: mediaQuery.size.width * 0.7,
                                     height: mediaQuery.size.height / 13,
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
