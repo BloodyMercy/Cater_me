@@ -1100,7 +1100,7 @@ class _TABBarState extends State<TABBar> {
                                                 bool a = sharedPreferences
                                                     .getBool("startintro");
                                                 bool aw = sharedPreferences
-                                                    .getBool("wlkdone");
+                                                    .getBool("wlkdone")??false;
                                                 sharedPreferences.clear();
                                                 sharedPreferences.setBool(
                                                     "startintro", a);

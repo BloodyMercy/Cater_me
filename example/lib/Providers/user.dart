@@ -150,7 +150,7 @@ language=sh.getString("locale")??"en";
       notifyListeners();
     }
 
-   else if(!(sh.getBool("wlkdone")??true)){
+   else if((!sh.getBool("wlkdone")??true)){
 
       _status=Status.walkingpage;
       notifyListeners();
