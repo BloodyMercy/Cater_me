@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Reset succeed":"تم التعيين بنجاح",
       "Setup":"Setup",
 
       "Saved Orders":"الطلبات المحفوظة",
@@ -152,7 +153,7 @@ class LanguageTr {
       "Event Details": "تفاصيل المناسبه",
       "Service": "الخدمة",
       "Password dosen't match": "كلمه السر مو مضبوطه",
-      'Cannot update! Old password is wrong':
+     " Cannot update! Old password is wrong":
           "مو راضي يحدث،كلمه السر الأولى خطا",
       "Add-Ons": " إضافات زياده",
       "Checkout": "هنا الدفع",
@@ -271,6 +272,8 @@ class LanguageTr {
 
 
     "en": {
+      "Cannot update! Old password is wrong":"Cannot update! Old password is wrong",
+      "Reset succeed":"Reset succeed",
       "Setup":"Setup",
       "*(VAT included 15%)":"*(VAT included 15%)",
       "Saved Orders":"Saved Orders",
@@ -280,7 +283,7 @@ class LanguageTr {
       "Address:":"Address:",
       "Not a valid email":"Not a valid email",
       "Password dosen't match":"Password dosen't match",
-     " Credit card cannot be deleted":"Credit card cannot be deleted",
+     "Credit card cannot be deleted":"Credit card cannot be deleted",
       "Passwords don't match":"Passwords don't match",
       "Credit card Deleted":"Credit card Deleted",
       "Address added":"Address added",
