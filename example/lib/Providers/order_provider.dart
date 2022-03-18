@@ -174,7 +174,7 @@ int _totalshisha=0;
           "eventName": eventname,
           "eventDate":date,
 
-          "eventTypeId":int.parse(type),
+          "eventTypeId":1,
           "numberOfGuestsId": int.parse(nb),
           "contactPersonName":contactname??"",
           "contactPersonPhoneNumber":contactphone??"",
