@@ -53,13 +53,13 @@ _hourFormatlang = DateFormat('h:mm a',widget.lang);
               child:
               CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.time,
-
+minuteInterval: 30,
                 onDateTimeChanged: (value) {
                   _chosenDate=value;
                   widget.controller.text=_hourFormat.format(value).toString();
                   widget.controllerlan.text=_hourFormatlang.format(value).toString();
                 },
-                initialDateTime: DateTime.now(),
+                initialDateTime: DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day,DateTime.now().hour),
               ));
         });
   }

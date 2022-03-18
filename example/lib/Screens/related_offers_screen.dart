@@ -100,6 +100,40 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   //   placeholder: (context, url) =>
                                   //    CircularProgressIndicator(),
                                   //     imageUrl: pack.allpackagesorder[index].image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                   // ),
                                 child: Column(children:[
                                    Image.network(
