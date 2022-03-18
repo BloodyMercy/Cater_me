@@ -62,7 +62,7 @@ TextEditingController lol =TextEditingController();
 
                 minimumDate: DateTime.now(),
                 maximumYear:DateTime.now().year+1,
-                minimumDate: DateTime.now(),
+               // minimumDate: DateTime.now(),
 
                 maximumDate: DateTime(DateTime.now().year+1),
 
