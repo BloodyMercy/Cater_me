@@ -305,6 +305,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   address.value2Index = -1;
                   address.value1Index = -1;
                   orderCaterprovider.valueIndex = -1;
+                  orderCaterprovider.value.id= 0;
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => Order(),
