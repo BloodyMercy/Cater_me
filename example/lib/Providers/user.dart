@@ -215,7 +215,7 @@ language=sh.getString("locale")??"en";
         genderselected.text.toString(),
         image
       );
-      getdata();
+    //  getdata();
       _messageSignUp = u.message;
       status=Status.Authenticated;
 

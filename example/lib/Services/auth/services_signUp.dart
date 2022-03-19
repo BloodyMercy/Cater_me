@@ -87,6 +87,7 @@ class AuthModelSignUp {
 
         SharedPreferences email = await SharedPreferences.getInstance();
         email.setString('email', responseData['email']);
+        email.setBool('logged', true);
 
         // final QuerySnapshot result = await firebaseFirestore.collection(FirestoreConstants.pathUserCollection)
         //     .where(FirestoreConstants.id, isEqualTo: responseData['email'])
