@@ -168,7 +168,7 @@ String language;
                                     }
 
 else       if(       allNotification
-                                      .notificationlist[index].description=="Order is Payment Pending" || allNotification
+                                      .notificationlist[index].description=="Order is Pending Payment" || allNotification
                                       .notificationlist[index].description=="انتظار الدفع" )
                                   {
 
