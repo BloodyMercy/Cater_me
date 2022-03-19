@@ -53,7 +53,7 @@ _hourFormatlang = DateFormat('h:mm a',widget.lang);
               child:
               CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.time,
-minuteInterval: 30,
+                 minuteInterval: 30,
                 onDateTimeChanged: (value) {
                   _chosenDate=value;
                   widget.controller.text=_hourFormat.format(value).toString();

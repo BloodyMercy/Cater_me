@@ -30,6 +30,13 @@ class OrderCaterProvider extends ChangeNotifier{
     _setupItemModelId = value;
   }
 
+  bool get checkotp => _checkotp;
+
+  set checkotp(bool value) {
+    _checkotp = value;
+  }
+
+  bool _checkotp=false;
   List<setupItemsModel> get setupItemmodel => _setupItemModelId;
   set setupItemmodel(List<setupItemsModel> value) {
     _setupItemModelId = value;

@@ -298,6 +298,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.finaldonatesteps=false;
                   order.check3 = false;
                   order.check4 = false;
+                  orderCaterprovider.checkotp=false;
                   // orderCaterprovider.listFriend=[];
                   address.value2Index = -1;
                   orderCaterprovider.valueIndex = -1;

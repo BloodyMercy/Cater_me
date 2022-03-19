@@ -38,6 +38,8 @@ TextEditingController lol =TextEditingController();
     super.initState();
     _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
     _chosenDate = DateTime.now();
+    widget.controller.text=_dateFormat.format(DateTime.now()).toString();
+    widget.controllerlan.text=_dateFormatlan.format(DateTime.now()).toString();
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
     _chosenDay = _dayFormat.format(_chosenDate);
