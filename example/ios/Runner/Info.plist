@@ -29,9 +29,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>this app need to access your camera to upload your profile photo</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location is required to find out where you are</string>
+	<string>App would like to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location is required to find out where you are</string>
+	<string>App would like to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>CaterMe would like access to your photo gallery to upload your profile photo</string>
 	<key>UIBackgroundModes</key>
