@@ -87,7 +87,7 @@ String language;
     final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
     final allNotification =
         Provider.of<NotificationProvider>(context, listen: true);
-    final package = Provider.of<PackagesProvider>(context, listen: false);
+   // final package = Provider.of<PackagesProvider>(context, listen: false);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
