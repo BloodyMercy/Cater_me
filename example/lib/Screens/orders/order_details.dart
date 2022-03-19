@@ -218,7 +218,7 @@ getData() async {
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["Total"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
