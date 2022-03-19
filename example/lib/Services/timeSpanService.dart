@@ -39,6 +39,7 @@ id=adjustString(id);
 
        // for(int i=0;i<l.length;i++)
           value=timeSpanHours.fromJson(l);
+
        DateTime parseDate =
        new DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse( value.timespan);
        var inputDate = DateTime.parse(parseDate.toString());
