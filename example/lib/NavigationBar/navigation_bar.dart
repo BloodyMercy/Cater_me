@@ -278,6 +278,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.vatfood = 0.0;
 
                   orderCaterprovider.totale = 0.0;
+                  orderCaterprovider.orderid = 0;
                   orderCaterprovider.choosebillFriend = [];
                   orderCaterprovider.choosebillFriend = [];
                   orderCaterprovider.itemOrders = [];
