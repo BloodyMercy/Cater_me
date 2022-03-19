@@ -336,7 +336,7 @@ String url3ds="";
                                   text:  [
                                     '${LanguageTr.lg[authProvider.language]["Location"]}',
                                     '${LanguageTr.lg[authProvider.language]["Event Details"]}',
-                                   orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Service"]}',
+                                   orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Setup"]}',
                                     '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
@@ -394,10 +394,17 @@ String url3ds="";
                                     orderProvider.spets > 1
                                         ? !orderProvider.finaldonatesteps?IconButton(
                                             onPressed: () {
-                                              orderProvider.spets =
-                                                  orderProvider.spets - 1;
-                                              _animateToIndex(
-                                                  orderProvider.spets);
+                                              if( details.setup)
+                                              {
+                                                details.setup=false;
+
+
+                                              }else {
+                                                orderProvider.spets =
+                                                    orderProvider.spets - 1;
+                                                _animateToIndex(
+                                                    orderProvider.spets);
+                                              }
                                             },
                                             icon: Icon(Icons.arrow_back,
                                                 size: 35,
