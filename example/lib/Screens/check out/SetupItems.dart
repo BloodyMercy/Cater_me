@@ -66,7 +66,7 @@ class _SetupItemsState extends State<SetupItems> {
                     children: [
                       Text('${LanguageTr.lg[authProvider.language]["Please choose what do you need"]}',),
                       Container(
-                        height: MediaQuery.of(context).size.height /1.3,
+                        height: MediaQuery.of(context).size.height /1.8,
                         child: ListView.builder(
                         itemBuilder: (context, index) {
                           return
