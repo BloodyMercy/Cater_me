@@ -154,7 +154,7 @@ class _YourOrdersState extends State<YourOrders> {
                                           orderCaterprovider.vatshisha = 0.0;
                                           orderCaterprovider.vatfood = 0.0;
 
-                                          orderCaterprovider.totale = 0.0;
+                                          orderCaterprovider.totale = orders.listOrder[index].total;
                                           orderCaterprovider.choosebillFriend = [];
                                           orderCaterprovider.choosebillFriend = [];
                                           orderCaterprovider.itemOrders = [];

@@ -87,6 +87,10 @@ String url3ds="";
     super.initState();
     steps = 1;
     getData();
+    final orderProvider =
+    Provider.of<OrderCaterProvider>(context, listen: false);
+    _animateToIndex(
+        orderProvider.spets);
     // getprofdata();
   }
 
@@ -224,114 +228,114 @@ String url3ds="";
 
                                   controller: _controller,
                                   onTap: (int value) {
-                                    if (orderProvider.spets == 1) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
-                                           SnackBar(
-                                            content:
-                                                Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
-                                                   ),
-
-                                        );
-                                      } else {
-                                        orderProvider.spets = value;
-                                      }
-                                    }
-                                    if (orderProvider.spets == 3) {
-                                      if (orderProvider.value.id == 0) {
-                                        _key.currentState.showSnackBar(
-                                           SnackBar(
-                                            content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
-                                                ),
-                                          ),
-                                        );
-                                        // orderProvider.spets=0;
-                                      } else {
-                                        orderProvider.spets = value;
-                                      }
-                                    }
-                                    if (orderProvider.spets == 2) {
-                                      if (address.eventnamecontroller.text == "" ||
-                                          address.evendatecontroller.text == "" ||
-                                          address.numberofguestcontroller.text ==
-                                              "" ||
-                                          address.typeofeventcontroller.text == "") {
-                                         SnackBar(
-                                          content:
-                                              Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
-                                                  ),
-                                        );
-                                        // );
-                                      } else {
-                                        // else{
-                                        orderProvider.spets = value;
-                                        setState(() {
-                                          //  orderProvider.spets=value;
-
-                                          _controller.animateTo(
-                                            0,
-                                            duration:
-                                                const Duration(milliseconds: 500),
-                                            curve: Curves.linear,
-                                          );
-                                        });
-                                        //  }
-                                      }
-                                    }
-
-                                    if (orderProvider.spets == 5) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 6) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
-                                    if (orderProvider.spets == 6) {
-                                      bool a = false;
-                                      for (int i = 0;
-                                          i < orderProvider.choosebillFriend.length;
-                                          i++) {
-                                        if (orderProvider.choosebillFriend[i].price ==
-                                            0) {
-                                          a = true;
-                                        }
-                                      }
-                                      if (a)
-                                         SnackBar(
-                                          content:
-                                              Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
-                                                  ),
-                                        );
-                                      else
-                                        orderProvider.spets = value;
-                                    }
-
-                                    if (orderProvider.spets == 7) {
-                                      // setState(() {
-                                      //   _controller.animateTo(
-                                      //     0,
-                                      //     duration: const Duration(milliseconds: 500),
-                                      //     curve: Curves.linear,
-                                      //   );
-                                      // });
-                                    } else {
-                                      orderProvider.spets = value;
-                                    }
+                                    // if (orderProvider.spets == 1) {
+                                    //   if (orderProvider.value.id == 0) {
+                                    //     _key.currentState.showSnackBar(
+                                    //        SnackBar(
+                                    //         content:
+                                    //             Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
+                                    //                ),
+                                    //
+                                    //     );
+                                    //   } else {
+                                    //     orderProvider.spets = value;
+                                    //   }
+                                    // }
+                                    // if (orderProvider.spets == 3) {
+                                    //   if (orderProvider.value.id == 0) {
+                                    //     _key.currentState.showSnackBar(
+                                    //        SnackBar(
+                                    //         content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
+                                    //             ),
+                                    //       ),
+                                    //     );
+                                    //     // orderProvider.spets=0;
+                                    //   } else {
+                                    //     orderProvider.spets = value;
+                                    //   }
+                                    // }
+                                    // if (orderProvider.spets == 2) {
+                                    //   if (address.eventnamecontroller.text == "" ||
+                                    //       address.evendatecontroller.text == "" ||
+                                    //       address.numberofguestcontroller.text ==
+                                    //           "" ||
+                                    //       address.typeofeventcontroller.text == "") {
+                                    //      SnackBar(
+                                    //       content:
+                                    //           Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                    //               ),
+                                    //     );
+                                    //     // );
+                                    //   } else {
+                                    //     // else{
+                                    //     orderProvider.spets = value;
+                                    //     setState(() {
+                                    //       //  orderProvider.spets=value;
+                                    //
+                                    //       _controller.animateTo(
+                                    //         0,
+                                    //         duration:
+                                    //             const Duration(milliseconds: 500),
+                                    //         curve: Curves.linear,
+                                    //       );
+                                    //     });
+                                    //     //  }
+                                    //   }
+                                    // }
+                                    //
+                                    // if (orderProvider.spets == 5) {
+                                    //   setState(() {
+                                    //     _controller.animateTo(
+                                    //       0,
+                                    //       duration: const Duration(milliseconds: 500),
+                                    //       curve: Curves.linear,
+                                    //     );
+                                    //   });
+                                    // } else {
+                                    //   orderProvider.spets = value;
+                                    // }
+                                    // if (orderProvider.spets == 6) {
+                                    //   setState(() {
+                                    //     _controller.animateTo(
+                                    //       0,
+                                    //       duration: const Duration(milliseconds: 500),
+                                    //       curve: Curves.linear,
+                                    //     );
+                                    //   });
+                                    // } else {
+                                    //   orderProvider.spets = value;
+                                    // }
+                                    // if (orderProvider.spets == 6) {
+                                    //   bool a = false;
+                                    //   for (int i = 0;
+                                    //       i < orderProvider.choosebillFriend.length;
+                                    //       i++) {
+                                    //     if (orderProvider.choosebillFriend[i].price ==
+                                    //         0) {
+                                    //       a = true;
+                                    //     }
+                                    //   }
+                                    //   if (a)
+                                    //      SnackBar(
+                                    //       content:
+                                    //           Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                    //               ),
+                                    //     );
+                                    //   else
+                                    //     orderProvider.spets = value;
+                                    // }
+                                    //
+                                    // if (orderProvider.spets == 7) {
+                                    //   // setState(() {
+                                    //   //   _controller.animateTo(
+                                    //   //     0,
+                                    //   //     duration: const Duration(milliseconds: 500),
+                                    //   //     curve: Curves.linear,
+                                    //   //   );
+                                    //   // });
+                                    // } else {
+                                    //   orderProvider.spets = value;
+                                    // }
                                   },
                                   text:  [
                                     '${LanguageTr.lg[authProvider.language]["Location"]}',
