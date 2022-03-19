@@ -61,6 +61,7 @@ TextEditingController lol =TextEditingController();
               color: Colors.white,
               child:
               CupertinoDatePicker(
+
                 mode: CupertinoDatePickerMode.date,
 
                 minimumDate: DateTime.now(),
