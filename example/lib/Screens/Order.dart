@@ -336,7 +336,7 @@ String url3ds="";
                                   text:  [
                                     '${LanguageTr.lg[authProvider.language]["Location"]}',
                                     '${LanguageTr.lg[authProvider.language]["Event Details"]}',
-                                   orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Setup"]}',
+                                   !orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Setup"]}',
                                     '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
@@ -397,6 +397,7 @@ String url3ds="";
                                               if( details.setup)
                                               {
                                                 details.setup=false;
+
 
 
                                               }else {
