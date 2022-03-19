@@ -322,13 +322,13 @@ String url3ds="";
                                     }
 
                                     if (orderProvider.spets == 7) {
-                                      setState(() {
-                                        _controller.animateTo(
-                                          0,
-                                          duration: const Duration(milliseconds: 500),
-                                          curve: Curves.linear,
-                                        );
-                                      });
+                                      // setState(() {
+                                      //   _controller.animateTo(
+                                      //     0,
+                                      //     duration: const Duration(milliseconds: 500),
+                                      //     curve: Curves.linear,
+                                      //   );
+                                      // });
                                     } else {
                                       orderProvider.spets = value;
                                     }
