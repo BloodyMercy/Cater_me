@@ -894,18 +894,18 @@ Navigator.of(context).pop();
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                                  await orderProvider.getotpverify(url3ds);
+                                                 // await orderProvider.getotpverify(url3ds);
                                               //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
-                                                  if (orderProvider.otpVerify==1)
+                                                  if (orderProvider.checkotp)
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
                                                                     0)));
-                                                  else if(orderProvider.otpVerify==0)
+                                                  else if(orderProvider.checkotp)
                                                       {
                                                         showDialog(
                                                           context: this.context,
