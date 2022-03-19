@@ -303,6 +303,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.checkotp=false;
                   // orderCaterprovider.listFriend=[];
                   address.value2Index = -1;
+                  address.value1Index = -1;
                   orderCaterprovider.valueIndex = -1;
                   Navigator.of(context).push(
                     MaterialPageRoute(
