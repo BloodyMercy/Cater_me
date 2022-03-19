@@ -87,10 +87,7 @@ String url3ds="";
     super.initState();
     steps = 1;
     getData();
-    final orderProvider =
-    Provider.of<OrderCaterProvider>(context, listen: false);
-    _animateToIndex(
-        orderProvider.spets);
+
     // getprofdata();
   }
 
