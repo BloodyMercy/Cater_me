@@ -50,6 +50,7 @@ TextEditingController lol =TextEditingController();
   void showPicker(ctx) {
     showCupertinoModalPopup(
         context: context,
+
         builder: (BuildContext builder) {
           return Container(
               height: MediaQuery
@@ -60,10 +61,12 @@ TextEditingController lol =TextEditingController();
               color: Colors.white,
               child:
               CupertinoDatePicker(
+
                 mode: CupertinoDatePickerMode.date,
 
                 minimumDate: DateTime.now(),
                 maximumYear:DateTime.now().year+1,
+                minimumYear: DateTime.now().year,
                 //minimumDate: DateTime.now(),
 
                 maximumDate: DateTime(DateTime.now().year+1),
