@@ -11,9 +11,15 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../NavigationBar/navigation_bar.dart';
+import '../Providers/address.dart';
+import '../Providers/credit_card_provider.dart';
+import '../Providers/order.dart';
+import '../Providers/orderById_provider.dart';
+import '../Providers/order_provider.dart';
 import '../Providers/user.dart';
 import '../chat/pages/chat_page.dart';
 import '../language/language.dart';
+import 'Order.dart';
 import 'auth/login_screen.dart';
 import 'auth/reset_password_screen.dart';
 import 'auth/signup_screen.dart';
@@ -66,7 +72,15 @@ String language;
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+  //  final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final orders = Provider.of<OrderProvider>(context, listen: true);
+    //  final authProvider = Provider.of<UserProvider>(context, listen: true);
 
+    final package = Provider.of<PackagesProvider>(context, listen: true);
+    final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
+    final address=Provider.of<AdressProvider>(context,listen: true);
+    final credit=Provider.of<CreditCardsProvider>(context,listen: true);
+    final order = Provider.of<OrderByIdProvider>(context, listen: true);
 
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
@@ -153,7 +167,65 @@ String language;
                                       );
                                     }
 
+else       if(       allNotification
+                                      .notificationlist[index].description=="Order is Payment Pending" || allNotification
+                                      .notificationlist[index].description=="انتظار الدفع" )
+                                  {
 
+
+
+
+                                    //    if(authProvider.status == Status.Authenticated) {
+                                    address.clearAddressController();
+                                    orderCaterprovider.spets = 7;
+                                    orderCaterprovider.vatshisha = 0.0;
+                                    orderCaterprovider.vatfood = 0.0;
+
+                                    orderCaterprovider.totale = orders.listOrder[index].total;
+                                    orderCaterprovider.choosebillFriend = [];
+                                    orderCaterprovider.choosebillFriend = [];
+                                    orderCaterprovider.itemOrders = [];
+                                    orderCaterprovider.totalssha = 0;
+                                    orderCaterprovider.totalpackage = 0;
+                                    orderCaterprovider.finaldonatesteps=false;
+                                    orderCaterprovider.finaldonatestepsCancel=false;
+                                    orderCaterprovider.orderid=orders.listOrder[index].id;
+                                    credit.value = -1;
+                                    orderCaterprovider.setup=false;
+                                    orderCaterprovider.serviceId = 1;
+                                    address.form = false;
+                                    address.valueIndex = -1;
+                                    // orderCaterprovider.
+                                    address.phone.text = "";
+                                    address.name.text = "";
+                                    order.check1 = false;
+                                    order.check2 = false;
+                                    orderCaterprovider.finaldonatesteps=false;
+                                    orderCaterprovider.paymemtstep=true;
+                                    order.check3 = false;
+                                    order.check4 = false;
+                                    orderCaterprovider.checkotp=false;
+                                    // orderCaterprovider.listFriend=[];
+                                    address.value2Index = -1;
+                                    orderCaterprovider.valueIndex = -1;
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => Order(),
+                                      ),
+                                    );
+                                    //    }
+                                    //   else{
+
+                                    //   }
+
+
+
+
+
+
+
+
+                                  }
                                     else {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(

@@ -142,7 +142,7 @@ class _YourOrdersState extends State<YourOrders> {
                               itemBuilder: (context, index) {
                                 return GestureDetector(
                                   onTap: () {
-                                    if(orders.listOrder[index].orderStatus=="Payment Pending")
+                                    if(orders.listOrder[index].orderStatus=="Payment Pending" || orders.listOrder[index].orderStatus=="انتظار الدفع" )
                                       {
 
 
