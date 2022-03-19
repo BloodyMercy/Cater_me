@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Please choose what do you need":"الرجاء اختيار ما تريد",
       "Reset succeed":"تم التعيين بنجاح",
       "Setup":"Setup",
 
@@ -63,7 +64,7 @@ class LanguageTr {
       "Address:": "وين نوصلك:",
       "Personal Info": "معلوماتك الشخصيه",
       "Reset Password": "عيد كلمه السر",
-      "My Address": "عنواني",
+      "My Addresses": "عنواني",
       "My Credit Cards": "بطاقاتك",
       "My Friends": "اصدقائك",
       "Language": "اللغة",
@@ -272,6 +273,7 @@ class LanguageTr {
 
 
     "en": {
+      "Please choose what do you need":"Please choose what do you need",
       "Cannot update! Old password is wrong":"Cannot update! Old password is wrong",
       "Reset succeed":"Reset succeed",
       "Setup":"Setup",
@@ -350,7 +352,7 @@ class LanguageTr {
       "Address": "Address",
       "Personal Info": "Personal Info",
       "Reset Password": "Reset Password",
-      "My Address": "My Address",
+      "My Addresses": "My Addresses",
       "My Credit Cards": "My Credit Cards",
       "My Friends": "My Friends",
       "Language": "Language",

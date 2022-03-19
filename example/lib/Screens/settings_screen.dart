@@ -482,7 +482,7 @@ class _TABBarState extends State<TABBar> {
                                                       0.05,
                                                 ),
                                                 Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["My Address"]}',
+                                                  '${LanguageTr.lg[personalInfo.language]["My Addresses"]}',
                                                   style: TextStyle(
                                                       color: Color(0xFF3F5521),
                                                       fontSize: 20,
