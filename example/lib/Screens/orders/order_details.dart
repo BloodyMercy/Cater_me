@@ -183,27 +183,27 @@ getData() async {
                                         ],
                                       ),
                                     ),
-                                    Divider(
-                                      thickness: 2,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('${LanguageTr.lg[authProvider.language]["SubTotal"]}',
-                                              style: TextStyle(
-                                                  color: blackColor,
-                                                  fontWeight: FontWeight.normal)),
-                                          Text(
-                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["SubTotal"] ?? 0.0).toStringAsFixed(2))}",
-                                              style: TextStyle(
-                                                  color: blackColor,
-                                                  fontWeight: FontWeight.normal)),
-                                        ],
-                                      ),
-                                    ),
+                                    // Divider(
+                                    //   thickness: 2,
+                                    // ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.all(10.0),
+                                    //   child: Row(
+                                    //     mainAxisAlignment:
+                                    //         MainAxisAlignment.spaceBetween,
+                                    //     children: [
+                                    //       Text('${LanguageTr.lg[authProvider.language]["SubTotal"]}',
+                                    //           style: TextStyle(
+                                    //               color: blackColor,
+                                    //               fontWeight: FontWeight.normal)),
+                                    //       Text(
+                                    //           "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["SubTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                    //           style: TextStyle(
+                                    //               color: blackColor,
+                                    //               fontWeight: FontWeight.normal)),
+                                    //     ],
+                                    //   ),
+                                    // ),
                                     Divider(
                                       thickness: 2,
                                     ),
@@ -293,9 +293,9 @@ getData() async {
                           ),
                         ),
                       ),
-                      rejected
+                      false
                           ? SliverToBoxAdapter(
-                              child: donate
+                              child: false
                                   ? Center(
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
