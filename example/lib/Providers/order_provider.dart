@@ -458,6 +458,15 @@ Address get value => _value;
 
 
   int get spets => _spets;
+bool _paymemtstep=false;
+
+  bool get paymemtstep => _paymemtstep;
+
+  set paymemtstep(bool value) {
+    _paymemtstep = value;
+    notifyListeners();
+
+  }
 
   set spets(int value) {
     _spets = value;

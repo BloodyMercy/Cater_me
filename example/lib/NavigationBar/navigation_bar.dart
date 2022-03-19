@@ -287,6 +287,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.finaldonatestepsCancel=false;
                   credit.value = -1;
                   orderCaterprovider.setup=false;
+                  orderCaterprovider.paymemtstep=false;
                   orderCaterprovider.serviceId = 1;
                   address.form = false;
                   address.valueIndex = -1;

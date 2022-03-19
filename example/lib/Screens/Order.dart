@@ -391,7 +391,7 @@ String url3ds="";
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    orderProvider.spets > 1
+                                    (orderProvider.spets > 1 || !orderProvider.paymemtstep)
                                         ? !orderProvider.finaldonatesteps?IconButton(
                                             onPressed: () {
                                               if( details.setup)
