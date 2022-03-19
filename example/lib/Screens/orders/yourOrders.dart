@@ -41,14 +41,14 @@ class _YourOrdersState extends State<YourOrders> {
   Future refreshOrderData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
     setState(() {
-      loading=true;
+      loading = true;
     });
     SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.clearData();
 
     await orders.getAllOrders(sh.getString("locale"));
     setState(() {
-      loading=false;
+      loading = false;
     });
   }
 
@@ -56,7 +56,6 @@ class _YourOrdersState extends State<YourOrders> {
   void initState() {
     getData();
     super.initState();
-
   }
 
   @override
@@ -75,6 +74,8 @@ class _YourOrdersState extends State<YourOrders> {
     if (orderStatus == "تم التوصيل") return Color(0xFF3F5521);
     if (orderStatus == "OTP Pending") return Color(0xFFEAB316);
     if (orderStatus == "بانتظار الرمز التحققي") return Color(0xFFEAB316);
+    if (orderStatus == "Payment Pending") return Color(0xFFEAB316);
+    if (orderStatus == "انتظار الدفع") return Color(0xFFEAB316);
 
     return Colors.blue;
   }
@@ -85,10 +86,10 @@ class _YourOrdersState extends State<YourOrders> {
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
-      child:RefreshIndicator(
+      child: RefreshIndicator(
         onRefresh: refreshOrderData,
-        child:  Scaffold(
-        body: Padding(
+        child: Scaffold(
+          body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 child: loading
@@ -102,7 +103,8 @@ class _YourOrdersState extends State<YourOrders> {
                                     ? Image.asset('images/noorderyet.png')
                                     : Image.asset(
                                         'images/no address yetعربي/no addresses yetبالعربي-09.png'))
-                            : Column(mainAxisAlignment: MainAxisAlignment.center,
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   language == "en"
                                       ? Image.asset('images/noorderyet.png')
@@ -141,7 +143,6 @@ class _YourOrdersState extends State<YourOrders> {
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 20, horizontal: 20),
                                         child: Column(
-
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
