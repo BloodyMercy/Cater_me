@@ -743,11 +743,13 @@ Navigator.of(context).pop();
                                               else if(orderProvider.spets ==
                                                   7){
                                                 if (_creditCardss.credit.id ==
-                                                    0) {
+                                                    0 && _creditCardss.value==-1) {
+
+
                                                   _key.currentState
                                                       .showSnackBar(
                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                      content: Text('${LanguageTr.lg[authProvider.language]["no credit cards selected"]}'
                                                       ),
                                                     ),
                                                   );
@@ -801,7 +803,7 @@ Navigator.of(context).pop();
                                                       _key.currentState
                                                           .showSnackBar(
                                                         SnackBar(
-                                                          content: Text('${LanguageTr.lg[authProvider.language][ "error to place order card error"]}'
+                                                          content: Text('${LanguageTr.lg[authProvider.language]["error to place order"]}'
                                                           ),
                                                         ),
                                                       );
@@ -820,7 +822,7 @@ Navigator.of(context).pop();
                                                     _key.currentState
                                                         .showSnackBar(
                                                       SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language][ "error to place order"]}'
+                                                        content: Text('${LanguageTr.lg[authProvider.language]["error to place order"]}'
                                                         ),
                                                       ),
                                                     );
@@ -883,18 +885,18 @@ Navigator.of(context).pop();
                                                       context,
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
-                                               //   await orderProvider.getotpverify(url3ds);
+                                                  await orderProvider.getotpverify(url3ds);
                                               //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
-                                                  if (orderProvider.checkotp)
+                                                  if (orderProvider.otpVerify==1)
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 AppointmentSuccess(
                                                                     0)));
-                                                  else if(!orderProvider.checkotp)
+                                                  else if(orderProvider.otpVerify==0)
                                                       {
                                                         showDialog(
                                                           context: this.context,
@@ -910,11 +912,9 @@ Navigator.of(context).pop();
                                                                     child:
                                                                     Text('${LanguageTr.lg[authProvider.language]["Close"]}'
                                                                     ),
-                                                                    onPressed: () {
+                                                                    onPressed: () =>
                                                                         Navigator.pop(
-                                                                            context);
-                                                                        orderProvider.spets--;
-                                                            })
+                                                                            context))
                                                               ],
                                                             );
 
