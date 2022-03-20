@@ -478,7 +478,7 @@ class ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
-        },icon: Icon(Icons.border_left)),
+        },icon: Icon(Icons.chevron_left_outlined)),
         centerTitle: true,
       ),
       body:WebView(
