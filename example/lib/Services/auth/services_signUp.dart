@@ -37,9 +37,9 @@ class AuthModelSignUp {
         'phoneNumber': phoneNumber.toString(),
         'password': password,
         'confirmPassword': comfirmPassword,
-        'birthDate': "12-10-2000",
+        'birthDate': birthDate,
         'DeviceToken': token,
-        // 'gender': gendder,
+         'gender': gendder,
       });
 
         // open a bytestream

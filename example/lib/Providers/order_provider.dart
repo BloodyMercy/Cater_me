@@ -204,7 +204,7 @@ int _totalshisha=0;
     }
 
   }
-  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,bool bool1,bool bool2,bool bool3,})async {
+  Future<int>  makeorder({String date,String time,String type,String nb,String idcard ,String contactname,String contactphone ,String eventname,String eventtime,bool bool1,bool bool2,bool bool3,})async {
 
     List<Map<String,dynamic>> mapitem=[];
     List<Map<String,dynamic>> mapitemf=[];
@@ -248,6 +248,8 @@ int _totalshisha=0;
         "event": {
           "eventName": eventname,
           "eventDate":date,
+          "eventTime":eventtime,
+
 
           "eventTypeId":1,
           "numberOfGuestsId": int.parse(nb),

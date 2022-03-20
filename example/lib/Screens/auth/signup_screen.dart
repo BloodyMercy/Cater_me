@@ -18,6 +18,8 @@ import '../../SplachScreen.dart';
 import '../../language/language.dart';
 import '../Terms_and_Conditions/Terms_and_Conditions.dart';
 import '../occasion/theme/colors/light_colors.dart';
+import '../otpverify/phone_verification.dart';
+import '../otpverify/widget/country_picker.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key key}) : super(key: key);
@@ -30,7 +32,10 @@ class _SignupScreenState extends State<SignupScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   File image;
-
+  var _dialCode="";
+  void _callBackFunction(String name, String dialCode, String flag) {
+    _dialCode = dialCode;
+  }
   // ignore: non_constant_identifier_names
   Future PickImage(ImageSource source) async {
     try {
@@ -166,6 +171,8 @@ bool isCheckedcolor =false ;
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     double width =
         MediaQuery.of(context).size.width;
+    double height =
+        MediaQuery.of(context).size.height;
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -420,34 +427,95 @@ bool isCheckedcolor =false ;
                               obscureText: confObscure,
                             ),
                             SizedBox(height: screenHeight * 0.015),
-                            TextFormField(
-                              onSaved: (value) => mobile = value,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.phone),
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                    // left: screenHeight * 0.04,
-                                    bottom: screenHeight * 0.025,
-                                    top: screenHeight * 0.025),
-                                hintText:
-                                    '${LanguageTr.lg[authProvider.language]["Phone number"]}',
-                                hintStyle:
-                                    Theme.of(context).textTheme.headline4,
-                              ),
-                              controller: authProvider.phoneNumber,
-                              validator: MultiValidator([
-                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
-                                // EmailValidator(errorText: 'Not a Phone number,
-                              ]),
-                              keyboardType: TextInputType.phone,
-                            ),
+                            Container(
+                                height: height/13,
+                                child: Row(
+
+                                    children: [
+
+                                      Expanded(child:TextFormField(
+
+
+                                        controller:authProvider.phoneNumber,
+                                        keyboardType: TextInputType.phone,
+                                        decoration: InputDecoration(
+                                          errorStyle: TextStyle(
+                                            color: Colors.transparent,
+                                            fontSize: 0,
+                                          ),
+                                          prefixIcon:      CountryPicker(
+                                            _callBackFunction,
+                                            "Select Country",
+                                            Theme.of(context).primaryColor,
+                                            Colors.white,
+                                          ),
+                                          hintText: "11xxxxxxxx",
+
+                                          hintStyle: TextStyle(
+                                            fontFamily: 'Ubuntu',
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12,
+                                            color: Color(0xff9FACBD),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(5),
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                          ),
+                                          border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(5),
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                              )
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+
+                                        ),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black,
+                                        ),
+
+                                        validator: (String value){
+                                          if(value=="" || value == null)
+                                          {
+                                            return "Please Enter phone";
+                                          }
+
+                                          return null;
+                                        },
+                                      ))])),
+                            // TextFormField(
+                            //   onSaved: (value) => mobile = value,
+                            //   autovalidateMode:
+                            //       AutovalidateMode.onUserInteraction,
+                            //   decoration: InputDecoration(
+                            //     prefixIcon: Icon(Icons.phone),
+                            //     filled: true,
+                            //     fillColor: Colors.white,
+                            //     border: OutlineInputBorder(
+                            //       borderSide: BorderSide.none,
+                            //       borderRadius: BorderRadius.circular(15.0),
+                            //     ),
+                            //     contentPadding: EdgeInsets.only(
+                            //         // left: screenHeight * 0.04,
+                            //         bottom: screenHeight * 0.025,
+                            //         top: screenHeight * 0.025),
+                            //     hintText:
+                            //         '${LanguageTr.lg[authProvider.language]["Phone number"]}',
+                            //     hintStyle:
+                            //         Theme.of(context).textTheme.headline4,
+                            //   ),
+                            //   controller: authProvider.phoneNumber,
+                            //   validator: MultiValidator([
+                            //     RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
+                            //     // EmailValidator(errorText: 'Not a Phone number,
+                            //   ]),
+                            //   keyboardType: TextInputType.phone,
+                            // ),
                             SizedBox(height: screenHeight * 0.015),
                             CustomCupertinoPicker(
                               label:
@@ -597,9 +665,9 @@ bool isCheckedcolor =false ;
                     !_loading
                         ? ElevatedButton(
                             onPressed: () async {
-                              setState(() {
-                                _loading = true;
-                              });
+                              // setState(() {
+                              //   _loading = true;
+                              // });
                               if (formkey.currentState.validate() == false) {
                                 // ignore: avoid_print
                                 print('Not Validated');
@@ -615,7 +683,20 @@ bool isCheckedcolor =false ;
                                   isCheckedcolor=true;
                                   _loading = false;
                                 });
-                              } else {
+                              }
+                              else if(
+                            true
+                              )
+                                {
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => PhoneVerification(_dialCode+authProvider.phoneNumber.text.toString(),_dialCode,image)),
+                                  );
+                                }
+
+
+                                else {
                                 if (await authProvider.signUp(
                                     image, address.evendatecontroller.text)) {
                                   setState(() {
