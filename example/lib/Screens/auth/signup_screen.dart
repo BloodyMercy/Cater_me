@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../SplachScreen.dart';
 import '../../language/language.dart';
+import '../Terms_and_Conditions/Terms_and_Conditions.dart';
 import '../occasion/theme/colors/light_colors.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -44,7 +45,8 @@ class _SignupScreenState extends State<SignupScreen> {
       print('Failed : $e');
     }
   }
-
+bool isChecked =false ;
+bool isCheckedcolor =false ;
   FocusNode _focusNode = FocusNode();
   DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
   DateFormat _monthFormat = DateFormat('MMMM');
@@ -112,29 +114,6 @@ class _SignupScreenState extends State<SignupScreen> {
   // DateTime selectedDate = DateTime.now();
   DateTime _selectedDay = DateTime.utc(2000, 10, 16);
 
-  // _datePicker() async {
-  //   _newDate = (await showDatePicker(
-  //     context: context,
-  //     builder: (context, child) => Theme(
-  //         data: ThemeData().copyWith(
-  //           colorScheme: ColorScheme.light(
-  //               primary: Color(0xff3F5521),
-  //               surface: Color(0xff3F5521),
-  //               onPrimary: Colors.black),
-  //         ),
-  //         child: child),
-  //     initialDate: selectedDate,
-  //     firstDate: DateTime(1930),
-  //     lastDate: DateTime.now(),
-  //     initialEntryMode: DatePickerEntryMode.calendarOnly,
-  //   ));
-  //   setState(() {
-  //     if (_newDate != null) {
-  //       selectedDate = _newDate;
-  //
-  //     }
-  //   });
-  // }
 
   final _scaffKey = GlobalKey<ScaffoldState>();
   bool _loading = false;
@@ -185,6 +164,8 @@ class _SignupScreenState extends State<SignupScreen> {
     // final user = Provider.of<UserProvider>(context, listen: true);
     FocusNode focusNode = FocusNode();
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+    double width =
+        MediaQuery.of(context).size.width;
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -544,46 +525,66 @@ class _SignupScreenState extends State<SignupScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 20),
 
-                              // child: Row(
-                              //   children: [
-                              //     Text(selectedDate == null
-                              //         ? "No Date chosen!"
-                              //         : 'Birthdate: ${DateFormat.yMd().format(selectedDate)}'),
-                              //     IconButton(
-                              //       onPressed: ()async{
-                              //
-                              //         _newDate = (await showDatePicker(
-                              //           context: context,
-                              //           builder: (context, child) => Theme(
-                              //               data: ThemeData().copyWith(
-                              //                 colorScheme: ColorScheme.light(
-                              //                     primary: Color(0xff3F5521),
-                              //                     surface: Color(0xff3F5521),
-                              //                     onPrimary: Colors.black),
-                              //               ),
-                              //               child: child),
-                              //           initialDate: selectedDate,
-                              //           firstDate: DateTime(1930),
-                              //           lastDate: DateTime.now(),
-                              //           initialEntryMode: DatePickerEntryMode.calendarOnly,
-                              //         ));
-                              //
-                              //         setState(() {
-                              //           if (_newDate != null) {
-                              //             selectedDate = _newDate;
-                              //             authProvider.birthday.text=_newDate.toString() ;
-                              //
-                              //           }
-                              //         });
-                              //       },
-                              //
-                              //       icon: Icon(
-                              //         Icons.date_range,
-                              //         color: Theme.of(context).primaryColor,
-                              //       ),
-                              //     )
-                              //   ],
-                              // ),
+                           ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: width/17,
+                                  child: Checkbox(
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    checkColor: Colors.black,
+                                    activeColor: Color(0xFF3F5521),
+                                    value: isChecked,
+                                    onChanged: (bool value){
+                                      setState(() {
+                                        if(isCheckedcolor)isCheckedcolor=false;
+                                        isChecked = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                Text(
+                                   "I agree to the ",
+                                  style: TextStyle(
+                                    color: !isCheckedcolor?Color(0xFF3F5521):Colors.red,
+                                    fontFamily: 'Ubuntu',
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => TermsAndConditions(),
+                                      ),
+                                    );
+
+                                    ///gotopage
+                                  },
+                                  child: Text(
+                                    "Terms & Conditions",
+                                    style: TextStyle(
+                                      decoration:TextDecoration.underline,
+                                      color:!isCheckedcolor? Color(0xFF3F5521):Colors.red,
+                                      fontSize: 12,
+                                      fontFamily: 'Ubuntu',
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    alignment: Alignment.centerLeft,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -605,6 +606,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                   _loading = false;
                                 });
                                 // reset!=null?
+                              } if (!isChecked) {
+
+
+                                setState(() {
+
+                                  isCheckedcolor=true;
+                                  _loading = false;
+                                });
                               } else {
                                 if (await authProvider.signUp(
                                     image, address.evendatecontroller.text)) {
