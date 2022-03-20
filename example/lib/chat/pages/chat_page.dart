@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/chat/constants/color_constants.dart';
 import 'package:CaterMe/chat/constants/firestore_constants.dart';
@@ -475,34 +476,38 @@ class ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          this.peerNickname,
-          style: Theme.of(context).textTheme.headline1,
-        ),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }),
         centerTitle: true,
       ),
-      body: WillPopScope(
-        child: Stack(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                // List of messages
-                buildListMessage(),
+      body:WebView(
+        initialUrl: "https://caterme.azurewebsites.net/chat",
 
-                // Sticker
-                isShowSticker ? buildSticker() : SizedBox.shrink(),
-
-                // Input content
-                buildInput(),
-              ],
-            ),
-
-            // Loading
-            buildLoading()
-          ],
-        ),
-        onWillPop: onBackPress,
-      ),
+        javascriptMode: JavascriptMode.unrestricted,
+      )
+      // body: WillPopScope(
+      //   child: Stack(
+      //     children: <Widget>[
+      //       Column(
+      //         children: <Widget>[
+      //           // List of messages
+      //           buildListMessage(),
+      //
+      //           // Sticker
+      //           isShowSticker ? buildSticker() : SizedBox.shrink(),
+      //
+      //           // Input content
+      //           buildInput(),
+      //         ],
+      //       ),
+      //
+      //       // Loading
+      //       buildLoading()
+      //     ],
+      //   ),
+      //   onWillPop: onBackPress,
+      // ),
     );
   }
 
