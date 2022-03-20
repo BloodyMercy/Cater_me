@@ -549,6 +549,7 @@ bool isCheckedcolor =false ;
                                     },
                                   ),
                                 ),
+                                SizedBox(width: 5,),
                                 Text(
                                    "I agree to the ",
                                   style: TextStyle(
