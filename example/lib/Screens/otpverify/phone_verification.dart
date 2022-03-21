@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 import '../../Providers/address.dart';
 import '../../Providers/user.dart';
 import '../../SplachScreen.dart';
+import '../../language/language.dart';
 
 
 class PhoneVerification extends StatefulWidget {
@@ -171,6 +172,7 @@ void showAlertDialog(BuildContext context, String message) {
 
 @override
   Widget build(BuildContext context) {
+
  // UserProvider _user = Provider.of<UserProvider>(context, listen: true);
   //UserProvider authProvider = Provider.of<UserProvider>(context);
 
@@ -191,7 +193,7 @@ void showAlertDialog(BuildContext context, String message) {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text("Verification ",
+        title: Text('${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
           style: TextStyle(
               color: Colors.black,
               fontFamily: 'Ubuntu',
@@ -217,12 +219,18 @@ void showAlertDialog(BuildContext context, String message) {
         child: Column(
           children: [
             Container(height: MediaQuery.of(context).size.height/10,),
-            Text("Please enter the 6-digit code you received via text message.",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontFamily: 'Ubuntu',
-                fontWeight: FontWeight.w700,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text('${LanguageTr.lg[authProvider.language]["Please enter the 6-digit code you received via text message"]}'
+                ,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontFamily: 'Ubuntu',
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
             ),
             Container(
@@ -359,7 +367,7 @@ void showAlertDialog(BuildContext context, String message) {
                                        children: [
                                         // CircularProgressIndicator(),
                                        //  SizedBox(width: 15,),
-                                         Text("otp not valid")
+                                         Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'),
                                        ],
                                      ))
 
@@ -380,7 +388,8 @@ void showAlertDialog(BuildContext context, String message) {
               generateOtp(widget._contact);
 
             },
-              child: Text("Resend code",
+              child:  Text('${LanguageTr.lg[authProvider.language]["Resend code"]}',
+
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'Ubuntu',

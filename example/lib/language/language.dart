@@ -262,6 +262,13 @@ class LanguageTr {
       "Setup":"التجهيزات",
       "OTP Verification":"التحقق من الرمز",
       "error to place order":"خطأ في تقديم الطلب",
+      "Please enter the 6-digit code you received via text message":"الرجاء إدخال الرمز المكون من 6 أرقام الذي تلقيته عبر رسالة نصية",
+      "Resend code":"أعادة إرسال الرمز",
+      "Password should be at least 6 characters":"يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "Select Country":"حدد الدولة",
+      "Cancel":"إلغاء",
+      "Search Country":"ابحث عن البلد",
+      "I agree to the ":"أنا أوافق على ",
 
 
 
@@ -520,7 +527,14 @@ class LanguageTr {
       "Close":"Close",
       "OTP Verification":"OTP Verification",
       "error to place order":"error to place order",
-
+      "Please enter the 6-digit code you received via text message":"Please enter the 6-digit code you received via text message",
+      "Verification":"Verification",
+      "Resend code":"Resend code",
+      "Password should be at least 6 characters":"Password should be at least 6 characters",
+      "Select Country":"Select Country",
+      "Cancel":"Cancel",
+      "Search Country":"Search Country",
+      "I agree to the ":"I agree to the ",
 
 
 

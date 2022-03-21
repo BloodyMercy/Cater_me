@@ -351,6 +351,9 @@ PODS:
     - Firebase/Firestore (= 8.11.0)
     - firebase_core
     - Flutter
+  - Firebase/Auth (8.11.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 8.11.0)
   - Firebase/CoreOnly (8.11.0):
     - FirebaseCore (= 8.11.0)
   - Firebase/Firestore (8.11.0):
@@ -362,6 +365,10 @@ PODS:
   - Firebase/Storage (8.11.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 8.11.0)
+  - firebase_auth (3.3.11):
+    - Firebase/Auth (= 8.11.0)
+    - firebase_core
+    - Flutter
   - firebase_core (1.13.1):
     - Firebase/CoreOnly (= 8.11.0)
     - Flutter
@@ -373,6 +380,11 @@ PODS:
     - Firebase/Storage (= 8.11.0)
     - firebase_core
     - Flutter
+  - FirebaseAuth (8.11.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GTMSessionFetcher/Core (~> 1.5)
   - FirebaseCore (8.11.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
@@ -526,6 +538,7 @@ PODS:
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
@@ -551,6 +564,7 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - CheckoutEventLoggerKit
     - Firebase
+    - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
@@ -577,6 +591,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audioplayers/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  firebase_auth:
+    :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
@@ -621,9 +637,11 @@ SPEC CHECKSUMS:
   CheckoutEventLoggerKit: 18f1afe34ff217c3624396f2c2b4d26db8e6c2d9
   cloud_firestore: c6c42fe62809b7417aa3c45a6ef0c2812f7fb0d6
   Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
+  firebase_auth: bdfbd5b10da1db6d5eb6ae7dbda5d81365b9cc9d
   firebase_core: 08f6a85f62060111de5e98d6a214810d11365de9
   firebase_messaging: 36238f3d0b933af8c919aef608408aae06ba22e8
   firebase_storage: 5b964cad5f351e9c35f8b0e0b878cdd095f30d09
+  FirebaseAuth: d96d73aba85d192d7a7aa0b86dd6d7f8ec170b4b
   FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
   FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
   FirebaseFirestore: 3b2e4b532c68809b3df5f8d39d28b3398ffc196b

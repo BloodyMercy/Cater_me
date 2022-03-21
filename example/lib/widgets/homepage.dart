@@ -232,9 +232,8 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                              Padding(
-                              padding: EdgeInsets.only(
-                                  left: (mediaQuery.size.width * 0.035),
-                                  top: mediaQuery.size.height * 0.05),
+                               padding: EdgeInsets.symmetric(
+                                 horizontal: 20,vertical: 30),
                               child: Text(
                                '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                 style: Theme.of(context).textTheme.headline2,
@@ -249,8 +248,9 @@ class _HomePageState extends State<HomePage> {
                                 children: [
 
                                       Padding(
-                                    padding: EdgeInsets.only(
-                                  left: (mediaQuery.size.width * 0.04),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 20
+
                                   // top: mediaQuery.size.height * 0.05
                                       ),
                                         child: Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
@@ -273,12 +273,15 @@ class _HomePageState extends State<HomePage> {
 
                                         
                                       },
-                                      child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
-                                        ,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'BerlinSansFB',
-                                            fontSize: 12),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 20),
+                                        child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
+                                          ,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'BerlinSansFB',
+                                              fontSize: 12),
+                                        ),
                                       ))
                                 ],
                               ),
@@ -445,8 +448,8 @@ class _HomePageState extends State<HomePage> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.only(
-                                            left: (mediaQuery.size.width * 0.04),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20,vertical: 20,
                                            ),
                                         child: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
                                           ,
@@ -457,9 +460,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       // SizedBox(width: mediaQuery.size.width*0.6),
                                       Padding(
-                                          padding: EdgeInsets.only(
-                                              right:
-                                                  (mediaQuery.size.width * 0.04)),
+                                        padding: EdgeInsets.symmetric(horizontal: 20),
                                           child: GestureDetector(
                                               child: Text('${LanguageTr.lg[authProvider.language]["See All"]}',
 

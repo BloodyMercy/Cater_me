@@ -373,7 +373,8 @@ bool isCheckedcolor =false ;
                                 if (val.isEmpty) {
                                   return '${LanguageTr.lg[authProvider.language]["Required"]}';
                                 } else if (val.length < 6) {
-                                  return 'Password should be at least 6 characters';
+                                  return '${LanguageTr.lg[authProvider.language]['Password should be at least 6 characters']}'
+                                    ;
                                 }
 
                                 return null;
@@ -420,7 +421,8 @@ bool isCheckedcolor =false ;
                               validator: (val) {
                                 if (val.isEmpty) return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
                                 if (val != authProvider.password.text)
-                                  return 'Passwords do not match';
+                                  return '${LanguageTr.lg[authProvider.language]["Password dosen't match"]}'
+                                    ;
                                 return null;
                               },
                               keyboardType: TextInputType.visiblePassword,
@@ -445,7 +447,7 @@ bool isCheckedcolor =false ;
                                           ),
                                           prefixIcon:      CountryPicker(
                                             _callBackFunction,
-                                            "Select Country",
+                                            '${LanguageTr.lg[authProvider.language]["Select Country"]}',
                                             Theme.of(context).primaryColor,
                                             Colors.white,
                                           ),
@@ -482,7 +484,7 @@ bool isCheckedcolor =false ;
                                         validator: (String value){
                                           if(value=="" || value == null)
                                           {
-                                            return "Please Enter phone";
+                                            return '${LanguageTr.lg[authProvider.language]["Please enter phone number"]}';
                                           }
 
                                           return null;
@@ -606,7 +608,7 @@ bool isCheckedcolor =false ;
                                       ),
                                       borderRadius: BorderRadius.circular(5),
                                     ),
-                                    checkColor: Colors.black,
+                                    checkColor: Colors.white,
                                     activeColor: Color(0xFF3F5521),
                                     value: isChecked,
                                     onChanged: (bool value){
@@ -618,8 +620,8 @@ bool isCheckedcolor =false ;
                                   ),
                                 ),
                                 SizedBox(width: 5,),
-                                Text(
-                                   "I agree to the ",
+                                Text('${LanguageTr.lg[authProvider.language]["I agree to the "]}',
+
                                   style: TextStyle(
                                     color: !isCheckedcolor?Color(0xFF3F5521):Colors.red,
                                     fontFamily: 'Ubuntu',
@@ -638,8 +640,8 @@ bool isCheckedcolor =false ;
 
                                     ///gotopage
                                   },
-                                  child: Text(
-                                    "Terms & Conditions",
+                                  child: Text('${LanguageTr.lg[authProvider.language]["Terms & Conditions"]}',
+
                                     style: TextStyle(
                                       decoration:TextDecoration.underline,
                                       color:!isCheckedcolor? Color(0xFF3F5521):Colors.red,

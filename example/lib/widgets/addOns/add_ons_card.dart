@@ -39,8 +39,9 @@ class _AddOnsCardState extends State<AddOnsCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: (mediaQuery.size.width * 0.04)),
+              Padding(padding:
+                EdgeInsets.symmetric(
+                  horizontal: 20,),
                 child: Text(
                   '${package.addonsall[widget.i].name}',
                   style: Theme.of(context).textTheme.bodyText1,
@@ -48,7 +49,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
               ),
               // SizedBox(width: mediaQuery.size.width*0.6),
               Padding(
-                padding: EdgeInsets.only(right: (mediaQuery.size.width * 0.04)),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: GestureDetector(
                     child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
 
