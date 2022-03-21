@@ -94,46 +94,12 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
                             Card(elevation: 10,
                               child: Container(
-                                    height: screenHeight * 0.235,
+                                    height: screenHeight * 0.250,
                                     width: _width * 0.8,
                                   // child: CachedNetworkImage(
                                   //   placeholder: (context, url) =>
                                   //    CircularProgressIndicator(),
                                   //     imageUrl: pack.allpackagesorder[index].image
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                   // ),
                                 child: Column(children:[
                                    Image.network(

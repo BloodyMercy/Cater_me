@@ -68,7 +68,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
             padding: const EdgeInsets.only(top: 40.0),
             child: Text('you don\t have any addons'),
           ): SizedBox(
-              height: mediaQuery.size.height * 0.35,
+              height: mediaQuery.size.height * 0.27,
               width: mediaQuery.size.width,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,

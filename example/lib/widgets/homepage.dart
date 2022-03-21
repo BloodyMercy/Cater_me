@@ -240,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                              Center(child: PackagesCard()),
-                            SizedBox(height: MediaQuery.of(context).size.height*0.05),
+                            // SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
                               Row(
                                 mainAxisAlignment:
@@ -305,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                                                 SizedBox(
                                                   height:
                                                       mediaQuery.size.height *
-                                                          0.15,
+                                                          0.17,
                                                   width: mediaQuery.size.width *
                                                       0.23,
                                                   child: Card(
@@ -331,7 +331,7 @@ class _HomePageState extends State<HomePage> {
                                                             style: const TextStyle(
                                                                 color: Colors
                                                                     .white,
-                                                                fontSize: 30,
+                                                                fontSize: 20,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold),
@@ -343,7 +343,7 @@ class _HomePageState extends State<HomePage> {
                                                               style: const TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 30,
+                                                                  fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold))
@@ -449,7 +449,7 @@ class _HomePageState extends State<HomePage> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 20,vertical: 20,
+                                            horizontal: 20,
                                            ),
                                         child: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
                                           ,
@@ -489,7 +489,7 @@ class _HomePageState extends State<HomePage> {
                                   //  child:adss[1]),
                                 ]),
                               ):Container(),
-                              SizedBox(height: mediaQuery.size.height*0.05,)
+                              // SizedBox(height: mediaQuery.size.height*0.05,)
 
                             ]),
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
