@@ -478,8 +478,10 @@ String url3ds="";
                                                   );
                                                 } else {
 
+                                                  await orderProvider.getdistance();
 
-                                                  if(await orderProvider.getdistance()) {
+
+                                                  if(orderProvider.coverageAddressModel.isInCoverage) {
                                                     orderProvider.spets++;
                                                     _animateToIndex(
                                                         orderProvider.spets);
@@ -490,7 +492,7 @@ String url3ds="";
                                                         builder: (BuildContext context) {
                                                           return CustomDialog3(
                                                             title:
-                                                            '${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                            '${orderProvider.coverageAddressModel.message}',
                                                             description: "",
                                                             oneOrtwo: true,
                                                             button2: ElevatedButton(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:CaterMe/model/add_on.dart';
+import 'package:CaterMe/model/coverage_model.dart';
 import 'package:CaterMe/model/cuisins.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/packages.dart';
@@ -285,8 +286,8 @@ class PackageService {
   }
 
 
-  static Future<bool> getDistance(int id) async {
-
+  static Future<CoverageAddressModel> getDistance(int id) async {
+    CoverageAddressModel coverage=CoverageAddressModel();
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -303,18 +304,14 @@ class PackageService {
       print(response.statusCode);
       print(json.decode(response.body));
       if (response.statusCode == 200) {
-      bool l = json.decode(response.body);
-      return l;
+        coverage = CoverageAddressModel.fromJson( json.decode(response.body), prefs.getString("locale"));
+      return coverage;
       }
       else {
- return false;
-
-
-
-
+ return coverage;
       }
     } catch (e) {
-      return false;
+      return coverage;
     }
   }
 

@@ -7,6 +7,7 @@ import 'package:CaterMe/Services/otpVerify.dart';
 import 'package:CaterMe/Services/placeOrderId.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/address/address.dart';
+import 'package:CaterMe/model/coverage_model.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/setup_items_model.dart';
@@ -121,9 +122,16 @@ bool _finaldonatestepsCancel=false;
   set controllers(List<TextEditingController> value) {
     _controllers = value;
   }
-  Future<bool> getdistance()async{
-    return await PackageService.getDistance(value.id);
+  CoverageAddressModel _coverageAddressModel=CoverageAddressModel();
 
+  CoverageAddressModel get coverageAddressModel => _coverageAddressModel;
+
+  set coverageAddressModel(CoverageAddressModel value) {
+    _coverageAddressModel = value;
+  }
+
+  Future<CoverageAddressModel> getdistance()async{
+   coverageAddressModel=  await PackageService.getDistance(value.id);
   }
 updateprocefreind(double a,int index){
     print("i update");
