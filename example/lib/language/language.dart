@@ -169,7 +169,7 @@ class LanguageTr {
       "Contact Person": "مع مين ممكن نتواصل",
       "Share bill":"شارك فاتورتك",
       "Me": "أنا",
-      "Others": "شي غير",
+      "Others": "احد ثاني",
       "Pick number of guests": "اختار عدد معازيمك",
       "Pick type of event": "اختار نوع المناسبه",
       "Please fill the empty fields": "املا الخانات الفاضيه",

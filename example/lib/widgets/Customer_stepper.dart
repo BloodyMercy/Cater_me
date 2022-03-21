@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 const stepperGradientBackward = LinearGradient(
   colors: [
     Color.fromRGBO(253, 202, 29, 1),
-    Color(0xFF3F5521),
+    Color.fromRGBO(253, 202, 29, 1)
   ],
   stops: [0.4,0.5],
   begin: FractionalOffset.centerLeft,
@@ -12,7 +12,8 @@ const stepperGradientBackward = LinearGradient(
 const stepperGradientForward = LinearGradient(
   colors: [
     Color.fromRGBO(253, 202, 29, 1),
-    Color(0xFF3F5521),
+    Color.fromRGBO(253, 202, 29, 1),
+   // Color(0xFF3F5521),
   ],
   stops: [0.0,0.5],
   begin: FractionalOffset.centerLeft,
