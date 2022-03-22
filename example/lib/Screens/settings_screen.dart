@@ -704,6 +704,7 @@ class _TABBarState extends State<TABBar> {
                               borderRadius: BorderRadius.circular(20.0)),
                           child: GestureDetector(
                             onTap: () {
+                              if(personalInfo.language =="en"){
                               showDialog(
                                   context: context,
                                   builder: (_) => AlertDialog(
@@ -713,7 +714,7 @@ class _TABBarState extends State<TABBar> {
                                           ),
                                         ),
                                         title: Center(
-                                          child: Text('Choose language',
+                                          child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 19,
@@ -729,7 +730,7 @@ class _TABBarState extends State<TABBar> {
                                                       .spaceBetween,
                                               children: [
                                                 TextButton(
-                                                  child: Text('Arabic'),
+                                                  child: Text('العربيّة'),
                                                   onPressed: () async {
                                                     personalInfo.language =
                                                         "ar";
@@ -756,37 +757,82 @@ class _TABBarState extends State<TABBar> {
                                                 ),
                                                 TextButton(
                                                     child: Text(
-                                                      'English',
+                                                        '${LanguageTr.lg[personalInfo.language]["Close"]}',
                                                     ),
-                                                    onPressed: () async {
-                                                      personalInfo.language =
-                                                          "en";
-                                                      SharedPreferences _prefs =
-                                                          await SharedPreferences
-                                                              .getInstance();
-                                                      _prefs.setString(
-                                                          "locale", "en");
-                                                      MyApp.setLocale(context,
-                                                          Locale("en", "US"));
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        SplashScreen(),
-                                                              ),
-                                                              (Route<dynamic>
-                                                                      route) =>
-                                                                  false);
-                                                      // AppLocalizations.of(context)!.locale.toString()
-
-                                                      // .language="ar";                                              },
+                                                    onPressed: (){
+                                                      Navigator.of(context).pop();
                                                     }),
                                               ],
                                             ),
                                           )
                                         ],
-                                      ));
+                                      ));}
+                              else{
+                                showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(25),
+                                        ),
+                                      ),
+                                      title: Center(
+                                        child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 19,
+                                            )),
+                                      ),
+                                      actions: [
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: _mediaWidth * 0.08),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment
+                                                .spaceBetween,
+                                            children: [
+                                              TextButton(
+                                                  child: Text(
+                                                    'English',
+                                                  ),
+                                                  onPressed: () async {
+                                                    personalInfo.language =
+                                                    "en";
+                                                    SharedPreferences _prefs =
+                                                    await SharedPreferences
+                                                        .getInstance();
+                                                    _prefs.setString(
+                                                        "locale", "en");
+                                                    MyApp.setLocale(context,
+                                                        Locale("en", "US"));
+                                                    Navigator.of(context)
+                                                        .pushAndRemoveUntil(
+                                                        MaterialPageRoute(
+                                                          builder:
+                                                              (context) =>
+                                                              SplashScreen(),
+                                                        ),
+                                                            (Route<dynamic>
+                                                        route) =>
+                                                        false);
+                                                    // AppLocalizations.of(context)!.locale.toString()
+
+                                                    // .language="ar";                                              },
+                                                  }),
+                                              TextButton(
+                                                  child: Text(
+                                                    '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                  ),
+                                                  onPressed: (){
+                                                    Navigator.of(context).pop();
+                                                  }),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ));
+                              }
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
