@@ -273,7 +273,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:AppointmentSuccess(1)
+        home:SplashScreen()
       ),
     );
   }
