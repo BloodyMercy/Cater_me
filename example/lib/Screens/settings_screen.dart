@@ -1257,121 +1257,191 @@ class _TABBarState extends State<TABBar> {
                       personalInfo.status == Status.Authenticated
                           ? Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Card(
-                                color: const Color.fromARGB(206, 255, 255, 255),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return CustomDialog(
-                                            title:
-                                                '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
-                                            description: "",
-                                            oneOrtwo: true,
-                                            button2: ElevatedButton(
-                                              onPressed: () async {
-                                                final SharedPreferences
-                                                    sharedPreferences =
-                                                    await SharedPreferences
-                                                        .getInstance();
-                                                final occa = Provider.of<
-                                                        OccasionProvider>(
-                                                    context,
-                                                    listen: false);
-                                                occa.all = [];
-                                                personalInfo.status =
-                                                    Status.Unauthenticated;
-                                                // sharedPreferences.remove('Email');
-                                                //  sharedPreferences.remove('Password');
-                                                personalInfo
-                                                    .clearAllTextController();
-                                                bool a = sharedPreferences
-                                                    .getBool("startintro");
-                                                bool aw = sharedPreferences
-                                                    .getBool("wlkdone")??false;
-                                                String l = sharedPreferences
-                                                    .getString("locale")??"en";
-                                                sharedPreferences.clear();
-                                                sharedPreferences.setBool(
-                                                    "startintro", a);
-                                                sharedPreferences.setBool(
-                                                    "wlkdone", aw);
-                                                sharedPreferences.setString("locale", l);
+                              child: GestureDetector(
+                                onTap:(){
+    showDialog(
+    context: context,
+    builder: (BuildContext context) {
+    return CustomDialog(
+    title:
+    '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
+    description: "",
+    oneOrtwo: true,
+    button2: ElevatedButton(
+    onPressed: () async {
+    final SharedPreferences
+    sharedPreferences =
+    await SharedPreferences
+        .getInstance();
+    final occa = Provider.of<
+    OccasionProvider>(
+    context,
+    listen: false);
+    occa.all = [];
+    personalInfo.status =
+    Status.Unauthenticated;
+    // sharedPreferences.remove('Email');
+    //  sharedPreferences.remove('Password');
+    personalInfo
+        .clearAllTextController();
+    bool a = sharedPreferences
+        .getBool("startintro");
+    bool aw = sharedPreferences
+        .getBool("wlkdone")??false;
+    String l = sharedPreferences
+        .getString("locale")??"en";
+    sharedPreferences.clear();
+    sharedPreferences.setBool(
+    "startintro", a);
+    sharedPreferences.setBool(
+    "wlkdone", aw);
+    sharedPreferences.setString("locale", l);
 
 
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              SplashScreen(),
-                                                        ),
-                                                        (route) => false);
-                                              },
-                                              child: Text(
+    Navigator.of(context)
+        .pushAndRemoveUntil(
+    MaterialPageRoute(
+    builder: (context) =>
+    SplashScreen(),
+    ),
+    (route) => false);
+    },
+    child: Text(
+    '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+    style: TextStyle(
+    fontFamily: 'BerlinSansFB'),
+    ),
+    ),
+    button1: ElevatedButton(
+    onPressed: () {
+    Navigator.of(context).pop();
+    },
+    child: Text(
+    '${LanguageTr.lg[personalInfo.language]["No"]}',
+    style: TextStyle(
+    fontFamily:
+    'BerlinSansFB')),
+    ),
+    );
+    });
+
+                                },
+                                child: Card(
+                                  color: const Color.fromARGB(206, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0)),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return CustomDialog(
+                                              title:
+                                                  '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
+                                              description: "",
+                                              oneOrtwo: true,
+                                              button2: ElevatedButton(
+                                                onPressed: () async {
+                                                  final SharedPreferences
+                                                      sharedPreferences =
+                                                      await SharedPreferences
+                                                          .getInstance();
+                                                  final occa = Provider.of<
+                                                          OccasionProvider>(
+                                                      context,
+                                                      listen: false);
+                                                  occa.all = [];
+                                                  personalInfo.status =
+                                                      Status.Unauthenticated;
+                                                  // sharedPreferences.remove('Email');
+                                                  //  sharedPreferences.remove('Password');
+                                                  personalInfo
+                                                      .clearAllTextController();
+                                                  bool a = sharedPreferences
+                                                      .getBool("startintro");
+                                                  bool aw = sharedPreferences
+                                                      .getBool("wlkdone")??false;
+                                                  String l = sharedPreferences
+                                                      .getString("locale")??"en";
+                                                  sharedPreferences.clear();
+                                                  sharedPreferences.setBool(
+                                                      "startintro", a);
+                                                  sharedPreferences.setBool(
+                                                      "wlkdone", aw);
+                                                  sharedPreferences.setString("locale", l);
+
+
+                                                  Navigator.of(context)
+                                                      .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                SplashScreen(),
+                                                          ),
+                                                          (route) => false);
+                                                },
+                                                child: Text(
+                                                  '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+                                                  style: TextStyle(
+                                                      fontFamily: 'BerlinSansFB'),
+                                                ),
+                                              ),
+                                              button1: ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text(
+                                                    '${LanguageTr.lg[personalInfo.language]["No"]}',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            'BerlinSansFB')),
+                                              ),
+                                            );
+                                          });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SizedBox(
+                                                width:
+                                                    mediaQuery.size.width * 0.03,
+                                              ),
+                                              const Icon(
+                                                FontAwesomeIcons.signOutAlt,
+                                                size: 20, //Icon Size
+                                                color: Color(
+                                                    0xFF3F5521), //Color Of Icon
+                                              ),
+                                              SizedBox(
+                                                width:
+                                                    mediaQuery.size.width * 0.05,
+                                              ),
+                                              Text(
                                                 '${LanguageTr.lg[personalInfo.language]["Logout"]}',
                                                 style: TextStyle(
-                                                    fontFamily: 'BerlinSansFB'),
+                                                    color: Color(0xFF3F5521),
+                                                    fontSize: 20,
+                                                    fontFamily: 'BerlinSansFB',
+                                                    fontWeight:
+                                                        FontWeight.normal),
                                               ),
-                                            ),
-                                            button1: ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["No"]}',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          'BerlinSansFB')),
-                                            ),
-                                          );
-                                        });
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.03,
-                                            ),
+                                            ],
+                                          ),
+                                          Row(children: [
                                             const Icon(
-                                              FontAwesomeIcons.signOutAlt,
-                                              size: 20, //Icon Size
-                                              color: Color(
-                                                  0xFF3F5521), //Color Of Icon
+                                              Icons.chevron_right,
+                                              color: Color(0xFF3F5521),
                                             ),
                                             SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.05,
+                                              width: mediaQuery.size.width * 0.03,
                                             ),
-                                            Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Logout"]}',
-                                              style: TextStyle(
-                                                  color: Color(0xFF3F5521),
-                                                  fontSize: 20,
-                                                  fontFamily: 'BerlinSansFB',
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(children: [
-                                          const Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                        ]),
-                                      ],
+                                          ]),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
