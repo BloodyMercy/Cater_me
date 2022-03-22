@@ -380,588 +380,33 @@ class _TABBarState extends State<TABBar> {
                                       ],
                                     ),
                                   ),
-                                  Divider(),
 
-
-
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => AccountInfo(),
-                                          ),
-                                        );
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.03,
-                                              ),
-                                              Icon(
-                                                Icons.vpn_key_sharp,
-                                                color: Color(0xFF3F5521),
-                                              ),
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.05,
-                                              ),
-                                              Text(
-                                                '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
-                                                style: TextStyle(
-                                                    color: Color(0xFF3F5521),
-                                                    fontSize: 20,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight:
-                                                        FontWeight.normal),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(children: [
-                                            Icon(
-                                              Icons.chevron_right,
-                                              color: Color(0xFF3F5521),
-                                            ),
-                                            SizedBox(
-                                              width:
-                                                  mediaQuery.size.width * 0.03,
-                                            ),
-                                          ]),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
                                 ],
-                              ),
-                            )
-                          : Container(),
-                      personalInfo.status == Status.Authenticated
-                          ? Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: Card(
-                                color: const Color.fromARGB(206, 255, 255, 255),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddAddressSettingsScreen(),
-                                            ),
-                                          );
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                                Icon(
-                                                  FontAwesomeIcons.building,
-                                                  size: 20, //Icon Size
-                                                  color: Color(
-                                                      0xFF3F5521), //Color Of Icon
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.05,
-                                                ),
-                                                Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["My Addresses"]}',
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontSize: 20,
-                                                      fontFamily:
-                                                          'BerlinSansFB',
-                                                      fontWeight:
-                                                          FontWeight.normal),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(children: [
-                                              Icon(
-                                                Icons.chevron_right,
-                                                color: Color(0xFF3F5521),
-                                              ),
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.03,
-                                              ),
-                                            ]),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CreditCardsSettings(),
-                                            ),
-                                          );
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                                Icon(
-                                                  FontAwesomeIcons.creditCard,
-                                                  size: 20, //Icon Size
-                                                  color: Color(
-                                                      0xFF3F5521), //Color Of Icon
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.05,
-                                                ),
-                                                Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["My Credit Cards"]}',
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontSize: 20,
-                                                      fontFamily:
-                                                          'BerlinSansFB',
-                                                      fontWeight:
-                                                          FontWeight.normal),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(children: [
-                                              Icon(
-                                                Icons.chevron_right,
-                                                color: Color(0xFF3F5521),
-                                              ),
-                                              SizedBox(
-                                                width: mediaQuery.size.width *
-                                                    0.03,
-                                              ),
-                                            ]),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddFriendScreen(),
-                                            ),
-                                          );
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                                Icon(
-                                                  FontAwesomeIcons.userPlus,
-                                                  size: 20, //Icon Size
-                                                  color: Color(
-                                                      0xFF3F5521), //Color Of Icon
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.05,
-                                                ),
-                                                Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["My Friends"]}',
-                                                  style: TextStyle(
-                                                      color: Color(0xFF3F5521),
-                                                      fontSize: 20,
-                                                      fontFamily:
-                                                          'BerlinSansFB',
-                                                      fontWeight:
-                                                          FontWeight.normal),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.chevron_right,
-                                                  color: Color(0xFF3F5521),
-                                                ),
-                                                SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    // Divider(
-                                    //   thickness: 1,
-
-                                    // Padding(
-                                    //   padding: const EdgeInsets.all(8.0),
-                                    //   child: GestureDetector(
-                                    //     onTap: () {
-                                    //       Navigator.of(context).push(
-                                    //         MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               SavedOrders(),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //     child: Row(
-                                    //       mainAxisAlignment:
-                                    //           MainAxisAlignment.spaceBetween,
-                                    //       children: [
-                                    //         Row(
-                                    //           children: [
-                                    //             SizedBox(
-                                    //               width: mediaQuery.size.width *
-                                    //                   0.03,
-                                    //             ),
-                                    //             Icon(
-                                    //               Icons.backpack,size: 20,
-                                    //                 color: Color(0xFF3F5521),
-                                    //
-                                    //
-                                    //             ),
-                                    //             SizedBox(
-                                    //               width: mediaQuery.size.width *
-                                    //                   0.05,
-                                    //             ),
-                                    //             Text(
-                                    //               '${LanguageTr.lg[personalInfo.language]["Saved Orders"]}',
-                                    //               style: TextStyle(
-                                    //                   color: Color(0xFF3F5521),
-                                    //                   fontSize: 20,
-                                    //                   fontFamily:
-                                    //                       'BerlinSansFB',
-                                    //                   fontWeight:
-                                    //                       FontWeight.normal),
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //         Row(
-                                    //           children: [
-                                    //             Icon(
-                                    //               Icons.chevron_right,
-                                    //               color: Color(0xFF3F5521),
-                                    //             ),
-                                    //             SizedBox(
-                                    //               width: mediaQuery.size.width *
-                                    //                   0.03,
-                                    //             ),
-                                    //           ],
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
                               ),
                             )
                           : Container(),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Card(
-                          color: const Color.fromARGB(206, 255, 255, 255),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: GestureDetector(
-                            onTap: () {
-                              if(personalInfo.language =="en"){
-                              showDialog(
-                                  context: context,
-                                  builder: (_) => AlertDialog(
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(25),
-                                          ),
-                                        ),
-                                        title: Center(
-                                          child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 19,
-                                              )),
-                                        ),
-                                        actions: [
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: _mediaWidth * 0.08),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                TextButton(
-                                                  child: Text('العربيّة'),
-                                                  onPressed: () async {
-                                                    personalInfo.language =
-                                                        "ar";
-                                                    SharedPreferences _prefs =
-                                                        await SharedPreferences
-                                                            .getInstance();
-                                                    _prefs.setString(
-                                                        "locale", "ar");
-                                                    MyApp.setLocale(context,
-                                                        Locale("ar", "AE"));
-                                                    Navigator.of(context)
-                                                        .pushAndRemoveUntil(
-                                                            MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  SplashScreen(),
-                                                            ),
-                                                            (Route<dynamic>
-                                                                    route) =>
-                                                                false);
-                                                    // AppLocalizations.of(context)!.locale.toString()
-
-                                                    // .language="ar";
-                                                  },
-                                                ),
-                                                TextButton(
-                                                    child: Text(
-                                                        '${LanguageTr.lg[personalInfo.language]["Close"]}',
-                                                    ),
-                                                    onPressed: (){
-                                                      Navigator.of(context).pop();
-                                                    }),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ));}
-                              else{
-                                showDialog(
-                                    context: context,
-                                    builder: (_) => AlertDialog(
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(25),
-                                        ),
-                                      ),
-                                      title: Center(
-                                        child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 19,
-                                            )),
-                                      ),
-                                      actions: [
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: _mediaWidth * 0.08),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment
-                                                .spaceBetween,
-                                            children: [
-                                              TextButton(
-                                                  child: Text(
-                                                    'English',
-                                                  ),
-                                                  onPressed: () async {
-                                                    personalInfo.language =
-                                                    "en";
-                                                    SharedPreferences _prefs =
-                                                    await SharedPreferences
-                                                        .getInstance();
-                                                    _prefs.setString(
-                                                        "locale", "en");
-                                                    MyApp.setLocale(context,
-                                                        Locale("en", "US"));
-                                                    Navigator.of(context)
-                                                        .pushAndRemoveUntil(
-                                                        MaterialPageRoute(
-                                                          builder:
-                                                              (context) =>
-                                                              SplashScreen(),
-                                                        ),
-                                                            (Route<dynamic>
-                                                        route) =>
-                                                        false);
-                                                    // AppLocalizations.of(context)!.locale.toString()
-
-                                                    // .language="ar";                                              },
-                                                  }),
-                                              TextButton(
-                                                  child: Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["Close"]}',
-                                                  ),
-                                                  onPressed: (){
-                                                    Navigator.of(context).pop();
-                                                  }),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ));
-                              }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: mediaQuery.size.width * 0.03,
-                                      ),
-                                      Image.asset('images/language-01.png',
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.020),
-                                      // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
-                                      SizedBox(
-                                        width: mediaQuery.size.width * 0.05,
-                                      ),
-                                      Text(
-                                        '${LanguageTr.lg[personalInfo.language]["Language"]}',
-                                        style: TextStyle(
-                                            color: Color(0xFF3F5521),
-                                            fontSize: 20,
-                                            fontFamily: 'BerlinSansFB',
-                                            fontWeight: FontWeight.normal),
-                                      ),
-
-                                    ],
-
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xFF3F5521),
-                                    ),
-                                      SizedBox(
-                                        width: mediaQuery.size.width *
-                                            0.03,
-                                      ),
-                                  ]),
-                                  // InkWell(
-                                  //     onTap: () async {
-                                  //       if(  personalInfo.language == "en") {
-                                  //         personalInfo.language ="ar";
-                                  //         SharedPreferences _prefs =
-                                  //         await SharedPreferences
-                                  //             .getInstance();
-                                  //         _prefs.setString("locale", "ar");
-                                  //         MyApp.setLocale(
-                                  //             context, Locale("ar", "AE"));
-                                  //         Navigator.of(context).pushAndRemoveUntil(
-                                  //           MaterialPageRoute(
-                                  //             builder: (context) =>
-                                  //                 SplashScreen(),
-                                  //           ),
-                                  //
-                                  //                 (Route<dynamic> route) => false   );
-                                  //         // AppLocalizations.of(context)!.locale.toString()
-                                  //
-                                  //
-                                  //         // .language="ar";
-                                  //
-                                  //       }
-                                  //       else{
-                                  //         personalInfo.language = "en";
-                                  //         SharedPreferences _prefs =
-                                  //         await SharedPreferences
-                                  //             .getInstance();
-                                  //         _prefs.setString("locale", "en");
-                                  //       MyApp.setLocale(context, Locale("en", "US"));
-                                  //         Navigator.of(context).pushAndRemoveUntil(
-                                  //           MaterialPageRoute(
-                                  //             builder: (context) =>
-                                  //                 SplashScreen(),
-                                  //           ),
-                                  //                 (Route<dynamic> route) => false  );
-                                  //         // AppLocalizations.of(context)!.locale.toString()
-                                  //
-                                  //
-                                  //         // .language="ar";
-                                  //
-                                  //       }
-                                  //     },
-                                  //     child: Row(
-                                  //       children: [
-                                  //         personalInfo.language == "en"?   Text("English",
-                                  //             style: TextStyle(
-                                  //                 fontWeight:
-                                  //                     FontWeight.normal)):Text("العربية",
-                                  //             style: TextStyle(
-                                  //                 fontWeight:
-                                  //                 FontWeight.normal)),
-                                  //         SizedBox(
-                                  //           width: mediaQuery.size.width * 0.03,
-                                  //         ),
-                                  //       ],
-                                  //     )),
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    AccountInfo(),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Card(
-                          color: const Color.fromARGB(206, 255, 255, 255),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          TermsAndConditions(),
-                                    ),
-                                  );
-                                },
-                                child: Padding(
+                            );
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Column(
+                              children: [
+                                Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
@@ -969,7 +414,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.03,
                                           ),
                                           Icon(
-                                            Icons.article_rounded,
+                                            Icons.vpn_key_sharp,
                                             size: 20, //Icon Size
                                             color: Color(
                                                 0xFF3F5521), //Color Of Icon
@@ -978,7 +423,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            '${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}',
+                                            '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -1002,23 +447,768 @@ class _TABBarState extends State<TABBar> {
                                     ],
                                   ),
                                 ),
-                              ),
-                              Divider(
-                                thickness: 1,
-                              ),
-                              GestureDetector(
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      personalInfo.status == Status.Authenticated
+                          ? Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => Contact_Us(),
+                                      builder: (context) =>
+                                          AddAddressSettingsScreen(),
                                     ),
                                   );
                                 },
-                                child: Padding(
+                                child: Card(
+                                  color: const Color.fromARGB(206, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0)),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AddAddressSettingsScreen(),
+                                              ),
+                                            );
+                                          },
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    width: mediaQuery.size.width *
+                                                        0.03,
+                                                  ),
+                                                  Icon(
+                                                    FontAwesomeIcons.building,
+                                                    size: 20, //Icon Size
+                                                    color: Color(
+                                                        0xFF3F5521), //Color Of Icon
+                                                  ),
+                                                  SizedBox(
+                                                    width: mediaQuery.size.width *
+                                                        0.05,
+                                                  ),
+                                                  Text(
+                                                    '${LanguageTr.lg[personalInfo.language]["My Addresses"]}',
+                                                    style: TextStyle(
+                                                        color: Color(0xFF3F5521),
+                                                        fontSize: 20,
+                                                        fontFamily:
+                                                            'BerlinSansFB',
+                                                        fontWeight:
+                                                            FontWeight.normal),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ]),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+
+
+                                      // Divider(
+                                      //   thickness: 1,
+
+                                      // Padding(
+                                      //   padding: const EdgeInsets.all(8.0),
+                                      //   child: GestureDetector(
+                                      //     onTap: () {
+                                      //       Navigator.of(context).push(
+                                      //         MaterialPageRoute(
+                                      //           builder: (context) =>
+                                      //               SavedOrders(),
+                                      //         ),
+                                      //       );
+                                      //     },
+                                      //     child: Row(
+                                      //       mainAxisAlignment:
+                                      //           MainAxisAlignment.spaceBetween,
+                                      //       children: [
+                                      //         Row(
+                                      //           children: [
+                                      //             SizedBox(
+                                      //               width: mediaQuery.size.width *
+                                      //                   0.03,
+                                      //             ),
+                                      //             Icon(
+                                      //               Icons.backpack,size: 20,
+                                      //                 color: Color(0xFF3F5521),
+                                      //
+                                      //
+                                      //             ),
+                                      //             SizedBox(
+                                      //               width: mediaQuery.size.width *
+                                      //                   0.05,
+                                      //             ),
+                                      //             Text(
+                                      //               '${LanguageTr.lg[personalInfo.language]["Saved Orders"]}',
+                                      //               style: TextStyle(
+                                      //                   color: Color(0xFF3F5521),
+                                      //                   fontSize: 20,
+                                      //                   fontFamily:
+                                      //                       'BerlinSansFB',
+                                      //                   fontWeight:
+                                      //                       FontWeight.normal),
+                                      //             ),
+                                      //           ],
+                                      //         ),
+                                      //         Row(
+                                      //           children: [
+                                      //             Icon(
+                                      //               Icons.chevron_right,
+                                      //               color: Color(0xFF3F5521),
+                                      //             ),
+                                      //             SizedBox(
+                                      //               width: mediaQuery.size.width *
+                                      //                   0.03,
+                                      //             ),
+                                      //           ],
+                                      //         ),
+                                      //       ],
+                                      //     ),
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Container(),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    CreditCardsSettings(),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Column(
+                              children: [
+                                Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+                                          Icon(
+                                            FontAwesomeIcons.creditCard,
+                                            size: 20, //Icon Size
+                                            color: Color(
+                                                0xFF3F5521), //Color Of Icon
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.05,
+                                          ),
+                                          Text(
+                                            '${LanguageTr.lg[personalInfo.language]["My Credit Cards"]}',
+                                            style: TextStyle(
+                                                color: Color(0xFF3F5521),
+                                                fontSize: 20,
+                                                fontFamily: 'BerlinSansFB',
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Color(0xFF3F5521),
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    AddFriendScreen(),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+                                          Icon(
+                                            FontAwesomeIcons.userPlus,
+                                            size: 20, //Icon Size
+                                            color: Color(
+                                                0xFF3F5521), //Color Of Icon
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.05,
+                                          ),
+                                          Text(
+                                            '${LanguageTr.lg[personalInfo.language]["My Friends"]}',
+                                            style: TextStyle(
+                                                color: Color(0xFF3F5521),
+                                                fontSize: 20,
+                                                fontFamily: 'BerlinSansFB',
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Color(0xFF3F5521),
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            if(personalInfo.language =="en"){
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(25),
+                                      ),
+                                    ),
+                                    title: Center(
+                                      child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 19,
+                                          )),
+                                    ),
+                                    actions: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: _mediaWidth * 0.08),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment
+                                              .spaceBetween,
+                                          children: [
+                                            TextButton(
+                                              child: Text('العربيّة'),
+                                              onPressed: () async {
+                                                personalInfo.language =
+                                                "ar";
+                                                SharedPreferences _prefs =
+                                                await SharedPreferences
+                                                    .getInstance();
+                                                _prefs.setString(
+                                                    "locale", "ar");
+                                                MyApp.setLocale(context,
+                                                    Locale("ar", "AE"));
+                                                Navigator.of(context)
+                                                    .pushAndRemoveUntil(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SplashScreen(),
+                                                    ),
+                                                        (Route<dynamic>
+                                                    route) =>
+                                                    false);
+                                                // AppLocalizations.of(context)!.locale.toString()
+
+                                                // .language="ar";
+                                              },
+                                            ),
+                                            TextButton(
+                                                child: Text(
+                                                  '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                ),
+                                                onPressed: (){
+                                                  Navigator.of(context).pop();
+                                                }),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ));}
+                            else{
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(25),
+                                      ),
+                                    ),
+                                    title: Center(
+                                      child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 19,
+                                          )),
+                                    ),
+                                    actions: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: _mediaWidth * 0.08),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment
+                                              .spaceBetween,
+                                          children: [
+                                            TextButton(
+                                                child: Text(
+                                                  'English',
+                                                ),
+                                                onPressed: () async {
+                                                  personalInfo.language =
+                                                  "en";
+                                                  SharedPreferences _prefs =
+                                                  await SharedPreferences
+                                                      .getInstance();
+                                                  _prefs.setString(
+                                                      "locale", "en");
+                                                  MyApp.setLocale(context,
+                                                      Locale("en", "US"));
+                                                  Navigator.of(context)
+                                                      .pushAndRemoveUntil(
+                                                      MaterialPageRoute(
+                                                        builder:
+                                                            (context) =>
+                                                            SplashScreen(),
+                                                      ),
+                                                          (Route<dynamic>
+                                                      route) =>
+                                                      false);
+                                                  // AppLocalizations.of(context)!.locale.toString()
+
+                                                  // .language="ar";                                              },
+                                                }),
+                                            TextButton(
+                                                child: Text(
+                                                  '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                ),
+                                                onPressed: (){
+                                                  Navigator.of(context).pop();
+                                                }),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ));
+                            }
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: GestureDetector(
+                              onTap: () {
+                                if(personalInfo.language =="en"){
+                                showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(25),
+                                            ),
+                                          ),
+                                          title: Center(
+                                            child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 19,
+                                                )),
+                                          ),
+                                          actions: [
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: _mediaWidth * 0.08),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  TextButton(
+                                                    child: Text('العربيّة'),
+                                                    onPressed: () async {
+                                                      personalInfo.language =
+                                                          "ar";
+                                                      SharedPreferences _prefs =
+                                                          await SharedPreferences
+                                                              .getInstance();
+                                                      _prefs.setString(
+                                                          "locale", "ar");
+                                                      MyApp.setLocale(context,
+                                                          Locale("ar", "AE"));
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                              MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    SplashScreen(),
+                                                              ),
+                                                              (Route<dynamic>
+                                                                      route) =>
+                                                                  false);
+                                                      // AppLocalizations.of(context)!.locale.toString()
+
+                                                      // .language="ar";
+                                                    },
+                                                  ),
+                                                  TextButton(
+                                                      child: Text(
+                                                          '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                      ),
+                                                      onPressed: (){
+                                                        Navigator.of(context).pop();
+                                                      }),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ));}
+                                else{
+                                  showDialog(
+                                      context: context,
+                                      builder: (_) => AlertDialog(
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(25),
+                                          ),
+                                        ),
+                                        title: Center(
+                                          child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 19,
+                                              )),
+                                        ),
+                                        actions: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: _mediaWidth * 0.08),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
+                                              children: [
+                                                TextButton(
+                                                    child: Text(
+                                                      'English',
+                                                    ),
+                                                    onPressed: () async {
+                                                      personalInfo.language =
+                                                      "en";
+                                                      SharedPreferences _prefs =
+                                                      await SharedPreferences
+                                                          .getInstance();
+                                                      _prefs.setString(
+                                                          "locale", "en");
+                                                      MyApp.setLocale(context,
+                                                          Locale("en", "US"));
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder:
+                                                                (context) =>
+                                                                SplashScreen(),
+                                                          ),
+                                                              (Route<dynamic>
+                                                          route) =>
+                                                          false);
+                                                      // AppLocalizations.of(context)!.locale.toString()
+
+                                                      // .language="ar";                                              },
+                                                    }),
+                                                TextButton(
+                                                    child: Text(
+                                                      '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                    ),
+                                                    onPressed: (){
+                                                      Navigator.of(context).pop();
+                                                    }),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ));
+                                }
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.03,
+                                        ),
+                                        Image.asset('images/language-01.png',
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.020),
+                                        // ImageIcon(AssetImage('images/language icon-01.png'),color: colorCustom,),
+                                        SizedBox(
+                                          width: mediaQuery.size.width * 0.05,
+                                        ),
+                                        Text(
+                                          '${LanguageTr.lg[personalInfo.language]["Language"]}',
+                                          style: TextStyle(
+                                              color: Color(0xFF3F5521),
+                                              fontSize: 20,
+                                              fontFamily: 'BerlinSansFB',
+                                              fontWeight: FontWeight.normal),
+                                        ),
+
+                                      ],
+
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                        Icons.chevron_right,
+                                        color: Color(0xFF3F5521),
+                                      ),
+                                        SizedBox(
+                                          width: mediaQuery.size.width *
+                                              0.03,
+                                        ),
+                                    ]),
+                                    // InkWell(
+                                    //     onTap: () async {
+                                    //       if(  personalInfo.language == "en") {
+                                    //         personalInfo.language ="ar";
+                                    //         SharedPreferences _prefs =
+                                    //         await SharedPreferences
+                                    //             .getInstance();
+                                    //         _prefs.setString("locale", "ar");
+                                    //         MyApp.setLocale(
+                                    //             context, Locale("ar", "AE"));
+                                    //         Navigator.of(context).pushAndRemoveUntil(
+                                    //           MaterialPageRoute(
+                                    //             builder: (context) =>
+                                    //                 SplashScreen(),
+                                    //           ),
+                                    //
+                                    //                 (Route<dynamic> route) => false   );
+                                    //         // AppLocalizations.of(context)!.locale.toString()
+                                    //
+                                    //
+                                    //         // .language="ar";
+                                    //
+                                    //       }
+                                    //       else{
+                                    //         personalInfo.language = "en";
+                                    //         SharedPreferences _prefs =
+                                    //         await SharedPreferences
+                                    //             .getInstance();
+                                    //         _prefs.setString("locale", "en");
+                                    //       MyApp.setLocale(context, Locale("en", "US"));
+                                    //         Navigator.of(context).pushAndRemoveUntil(
+                                    //           MaterialPageRoute(
+                                    //             builder: (context) =>
+                                    //                 SplashScreen(),
+                                    //           ),
+                                    //                 (Route<dynamic> route) => false  );
+                                    //         // AppLocalizations.of(context)!.locale.toString()
+                                    //
+                                    //
+                                    //         // .language="ar";
+                                    //
+                                    //       }
+                                    //     },
+                                    //     child: Row(
+                                    //       children: [
+                                    //         personalInfo.language == "en"?   Text("English",
+                                    //             style: TextStyle(
+                                    //                 fontWeight:
+                                    //                     FontWeight.normal)):Text("العربية",
+                                    //             style: TextStyle(
+                                    //                 fontWeight:
+                                    //                 FontWeight.normal)),
+                                    //         SizedBox(
+                                    //           width: mediaQuery.size.width * 0.03,
+                                    //         ),
+                                    //       ],
+                                    //     )),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    TermsAndConditions(),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            TermsAndConditions(),
+                                      ),
+                                    );
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width: mediaQuery.size.width * 0.03,
+                                            ),
+                                            Icon(
+                                              Icons.article_rounded,
+                                              size: 20, //Icon Size
+                                              color: Color(
+                                                  0xFF3F5521), //Color Of Icon
+                                            ),
+                                            SizedBox(
+                                              width: mediaQuery.size.width * 0.05,
+                                            ),
+                                            Text(
+                                              '${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}',
+                                              style: TextStyle(
+                                                  color: Color(0xFF3F5521),
+                                                  fontSize: 20,
+                                                  fontFamily: 'BerlinSansFB',
+                                                  fontWeight: FontWeight.normal),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.chevron_right,
+                                              color: Color(0xFF3F5521),
+                                            ),
+                                            SizedBox(
+                                              width: mediaQuery.size.width * 0.03,
+                                            ),
+
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    Contact_Us(),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            color: const Color.fromARGB(206, 255, 255, 255),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
@@ -1044,20 +1234,23 @@ class _TABBarState extends State<TABBar> {
                                           ),
                                         ],
                                       ),
-                                      Row(children: [
-                                        Icon(
-                                          Icons.chevron_right,
-                                          color: Color(0xFF3F5521),
-                                        ),
-                                        SizedBox(
-                                          width: mediaQuery.size.width * 0.03,
-                                        ),
-                                      ]),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Color(0xFF3F5521),
+                                          ),
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.03,
+                                          ),
+
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
