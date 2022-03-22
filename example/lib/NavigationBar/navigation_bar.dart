@@ -22,6 +22,8 @@ import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Providers/orderById_provider.dart';
@@ -172,6 +174,20 @@ class _NavigationBarState extends State<Navigationbar> {
 
 
     }
+    // Timer(
+    //   Duration(
+    //     seconds: 3,
+    //   ),
+        //  () {
+        /// start the intro
+        // MotionToast.info(
+        //   title:  "Cater me",
+        //   titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+        //   description:  "You are not logged in,log in now",
+        // //  animationType: ANIMATION.FROM_LEFT,
+        // ).show(context);
+    //  },
+   // );
     sh.setBool("startintro", false);
   }
   Future<bool> _onWillPop() async {

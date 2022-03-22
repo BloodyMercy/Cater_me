@@ -113,6 +113,7 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
 
     List<Placemark> placemarks = await placemarkFromCoordinates(a, b);
     print(placemarks[0]);
+  //  for(int i=0;)
     address.countrycontrollerstring.text = placemarks[0].country;
     address.countrycontroller.text = placemarks[0].country;
     address.citycontrollerstring.text = placemarks[0].locality;

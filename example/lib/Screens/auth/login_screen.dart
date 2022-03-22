@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+  //  final authProvider = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -277,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               if (formkey.currentState.validate() == false) {
                                 // ignore: avoid_print
-                                print('Not Validated');
+                             //   print('Not Validated');
                                 setState(() {
                                   loading = false;
                                 });
@@ -285,7 +286,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               } else {
                                 if (await authProvider.LogIn()) {
                                   authProvider.status=Status.Authenticated;
-                                  print("logged");
+                               //   print("logged");
                                   setState(() {
                                     loading = false;
                                   });
