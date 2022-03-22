@@ -226,7 +226,7 @@ class LanguageTr {
       "qty":"الكميّة",
       "Bill sharing":"تقاسم الفاتورة",
       "Donate":"تبرّع",
-      "Sorry! We are fully booked.":" أسفون، الحجز كامل.",
+      "Sorry! We are fully booked.":"ما نبي نزعلك الطلبات محجوزة",
       "Are you sure do you want to delete this card?":"هل أنت متأكد أنك تريد حذف هذه البطاقة؟",
       "Credit card cannot be deleted":"لا يمكن حذف بطاقة الائتمان",
       "VAT  311085799400003":"ق.ض.م    311085799400003",
