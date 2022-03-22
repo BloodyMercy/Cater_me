@@ -1,6 +1,7 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
@@ -75,7 +76,6 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
@@ -97,7 +97,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language][  "Address Title"]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["Address Title"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -146,7 +147,6 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-
                           // keyboardType: TextInputType.number,
                           controller: adress.countrycontroller,
                           enabled: false,
@@ -162,7 +162,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language]["Country" ]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["Country"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -205,7 +206,6 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-
                           enabled: false,
                           // keyboardType: TextInputType.number,
                           controller: adress.citycontroller,
@@ -221,7 +221,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText:'${LanguageTr.lg[user.language][ "City"]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["City"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -284,7 +285,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText:'${LanguageTr.lg[user.language]["Street"]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["Street"]}',
                               enabled: false,
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
@@ -335,7 +337,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
-                        //  autovalidateMode: AutovalidateMode.onUserInteraction,
+                          //  autovalidateMode: AutovalidateMode.onUserInteraction,
                           // validator: (value) {
                           //   if (value.isEmpty) {
                           //     return "Building can't be empty";
@@ -356,7 +358,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language]["Building"]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["Building"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -428,7 +431,8 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   color: focusNode.hasFocus
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
-                              labelText: '${LanguageTr.lg[user.language]["Floor"]}',
+                              labelText:
+                                  '${LanguageTr.lg[user.language]["Floor"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -480,54 +484,98 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                     loadingfinal = true;
                                   });
 
-                                    adress.loading = true;
-                                    if (adress.createOrUpdate == 0) {
-                                      await adress.createAddress();
-                                      setState(() {
-                                        loadingfinal = false;
-                                      });
-                                      adress.loading = false;
-                                      if (adress.addressCreated.id == 0) {
-                                        // _scaffoldKey.currentState.showSnackBar();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content: Text(
-                                                  '${LanguageTr.lg[user.language]["Failed to add address"]}',)));
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content:
-                                                    Text('${LanguageTr.lg[user.language]["Address added"]}',)));
-                                        // await  Future.delayed(Duration(seconds: 2));
-                                        Navigator.of(context).pop();
-                                        Navigator.of(context).pop();
-                                      }
+                                  adress.loading = true;
+                                  if (adress.createOrUpdate == 0) {
+                                    await adress.createAddress();
+                                    setState(() {
+                                      loadingfinal = false;
+                                    });
+                                    adress.loading = false;
+                                    if (adress.addressCreated.id == 0) {
+                                      MotionToast.success(
+                                              title: "Cater me",
+                                              titleStyle: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                              description:
+                                                  '${LanguageTr.lg[user.language]["Failed to add address"]}'
+                                              //  animationType: ANIMATION.FROM_LEFT,
+                                              )
+                                          .show(context);
+                                      // _scaffoldKey.currentState.showSnackBar();
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(SnackBar(
+                                      //         content: Text(
+                                      //   '${LanguageTr.lg[user.language]["Failed to add address"]}',
+                                      // )));
                                     } else {
-                                      await adress.updateAddresss();
-                                      adress.loading = false;
-                                      print(adress.addressUpdated);
-                                      if (adress.addressUpdated.id != 0) {
-                                        adress.getAllAddress();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content:
-                                                    Text('${LanguageTr.lg[user.language]["updated done"]}',)));
-                                        //   await  Future.delayed(Duration(seconds: 2));
-                                        Navigator.of(context)
-                                            .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
-                                        Navigator.of(context)
-                                            .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
-
-                                      } else {
-                                        adress.getAllAddress();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                                content:
-                                                    Text('${LanguageTr.lg[user.language]["Updated failed"]}',)));
-                                        // Navigator.of(context).pop();
-                                      }
+                                      MotionToast.success(
+                                        title: "Cater me",
+                                        titleStyle: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                        description:
+                                            '${LanguageTr.lg[user.language]["Address added"]}',
+                                        //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(
+                                      //   SnackBar(
+                                      //     content: Text(
+                                      //       '${LanguageTr.lg[user.language]["Address added"]}',
+                                      //     ),
+                                      //   ),
+                                      // );
+                                      // await  Future.delayed(Duration(seconds: 2));
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop();
                                     }
+                                  } else {
+                                    await adress.updateAddresss();
+                                    adress.loading = false;
+                                    print(adress.addressUpdated);
+                                    if (adress.addressUpdated.id != 0) {
+                                      adress.getAllAddress();
+                                      MotionToast.success(
+                                        title: "Cater me",
+                                        titleStyle: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                        description:
+                                            '${LanguageTr.lg[user.language]["updated done"]}',
+                                        //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
 
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(Snack
+                                      //     Bar(
+                                      //         content: Text(t
+                                      //   '${LanguageTr.lg[user.language]["updated done"]}',
+                                      // )));
+                                      //   await  Future.delayed(Duration(seconds: 2));
+                                      Navigator.of(context)
+                                          .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                                      Navigator.of(context)
+                                          .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+
+                                    } else {
+                                      adress.getAllAddress();
+
+                                      MotionToast.error(
+                                        title: "Cater me",
+                                        titleStyle: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                        description:
+                                            '${LanguageTr.lg[user.language]["Updated failed"]}',
+                                        //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
+
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(SnackBar(
+                                      //         content: Text(
+                                      //   '${LanguageTr.lg[user.language]["Updated failed"]}',
+                                      // )));
+                                      // Navigator.of(context).pop();
+                                    }
+                                  }
                                 }
 
                                 // Navigator.of(context).pop();

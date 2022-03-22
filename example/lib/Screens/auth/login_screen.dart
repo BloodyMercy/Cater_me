@@ -4,6 +4,7 @@ import 'package:CaterMe/SplachScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -304,6 +305,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     loading = false;
                                   });
+
+
                                   _scaffoldKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text(

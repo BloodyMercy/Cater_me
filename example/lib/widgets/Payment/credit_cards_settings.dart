@@ -4,6 +4,7 @@ import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -164,16 +165,26 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                           .id);
                                                                   if (delete ==
                                                                       "deleted") {
-                                                                    _scaffoldKey
-                                                                        .currentState
-                                                                        .showSnackBar(
-                                                                            SnackBar(
-                                                                      content: Text(
-                                                                          '${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'),
+
+                                                                    MotionToast.delete(
+                                                                      title: "Cater me",
+                                                                      titleStyle: TextStyle(
+                                                                          fontWeight: FontWeight.bold),
+                                                                      description:
+                                                                      '${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'
+                                                                      //  animationType: ANIMATION.FROM_LEFT,
+                                                                    ).show(this.context);
+
+                                                                    // _scaffoldKey
+                                                                    //     .currentState
+                                                                    //     .showSnackBar(
+                                                                    //         SnackBar(
+                                                                    //   content: Text(
+                                                                    //       '${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'),
 
                                                                       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                                       //   content: Text('Address Deleted'),
-                                                                    ));
+
                                                                   } else {
                                                                     _scaffoldKey
                                                                         .currentState

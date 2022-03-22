@@ -7,6 +7,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/address/address.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -166,18 +167,34 @@ super.initState();
                                                  widget.address.remove(widget.address[index]);
                                                  Navigator.pop(context);
                                                  Navigator.of(context).pop();
-                                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                     content: Text("${LanguageTr.lg[user.language]["Address Deleted"]}"
-                                                         )));
+                                                 // Timer(
+                                                 //   Duration(
+                                                 //     seconds: 3,
+                                                 //   ),
+                                                 //  () {
+                                                 /// start the intro
+                                                 MotionToast.success(
+                                                     title:  "Cater me",
+                                                     titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                                     description:  "${LanguageTr.lg[user.language]["Address Deleted"]}"
+                                                   //  animationType: ANIMATION.FROM_LEFT,
+                                                 ).show(context);
+                                                 //  },
+                                                 // );
                                                }else{
                                                  Navigator.pop(context);
                                                  Navigator.of(context).pop();
+                                                 MotionToast.error(
+                                                     title:  "Cater me",
+                                                     titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                                     description:  "${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
+                                                   //  animationType: ANIMATION.FROM_LEFT,
+                                                 ).show(context);
 
-
-                                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                   content: Text("${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
-                                                       ),
-                                                 ));
+                                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                 //   content: Text("${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
+                                                 //       ),
+                                                 // ));
                                                }
                                              },
                                            ),
