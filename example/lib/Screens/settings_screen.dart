@@ -310,21 +310,22 @@ class _TABBarState extends State<TABBar> {
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       personalInfo.status == Status.Authenticated
-                          ? Card(
-                              color: const Color.fromARGB(206, 255, 255, 255),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              child: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => PersonalInfo(),
-                                        ),
-                                      );
-                                    },
-                                    child: Column(
+                          ? GestureDetector(
+                        onTap: () {
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => PersonalInfo(),
+                            ),
+                          );
+                        },
+                            child: Card(
+                                color: const Color.fromARGB(206, 255, 255, 255),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                child: Column(
+                                  children: [
+                                    Column(
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -379,13 +380,13 @@ class _TABBarState extends State<TABBar> {
                                         ),
                                       ],
                                     ),
-                                  ),
 
-                                ],
+                                  ],
+                                ),
                               ),
-                            )
+                          )
                           : Container(),
-                      Padding(
+                      personalInfo.status == Status.Authenticated?  Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
                           onTap: () {
@@ -451,7 +452,7 @@ class _TABBarState extends State<TABBar> {
                             ),
                           ),
                         ),
-                      ),
+                      ):Container(),
                       personalInfo.status == Status.Authenticated
                           ? Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -597,7 +598,7 @@ class _TABBarState extends State<TABBar> {
                               ),
                             )
                           : Container(),
-                      Padding(
+                      personalInfo.status == Status.Authenticated?       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
                           onTap: () {
@@ -663,8 +664,8 @@ class _TABBarState extends State<TABBar> {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
+                      ):Container(),
+                      personalInfo.status == Status.Authenticated?   Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
                           onTap: () {
@@ -730,7 +731,7 @@ class _TABBarState extends State<TABBar> {
                             ),
                           ),
                         ),
-                      ),
+                      ):Container(),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
