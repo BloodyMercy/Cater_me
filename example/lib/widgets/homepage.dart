@@ -16,6 +16,7 @@ import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:badges/badges.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -33,11 +34,13 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   bool isSearch = false;
-
+ String language;
   Intro intro;
- // String language="";
+
+  // String language="";
 
   @override
   void initState() {
@@ -46,21 +49,42 @@ class _HomePageState extends State<HomePage> {
     getalldata();
     getData();
 
+    _controller = AnimationController(
+      duration: Duration(seconds: 5),
+      vsync: this,
+
+
+
+    )..repeat(reverse: false);
+    offsetAnimation = Tween<Offset>(
+      begin: Offset(-1.5,0.0),
+      end: Offset(1.5,0.0),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
+
+  offsetAnimation2 = Tween<Offset>(
+      begin: Offset(1.5,0.0),
+      end: Offset(-1.5,0.0),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   bool loading = false;
   List<String> listitemssearch = [];
 
   Future refreshdata() async {
-
     final package = Provider.of<PackagesProvider>(context, listen: false);
 
     //package.loading=false;
     // package.loading = false;
     await package.cleardata();
-    SharedPreferences sh=await SharedPreferences.getInstance();
+    SharedPreferences sh = await SharedPreferences.getInstance();
 
-    await package.getallpacakges(context,sh.getString("locale"));
+    await package.getallpacakges(context, sh.getString("locale"));
 
     return;
   }
@@ -68,35 +92,40 @@ class _HomePageState extends State<HomePage> {
   TextEditingController controllersearch = TextEditingController();
 
   getalldata() async {
-    SharedPreferences sh=await SharedPreferences.getInstance();
-
+    SharedPreferences sh = await SharedPreferences.getInstance();
 
     final package = Provider.of<PackagesProvider>(context, listen: false);
-   // await package.cleardata();
-  // package.loading = false;
-  //  SharedPreferences sh=await SharedPreferences.getInstance();
+    // await package.cleardata();
+    // package.loading = false;
+    //  SharedPreferences sh=await SharedPreferences.getInstance();
 
-  await package.getallpacakges(context, sh.getString("locale"));
-  package.loading = true;
-  for (int i = 0; i < package.listItems.length; i++) {
-    listitemssearch.add(package.listItems[i].title.toLowerCase());
-  }
-
-
+    await package.getallpacakges(context, sh.getString("locale"));
+    package.loading = true;
+    for (int i = 0; i < package.listItems.length; i++) {
+      listitemssearch.add(package.listItems[i].title.toLowerCase());
+    }
   }
 
   Future getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
-    SharedPreferences sh=await SharedPreferences.getInstance();
+    SharedPreferences sh = await SharedPreferences.getInstance();
 
-  await occasion.getallnewoccasion(sh.getString("locale"));
-  // await occasion.getAllOccasionType(a);
+    await occasion.getallnewoccasion(sh.getString("locale"));
+    // await occasion.getAllOccasionType(a);
 
     setState(() {
       loading = false;
     });
+    setState(() {
+      language=sh.getString("locale");
+
+    });
     return;
   }
+
+  AnimationController _controller;
+  Animation<Offset> offsetAnimation;
+  Animation<Offset> offsetAnimation2;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +145,6 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-
                               children: [
                                 SizedBox(
                                     width: mediaQuery.size.width * 0.7,
@@ -146,7 +174,8 @@ class _HomePageState extends State<HomePage> {
                                                       .primaryColor)),
                                           filled: true,
                                           fillColor: LightColors.kLightYellow2,
-                                          hintText: '${LanguageTr.lg[authProvider.language]["Search"]}',
+                                          hintText:
+                                              '${LanguageTr.lg[authProvider.language]["Search"]}',
                                           prefixIcon: const Icon(Icons.search),
                                           prefixIconColor:
                                               Theme.of(context).primaryColor,
@@ -160,34 +189,34 @@ class _HomePageState extends State<HomePage> {
                                     )),
                                 Expanded(
                                   child: Row(
-
                                     children: [
                                       IconButton(
-                                          onPressed: () {
-
-                                            authProvider.status==Status.Authenticated?
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) => ChatPage(
-                                                  peerId: "admin",
-                                                  peerAvatar: "",
-                                                  peerNickname:'${LanguageTr.lg[authProvider.language]["Customer Service"]}'
-                                                      ,
-                                                ),
-                                              ),
-                                            ):  Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) => LoginScreen(),
-                                              ),
-                                            );
-                                          },
-
-                                       icon:Icon(
-                                    Icons.chat,
-                                    color:
-                                    Theme.of(context).primaryColor,
-                                  ),
-                                ),
+                                        onPressed: () {
+                                          authProvider.status ==
+                                                  Status.Authenticated
+                                              ? Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ChatPage(
+                                                      peerId: "admin",
+                                                      peerAvatar: "",
+                                                      peerNickname:
+                                                          '${LanguageTr.lg[authProvider.language]["Customer Service"]}',
+                                                    ),
+                                                  ),
+                                                )
+                                              : Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginScreen(),
+                                                  ),
+                                                );
+                                        },
+                                        icon: Icon(
+                                          Icons.chat,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
                                       // IconButton(
                                       //   onPressed: () {
                                       //     Navigator.of(context).push(
@@ -211,55 +240,103 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           );
                                         },
-                                        icon: int.parse(package.nbnotification.toString())!=0?Badge(
-                                            badgeColor:
-                                                Color.fromRGBO(253, 202, 29, 1),
-                                            badgeContent:
-                                                Text(int.parse(package.nbnotification.toString())>99?"99+":package.nbnotification , style: TextStyle(fontSize: 10),),
-                                            child: Icon(
-                                              Icons.notifications,
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                            )):Icon(
-                                          Icons.notifications,
-                                          color: Theme.of(context)
-                                              .primaryColor,
-                                        ),
+                                        icon: int.parse(package.nbnotification
+                                                    .toString()) !=
+                                                0
+                                            ? Badge(
+                                                badgeColor: Color.fromRGBO(
+                                                    253, 202, 29, 1),
+                                                badgeContent: Text(
+                                                  int.parse(package
+                                                              .nbnotification
+                                                              .toString()) >
+                                                          99
+                                                      ? "99+"
+                                                      : package.nbnotification,
+                                                  style:
+                                                      TextStyle(fontSize: 10),
+                                                ),
+                                                child: Icon(
+                                                  Icons.notifications,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                ))
+                                            : Icon(
+                                                Icons.notifications,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              ),
                                       ),
                                     ],
                                   ),
                                 )
                               ],
                             ),
-                             Padding(
-                               padding: EdgeInsets.symmetric(
-                                 horizontal: 20,vertical: 30),
+
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 30),
                               child: Text(
-                               '${LanguageTr.lg[authProvider.language]["Menus"]}',
+                                '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
-                             Center(child: PackagesCard()),
+                            Center(child: PackagesCard()),
                             // SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
+                              authProvider.status == Status.Unauthenticated
+                                  ? language=="en"?
+                              SlideTransition(
+                                      position: offsetAnimation,
+                                      transformHitTests: true,
+                                      child: InkWell(
+                                        onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreen(),));}
+                                        ,
+                                        child: Container(
+                                          height: MediaQuery.of(context).size.height*0.055,
+                                          width: MediaQuery.of(context).size.width* 0.7,
+
+                                            child: Image.asset(
+                                              "images/login-01.png",
+
+                                            ),
+                                          ),
+                                      ),
+
+                                    )
+
+                              :SlideTransition(
+                                position: offsetAnimation2,
+                                transformHitTests: true,
+                                child:InkWell(
+                                  onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreen(),));}
+                                  ,
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height*0.055,
+                                    width: MediaQuery.of(context).size.width* 0.7,
+
+                                      child:Image.asset(
+                                      "images/login-04.png",
+
+                                    ),
+
+                                  ),
+                                ),
+                              ):Container(),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 20
 
-                                      Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 20
-
-                                  // top: mediaQuery.size.height * 0.05
-                                      ),
-                                        child: Text('${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
-
-
-
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
-                                  ),
+                                        // top: mediaQuery.size.height * 0.05
+                                        ),
+                                    child: Text(
+                                      '${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+                                      style:
+                                          Theme.of(context).textTheme.headline2,
+                                    ),
                                   ),
                                   TextButton(
                                       onPressed: () {
@@ -269,14 +346,12 @@ class _HomePageState extends State<HomePage> {
                                                 Navigationbar(1),
                                           ),
                                         );
-
-
-                                        
                                       },
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 20),
-                                        child: Text( '${LanguageTr.lg[authProvider.language]["See All"]}'
-                                          ,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Text(
+                                          '${LanguageTr.lg[authProvider.language]["See All"]}',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'BerlinSansFB',
@@ -285,7 +360,9 @@ class _HomePageState extends State<HomePage> {
                                       ))
                                 ],
                               ),
-                              ((getOccasionsToday(package.occasions).length ==0))?    Padding(
+                              ((getOccasionsToday(package.occasions).length ==
+                                      0))
+                                  ? Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal:
                                             mediaQuery.size.width * 0.01,
@@ -324,8 +401,9 @@ class _HomePageState extends State<HomePage> {
                                                                 .center,
                                                         children: [
                                                           Text(
-
-                                                            DateFormat.MMM(authProvider.language)
+                                                            DateFormat.MMM(
+                                                                    authProvider
+                                                                        .language)
                                                                 .format(DateTime
                                                                     .now()),
                                                             style: const TextStyle(
@@ -337,7 +415,9 @@ class _HomePageState extends State<HomePage> {
                                                                         .bold),
                                                           ),
                                                           Text(
-                                                              DateFormat.d(authProvider.language)
+                                                              DateFormat.d(
+                                                                      authProvider
+                                                                          .language)
                                                                   .format(DateTime
                                                                       .now()),
                                                               style: const TextStyle(
@@ -360,8 +440,8 @@ class _HomePageState extends State<HomePage> {
                                                                   .size.width *
                                                               0.02),
                                                       child: FittedBox(
-                                                        child: Text( '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}'
-                                                          ,
+                                                        child: Text(
+                                                          '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}',
                                                           style: TextStyle(
                                                               color: Theme.of(
                                                                       context)
@@ -374,44 +454,46 @@ class _HomePageState extends State<HomePage> {
                                                     ),
                                                     Row(
                                                       children: [
-                                                        authProvider.status == Status.Authenticated?    IconButton(
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .push(
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        AddNewOccasion(
-                                                                            0),
+                                                        authProvider.status ==
+                                                                Status
+                                                                    .Authenticated
+                                                            ? IconButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .push(
+                                                                    MaterialPageRoute(
+                                                                      builder: (context) =>
+                                                                          AddNewOccasion(
+                                                                              0),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                                icon: Icon(Icons
+                                                                    .add_circle_outline_rounded),
+                                                                color: Theme.of(
+                                                                        context)
+                                                                    .primaryColor,
+                                                              )
+                                                            : IconButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .push(
+                                                                    MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                LoginScreen()),
+                                                                  );
+                                                                },
+                                                                icon: Icon(Icons
+                                                                    .add_circle_outline_rounded),
+                                                                color: Theme.of(
+                                                                        context)
+                                                                    .primaryColor,
                                                               ),
-                                                            );
-                                                          },
-                                                          icon:  Icon(Icons
-                                                              .add_circle_outline_rounded),
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .primaryColor,
-                                                        ):IconButton(
-                                                          onPressed: () {
-                                                            Navigator.of(
-                                                                context)
-                                                                .push(
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                    LoginScreen()
-                                                              ),
-                                                            );
-                                                          },
-                                                          icon:  Icon(Icons
-                                                              .add_circle_outline_rounded),
-                                                          color:
-                                                          Theme.of(context)
-                                                              .primaryColor,
-                                                        ),
-                                                        Text('${LanguageTr.lg[authProvider.language]["Add an occasion"]}'
-                                                         ,
+                                                        Text(
+                                                          '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -435,62 +517,67 @@ class _HomePageState extends State<HomePage> {
                                         //     child:
                                         //         OccasionCard(Axis.horizontal)),
                                       ]),
-                                    ):
-
-                              Center(child: OccasionCard(Axis.horizontal)),
+                                    )
+                                  : Center(
+                                      child: OccasionCard(Axis.horizontal)),
 
                               //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
-                          package.cuisins.id!=0?    Container(
-                                child: Column(
-                                    children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                           ),
-                                        child: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
-                                          ,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline2,
+                              package.cuisins.id != 0
+                                  ? Container(
+                                      child: Column(children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal: 20,
+                                              ),
+                                              child: Text(
+                                                '${LanguageTr.lg[authProvider.language]["Shishas"]}',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline2,
+                                              ),
+                                            ),
+                                            // SizedBox(width: mediaQuery.size.width*0.6),
+                                            Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20),
+                                                child: GestureDetector(
+                                                    child: Text(
+                                                        '${LanguageTr.lg[authProvider.language]["See All"]}',
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontFamily:
+                                                                'BerlinSansFB')),
+                                                    onTap: () {
+                                                      Navigator.of(context)
+                                                          .push(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CuisinsScreen(
+                                                                  package
+                                                                      .cuisins
+                                                                      .id),
+                                                        ),
+                                                      );
+                                                    }))
+                                          ],
                                         ),
-                                      ),
-                                      // SizedBox(width: mediaQuery.size.width*0.6),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 20),
-                                          child: GestureDetector(
-                                              child: Text('${LanguageTr.lg[authProvider.language]["See All"]}',
-
-                                          style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontFamily: 'BerlinSansFB'
-                                                  )),
-                                              onTap: () {
-                                                Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        CuisinsScreen(
-                                                            package.cuisins.id),
-                                                  ),
-                                                );
-                                              }))
-                                    ],
-                                  ),
-                                  SizedBox(
-                                      height: mediaQuery.size.height * 0.2,
-                                      //width: mediaQuery.size.width,
-                                      child: CuisinCard()),
-                                  // SizedBox(height:mediaQuery.size.height * 0.212,
-                                  //   child:adss[0]),
-                                  //  SizedBox(height:mediaQuery.size.height * 0.212,
-                                  //  child:adss[1]),
-                                ]),
-                              ):Container(),
+                                        SizedBox(
+                                            height:
+                                                mediaQuery.size.height * 0.2,
+                                            //width: mediaQuery.size.width,
+                                            child: CuisinCard()),
+                                        // SizedBox(height:mediaQuery.size.height * 0.212,
+                                        //   child:adss[0]),
+                                        //  SizedBox(height:mediaQuery.size.height * 0.212,
+                                        //  child:adss[1]),
+                                      ]),
+                                    )
+                                  : Container(),
                               // SizedBox(height: mediaQuery.size.height*0.05,)
-
                             ]),
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
 
@@ -541,7 +628,8 @@ class _HomePageState extends State<HomePage> {
                                   filled: true,
                                   fillColor:
                                       const Color.fromRGBO(232, 232, 232, 1),
-                                  hintText: '${LanguageTr.lg[authProvider.language]["Search"]}',
+                                  hintText:
+                                      '${LanguageTr.lg[authProvider.language]["Search"]}',
                                   prefixIcon: const Icon(Icons.search),
                                   prefixIconColor: Colors.black,
                                   hintStyle: TextStyle(
@@ -587,27 +675,31 @@ class _HomePageState extends State<HomePage> {
                                         // width: mediaQuery.size.width*0.8 ,
                                         height: mediaQuery.size.height * 0.1,
                                         child: Row(
-
                                           children: [
                                             Image.network(
                                               package.listItems[index].image,
-                                              loadingBuilder: ((context, child, loadingProgress) {
-
-                                                if (loadingProgress == null) return child;
+                                              loadingBuilder: ((context, child,
+                                                  loadingProgress) {
+                                                if (loadingProgress == null)
+                                                  return child;
 
                                                 return Center(
-                                                  child: CircularProgressIndicator(
+                                                  child:
+                                                      CircularProgressIndicator(
                                                     // strokeWidth: 1,
-                                                    value: loadingProgress.expectedTotalBytes != null
-                                                        ? loadingProgress.cumulativeBytesLoaded /
-                                                        loadingProgress.expectedTotalBytes
+                                                    value: loadingProgress
+                                                                .expectedTotalBytes !=
+                                                            null
+                                                        ? loadingProgress
+                                                                .cumulativeBytesLoaded /
+                                                            loadingProgress
+                                                                .expectedTotalBytes
                                                         : null,
                                                   ),
                                                 );
                                               }),
                                               height: 100,
                                               width: 100,
-
                                             ),
                                             SizedBox(
                                               width: MediaQuery.of(context)

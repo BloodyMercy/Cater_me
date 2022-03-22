@@ -27,7 +27,7 @@ class AppointmentSuccess extends StatefulWidget {
   _AppointmentSuccessState createState() => _AppointmentSuccessState();
 }
 
-class _AppointmentSuccessState extends State<AppointmentSuccess> {
+class _AppointmentSuccessState extends State<AppointmentSuccess> with SingleTickerProviderStateMixin  {
   var _key = GlobalKey<ScaffoldState>();
   final f = new DateFormat('MM/dd/yyyy hh:mm');
 
@@ -38,12 +38,40 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _controller = AnimationController(
+
+      animationBehavior : AnimationBehavior.preserve,
+      duration:
+      Duration(seconds: 3),
+      vsync: this,
+
+
+
+
+    )..repeat(reverse: false);
+    _controller.forward();
+    offsetAnimation = Tween<Offset>(
+      begin: Offset(-1.5,0.0),
+
+      end: Offset(1.5,0.0),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
+
+    offsetAnimation2 = Tween<Offset>(
+      begin: Offset(1.5,0.0),
+      end: Offset(-1.5,0.0),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
+
 
     // startinto();
     playaudio();
+
     //  inAppMessaging(context,SplashScreen());
   }
-
+@override
+void dispose() {
+  super.dispose();
+  _controller.dispose();
+}
   String language;
 
   getData() async {
@@ -74,7 +102,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
       print("error audio: $error");
     });
   }
-
+AnimationController _controller;
+Animation<Offset> offsetAnimation;
+Animation<Offset> offsetAnimation2;
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -126,7 +156,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               Spacer(
                 flex: 1,
               ),
-            authProvider.language=="en"?  Container(
+             Container(
                 // width: MediaQuery.of(context).size.width / 4,
                   height: MediaQuery
                       .of(context)
@@ -136,8 +166,8 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     image: DecorationImage(
                       image:  _serpres.serviceId != 1
 
-                          ? AssetImage('images/orderTracking/sammcaterme.png')
-                          : AssetImage('images/orderTracking/sammcaterme.png'),
+                          ? AssetImage('images/samm logo.png')
+                          : AssetImage('images/samm logo.png'),
                           // :  _serpres.serviceId != 1
                           // ? AssetImage('images/samarabic.png')
                           // : AssetImage('images/samarabic.png'),
@@ -145,26 +175,36 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     ),
                     borderRadius: BorderRadius.circular(50),
                   ),
-              ): Container(
-              // width: MediaQuery.of(context).size.width / 4,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image:  _serpres.serviceId != 1
+             ),
+language=="en"?
+SlideTransition(
+                position: offsetAnimation,
 
-                      // ? AssetImage('images/orderTracking/sammcaterme.png')
-                      // : AssetImage('images/orderTracking/sammcaterme.png'),
-                  // :  _serpres.serviceId != 1
-                  ? AssetImage('images/samarabic.png')
-                  : AssetImage('images/samarabic.png'),
-                  fit: BoxFit.contain,
+                child: Container(
+                  height: MediaQuery.of(context).size.height*0.055,
+                  width: MediaQuery.of(context).size.width* 0.7,
+
+                  child: Image.asset(
+                    "images/minivan-02.png",
+
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(50),
+
+              )
+              :SlideTransition(
+                position: offsetAnimation2,
+
+                child: Container(
+                  height: MediaQuery.of(context).size.height*0.055,
+                  width: MediaQuery.of(context).size.width* 0.7,
+
+                  child: Image.asset(
+                    "images/minivan-01.png",
+
+                  ),
+                ),
+
               ),
-            ),
               Container(
                 padding: EdgeInsets.symmetric(
                     vertical: MediaQuery
@@ -202,6 +242,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   ],
                 ),
               ),
+
               // Container(
               //   padding: EdgeInsets.symmetric(
               //       vertical: MediaQuery.of(context).size.height * 0.020),
