@@ -5,6 +5,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -196,18 +197,29 @@ setState(() {
                                             widget.friend.remove(widget.friend[index]);
                                             Navigator.pop(context);
                                             Navigator.of(context).pop();
-                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                content: Text('${LanguageTr.lg[authProvider.language]['Friend Deleted']}'
-                                                    )));
+                                            MotionToast.success(
+                                              title:  "Cater me",
+                                              titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                              description:  '${LanguageTr.lg[authProvider.language]['Friend Deleted']}',
+                                              //  animationType: ANIMATION.FROM_LEFT,
+                                            ).show(context);
+                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            //     content: Text('${LanguageTr.lg[authProvider.language]['Friend Deleted']}'
+                                            //         )));
                                           }else{
                                             Navigator.pop(context);
                                             Navigator.of(context).pop();
 
-
-                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text('${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}'
-                                                  ),
-                                            ));
+                                            MotionToast.error(
+                                              title:  "Cater me",
+                                              titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                              description:  '${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}',
+                                              //  animationType: ANIMATION.FROM_LEFT,
+                                            ).show(context);
+                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                            //   content: Text('${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}'
+                                            //       ),
+                                            // ));
                                           }
                                         },
                                       ),

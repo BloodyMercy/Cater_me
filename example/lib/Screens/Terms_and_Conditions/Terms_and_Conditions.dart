@@ -19,7 +19,7 @@ initState(){
 
     Terms(
         '${LanguageTr.lg[authProvider.language]['Refund Policy']}',
-        '${LanguageTr.lg[authProvider.language]['Cater me takes customer satisfaction very seriously. In the case of problems with your order, please contact Cater me through our live chat or call us on our hotline number and we will assist you. In appropriate cases, if you have already been billed by Cater me, we will issue full or partial refunds. In the following cases: if you did not receive your order or received an incorrect order, you may be issued a full refund; if part of your order is missing, we may issue a partial refund. In every event, we will do our best to ensure your satisfaction.']}',
+        '${LanguageTr.lg[authProvider.language][' Cater me takes customer satisfaction very seriously.\n In the case of problems with your order, please contact Cater me through our live chat or call us on our hotline number and we will assist you.\n In appropriate cases, if you have already been billed by Cater me, we will issue full or partial refunds.\n In the following cases: if you did not receive your order or received an incorrect order, you may be issued a full refund; if part of your order is missing, we may issue a partial refund.\n In every event, we will do our best to ensure your satisfaction.']}',
         false),
     Terms(
         '${LanguageTr.lg[authProvider.language]['Price and Payment']}',
@@ -95,7 +95,7 @@ initState(){
                             child: Text(
                               t[index].body,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                                  TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal, height: 2),
                             ))
                         : Container(),
                   ],

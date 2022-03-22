@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
 import '../language/language.dart';
@@ -312,10 +313,16 @@ class _AccountInfoState extends State<AccountInfo> {
                                       setState(() {
                                         loadingButton = false;
                                       });
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                        content: Text('${LanguageTr.lg[user.language]["Cannot update! Old password is wrong"]}',),
-                                      ));
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(SnackBar(
+                                      //   content: Text('${LanguageTr.lg[user.language]["Cannot update! Old password is wrong"]}',),
+                                      // ));
+                                      MotionToast.error(
+                                        title:  "Cater me",
+                                        titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                        description:  '${LanguageTr.lg[user.language]["Cannot update! Old password is wrong"]}',
+                                        //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
                                     }
                                     user.clearAllTextController();
                                   }

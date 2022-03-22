@@ -4,6 +4,7 @@ import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -153,12 +154,20 @@ bool ispressed = false;
                                   "" ||
                               occasion.nameofoccasioncontroller.text ==
                                   "") {
-                            _scaff.currentState.showSnackBar(
-                              const SnackBar(
-                                content:
-                                Text("you cant add empty occasion"),
-                              ),
-                            );
+                            // _scaff.currentState.showSnackBar(
+                            //   const SnackBar(
+                            //     content:
+                            //     Text("you cant add empty occasion"),
+                            //   ),
+                            // );
+                            MotionToast.error(
+                              title: "Cater me",
+                              titleStyle: TextStyle(
+                                  fontWeight: FontWeight.bold),
+                              description:
+                              '${LanguageTr.lg[authProvider.language]["you can’t add an empty occasion"]}',
+                              //  animationType: ANIMATION.FROM_LEFT,
+                            ).show(context);
                           } else {
                             setState(() {
                               ispressed = true;
@@ -174,13 +183,21 @@ bool ispressed = false;
                               setState(() {
                                 ispressed=false;
                               });
-                              _scaff.currentState.showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                      "Please fill all the fields"),
-                                ),
-
-                              );  }
+                              // _scaff.currentState.showSnackBar(
+                              //               const SnackBar(
+                              //                 content: Text(
+                              //                     "Please fill all the fields"),
+                              //               ),
+                              //             );
+                              MotionToast.error(
+                                title: "Cater me",
+                                titleStyle: TextStyle(
+                                    fontWeight: FontWeight.bold),
+                                description:
+                                '${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}',
+                                //  animationType: ANIMATION.FROM_LEFT,
+                              ).show(context);
+                            }
                             else {
                               occasion.nameofoccasioncontroller.text="";
                               occasion.datechosencontroller.text="";
