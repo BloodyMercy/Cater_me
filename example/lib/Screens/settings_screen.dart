@@ -822,11 +822,13 @@ class _TABBarState extends State<TABBar> {
                                   ),
                                   Row(
                                     children: [
-                                      Padding(padding: EdgeInsets.only(right: 16),
-                                        child: Icon(
-                                        Icons.chevron_right,
-                                        color: Color(0xFF3F5521),
+                                      Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xFF3F5521),
                                     ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width *
+                                            0.03,
                                       ),
                                   ]),
                                   // InkWell(
