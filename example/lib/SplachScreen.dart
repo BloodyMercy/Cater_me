@@ -4,6 +4,8 @@ import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'language_picker.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
 
@@ -24,21 +26,39 @@ class _SplashScreenState extends State<SplashScreen>
     );
     chechkdata();
   }
+  bool lg=true;
 chechkdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
 
-    if(sh.getString("locale")==null)
-      sh.setString("locale", "en");
+    if(sh.getString("locale")!=null)
+      setState(() {
+        lg=false;
+      });
 }
   @override
   Widget build(BuildContext context) {
+
     Timer(
       Duration(milliseconds: 7000),
-      () => Navigator.of(context).pushReplacement(
+      () { if (lg){
+        Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => appstate(),
+          builder: (BuildContext context) =>
+              appstate(),
         ),
-      ),
+      );}
+       else{
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (BuildContext context) =>
+                LanguagePicker(),
+          ),
+        );
+      }
+
+
+      }
+
     );
     return Scaffold(
       backgroundColor: Colors.black,
