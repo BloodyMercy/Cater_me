@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'NavigationBar/navigation_bar.dart';
 import 'Providers/user.dart';
 import 'SplachScreen.dart';
 import 'main.dart';
@@ -45,7 +46,7 @@ class _LanguagePickerState extends State<LanguagePicker> {
                         MyApp.setLocale(context, Locale("en", "US"));
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => SplashScreen(),
+                              builder: (context) => appstate(),
                             ),
                             (Route<dynamic> route) => false);
                         // AppLocalizations.of(context)!.locale.toString()
@@ -66,7 +67,7 @@ class _LanguagePickerState extends State<LanguagePicker> {
                         MyApp.setLocale(context, Locale("ar", "AE"));
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => SplashScreen(),
+                              builder: (context) => appstate(),
                             ),
                             (Route<dynamic> route) => false);
                       },
