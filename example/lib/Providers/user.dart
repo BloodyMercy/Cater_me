@@ -16,7 +16,8 @@ import '../language/language.dart';
 enum Status {
   Authenticated, //inside application
   Unauthenticated,
-  walkingpage
+  walkingpage,
+  language,
 }
 
 class UserProvider with ChangeNotifier {
@@ -142,8 +143,12 @@ getdata();
     SharedPreferences sh=await SharedPreferences.getInstance();
     emailChat.text=sh.getString('email');
 
-language=sh.getString("locale")??"en";
+if(sh.getString("locale")==null){
 
+  _status=Status.language;
+  notifyListeners();
+
+}else
     if(sh.getBool("logged")??false){
 
       _status=Status.Authenticated;

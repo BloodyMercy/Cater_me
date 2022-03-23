@@ -2,6 +2,7 @@ import 'package:CaterMe/model/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 
@@ -49,58 +50,62 @@ initState(){
             '${LanguageTr.lg[authProvider.language]['Terms & Conditions']}',
         style:Theme.of(context).textTheme.headline1,
         ),),
+body:WebView(
+  initialUrl: "https://caterme.azurewebsites.net/caterme/termsandconditions",
 
-      body: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) => Container(
-                width: mediaQueryWidth,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          t[index].checked = !t[index].checked;
-                        });
-                      },
-                      child: Container(
-                        height: mediaQueryHeight * 0.08,
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: Colors.black, width: 0.2),
-                          ),
-                        ),
-                        child: Container(
-                          width: mediaQueryWidth,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Icon(t[index].checked
-                                    ? Icons.keyboard_arrow_up
-                                    : Icons.keyboard_arrow_down),
-                              ),
-                              Text(
-                                t[index].title,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    t[index].checked
-                        ? Container(
-                            padding: EdgeInsets.all(8),
-                            width: mediaQueryWidth,
-                            //height: mediaQueryHeight * 0.2,
-                            child: Text(
-                              t[index].body,
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal, height: 2),
-                            ))
-                        : Container(),
-                  ],
-                ),
-              )),
+  javascriptMode: JavascriptMode.unrestricted,
+)
+      // body: ListView.builder(
+      //     itemCount: 3,
+      //     itemBuilder: (context, index) => Container(
+      //           width: mediaQueryWidth,
+      //           child: Column(
+      //             children: [
+      //               GestureDetector(
+      //                 onTap: () {
+      //                   setState(() {
+      //                     t[index].checked = !t[index].checked;
+      //                   });
+      //                 },
+      //                 child: Container(
+      //                   height: mediaQueryHeight * 0.08,
+      //                   decoration: const BoxDecoration(
+      //                     border: Border(
+      //                       bottom: BorderSide(color: Colors.black, width: 0.2),
+      //                     ),
+      //                   ),
+      //                   child: Container(
+      //                     width: mediaQueryWidth,
+      //                     child: Row(
+      //                       children: [
+      //                         Padding(
+      //                           padding: EdgeInsets.symmetric(horizontal: 8.0),
+      //                           child: Icon(t[index].checked
+      //                               ? Icons.keyboard_arrow_up
+      //                               : Icons.keyboard_arrow_down),
+      //                         ),
+      //                         Text(
+      //                           t[index].title,
+      //                         ),
+      //                       ],
+      //                     ),
+      //                   ),
+      //                 ),
+      //               ),
+      //               t[index].checked
+      //                   ? Container(
+      //                       padding: EdgeInsets.all(8),
+      //                       width: mediaQueryWidth,
+      //                       //height: mediaQueryHeight * 0.2,
+      //                       child: Text(
+      //                         t[index].body,
+      //                         style:
+      //                             TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal, height: 2),
+      //                       ))
+      //                   : Container(),
+      //             ],
+      //           ),
+      //         )),
     ));
   }
 }

@@ -485,7 +485,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                   });
 
                                   adress.loading = true;
-                                  if (adress.createOrUpdate == 0) {
+                                  if (!adress.isUpdate) {
                                     await adress.createAddress();
                                     setState(() {
                                       loadingfinal = false;
@@ -516,6 +516,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                             '${LanguageTr.lg[user.language]["Address added"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);
+                                      await Future.delayed(Duration(seconds: 2));
                                       // ScaffoldMessenger.of(context)
                                       //     .showSnackBar(
                                       //   SnackBar(
@@ -534,7 +535,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                     adress.loading = false;
                                     print(adress.addressUpdated);
                                     if (adress.addressUpdated.id != 0) {
-                                      adress.getAllAddress();
+                                     await adress.getAllAddress();
                                       MotionToast.success(
                                         title: "Cater me",
                                         titleStyle: TextStyle(
@@ -543,6 +544,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                             '${LanguageTr.lg[user.language]["updated done"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);
+                                      await Future.delayed(Duration(seconds: 2));
 
                                       // ScaffoldMessenger.of(context)
                                       //     .showSnackBar(Snack
@@ -554,7 +556,9 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       Navigator.of(context)
                                           .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
                                       Navigator.of(context)
-                                          .pop(); // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                                          .pop();
+                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to update address")));
+                                      Navigator.of(context).pop();
 
                                     } else {
                                       adress.getAllAddress();

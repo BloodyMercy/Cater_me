@@ -127,7 +127,9 @@ super.initState();
                               children: [
                                 IconButton(onPressed: (){
                                   address.valueIndex=index;
-                                  address.createOrUpdate=1;
+                                  address.isUpdate=true;
+
+                                  // address.createOrUpdate=1;
                                   address.id=widget.address[index].id;
                                   address.addresstitlecontroller.text=widget.address[index].title;
                                   address.citycontrollerstring.text=widget.address[index].city;
@@ -135,6 +137,9 @@ super.initState();
                                   address.streetcontroller.text=widget.address[index].street;
                                   address.buildingcontroller.text=widget.address[index].buildingName;
                                   address.floornumbercontroller.text=widget.address[index].floorNumber.toString();
+                                  address.latitudenumbercontroller.text=widget.address[index].latitude;
+                                  address.longtituenumbercontroller.text=widget.address[index].longitude;
+                                  // widget.address[index].
 
                                   Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
 

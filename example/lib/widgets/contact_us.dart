@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/contact_us_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/contact_us_model.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -72,18 +73,10 @@ bool loading=true;
       Column(
         children: [
 
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Image.asset(
-              'images/CaterMe.png',
-              height: mediaQuery.size.height * 0.15,
-            ),
+SizedBox(
+  height: MediaQuery.of(context).size.height*0.02,
+),
 
-            // Animation shimer finish
-          ),
-          SizedBox(
-            height: mediaQuery.size.height * 0.1,
-          ),
           GestureDetector(
             onTap: () async {
               launchUrl("tel://${contact.UsContact.phoneNumber}.");
@@ -121,42 +114,145 @@ bool loading=true;
                 ),
               ),
             ),
+          SizedBox(height: MediaQuery.of(context).size.height*0.02,
 
-
-          SizedBox(
-            width: mediaQuery.size.height * 0.15,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(height: mediaQuery.size.height*0.1,
-              child: AnimatedTextKit(
-                onTap: () {},
-                animatedTexts: [
-                  for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
-                    FadeAnimatedText(txt,
-                        textStyle: TextStyle(
-                            fontSize: 20,
-                            color: colorCustom,
-                            fontWeight: FontWeight.bold))
-                ],
-                repeatForever: true,
-              ),
+            padding: const EdgeInsets.all(25.0),
+            child: Image.asset(
+              'images/CaterMe.png',
+              height: mediaQuery.size.height * 0.15,
             ),
+
+            // Animation shimer finish
           ),
 
-SizedBox(height: mediaQuery.size.height * 0.05,
 
-),
-          Text('${LanguageTr.lg[authProvider.language]["We/’d Love to Hear From You"]}'
-            ,
-            style: TextStyle(fontSize: 22),
-          ),
-          Text('${LanguageTr.lg[authProvider.language]["Ready to answer any and all questions"]}'
-            ,
-            style: TextStyle(color: Colors.grey, fontSize: 14),
-          ),
-          SizedBox(
-            height: mediaQuery.size.height * 0.01,),
+
+
+
+
+
+
+
+          Column(
+            children: [
+              SizedBox(
+              height: MediaQuery.of(context).size.height*0.07,
+            ),
+
+
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+      children: [
+        IconButton(onPressed: ()async{
+          final url = 'https://www.facebook.com/Cater-Me-103856805573526/';
+          if(await canLaunch(url)){
+            await launch(url,forceSafariVC: false);
+          }
+
+
+        } ,
+          icon:Icon(
+
+            FontAwesomeIcons.facebook,
+
+            color: colorCustom,
+            size: 40,
+          ),),
+
+        IconButton(onPressed: ()async{
+          final url = 'https://www.instagram.com/caterme.online/?hl=en';
+          if(await canLaunch(url)){
+            await launch(url,forceSafariVC: false);
+          }
+
+
+        },
+          icon:Icon(
+
+          FontAwesomeIcons.instagram,
+
+          color: colorCustom,
+          size: 40,
+        ),),
+
+
+
+
+        IconButton(
+          onPressed: ()async{
+            final url = 'https://www.linkedin.com/company/cater-me/';
+            if(await canLaunch(url)){
+              await launch(url,forceSafariVC: false);
+            }
+
+
+          } ,
+          icon:Icon(
+
+          FontAwesomeIcons.linkedin,
+
+          color: colorCustom,
+          size: 40,
+        ),),
+        IconButton(onPressed: ()async{
+          final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+          if(await canLaunch(url)){
+            await launch(url,forceSafariVC: false);
+          }
+
+
+        } ,
+          icon:Icon(
+
+            FontAwesomeIcons.snapchat,
+
+            color: colorCustom,
+            size: 40,
+          ),),
+
+
+      ],
+    ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.1,
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(height: mediaQuery.size.height*0.1,
+                  child: AnimatedTextKit(
+                    onTap: () {},
+                    animatedTexts: [
+                      for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
+                        FadeAnimatedText(txt,
+                            textStyle: TextStyle(
+                                fontSize: 20,
+                                color: colorCustom,
+                                fontWeight: FontWeight.bold))
+                    ],
+                    repeatForever: true,
+                  ),
+                ),
+              ),
+              Text('${LanguageTr.lg[authProvider.language]["We/’d Love to Hear From You"]}'
+                ,
+                style: TextStyle(fontSize: 22),
+              ),
+              Text('${LanguageTr.lg[authProvider.language]["Ready to answer any and all questions"]}'
+                ,
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+
+
+
+
+
+            ],
+          )
 
         ],
       ):

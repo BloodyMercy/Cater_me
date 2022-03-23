@@ -212,14 +212,22 @@ return em.message;
   set id(int value) {
     _id = value;
   }
+  //
+  // int _createOrUpdate=0;
+  //
+  //
+  // int get createOrUpdate => _createOrUpdate;
+  //
+  // set createOrUpdate(int value) {
+  //   _createOrUpdate = value;
+  // }
 
-  int _createOrUpdate=0;
+  bool _isUpdate=false;
 
+  bool get isUpdate => _isUpdate;
 
-  int get createOrUpdate => _createOrUpdate;
-
-  set createOrUpdate(int value) {
-    _createOrUpdate = value;
+  set isUpdate(bool value) {
+    _isUpdate = value;
   }
 
   updateAddresss() async{

@@ -66,7 +66,7 @@ class LanguageTr {
       "Language": "اللغة",
       "Contact Us": "تواصل معنا",
       "Logout": "تسجيل خروجك",
-      "Full Name": "اسمك الكامل",
+      "Full Name": "الإسم",
       "Submit": "ارسال",
       "Required": "مطلوبه",
       "Please enter email": "اكتب  ايميلك",
@@ -254,6 +254,9 @@ class LanguageTr {
       "I agree to the ":"أنا أوافق على ",
       'Choose language':'إختر اللّغة',
       'Close':'ما ابغى',
+      "Facebook":"فيسبوك",
+      "Instagram":"انستغرام",
+      "Linkedin":"",
 
 
 
@@ -265,6 +268,8 @@ class LanguageTr {
 
 
     "en": {
+      "updated done": "Updated done",
+      "Updated failed": "Updated failed",
       "Please choose what do you need":"Please choose what do you need",
       "Cannot update! Old password is wrong":"Cannot update! Old password is wrong",
       "Reset succeed":"Reset succeed",
