@@ -7,8 +7,10 @@ import '../model/Survey.dart';
 import '../model/contact_us_model.dart';
 
 class SurveyService {
-   Future<surveyModel> getallsurvey()async {
+   Future<List<surveyModel>> getallsurvey()async {
+     List<surveyModel> posts =[];
     try{
+
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request=http.Request('GET',Uri.parse(ApiLink.getsurvey));
@@ -16,16 +18,17 @@ class SurveyService {
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
-        Map<String, dynamic> responseData = json.decode(response.body);
-        surveyModel posts = surveyModel.fromJson(responseData);
+        List<Map<String, dynamic>> responseData = json.decode(response.body);
+        responseData.forEach((element) {posts.add(surveyModel.fromJson(element)) });
+
 
         return posts;
       } else {
         print(response.reasonPhrase);
-        return surveyModel();
+        return posts;
       }
     } catch (e) {
-      return surveyModel();
+      return posts;
     }
   }
 

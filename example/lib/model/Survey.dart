@@ -7,9 +7,6 @@ class surveyModel {
 
   surveyModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    // if(a=="ar"){
-    //   titleAr = json['titleAr']??"غير معروف";
-    // }
     title = json['title'];
 
   }
