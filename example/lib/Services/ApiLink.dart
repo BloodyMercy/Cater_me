@@ -15,6 +15,7 @@ class ApiLink{
  static String notification=host+"Notifications/GetAllNotifications";
  static String login=host+"Accounts/login";
  static String Register=host+"Accounts/Register/1";
+
  static String GetPackages=host+'HomePage/GetHomePage';
  static String GetPackagesorder=host+'Orders/OrderPage';
  static String Getcusinibyid=host+'Items/GetCategoryItems/';
@@ -65,6 +66,7 @@ class ApiLink{
  static String setupitems=host+"Settings/GetOrderSettings";
  static String checkorder=host+"Checkout/RequestPayment";
  static String getLanguage=host+"HomePage/GetLanguage";
+ static String getsurvey=host+"Survey/GetFeedBackOptions";
 
 
 

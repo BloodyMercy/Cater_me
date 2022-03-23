@@ -113,8 +113,10 @@ bool isCheckedcolor =false ;
 
   String genderChoose;
   List<Map<String, dynamic>> listGender = [
+
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
+
   ];
 
   // DateTime selectedDate = DateTime.now();
