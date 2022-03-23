@@ -19,7 +19,7 @@ class SurveyService {
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         List<Map<String, dynamic>> responseData = json.decode(response.body);
-        responseData.forEach((element) {posts.add(surveyModel.fromJson(element)); });
+        responseData.forEach((element) {posts.add(surveyModel.fromJson(element,prefs.getString("locale"))); });
 
 
         return posts;

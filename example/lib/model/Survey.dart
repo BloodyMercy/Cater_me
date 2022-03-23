@@ -5,9 +5,9 @@ class surveyModel {
 
   surveyModel({id, title,titleAr});
 
-  surveyModel.fromJson(Map<String, dynamic> json) {
+  surveyModel.fromJson(Map<String, dynamic> json ,String lang) {
     id = json['id'];
-    title = json['title'];
+    title = lang=="ar"?json['titleAr']:json['title'];
 
   }
 
