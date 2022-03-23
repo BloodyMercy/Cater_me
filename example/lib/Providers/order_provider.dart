@@ -44,6 +44,13 @@ class OrderCaterProvider extends ChangeNotifier{
   }
 
   List<int> _setupOrderList=[];
+  List<int> _setupsurvey=[];
+
+  List<int> get setupsurvey => _setupsurvey;
+
+  set setupsurvey(List<int> value) {
+    _setupsurvey = value;
+  }
 
   List<int> get setupOrderList => _setupOrderList;
 
@@ -65,7 +72,14 @@ removeid(int a){
  int _otpVerify =0;
 
   bool _setup=false;
+  bool _setup2 = false;
 
+
+  bool get setup2 => _setup2;
+
+  set setup2(bool value) {
+    _setup2 = value;
+  }
 
   bool get setup => _setup;
 
@@ -314,6 +328,9 @@ orderid=int.parse(i);
     otpVerify = await OtpVerify.Otpverify(paymentverify["orderId"].toString(),a);
     notifyListeners();
   }
+
+
+
 
 
   addcontroller(TextEditingController t){
