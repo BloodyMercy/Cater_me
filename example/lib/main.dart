@@ -33,6 +33,7 @@ import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
 import 'Providers/occasion.dart';
 import 'Providers/packages.dart';
+import 'Providers/surveyProvder.dart';
 import 'Providers/user.dart';
 import 'Screens/auth/login_screen.dart';
 import 'Screens/check out/SetupItems.dart';
@@ -190,6 +191,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider.value(value: OrderProvider()),
 
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
+        ChangeNotifierProvider.value(value: SurveyProvider.nodata()),
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
         ChangeNotifierProvider.value(value: ContactUsProvider()),
       ],

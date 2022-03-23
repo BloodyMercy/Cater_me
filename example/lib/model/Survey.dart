@@ -1,7 +1,7 @@
 class surveyModel {
   int id;
-  String title;
-  String titleAr;
+  String title="catch";
+  String titleAr="catch";
 
   surveyModel({id, title,titleAr});
 

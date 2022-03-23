@@ -17,9 +17,12 @@ class SurveyService {
       request.headers.addAll(headers);
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);
+      print(response.statusCode);
       if (response.statusCode == 200) {
+
         List<Map<String, dynamic>> responseData = json.decode(response.body);
-        responseData.forEach((element) {posts.add(surveyModel.fromJson(element,prefs.getString("locale"))); });
+        responseData.forEach((element) {
+          posts.add(surveyModel.fromJson(element,prefs.getString("locale"))); });
 
 
         return posts;
@@ -28,7 +31,9 @@ class SurveyService {
         return posts;
       }
     } catch (e) {
-      return posts;
+      print("===========-------======");
+      print(e);
+      return [surveyModel()];
     }
   }
 

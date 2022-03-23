@@ -6,6 +6,7 @@ import '../Services/surveyService.dart';
 import '../model/Survey.dart';
 
 class SurveyProvider with ChangeNotifier{
+  SurveyProvider.nodata(){}
   SurveyService _service =SurveyService();
   List<surveyModel> _listsurvey=[];
   TextEditingController comment =TextEditingController();
