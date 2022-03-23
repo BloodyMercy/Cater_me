@@ -32,5 +32,8 @@ class SurveyProvider with ChangeNotifier{
     _feedbackoptionid = value;
     notifyListeners();
   }
+  getsurvey(){
+
+  }
 
 }
