@@ -20,7 +20,7 @@ class SurveyService {
       print(response.statusCode);
       if (response.statusCode == 200) {
 
-        List<Map<String, dynamic>> responseData = json.decode(response.body);
+        List<dynamic> responseData = json.decode(response.body);
         responseData.forEach((element) {
           posts.add(surveyModel.fromJson(element,prefs.getString("locale"))); });
 
