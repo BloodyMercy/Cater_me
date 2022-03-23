@@ -39,7 +39,7 @@ class AuthModelSignUp {
         'confirmPassword': comfirmPassword,
         'birthDate': birthDate,
         'DeviceToken': token,
-         'gender': gendder,
+         'GenderId': gendder,
       });
 
         // open a bytestream
