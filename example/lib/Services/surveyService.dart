@@ -33,7 +33,7 @@ class SurveyService {
   }
 
 
-   static Future<bool> postreview({String complaint, double rating ,List<int> feedbackoptionid})async {
+    Future<bool> postreview({String complaint, double rating ,List<int> feedbackoptionid})async {
      try{
        SharedPreferences prefs=await SharedPreferences.getInstance();
        var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
