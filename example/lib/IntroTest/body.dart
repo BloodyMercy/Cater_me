@@ -81,6 +81,9 @@ class _BodyState extends State<Body> {
                       onPressed: ()  async{
                         SharedPreferences sh= await SharedPreferences.getInstance();
                         sh.setBool("wlkdone", true);
+                        userprovider.language=sh.getString("locale");
+
+
                         userprovider.status=Status.Unauthenticated;
                         //  onDone(context);
                       },

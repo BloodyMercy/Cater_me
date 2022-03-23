@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
 chechkdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
 
-    if(sh.getString("locale")!=null)
+    if(sh.getString("locale")==null)
       setState(() {
         lg=false;
       });

@@ -634,7 +634,7 @@ bool isCheckedcolor =false ;
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => TermsAndConditions(),
+                                        builder: (context) => WebViewExample(),
                                       ),
                                     );
 

@@ -520,6 +520,7 @@ class _HomePageState extends State<HomePage>
                                     )
                                   : Center(
                                       child: OccasionCard(Axis.horizontal)),
+                              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                               //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
                               package.cuisins.id != 0
@@ -532,6 +533,7 @@ class _HomePageState extends State<HomePage>
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                 horizontal: 20,
+                                                vertical: 10,
                                               ),
                                               child: Text(
                                                 '${LanguageTr.lg[authProvider.language]["Shishas"]}',
@@ -543,7 +545,7 @@ class _HomePageState extends State<HomePage>
                                             // SizedBox(width: mediaQuery.size.width*0.6),
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 20),
+                                                    horizontal: 20,vertical: 10 ),
                                                 child: GestureDetector(
                                                     child: Text(
                                                         '${LanguageTr.lg[authProvider.language]["See All"]}',

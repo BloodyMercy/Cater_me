@@ -45,6 +45,7 @@ dependencies:
   syncfusion_flutter_calendar:
   path_provider:
   path:
+
   http: any
   cached_network_image:
   provider:

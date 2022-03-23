@@ -1116,7 +1116,7 @@ class _TABBarState extends State<TABBar> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    TermsAndConditions(),
+                                    WebViewExample(),
                               ),
                             );
                           },
@@ -1131,7 +1131,7 @@ class _TABBarState extends State<TABBar> {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            TermsAndConditions(),
+                                            WebViewExample(),
                                       ),
                                     );
                                   },

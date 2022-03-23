@@ -150,18 +150,21 @@ if(sh.getString("locale")==null){
 
 }else
     if(sh.getBool("logged")??false){
-
+language=sh.getString("locale");
       _status=Status.Authenticated;
       notifyListeners();
     }
 
    else if((!sh.getBool("wlkdone")??true)){
+      language=sh.getString("locale");
 
       _status=Status.walkingpage;
       notifyListeners();
 
     }
    else{
+      language=sh.getString("locale");
+
       _status=Status.Unauthenticated;
       notifyListeners();
     }
