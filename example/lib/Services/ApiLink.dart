@@ -64,6 +64,7 @@ class ApiLink{
  static String getDistance = host+"Orders/IsInCoverage/";
  static String setupitems=host+"Settings/GetOrderSettings";
  static String checkorder=host+"Checkout/RequestPayment";
+ static String getLanguage=host+"HomePage/GetLanguage";
 
 
 
