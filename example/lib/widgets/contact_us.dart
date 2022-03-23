@@ -128,7 +128,7 @@ SizedBox(
             // Animation shimer finish
           ),
 
-          Row(mainAxisAlignment: MainAxisAlignment.center,
+          authProvider.status==Status.Authenticated?Row(mainAxisAlignment: MainAxisAlignment.center,
               children:[
              Container(
                child: Card(elevation: 1 ,color:colorCustom ,shape: BeveledRectangleBorder(
@@ -138,11 +138,11 @@ SizedBox(
     MaterialPageRoute(
     builder: (context) =>
     Review()));},
-                   child: Text("Rate Us",style: TextStyle(color:Colors.white),),
+                   child: Text('${LanguageTr.lg[authProvider.language]["Rate Us"]}',style: TextStyle(color:Colors.white),),
                  ),
                ),
              ),
-          ]),
+          ]):Container(),
 
 
 
@@ -235,12 +235,12 @@ SizedBox(
       ],
     ),
               SizedBox(
-                height: MediaQuery.of(context).size.height*0.1,
+                height: MediaQuery.of(context).size.height*0.03,
               ),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(height: mediaQuery.size.height*0.1,
+                child: Container(height: mediaQuery.size.height*0.05,
                   child: AnimatedTextKit(
                     onTap: () {},
                     animatedTexts: [

@@ -256,7 +256,7 @@ class LanguageTr {
       'Close':'ما ابغى',
       "Facebook":"فيسبوك",
       "Instagram":"انستغرام",
-      "Linkedin":"",
+      "Rate Us":"رأيك يهمنا",
 
 
 
@@ -513,7 +513,8 @@ class LanguageTr {
       "Search Country":"Search Country",
       "I agree to the ":"I agree to the ",
       'Choose language':'Choose language',
-      'Close':'Close'
+      'Close':'Close',
+      "Rate Us":"Rate Us",
 
 
 

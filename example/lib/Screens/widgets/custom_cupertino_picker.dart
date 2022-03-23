@@ -183,6 +183,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
                       widget.selectedValue = value;
                       widget.controller.text =
                           widget.items[widget.selectedValue];
+
                     });
                     if (widget.label == '${LanguageTr.lg[authProvider.language]["Country"]}') {
                       final adress =

@@ -224,6 +224,10 @@ language=sh.getString("locale");
 
   Future<bool> signUp( File image,String b) async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
+ int i=1;
+ if(
+ genderselected.text.contains("F")  || genderselected.text.contains("ب") )i=2;
+
 
     try {
       notifyListeners();
@@ -234,7 +238,7 @@ language=sh.getString("locale");
         password.text.toString(),
         password.text.toString(),
         b,
-        genderselected.text.toString(),
+        i.toString(),
         image
       );
     //  getdata();
