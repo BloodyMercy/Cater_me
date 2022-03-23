@@ -37,7 +37,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   bool isSearch = false;
- String language;
+  String language;
   Intro intro;
 
   // String language="";
@@ -52,18 +52,15 @@ class _HomePageState extends State<HomePage>
     _controller = AnimationController(
       duration: Duration(seconds: 5),
       vsync: this,
-
-
-
     )..repeat(reverse: false);
     offsetAnimation = Tween<Offset>(
-      begin: Offset(-1.5,0.0),
-      end: Offset(1.5,0.0),
+      begin: Offset(-1.5, 0.0),
+      end: Offset(1.5, 0.0),
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
 
-  offsetAnimation2 = Tween<Offset>(
-      begin: Offset(1.5,0.0),
-      end: Offset(-1.5,0.0),
+    offsetAnimation2 = Tween<Offset>(
+      begin: Offset(1.5, 0.0),
+      end: Offset(-1.5, 0.0),
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.slowMiddle));
   }
 
@@ -117,8 +114,7 @@ class _HomePageState extends State<HomePage>
       loading = false;
     });
     setState(() {
-      language=sh.getString("locale");
-
+      language = sh.getString("locale");
     });
     return;
   }
@@ -285,44 +281,60 @@ class _HomePageState extends State<HomePage>
                             // SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
                               authProvider.status == Status.Unauthenticated
-                                  ? language=="en"?
-                              SlideTransition(
-                                      position: offsetAnimation,
-                                      transformHitTests: true,
-                                      child: InkWell(
-                                        onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreen(),));}
-                                        ,
-                                        child: Container(
-                                          height: MediaQuery.of(context).size.height*0.055,
-                                          width: MediaQuery.of(context).size.width* 0.7,
-
-                                            child: Image.asset(
-                                              "images/login-01.png",
-
+                                  ? language == "en"
+                                      ? SlideTransition(
+                                          position: offsetAnimation,
+                                          transformHitTests: true,
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginScreen(),
+                                              ));
+                                            },
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.055,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.7,
+                                              child: Image.asset(
+                                                "images/login-01.png",
+                                              ),
                                             ),
                                           ),
-                                      ),
-
-                                    )
-
-                              :SlideTransition(
-                                position: offsetAnimation2,
-                                transformHitTests: true,
-                                child:InkWell(
-                                  onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreen(),));}
-                                  ,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height*0.055,
-                                    width: MediaQuery.of(context).size.width* 0.7,
-
-                                      child:Image.asset(
-                                      "images/login-04.png",
-
-                                    ),
-
-                                  ),
-                                ),
-                              ):Container(),
+                                        )
+                                      : SlideTransition(
+                                          position: offsetAnimation2,
+                                          transformHitTests: true,
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginScreen(),
+                                              ));
+                                            },
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.055,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.7,
+                                              child: Image.asset(
+                                                "images/login-04.png",
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                  : Container(),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -362,60 +374,66 @@ class _HomePageState extends State<HomePage>
                               ),
                               ((getOccasionsToday(package.occasions).length ==
                                       0))
-                                  ? Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            mediaQuery.size.width * 0.01,
-                                      ),
-                                      child: Column(children: [
-                                        SizedBox(
-                                          width: mediaQuery.size.width * 0.97,
-                                          // height: mediaQuery.size.height * 0.15,
-                                          child: Card(
-                                            shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(20),
+                                  ? GestureDetector(
+                                      onTap: authProvider.status ==
+                                              Status.Authenticated
+                                          ? () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddNewOccasion(0),
+                                                ),
+                                              );
+                                            }
+                                          : () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginScreen()),
+                                              );
+                                            },
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              mediaQuery.size.width * 0.01,
+                                        ),
+                                        child: Column(children: [
+                                          SizedBox(
+                                            width: mediaQuery.size.width * 0.97,
+                                            // height: mediaQuery.size.height * 0.15,
+                                            child: Card(
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(20),
+                                                ),
                                               ),
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                SizedBox(
-                                                  height:
-                                                      mediaQuery.size.height *
-                                                          0.17,
-                                                  width: mediaQuery.size.width *
-                                                      0.23,
-                                                  child: Card(
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                      shape:
-                                                          const RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(20),
-                                                        ),
-                                                      ),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            DateFormat.MMM(
-                                                                    authProvider
-                                                                        .language)
-                                                                .format(DateTime
-                                                                    .now()),
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
+                                              child: Row(
+                                                children: [
+                                                  SizedBox(
+                                                    height:
+                                                        mediaQuery.size.height *
+                                                            0.17,
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.23,
+                                                    child: Card(
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                        shape:
+                                                            const RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                            Radius.circular(20),
                                                           ),
-                                                          Text(
-                                                              DateFormat.d(
+                                                        ),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Text(
+                                                              DateFormat.MMM(
                                                                       authProvider
                                                                           .language)
                                                                   .format(DateTime
@@ -426,98 +444,85 @@ class _HomePageState extends State<HomePage>
                                                                   fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold))
-                                                        ],
-                                                      )),
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: mediaQuery
-                                                                  .size.width *
-                                                              0.02),
-                                                      child: FittedBox(
-                                                        child: Text(
-                                                          '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}',
-                                                          style: TextStyle(
-                                                              color: Theme.of(
-                                                                      context)
-                                                                  .primaryColor,
-                                                              fontSize: 13,
-                                                              fontFamily:
-                                                                  'BerlinSansFB'),
+                                                                          .bold),
+                                                            ),
+                                                            Text(
+                                                                DateFormat.d(
+                                                                        authProvider
+                                                                            .language)
+                                                                    .format(DateTime
+                                                                        .now()),
+                                                                style: const TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold))
+                                                          ],
+                                                        )),
+                                                  ),
+                                                  Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: mediaQuery
+                                                                        .size
+                                                                        .width *
+                                                                    0.02),
+                                                        child: FittedBox(
+                                                          child: Text(
+                                                            '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}',
+                                                            style: TextStyle(
+                                                                color: Theme.of(
+                                                                        context)
+                                                                    .primaryColor,
+                                                                fontSize: 13,
+                                                                fontFamily:
+                                                                    'BerlinSansFB'),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        authProvider.status ==
-                                                                Status
-                                                                    .Authenticated
-                                                            ? IconButton(
-                                                                onPressed: () {
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .push(
-                                                                    MaterialPageRoute(
-                                                                      builder: (context) =>
-                                                                          AddNewOccasion(
-                                                                              0),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                                icon: Icon(Icons
-                                                                    .add_circle_outline_rounded),
+                                                      Row(
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .add_circle_outline_rounded,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                          ),
+                                                          Text(
+                                                            '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                                 color: Theme.of(
                                                                         context)
                                                                     .primaryColor,
-                                                              )
-                                                            : IconButton(
-                                                                onPressed: () {
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .push(
-                                                                    MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) =>
-                                                                                LoginScreen()),
-                                                                  );
-                                                                },
-                                                                icon: Icon(Icons
-                                                                    .add_circle_outline_rounded),
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                              ),
-                                                        Text(
-                                                          '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color: Theme.of(
-                                                                      context)
-                                                                  .primaryColor,
-                                                              fontSize: 15,
-                                                              fontFamily:
-                                                                  'BerlinSansFB'),
-                                                        ),
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
+                                                                fontSize: 15,
+                                                                fontFamily:
+                                                                    'BerlinSansFB'),
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        // Center(
-                                        //     child:
-                                        //         OccasionCard(Axis.horizontal)),
-                                      ]),
-                                    )
+                                          // Center(
+                                          //     child:
+                                          //         OccasionCard(Axis.horizontal)),
+                                        ]),
+                                      ))
                                   : Center(
                                       child: OccasionCard(Axis.horizontal)),
                               SizedBox(height: MediaQuery.of(context).size.height*0.02,),

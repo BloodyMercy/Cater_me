@@ -77,10 +77,28 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
 // }
   void getCurrentLocation() async {
     // await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
+final address=Provider.of<AdressProvider>(context,listen: false);
     await Geolocator.requestPermission();
 
+if(address.isUpdate){
+  double latitude=double.parse(address.latitudenumbercontroller.text);
+  double longitude=double.parse(address.longtituenumbercontroller.text);
+  setState(() {
+    currentLatLng =
+    new LatLng(latitude, longitude);
+  });
 
+
+  final GoogleMapController controller = await _controller.future;
+
+  controller.animateCamera(CameraUpdate.newCameraPosition(
+    CameraPosition(
+      bearing: 0,
+      target: currentLatLng,
+      zoom: 15.0,
+    ),
+  ));
+}else{
     await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       forceAndroidLocationManager: true
@@ -91,6 +109,7 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
             new LatLng(currLocation.latitude, currLocation.longitude);
       });
 
+
       final GoogleMapController controller = await _controller.future;
 
       controller.animateCamera(CameraUpdate.newCameraPosition(
@@ -100,12 +119,13 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
           zoom: 15.0,
         ),
       ));
-      final address = Provider.of<AdressProvider>(context, listen: false);
+
       address.latitudenumbercontroller.text = currentLatLng.latitude.toString();
       address.longtituenumbercontroller.text =
           currentLatLng.longitude.toString();
      // await getcityname(currLocation.latitude, currLocation.longitude);
     });
+}
   }
 
   Future<void> getcityname(double a, double b) async {
@@ -242,14 +262,18 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
                         address.longtituenumbercontroller.text.toString()));
                 //address.loading=true;
                 // address.notifyListeners();
+                // address.isUpdate=false;
 
-                address.createOrUpdate = 0;
-                address.addresstitlecontroller.clear();
+                // address.createOrUpdate = 0;
+                if(!address.isUpdate) {
+                  address.addresstitlecontroller.clear();
+                  address.buildingcontroller.clear();
+                  address.floornumbercontroller.clear();
+                }
                 // address.countrycontroller.clear();
                 //  address.citycontrollerstring.clear();
                 // address.streetcontroller.clear();
-                address.buildingcontroller.clear();
-                address.floornumbercontroller.clear();
+
                 showModalBottomSheet(
                     isScrollControlled: true,
                     context: context,

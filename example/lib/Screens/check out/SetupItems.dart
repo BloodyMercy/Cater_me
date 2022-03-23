@@ -30,7 +30,7 @@ class _SetupItemsState extends State<SetupItems> {
     SharedPreferences sh = await SharedPreferences.getInstance();
     await order.getItemModel(sh.getString("locale"));
     if (order.setupItemmodel.length > 0) {
-      _isChecked = List<bool>.filled(order.setupItemmodel.length, false);
+      _isChecked = List<bool>.filled(order.setupItemmodel.length, true);
     }
     setState(() {
       loading = false;

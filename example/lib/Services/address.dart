@@ -133,11 +133,11 @@ return address;
      respons.fields.addAll({
        'Id': id.toString(),
        'Title': addresstitle,
-       'CityId': city,
+       'City': city,
        'Street': street,
        'BuildingName': building,
        'FloorNumber': floor,
-       'CountryId': country,
+       'Country': country,
        'longitude':longitude,
        'latitude':latitude,
      });

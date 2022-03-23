@@ -268,6 +268,8 @@ class LanguageTr {
 
 
     "en": {
+      "updated done": "Updated done",
+      "Updated failed": "Updated failed",
       "Please choose what do you need":"Please choose what do you need",
       "Cannot update! Old password is wrong":"Cannot update! Old password is wrong",
       "Reset succeed":"Reset succeed",

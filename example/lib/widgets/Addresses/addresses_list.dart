@@ -1,3 +1,4 @@
+import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
@@ -89,8 +90,10 @@ class _AddressesListState extends State<AddressesList> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final address = Provider.of<AdressProvider>(context, listen: true);
     final orderprovider =
         Provider.of<OrderCaterProvider>(context, listen: true);
+
     var _mediaQueryWidth = MediaQuery.of(context).size.width;
     var _mediaQuery = MediaQuery.of(context).size.height;
     return !loading
@@ -117,6 +120,7 @@ class _AddressesListState extends State<AddressesList> {
                           color: Theme.of(context).primaryColor,
                         ),
                         onPressed: () {
+                          address.isUpdate=false;
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (_) => ConfirmLocation()));
                         },
@@ -389,6 +393,7 @@ class _AddressesListState extends State<AddressesList> {
                             color: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
+                            address.isUpdate=false;
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (_) => ConfirmLocation()));
                           },
