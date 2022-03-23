@@ -36,39 +36,44 @@ class _costumTextFieldState extends State<customTextField> {
 
 
   void showPicker(ctx) {
-    DatePicker.showDatePicker(
-      ctx,
-      onMonthChangeStartWithFirstDate: true,
+    showCupertinoModalPopup(
+        context: context,
 
-      pickerTheme: DateTimePickerTheme(
+        builder: (BuildContext builder) {
 
-        showTitle: false,
-        backgroundColor:LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color:Color(0xFF3F5521),
-        ),
-      ),
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
 
-      initialDateTime: _chosenDate,
+                mode: CupertinoDatePickerMode.date,
 
 
-      minDateTime: DateTime.now(),
-      maxDateTime: DateTime(DateTime.now().year+1),
-      onClose: () {
 
-      },
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(() {
-          _chosenDate = dateTime;
-          _chosenDay = _dayFormat.format(dateTime);
-          _chosenMonth = _monthFormat.format(dateTime);
-          _chosenYear = _yearFormat.format(dateTime);
-          widget.controller.text = _dateFormat.format(dateTime);
+                maximumDate: DateTime(DateTime.now().year+1),
+                initialDateTime: _chosenDate,
+
+                minimumDate:DateTime.now(),
+                onDateTimeChanged: (dateTime) {
+                  setState(() {
+                    _chosenDate = dateTime;
+                    _chosenDay = _dayFormat.format(dateTime);
+                    _chosenMonth = _monthFormat.format(dateTime);
+                    _chosenYear = _yearFormat.format(dateTime);
+                    widget.controller.text = _dateFormat.format(dateTime);
+                  });
+                },
+              ));
         });
-      },
-    );
+
   }
+
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);

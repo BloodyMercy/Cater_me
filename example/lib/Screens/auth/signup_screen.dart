@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/greeting.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
@@ -124,44 +125,48 @@ bool isCheckedcolor =false ;
   bool _loading = false;
 
   @override
-  Future<void> showPicker(ctx) async {
+
+  void showPicker(ctx) {
     final address = Provider.of<AdressProvider>(context, listen: false);
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    String g= _pref.getString("locale")??"en";
+
+    showCupertinoModalPopup(
+        context: context,
+
+        builder: (BuildContext builder) {
+
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
+
+                mode: CupertinoDatePickerMode.date,
 
 
+                maximumDate: DateTime.now(),
+                initialDateTime: _chosenDate,
 
-    DatePicker.showDatePicker(
-      ctx,
-      locale: g=="en"?DateTimePickerLocale.en_us:DateTimePickerLocale.ar,
+                minimumDate:DateTime(1950),
+                onDateTimeChanged: (dateTime) {
+                  setState(
+                        () {
+                      _chosenDate = dateTime;
+                      _chosenDay = _dayFormat.format(dateTime);
+                      _chosenMonth = _monthFormat.format(dateTime);
+                      _chosenYear = _yearFormat.format(dateTime);
+                      address.evendatecontroller.text = _dateFormat.format(dateTime);
+                    },
+                  );
+                },
+              ));
+        });
 
-      onMonthChangeStartWithFirstDate: true,
-      pickerTheme: DateTimePickerTheme(
-        showTitle: false,
-        backgroundColor: LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color: Color(0xFF3F5521),
-        ),
-      ),
-      initialDateTime: _chosenDate,
-      maxDateTime: DateTime.now(),
-      minDateTime: DateTime(1950),
-    dateFormat: 'MMMM-yyyy-dd',
-      onClose: () {},
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(
-          () {
-            _chosenDate = dateTime;
-            _chosenDay = _dayFormat.format(dateTime);
-            _chosenMonth = _monthFormat.format(dateTime);
-            _chosenYear = _yearFormat.format(dateTime);
-            address.evendatecontroller.text = _dateFormat.format(dateTime);
-          },
-        );
-      },
-    );
   }
+
 
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
