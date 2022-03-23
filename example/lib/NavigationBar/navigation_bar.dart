@@ -179,7 +179,7 @@ class _NavigationBarState extends State<Navigationbar> {
     //   ),
         //  () {
         /// start the intro
-        // MotionToast.info(
+        // MotionToast.success(
         //   title:  "Cater me",
         //   titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
         //   description:  "You are not logged in,log in now",

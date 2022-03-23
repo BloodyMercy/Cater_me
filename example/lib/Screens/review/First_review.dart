@@ -1,4 +1,6 @@
 import 'package:CaterMe/Screens/Review/Second_review.dart';
+import 'package:CaterMe/Screens/review/Fourth_review.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -63,33 +65,98 @@ class FirstReview extends StatelessWidget {
               ),
             ),
               Padding(
-                padding: EdgeInsets.only(top: mediaQueryHeight * 0.1),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => SecondReview()));
-                  },
-                  child: SizedBox(
-                    width: mediaQueryWidth*0.135,
-                    child: Row(
-                      children: [
-                        Text(
-                          'Ok',
-                          style: TextStyle(color: Colors.black,fontSize: 25),
+                padding:  EdgeInsets.only(top: mediaQueryHeight*0.15),
+                child:
+                Text(
+                  'Did you face any issues?',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),),
+              Text(
+                ' هل واجهت اي صعوبات ؟',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+
+        Padding(
+           padding: EdgeInsets.only(top: mediaQueryHeight * 0.1),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SecondReview()));
+                    },
+                    child:
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width*0.25,
+                          child: Center(
+                            child: Text(
+                              'Yes/نعم',
+                              style: TextStyle(color: Colors.black,fontSize: 25),
+                            ),
+                          ),
                         ),
-                        Icon(Icons.check, color: Colors.black,)
-                      ],
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(
+                            const RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(15)))),
+                        backgroundColor: MaterialStateProperty.all(
+                            Colors.white)),
+                  ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => FourthReview()));
+                },
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width*0.23,
+                  child: Center(
+                    child: Text(
+                      'No/لا',
+                      style: TextStyle(color: Colors.black,fontSize: 25),
                     ),
                   ),
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                          const RoundedRectangleBorder(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(15)))),
-                      backgroundColor: MaterialStateProperty.all(
-                          Colors.white)),
                 ),
-              )
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(15)))),
+                    backgroundColor: MaterialStateProperty.all(
+                        Colors.white)),
+              ),
+            ],
+          ),
+        ),
+              // Padding(
+              //   padding: EdgeInsets.only(top: mediaQueryHeight * 0.1),
+              //   child: ElevatedButton(
+              //     onPressed: () {
+              //       Navigator.of(context).push(MaterialPageRoute(
+              //           builder: (context) => SecondReview()));
+              //     },
+              //     child: SizedBox(
+              //       width: mediaQueryWidth*0.15,
+              //       child: Row(
+              //         children: [
+              //           Text(
+              //             'Ok',
+              //             style: TextStyle(color: Colors.black,fontSize: 25),
+              //           ),
+              //           Icon(Icons.check, color: Colors.black,)
+              //         ],
+              //       ),
+              //     ),
+              //     style: ButtonStyle(
+              //         shape: MaterialStateProperty.all(
+              //             const RoundedRectangleBorder(
+              //                 borderRadius:
+              //                 BorderRadius.all(Radius.circular(15)))),
+              //         backgroundColor: MaterialStateProperty.all(
+              //             Colors.white)),
+              //   ),
+              // )
             ],
           ),
         ),
