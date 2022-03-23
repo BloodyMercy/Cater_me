@@ -341,8 +341,8 @@ String url3ds="";
                                     '${LanguageTr.lg[authProvider.language]["Menus"]}',
                                     '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
                                     '${LanguageTr.lg[authProvider.language]["Checkout"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Payment"]}',
-                                    '${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
+                                    orderProvider.spets!=8?'${LanguageTr.lg[authProvider.language]["Payment"]}':'${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
+                                   // '${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
 
 
                                   ],
@@ -392,7 +392,7 @@ String url3ds="";
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    (orderProvider.spets > 1 || !orderProvider.paymemtstep)
+                                    (orderProvider.spets > 1 && !orderProvider.paymemtstep)
                                         ? !orderProvider.finaldonatesteps?IconButton(
                                             onPressed: () {
                                               if( details.setup)

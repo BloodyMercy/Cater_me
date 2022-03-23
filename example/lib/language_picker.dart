@@ -40,15 +40,16 @@ class _LanguagePickerState extends State<LanguagePicker> {
                       child: Text('English'),
                       onPressed: () async {
                         personalInfo.language = "en";
+
                         SharedPreferences _prefs =
                             await SharedPreferences.getInstance();
                         _prefs.setString("locale", "en");
                         MyApp.setLocale(context, Locale("en", "US"));
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => appstate(),
-                            ),
-                            (Route<dynamic> route) => false);
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => appstate(),
+                        //     ),
+                        //     (Route<dynamic> route) => false);
                         // AppLocalizations.of(context)!.locale.toString()
 
                         // .language="ar";                                              },
@@ -65,11 +66,11 @@ class _LanguagePickerState extends State<LanguagePicker> {
                             await SharedPreferences.getInstance();
                         _prefs.setString("locale", "ar");
                         MyApp.setLocale(context, Locale("ar", "AE"));
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => appstate(),
-                            ),
-                            (Route<dynamic> route) => false);
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => appstate(),
+                        //     ),
+                        //     (Route<dynamic> route) => false);
                       },
                       child: Text('العربية'),
                       style: ElevatedButton.styleFrom(

@@ -36,6 +36,14 @@ class OrderCaterProvider extends ChangeNotifier{
   set checkotp(bool value) {
     _checkotp = value;
   }
+bool _setotppage=false;
+
+  bool get setotppage => _setotppage;
+
+  set setotppage(bool value) {
+    _setotppage = value;
+    notifyListeners();
+  }
 
   bool _checkotp=false;
   List<setupItemsModel> get setupItemmodel => _setupItemModelId;

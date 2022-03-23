@@ -101,7 +101,7 @@ class UserProvider with ChangeNotifier {
     _birthDate = value;
   }
 
-  Status _status=Status.walkingpage;
+  Status _status=Status.Unauthenticated;
 
 
   Status get status => _status;
