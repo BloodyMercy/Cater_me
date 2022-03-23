@@ -124,6 +124,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
               //   builder: (_) {
               //     return AddressesTextField(_addNewAddress, context);
               //   });
+              address.isUpdate=false;
               Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
               },
                 icon: Icon(Icons.add))
