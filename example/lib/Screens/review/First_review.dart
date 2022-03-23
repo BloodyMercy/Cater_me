@@ -70,7 +70,7 @@ class FirstReview extends StatelessWidget {
                         builder: (context) => SecondReview()));
                   },
                   child: SizedBox(
-                    width: mediaQueryWidth*0.135,
+                    width: mediaQueryWidth*0.15,
                     child: Row(
                       children: [
                         Text(
