@@ -27,7 +27,7 @@ class SecondReview extends StatelessWidget {
               Padding(
                 padding:  EdgeInsets.only(top: mediaQueryHeight*0.01),
                 child: Text(
-                  '2- What do we need to improve?',
+                  'What do we need to improve?',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),

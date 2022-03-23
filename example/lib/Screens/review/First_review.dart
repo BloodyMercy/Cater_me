@@ -33,7 +33,7 @@ class FirstReview extends StatelessWidget {
                 padding:  EdgeInsets.only(top: mediaQueryHeight*0.05),
                 child:
               Text(
-                '1- How would you rate your',
+                'How would you rate your',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),),
               Text(

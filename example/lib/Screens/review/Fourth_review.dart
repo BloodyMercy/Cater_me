@@ -25,7 +25,7 @@ class FourthReview extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: mediaQueryHeight*0.05),
                 child: Text(
-                  '4- Complaints and suggestions-',
+                  'Complaints and suggestions-',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
