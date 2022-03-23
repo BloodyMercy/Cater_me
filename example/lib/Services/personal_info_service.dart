@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:CaterMe/model/RestCallAPi.dart';
+import 'package:CaterMe/model/language/language.dart';
 import 'package:CaterMe/model/personal_info.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,6 +9,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'ApiLink.dart';
 
 class PersonalInfoService {
+  Future<Map<String,Map<String,String>>> getLangauge() async{
+   try{
+     var request = http.Request('GET', Uri.parse(ApiLink.getLanguage));
+    // request.headers.addAll(headers);
+    http.StreamedResponse responses = await request.send();
+    var response = await http.Response.fromStream(responses);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> responseData = json.decode(response.body);
+      LanguageModel posts = LanguageModel.fromJson(responseData);
+      //map to list
+      return posts.lg;
+    } else {
+      print(response.reasonPhrase);
+      return {};
+    }
+  } catch (e) {
+  return {};
+  }
+  }
   Future<PersonalInfoModel> getAllInfo() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
