@@ -11,7 +11,11 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 void main() => runApp(MaterialApp(home: WebViewExample()));
 
@@ -89,10 +93,13 @@ class _WebViewExampleState extends State<WebViewExample> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Terms & Conditions"),
+        title:  Text('${LanguageTr.lg[authProvider.language]["Terms & Conditions"]}'
+            ),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
         actions: <Widget>[
           NavigationControls(_controller.future),
