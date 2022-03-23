@@ -19,7 +19,7 @@ class SurveyService {
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         List<Map<String, dynamic>> responseData = json.decode(response.body);
-        responseData.forEach((element) {posts.add(surveyModel.fromJson(element)) });
+        responseData.forEach((element) {posts.add(surveyModel.fromJson(element)); });
 
 
         return posts;
@@ -31,6 +31,35 @@ class SurveyService {
       return posts;
     }
   }
+
+
+   static Future<bool> postreview({String complaint, double rating ,List<int> feedbackoptionid})async {
+     try{
+       SharedPreferences prefs=await SharedPreferences.getInstance();
+       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
+       var request=http.Request('POST',Uri.parse(ApiLink.submitsurvey));
+       request.headers.addAll(headers);
+
+       request.body=json.encode({
+         "complaint":complaint ,
+         "rating": rating,
+         "feedbackOptionId": feedbackoptionid
+       });
+
+       http.StreamedResponse responses =await request.send();
+       var response = await http.Response.fromStream(responses);
+       if (response.statusCode == 200) {
+
+         return true;
+       } else {
+         print(response.reasonPhrase);
+         return false;
+       }
+     } catch (e) {
+       print(e);
+       return false;
+     }
+   }
 
 }
 

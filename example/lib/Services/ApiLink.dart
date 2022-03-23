@@ -67,6 +67,7 @@ class ApiLink{
  static String checkorder=host+"Checkout/RequestPayment";
  static String getLanguage=host+"HomePage/GetLanguage";
  static String getsurvey=host+"Survey/GetFeedBackOptions";
+ static String submitsurvey=host+"Survey/SubmitSurvey";
 
 
 
