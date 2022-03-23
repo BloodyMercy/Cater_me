@@ -31,8 +31,6 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
     occasion.nameofoccasioncontroller.text = "";
     occasion.datechosencontroller.text = "";
     occasion.typeofoccasioncontrollername.text = "";
-    //for(int i=0;i<occasion.listoccasiontype.length;i++){
-    // if(occasion.listoccasiontype[i].name==    occasion.typeofoccasioncontrollername.text)
     occasion.typeofoccasioncontroller.text = "";
     occasion.typeofoccasioncontrollername.text =
         occasion.listoccasiontype[widget.getposition].name;
