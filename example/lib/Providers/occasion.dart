@@ -86,6 +86,7 @@ Occasion _occasioncreated=Occasion();
   TextEditingController typeofoccasioncontroller = TextEditingController();
   TextEditingController typeofoccasioncontrollername = TextEditingController();
   TextEditingController datechosencontroller = TextEditingController();
+  TextEditingController datechosencontrollerl = TextEditingController();
   bool _yearlureminder=false;
 
   bool get yearlureminder => _yearlureminder;

@@ -8,10 +8,11 @@ import 'Screens/occasion/theme/colors/light_colors.dart';
 class CustomDatePickerFormField extends StatefulWidget {
   String label;
   String lang;
+  String casee;
   TextEditingController controller = TextEditingController();
   TextEditingController controllerlan = TextEditingController();
 
-  CustomDatePickerFormField({this.label,this.lang, this.controller,this.controllerlan});
+  CustomDatePickerFormField({this.label,this.lang, this.controller,this.controllerlan,this.casee});
 
   @override
   State<CustomDatePickerFormField> createState() =>
@@ -60,17 +61,14 @@ TextEditingController lol =TextEditingController();
                   .height * 0.25,
               color: Colors.white,
               child:
+                  widget.casee=="signup"?
               CupertinoDatePicker(
 
                 mode: CupertinoDatePickerMode.date,
+minimumDate: DateTime(1900),
 
-                minimumDate: DateTime.now(),
-                maximumYear:DateTime.now().year+1,
-                minimumYear: DateTime.now().year,
-                //minimumDate: DateTime.now(),
-
-                maximumDate: DateTime(DateTime.now().year+1),
-
+                maximumDate: DateTime.now(),
+maximumYear: DateTime.now().year,
                 onDateTimeChanged: (value) {
                   // _chosenDate = dateTime;
                   // _chosenDay = _dayFormat.format(dateTime);
@@ -82,8 +80,57 @@ TextEditingController lol =TextEditingController();
                   widget.controller.text=_dateFormat.format(value).toString();
                   widget.controllerlan.text=_dateFormatlan.format(value).toString();
                 },
-                initialDateTime: DateTime.now(),
-              ));
+                initialDateTime: DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day),
+              ):                  widget.casee=="order"?
+                  CupertinoDatePicker(
+
+                    mode: CupertinoDatePickerMode.date,
+
+                    minimumDate: DateTime.now(),
+                    maximumYear:DateTime.now().year+1,
+                    minimumYear: DateTime.now().year,
+                    //minimumDate: DateTime.now(),
+
+                    maximumDate: DateTime(DateTime.now().year+1),
+
+                    onDateTimeChanged: (value) {
+                      // _chosenDate = dateTime;
+                      // _chosenDay = _dayFormat.format(dateTime);
+                      // _chosenMonth = _monthFormat.format(dateTime);
+                      // _chosenYear = _yearFormat.format(dateTime);
+                      // widget.controller.text = _dateFormat.format(dateTime);
+                      // lol.text=alpha.format(dateTime);
+                      _chosenDate=value;
+                      widget.controller.text=_dateFormat.format(value).toString();
+                      widget.controllerlan.text=_dateFormatlan.format(value).toString();
+                    },
+                    initialDateTime: DateTime.now(),
+                  ):
+                  CupertinoDatePicker(
+
+                    mode: CupertinoDatePickerMode.date,
+
+                    minimumDate: DateTime.now(),
+                    maximumYear:DateTime.now().year+1,
+                    minimumYear: DateTime.now().year,
+                    //minimumDate: DateTime.now(),
+
+                    maximumDate: DateTime(DateTime.now().year+1),
+
+                    onDateTimeChanged: (value) {
+                      // _chosenDate = dateTime;
+                      // _chosenDay = _dayFormat.format(dateTime);
+                      // _chosenMonth = _monthFormat.format(dateTime);
+                      // _chosenYear = _yearFormat.format(dateTime);
+                      // widget.controller.text = _dateFormat.format(dateTime);
+                      // lol.text=alpha.format(dateTime);
+                      _chosenDate=value;
+                      widget.controller.text=_dateFormat.format(value).toString();
+                      widget.controllerlan.text=_dateFormatlan.format(value).toString();
+                    },
+                    initialDateTime: DateTime.now(),
+                  )
+          );
         });
     // DatePicker.showDatePicker(
     //

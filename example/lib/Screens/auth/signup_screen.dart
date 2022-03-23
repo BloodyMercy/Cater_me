@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../SplachScreen.dart';
+import '../../custom_date_picker_form_field.dart';
 import '../../language/language.dart';
 import '../Terms_and_Conditions/Terms_and_Conditions.dart';
 import '../occasion/theme/colors/light_colors.dart';
@@ -540,56 +541,14 @@ bool isCheckedcolor =false ;
                             ),
                             SizedBox(height: screenHeight * 0.015),
 
-                            Container(
-                              height: MediaQuery.of(context).size.height / 11,
-                              // margin: EdgeInsets.only(bottom: 5),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                  color: Colors.white, //white
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5))),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    suffixIcon: Icon(
-                                      Icons.keyboard_arrow_down,
-                                      color: Colors.black,
-                                      size: 24,
-                                    ),
-                                    alignLabelWithHint: true,
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'BerlinSansFB',
-                                        fontSize:
-                                            _focusNode.hasFocus ? 20 : 18.0,
-                                        //I believe the size difference here is 6.0 to account padding
-                                        color: _focusNode.hasFocus
-                                            ? Color(0xFF3F5521)
-                                            : Colors.grey),
-                                    labelText:
-                                        '${LanguageTr.lg[authProvider.language]["birthdate"]}',
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                          color: Color(0xFF3F5521),
-                                        ))),
-                                style: TextStyle(color: Colors.black),
-                                focusNode: _focusNode,
-                                controller: address.evendatecontroller,
-                                onTap: () {
-                                  _focusNode.unfocus();
-                                  showPicker(context);
-                                },
-                                readOnly: true,
-                              ),
-                            ),
+                CustomDatePickerFormField(
+                  casee: "signup",
+                    label: '${LanguageTr.lg[authProvider.language]["birthdate"]}',
+                    controller: address.evendatecontroller,
+                    controllerlan: address.evendatelancontroller,
+                    lang:authProvider.language
+                ),
+
                             SizedBox(height: screenHeight * 0.015),
                             Container(
                               decoration: BoxDecoration(

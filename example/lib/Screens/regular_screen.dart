@@ -189,10 +189,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                       fontWeight: FontWeight.normal,
                                       fontFamily: 'BerlinSansFB'),
                                   decoration: InputDecoration(
-                                      // contentPadding: EdgeInsets.only(
-                                      //     left:
-                                      //         MediaQuery.of(context).size.width *
-                                      //             0.07),
+
                                       alignLabelWithHint: true,
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -225,9 +222,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                             color: Color(0xFF3F5521),
                                           ))),
                                   controller: address.eventnamecontroller,
-
-                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
-                                  keyboardType: TextInputType.text),
+ keyboardType: TextInputType.text),
                             ),
                             // customTextField(label: 'Event Name' ,read: false,controller: address.eventnamecontroller,)
 
@@ -240,6 +235,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                               //   controller: address.evendatecontroller,
                               // ),
                               child: CustomDatePickerFormField(
+                                casee: "order",
                                 label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
                                 controller: address.evendatecontroller,
                                 controllerlan: address.evendatelancontroller,

@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
+import '../custom_date_picker_form_field.dart';
 import '../language/language.dart';
 
 class AddNewOccasion extends StatefulWidget {
@@ -143,12 +144,13 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           inputType: TextInputType.number,
                           controller: occasion.typeofoccasioncontrollername,
                         ),
-
-                        customTextField(
-                          label: "Dd / mm / yyyy",
-                          controller: occasion.datechosencontroller,
-                          read: true,
+                        CustomDatePickerFormField(
+                            label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
+                            controller: occasion.datechosencontroller,
+                            controllerlan: occasion.datechosencontrollerl,
+                            lang:authProvider.language
                         ),
+
 
                         SizedBox(
                           height: mediaQuery.size.height * 0.2,
