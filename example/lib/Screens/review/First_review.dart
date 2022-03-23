@@ -15,6 +15,16 @@ class FirstReview extends StatefulWidget {
 }
 
 class _FirstReviewState extends State<FirstReview> {
+  getData() async {
+    final surveyP = Provider.of<SurveyProvider>(context, listen: false);
+    await surveyP.getsurvey();
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final surveyP = Provider.of<SurveyProvider>(context, listen: true);

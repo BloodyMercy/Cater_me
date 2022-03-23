@@ -10,9 +10,18 @@ class FourthReview extends StatefulWidget {
 
 class _FourthReviewState extends State<FourthReview> {
   @override
-  bool sub = true;
+  bool loading = false;
 
+  getData() async {
+    final surveyP = Provider.of<SurveyProvider>(context, listen: false);
+    await surveyP.getsurvey();
+  }
 
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   Widget build(BuildContext context) {
     var mediaQueryHeight = MediaQuery.of(context).size.height;
@@ -75,12 +84,23 @@ class _FourthReviewState extends State<FourthReview> {
                   controller: surveyP.comment,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  surveyP.postsurvey();
+             !loading? ElevatedButton(
+                onPressed: () async{
                   setState(() {
-                    sub = false;
+                    loading = true;
                   });
+               var submit = await   surveyP.postsurvey();
+               if(submit){
+                 Navigator.of(context).pop();
+                 setState(() {
+                   loading = false;
+                 });
+               } else {
+                 setState(() {
+                   loading = false;
+                 });
+               }
+
                 },
                 child: Text(
                   'Submit',
@@ -97,7 +117,7 @@ class _FourthReviewState extends State<FourthReview> {
                           horizontal: (mediaQueryWidth * 0.35)),
                     ),
                     backgroundColor: MaterialStateProperty.all(Colors.white)),
-              )
+              ):CircularProgressIndicator()
             ],
           ),
         ),
