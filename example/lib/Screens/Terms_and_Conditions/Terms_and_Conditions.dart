@@ -104,7 +104,7 @@ class _WebViewExampleState extends State<WebViewExample> {
 
       ),
       body: WebView(
-        initialUrl: 'https://caterme.azurewebsites.net/caterme/termsandconditions/lang=${authProvider.language}',
+        initialUrl: 'https://caterme.azurewebsites.net/caterme/termsandconditions?lang=${authProvider.language}',
             javascriptMode: JavascriptMode.unrestricted,
       ),
       // We're using a Builder here so we have a context that is below the Scaffold
