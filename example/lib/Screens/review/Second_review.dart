@@ -16,6 +16,8 @@ class _SecondReviewState extends State<SecondReview> {
     final survey = Provider.of<SurveyProvider>(context, listen: true);
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
+    final surveyP = Provider.of<SurveyProvider>(context, listen: true);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
