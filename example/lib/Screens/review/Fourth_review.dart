@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/surveyProvder.dart';
+import '../../widgets/homepage.dart';
 
 class FourthReview extends StatefulWidget {
   @override
@@ -100,6 +102,10 @@ class _FourthReviewState extends State<FourthReview> {
                    loading = false;
                  });
                }
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Navigationbar(0),
+                      ));
 
                 },
                 child: Text(

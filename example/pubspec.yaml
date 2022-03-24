@@ -83,7 +83,7 @@ dependencies:
   animated_text_kit:
   url_launcher:
   motion_toast: ^1.2.0
-
+  multi_select_item:
 
 
 

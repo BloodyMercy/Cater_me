@@ -257,6 +257,8 @@ class LanguageTr {
       "Facebook":"فيسبوك",
       "Instagram":"انستغرام",
       "Rate Us":"رأيك يهمنا",
+      "Quantity: ":"الكمية: ",
+      "Total: ":"المجموع: ",
 
 
 
@@ -515,6 +517,8 @@ class LanguageTr {
       'Choose language':'Choose language',
       'Close':'Close',
       "Rate Us":"Rate Us",
+      "Quantity: ":"Quantity: ",
+      "Total: ":"Total: ",
 
 
 

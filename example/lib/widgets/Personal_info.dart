@@ -6,6 +6,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
+import '../NavigationBar/navigation_bar.dart';
 import '../customBirthdayPicker.dart';
 import '../language/language.dart';
 
@@ -65,9 +66,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            onPressed:(){
+  Navigator.of(context).pushReplacement(
+  MaterialPageRoute(
+  builder: (context) => Navigationbar(3),
+  ));
+
+},
+
             icon: Icon(
               Icons.arrow_back,
               color: Colors.white,

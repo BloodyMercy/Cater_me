@@ -43,6 +43,7 @@ class SurveyService {
        var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
        var request=http.Request('POST',Uri.parse(ApiLink.submitsurvey));
        request.headers.addAll(headers);
+       List<Map<String,dynamic>> surveyitem=[];
 
        request.body=json.encode({
          "complaint":complaint ,

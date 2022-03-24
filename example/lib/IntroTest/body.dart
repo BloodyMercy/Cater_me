@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../language/language.dart';
 import 'on_boarding_contant.dart';
 
 class  Body extends StatefulWidget {
@@ -37,6 +38,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final userprovider=Provider.of<UserProvider>(context,listen: true);
     return Scaffold(
       body: SafeArea(
@@ -87,8 +89,8 @@ class _BodyState extends State<Body> {
                         userprovider.status=Status.Unauthenticated;
                         //  onDone(context);
                       },
-                      child: Text(
-                        'Get Started',
+                      child: Text('${LanguageTr.lg[authProvider.language]["Get Started"]}'
+                       ,
                         style: TextStyle(
                           fontSize: 18,
                           color: colorCustom,
