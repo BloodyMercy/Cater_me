@@ -31,7 +31,6 @@ class SurveyService {
         return posts;
       }
     } catch (e) {
-      print("===========-------======");
       print(e);
       return [surveyModel()];
     }

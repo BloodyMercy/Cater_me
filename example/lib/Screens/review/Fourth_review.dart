@@ -19,7 +19,7 @@ class _FourthReviewState extends State<FourthReview> {
 
   @override
   void initState() {
-    getData();
+
     super.initState();
   }
 

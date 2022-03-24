@@ -67,7 +67,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
   String _imageUrl="";
-  String _language = "en";
+  String _language = "ar";
 
 
   String get language => _language;
@@ -155,7 +155,7 @@ getdata();
 
   getdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-    emailChat.text=sh.getString('email');
+    // emailChat.text=sh.getString('email')??"";
 
 if(sh.getString("locale")==null){
 
@@ -169,7 +169,7 @@ language=sh.getString("locale");
       notifyListeners();
     }
 
-   else if((!sh.getBool("wlkdone")??true)){
+   else if(sh.getBool("wlkdone")==null){
       language=sh.getString("locale");
 
       _status=Status.walkingpage;
