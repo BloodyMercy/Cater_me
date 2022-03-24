@@ -103,34 +103,37 @@ class _SecondReviewState extends State<SecondReview> {
                           },
                         ),
                       ),
-                      Padding(
-                        padding:  EdgeInsets.only(top:mediaQueryHeight*0.05),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => FourthReview()));
-                          },
-                          child: Text(
-                            'Next',
-                            style: TextStyle(color: Colors.black,fontSize: 25),
-                          ),
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  const RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
-                              padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(
-                                    vertical: (mediaQueryHeight * 0.074) * 0.3,
-                                    horizontal: (mediaQueryWidth * 0.3)),
-                              ),
-                              backgroundColor: MaterialStateProperty.all(
-                                  Colors.white)),
-                        ),
-                      ),
+
                     ],
                   )),
             ],
+          ),
+        ),
+
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton:  Padding(
+          padding:  EdgeInsets.only(top:mediaQueryHeight*0.05),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => FourthReview()));
+            },
+            child: Text(
+              'Next',
+              style: TextStyle(color: Colors.black,fontSize: 25),
+            ),
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+                    const RoundedRectangleBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(15)))),
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(
+                      vertical: (mediaQueryHeight * 0.074) * 0.3,
+                      horizontal: (mediaQueryWidth * 0.3)),
+                ),
+                backgroundColor: MaterialStateProperty.all(
+                    Colors.white)),
           ),
         ),
       ),

@@ -14,10 +14,6 @@ class _FourthReviewState extends State<FourthReview> {
   @override
   bool loading = false;
 
-  getData() async {
-    final surveyP = Provider.of<SurveyProvider>(context, listen: false);
-    await surveyP.getsurvey();
-  }
 
   @override
   void initState() {
@@ -91,17 +87,13 @@ class _FourthReviewState extends State<FourthReview> {
                   setState(() {
                     loading = true;
                   });
-               var submit = await   surveyP.postsurvey();
-               if(submit){
+              // var submit = await   surveyP.postsurvey();
+               await  surveyP.postsurvey();
                  Navigator.of(context).pop();
                  setState(() {
                    loading = false;
                  });
-               } else {
-                 setState(() {
-                   loading = false;
-                 });
-               }
+
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => Navigationbar(0),

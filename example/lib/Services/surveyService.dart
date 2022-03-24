@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,10 +41,11 @@ class SurveyService {
     Future<bool> postreview({String complaint, double rating ,List<int> feedbackoptionid})async {
      try{
        SharedPreferences prefs=await SharedPreferences.getInstance();
-       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
+       var headers={'Authorization': 'Bearer ${prefs.getString("token")}' ,
+       "content-type":"application/json"
+       };
        var request=http.Request('POST',Uri.parse(ApiLink.submitsurvey));
        request.headers.addAll(headers);
-       List<Map<String,dynamic>> surveyitem=[];
 
        request.body=json.encode({
          "complaint":complaint ,
@@ -53,6 +55,7 @@ class SurveyService {
 
        http.StreamedResponse responses =await request.send();
        var response = await http.Response.fromStream(responses);
+       print(response.statusCode);
        if (response.statusCode == 200) {
 
          return true;
