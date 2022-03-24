@@ -9,6 +9,7 @@ class surveyModel {
   surveyModel.fromJson(Map<String, dynamic> json ,String lang) {
     id = json['id'];
     title = lang=="ar"?json['titleAr']:json['title'];
+
     isChecked=json['isChecked'];
 
   }
