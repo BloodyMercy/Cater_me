@@ -77,9 +77,12 @@ class _SecondReviewState extends State<SecondReview> {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: Text(
-                                        survey.listsurvey[index].title,
-                                        style: TextStyle(color: Colors.black),
+                                      child: Padding(
+                                        padding:  EdgeInsets.only(left: mediaQueryWidth*0.05),
+                                        child: Text(
+                                          survey.listsurvey[index].title,
+                                          style: TextStyle(color: survey.listsurvey[index].isChecked? Colors.white: Colors.black),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -93,7 +96,7 @@ class _SecondReviewState extends State<SecondReview> {
                                         EdgeInsets.symmetric(
                                       vertical: mediaQueryHeight * 0.015,
                                     )),
-                                    backgroundColor: survey.listsurvey[index].isChecked? Theme.of(context).primaryColor: MaterialStateProperty.all(
+                                    backgroundColor: survey.listsurvey[index].isChecked?  MaterialStateProperty.all(Theme.of(context).primaryColor): MaterialStateProperty.all(
                                         Colors.white)),
                               ),
                             );

@@ -4,7 +4,7 @@ class surveyModel {
   String titleAr="catch";
   bool isChecked=false;
 
-  surveyModel({id, title,titleAr});
+  surveyModel({id, title,titleAr,isChecked});
 
   surveyModel.fromJson(Map<String, dynamic> json ,String lang) {
     id = json['id'];
