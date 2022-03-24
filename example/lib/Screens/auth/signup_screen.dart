@@ -5,6 +5,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/greeting.dart';
 import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
@@ -15,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../SplachScreen.dart';
+import '../../custom_date_picker_form_field.dart';
 import '../../language/language.dart';
 import '../Terms_and_Conditions/Terms_and_Conditions.dart';
 import '../occasion/theme/colors/light_colors.dart';
@@ -112,8 +114,10 @@ bool isCheckedcolor =false ;
 
   String genderChoose;
   List<Map<String, dynamic>> listGender = [
+
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
+
   ];
 
   // DateTime selectedDate = DateTime.now();
@@ -124,44 +128,48 @@ bool isCheckedcolor =false ;
   bool _loading = false;
 
   @override
-  Future<void> showPicker(ctx) async {
+
+  void showPicker(ctx) {
     final address = Provider.of<AdressProvider>(context, listen: false);
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    String g= _pref.getString("locale")??"en";
+
+    showCupertinoModalPopup(
+        context: context,
+
+        builder: (BuildContext builder) {
+
+          return Container(
+              height: MediaQuery
+                  .of(context)
+                  .copyWith()
+                  .size
+                  .height * 0.25,
+              color: Colors.white,
+              child:
+              CupertinoDatePicker(
+
+                mode: CupertinoDatePickerMode.date,
 
 
+                maximumDate: DateTime.now(),
+                initialDateTime: _chosenDate,
 
-    DatePicker.showDatePicker(
-      ctx,
-      locale: g=="en"?DateTimePickerLocale.en_us:DateTimePickerLocale.ar,
+                minimumDate:DateTime(1950),
+                onDateTimeChanged: (dateTime) {
+                  setState(
+                        () {
+                      _chosenDate = dateTime;
+                      _chosenDay = _dayFormat.format(dateTime);
+                      _chosenMonth = _monthFormat.format(dateTime);
+                      _chosenYear = _yearFormat.format(dateTime);
+                      address.evendatecontroller.text = _dateFormat.format(dateTime);
+                    },
+                  );
+                },
+              ));
+        });
 
-      onMonthChangeStartWithFirstDate: true,
-      pickerTheme: DateTimePickerTheme(
-        showTitle: false,
-        backgroundColor: LightColors.kLightYellow2,
-        itemTextStyle: TextStyle(
-          color: Color(0xFF3F5521),
-        ),
-      ),
-      initialDateTime: _chosenDate,
-      maxDateTime: DateTime.now(),
-      minDateTime: DateTime(1950),
-    dateFormat: 'MMMM-yyyy-dd',
-      onClose: () {},
-      onCancel: () => print('onCancel'),
-      onChange: (dateTime, List<int> index) {
-        setState(
-          () {
-            _chosenDate = dateTime;
-            _chosenDay = _dayFormat.format(dateTime);
-            _chosenMonth = _monthFormat.format(dateTime);
-            _chosenYear = _yearFormat.format(dateTime);
-            address.evendatecontroller.text = _dateFormat.format(dateTime);
-          },
-        );
-      },
-    );
   }
+
 
   Widget build(BuildContext context) {
     final address = Provider.of<AdressProvider>(context, listen: true);
@@ -533,56 +541,14 @@ bool isCheckedcolor =false ;
                             ),
                             SizedBox(height: screenHeight * 0.015),
 
-                            Container(
-                              height: MediaQuery.of(context).size.height / 11,
-                              // margin: EdgeInsets.only(bottom: 5),
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                  color: Colors.white, //white
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5))),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    suffixIcon: Icon(
-                                      Icons.keyboard_arrow_down,
-                                      color: Colors.black,
-                                      size: 24,
-                                    ),
-                                    alignLabelWithHint: true,
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'BerlinSansFB',
-                                        fontSize:
-                                            _focusNode.hasFocus ? 20 : 18.0,
-                                        //I believe the size difference here is 6.0 to account padding
-                                        color: _focusNode.hasFocus
-                                            ? Color(0xFF3F5521)
-                                            : Colors.grey),
-                                    labelText:
-                                        '${LanguageTr.lg[authProvider.language]["birthdate"]}',
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      borderSide: const BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                          color: Color(0xFF3F5521),
-                                        ))),
-                                style: TextStyle(color: Colors.black),
-                                focusNode: _focusNode,
-                                controller: address.evendatecontroller,
-                                onTap: () {
-                                  _focusNode.unfocus();
-                                  showPicker(context);
-                                },
-                                readOnly: true,
-                              ),
-                            ),
+                CustomDatePickerFormField(
+                  casee: "signup",
+                    label: '${LanguageTr.lg[authProvider.language]["birthdate"]}',
+                    controller: address.evendatecontroller,
+                    controllerlan: address.evendatelancontroller,
+                    lang:authProvider.language
+                ),
+
                             SizedBox(height: screenHeight * 0.015),
                             Container(
                               decoration: BoxDecoration(
@@ -634,7 +600,7 @@ bool isCheckedcolor =false ;
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => TermsAndConditions(),
+                                        builder: (context) => WebViewExample(),
                                       ),
                                     );
 

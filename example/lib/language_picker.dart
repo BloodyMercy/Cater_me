@@ -39,10 +39,12 @@ class _LanguagePickerState extends State<LanguagePicker> {
                   ElevatedButton(
                       child: Text('English'),
                       onPressed: () async {
-                        personalInfo.language = "en";
+
+
                         SharedPreferences _prefs =
                             await SharedPreferences.getInstance();
                         _prefs.setString("locale", "en");
+                        personalInfo.language = "en";
                         MyApp.setLocale(context, Locale("en", "US"));
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
@@ -60,10 +62,10 @@ class _LanguagePickerState extends State<LanguagePicker> {
                       )),
                   ElevatedButton(
                       onPressed: () async {
-                        personalInfo.language = "ar";
                         SharedPreferences _prefs =
                             await SharedPreferences.getInstance();
                         _prefs.setString("locale", "ar");
+                        personalInfo.language = "ar";
                         MyApp.setLocale(context, Locale("ar", "AE"));
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(

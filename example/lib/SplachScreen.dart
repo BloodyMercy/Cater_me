@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'language_picker.dart';
@@ -16,10 +18,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   AnimationController _controller;
-
+getLanguage() async{
+  final user=Provider.of<UserProvider>(context,listen:false);
+  await user.getLanguage();
+}
   @override
   void initState() {
     super.initState();
+    getLanguage();
     _controller = AnimationController(
       duration: Duration(seconds: (1)),
       vsync: this,
@@ -30,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
 chechkdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
 
-    if(sh.getString("locale")!=null)
+    if(sh.getString("locale")==null)
       setState(() {
         lg=false;
       });

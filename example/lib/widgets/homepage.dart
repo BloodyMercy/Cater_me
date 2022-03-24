@@ -18,9 +18,11 @@ import 'package:CaterMe/widgets/occasions/occasions_list.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
@@ -525,6 +527,7 @@ class _HomePageState extends State<HomePage>
                                       ))
                                   : Center(
                                       child: OccasionCard(Axis.horizontal)),
+                              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                               //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
                               package.cuisins.id != 0
@@ -537,6 +540,7 @@ class _HomePageState extends State<HomePage>
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                 horizontal: 20,
+                                                vertical: 10,
                                               ),
                                               child: Text(
                                                 '${LanguageTr.lg[authProvider.language]["Shishas"]}',
@@ -548,7 +552,7 @@ class _HomePageState extends State<HomePage>
                                             // SizedBox(width: mediaQuery.size.width*0.6),
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 20),
+                                                    horizontal: 20,vertical: 10 ),
                                                 child: GestureDetector(
                                                     child: Text(
                                                         '${LanguageTr.lg[authProvider.language]["See All"]}',
@@ -572,7 +576,7 @@ class _HomePageState extends State<HomePage>
                                         ),
                                         SizedBox(
                                             height:
-                                                mediaQuery.size.height * 0.2,
+                                                mediaQuery.size.height * 0.15,
                                             //width: mediaQuery.size.width,
                                             child: CuisinCard()),
                                         // SizedBox(height:mediaQuery.size.height * 0.212,
@@ -587,6 +591,81 @@ class _HomePageState extends State<HomePage>
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
 
                             ...getAddOnsCard(package.addonsall),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                              children: [
+                                IconButton(onPressed: ()async{
+                                  final url = 'https://www.facebook.com/Cater-Me-103856805573526/';
+                                  if(await canLaunch(url)){
+                                    await launch(url,forceSafariVC: false);
+                                  }
+
+
+                                } ,
+                                  icon:Icon(
+
+                                    FontAwesomeIcons.facebook,
+
+                                    color: colorCustom,
+                                    size: 30,
+                                  ),),
+
+                                IconButton(onPressed: ()async{
+                                  final url = 'https://www.instagram.com/caterme.online/?hl=en';
+                                  if(await canLaunch(url)){
+                                    await launch(url,forceSafariVC: false);
+                                  }
+
+
+                                },
+                                  icon:Icon(
+
+                                    FontAwesomeIcons.instagram,
+
+                                    color: colorCustom,
+                                    size: 30,
+                                  ),),
+
+
+
+
+                                IconButton(
+                                  onPressed: ()async{
+                                    final url = 'https://www.linkedin.com/company/cater-me/';
+                                    if(await canLaunch(url)){
+                                      await launch(url,forceSafariVC: false);
+                                    }
+
+
+                                  } ,
+                                  icon:Icon(
+
+                                    FontAwesomeIcons.linkedin,
+
+                                    color: colorCustom,
+                                    size: 30,
+                                  ),),
+                                IconButton(onPressed: ()async{
+                                  final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+                                  if(await canLaunch(url)){
+                                    await launch(url,forceSafariVC: false);
+                                  }
+
+
+                                } ,
+                                  icon:Icon(
+
+                                    FontAwesomeIcons.snapchat,
+
+                                    color: colorCustom,
+                                    size: 30,
+                                  ),),
+
+
+                              ],
+                            ),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                           ]),
                     ),
                   ),
@@ -645,6 +724,7 @@ class _HomePageState extends State<HomePage>
                                 controller: controllersearch,
                               ),
                             )),
+
                       ],
                     ),
 
@@ -730,6 +810,7 @@ class _HomePageState extends State<HomePage>
                         },
                       ),
                     ),
+
                   ],
                 )),
     );

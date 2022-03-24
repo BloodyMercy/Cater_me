@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../Providers/user.dart';
+import '../Screens/review/review.dart';
 import '../language/language.dart';
 import '../widgets/contact_us.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -127,6 +128,22 @@ SizedBox(
             // Animation shimer finish
           ),
 
+          authProvider.status==Status.Authenticated?Row(mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+             Container(
+               child: Card(elevation: 1 ,color:colorCustom ,shape: BeveledRectangleBorder(
+                 borderRadius: BorderRadius.circular(5),
+               ),
+                 child: TextButton(onPressed:(){Navigator.of(context).push(
+    MaterialPageRoute(
+    builder: (context) =>
+    Review()));},
+                   child: Text('${LanguageTr.lg[authProvider.language]["Rate Us"]}',style: TextStyle(color:Colors.white),),
+                 ),
+               ),
+             ),
+          ]):Container(),
+
 
 
 
@@ -218,12 +235,12 @@ SizedBox(
       ],
     ),
               SizedBox(
-                height: MediaQuery.of(context).size.height*0.1,
+                height: MediaQuery.of(context).size.height*0.03,
               ),
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(height: mediaQuery.size.height*0.1,
+                child: Container(height: mediaQuery.size.height*0.05,
                   child: AnimatedTextKit(
                     onTap: () {},
                     animatedTexts: [

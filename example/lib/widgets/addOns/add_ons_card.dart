@@ -34,7 +34,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
           child: card,
         );
     return Container(
-        height: mediaQuery.size.height * 0.4,
+        height: mediaQuery.size.height * 0.35,
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

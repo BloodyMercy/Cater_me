@@ -107,7 +107,7 @@ class _CartCardState extends State<CartCard> {
             height: 3,
           ),
           Text(
-            "total: " + widget.card.totalprice.toString(),//widget.card.product.size[0],
+            '${LanguageTr.lg[authProvider.language]["Total: "]}'+ widget.card.totalprice.toString(),//widget.card.product.size[0],
             style:
             TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
@@ -124,8 +124,8 @@ class _CartCardState extends State<CartCard> {
           ),
           Row(
             children: [
-              Text(
-                "Quantity: ",
+              Text('${LanguageTr.lg[authProvider.language]["Quantity: "]}'
+                ,
                 style: TextStyle(
                     fontSize: 12, fontWeight: FontWeight.w400),
               ),

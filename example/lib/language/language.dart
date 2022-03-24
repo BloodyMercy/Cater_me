@@ -161,7 +161,7 @@ class LanguageTr {
       "Contact Person": "مع مين ممكن نتواصل",
       "Share bill":"شارك فاتورتك",
       "Me": "أنا",
-      "Others": "شي غير",
+      "Others": "أحد ثاني",
       "Pick number of guests": "اختار عدد معازيمك",
       "Pick type of event": "اختار نوع المناسبه",
       "Please fill the empty fields": "املا الخانات الفاضيه",
@@ -256,7 +256,9 @@ class LanguageTr {
       'Close':'ما ابغى',
       "Facebook":"فيسبوك",
       "Instagram":"انستغرام",
-      "Linkedin":"",
+      "Rate Us":"رأيك يهمنا",
+      "Quantity: ":"الكمية: ",
+      "Total: ":"المجموع: ",
 
 
 
@@ -274,9 +276,9 @@ class LanguageTr {
       "Cannot update! Old password is wrong":"Cannot update! Old password is wrong",
       "Reset succeed":"Reset succeed",
       "Setup":"Setup",
-      "(VAT included 15%)":"(VAT included 15%)",
+      "*(VAT included 15%)":"*(VAT included 15%)",
       "Saved Orders":"Saved Orders",
-      "VAT included 15%":"VAT included 15%",
+
       "Menus":"Menus",
       "Update the Date":"Update the Date",
       "Address:":"Address:",
@@ -444,7 +446,7 @@ class LanguageTr {
       "after": "after",
       "before": "before",
       "Price": "Price",
-      "VAT": "VAT",
+      "VAT":"VAT",
       "Share Bill": "Share Bill",
       "no items added": "no items added",
       "No friend to share": "No friend to share",
@@ -513,7 +515,10 @@ class LanguageTr {
       "Search Country":"Search Country",
       "I agree to the ":"I agree to the ",
       'Choose language':'Choose language',
-      'Close':'Close'
+      'Close':'Close',
+      "Rate Us":"Rate Us",
+      "Quantity: ":"Quantity: ",
+      "Total: ":"Total: ",
 
 
 

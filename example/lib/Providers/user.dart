@@ -4,6 +4,7 @@ import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:CaterMe/Services/auth/serviceslogin.dart';
 import 'package:CaterMe/Services/personal_info_service.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
+import 'package:CaterMe/model/language/language.dart';
 import 'package:CaterMe/model/personal_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,19 @@ enum Status {
 }
 
 class UserProvider with ChangeNotifier {
+
+  Map<String,Map<String,dynamic>> _lg={};
+
+  Map<String, Map<String, dynamic>> get lg => _lg;
+
+  set lg(Map<String, Map<String, dynamic>> value) {
+    _lg = value;
+  }
+
+  getLanguage() async{
+    lg= await PersonalInfoService().getLangauge();
+  }
+
   TextEditingController oldPassword = TextEditingController();
   TextEditingController forgetPassword = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -53,7 +67,7 @@ class UserProvider with ChangeNotifier {
   TextEditingController loyatlypoint = TextEditingController();
   String _birthDate="";
   String _imageUrl="";
-  String _language = "en";
+  String _language = "ar";
 
 
   String get language => _language;
@@ -87,7 +101,7 @@ class UserProvider with ChangeNotifier {
     _birthDate = value;
   }
 
-  Status _status=Status.walkingpage;
+  Status _status=Status.Unauthenticated;
 
 
   Status get status => _status;
@@ -141,7 +155,7 @@ getdata();
 
   getdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
-    emailChat.text=sh.getString('email');
+    // emailChat.text=sh.getString('email')??"";
 
 if(sh.getString("locale")==null){
 
@@ -150,18 +164,21 @@ if(sh.getString("locale")==null){
 
 }else
     if(sh.getBool("logged")??false){
-
+language=sh.getString("locale");
       _status=Status.Authenticated;
       notifyListeners();
     }
 
-   else if((!sh.getBool("wlkdone")??true)){
+   else if(sh.getBool("wlkdone")==null){
+      language=sh.getString("locale");
 
       _status=Status.walkingpage;
       notifyListeners();
 
     }
    else{
+      language=sh.getString("locale");
+
       _status=Status.Unauthenticated;
       notifyListeners();
     }
@@ -207,6 +224,10 @@ if(sh.getString("locale")==null){
 
   Future<bool> signUp( File image,String b) async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
+ int i=1;
+ if(
+ genderselected.text.contains("F")  || genderselected.text.contains("ب") )i=2;
+
 
     try {
       notifyListeners();
@@ -217,7 +238,7 @@ if(sh.getString("locale")==null){
         password.text.toString(),
         password.text.toString(),
         b,
-        genderselected.text.toString(),
+        i.toString(),
         image
       );
     //  getdata();

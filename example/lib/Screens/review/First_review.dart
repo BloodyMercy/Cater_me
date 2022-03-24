@@ -3,12 +3,32 @@ import 'package:CaterMe/Screens/review/Fourth_review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/surveyProvder.dart';
 
 
-class FirstReview extends StatelessWidget {
+class FirstReview extends StatefulWidget {
 
   @override
+  State<FirstReview> createState() => _FirstReviewState();
+}
+
+class _FirstReviewState extends State<FirstReview> {
+  getData() async {
+    final surveyP = Provider.of<SurveyProvider>(context, listen: false);
+    await surveyP.getsurvey();
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    final surveyP = Provider.of<SurveyProvider>(context, listen: true);
+
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -60,7 +80,7 @@ class FirstReview extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onRatingUpdate: (rating) {
-                  print(rating);
+                  surveyP.stars=rating;
                 },
               ),
             ),

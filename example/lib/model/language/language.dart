@@ -11,7 +11,6 @@ class LanguageModel {
     if (json['en'] != null) {
       lg['en'] = json['en'].forEach((v) {
         en.putIfAbsent(v['key'],v['title']);
-
       });
     }
     if (json['ar'] != null) {
@@ -19,6 +18,8 @@ class LanguageModel {
         ar.putIfAbsent(v['key'],v['title']);
       });
     }
+    lg.putIfAbsent("en", () => lg['en']);
+    lg.putIfAbsent("ar", () => lg['ar']);
   }
 }
 

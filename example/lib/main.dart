@@ -33,6 +33,7 @@ import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
 import 'Providers/occasion.dart';
 import 'Providers/packages.dart';
+import 'Providers/surveyProvder.dart';
 import 'Providers/user.dart';
 import 'Screens/auth/login_screen.dart';
 import 'Screens/check out/SetupItems.dart';
@@ -85,48 +86,35 @@ class _appstateState extends State<appstate> {
 
   @override
   Widget build(BuildContext context) {
-    //build context ?
+
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
-    return FutureBuilder(
-        future: checkservers,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Scaffold(
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text("Server down ,, sryyyyy")],
-              ),
-            );
-          }
-          // bool a=snapshot.data as bool;
 
-          if (!true) {
-            return Scaffold(
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text("erver down ,, sryyyyy")],
-              ),
-            );
-          } else {
+            // return Scaffold(
+            //   body: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [Text("erver down ,, sryyyyy")],
+            //   ),
+            //
+
             switch (authProvider.status) {
-              case Status.Unauthenticated:
-                return Navigationbar(0);
+
+
+
 
               case Status.walkingpage:
                 return OnBoardingScreens();
-              case Status.Authenticated:
-                return Navigationbar(0);
+
               case Status.language:
                 return LanguagePicker();
               default :
-                return LoginScreen();
+                return Navigationbar(0);
             }
 
 
           }
-        });
-  }
+
+
 }
 
 class MyApp extends StatefulWidget {
@@ -166,7 +154,6 @@ class _MyAppState extends State<MyApp> {
      this._fetchLocale().then((locale) {
        setState(() {
          this._locale = locale;
-         //  languageCode=locale.languageCode;
        });
      });
    }
@@ -204,6 +191,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider.value(value: OrderProvider()),
 
         ChangeNotifierProvider.value(value: OrderCaterProvider()),
+        ChangeNotifierProvider.value(value: SurveyProvider.nodata()),
         ChangeNotifierProvider.value(value: CreditCardsProvider()),
         ChangeNotifierProvider.value(value: ContactUsProvider()),
       ],

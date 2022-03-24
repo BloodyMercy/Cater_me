@@ -36,6 +36,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> with SingleTick
 
   @override
   void initState() {
+    getData();
     // TODO: implement initState
     super.initState();
     _controller = AnimationController(

@@ -31,7 +31,7 @@ class AddOnCards extends StatelessWidget {
           ),
         ),
         child: Container(
-          height: mediaQuery.size.height * 0.25,
+          height: mediaQuery.size.height * 0.20,
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
             children: [
