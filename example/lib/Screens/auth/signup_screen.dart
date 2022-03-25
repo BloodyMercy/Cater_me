@@ -459,7 +459,7 @@ bool isCheckedcolor =false ;
                                             Theme.of(context).primaryColor,
                                             Colors.white,
                                           ),
-                                          hintText: "11xxxxxxxx",
+                                          hintText: "xxxxxxxxxx",
 
                                           hintStyle: TextStyle(
                                             fontFamily: 'Ubuntu',
