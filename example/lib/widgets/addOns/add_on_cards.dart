@@ -76,7 +76,7 @@ class AddOnCards extends StatelessWidget {
                           highlightColor: Color(0xFF3F5521),
                           baseColor: Color(0xffffffff),
                           direction: SkeletonDirection.ltr,
-                          childAspectRatio: 1.35,
+                          childAspectRatio: 1.36,
                         ),
                       ),
                     imageUrl: this.addOn.image
