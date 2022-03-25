@@ -141,9 +141,14 @@ class UserProvider with ChangeNotifier {
 
   String _messageUpdateInfo = "";
 
+
   String get messagelogin => _messagelogin;
 
-  set messagelogin(String value) => _messagelogin = value;
+  set messagelogin(String value) {
+    _messagelogin = value;
+    notifyListeners();
+  }
+
   String get messageSignUp => _messageSignUp;
 
   set messageSignUp(String value) => _messageSignUp = value;
@@ -197,7 +202,7 @@ language=sh.getString("locale");
 
       String token = "";
 
-      _messagelogin = u.message;
+      messagelogin = u.message;
 
 
       if(u.response){

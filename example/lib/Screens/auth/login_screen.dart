@@ -313,6 +313,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   //         "${authProvider.messagelogin.toString()}"),
                                   //   ),
                                   // );
+
                                   authProvider.messagelogin = "";
                                 }
                               }
