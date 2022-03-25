@@ -309,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   MotionToast.error(
                                       title:  "Cater me",
                                       titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                      description: "${authProvider.messagelogin.toString()}"
+                                      description: '${LanguageTr.lg[authProvider.language][authProvider.messagelogin.toString()]}',
                                     //  animationType: ANIMATION.FROM_LEFT,
                                   ).show(context);
                                   // _scaffoldKey.currentState.showSnackBar(
