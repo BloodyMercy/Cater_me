@@ -488,7 +488,7 @@ bool isCheckedcolor =false ;
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black,
                                         ),
-
+autovalidateMode:AutovalidateMode.onUserInteraction ,
                                         validator: (String value){
                                           if(value=="" || value == null)
                                           {
@@ -636,16 +636,27 @@ bool isCheckedcolor =false ;
                               // setState(() {
                               //   _loading = true;
                               // });
-                              if (formkey.currentState.validate() == false) {
+                              if (!formkey.currentState.validate() ) {
                                 // ignore: avoid_print
                                 print('Not Validated');
+                                _scaffKey.currentState.showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        "${LanguageTr.lg[authProvider.language]["all fields required"]}"),
+                                  ),
+                                );
                                 setState(() {
                                   _loading = false;
                                 });
                                 // reset!=null?
-                              } if (!isChecked) {
+                              }else  if (!isChecked) {
 
-
+                                _scaffKey.currentState.showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        "${LanguageTr.lg[authProvider.language]["you must agree terms and conditions"]}"),
+                                  ),
+                                );
                                 setState(() {
 
                                   isCheckedcolor=true;

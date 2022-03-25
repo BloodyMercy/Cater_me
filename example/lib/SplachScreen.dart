@@ -16,8 +16,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
-  AnimationController _controller;
+    {
+ // AnimationController _controller;
 getLanguage() async{
   final user=Provider.of<UserProvider>(context,listen:false);
   await user.getLanguage();
@@ -26,10 +26,10 @@ getLanguage() async{
   void initState() {
     super.initState();
     getLanguage();
-    _controller = AnimationController(
-      duration: Duration(seconds: (1)),
-      vsync: this,
-    );
+    // _controller = AnimationController(
+    //   duration: Duration(seconds: (1)),
+    //   vsync: this,
+    // );
     chechkdata();
   }
   bool lg=true;
@@ -47,18 +47,18 @@ chechkdata() async{
     Timer(
       Duration(milliseconds: 7000),
       () { if (lg){
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (BuildContext context) =>
               appstate(),
-        ),
+        ), (Route<dynamic> route) => false
       );}
        else{
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (BuildContext context) =>
                 LanguagePicker(),
-          ),
+          ), (Route<dynamic> route) => false
         );
       }
 

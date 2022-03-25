@@ -42,7 +42,7 @@ class OccasionsCard extends StatelessWidget {
                         Text(
                           '${DateFormat.MMM(authProvider.language).format(DateTime.parse(this.occasions.date))}',
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Text(
                             '${DateFormat.d(authProvider.language).format(DateTime.parse(this.occasions.date))}',

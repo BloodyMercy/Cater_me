@@ -47,7 +47,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     // await package.getcuisinsbyid(widget.id);
     if (_cuisin.addonsallorder.length > 0) {
       await _cuisin.getonidorder(
-          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false,sh.getString("ar"));
+          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false,sh.getString("locale"));
     }
     setState(() {
       loadingitems = false;

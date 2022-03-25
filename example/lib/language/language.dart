@@ -263,10 +263,10 @@ class LanguageTr {
       "Customer Service":"خدمة العملاء",
       "Follow Us":"تابعنا",
       "Wrong password":"كلمة مرور خاطئة",
-"all fields required":"جميع الحقول مطلوبة"
+"all fields required":"جميع الحقول مطلوبة",
 
 
-
+"you must agree terms and conditions":"يجب أن توافق على الشروط والأحكام",
 
 
     },
@@ -274,6 +274,7 @@ class LanguageTr {
 
 
     "en": {
+      "you must agree terms and conditions":"you must agree terms and conditions",
       "Email verification was send":"Email verification was send",
       "all fields required":"All fields required",
       "updated done": "Updated done",
