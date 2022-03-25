@@ -259,6 +259,7 @@ class LanguageTr {
       "Rate Us":"رأيك يهمنا",
       "Quantity: ":"الكمية: ",
       "Total: ":"المجموع: ",
+      "Customer Service":"خدمة العملاء",
 
 
 
@@ -519,6 +520,7 @@ class LanguageTr {
       "Rate Us":"Rate Us",
       "Quantity: ":"Quantity: ",
       "Total: ":"Total: ",
+      "Customer Service":"Customer Service",
 
 
 

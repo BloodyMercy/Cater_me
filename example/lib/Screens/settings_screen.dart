@@ -491,6 +491,7 @@ class _TABBarState extends State<TABBar> {
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
                           onTap: () {
+                            personalInfo.clearAllTextController();
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>

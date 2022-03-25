@@ -471,21 +471,38 @@ class ChatPageState extends State<ChatPage> {
 
     return Future.value(false);
   }
-
+bool isloading=true;
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
         },icon: Icon(Icons.chevron_left_outlined)),
         centerTitle: true,
+        title: Text('${LanguageTr.lg[authProvider.language]["Customer Service"]}'
+            ),
       ),
-      body:WebView(
-        initialUrl: "https://caterme.azurewebsites.net/chat",
+      body:Stack(
+        children: [
+          WebView(
+          initialUrl: "https://caterme.azurewebsites.net/chat",
 
-        javascriptMode: JavascriptMode.unrestricted,
-      )
+
+          javascriptMode: JavascriptMode.unrestricted,
+          onPageFinished: (finish){
+            setState(() {
+              isloading=false;
+            });
+          },
+
+
+        ),
+
+    Visibility(visible: isloading,
+      child: Center(child: CircularProgressIndicator(),),)])
       // body: WillPopScope(
       //   child: Stack(
       //     children: <Widget>[

@@ -4,11 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:skeleton_loader/skeleton_loader.dart';
 
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 
-import 'package:skeleton_loader/skeleton_loader.dart';
+
 class AddOnCards extends StatelessWidget {
   Package addOn;
 
@@ -75,7 +76,7 @@ class AddOnCards extends StatelessWidget {
                         highlightColor: Color(0xFF3F5521),
                         baseColor: Color(0xffffffff),
                         direction: SkeletonDirection.ltr,
-                        childAspectRatio: 1.36,
+                        childAspectRatio: 1.37,
                       ),
                     imageUrl: this.addOn.image
 
