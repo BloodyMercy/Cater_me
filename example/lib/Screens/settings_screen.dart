@@ -219,26 +219,27 @@ class _TABBarState extends State<TABBar> {
                                 width: 100,
                                 height: 100,
                                 placeholder: (context, url) =>
-                                    SkeletonGridLoader(
-
-                                      builder: Container(
-                                          width: 100,
-                                          height: 100,
-                                        color: Color(0xFF3F5521),
-                                        child: GridTile(
-                                          
-                                          child:ClipOval(child: Container(height: 100,width: 
-                                          100,),)
-                                        ),
-                                      ),
-                                      items: 1,
-                                      itemsPerRow: 1,
-                                      period: Duration(seconds: 1),
-                                      highlightColor: Color(0xFF3F5521),
-                                      baseColor: Color(0xffffffff),
-                                      direction: SkeletonDirection.ltr,
-                                      childAspectRatio: 1,
-                                    ),
+                                CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),)
+,                                    // SkeletonGridLoader(
+                                    //
+                                    //   builder: Container(
+                                    //       width: 100,
+                                    //       height: 100,
+                                    //     color: Color(0xFF3F5521),
+                                    //     child: GridTile(
+                                    //
+                                    //       child:ClipOval(child: Container(height: 100,width:
+                                    //       100,),)
+                                    //     ),
+                                    //   ),
+                                    //   items: 1,
+                                    //   itemsPerRow: 1,
+                                    //   period: Duration(seconds: 1),
+                                    //   highlightColor: Color(0xFF3F5521),
+                                    //   baseColor: Color(0xffffffff),
+                                    //   direction: SkeletonDirection.ltr,
+                                    //   childAspectRatio: 1,
+                                    // ),
                                 imageUrl:
                                 personalInfo.imageUrl,
 

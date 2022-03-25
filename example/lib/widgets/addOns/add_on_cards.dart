@@ -46,38 +46,40 @@ class AddOnCards extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.1,
                     width: double.infinity,
                   placeholder: (context, url) =>
-                      SkeletonGridLoader(
 
-                        builder: Container(
-
-                          height: 500,
-                          width: 200,
-                          child: Card(
-
-                            color: Color(0xFF3F5521),
-                            child: GridTile(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    decoration: BoxDecoration(
-
-                                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                                        color: Color(0xFF3F5521)),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        items: 1,
-                        itemsPerRow: 1,
-                        period: Duration(seconds: 1),
-                        highlightColor: Color(0xFF3F5521),
-                        baseColor: Color(0xffffffff),
-                        direction: SkeletonDirection.ltr,
-                        childAspectRatio:MediaQuery.of(context).size.aspectRatio*4,
-                      ),
+                  CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),),
+                  //       SkeletonGridLoader(
+                //
+                //         builder: Container(
+                //
+                //           height: 500,
+                //           width: 200,
+                //           child: Card(
+                //
+                //             color: Color(0xFF3F5521),
+                //             child: GridTile(
+                //               child: Column(
+                //                 mainAxisAlignment: MainAxisAlignment.center,
+                //                 children: <Widget>[
+                //                   Container(
+                //                     decoration: BoxDecoration(
+                //
+                //                         borderRadius: BorderRadius.all(Radius.circular(15)),
+                //                         color: Color(0xFF3F5521)),
+                //                   )
+                //                 ],
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //         items: 1,
+                //         itemsPerRow: 1,
+                //         period: Duration(seconds: 1),
+                //         highlightColor: Color(0xFF3F5521),
+                //         baseColor: Color(0xffffffff),
+                //         direction: SkeletonDirection.ltr,
+                //         childAspectRatio:MediaQuery.of(context).size.aspectRatio*4,
+                //       ),
                     imageUrl: this.addOn.image
 
 
@@ -99,7 +101,7 @@ class AddOnCards extends StatelessWidget {
                 //     );
                 //   }),
                 //
-                // ),
+                ),
               ),
               Expanded(
                 child: Padding(

@@ -104,40 +104,41 @@ class _seeAllPackages extends State<seeAllPackages> {
                           height: screenHeight * 0.175,
                           width: _width * 0.8,
                           placeholder: (context, url) =>
-                              SkeletonGridLoader(
-
-                                builder: Container(
-                                    height: screenHeight * 0.175,
-                                    width: _width * 0.8,
-                                  child: Card(
-
-                                    color: Color(0xFF3F5521),
-                                    child: GridTile(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Container(
-                                            decoration: BoxDecoration(
-
-                                                borderRadius: BorderRadius.all(Radius.circular(15)),
-                                                color: Color(0xFF3F5521)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                items: 1,
-                                itemsPerRow: 1,
-                                period: Duration(seconds: 1),
-                                highlightColor: Color(0xFF3F5521),
-                                baseColor: Color(0xffffffff),
-                                direction: SkeletonDirection.ltr,
-                                childAspectRatio: 2.8,
-                              ),
+                     CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),),
+                      //         SkeletonGridLoader(
+                      //
+                      //           builder: Container(
+                      //               height: screenHeight * 0.175,
+                      //               width: _width * 0.8,
+                      //             child: Card(
+                      //
+                      //               color: Color(0xFF3F5521),
+                      //               child: GridTile(
+                      //                 child: Column(
+                      //                   mainAxisAlignment: MainAxisAlignment.center,
+                      //                   children: <Widget>[
+                      //                     Container(
+                      //                       decoration: BoxDecoration(
+                      //
+                      //                           borderRadius: BorderRadius.all(Radius.circular(15)),
+                      //                           color: Color(0xFF3F5521)),
+                      //                     )
+                      //                   ],
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //           ),
+                      //           items: 1,
+                      //           itemsPerRow: 1,
+                      //           period: Duration(seconds: 1),
+                      //           highlightColor: Color(0xFF3F5521),
+                      //           baseColor: Color(0xffffffff),
+                      //           direction: SkeletonDirection.ltr,
+                      //           childAspectRatio: 2.8,
+                      //         ),
                           imageUrl: pack.seeallpackages[index].image
-
-
+                      //
+                      //
                       ),
 
 

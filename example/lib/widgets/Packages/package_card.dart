@@ -61,38 +61,39 @@ class _PackageCardState extends State<PackageCard> {
           width: mediaQuery.size.width * 0.97,
           //width: 200,
           placeholder: (context, url) =>
-              SkeletonGridLoader(
-
-                builder: Container(
-
-                  height: 100,
-                  width: 200,
-                  child: Card(
-
-                    color: Color(0xFF3F5521),
-                    child: GridTile(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-
-                                borderRadius: BorderRadius.all(Radius.circular(15)),
-                                color: Color(0xFF3F5521)),
-                          )
-                        ],
-                       ),
-                    ),
-                  ),
-                ),
-                items: 1,
-                itemsPerRow: 1,
-                period: Duration(seconds: 1),
-                highlightColor: Color(0xFF3F5521),
-                baseColor: Color(0xffffffff),
-                direction: SkeletonDirection.ltr,
-                childAspectRatio: 1.6,
-              ),
+          CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),),
+              // SkeletonGridLoader(
+              //
+              //   builder: Container(
+              //
+              //     height: 100,
+              //     width: 200,
+              //     child: Card(
+              //
+              //       color: Color(0xFF3F5521),
+              //       child: GridTile(
+              //         child: Column(
+              //           mainAxisAlignment: MainAxisAlignment.center,
+              //           children: <Widget>[
+              //             Container(
+              //               decoration: BoxDecoration(
+              //
+              //                   borderRadius: BorderRadius.all(Radius.circular(15)),
+              //                   color: Color(0xFF3F5521)),
+              //             )
+              //           ],
+              //          ),
+              //       ),
+              //     ),
+              //   ),
+              //   items: 1,
+              //   itemsPerRow: 1,
+              //   period: Duration(seconds: 1),
+              //   highlightColor: Color(0xFF3F5521),
+              //   baseColor: Color(0xffffffff),
+              //   direction: SkeletonDirection.ltr,
+              //   childAspectRatio: 1.6,
+              // ),
           imageUrl:                 widget.packages.image,
 
 
