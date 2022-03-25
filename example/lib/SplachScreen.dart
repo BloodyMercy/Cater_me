@@ -22,9 +22,11 @@ getLanguage() async{
   final user=Provider.of<UserProvider>(context,listen:false);
   await user.getLanguage();
 }
+AssetImage image;
   @override
   void initState() {
     super.initState();
+    image=AssetImage("images/animation/CaterMeUpdatedGif.gif");
     getLanguage();
     // _controller = AnimationController(
     //   duration: Duration(seconds: (1)),
@@ -33,6 +35,8 @@ getLanguage() async{
     chechkdata();
   }
   bool lg=true;
+
+
 chechkdata() async{
     SharedPreferences sh=await SharedPreferences.getInstance();
 
@@ -47,6 +51,7 @@ chechkdata() async{
     Timer(
       Duration(milliseconds: 7000),
       () { if (lg){
+
         Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (BuildContext context) =>
@@ -69,11 +74,20 @@ chechkdata() async{
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-          child: Image.asset(
-        "images/animation/CaterMeUpdatedGif.gif",
+          child:   Image(
+            image:image,
+
+
          height: MediaQuery.of(context).size.height * 0.60,
          width: MediaQuery.of(context).size.width * 0.7,
       )),
     );
   }
+
+@override
+void dispose() {
+  image.evict();
+  super.dispose();
+}
+
 }
