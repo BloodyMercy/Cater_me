@@ -653,7 +653,7 @@ bool isCheckedcolor =false ;
                                 });
                               }
                               else if(
-                            true
+                              authProvider.email!=""&&authProvider.name!=""&&authProvider.password!=""&&authProvider.confirmpassword!=""&&authProvider.phoneNumber!=""
                               )
                                 {
 
@@ -661,37 +661,18 @@ bool isCheckedcolor =false ;
                                     context,
                                     MaterialPageRoute(builder: (context) => PhoneVerification(_dialCode+authProvider.phoneNumber.text.toString(),_dialCode,image)),
                                   );
-                                }
-
-
-                                else {
-                                if (await authProvider.signUp(
-                                    image, address.evendatecontroller.text)) {
-                                  setState(() {
-                                    _loading = false;
-                                  });
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SplashScreen(),
-                                    ),
-                                          (Route<dynamic> route) => false
-                                  );
-                                } else {
-                                  setState(() {
-                                    _loading = false;
-                                  });
-                                  _scaffKey.currentState.showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "${authProvider.messageSignUp.toString()}"),
-                                    ),
-                                  );
-                                  authProvider.messageSignUp = "";
-                                }
+                                }else{
+                                _scaffKey.currentState.showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        "all fields required"),
+                                  ),
+                                );
                               }
-                            },
-                            child: Text(
+
+                              }
+,
+                      child: Text(
                               '${LanguageTr.lg[authProvider.language]["SignUp"]}',
                               style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
