@@ -592,9 +592,9 @@ class _HomePageState extends State<HomePage>
                                 ,style:Theme.of(context)
                                   .textTheme
                                   .headline2,),
-                                SizedBox(width: 12,),
 
-                                Icon(FontAwesomeIcons.smile,color: colorCustom,),
+
+
                             ]),
                             SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                             Row(
