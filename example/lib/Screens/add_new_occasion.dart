@@ -96,8 +96,8 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                     fontWeight: FontWeight.normal,
                                     fontFamily: 'BerlinSansFB'),
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        left: mediaQuery.size.width * 0.04),
+                                    // contentPadding: EdgeInsets.only(
+                                    //     left: mediaQuery.size.width * 0.04),
                                     alignLabelWithHint: true,
                                     labelStyle: TextStyle(
                                         fontSize:
