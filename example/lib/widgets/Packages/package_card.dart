@@ -60,8 +60,6 @@ class _PackageCardState extends State<PackageCard> {
         CachedNetworkImage(
           width: mediaQuery.size.width * 0.97,
           //width: 200,
-          placeholder: (context, url) =>
-          CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),),
               // SkeletonGridLoader(
               //
               //   builder: Container(
