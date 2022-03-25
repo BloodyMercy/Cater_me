@@ -51,7 +51,7 @@ class AddOnCards extends StatelessWidget {
                         builder: Container(
 
                           height: 500,
-                          width: 500,
+                          width: 200,
                           child: Card(
 
                             color: Color(0xFF3F5521),
