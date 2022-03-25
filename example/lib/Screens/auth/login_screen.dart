@@ -125,6 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   alignLabelWithHint: true,
                                   labelStyle: TextStyle(
                                       fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                      textBaseline: TextBaseline.alphabetic,
                                       //I believe the size difference here is 6.0 to account padding
                                       color: focusNode.hasFocus
                                           ? Color(0xFF3F5521)
