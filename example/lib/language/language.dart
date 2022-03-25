@@ -261,6 +261,7 @@ class LanguageTr {
       "Total: ":"المجموع: ",
       "Customer Service":"خدمة العملاء",
       "Follow Us":"تابعنا",
+      "Wrong password":"كلمة مرور خاطئة",
 
 
 
@@ -523,6 +524,7 @@ class LanguageTr {
       "Total: ":"Total: ",
       "Customer Service":"Customer Service",
       "Follow Us":"Follow Us",
+      "Wrong password":"Wrong password",
 
 
 

@@ -278,6 +278,7 @@ class _HomePageState extends State<HomePage>
                             Center(child: PackagesCard()),
                             // SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
+                              SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                               authProvider.status == Status.Unauthenticated
                                   ? language == "en"
                                       ? SlideTransition(
