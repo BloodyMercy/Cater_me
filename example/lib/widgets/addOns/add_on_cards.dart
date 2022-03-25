@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 
+import 'package:skeleton_loader/skeleton_loader.dart';
 class AddOnCards extends StatelessWidget {
   Package addOn;
 
@@ -31,7 +32,7 @@ class AddOnCards extends StatelessWidget {
           ),
         ),
         child: Container(
-          height: mediaQuery.size.height * 0.20,
+          height: mediaQuery.size.height * 0.24,
           width: MediaQuery.of(context).size.width * 0.4,
           child: Column(
             children: [
@@ -44,7 +45,40 @@ class AddOnCards extends StatelessWidget {
                     height: 100,
                     width: 200,
                   placeholder: (context, url) =>
-                   CircularProgressIndicator(),
+                      Expanded(
+                        child: SkeletonGridLoader(
+
+                          builder: Container(
+
+                            height: 100,
+                            width: 200,
+                            child: Card(
+
+                              color: Color(0xFF3F5521),
+                              child: GridTile(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+
+                                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                                          color: Color(0xFF3F5521)),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          items: 1,
+                          itemsPerRow: 1,
+                          period: Duration(seconds: 1),
+                          highlightColor: Color(0xFF3F5521),
+                          baseColor: Color(0xffffffff),
+                          direction: SkeletonDirection.ltr,
+                          childAspectRatio: 1.33,
+                        ),
+                      ),
                     imageUrl: this.addOn.image
 
 

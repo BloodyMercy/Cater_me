@@ -45,7 +45,7 @@ dependencies:
   syncfusion_flutter_calendar:
   path_provider:
   path:
-
+  skeleton_loader: ^2.0.0+4
   http: any
   cached_network_image:
   provider:
