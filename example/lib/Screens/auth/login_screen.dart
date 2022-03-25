@@ -28,8 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool loading = false;
 
-
-
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -50,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String validatePass(value) {
     if (value.trim().isEmpty) {
-
       return "this field is required";
     }
     if (value.trim().length < 6) {
@@ -69,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
     final authProvider = Provider.of<UserProvider>(context, listen: true);
-  //  final authProvider = Provider.of<UserProvider>(context, listen: true);
+    //  final authProvider = Provider.of<UserProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -153,13 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                         color: Color(0xFF3F5521),
                                       ))),
                               controller: authProvider.email,
-
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
-                              keyboardType: TextInputType.emailAddress
-                          ),
-
-
+                              keyboardType: TextInputType.emailAddress),
                           SizedBox(
                             height: screenHeight * 0.015,
                           ),
@@ -181,8 +174,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                       passObscure = !passObscure;
                                     });
                                   },
-
-
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
@@ -199,7 +190,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 contentPadding: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width *
                                         0.01),
-
                                 alignLabelWithHint: true,
                                 labelStyle: TextStyle(
                                     fontSize: focusNode.hasFocus ? 18 : 16.0,
@@ -207,7 +197,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText:  '${LanguageTr.lg[authProvider.language]["Password"]}',
+                                labelText:
+                                    '${LanguageTr.lg[authProvider.language]["Password"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -249,16 +240,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             textAlign: TextAlign.end,
                             overflow: TextOverflow.ellipsis,
                             text: TextSpan(
-                              text:   '${LanguageTr.lg[authProvider.language]["Forgot Password"]}',
+                              text:
+                                  '${LanguageTr.lg[authProvider.language]["Forgot Password"]}',
                               style: Theme.of(context).textTheme.headline3,
                             ),
                           ),
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ResetPasswordScreen()));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ResetPasswordScreen(),
+                              ),
+                            );
                           },
                         ),
                       ],
@@ -279,24 +273,22 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               if (formkey.currentState.validate() == false) {
                                 // ignore: avoid_print
-                             //   print('Not Validated');
+                                //   print('Not Validated');
                                 setState(() {
                                   loading = false;
                                 });
                                 // reset!=null?
                               } else {
                                 if (await authProvider.LogIn()) {
-                                  authProvider.status=Status.Authenticated;
-                               //   print("logged");
+                                  authProvider.status = Status.Authenticated;
+                                  //   print("logged");
                                   setState(() {
                                     loading = false;
                                   });
 
-
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              SplashScreen()),
+                                          builder: (context) => SplashScreen()),
                                       (Route<dynamic> route) => false);
                                   //authProvider.status=Status.Authenticated;
                                   setState(() {});
@@ -307,9 +299,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   });
 
                                   MotionToast.error(
-                                      title:  "Cater me",
-                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                      description: "${authProvider.messagelogin.toString()}"
+                                    title: "Cater me",
+                                    titleStyle:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                    description:
+                                        '${LanguageTr.lg[authProvider.language][authProvider.messagelogin.toString()]}',
                                     //  animationType: ANIMATION.FROM_LEFT,
                                   ).show(context);
                                   // _scaffoldKey.currentState.showSnackBar(
@@ -322,7 +316,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               }
                             },
-                            child: Text( '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                            child: Text(
+                                '${LanguageTr.lg[authProvider.language]["Log In"]}',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
