@@ -43,15 +43,15 @@ class AddOnCards extends StatelessWidget {
                 ),
                 elevation: 4,
                 child: CachedNetworkImage(
-                    height: 100,
-                    width: 200,
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: double.infinity,
                   placeholder: (context, url) =>
                       SkeletonGridLoader(
 
                         builder: Container(
 
-                          height: 100,
-                          width: 200,
+                          height: 500,
+                          width: 500,
                           child: Card(
 
                             color: Color(0xFF3F5521),
