@@ -107,7 +107,8 @@ class _TABBarState extends State<TABBar> {
     var _mediaQueryText = MediaQuery.of(context).size.height;
     var _mediaWidth = MediaQuery.of(context).size.width;
     final mediaQuery = MediaQuery.of(context);
-
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
@@ -121,151 +122,263 @@ class _TABBarState extends State<TABBar> {
               children: [
                 loadingImage
                     ? Center(child: CircularProgressIndicator())
-                    : personalInfo.status == Status.Authenticated
-                        ? Center(
-                            child: GestureDetector(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 4.0),
-                                child: personalInfo.loading
-                                    ? Center(
-                                        child: CircularProgressIndicator(),
-                                      )
-                                    : Center(
-                                        child: CircleAvatar(
-                                            radius: (52),
-                                            backgroundColor: Colors.white,
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              child: Image.network(
-                                                personalInfo.imageUrl,
-                                                errorBuilder:
-                                                    (BuildContext context,
-                                                        Object exception,
-                                                        StackTrace stackTrace) {
-                                                  return Icon(
-                                                      Icons.do_not_disturb,
-                                                      color: Colors.red);
-                                                },
-                                                loadingBuilder:
-                                                    (BuildContext context,
-                                                        Widget child,
-                                                        ImageChunkEvent
-                                                            loadingProgress) {
-                                                  if (loadingProgress == null)
-                                                    return child;
-                                                  return Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            25.0),
-                                                    child: Center(
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        value: loadingProgress
-                                                                    .expectedTotalBytes !=
-                                                                null
-                                                            ? loadingProgress
-                                                                    .cumulativeBytesLoaded /
-                                                                loadingProgress
-                                                                    .expectedTotalBytes
-                                                            : null,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                fit: BoxFit.fill,
-                                                width: 100,
-                                                height: 100,
-                                              ),
-                                            ))),
-                              ),
-                              onTap: () {
-                                showModalBottomSheet(
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    context: context,
-                                    builder: (context) {
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          ListTile(
-                                            leading: const Icon(
-                                              Icons.camera,
-                                              color:
-                                                  Color.fromRGBO(63, 85, 33, 1),
-                                            ),
-                                            title: Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Camera"]}',
-                                              style: TextStyle(
-                                                fontFamily: 'BerlinSansFB',
-                                                fontSize: 14,
-                                                color: Color.fromRGBO(
-                                                    63, 85, 33, 1),
-                                              ),
-                                            ),
-                                            onTap: () async {
-                                              Navigator.pop(context);
-                                              setState(() {
-                                                loadingImage = true;
-                                              });
-                                              await PickImage(
-                                                  ImageSource.camera);
-                                              await personalInfo
-                                                  .updateProfile(image);
-                                              setState(() {
-                                                loadingImage = false;
-                                              });
-                                            },
-                                          ),
-                                          ListTile(
-                                            leading: const Icon(
-                                              Icons.image,
-                                              color:
-                                                  Color.fromRGBO(63, 85, 33, 1),
-                                            ),
-                                            title: Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Gallery"]}',
-                                              style: TextStyle(
-                                                fontFamily: 'BerlinSansFB',
-                                                fontSize: 14,
-                                                color: Color.fromRGBO(
-                                                    63, 85, 33, 1),
-                                              ),
-                                            ),
-                                            onTap: () async {
-                                              Navigator.pop(context);
-                                              setState(() {
-                                                loadingImage = true;
-                                              });
-                                              await PickImage(
-                                                  ImageSource.gallery);
-                                              await personalInfo
-                                                  .updateProfile(image);
-                                              setState(() {
-                                                loadingImage = false;
-                                              });
-                                              //    personalInfo.notifyListeners();
-                                              // if (a != "") {
-                                              //   setState(() {
-                                              //     imageprof = a;
-                                              //   });
-                                              // }
+                    : personalInfo.status == Status.Authenticated?
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        showModalBottomSheet(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20))),
+                            context: context,
+                            builder: (context) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    leading: const Icon(
+                                      Icons.camera,
+                                      color:
+                                      Color.fromRGBO(63, 85, 33, 1),
+                                    ),
+                                    title: Text(
+                                      '${LanguageTr.lg[personalInfo.language]["Camera"]}',
+                                      style: TextStyle(
+                                        fontFamily: 'BerlinSansFB',
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(
+                                            63, 85, 33, 1),
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      Navigator.pop(context);
+                                      setState(() {
+                                        loadingImage = true;
+                                      });
+                                      await PickImage(
+                                          ImageSource.camera);
+                                      await personalInfo
+                                          .updateProfile(image);
+                                      setState(() {
+                                        loadingImage = false;
+                                      });
+                                    },
+                                  ),
+                                  ListTile(
+                                    leading: const Icon(
+                                      Icons.image,
+                                      color:
+                                      Color.fromRGBO(63, 85, 33, 1),
+                                    ),
+                                    title: Text(
+                                      '${LanguageTr.lg[personalInfo.language]["Gallery"]}',
+                                      style: TextStyle(
+                                        fontFamily: 'BerlinSansFB',
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(
+                                            63, 85, 33, 1),
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      Navigator.pop(context);
+                                      setState(() {
+                                        loadingImage = true;
+                                      });
+                                      await PickImage(
+                                          ImageSource.gallery);
+                                      await personalInfo
+                                          .updateProfile(image);
+                                      setState(() {
+                                        loadingImage = false;
+                                      });
+                                      //    personalInfo.notifyListeners();
+                                      // if (a != "") {
+                                      //   setState(() {
+                                      //     imageprof = a;
+                                      //   });
+                                      // }
 
-                                              // personalInfo.loading=false;
-                                            },
-                                          ),
-                                        ],
-                                      );
-                                    });
+                                      // personalInfo.loading=false;
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(top: height*0.05,bottom: height*0.03, left: width*0.1,right: width*0.1),
+                        child: ClipOval(
+                          child: Container(
+                            color: Colors.white,
+                            child: Image.network(
+                              personalInfo.imageUrl,
+                              errorBuilder:
+                                  (BuildContext context,
+                                  Object exception,
+                                  StackTrace stackTrace) {
+                                return Icon(
+                                    Icons.do_not_disturb,
+                                    color: Colors.red);
                               },
+                              loadingBuilder:
+                                  (BuildContext context,
+                                  Widget child,
+                                  ImageChunkEvent
+                                  loadingProgress) {
+                                if (loadingProgress == null)
+                                  return child;
+                                return Padding(
+                                  padding:
+                                  const EdgeInsets.all(
+                                      25.0),
+                                  child: Center(
+                                    child:
+                                    CircularProgressIndicator(
+                                      value: loadingProgress
+                                          .expectedTotalBytes !=
+                                          null
+                                          ? loadingProgress
+                                          .cumulativeBytesLoaded /
+                                          loadingProgress
+                                              .expectedTotalBytes
+                                          : null,
+                                    ),
+                                  ),
+                                );
+                              },
+                              fit: BoxFit.fill,
+                              width: 100,
+                              height: 100,
                             ),
-                          )
-                        : Image.asset(
-                            "images/CaterMe.png",
-                            height: 100,
                           ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                          personalInfo.name.text,
+                            style: TextStyle(
+                               // color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                               // fontFamily: 'Geomanist',
+                                fontSize: 19),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text.rich(
+                            TextSpan(
+                              text: personalInfo.phoneNumber.text,
+                              style: TextStyle(
+                                //  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                 // fontFamily: 'Geomanist',
+                                  fontSize: 17),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return CustomDialog(
+                                      title:
+                                      '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
+                                      description: "",
+                                      oneOrtwo: true,
+                                      button2: ElevatedButton(
+                                        onPressed: () async {
+                                          final SharedPreferences
+                                          sharedPreferences =
+                                          await SharedPreferences
+                                              .getInstance();
+                                          final occa = Provider.of<
+                                              OccasionProvider>(
+                                              context,
+                                              listen: false);
+                                          occa.all = [];
+                                          personalInfo.status =
+                                              Status.Unauthenticated;
+                                          // sharedPreferences.remove('Email');
+                                          //  sharedPreferences.remove('Password');
+                                          personalInfo
+                                              .clearAllTextController();
+                                          bool a = sharedPreferences
+                                              .getBool("startintro");
+                                          bool aw = sharedPreferences
+                                              .getBool("wlkdone")??false;
+                                          String l = sharedPreferences
+                                              .getString("locale")??"en";
+                                          sharedPreferences.clear();
+                                          sharedPreferences.setBool(
+                                              "startintro", a);
+                                          sharedPreferences.setBool(
+                                              "wlkdone", aw);
+                                          sharedPreferences.setString("locale", l);
+
+
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SplashScreen(),
+                                              ),
+                                                  (route) => false);
+                                        },
+                                        child: Text(
+                                          '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+                                          style: TextStyle(
+                                              fontFamily: 'BerlinSansFB'),
+                                        ),
+                                      ),
+                                      button1: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text(
+                                            '${LanguageTr.lg[personalInfo.language]["No"]}',
+                                            style: TextStyle(
+                                                fontFamily:
+                                                'BerlinSansFB')),
+                                      ),
+                                    );
+                                  });
+                            },
+                            child: Text(
+                              '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Geomanist',
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromRGBO(63, 85, 33, 1),
+                              side: BorderSide(
+                                color: Color.fromRGBO(63, 85, 33, 1),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(1),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ):Image.asset(
+      "images/CaterMe.png",
+      height: 100,
+    ),
+
                 DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -277,19 +390,7 @@ class _TABBarState extends State<TABBar> {
                   height: screenHeight * 0.01,
                 ),
                 personalInfo.status == Status.Authenticated
-                    ? Column(
-                        children: [
-                          Text(
-                            personalInfo.name.text,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: screenHeight * 0.01,
-                          ),
-                          Text(personalInfo.phoneNumber.text,
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      )
+                    ? Container()
                     : ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(
@@ -1255,200 +1356,7 @@ class _TABBarState extends State<TABBar> {
                           ),
                         ),
                       ),
-                      personalInfo.status == Status.Authenticated
-                          ? Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: GestureDetector(
-                                onTap:(){
-    showDialog(
-    context: context,
-    builder: (BuildContext context) {
-    return CustomDialog(
-    title:
-    '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
-    description: "",
-    oneOrtwo: true,
-    button2: ElevatedButton(
-    onPressed: () async {
-    final SharedPreferences
-    sharedPreferences =
-    await SharedPreferences
-        .getInstance();
-    final occa = Provider.of<
-    OccasionProvider>(
-    context,
-    listen: false);
-    occa.all = [];
-    personalInfo.status =
-    Status.Unauthenticated;
-    // sharedPreferences.remove('Email');
-    //  sharedPreferences.remove('Password');
-    personalInfo
-        .clearAllTextController();
-    bool a = sharedPreferences
-        .getBool("startintro");
-    bool aw = sharedPreferences
-        .getBool("wlkdone")??false;
-    String l = sharedPreferences
-        .getString("locale")??"en";
-    sharedPreferences.clear();
-    sharedPreferences.setBool(
-    "startintro", a);
-    sharedPreferences.setBool(
-    "wlkdone", aw);
-    sharedPreferences.setString("locale", l);
 
-
-    Navigator.of(context)
-        .pushAndRemoveUntil(
-    MaterialPageRoute(
-    builder: (context) =>
-    SplashScreen(),
-    ),
-    (route) => false);
-    },
-    child: Text(
-    '${LanguageTr.lg[personalInfo.language]["Logout"]}',
-    style: TextStyle(
-    fontFamily: 'BerlinSansFB'),
-    ),
-    ),
-    button1: ElevatedButton(
-    onPressed: () {
-    Navigator.of(context).pop();
-    },
-    child: Text(
-    '${LanguageTr.lg[personalInfo.language]["No"]}',
-    style: TextStyle(
-    fontFamily:
-    'BerlinSansFB')),
-    ),
-    );
-    });
-
-                                },
-                                child: Card(
-                                  color: const Color.fromARGB(206, 255, 255, 255),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return CustomDialog(
-                                              title:
-                                                  '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
-                                              description: "",
-                                              oneOrtwo: true,
-                                              button2: ElevatedButton(
-                                                onPressed: () async {
-                                                  final SharedPreferences
-                                                      sharedPreferences =
-                                                      await SharedPreferences
-                                                          .getInstance();
-                                                  final occa = Provider.of<
-                                                          OccasionProvider>(
-                                                      context,
-                                                      listen: false);
-                                                  occa.all = [];
-                                                  personalInfo.status =
-                                                      Status.Unauthenticated;
-                                                  // sharedPreferences.remove('Email');
-                                                  //  sharedPreferences.remove('Password');
-                                                  personalInfo
-                                                      .clearAllTextController();
-                                                  bool a = sharedPreferences
-                                                      .getBool("startintro");
-                                                  bool aw = sharedPreferences
-                                                      .getBool("wlkdone")??false;
-                                                  String l = sharedPreferences
-                                                      .getString("locale")??"en";
-                                                  sharedPreferences.clear();
-                                                  sharedPreferences.setBool(
-                                                      "startintro", a);
-                                                  sharedPreferences.setBool(
-                                                      "wlkdone", aw);
-                                                  sharedPreferences.setString("locale", l);
-
-
-                                                  Navigator.of(context)
-                                                      .pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                SplashScreen(),
-                                                          ),
-                                                          (route) => false);
-                                                },
-                                                child: Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["Logout"]}',
-                                                  style: TextStyle(
-                                                      fontFamily: 'BerlinSansFB'),
-                                                ),
-                                              ),
-                                              button1: ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["No"]}',
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            'BerlinSansFB')),
-                                              ),
-                                            );
-                                          });
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              SizedBox(
-                                                width:
-                                                    mediaQuery.size.width * 0.03,
-                                              ),
-                                              const Icon(
-                                                FontAwesomeIcons.signOutAlt,
-                                                size: 20, //Icon Size
-                                                color: Color(
-                                                    0xFF3F5521), //Color Of Icon
-                                              ),
-                                              SizedBox(
-                                                width:
-                                                    mediaQuery.size.width * 0.05,
-                                              ),
-                                              Text(
-                                                '${LanguageTr.lg[personalInfo.language]["Logout"]}',
-                                                style: TextStyle(
-                                                    color: Color(0xFF3F5521),
-                                                    fontSize: 20,
-                                                    fontFamily: 'BerlinSansFB',
-                                                    fontWeight:
-                                                        FontWeight.normal),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(children: [
-                                            const Icon(
-                                              Icons.chevron_right,
-                                              color: Color(0xFF3F5521),
-                                            ),
-                                            SizedBox(
-                                              width: mediaQuery.size.width * 0.03,
-                                            ),
-                                          ]),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : Container(),
                       // IconButton(
                       //     icon: Icon(Icons.add_circle_outlined),
                       //     onPressed: () {
