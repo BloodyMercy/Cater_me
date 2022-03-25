@@ -5,11 +5,13 @@ import 'package:CaterMe/Services/HomePage/PackageService.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
 import 'package:CaterMe/model/packages.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:skeleton_loader/skeleton_loader.dart';
 
 import '../../Screens/auth/login_screen.dart';
 import '../../language/language.dart';
@@ -101,6 +103,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
         Provider.of<OrderCaterProvider>(context, listen: true);
     final pack = Provider.of<UserProvider>(context, listen: true);
     var qPortrait = MediaQuery.of(context).orientation;
+    var width = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
@@ -197,7 +200,47 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                 width: double.maxFinite,
                 child: FittedBox(
                   fit: BoxFit.contain,
-                  child: Image.network(widget.food.image),
+                  child:
+                  CachedNetworkImage(
+                      height: screenHeight * 0.175,
+                      width: width * 0.8,
+                      placeholder: (context, url) =>
+                          SkeletonGridLoader(
+
+                            builder: Container(
+                              height: screenHeight * 0.175,
+                              width: width   * 0.8,
+                              child: Card(
+
+                                color: Color(0xFF3F5521),
+                                child: GridTile(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        decoration: BoxDecoration(
+
+                                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                                            color: Color(0xFF3F5521)),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            items: 1,
+                            itemsPerRow: 1,
+                            period: Duration(seconds: 1),
+                            highlightColor: Color(0xFF3F5521),
+                            baseColor: Color(0xffffffff),
+                            direction: SkeletonDirection.ltr,
+                            childAspectRatio: 2.8,
+                          ),
+                      imageUrl:widget.food.image
+
+
+                  ),
+
                 ),
               ),
             ),
