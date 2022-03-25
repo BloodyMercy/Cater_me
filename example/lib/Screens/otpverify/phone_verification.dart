@@ -21,13 +21,16 @@ import '../../language/language.dart';
 
 class PhoneVerification extends StatefulWidget {
 
+
   var _contact;
   String dialcode;
   File image;
  // const PhoneVerification({Key? key}) : super(key: key);
 PhoneVerification(this._contact ,this.dialcode,this.image);
+
   @override
   _PhoneVerificationState createState() => _PhoneVerificationState();
+
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
@@ -38,10 +41,12 @@ class _PhoneVerificationState extends State<PhoneVerification> {
 String errorMessage = '';
 final FirebaseAuth _auth = FirebaseAuth.instance;
  Timer _timer;
+
 @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   //  widget._contact = '${ModalRoute.of(context)!.settings.arguments as String}';
     generateOtp(widget._contact);
   }
@@ -238,6 +243,7 @@ void showAlertDialog(BuildContext context, String message) {
             ),
 
                  Center(
+
                    child: VerificationCode(
                            itemSize: 40,
 
@@ -303,63 +309,6 @@ void showAlertDialog(BuildContext context, String message) {
                                  authProvider.messageSignUp = "";
                                }
 
-                           //
-                           // await    authProvider.signUp(widget.dialcode).then((value) {
-                           //       if(value)
-                           //         {
-                           //           authProvider.clearController();
-                           //           work.statusmon.text="closed";
-                           //           work.statustue.text="closed";
-                           //           work.statuswed.text="closed";
-                           //           work.statusfri.text="closed";
-                           //           work.statusthu.text="closed";
-                           //           work.statussat.text="closed";
-                           //           work.statussun.text="closed";
-                           //           work.openhourmon.text="0000-00-00 00:00:00.000";
-                           //           work.openhourthu.text="0000-00-00 00:00:00.000";
-                           //           work.openhourtue.text="0000-00-00 00:00:00.000";
-                           //           work.openhourwed.text="0000-00-00 00:00:00.000";
-                           //           work.openhourfri.text="0000-00-00 00:00:00.000";
-                           //           work.openhoursat.text="0000-00-00 00:00:00.000";
-                           //           work.openhoursun.text="0000-00-00 00:00:00.000";
-                           //          work.closehourmon.text="0000-00-00 00:00:00.000";
-                           //           work.closehourthu.text="0000-00-00 00:00:00.000";
-                           //           work.closehourtue.text="0000-00-00 00:00:00.000";
-                           //           work.closehourwed.text="0000-00-00 00:00:00.000";
-                           //           work.closehourfri.text="0000-00-00 00:00:00.000";
-                           //           work.closehoursat.text="0000-00-00 00:00:00.000";
-                           //           work.closehoursun.text="0000-00-00 00:00:00.000";
-                           //
-                           //           work.setWork();
-                           //           changeScreenUntilsignup(context);
-                           //
-                           //
-                           //
-                           //         }
-                           //
-                           //
-                           //         else
-                           //           {
-                           //             _scaffoldKey.currentState!.showSnackBar(
-                           //                 SnackBar(content: Row(
-                           //                   children: [
-                           //                     Text("${keysLang[_user.language]!["error try again"]} ")
-                           //                   ],
-                           //                 ))
-                           //
-                           //             );
-                           //             print("error login");
-                           //             return;
-                           //           }
-                           //
-
-
-
-                          //     });
-
-
-
-                             //  Navigator.pushReplacementNamed(context, '/homeScreen');
                              } catch (e) {
                                {
                                  _scaffoldKey.currentState.showSnackBar(

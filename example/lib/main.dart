@@ -201,6 +201,7 @@ class _MyAppState extends State<MyApp> {
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
+
           ],
           supportedLocales: [
             Locale("en", "US"), // OR Locale('ar', 'AE') OR Other RTL locales
