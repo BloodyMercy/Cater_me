@@ -262,7 +262,7 @@ class LanguageTr {
       "Customer Service":"خدمة العملاء",
       "Follow Us":"تابعنا",
       "Wrong password":"كلمة مرور خاطئة",
-
+"all fields required":"جميع الحقول مطلوبة"
 
 
 
@@ -273,6 +273,7 @@ class LanguageTr {
 
 
     "en": {
+      "all fields required":"All fields required",
       "updated done": "Updated done",
       "Updated failed": "Updated failed",
       "Please choose what do you need":"Please choose what do you need",

@@ -652,14 +652,21 @@ bool isCheckedcolor =false ;
                                   _loading = false;
                                 });
                               }
-                              else if(
-                              authProvider.email.text==""||authProvider.name.text==""||authProvider.password.text==""||authProvider.confirmpassword.text==""||authProvider.birthday.text==""||authProvider.phoneNumber.text==""||authProvider.genderselected.text==""||address.evendatecontroller.text==""
+                           else if(
+                              authProvider.name.text==""||
+                              authProvider.name.text==""||
+                              authProvider.password.text==""||
+                              authProvider.confirmpassword.text==""||
+
+                              authProvider.phoneNumber.text==""||
+                              authProvider.genderselected.text==""||
+                              address.evendatecontroller.text==""
                               )
                                 {
                                   _scaffKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                          "all fields required"),
+                                          "${LanguageTr.lg[authProvider.language]["all fields required"]}"),
                                     ),
                                   );
                                   }else{
