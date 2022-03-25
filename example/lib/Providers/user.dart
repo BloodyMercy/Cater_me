@@ -150,9 +150,12 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+
   String get messageSignUp => _messageSignUp;
 
-  set messageSignUp(String value) => _messageSignUp = value;
+  set messageSignUp(String value) {
+    _messageSignUp = value;
+  }
 
   UserProvider.statusfunction() {
 getdata();

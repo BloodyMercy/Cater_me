@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 import 'package:provider/provider.dart';
 
@@ -300,27 +301,43 @@ void showAlertDialog(BuildContext context, String message) {
                                  // setState(() {
                                  //   _loading = false;
                                  // });
-                                 _scaffoldKey.currentState.showSnackBar(
-                                   SnackBar(
-                                     content: Text(
-                                         "${authProvider.messageSignUp.toString()}"),
-                                   ),
-                                 );
+
+                                 MotionToast.error(
+                                   title: "Cater me",
+                                   titleStyle:
+                                   TextStyle(fontWeight: FontWeight.bold),
+                                   description:
+                                   '${LanguageTr.lg[authProvider.language]["${authProvider.messageSignUp.toString()}"]}',
+                                   //  animationType: ANIMATION.FROM_LEFT,
+                                 ).show(context);
+                                 // _scaffoldKey.currentState.showSnackBar(
+                                 //   SnackBar(
+                                 //     content: Text(
+                                 //         "${authProvider.messageSignUp.toString()}"),
+                                 //   ),
+                                 // );
                                  authProvider.messageSignUp = "";
                                }
 
                              } catch (e) {
                                {
-                                 _scaffoldKey.currentState.showSnackBar(
-                                     SnackBar(content: Row(
-                                       children: [
-                                        // CircularProgressIndicator(),
-                                       //  SizedBox(width: 15,),
-                                         Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'),
-                                       ],
-                                     ))
-
-                                 );
+                                 MotionToast.error(
+                                   title: "Cater me",
+                                   titleStyle:
+                                   TextStyle(fontWeight: FontWeight.bold),
+                                   description:
+                                   '${LanguageTr.lg[authProvider.language]["otp not valid"]}'
+                                 ).show(context);
+                                 // _scaffoldKey.currentState.showSnackBar(
+                                 //     SnackBar(content: Row(
+                                 //       children: [
+                                 //        // CircularProgressIndicator(),
+                                 //       //  SizedBox(width: 15,),
+                                 //         Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'),
+                                 //       ],
+                                 //     ))
+                                 //
+                                 // );
                                  return;
                                }
                              }

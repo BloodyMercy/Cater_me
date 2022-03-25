@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Email verification was send":"تم إرسال التحقق من البريد الإلكتروني",
       "Please choose what do you need":"الرجاء اختيار ما تريد",
       "Reset succeed":"تم التعيين بنجاح",
       "Setup":"Setup",
@@ -273,6 +274,7 @@ class LanguageTr {
 
 
     "en": {
+      "Email verification was send":"Email verification was send",
       "all fields required":"All fields required",
       "updated done": "Updated done",
       "Updated failed": "Updated failed",

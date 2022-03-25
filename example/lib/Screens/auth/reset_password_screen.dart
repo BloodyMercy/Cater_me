@@ -148,11 +148,20 @@ bool loading=false;
                               await SharedPreferences.getInstance();
                               sh.setBool("logged", true);
 
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ConfirmEmailSent()),
-                                      );
+                              MotionToast.success(
+                                title: "Cater me",
+                                titleStyle:
+                                TextStyle(fontWeight: FontWeight.bold),
+                                description:
+                                '${LanguageTr.lg[authprovider.language]["Email verification was send"]}',
+                                //  animationType: ANIMATION.FROM_LEFT,
+                              ).show(context);
+
+                              // Navigator.of(context).pushReplacement(
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //             ConfirmEmailSent()),
+                              //         );
                               //authProvider.status=Status.Authenticated;
                               setState(() {});
                             } else {
