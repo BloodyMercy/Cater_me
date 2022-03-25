@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,7 +71,7 @@ bool loading=false;
               children: [
                 SizedBox(height: screenHeight * 0.12),
                 Text(
-                  '${LanguageTr.lg[authprovider.language]["Enter your email or your phone number"]}',
+                  '${LanguageTr.lg[authprovider.language]["Email"]}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: screenHeight * 0.12),
@@ -104,13 +105,13 @@ bool loading=false;
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authprovider.language][ "Email or Phone number"]}',
+                                hintText: '${LanguageTr.lg[authprovider.language][ "Email"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
 
                               validator: MultiValidator([
-                                RequiredValidator(errorText: 'Required *'),
+                                RequiredValidator(errorText:'${LanguageTr.lg[authprovider.language][ "Required"]}'),
                               ]),
 
                               keyboardType: TextInputType.emailAddress,
@@ -159,12 +160,21 @@ bool loading=false;
                               setState(() {
                                 loading = false;
                               });
-                              _scaffold.currentState.showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                      "error try again"),
-                                ),
-                              );
+                              MotionToast.error(
+                                title: "Cater me",
+                                titleStyle:
+                                TextStyle(fontWeight: FontWeight.bold),
+                                description:
+                                '${LanguageTr.lg[authprovider.language]["error try again"]}',
+                                //  animationType: ANIMATION.FROM_LEFT,
+                              ).show(context);
+
+                              // _scaffold.currentState.showSnackBar(
+                              //   SnackBar(
+                              //     content: Text(
+                              //         "error try again"),
+                              //   ),
+                              // );
                               authprovider.forgetpass = "";
                             }
                           }
