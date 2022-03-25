@@ -86,11 +86,13 @@ class _WebViewExampleState extends State<WebViewExample> {
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) {
+    if (Platform.isAndroid)
       WebView.platform = SurfaceAndroidWebView();
-    }
-  }
+      if (Platform.isIOS)
+        WebView.platform = CupertinoWebView();
 
+  }
+bool isLoading=true;
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -103,10 +105,20 @@ class _WebViewExampleState extends State<WebViewExample> {
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
 
       ),
-      body: WebView(
-        initialUrl: 'https://caterme.azurewebsites.net/caterme/termsandconditions?lang=${authProvider.language}',
-            javascriptMode: JavascriptMode.unrestricted,
-      ),
+      body: Stack(
+        children:[ WebView(
+          initialUrl: 'https://caterme.azurewebsites.net/caterme/termsandconditions?lang=${authProvider.language}',
+              javascriptMode: JavascriptMode.unrestricted,
+          onPageFinished: (finish){
+            setState(() {
+              isLoading=false;
+            });
+          },
+
+        ),
+          Visibility(visible: isLoading,
+          child: Center(child: CircularProgressIndicator(),),)
+      ])
       // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       // body: Builder(builder: (BuildContext context) {

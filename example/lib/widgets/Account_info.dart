@@ -66,7 +66,13 @@ class _AccountInfoState extends State<AccountInfo> {
 
   bool loading = false;
   FocusNode focusNode = FocusNode();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
+
+  }
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);

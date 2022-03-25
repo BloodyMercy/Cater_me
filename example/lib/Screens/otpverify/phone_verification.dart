@@ -245,7 +245,7 @@ void showAlertDialog(BuildContext context, String message) {
                  Center(
 
                    child: VerificationCode(
-                           itemSize: 40,
+                           itemSize:MediaQuery.of(context).size.width/10,
 
                            textStyle: TextStyle(
                                color: Colors.black,
