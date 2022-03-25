@@ -653,21 +653,21 @@ bool isCheckedcolor =false ;
                                 });
                               }
                               else if(
-                              authProvider.email!=""&&authProvider.name!=""&&authProvider.password!=""&&authProvider.confirmpassword!=""&&authProvider.phoneNumber!=""
+                              authProvider.email.text==""||authProvider.name.text==""||authProvider.password.text==""||authProvider.confirmpassword.text==""||authProvider.birthday.text==""||authProvider.phoneNumber.text==""||authProvider.genderselected.text==""||address.evendatecontroller.text==""
                               )
                                 {
-
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => PhoneVerification(_dialCode+authProvider.phoneNumber.text.toString(),_dialCode,image)),
+                                  _scaffKey.currentState.showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          "all fields required"),
+                                    ),
                                   );
-                                }else{
-                                _scaffKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        "all fields required"),
-                                  ),
+                                  }else{
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PhoneVerification(_dialCode+authProvider.phoneNumber.text.toString(),_dialCode,image)),
                                 );
+
                               }
 
                               }
