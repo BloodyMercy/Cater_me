@@ -14,6 +14,7 @@ import 'package:CaterMe/main.dart';
 import 'package:CaterMe/widgets/Account_info.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_settings.dart';
 import 'package:CaterMe/widgets/Personal_info.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +22,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skeleton_loader/skeleton_loader.dart';
 
 import '../Providers/occasion.dart';
 import '../Providers/packages.dart';
@@ -212,46 +214,90 @@ class _TABBarState extends State<TABBar> {
                         child: ClipOval(
                           child: Container(
                             color: Colors.white,
-                            child: Image.network(
-                              personalInfo.imageUrl,
-                              errorBuilder:
-                                  (BuildContext context,
-                                  Object exception,
-                                  StackTrace stackTrace) {
-                                return Icon(
-                                    Icons.do_not_disturb,
-                                    color: Colors.red);
-                              },
-                              loadingBuilder:
-                                  (BuildContext context,
-                                  Widget child,
-                                  ImageChunkEvent
-                                  loadingProgress) {
-                                if (loadingProgress == null)
-                                  return child;
-                                return Padding(
-                                  padding:
-                                  const EdgeInsets.all(
-                                      25.0),
-                                  child: Center(
-                                    child:
-                                    CircularProgressIndicator(
-                                      value: loadingProgress
-                                          .expectedTotalBytes !=
-                                          null
-                                          ? loadingProgress
-                                          .cumulativeBytesLoaded /
-                                          loadingProgress
-                                              .expectedTotalBytes
-                                          : null,
+                            child:
+
+                            CachedNetworkImage(
+                                fit: BoxFit.fill,
+                                width: 100,
+                                height: 100,
+                                placeholder: (context, url) =>
+                                    SkeletonGridLoader(
+
+                                      builder: Container(
+                                          width: 100,
+                                          height: 100,
+                                        child: Card(
+
+                                          color: Color(0xFF3F5521),
+                                          child: GridTile(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Container(
+                                                  decoration: BoxDecoration(
+
+                                                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                      color: Color(0xFF3F5521)),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      items: 1,
+                                      itemsPerRow: 1,
+                                      period: Duration(seconds: 1),
+                                      highlightColor: Color(0xFF3F5521),
+                                      baseColor: Color(0xffffffff),
+                                      direction: SkeletonDirection.ltr,
+                                      childAspectRatio: 1.36,
                                     ),
-                                  ),
-                                );
-                              },
-                              fit: BoxFit.fill,
-                              width: 100,
-                              height: 100,
+                                imageUrl:
+                                personalInfo.imageUrl,
+
+
                             ),
+
+                            // Image.network(
+                            //   personalInfo.imageUrl,
+                            //   errorBuilder:
+                            //       (BuildContext context,
+                            //       Object exception,
+                            //       StackTrace stackTrace) {
+                            //     return Icon(
+                            //         Icons.do_not_disturb,
+                            //         color: Colors.red);
+                            //   },
+                            //   loadingBuilder:
+                            //       (BuildContext context,
+                            //       Widget child,
+                            //       ImageChunkEvent
+                            //       loadingProgress) {
+                            //     if (loadingProgress == null)
+                            //       return child;
+                            //     return Padding(
+                            //       padding:
+                            //       const EdgeInsets.all(
+                            //           25.0),
+                            //       child: Center(
+                            //         child:
+                            //         CircularProgressIndicator(
+                            //           value: loadingProgress
+                            //               .expectedTotalBytes !=
+                            //               null
+                            //               ? loadingProgress
+                            //               .cumulativeBytesLoaded /
+                            //               loadingProgress
+                            //                   .expectedTotalBytes
+                            //               : null,
+                            //         ),
+                            //       ),
+                            //     );
+                            //   },
+                            //   fit: BoxFit.fill,
+                            //   width: 100,
+                            //   height: 100,
+                            // ),
                           ),
                         ),
                       ),

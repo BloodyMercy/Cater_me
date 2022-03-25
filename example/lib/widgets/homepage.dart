@@ -94,10 +94,6 @@ class _HomePageState extends State<HomePage>
     SharedPreferences sh = await SharedPreferences.getInstance();
 
     final package = Provider.of<PackagesProvider>(context, listen: false);
-    // await package.cleardata();
-    // package.loading = false;
-    //  SharedPreferences sh=await SharedPreferences.getInstance();
-
     await package.getallpacakges(context, sh.getString("locale"));
     package.loading = true;
     for (int i = 0; i < package.listItems.length; i++) {
