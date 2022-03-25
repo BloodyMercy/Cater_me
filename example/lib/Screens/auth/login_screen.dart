@@ -306,13 +306,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                     loading = false;
                                   });
 
-
-                                  _scaffoldKey.currentState.showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "${authProvider.messagelogin.toString()}"),
-                                    ),
-                                  );
+                                  MotionToast.error(
+                                      title:  "Cater me",
+                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                      description: "${authProvider.messagelogin.toString()}"
+                                    //  animationType: ANIMATION.FROM_LEFT,
+                                  ).show(context);
+                                  // _scaffoldKey.currentState.showSnackBar(
+                                  //   SnackBar(
+                                  //     content: Text(
+                                  //         "${authProvider.messagelogin.toString()}"),
+                                  //   ),
+                                  // );
                                   authProvider.messagelogin = "";
                                 }
                               }

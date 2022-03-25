@@ -36,6 +36,7 @@ class CuisinsCard extends StatelessWidget {
                 // opacity: 0.5,
                 image: NetworkImage(
                   this.cuisin.image,
+
                 ),
                 fit: BoxFit.fill),
           ),
