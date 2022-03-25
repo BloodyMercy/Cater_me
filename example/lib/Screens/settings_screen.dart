@@ -122,9 +122,7 @@ class _TABBarState extends State<TABBar> {
             height: mediaQuery.size.height+100,
             child: Column(
               children: [
-                loadingImage
-                    ? Center(child: CircularProgressIndicator())
-                    : personalInfo.status == Status.Authenticated?
+                 personalInfo.status == Status.Authenticated?
                 Row(
                   children: [
                     InkWell(
@@ -226,22 +224,11 @@ class _TABBarState extends State<TABBar> {
                                       builder: Container(
                                           width: 100,
                                           height: 100,
-                                        child: Card(
-
-                                          color: Color(0xFF3F5521),
-                                          child: GridTile(
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Container(
-                                                  decoration: BoxDecoration(
-
-                                                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                                                      color: Color(0xFF3F5521)),
-                                                )
-                                              ],
-                                            ),
-                                          ),
+                                        color: Color(0xFF3F5521),
+                                        child: GridTile(
+                                          
+                                          child:ClipOval(child: Container(height: 100,width: 
+                                          100,),)
                                         ),
                                       ),
                                       items: 1,
@@ -250,7 +237,7 @@ class _TABBarState extends State<TABBar> {
                                       highlightColor: Color(0xFF3F5521),
                                       baseColor: Color(0xffffffff),
                                       direction: SkeletonDirection.ltr,
-                                      childAspectRatio: 1.36,
+                                      childAspectRatio: 1,
                                     ),
                                 imageUrl:
                                 personalInfo.imageUrl,
