@@ -1,5 +1,6 @@
 import 'package:CaterMe/Screens/Review/Third_review.dart';
 import 'package:CaterMe/Screens/review/Fourth_review.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -77,13 +78,20 @@ class _SecondReviewState extends State<SecondReview> {
                                   });
                                 },
                                 child: Row(
+
                                   children: [
                                     Expanded(
                                       child: Padding(
                                         padding:  EdgeInsets.only(left: mediaQueryWidth*0.05),
-                                        child: Text(
-                                          survey.listsurvey[index].title,
-                                          style: TextStyle(color: survey.listsurvey[index].isChecked? Colors.white: Colors.black),
+                                        child: Center(
+
+                                          child: Text(
+
+                                            survey.listsurvey[index].title,
+                                            textAlign: TextAlign.center,
+
+                                            style: TextStyle(color: survey.listsurvey[index].isChecked? Colors.white: Colors.black),
+                                          ),
                                         ),
                                       ),
                                     ),

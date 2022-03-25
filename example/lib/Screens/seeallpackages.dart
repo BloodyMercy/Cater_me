@@ -1,8 +1,10 @@
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:skeleton_loader/skeleton_loader.dart';
 
 import '../language/language.dart';
 import '../widgets/Packages/test_package_add_details.dart';
@@ -97,11 +99,48 @@ class _seeAllPackages extends State<seeAllPackages> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       elevation: 12,
-                      child: Image.network(pack.seeallpackages[index].image,
-                          fit: BoxFit.scaleDown,
-                          // width: double.maxFinite,
+                      child:
+                      CachedNetworkImage(
                           height: screenHeight * 0.175,
-                          width: _width * 0.8),
+                          width: _width * 0.8,
+                          placeholder: (context, url) =>
+                              SkeletonGridLoader(
+
+                                builder: Container(
+                                    height: screenHeight * 0.175,
+                                    width: _width * 0.8,
+                                  child: Card(
+
+                                    color: Color(0xFF3F5521),
+                                    child: GridTile(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            decoration: BoxDecoration(
+
+                                                borderRadius: BorderRadius.all(Radius.circular(15)),
+                                                color: Color(0xFF3F5521)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                items: 1,
+                                itemsPerRow: 1,
+                                period: Duration(seconds: 1),
+                                highlightColor: Color(0xFF3F5521),
+                                baseColor: Color(0xffffffff),
+                                direction: SkeletonDirection.ltr,
+                                childAspectRatio: 2.8,
+                              ),
+                          imageUrl: pack.seeallpackages[index].image
+
+
+                      ),
+
+
                     ),
                   ));
                 }),
