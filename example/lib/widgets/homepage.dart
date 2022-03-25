@@ -587,6 +587,16 @@ class _HomePageState extends State<HomePage>
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
 
                             ...getAddOnsCard(package.addonsall),
+                            Row(mainAxisAlignment: MainAxisAlignment.center,
+                              children:[ Text('${LanguageTr.lg[authProvider.language]["Follow Us"]}'
+                                ,style:Theme.of(context)
+                                  .textTheme
+                                  .headline2,),
+                                SizedBox(width: 12,),
+
+                                Icon(FontAwesomeIcons.smile,color: colorCustom,),
+                            ]),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 

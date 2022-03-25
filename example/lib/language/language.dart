@@ -260,6 +260,7 @@ class LanguageTr {
       "Quantity: ":"الكمية: ",
       "Total: ":"المجموع: ",
       "Customer Service":"خدمة العملاء",
+      "Follow Us":"تابعنا",
 
 
 
@@ -521,6 +522,7 @@ class LanguageTr {
       "Quantity: ":"Quantity: ",
       "Total: ":"Total: ",
       "Customer Service":"Customer Service",
+      "Follow Us":"Follow Us",
 
 
 
