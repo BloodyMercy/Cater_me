@@ -653,7 +653,7 @@ bool isCheckedcolor =false ;
                                 });
                               }
                               else if(
-                            true
+                              authProvider.email!=""&&authProvider.name!=""&&authProvider.password!=""&&authProvider.confirmpassword!=""&&authProvider.phoneNumber!=""
                               )
                                 {
 
