@@ -111,7 +111,7 @@ class LanguageTr {
       "Add": "ضيف",
       "friend already exists": "صاحبك موجود من اول",
       "Ok": "تمام",
-      "Please enter phone number": "دخل رقمك",
+      "Please enter phone number": "أدخل رقمك",
       "Camera": "الكاميرا",
       "Gallery": "الاستديو",
       "Ready to answer any and all questions": "جاهزين نجاوبك",
@@ -264,6 +264,9 @@ class LanguageTr {
       "Follow Us":"تابعنا",
       "Wrong password":"كلمة مرور خاطئة",
 "all fields required":"جميع الحقول مطلوبة",
+      'Start':'إبدأ هنا',
+      "Type your answer here...":"اكتب إجابتك هنا...    ",
+
 
 
 "you must agree terms and conditions":"يجب أن توافق على الشروط والأحكام",
@@ -529,6 +532,8 @@ class LanguageTr {
       "Customer Service":"Customer Service",
       "Follow Us":"Follow Us",
       "Wrong password":"Wrong password",
+      'Start':'Start',
+      "Type your answer here...":"Type your answer here...",
 
 
 

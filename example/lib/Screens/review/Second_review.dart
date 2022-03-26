@@ -4,21 +4,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/surveyProvder.dart';
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class SecondReview extends StatefulWidget {
+
   @override
   State<SecondReview> createState() => _SecondReviewState();
 }
 
 class _SecondReviewState extends State<SecondReview> {
+
+  String language;
+  getData() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    setState(() {
+
+      language = sh.getString("locale");
+    });
+  }
+  @override
+  void initState() {
+
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final survey = Provider.of<SurveyProvider>(context, listen: true);
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
     final surveyP = Provider.of<SurveyProvider>(context, listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
@@ -39,13 +60,19 @@ class _SecondReviewState extends State<SecondReview> {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: mediaQueryHeight * 0.01),
-                child: Text(
-                  'What do we need to improve?',
+                child:
+                language == "en" ?
+                Text(
+                  'What do we need to improve ?',
                   style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
+                ):Text(
+                  '? What do we need to improve',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                )
+                ,
               ),
               Text(
-                ' كيف يمكننا تحسين تجربتك؟ *',
+                ' كيف يمكننا تحسين تجربتك؟ ',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
               Padding(
@@ -166,8 +193,8 @@ class _SecondReviewState extends State<SecondReview> {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => FourthReview()));
             },
-            child: Text(
-              'Next',
+            child: Text('${LanguageTr.lg[authProvider.language]["Next"]}'
+              ,
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
             style: ButtonStyle(

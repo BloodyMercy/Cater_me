@@ -311,7 +311,7 @@ SizedBox(
                   ),),
 
                 IconButton(onPressed: ()async{
-                  final url = 'https://www.instagram.com/caterme.online/?hl=en';
+                  final url = 'https://twitter.com/caterme_online';
                   if(await canLaunch(url)){
                     await launch(url,forceSafariVC: false,);
                   }

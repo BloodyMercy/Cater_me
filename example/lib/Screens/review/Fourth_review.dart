@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/surveyProvder.dart';
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 import '../../widgets/homepage.dart';
 
 class FourthReview extends StatefulWidget {
@@ -25,6 +27,7 @@ class _FourthReviewState extends State<FourthReview> {
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
     final surveyP = Provider.of<SurveyProvider>(context, listen: true);
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
@@ -46,7 +49,7 @@ class _FourthReviewState extends State<FourthReview> {
               Padding(
                 padding: EdgeInsets.only(top: mediaQueryHeight * 0.05),
                 child: Text(
-                  'Complaints and suggestions-',
+                  'Complaints and suggestions',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -62,7 +65,8 @@ class _FourthReviewState extends State<FourthReview> {
                   style: TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
-                    hintText: "Type your answer here...",
+                    hintText: '${LanguageTr.lg[authProvider.language]["Type your answer here..."]}'
+                    ,
                     hintStyle: TextStyle(color: Colors.white),
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
@@ -100,8 +104,8 @@ class _FourthReviewState extends State<FourthReview> {
                       ));
 
                 },
-                child: Text(
-                  'Submit',
+                child: Text('${LanguageTr.lg[authProvider.language]["Submit"]}'
+                  ,
                   style: TextStyle(color: Colors.black, fontSize: 25),
                 ),
                 style: ButtonStyle(

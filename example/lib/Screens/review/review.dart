@@ -1,13 +1,18 @@
 import 'package:CaterMe/Screens/Review/First_review.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../Providers/surveyProvder.dart';
+import '../../Providers/user.dart';
+import '../../language/language.dart';
 
 class Review extends StatelessWidget {
 
   @override
 
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -35,11 +40,11 @@ class Review extends StatelessWidget {
               ),
             ),
             Text(
-              'us. Help us improve.',
+              'us. Help us improve',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             Text(
-              '.يهمنا تقييمك لتحسين خدمتنا',
+              'يهمنا تقييمك لتحسين خدمتنا.',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             Padding(
@@ -49,8 +54,8 @@ class Review extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => FirstReview()));
                   },
-                  child: Text(
-                    'Start',
+                  child: Text('${LanguageTr.lg[authProvider.language]['Start']}'
+                    ,
                     style: TextStyle(color: Colors.black,fontSize: 25),
                   ),
                 style: ButtonStyle(

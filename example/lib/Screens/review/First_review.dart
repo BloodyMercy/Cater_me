@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/surveyProvder.dart';
 
@@ -15,16 +16,24 @@ class FirstReview extends StatefulWidget {
 }
 
 class _FirstReviewState extends State<FirstReview> {
+  String language;
   getData() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
     final surveyP = Provider.of<SurveyProvider>(context, listen: false);
     await surveyP.getsurvey();
+    setState(() {
+      language = sh.getString("locale");
+    });
   }
 
   @override
   void initState() {
-    getData();
+
     super.initState();
+    getData();
+
   }
+
   @override
   Widget build(BuildContext context) {
     final surveyP = Provider.of<SurveyProvider>(context, listen: true);
@@ -56,12 +65,17 @@ class _FirstReviewState extends State<FirstReview> {
                 'How would you rate your',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),),
+              language == "en" ?
               Text(
-                'experience?',
+                'experience ?',
                 style: TextStyle(color: Colors.white, fontSize: 25),
-              ),
+              ):Text(
+                '? experience',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              )
+              ,
               Text(
-                '  ما هو تقييمك لللتجربة؟*',
+                '  ما هو تقييمك لللتجربة ؟',
                   style: TextStyle(color: Colors.white, fontSize: 25),
               ),
             Padding(
@@ -84,13 +98,21 @@ class _FirstReviewState extends State<FirstReview> {
                 },
               ),
             ),
+
               Padding(
                 padding:  EdgeInsets.only(top: mediaQueryHeight*0.15),
                 child:
+                language == "en" ?
                 Text(
-                  'Did you face any issues?',
+                  ' Did you face any issues ?',
                   style: TextStyle(color: Colors.white, fontSize: 25),
-                ),),
+                ):Text(
+                  '? Did you face any issues',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                )
+
+                ,),
+
               Text(
                 ' هل واجهت اي صعوبات ؟',
                 style: TextStyle(color: Colors.white, fontSize: 25),
