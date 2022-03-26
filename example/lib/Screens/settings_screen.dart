@@ -671,7 +671,7 @@ class _TABBarState extends State<TABBar> {
 
                                       // Padding(
                                       //   padding: const EdgeInsets.all(8.0),
-                                      //   child: GestureDetector(
+                                      //   child: GestureDetector(  behavior: HitTestBehavior.translucent,
                                       //     onTap: () {
                                       //       Navigator.of(context).push(
                                       //         MaterialPageRoute(

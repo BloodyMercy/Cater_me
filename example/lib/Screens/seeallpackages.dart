@@ -103,9 +103,7 @@ class _seeAllPackages extends State<seeAllPackages> {
                       CachedNetworkImage(
                           height: screenHeight * 0.175,
                           width: _width * 0.8,
-                          placeholder: (context, url) =>
-                     CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),),
-                      //         SkeletonGridLoader(
+                         //         SkeletonGridLoader(
                       //
                       //           builder: Container(
                       //               height: screenHeight * 0.175,

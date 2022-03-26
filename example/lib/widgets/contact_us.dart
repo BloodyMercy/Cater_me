@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/contact_us_provider.dart';
+import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/contact_us_model.dart';
 import 'package:flutter/material.dart';
@@ -233,7 +234,7 @@ SizedBox(
                 IconButton(onPressed: ()async{
                   final url = 'https://www.instagram.com/caterme.online/?hl=en';
                   if(await canLaunch(url)){
-                    await launch(url,forceSafariVC: false);
+                    await launch(url,forceSafariVC: false,);
                   }
 
 
@@ -278,6 +279,92 @@ SizedBox(
                   icon:Icon(
 
                     FontAwesomeIcons.snapchat,
+
+                    color: colorCustom,
+                    size: 40,
+                  ),),
+
+
+              ],
+            ),
+          ),
+
+          Padding(padding: EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+              children: [
+                IconButton(onPressed: ()async{
+                  final url = "https://wa.me/${contact.UsContact.phoneNumber}";
+                  if(await canLaunch(url)){
+                    await launch(url,forceSafariVC: false);
+                  }
+
+
+                } ,
+                  icon:Icon(
+
+                    FontAwesomeIcons.whatsapp,
+
+                    color: colorCustom,
+                    size: 40,
+                  ),),
+
+                IconButton(onPressed: ()async{
+                  final url = 'https://www.instagram.com/caterme.online/?hl=en';
+                  if(await canLaunch(url)){
+                    await launch(url,forceSafariVC: false,);
+                  }
+
+
+                },
+                  icon:Icon(
+
+                    FontAwesomeIcons.twitter,
+
+                    color: colorCustom,
+                    size: 40,
+                  ),),
+
+
+
+
+
+
+                IconButton(
+                  onPressed: ()async{
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ChatPage(
+                              peerId: "admin",
+                              peerAvatar: "",
+                              peerNickname:
+                              '${LanguageTr.lg[authProvider.language]["Customer Service"]}',
+                            ),
+                      ));
+
+
+
+                  } ,
+                  icon:Icon(
+
+                    Icons.live_help,
+
+                    color: colorCustom,
+                    size: 40,
+                  ),),
+                IconButton(onPressed: ()async{
+                  final url = 'https://www.caterme.online/';
+                  if(await canLaunch(url)){
+                    await launch(url,forceSafariVC: false);
+                  }
+
+
+                } ,
+                  icon:Icon(
+
+                   Icons.language,
 
                     color: colorCustom,
                     size: 40,

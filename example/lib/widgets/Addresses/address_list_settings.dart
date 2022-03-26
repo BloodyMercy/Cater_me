@@ -86,42 +86,46 @@ super.initState();
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                   widget.address[index].title.toString(),
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.normal),
-                                ),
-
-                                Text(
-                                  widget.address[index].city.toString(),
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.normal
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                     widget.address[index].title.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.normal,
+                                    
+                                    ),
                                   ),
-                                ),
 
-                                Text(
-                                  "${widget.address[index].street.toString()}",
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.normal),
-                                ),
+                                  Text(
+                                    widget.address[index].city.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.normal
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "${widget.address[index].street.toString()}",
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.normal),
+                                  ),
 
 
-                                Text(
-                                  "${widget.address[index].buildingName.toString()}",
-                                  style: const TextStyle(
-                                      fontSize: 15, fontWeight: FontWeight.normal),
-                                ),
+                                  Text(
+                                    "${widget.address[index].buildingName.toString()}",
+                                    style: const TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.normal),
+                                  ),
 
 
-                                Text(
-                                   "${widget.address[index].floorNumber.toString()}",
-                                   style: const TextStyle(
-                                       fontSize: 15, fontWeight: FontWeight.normal),
-                                 ),
-                              ],
+                                  Text(
+                                     "${widget.address[index].floorNumber.toString()}",
+                                     style: const TextStyle(
+                                         fontSize: 15, fontWeight: FontWeight.normal),
+                                   ),
+                                ],
+                              ),
                             ),
                             Column(
                               children: [

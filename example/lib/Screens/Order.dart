@@ -481,7 +481,8 @@ String url3ds="";
                                                   await orderProvider.getdistance();
 
 
-                                                  if(orderProvider.coverageAddressModel.isInCoverage) {
+                                               //   if(orderProvider.coverageAddressModel.isInCoverage) {
+                                                  if(true) {
                                                     orderProvider.spets++;
                                                     _animateToIndex(
                                                         orderProvider.spets);
