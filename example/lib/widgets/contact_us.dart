@@ -78,7 +78,7 @@ SizedBox(
   height: MediaQuery.of(context).size.height*0.02,
 ),
 
-          GestureDetector(
+          GestureDetector(  behavior: HitTestBehavior.translucent,
             onTap: () async {
               launchUrl("tel://${contact.UsContact.phoneNumber}.");
             },
@@ -99,7 +99,7 @@ SizedBox(
             ),
 
 
-      GestureDetector(
+      GestureDetector(  behavior: HitTestBehavior.translucent,
     onTap: () async {
     launchUrl("mailto:${contact.UsContact.email}");},
             child: Padding(

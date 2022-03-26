@@ -229,7 +229,7 @@ class _VerificationCodeState extends State<VerificationCode> {
   }
 
   Widget _clearAllWidget(child) {
-    return GestureDetector(
+    return GestureDetector(  behavior: HitTestBehavior.translucent,
       onTap: () {
         widget.onEditing(true);
         for (var i = 0; i < widget.length; i++) {

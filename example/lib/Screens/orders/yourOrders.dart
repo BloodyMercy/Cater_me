@@ -140,7 +140,7 @@ class _YourOrdersState extends State<YourOrders> {
                             color: LightColors.kLightYellow,
                             child: ListView.builder(
                               itemBuilder: (context, index) {
-                                return GestureDetector(
+                                return GestureDetector(  behavior: HitTestBehavior.translucent,
                                   onTap: () {
                                     if(orders.listOrder[index].orderStatus=="Payment Pending" || orders.listOrder[index].orderStatus=="انتظار الدفع" )
                                       {

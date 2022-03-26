@@ -94,7 +94,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                       scrollDirection: Axis.horizontal,
                       children: List.generate(occa.listoccasiontype.length,
                           (int index) {
-                        return GestureDetector(
+                        return GestureDetector(  behavior: HitTestBehavior.translucent,
                           onTap: () {
                             if (occa.listoccasiontype[index].id == -700) {
                               Navigator.of(context).push(
@@ -189,7 +189,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                 : SliverList(
                     delegate: SliverChildBuilderDelegate(
                     (context, int index) {
-                      return GestureDetector(
+                      return GestureDetector(  behavior: HitTestBehavior.translucent,
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(

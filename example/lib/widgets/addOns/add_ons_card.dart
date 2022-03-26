@@ -50,7 +50,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
               // SizedBox(width: mediaQuery.size.width*0.6),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: GestureDetector(
+                child: GestureDetector(  behavior: HitTestBehavior.translucent,
                     child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
 
                         style: TextStyle( fontSize: 12)),

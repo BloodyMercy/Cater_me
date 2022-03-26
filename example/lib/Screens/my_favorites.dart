@@ -480,7 +480,7 @@ String language;
                 ],
               )
                       : SingleChildScrollView(
-                        child: GestureDetector(
+                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
                           onTap:() {
                             // Navigator.of(context).push(
                             //   MaterialPageRoute(

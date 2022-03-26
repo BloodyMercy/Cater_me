@@ -144,7 +144,7 @@ String url3ds="";
     double height = MediaQuery.of(context).size.height;
     return WillPopScope(
       onWillPop: _onWillPop,
-      child: GestureDetector(
+      child: GestureDetector(  behavior: HitTestBehavior.translucent,
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
 

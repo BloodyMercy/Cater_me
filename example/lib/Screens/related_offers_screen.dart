@@ -80,7 +80,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                 itemBuilder: (context, index) => Padding(
                   padding:
                       const EdgeInsets.only(top: 5.0, left: 20.0, right: 20.0),
-                  child: GestureDetector(
+                  child: GestureDetector(  behavior: HitTestBehavior.translucent,
                     child: FittedBox(
                       child: Container(
 

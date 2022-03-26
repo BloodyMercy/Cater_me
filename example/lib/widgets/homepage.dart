@@ -373,7 +373,7 @@ class _HomePageState extends State<HomePage>
                               ),
                               ((getOccasionsToday(package.occasions).length ==
                                       0))
-                                  ? GestureDetector(
+                                  ? GestureDetector(  behavior: HitTestBehavior.translucent,
                                       onTap: authProvider.status ==
                                               Status.Authenticated
                                           ? () {
@@ -550,7 +550,7 @@ class _HomePageState extends State<HomePage>
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 20,vertical: 10 ),
-                                                child: GestureDetector(
+                                                child: GestureDetector(  behavior: HitTestBehavior.translucent,
                                                     child: Text(
                                                         '${LanguageTr.lg[authProvider.language]["See All"]}',
                                                         style: TextStyle(
@@ -746,7 +746,7 @@ class _HomePageState extends State<HomePage>
                           return listitemssearch[index]
                                   .contains(controllersearch.text.toLowerCase())
                               ? Center(
-                                  child: GestureDetector(
+                                  child: GestureDetector(  behavior: HitTestBehavior.translucent,
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(

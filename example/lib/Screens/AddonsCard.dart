@@ -12,7 +12,7 @@ class AddonsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Center(
-        child: GestureDetector(
+        child: GestureDetector(  behavior: HitTestBehavior.translucent,
 
           onTap: () {
             Navigator.of(context).pushReplacement(

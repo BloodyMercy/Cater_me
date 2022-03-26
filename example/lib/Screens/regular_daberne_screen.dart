@@ -57,7 +57,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GestureDetector(
+            GestureDetector(behavior: HitTestBehavior.translucent,
               onTap: () {
                 if (!addresProvider.hours.isDaberni) {
                   setState(() {
@@ -88,7 +88,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                 ],
               ),
             ),
-            GestureDetector(
+            GestureDetector(  behavior: HitTestBehavior.translucent,
               onTap: () {
                 if (!addresProvider.hours.isDaberni) {
                   setState(() {

@@ -51,7 +51,7 @@ class _OccasionCardState extends State<OccasionCard> {
                         Padding(
                           padding: EdgeInsets.only(
                               right: (mediaQuery.size.width * 0.1)),
-                          child: GestureDetector(
+                          child: GestureDetector(  behavior: HitTestBehavior.translucent,
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(

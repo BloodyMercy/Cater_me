@@ -147,7 +147,7 @@ String language;
                         child: ListView.builder(
                             itemCount: allNotification.notificationlist.length,
                             itemBuilder: (context, index) {
-                              return GestureDetector(
+                              return GestureDetector(  behavior: HitTestBehavior.translucent,
                                 onTap: () {
                                   if(  allNotification
                                       .notificationlist[index]
