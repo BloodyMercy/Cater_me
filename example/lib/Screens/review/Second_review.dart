@@ -106,6 +106,7 @@ class _SecondReviewState extends State<SecondReview> {
                                                   ),
                                                 ),
                                               ),
+
                                               survey.listsurvey[index].isChecked
                                                   ?  Padding(
                                                 padding: EdgeInsets.all(10.0),
