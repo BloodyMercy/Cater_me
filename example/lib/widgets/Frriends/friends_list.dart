@@ -165,7 +165,7 @@ setState(() {
 
 });
 
-                            }, icon: GestureDetector(  behavior: HitTestBehavior.translucent,
+                            }, icon: GestureDetector(
                               child: Icon(FontAwesomeIcons.trash,color: redColor
                                 ,size: 20,),
                               onTap: (){

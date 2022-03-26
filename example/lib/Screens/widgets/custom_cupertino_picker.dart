@@ -67,6 +67,7 @@ class _CustomCupertinoPickerState extends State<CustomCupertinoPicker> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    widget.controller.text=widget.items[1];
 
   }
 

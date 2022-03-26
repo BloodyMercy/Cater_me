@@ -60,7 +60,7 @@ class _CustomStepperState extends State<CustomStepper> {
       stepperCircles.add(
           Expanded(
             key: keys[i],
-            child: GestureDetector(  behavior: HitTestBehavior.translucent,
+            child: GestureDetector(
               onTap:(){
                 if(i<widget.selected) {
                   widget.onTap(i + 1);

@@ -65,7 +65,7 @@ class CustomDialog2 extends StatelessWidget {
               ),textAlign: TextAlign.center,
             ),
             SizedBox(height: 40,),
-            GestureDetector(  behavior: HitTestBehavior.translucent,
+            GestureDetector(
                 onTap: (){
                   order.check1=!order.check1;
                 },
@@ -91,7 +91,7 @@ class CustomDialog2 extends StatelessWidget {
                   ],
                 )),
             Container(height: height/100),
-            GestureDetector(  behavior: HitTestBehavior.translucent,
+            GestureDetector(
                 onTap: (){
                   order.check2=!order.check2;
                 },
@@ -117,7 +117,7 @@ class CustomDialog2 extends StatelessWidget {
                 )),
 
             Container(height: height/100),
-            GestureDetector(  behavior: HitTestBehavior.translucent,
+            GestureDetector(
               onTap: (){
                 order.check4=!order.check4;
               },

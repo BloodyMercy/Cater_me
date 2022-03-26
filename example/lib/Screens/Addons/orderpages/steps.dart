@@ -87,7 +87,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                 itemBuilder: (context, index) {
                   //  final cards = card[i];
                   return Container(
-                    child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                    child: GestureDetector(
                       onTap: () async {
                         setState(() {
                           loadingitems = true;

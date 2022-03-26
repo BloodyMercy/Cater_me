@@ -121,7 +121,7 @@ class _SavedOrdersState extends State<SavedOrders> {
                     color: LightColors.kLightYellow,
                     child: ListView.builder(
                       itemBuilder: (context, index) {
-                        return GestureDetector(  behavior: HitTestBehavior.translucent,
+                        return GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -130,7 +130,7 @@ class _SavedOrdersState extends State<SavedOrders> {
                               ),
                             );
                           },
-                          child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                          child: GestureDetector(
                             onTap: (){},
                             child: Card(
                                 elevation: 5,

@@ -194,7 +194,7 @@ class _CustomDialogState extends State<CustomDialog> {
                   // ignore: sdk_version_ui_as_code
                   ...tmpList.map(
                     (item) => 
-     GestureDetector(  behavior: HitTestBehavior.translucent,
+     GestureDetector(
                       onTap: () {
                         Navigator.pop(context, item);
                         widget.callBackFunction(item.name, item.dialCode, item.flag);

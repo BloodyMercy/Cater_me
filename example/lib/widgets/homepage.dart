@@ -15,6 +15,7 @@ import 'package:CaterMe/widgets/Packages/packages_card.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:CaterMe/widgets/occasions/occasion_card.dart';
 import 'package:CaterMe/widgets/occasions/occasions_list.dart';
+import 'package:CaterMe/widgets/seeallgallery.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Providers/user.dart';
+import '../Screens/full_photo_page.dart';
 import '../language/language.dart';
 import 'Packages/test_package_add_details.dart';
 
@@ -373,7 +375,7 @@ class _HomePageState extends State<HomePage>
                               ),
                               ((getOccasionsToday(package.occasions).length ==
                                       0))
-                                  ? GestureDetector(  behavior: HitTestBehavior.translucent,
+                                  ? InkWell(
                                       onTap: authProvider.status ==
                                               Status.Authenticated
                                           ? () {
@@ -550,7 +552,7 @@ class _HomePageState extends State<HomePage>
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 20,vertical: 10 ),
-                                                child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                                                child: GestureDetector(
                                                     child: Text(
                                                         '${LanguageTr.lg[authProvider.language]["See All"]}',
                                                         style: TextStyle(
@@ -588,6 +590,95 @@ class _HomePageState extends State<HomePage>
                             // SizedBox(height: mediaQuery.size.height * 0.1,),
 
                             ...getAddOnsCard(package.addonsall),
+
+
+
+
+
+              Container(
+                  height: mediaQuery.size.height/4,
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(padding:
+                        EdgeInsets.symmetric(
+                          horizontal: 20,),
+                          child: Text(
+                            '${LanguageTr.lg[authProvider.language]["Gallery"]}',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                        // SizedBox(width: mediaQuery.size.width*0.6),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: GestureDetector(
+                              child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
+
+                                  style: TextStyle( fontSize: 12)),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => seeAllGallery()),
+
+                                );
+                              }),
+                        ),
+
+
+
+
+                      ],
+                    ),
+                    Container(
+                        height: MediaQuery.of(context).size.height/5,
+
+                        child:     ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 5,
+                          itemBuilder: (context, i) {
+                            //  final cards = widget.card[i];
+                            return           InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FullPhotoPage(url:  ""),
+                                  ),
+                                );
+                              },
+                              child: Card(
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(style: BorderStyle.none),
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  width: mediaQuery.size.width /3,
+                                  height: mediaQuery.size.height /5,
+                                  child:Image.asset("images/Donated.png",
+                                    fit: BoxFit.fill,
+                                    width: mediaQuery.size.width * 0.3,
+                                    height: mediaQuery.size.height * 0.50,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )),
+                  ]
+                  )),
+
+
+
+
+
+
+
                             Row(mainAxisAlignment: MainAxisAlignment.center,
                               children:[ Text('${LanguageTr.lg[authProvider.language]["Follow Us"]}'
                                 ,style:Theme.of(context)
@@ -746,7 +837,7 @@ class _HomePageState extends State<HomePage>
                           return listitemssearch[index]
                                   .contains(controllersearch.text.toLowerCase())
                               ? Center(
-                                  child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                                  child: GestureDetector(
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(

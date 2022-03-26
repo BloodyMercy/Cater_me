@@ -445,7 +445,7 @@ class _TABBarState extends State<TABBar> {
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       personalInfo.status == Status.Authenticated
-                          ? GestureDetector(  behavior: HitTestBehavior.translucent,
+                          ? GestureDetector(
                         onTap: () {
 
                           Navigator.of(context).push(
@@ -523,7 +523,7 @@ class _TABBarState extends State<TABBar> {
                           : Container(),
                       personalInfo.status == Status.Authenticated?  Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             personalInfo.clearAllTextController();
                             Navigator.of(context).push(
@@ -592,7 +592,7 @@ class _TABBarState extends State<TABBar> {
                       personalInfo.status == Status.Authenticated
                           ? Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                              child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                              child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
@@ -609,7 +609,7 @@ class _TABBarState extends State<TABBar> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                                        child: GestureDetector(
                                           onTap: () {
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
@@ -736,7 +736,7 @@ class _TABBarState extends State<TABBar> {
                           : Container(),
                       personalInfo.status == Status.Authenticated?       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -803,7 +803,7 @@ class _TABBarState extends State<TABBar> {
                       ):Container(),
                       personalInfo.status == Status.Authenticated?   Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -870,7 +870,7 @@ class _TABBarState extends State<TABBar> {
                       ):Container(),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             if(personalInfo.language =="en"){
                               showDialog(
@@ -1006,7 +1006,7 @@ class _TABBarState extends State<TABBar> {
                             color: const Color.fromARGB(206, 255, 255, 255),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
-                            child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                            child: GestureDetector(
                               onTap: () {
                                 if(personalInfo.language =="en"){
                                 showDialog(
@@ -1247,7 +1247,7 @@ class _TABBarState extends State<TABBar> {
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -1262,7 +1262,7 @@ class _TABBarState extends State<TABBar> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: Column(
                               children: [
-                                GestureDetector(  behavior: HitTestBehavior.translucent,
+                                GestureDetector(
                                   onTap: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
@@ -1326,7 +1326,7 @@ class _TABBarState extends State<TABBar> {
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(  behavior: HitTestBehavior.translucent,
+                        child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(

@@ -199,7 +199,7 @@ bool isCheckedcolor =false ;
                     color: Colors.black,
                     size: 30,
                   )),
-              GestureDetector(  behavior: HitTestBehavior.translucent,
+              GestureDetector(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Center(

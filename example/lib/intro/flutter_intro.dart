@@ -185,7 +185,7 @@ class Intro {
     );
     return AnimatedPositioned(
       duration: _animationDuration,
-      child: GestureDetector(  behavior: HitTestBehavior.translucent,
+      child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
           padding: padding,

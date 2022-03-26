@@ -43,7 +43,10 @@ notifyListeners();
 
   }
 postsurvey() async {
-return await  _service.postreview(complaint: comment.text, feedbackoptionid: _feedbackoptionid, rating:_stars );
+ await  _service.postreview(complaint: comment.text, feedbackoptionid: _feedbackoptionid, rating:_stars );
+comment.text="";
+ _feedbackoptionid.clear();
+ _stars=0;
 
 }
 }

@@ -159,7 +159,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
     var screenHeight = MediaQuery.of(context).size.height;
     FocusNode focusNode = FocusNode();
     return address.load
-        ? GestureDetector(  behavior: HitTestBehavior.translucent,
+        ? GestureDetector(
       onTap: (){
         FocusScopeNode currentfocus = FocusScope.of(context);
         if(!currentfocus.hasPrimaryFocus){

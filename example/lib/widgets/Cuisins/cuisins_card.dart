@@ -11,7 +11,7 @@ class CuisinsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    return GestureDetector(  behavior: HitTestBehavior.translucent,
+    return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
