@@ -2,6 +2,7 @@ import 'package:CaterMe/Screens/Review/Third_review.dart';
 import 'package:CaterMe/Screens/review/Fourth_review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/surveyProvder.dart';
@@ -48,102 +49,135 @@ class _SecondReviewState extends State<SecondReview> {
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: mediaQueryWidth * 0.1,
-                      vertical: mediaQueryHeight * 0.05),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: mediaQueryWidth,
-                        height: mediaQueryHeight / 1.8,
-                        child: ListView.builder(
-                          itemCount: survey.listsurvey.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: mediaQueryHeight * 0.01),
-                              child: ElevatedButton(
-                                onPressed: () {
+                padding: EdgeInsets.symmetric(
+                    horizontal: mediaQueryWidth * 0.1,
+                    vertical: mediaQueryHeight * 0.05),
+                child: Column(
+                  children: [
+                    Container(
+                      width: mediaQueryWidth,
+                      height: mediaQueryHeight / 1.8,
+                      child: ListView.builder(
+                        itemCount: survey.listsurvey.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                bottom: mediaQueryHeight * 0.01),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: mediaQueryHeight * 0.015,
+                              ),
+                              child: InkWell(
+                                onTap: () {
                                   setState(() {
-                                    if(survey.listsurvey[index].isChecked){
+                                    if (survey.listsurvey[index].isChecked) {
                                       survey.feedbackoptionid
                                           .remove(survey.listsurvey[index].id);
-                                      survey.listsurvey[index].isChecked=false;
-                                    }
-                                    else{
+                                      survey.listsurvey[index].isChecked =
+                                          false;
+                                    } else {
                                       survey.feedbackoptionid
                                           .add(survey.listsurvey[index].id);
-                                      survey.listsurvey[index].isChecked=true;
+                                      survey.listsurvey[index].isChecked = true;
                                     }
                                   });
                                 },
-                                child: Row(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: mediaQueryWidth * 0.05),
+                                          child: Column(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.all(10.0),
+                                                child: Center(
+                                                  child: Text(
+                                                    survey.listsurvey[index].title,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: survey
+                                                                .listsurvey[index]
+                                                                .isChecked
+                                                            ? Colors.white
+                                                            : Colors.black),
+                                                  ),
+                                                ),
+                                              ),
+                                              survey.listsurvey[index].isChecked
+                                                  ?  Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: RatingBar.builder(
+                                                  itemSize: 30,
+                                                  unratedColor: Colors.white10,
+                                                  initialRating: 0,
+                                                  minRating: 0,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                                  itemBuilder: (context, _) => Icon(
+                                                    Icons.star,
+                                                    color: Colors.white,
+                                                  ),
+                                                  onRatingUpdate: (rating) {
+                                                    surveyP.stars=rating;
+                                                  },
+                                                ),
+                                              ):Container(),
+                                            ],
 
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(left: mediaQueryWidth*0.05),
-                                        child: Center(
-
-                                          child: Text(
-
-                                            survey.listsurvey[index].title,
-                                            textAlign: TextAlign.center,
-
-                                            style: TextStyle(color: survey.listsurvey[index].isChecked? Colors.white: Colors.black),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      color: survey.listsurvey[index].isChecked
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.white),
                                 ),
-                                style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(15)))),
-                                    padding: MaterialStateProperty.all(
-                                        EdgeInsets.symmetric(
-                                      vertical: mediaQueryHeight * 0.015,
-                                    )),
-                                    backgroundColor: survey.listsurvey[index].isChecked?  MaterialStateProperty.all(Theme.of(context).primaryColor): MaterialStateProperty.all(
-                                        Colors.white)),
                               ),
-                            );
-                          },
-                        ),
-                      ),
+                            ),
+                          );
 
-                    ],
-                  )),
+                        },
+
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+
             ],
           ),
         ),
-
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton:  Padding(
-          padding:  EdgeInsets.only(top:mediaQueryHeight*0.05),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(top: mediaQueryHeight * 0.05),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => FourthReview()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FourthReview()));
             },
             child: Text(
               'Next',
-              style: TextStyle(color: Colors.black,fontSize: 25),
+              style: TextStyle(color: Colors.black, fontSize: 25),
             ),
             style: ButtonStyle(
-                shape: MaterialStateProperty.all(
-                    const RoundedRectangleBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(15)))),
+                shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)))),
                 padding: MaterialStateProperty.all(
                   EdgeInsets.symmetric(
                       vertical: (mediaQueryHeight * 0.074) * 0.3,
                       horizontal: (mediaQueryWidth * 0.3)),
                 ),
-                backgroundColor: MaterialStateProperty.all(
-                    Colors.white)),
+                backgroundColor: MaterialStateProperty.all(Colors.white)),
           ),
         ),
       ),
