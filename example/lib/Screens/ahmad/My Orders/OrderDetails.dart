@@ -329,7 +329,8 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             fontFamily: 'Geomanist',
                             fontWeight: FontWeight.bold),
                       ),
-                      FaIcon(FontAwesomeIcons.truck,color:Color.fromRGBO(112, 112, 112, 1)
+                      SizedBox(width: 5,),
+                      FaIcon(FontAwesomeIcons.truck,color:Color(0xFF3F5521)
                     ,)
 
                     ],
