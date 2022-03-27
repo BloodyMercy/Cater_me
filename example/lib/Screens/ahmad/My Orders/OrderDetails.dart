@@ -62,6 +62,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     final _order= Provider.of<OrderByIdProvider>(context,listen:true);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    FocusNode focusNode =FocusNode();
     return Scaffold(
       backgroundColor: Color(0xffF5F6F7),
       appBar: PreferredSize(
@@ -204,16 +205,102 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             SizedBox(
                               height: 5,
                             ),
-                            // Text.rich(
-                            //   TextSpan(
-                            //     text: "0000",
-                            //     style: TextStyle(
-                            //
-                            //         fontWeight: FontWeight.w400,
-                            //
-                            //         fontSize: 14),
-                            //   ),
-                            // ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'BerlinSansFB'),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left:
+                                          MediaQuery.of(context).size.width *
+                                              0.04),
+                                      alignLabelWithHint: true,
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                          focusNode.hasFocus ? 18 : 16.0,
+                                          //I believe the size difference here is 6.0 to account padding
+                                          color: focusNode.hasFocus
+                                              ? Color(0xFF3F5521)
+                                              : Colors.grey),
+                                      labelText: '${authProvider.lg[authProvider.language]["Name"]}',
+                                      hintStyle: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFF3F5521),
+                                          ))),
+                                  controller: address.name,
+
+                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.text),
+                            ),
+
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                                 Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'BerlinSansFB'),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          left:
+                                          MediaQuery.of(context).size.width *
+                                              0.04),
+                                      alignLabelWithHint: true,
+                                      labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                          focusNode =FocusNode().hasFocus ? 18 : 16.0,
+                                          //I believe the size difference here is 6.0 to account padding
+                                          color: focusNode.hasFocus
+                                              ? Color(0xFF3F5521)
+                                              : Colors.grey),
+                                      labelText: '${authProvider.lg[authProvider.language][ "Phone number"]}',
+                                      hintStyle: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BerlinSansFB'),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0),
+                                          borderSide: const BorderSide(
+                                            color: Color(0xFF3F5521),
+                                          ))),
+                                  controller: address.phone,
+
+                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                  keyboardType: TextInputType.phone),
+                            ),
 
                             SizedBox(
                               height: 5,
