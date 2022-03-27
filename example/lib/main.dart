@@ -39,6 +39,7 @@ import 'Providers/user.dart';
 import 'Screens/auth/login_screen.dart';
 import 'Screens/check out/SetupItems.dart';
 
+import 'Screens/settings_screen.dart';
 import 'chat/providers/chat_provider.dart';
 import 'colors/colors.dart';
 import 'notificaition/services/notification_service.dart';
@@ -71,54 +72,44 @@ void main() async {
   NotificationServices notificationService = NotificationServices();
   await notificationService.init();
   await notificationService.requestIOSPermissions();
-  runApp( MyApp());
+  SharedPreferences prefs;
+
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+  runApp( MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: PersonalInfoProvider()),
+        Provider<ChatProvider>(
+          create: (_) => ChatProvider(
+            prefs:prefs,
+            firebaseFirestore:firebaseFirestore,
+            firebaseStorage: firebaseStorage,
+          ),
+        ),
+        ChangeNotifierProvider.value(value: OrderStatusProvider()),
+        ChangeNotifierProvider.value(value: GalleryProvider.getdata()),
+        ChangeNotifierProvider.value(value: OrderByIdProvider()),
+        ChangeNotifierProvider.value(value: ContactUsProvider()),
+        ChangeNotifierProvider.value(value: NotificationProvider()),
+        ChangeNotifierProvider.value(value: FriendsProvider()),
+        ChangeNotifierProvider.value(value: UserProvider.statusfunction()),
+        ChangeNotifierProvider.value(value: PackagesProvider()),
+        ChangeNotifierProvider.value(value: AdressProvider()),
+        ChangeNotifierProvider.value(value: CuisineProvider()),
+        ChangeNotifierProvider.value(value: OccasionProvider()),
+        ChangeNotifierProvider.value(value: OrderProvider()),
+
+        ChangeNotifierProvider.value(value: OrderCaterProvider()),
+        ChangeNotifierProvider.value(value: SurveyProvider.nodata()),
+        ChangeNotifierProvider.value(value: CreditCardsProvider()),
+        ChangeNotifierProvider.value(value: ContactUsProvider()),
+      ],
+
+      child:MyApp()));
 }
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
-class appstate extends StatefulWidget {
-  const appstate({Key key}) : super(key: key);
 
-  @override
-  _appstateState createState() => _appstateState();
-}
-
-class _appstateState extends State<appstate> {
-
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    final authProvider = Provider.of<UserProvider>(context, listen: true);
-
-
-            // return Scaffold(
-            //   body: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [Text("erver down ,, sryyyyy")],
-            //   ),
-            //
-
-            switch (authProvider.status) {
-
-
-
-
-case Status.spalchscreen:
-  return SplashScreen();
-              case Status.walkingpage:
-                return OnBoardingScreens();
-
-              case Status.language:
-                return LanguagePicker();
-              default :
-                return Navigationbar(0);
-            }
-
-
-          }
-
-
-}
 
 class MyApp extends StatefulWidget {
    MyApp({Key key}) : super(key: key);
@@ -171,36 +162,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value: PersonalInfoProvider()),
-        Provider<ChatProvider>(
-          create: (_) => ChatProvider(
-            prefs: this.prefs,
-            firebaseFirestore: this.firebaseFirestore,
-            firebaseStorage: this.firebaseStorage,
-          ),
-        ),
-        ChangeNotifierProvider.value(value: OrderStatusProvider()),
-        ChangeNotifierProvider.value(value: GalleryProvider.getdata()),
-        ChangeNotifierProvider.value(value: OrderByIdProvider()),
-        ChangeNotifierProvider.value(value: ContactUsProvider()),
-        ChangeNotifierProvider.value(value: NotificationProvider()),
-        ChangeNotifierProvider.value(value: FriendsProvider()),
-        ChangeNotifierProvider.value(value: UserProvider.statusfunction()),
-        ChangeNotifierProvider.value(value: PackagesProvider()),
-        ChangeNotifierProvider.value(value: AdressProvider()),
-        ChangeNotifierProvider.value(value: CuisineProvider()),
-        ChangeNotifierProvider.value(value: OccasionProvider()),
-        ChangeNotifierProvider.value(value: OrderProvider()),
-
-        ChangeNotifierProvider.value(value: OrderCaterProvider()),
-        ChangeNotifierProvider.value(value: SurveyProvider.nodata()),
-        ChangeNotifierProvider.value(value: CreditCardsProvider()),
-        ChangeNotifierProvider.value(value: ContactUsProvider()),
-      ],
-
-      child: MaterialApp(
+    return  MaterialApp(
           localizationsDelegates: [
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -269,8 +231,53 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: SplashScreen()
-      ),
+        home: appstate()
+
     );
   }
+}
+class appstate extends StatefulWidget {
+  const appstate({Key key}) : super(key: key);
+
+  @override
+  _appstateState createState() => _appstateState();
+}
+
+class _appstateState extends State<appstate> {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
+
+    // return Scaffold(
+    //   body: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [Text("erver down ,, sryyyyy")],
+    //   ),
+    //
+
+    switch (authProvider.status) {
+
+
+
+
+      case Status.spalchscreen:
+        return SplashScreen();
+      case Status.walkingpage:
+        return OnBoardingScreens();
+
+      case Status.language:
+        return LanguagePicker();
+      default :
+        return Navigationbar(0);
+    }
+
+
+  }
+
+
 }

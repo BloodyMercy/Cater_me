@@ -2,11 +2,12 @@ import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../model/orderById.dart';
 import '../../../../model/packages.dart';
 import 'UserOrders.dart';
 
 class OrderCard extends StatefulWidget {
-  Map<String,dynamic>a;
+  OrderItems a;
    OrderCard({Key key, this.a}) : super(key: key);
 
   @override
@@ -36,7 +37,7 @@ class _OrderCardState extends State<OrderCard> {
               width: 100.0,
               color: Colors.white,
               child: Image.network(
-                lang=="en"? widget.a["image"]:widget.a["imageAR"],
+             widget.a.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -51,7 +52,7 @@ class _OrderCardState extends State<OrderCard> {
                       topRight: Radius.circular(4),
                     ),
                   ),
-                  child: Text("x${widget.a["quantity"]}",
+                  child: Text("x${widget.a.quantity}",
                       style: TextStyle(
                         //  color: Colors.black,
                          // fontFamily: 'Valencia',
@@ -66,7 +67,7 @@ class _OrderCardState extends State<OrderCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${widget.a["price"]}",
+              Text("${widget.a.price}",
                   style: TextStyle(
                    // fontFamily: 'Geomanist',
                     fontSize: 16,
@@ -78,7 +79,7 @@ class _OrderCardState extends State<OrderCard> {
               Container(
                 child: Text.rich(
                   TextSpan(
-                    text: lang=="en"?widget.a["item"]:widget.a["itemAR"],
+                    text:widget.a.item,
                     style: TextStyle(
                      // color: Colors.black,
                       fontSize: 13,
@@ -100,7 +101,7 @@ class _OrderCardState extends State<OrderCard> {
               ),
               Text.rich(
                 TextSpan(
-                  text: "QTY: " + "${widget.a["quantity"]}",
+                  text: "QTY: " + "${widget.a.quantity}",
                   style: TextStyle(
                   //  color: Color.fromRGBO(180, 187, 197, 1),
                     fontSize: 13,

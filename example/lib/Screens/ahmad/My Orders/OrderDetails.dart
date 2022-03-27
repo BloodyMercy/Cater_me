@@ -3,32 +3,58 @@ import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Providers/orderStatus_provider.dart';
+import '../../../Providers/user.dart';
+import '../../orders/order_tracking.dart';
 import 'OrderTimeline.dart';
 import 'widgets/OrderList.dart';
 
 class OrderDetailsView extends StatefulWidget {
-  int id ;
-   OrderDetailsView({Key key, this.id}) : super(key: key);
+  int id;
+ OrderDetailsView(this.id);
 
   @override
   _OrderDetailsViewState createState() => _OrderDetailsViewState();
 }
 
 class _OrderDetailsViewState extends State<OrderDetailsView> {
-  getdata(){
+  bool loading = true;
+  bool donate = false;
+  bool rejected = false;
+  String language="";
+  getData() async {
+    final orders = Provider.of<OrderByIdProvider>(context, listen: false);
+    await orders.getOrderById(widget.id);
+    SharedPreferences sh =await SharedPreferences.getInstance();
+    language=sh.getString("locale");
+    await orders.getOrderItems(sh.getString("locale"));
+    await orders.getOrderPaymentFreind();
+    print(orders.items.length);
+    final orderStatus =
+    Provider.of<OrderStatusProvider>(context, listen: false);
+    await orderStatus.getOrderStatus(widget.id);
 
-    final _order= Provider.of<OrderByIdProvider>(context,listen:false);
-    _order.getOrderById(widget.id);
+    if (orderStatus.orderStatus.statusId != 5) {
+      setState(() {
+        rejected = true;
+      });
+    }
+    donate = orders.orderbyId['isDonated'] ?? false;
+    setState(() {
+      loading = false;
+    });
   }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getdata();
+    getData();
   }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     final _order= Provider.of<OrderByIdProvider>(context,listen:true);
     double height = MediaQuery.of(context).size.height;
@@ -89,9 +115,9 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "Order Date:${
+                          text: "Order Date: ${
                               DateFormat("dd-MM-yyyy").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
-                              } 12 November 2021",
+                              } ",
                           style: TextStyle(
 
                               fontWeight: FontWeight.w400,
@@ -139,7 +165,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${_order.orderbyId["event"]["contactName"]}",
+                              "${_order.orderbyId["address"]["title"]}",
                               style: TextStyle(
 
                                   fontWeight: FontWeight.w400,
@@ -164,7 +190,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "City ${_order.orderbyId["address"]["city"]},${_order.orderbyId["address"]["country"]}",
+                                text: "City ${_order.orderbyId["address"]["city"]}, Country ${_order.orderbyId["address"]["country"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,
@@ -229,7 +255,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   SizedBox(
                     height: 10,
                   ),
-                  OrderList(a:_order.orderbyId["orderItems"]),
+                  OrderList(a:_order.items),
                 ],
               ),
             ),
@@ -240,10 +266,17 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               padding: const EdgeInsets.only(left: 15.0),
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          TrackingOrder(widget.id),
+                    ),
+                  );
+                //  TrackingOrder(widget.id)
                //   changeScreen(context, OrderTimeLine());
                 },
                 child: Text(
-                  'Track Parcel',
+                  '${authProvider.lg[authProvider.language]["Tracking"]}',
                   style: TextStyle(
                       color: Color.fromRGBO(85, 115, 116, 1),
                       fontSize: 13,
@@ -286,7 +319,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
-                      "VISA **** **** ****12",
+                      "${_order.orderbyId["creditCard"]["type"]} **** **** **${_order.orderbyId["creditCard"]["cardNumber"]}",
                       style: TextStyle(fontFamily: 'Geomanist', fontSize: 14),
                     ),
                   )

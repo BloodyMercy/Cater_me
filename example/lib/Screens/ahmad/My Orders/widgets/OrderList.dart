@@ -7,7 +7,7 @@ import 'OrderCard.dart';
 import 'UserOrders.dart';
 
 class OrderList extends StatefulWidget {
-  List<Map<String,dynamic>>a;
+  List<dynamic>a;
    OrderList({Key key, this.a}) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class _OrderListState extends State<OrderList> {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10),
           child: OrderCard(
-            a:widget.a[0],
+            a:widget.a[index],
           ),
         ),
       ),

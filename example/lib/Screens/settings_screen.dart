@@ -46,6 +46,13 @@ class _TABBarState extends State<TABBar> {
     // TODO: implement initState
     super.initState();
     getPersonalInfo();
+    getLanguage();
+  }
+  getLanguage() async{
+    final user=Provider.of<UserProvider>(context,listen:false);
+    await user.getLanguage();
+   // print(user.lg[user.language]["Home"]);
+  //  user.status=Status.Authenticated;
   }
 
   getPersonalInfo() async {
@@ -909,15 +916,16 @@ class _TABBarState extends State<TABBar> {
                                                     "locale", "ar");
                                                 MyApp.setLocale(context,
                                                     Locale("ar", "AE"));
-                                                // Navigator.of(context)
-                                                //     .pushAndRemoveUntil(
-                                                //     MaterialPageRoute(
-                                                //       builder: (context) =>
-                                                //           SplashScreen(),
-                                                //     ),
-                                                //         (Route<dynamic>
-                                                //     route) =>
-                                                //     false);
+                                                 Navigator.of(context).pop();
+                                                Navigator.of(context)
+                                                    .pushAndRemoveUntil(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Navigationbar(0),
+                                                    ),
+                                                        (Route<dynamic>
+                                                    route) =>
+                                                    false);
                                                 // AppLocalizations.of(context)!.locale.toString()
 
                                                 // .language="ar";
@@ -975,16 +983,16 @@ class _TABBarState extends State<TABBar> {
                                                   MyApp.setLocale(context,
                                                       Locale("en", "US"));
                                                   Navigator.of(context).pop();
-                                                  // Navigator.of(context)
-                                                  //     .pushAndRemoveUntil(
-                                                  //     MaterialPageRoute(
-                                                  //       builder:
-                                                  //           (context) =>
-                                                  //           SplashScreen(),
-                                                  //     ),
-                                                  //         (Route<dynamic>
-                                                  //     route) =>
-                                                  //     false);
+                                                  Navigator.of(context)
+                                                      .pushAndRemoveUntil(
+                                                      MaterialPageRoute(
+                                                        builder:
+                                                            (context) =>
+                                                                Navigationbar(0),
+                                                      ),
+                                                          (Route<dynamic>
+                                                      route) =>
+                                                      false);
                                                   // AppLocalizations.of(context)!.locale.toString()
 
                                                   // .language="ar";                                              },
@@ -1047,15 +1055,15 @@ class _TABBarState extends State<TABBar> {
                                                       MyApp.setLocale(context,
                                                           Locale("ar", "AE"));
                                                       Navigator.of(context).pop();
-                                                      // Navigator.of(context)
-                                                      //     .pushAndRemoveUntil(
-                                                      //         MaterialPageRoute(
-                                                      //           builder: (context) =>
-                                                      //               SplashScreen(),
-                                                      //         ),
-                                                      //         (Route<dynamic>
-                                                      //                 route) =>
-                                                      //             false);
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                              MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    Navigationbar(0),
+                                                              ),
+                                                              (Route<dynamic>
+                                                                      route) =>
+                                                                  false);
                                                       // AppLocalizations.of(context)!.locale.toString()
 
                                                       // .language="ar";
@@ -1112,16 +1120,17 @@ class _TABBarState extends State<TABBar> {
                                                           "locale", "en");
                                                       MyApp.setLocale(context,
                                                           Locale("en", "US"));
-                                                      // Navigator.of(context)
-                                                      //     .pushAndRemoveUntil(
-                                                      //     MaterialPageRoute(
-                                                      //       builder:
-                                                      //           (context) =>
-                                                      //           SplashScreen(),
-                                                      //     ),
-                                                      //         (Route<dynamic>
-                                                      //     route) =>
-                                                      //     false);
+                                                      Navigator.of(context).pop();
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder:
+                                                                (context) =>
+                                                                    Navigationbar(0),
+                                                          ),
+                                                              (Route<dynamic>
+                                                          route) =>
+                                                          false);
                                                       // AppLocalizations.of(context)!.locale.toString()
 
                                                       // .language="ar";                                              },
