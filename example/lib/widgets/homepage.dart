@@ -640,7 +640,7 @@ class _HomePageState extends State<HomePage>
 
                         child:     ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: gallery.homepage.length,
+                          itemCount: package.alldata["gallery"].length,
                           itemBuilder: (context, i) {
                             //  final cards = widget.card[i];
                             return           InkWell(
@@ -665,7 +665,7 @@ class _HomePageState extends State<HomePage>
                                   ),
                                   width: mediaQuery.size.width /3,
                                   height: mediaQuery.size.height /5,
-                                  child:Image.network(gallery.homepage[i].link,
+                                  child:Image.network(package.alldata["gallery"][i]["image"],
                                     fit: BoxFit.fill,
                                     width: mediaQuery.size.width * 0.3,
                                     height: mediaQuery.size.height * 0.50,
