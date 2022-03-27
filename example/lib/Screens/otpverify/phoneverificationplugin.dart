@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 class VerificationCode extends StatefulWidget {
   /// is completed
   final ValueChanged<String> onCompleted;
-
+final String lang;
   /// is in process of editing
   final ValueChanged<bool> onEditing;
 
@@ -55,6 +55,7 @@ class VerificationCode extends StatefulWidget {
     this.cursorColor,
     this.itemSize = 50,
     this.underlineColor,
+    this.lang,
     this.underlineUnfocusedColor,
     this.fillColor,
     this.underlineWidth,
@@ -103,17 +104,21 @@ class _VerificationCodeState extends State<VerificationCode> {
 
   Widget _buildInputItem(int index) {
     return RawKeyboardListener(
+
       focusNode: _listFocusNodeKeyListener[index],
       onKey: (event) {
         if (event.runtimeType == RawKeyUpEvent) {
           if (event.data.logicalKey == LogicalKeyboardKey.arrowLeft) {
+            if(widget.lang=="ar"){_next(index);}else
             _prev(index);
           } else if (event.data.logicalKey == LogicalKeyboardKey.arrowRight) {
+            if(widget.lang=="ar"){_prev(index);}else
             _next(index);
           }
         }
       },
       child: TextField(
+
         keyboardType: widget.keyboardType,
         inputFormatters: widget.digitsOnly ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         maxLines: 1,
@@ -155,6 +160,7 @@ class _VerificationCodeState extends State<VerificationCode> {
           }
 
           if (value.length == 0 && index >= 0) {
+            widget.lang=="ar"?_next(index):
             _prev(index);
             return;
           }
@@ -165,7 +171,7 @@ class _VerificationCodeState extends State<VerificationCode> {
 
             while (_value.length > 0 && _index < widget.length) {
               _listControllerText[_index].value = TextEditingValue(text: _value[0]);
-              _next(_index++);
+              widget.lang=="ar"?_prev(index): _next(_index++);
               _value = _value.substring(1);
             }
 
@@ -205,10 +211,13 @@ class _VerificationCodeState extends State<VerificationCode> {
     for (int index = 0; index < widget.length; index++) {
       double left = (widget.itemSize / 10);
       listWidget.add(Container(
+
           height: widget.itemSize,
           width: widget.itemSize,
           margin: EdgeInsets.only(left: left),
-          child: _buildInputItem(index)));
+          child: Directionality(
+              textDirection: TextDirection.rtl,
+              child:_buildInputItem(index))));
     }
     return listWidget;
   }

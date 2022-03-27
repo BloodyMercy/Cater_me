@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderServices {
-  Future<List<OrderModel>> getAllOrders(String a) async {
+  Future<List<OrderModel>> getAllOrders() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
@@ -18,7 +18,7 @@ class OrderServices {
         List<dynamic> responseData = json.decode(response.body);
         List<OrderModel> posts = List<OrderModel>.from(
           responseData.map(
-                (model) => OrderModel.fromJson(model,a),
+                (model) => OrderModel.fromJson(model,prefs.getString("locale")??"en"),
           ),
         ); //map to list
         return posts;

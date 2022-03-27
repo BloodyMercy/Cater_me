@@ -16,9 +16,9 @@ class OrderProvider extends ChangeNotifier{
     _listOrder = value;
   }
 
-  getAllOrders(String a) async{
+  getAllOrders() async{
     _listOrder=[];
-    _listOrder=await _orderServices.getAllOrders(a);
+    _listOrder=await _orderServices.getAllOrders();
     notifyListeners();
   }
 
