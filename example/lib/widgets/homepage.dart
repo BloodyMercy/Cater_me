@@ -612,7 +612,7 @@ class _HomePageState extends State<HomePage>
                           ),
                         ),
                         // SizedBox(width: mediaQuery.size.width*0.6),
-                        Padding(
+                        gallery.homepage.length==0?Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: GestureDetector(
                               child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
@@ -625,7 +625,7 @@ class _HomePageState extends State<HomePage>
 
                                 );
                               }),
-                        ),
+                        ):Container(),
 
 
 
@@ -637,7 +637,7 @@ class _HomePageState extends State<HomePage>
 
                         child:     ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 5,
+                          itemCount: gallery.homepage.length,
                           itemBuilder: (context, i) {
                             //  final cards = widget.card[i];
                             return           InkWell(
@@ -645,7 +645,7 @@ class _HomePageState extends State<HomePage>
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  ""),
+                                    builder: (context) => FullPhotoPage(url:  gallery.homepage[i].link),
                                   ),
                                 );
                               },
@@ -662,7 +662,7 @@ class _HomePageState extends State<HomePage>
                                   ),
                                   width: mediaQuery.size.width /3,
                                   height: mediaQuery.size.height /5,
-                                  child:Image.asset("images/Donated.png",
+                                  child:Image.network(gallery.homepage[i].link,
                                     fit: BoxFit.fill,
                                     width: mediaQuery.size.width * 0.3,
                                     height: mediaQuery.size.height * 0.50,
