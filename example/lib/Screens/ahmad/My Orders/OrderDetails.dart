@@ -306,6 +306,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: ElevatedButton(
+
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -316,20 +317,26 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                 //  TrackingOrder(widget.id)
                //   changeScreen(context, OrderTimeLine());
                 },
-                child: Row(
-                  children: [
-                    Text(
-                      '${authProvider.lg[authProvider.language]["Tracking"]}',
-                      style: TextStyle(
-                          color: Color.fromRGBO(85, 115, 116, 1),
-                          fontSize: 13,
-                          fontFamily: 'Geomanist',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    FaIcon(FontAwesomeIcons.truck)
-                  ],
+                child: Container(
+                  width: width/4,
+                  child: Row(
+                    children: [
+                      Text(
+                        '${authProvider.lg[authProvider.language]["Tracking"]}',
+                        style: TextStyle(
+                            color: Color.fromRGBO(85, 115, 116, 1),
+                            fontSize: 13,
+                            fontFamily: 'Geomanist',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      FaIcon(FontAwesomeIcons.truck,color:Color.fromRGBO(112, 112, 112, 1)
+                    ,)
+
+                    ],
+                  ),
                 ),
                 style: ElevatedButton.styleFrom(
+
                   primary: Color(0xffF5F6F7),
                   side: BorderSide(
                     color: Color.fromRGBO(85, 115, 116, 1),
