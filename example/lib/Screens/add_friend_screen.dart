@@ -101,7 +101,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           elevation: 0,
 
           centerTitle: true,
-          title: Text('${LanguageTr.lg[authProvider.language]['Add New Friend']}'
+          title: Text('${authProvider.lg[authProvider.language]['Add New Friend']}'
             ,
             style: Theme.of(context).textTheme.headline1,
           ),

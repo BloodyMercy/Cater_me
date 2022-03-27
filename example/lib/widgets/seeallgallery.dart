@@ -19,7 +19,7 @@ class _seeAllGalleryState extends State<seeAllGallery> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
        appBar: AppBar(
-         title:Text('${LanguageTr.lg[authProvider.language]["Gallery"]}'),
+         title:Text('${authProvider.lg[authProvider.language]["Gallery"]}'),
              centerTitle: true,
           leading:IconButton(
             onPressed:(){

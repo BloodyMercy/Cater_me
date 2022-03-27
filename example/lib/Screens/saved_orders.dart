@@ -80,7 +80,7 @@ class _SavedOrdersState extends State<SavedOrders> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('${LanguageTr.lg[authProvider.language]["Saved Orders"]}',),
+          title: Text('${authProvider.lg[authProvider.language]["Saved Orders"]}',),
         ),
         body: RefreshIndicator(
           onRefresh: refreshOrderData,
@@ -112,7 +112,7 @@ class _SavedOrdersState extends State<SavedOrders> {
                                     LoginScreen()));
                       },
                       child: Text(
-                        '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                        '${authProvider.lg[authProvider.language]["Log In"]}',
                       ),
                     )
                   ],
@@ -170,7 +170,7 @@ class _SavedOrdersState extends State<SavedOrders> {
                                         height: 10,
                                       ),
                                       Text(
-                                        "${LanguageTr.lg[authProvider.language]["Address:"]} ${orders.listOrder[index].addressTitle}",
+                                        "${authProvider.lg[authProvider.language]["Address:"]} ${orders.listOrder[index].addressTitle}",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight:

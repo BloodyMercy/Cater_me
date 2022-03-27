@@ -63,7 +63,7 @@ bool loading=true;
           iconSize: 40,
           color: Colors.white,
         ),
-         title: Text('${LanguageTr.lg[authProvider.language]["Contact Us"]}',
+         title: Text('${authProvider.lg[authProvider.language]["Contact Us"]}',
 
 
           style: Theme.of(context).textTheme.headline1,
@@ -149,7 +149,7 @@ SizedBox(
                   child: AnimatedTextKit(
                     onTap: () {},
                     animatedTexts: [
-                      for (final txt in ['${LanguageTr.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
+                      for (final txt in ['${authProvider.lg[authProvider.language]["Special Thank You For Using"]}', 'CaterMe'])
                         FadeAnimatedText(txt,
                             textStyle: TextStyle(
                                 fontSize: 20,
@@ -162,11 +162,11 @@ SizedBox(
               ),
 
               SizedBox( height: MediaQuery.of(context).size.height*0.06,),
-              Text('${LanguageTr.lg[authProvider.language]["We/’d Love to Hear From You"]}'
+              Text('${authProvider.lg[authProvider.language]["We/’d Love to Hear From You"]}'
                 ,
                 style: TextStyle(fontSize: 22),
               ),
-              Text('${LanguageTr.lg[authProvider.language]["Ready to answer any and all questions"]}'
+              Text('${authProvider.lg[authProvider.language]["Ready to answer any and all questions"]}'
                 ,
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
@@ -188,7 +188,7 @@ SizedBox(
                         MaterialPageRoute(
                             builder: (context) =>
                                 Review()));},
-                      child: Text('${LanguageTr.lg[authProvider.language]["Rate Us"]}',style: TextStyle(color:Colors.white),),
+                      child: Text('${authProvider.lg[authProvider.language]["Rate Us"]}',style: TextStyle(color:Colors.white),),
                     ),
                   ),
                 ),
@@ -199,7 +199,7 @@ SizedBox(
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children:[
 
-                Text('${LanguageTr.lg[authProvider.language]["Follow Us"]}'
+                Text('${authProvider.lg[authProvider.language]["Follow Us"]}'
                   ,style:Theme.of(context)
                       .textTheme
                       .headline2,),
@@ -340,7 +340,7 @@ SizedBox(
                               peerId: "admin",
                               peerAvatar: "",
                               peerNickname:
-                              '${LanguageTr.lg[authProvider.language]["Customer Service"]}',
+                              '${authProvider.lg[authProvider.language]["Customer Service"]}',
                             ),
                       ));
 

@@ -104,7 +104,7 @@ class AddOnCardOrder extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(right: 8.0),
                                         child: Text(
-                                          "${LanguageTr.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
+                                          "${authProvider.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline2,

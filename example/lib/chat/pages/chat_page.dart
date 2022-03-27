@@ -166,7 +166,7 @@ class ChatPageState extends State<ChatPage> {
           duration: Duration(milliseconds: 300), curve: Curves.easeOut);
     } else {
       Fluttertoast.showToast(
-          msg: '${LanguageTr.lg[authProvider.language]["Nothing to send"]}',
+          msg: '${authProvider.lg[authProvider.language]["Nothing to send"]}',
           backgroundColor: ColorConstants.greyColor);
     }
   }
@@ -482,7 +482,7 @@ bool isloading=true;
           Navigator.pop(context);
         },icon: Icon(Icons.chevron_left_outlined)),
         centerTitle: true,
-        title: Text('${LanguageTr.lg[authProvider.language]["Customer Service"]}'
+        title: Text('${authProvider.lg[authProvider.language]["Customer Service"]}'
             ),
       ),
       body:Stack(
@@ -691,7 +691,7 @@ bool isloading=true;
                 controller: textEditingController,
                 decoration: InputDecoration.collapsed(
                   hintText:
-                      '${LanguageTr.lg[authProvider.language]["Type your message..."]}',
+                      '${authProvider.lg[authProvider.language]["Type your message..."]}',
                   hintStyle: TextStyle(color: ColorConstants.greyColor),
                 ),
                 focusNode: focusNode,

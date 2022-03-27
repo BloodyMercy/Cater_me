@@ -124,7 +124,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                                   SizedBox(
                                     height: 12,
                                   ),
-                                  Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${pack.allpackagesorder[index].price}",),
+                                  Text("${authProvider.lg[authProvider.language]["SAR"]} ${pack.allpackagesorder[index].price}",),
                                 ]),
                               ),
                             ),

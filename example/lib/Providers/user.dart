@@ -25,14 +25,26 @@ class UserProvider with ChangeNotifier {
 
   Map<String,Map<String,dynamic>> _lg={};
 
+
   Map<String, Map<String, dynamic>> get lg => _lg;
 
   set lg(Map<String, Map<String, dynamic>> value) {
     _lg = value;
+    notifyListeners();
+  }
+bool _loadinglanguage=false;
+
+  bool get loadinglanguage => _loadinglanguage;
+
+  set loadinglanguage(bool value) {
+    _loadinglanguage = value;
   }
 
   getLanguage() async{
+
     lg= await PersonalInfoService().getLangauge();
+    loadinglanguage=true;
+    notifyListeners();
   }
 
   TextEditingController oldPassword = TextEditingController();
@@ -224,7 +236,7 @@ language=sh.getString("locale");
     } catch (error) {
       //_status = Status.Unauthenticated;
 
-      _messagelogin =    '${LanguageTr.lg[language]["Camera"]}';
+      _messagelogin =    '${lg[language]["Camera"]}';
 
       notifyListeners();
       return false;

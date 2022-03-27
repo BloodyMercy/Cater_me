@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:CaterMe/model/occasion.dart';
 import 'package:CaterMe/model/occasions/occasiontype.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Providers/user.dart';
 import '../language/language.dart';
 import 'ApiLink.dart';
 
@@ -58,7 +61,8 @@ class OccasionService {
   }
 
 
-  Future<List<OccassionType>> getAllOcasionType(String a) async {
+  Future<List<OccassionType>> getAllOcasionType(String a,BuildContext context) async {
+    final user= Provider.of<UserProvider>(context, listen: false);
     List<OccassionType> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -76,7 +80,7 @@ class OccasionService {
         List<dynamic> responseData = json.decode(response.body);
 
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
-       l.add( OccassionType(id: -700, name: '${LanguageTr.lg[prefs.getString("locale")]["Add occasion"]}', image: ''));
+       l.add( OccassionType(id: -700, name: '${user.lg[prefs.getString("locale")]["Add occasion"]}', image: ''));
         for (int i = 1; i < responseData.length; i++) {
           l.add(OccassionType.fromJson(responseData[i],a));
         }

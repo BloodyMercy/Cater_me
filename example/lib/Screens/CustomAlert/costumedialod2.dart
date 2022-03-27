@@ -80,7 +80,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                       child: Text(
-                        '${LanguageTr.lg[authProvider.language]["Without equipment"]}',
+                        '${authProvider.lg[authProvider.language]["Without equipment"]}',
 
                         style: TextStyle(
                           color: !order.check1?Color.fromRGBO(
@@ -106,7 +106,7 @@ class CustomDialog2 extends StatelessWidget {
                     Container(width: width/50,),
                     Expanded(
                         child:  Text(
-                          '${LanguageTr.lg[authProvider.language]["Without service team"]}',
+                          '${authProvider.lg[authProvider.language]["Without service team"]}',
 
                           style: TextStyle(
                             color: !order.check2?Color.fromRGBO(
@@ -132,7 +132,7 @@ class CustomDialog2 extends StatelessWidget {
                   Container(width: width/50,),
                   Expanded(
                       child:  Text(
-                        '${LanguageTr.lg[authProvider.language]["Don’t donate the rest of the food"]}',
+                        '${authProvider.lg[authProvider.language]["Don’t donate the rest of the food"]}',
                         style: TextStyle(
                           color: !order.check4? Color.fromRGBO(
                               149, 147, 147, 0.4): Color.fromRGBO(63, 85, 33, 1),

@@ -68,7 +68,7 @@ class _seeAllPackages extends State<seeAllPackages> {
         // ),
         centerTitle: true,
         title: Text(
-          '${LanguageTr.lg[authProvider.language]["Packages"]}',
+          '${authProvider.lg[authProvider.language]["Packages"]}',
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,

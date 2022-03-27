@@ -63,7 +63,7 @@ package.clearData();
           elevation: 0,
 
           centerTitle: true,
-          title: Text('${LanguageTr.lg[authProvider.language]["Shishas"]}'
+          title: Text('${authProvider.lg[authProvider.language]["Shishas"]}'
             ,
             style: Theme.of(context).textTheme.headline1,
           ),
@@ -88,7 +88,7 @@ package.clearData();
                     mainAxisSpacing: 8,
                   ),
                 ):
-                Center(child:Text('${LanguageTr.lg[authProvider.language]["No Shishas To Display"]}',
+                Center(child:Text('${authProvider.lg[authProvider.language]["No Shishas To Display"]}',
               ),)
     ))));
   }

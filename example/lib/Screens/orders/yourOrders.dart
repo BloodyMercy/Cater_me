@@ -131,7 +131,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                   LoginScreen()));
                                     },
                                     child: Text(
-                                      '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                                      '${authProvider.lg[authProvider.language]["Log In"]}',
                                     ),
                                   )
                                 ],
@@ -262,7 +262,7 @@ class _YourOrdersState extends State<YourOrders> {
                                               height: 10,
                                             ),
                                             Text(
-                                              "${LanguageTr.lg[authProvider.language]["Address:"]} ${orders.listOrder[index].addressTitle}",
+                                              "${authProvider.lg[authProvider.language]["Address:"]} ${orders.listOrder[index].addressTitle}",
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight:

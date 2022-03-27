@@ -54,7 +54,7 @@ getdata();
             crossAxisSpacing: 8,
             mainAxisSpacing: 5,
           ),
-        ):Center(child: Text('${LanguageTr.lg[authProvider.language]["no Addons to display"]}'
+        ):Center(child: Text('${authProvider.lg[authProvider.language]["no Addons to display"]}'
             ),),
 
     );

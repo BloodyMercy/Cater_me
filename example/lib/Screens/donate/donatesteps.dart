@@ -38,13 +38,13 @@
 // data(){
 //   final authProvider = Provider.of<UserProvider>(context, listen: false);
 //
-//   title=['${LanguageTr.lg[authProvider.language]["extra services"]}'];
+//   title=['${authProvider.lg[authProvider.language]["extra services"]}'];
 //   setState(() {
 //
 //
-//    desc='${LanguageTr.lg[authProvider.language]["Do you want catering equipment?"]}';
-//    desc1='${LanguageTr.lg[authProvider.language]["Do you want a service team?"]}';
-//    desc2='${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}';
+//    desc='${authProvider.lg[authProvider.language]["Do you want catering equipment?"]}';
+//    desc1='${authProvider.lg[authProvider.language]["Do you want a service team?"]}';
+//    desc2='${authProvider.lg[authProvider.language]["Do you want to donate the rest of your food?"]}';
 // }); // desc=["Do you want catering equipment?","Do you want a service team?","Do you want to donate the rest of your food?"];
 // }
 //
@@ -153,7 +153,7 @@
 //           Future<bool>.value(
 //               false),
 //           child: AlertDialog(
-//             title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+//             title:  Text('${authProvider.lg[authProvider.language]["Loading..."]}'
 //             ),
 //             content: Column(
 //                 mainAxisSize:
@@ -231,7 +231,7 @@
 // }
 //
 //                         },
-//                         child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
+//                         child: Text('${authProvider.lg[authProvider.language]["Yes"]}')),
 //                   ):Center(child:CircularProgressIndicator()),
 //                loading==true?   Align(
 //                     alignment: Alignment.bottomRight,
@@ -279,7 +279,7 @@
 //           Future<bool>.value(
 //               false),
 //           child: AlertDialog(
-//             title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+//             title:  Text('${authProvider.lg[authProvider.language]["Loading..."]}'
 //             ),
 //             content: Column(
 //                 mainAxisSize:
@@ -346,7 +346,7 @@
 //   }
 // }
 //                         },
-//                         child: Text('${LanguageTr.lg[authProvider.language]["No"]}')),
+//                         child: Text('${authProvider.lg[authProvider.language]["No"]}')),
 //                   ):Container(),
 //                 ],
 //               )

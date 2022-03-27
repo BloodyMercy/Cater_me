@@ -54,7 +54,7 @@ class Review extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => FirstReview()));
                   },
-                  child: Text('${LanguageTr.lg[authProvider.language]['Start']}'
+                  child: Text('${authProvider.lg[authProvider.language]['Start']}'
                     ,
                     style: TextStyle(color: Colors.black,fontSize: 25),
                   ),

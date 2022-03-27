@@ -200,7 +200,7 @@ void showAlertDialog(BuildContext context, String message) {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text('${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
+        title: Text('${authProvider.lg[authProvider.language]["OTP Verification"]}',
           style: TextStyle(
               color: Colors.black,
               fontFamily: 'Ubuntu',
@@ -229,7 +229,7 @@ void showAlertDialog(BuildContext context, String message) {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text('${LanguageTr.lg[authProvider.language]["Please enter the 6-digit code you received via text message"]}'
+                child: Text('${authProvider.lg[authProvider.language]["Please enter the 6-digit code you received via text message"]}'
                 ,
                   style: TextStyle(
                     fontSize: 20,
@@ -308,7 +308,7 @@ lang: authProvider.language,
                                    titleStyle:
                                    TextStyle(fontWeight: FontWeight.bold),
                                    description:
-                                   '${LanguageTr.lg[authProvider.language]["${authProvider.messageSignUp.toString()}"]}',
+                                   '${authProvider.lg[authProvider.language]["${authProvider.messageSignUp.toString()}"]}',
                                    //  animationType: ANIMATION.FROM_LEFT,
                                  ).show(context);
                                  // _scaffoldKey.currentState.showSnackBar(
@@ -327,14 +327,14 @@ lang: authProvider.language,
                                    titleStyle:
                                    TextStyle(fontWeight: FontWeight.bold),
                                    description:
-                                   '${LanguageTr.lg[authProvider.language]["otp not valid"]}'
+                                   '${authProvider.lg[authProvider.language]["otp not valid"]}'
                                  ).show(context);
                                  // _scaffoldKey.currentState.showSnackBar(
                                  //     SnackBar(content: Row(
                                  //       children: [
                                  //        // CircularProgressIndicator(),
                                  //       //  SizedBox(width: 15,),
-                                 //         Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'),
+                                 //         Text('${authProvider.lg[authProvider.language]["otp not valid"]}'),
                                  //       ],
                                  //     ))
                                  //
@@ -355,7 +355,7 @@ lang: authProvider.language,
               generateOtp(widget._contact);
 
             },
-              child:  Text('${LanguageTr.lg[authProvider.language]["Resend code"]}',
+              child:  Text('${authProvider.lg[authProvider.language]["Resend code"]}',
 
                 style: TextStyle(
                   color: Colors.white,

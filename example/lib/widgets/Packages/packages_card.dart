@@ -56,7 +56,7 @@ class _PackagesCardState extends State<PackagesCard> {
                       builder: (context) => seeAllPackages("ttillee"),
                 ));
               },
-              child: Text('${LanguageTr.lg[authProvider.language]["See All"]}'
+              child: Text('${authProvider.lg[authProvider.language]["See All"]}'
                   ),
             ),
           ],

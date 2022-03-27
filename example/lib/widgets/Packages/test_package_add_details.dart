@@ -273,14 +273,14 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                         child: Row(
                           children: [
                             Text(
-                              "${LanguageTr.lg[authProvider.language]["Price"]}:",
+                              "${authProvider.lg[authProvider.language]["Price"]}:",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
+                              "${authProvider.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',

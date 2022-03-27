@@ -144,7 +144,7 @@ class _TABBarState extends State<TABBar> {
                                       Color.fromRGBO(63, 85, 33, 1),
                                     ),
                                     title: Text(
-                                      '${LanguageTr.lg[personalInfo.language]["Camera"]}',
+                                      '${personalInfo.lg[personalInfo.language]["Camera"]}',
                                       style: TextStyle(
                                         fontFamily: 'BerlinSansFB',
                                         fontSize: 14,
@@ -173,7 +173,7 @@ class _TABBarState extends State<TABBar> {
                                       Color.fromRGBO(63, 85, 33, 1),
                                     ),
                                     title: Text(
-                                      '${LanguageTr.lg[personalInfo.language]["Gallery"]}',
+                                      '${personalInfo.lg[personalInfo.language]["Gallery"]}',
                                       style: TextStyle(
                                         fontFamily: 'BerlinSansFB',
                                         fontSize: 14,
@@ -325,7 +325,7 @@ class _TABBarState extends State<TABBar> {
                                   builder: (BuildContext context) {
                                     return CustomDialog(
                                       title:
-                                      '${LanguageTr.lg[personalInfo.language]["Sad to see you leave"]}',
+                                      '${personalInfo.lg[personalInfo.language]["Sad to see you leave"]}',
                                       description: "",
                                       oneOrtwo: true,
                                       button2: ElevatedButton(
@@ -368,7 +368,7 @@ class _TABBarState extends State<TABBar> {
                                                   (route) => false);
                                         },
                                         child: Text(
-                                          '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+                                          '${personalInfo.lg[personalInfo.language]["Logout"]}',
                                           style: TextStyle(
                                               fontFamily: 'BerlinSansFB'),
                                         ),
@@ -378,7 +378,7 @@ class _TABBarState extends State<TABBar> {
                                           Navigator.of(context).pop();
                                         },
                                         child: Text(
-                                            '${LanguageTr.lg[personalInfo.language]["No"]}',
+                                            '${personalInfo.lg[personalInfo.language]["No"]}',
                                             style: TextStyle(
                                                 fontFamily:
                                                 'BerlinSansFB')),
@@ -387,7 +387,7 @@ class _TABBarState extends State<TABBar> {
                                   });
                             },
                             child: Text(
-                              '${LanguageTr.lg[personalInfo.language]["Logout"]}',
+                              '${personalInfo.lg[personalInfo.language]["Logout"]}',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -434,7 +434,7 @@ class _TABBarState extends State<TABBar> {
                           );
                         },
                         child: Text(
-                          '${LanguageTr.lg[personalInfo.language]["Log In"]}',
+                          '${personalInfo.lg[personalInfo.language]["Log In"]}',
                         ),
                       ),
                 SizedBox(
@@ -488,7 +488,7 @@ class _TABBarState extends State<TABBar> {
                                                             0.05,
                                                   ),
                                                   Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["Personal Info"]}',
+                                                    '${personalInfo.lg[personalInfo.language]["Personal Info"]}',
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFF3F5521),
@@ -560,7 +560,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            '${LanguageTr.lg[personalInfo.language]["Reset Password"]}',
+                                            '${personalInfo.lg[personalInfo.language]["Reset Password"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -639,7 +639,7 @@ class _TABBarState extends State<TABBar> {
                                                         0.05,
                                                   ),
                                                   Text(
-                                                    '${LanguageTr.lg[personalInfo.language]["My Addresses"]}',
+                                                    '${personalInfo.lg[personalInfo.language]["My Addresses"]}',
                                                     style: TextStyle(
                                                         color: Color(0xFF3F5521),
                                                         fontSize: 20,
@@ -701,7 +701,7 @@ class _TABBarState extends State<TABBar> {
                                       //                   0.05,
                                       //             ),
                                       //             Text(
-                                      //               '${LanguageTr.lg[personalInfo.language]["Saved Orders"]}',
+                                      //               '${authProvider.lg[personalInfo.language]["Saved Orders"]}',
                                       //               style: TextStyle(
                                       //                   color: Color(0xFF3F5521),
                                       //                   fontSize: 20,
@@ -772,7 +772,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            '${LanguageTr.lg[personalInfo.language]["My Credit Cards"]}',
+                                            '${personalInfo.lg[personalInfo.language]["My Credit Cards"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -839,7 +839,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            '${LanguageTr.lg[personalInfo.language]["My Friends"]}',
+                                            '${personalInfo.lg[personalInfo.language]["My Friends"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,
@@ -882,7 +882,7 @@ class _TABBarState extends State<TABBar> {
                                       ),
                                     ),
                                     title: Center(
-                                      child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                      child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 19,
@@ -925,7 +925,7 @@ class _TABBarState extends State<TABBar> {
                                             ),
                                             TextButton(
                                                 child: Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
                                                 ),
                                                 onPressed: (){
                                                   Navigator.of(context).pop();
@@ -945,7 +945,7 @@ class _TABBarState extends State<TABBar> {
                                       ),
                                     ),
                                     title: Center(
-                                      child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                      child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 19,
@@ -990,7 +990,7 @@ class _TABBarState extends State<TABBar> {
                                                 }),
                                             TextButton(
                                                 child: Text(
-                                                  '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
                                                 ),
                                                 onPressed: (){
                                                   Navigator.of(context).pop();
@@ -1018,7 +1018,7 @@ class _TABBarState extends State<TABBar> {
                                             ),
                                           ),
                                           title: Center(
-                                            child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                            child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 19,
@@ -1061,7 +1061,7 @@ class _TABBarState extends State<TABBar> {
                                                   ),
                                                   TextButton(
                                                       child: Text(
-                                                          '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                          '${personalInfo.lg[personalInfo.language]["Close"]}',
                                                       ),
                                                       onPressed: (){
                                                         Navigator.of(context).pop();
@@ -1081,7 +1081,7 @@ class _TABBarState extends State<TABBar> {
                                           ),
                                         ),
                                         title: Center(
-                                          child: Text('${LanguageTr.lg[personalInfo.language]["Choose language"]}',
+                                          child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 19,
@@ -1126,7 +1126,7 @@ class _TABBarState extends State<TABBar> {
                                                     }),
                                                 TextButton(
                                                     child: Text(
-                                                      '${LanguageTr.lg[personalInfo.language]["Close"]}',
+                                                      '${personalInfo.lg[personalInfo.language]["Close"]}',
                                                     ),
                                                     onPressed: (){
                                                       Navigator.of(context).pop();
@@ -1159,7 +1159,7 @@ class _TABBarState extends State<TABBar> {
                                           width: mediaQuery.size.width * 0.05,
                                         ),
                                         Text(
-                                          '${LanguageTr.lg[personalInfo.language]["Language"]}',
+                                          '${personalInfo.lg[personalInfo.language]["Language"]}',
                                           style: TextStyle(
                                               color: Color(0xFF3F5521),
                                               fontSize: 20,
@@ -1292,7 +1292,7 @@ class _TABBarState extends State<TABBar> {
                                               width: mediaQuery.size.width * 0.05,
                                             ),
                                             Text(
-                                              '${LanguageTr.lg[personalInfo.language]["Terms & Conditions"]}',
+                                              '${personalInfo.lg[personalInfo.language]["Terms & Conditions"]}',
                                               style: TextStyle(
                                                   color: Color(0xFF3F5521),
                                                   fontSize: 20,
@@ -1362,7 +1362,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.05,
                                           ),
                                           Text(
-                                            '${LanguageTr.lg[personalInfo.language]["Contact Us"]}',
+                                            '${personalInfo.lg[personalInfo.language]["Contact Us"]}',
                                             style: TextStyle(
                                                 color: Color(0xFF3F5521),
                                                 fontSize: 20,

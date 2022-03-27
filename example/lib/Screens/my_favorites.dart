@@ -69,7 +69,7 @@ String language;
           elevation: 0,
 
           centerTitle: true,
-          title: Text('${LanguageTr.lg[authProvider.language]["My Favorites"]}',
+          title: Text('${authProvider.lg[authProvider.language]["My Favorites"]}',
            
             style: Theme.of(context).textTheme.headline1,
           ),
@@ -474,7 +474,7 @@ String language;
                       );
                     },
                     child: Text(
-                      '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                      '${authProvider.lg[authProvider.language]["Log In"]}',
                     ),
                   )
                 ],

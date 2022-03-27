@@ -247,7 +247,8 @@ int _totalshisha=0;
       );
     }
     for(int i=0;i<choosebillFriend.length;i++) {
-      if(choosebillFriend[i].id==-69){}else{
+      if(choosebillFriend[i].id==-69){}
+      else{
         if (controllers[i].text.isEmpty || controllers[i].text == null ||
             controllers[i].text == "0") {
           controllers.removeAt(i);
@@ -258,7 +259,8 @@ int _totalshisha=0;
           "friendId": choosebillFriend[i].id,
           "amount": int.parse(controllers[i].text)
         });
-      }  }
+      }
+    }
 
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();

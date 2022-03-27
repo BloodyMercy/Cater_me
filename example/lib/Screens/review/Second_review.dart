@@ -193,7 +193,7 @@ class _SecondReviewState extends State<SecondReview> {
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => FourthReview()));
             },
-            child: Text('${LanguageTr.lg[authProvider.language]["Next"]}'
+            child: Text('${authProvider.lg[authProvider.language]["Next"]}'
               ,
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),

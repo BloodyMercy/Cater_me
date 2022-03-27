@@ -111,7 +111,7 @@ bool ispressed = false;
 
           centerTitle: true,
           title: Text(
-            '${LanguageTr.lg[authProvider.language][ "Edit Occasion"]}',
+            '${authProvider.lg[authProvider.language][ "Edit Occasion"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -125,10 +125,10 @@ bool ispressed = false;
                 children: [
                   SizedBox(height: mediaQuery.size.height * 0.07),
 
-                  customTextField(controller: occasion.nameofoccasioncontroller,label:'${LanguageTr.lg[authProvider.language]["Name of Occasion"]}',),
+                  customTextField(controller: occasion.nameofoccasioncontroller,label:'${authProvider.lg[authProvider.language]["Name of Occasion"]}',),
 
                   CustomCupertinoPicker(
-                    label: '${LanguageTr.lg[authProvider.language][ "Type of Occasion"]}',
+                    label: '${authProvider.lg[authProvider.language][ "Type of Occasion"]}',
                     items: occasion.listoccasiontypename,
                     listoccasiontype: occasion.listoccasiontype,
                     selectedValue: 0,
@@ -165,7 +165,7 @@ bool ispressed = false;
                               titleStyle: TextStyle(
                                   fontWeight: FontWeight.bold),
                               description:
-                              '${LanguageTr.lg[authProvider.language]["you can’t add an empty occasion"]}',
+                              '${authProvider.lg[authProvider.language]["you can’t add an empty occasion"]}',
                               //  animationType: ANIMATION.FROM_LEFT,
                             ).show(context);
                           } else {
@@ -194,7 +194,7 @@ bool ispressed = false;
                                 titleStyle: TextStyle(
                                     fontWeight: FontWeight.bold),
                                 description:
-                                '${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}',
+                                '${authProvider.lg[authProvider.language]["Please fill the empty fields"]}',
                                 //  animationType: ANIMATION.FROM_LEFT,
                               ).show(context);
                             }
@@ -213,7 +213,7 @@ bool ispressed = false;
                           }
                         },
                         child: Text(
-                          '${LanguageTr.lg[authProvider.language][ "Update the Date"]}',
+                          '${authProvider.lg[authProvider.language][ "Update the Date"]}',
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         style: ElevatedButton.styleFrom(

@@ -262,7 +262,7 @@ SlideTransition(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${LanguageTr.lg[authProvider
+                      '${authProvider.lg[authProvider
                           .language]["Order Details"]}',
                       style: TextStyle(
                         color: Colors.black,
@@ -380,7 +380,7 @@ SlideTransition(
                       //     (Route<dynamic> route) => false);
                     },
                     child: Text(
-                      '${LanguageTr.lg[authProvider.language]["Finish"]}',
+                      '${authProvider.lg[authProvider.language]["Finish"]}',
                       style: TextStyle(
                         fontFamily: 'BerlinSansFB',
                         fontWeight: FontWeight.bold,

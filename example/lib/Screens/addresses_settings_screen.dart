@@ -106,7 +106,7 @@ class _AddAddressSettingsScreenState extends State<AddAddressSettingsScreen> {
 
           centerTitle: true,
           title: Text(
-            '${LanguageTr.lg[user.language][ "Addresses"]}',
+            '${user.lg[user.language][ "Addresses"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,

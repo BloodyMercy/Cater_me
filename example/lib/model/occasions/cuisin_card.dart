@@ -63,6 +63,6 @@ class _CuisinCardState extends State<CuisinCard> {
         //     viewportFraction: 0.3,
         //   ),
         // )
-        : Center(child: Text('${LanguageTr.lg[authProvider.language]["No Shisha To Display"]}'));
+        : Center(child: Text('${authProvider.lg[authProvider.language]["No Shisha To Display"]}'));
   }
 }

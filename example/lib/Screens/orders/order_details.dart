@@ -90,7 +90,7 @@ getData() async {
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                          '${LanguageTr.lg[authProvider.language]["Invoice"]}',
+                          '${authProvider.lg[authProvider.language]["Invoice"]}',
                                 style: TextStyle(color: Colors.black),
                               ),SizedBox(height: 10,),
                               Card(
@@ -120,7 +120,7 @@ getData() async {
                                                   ),
                                                 ),
                                                 Text(
-                                                  " ${LanguageTr.lg[authProvider.language]["qty"]} ${order.items[i].quantity}  ",
+                                                  " ${authProvider.lg[authProvider.language]["qty"]} ${order.items[i].quantity}  ",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -133,7 +133,7 @@ getData() async {
                                                       0.03,
                                                 ),
                                                 Text(
-                                                  "${LanguageTr.lg[authProvider.language]["Total"]}  ${order.items[i].price}",
+                                                  "${authProvider.lg[authProvider.language]["Total"]}  ${order.items[i].price}",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:
@@ -170,13 +170,13 @@ getData() async {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            '${LanguageTr.lg[authProvider.language]["Tax"]}',
+                                            '${authProvider.lg[authProvider.language]["Tax"]}',
                                             style: TextStyle(
                                                 color: blackColor,
                                                 fontWeight: FontWeight.normal),
                                           ),
                                           Text(
-                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -192,12 +192,12 @@ getData() async {
                                     //     mainAxisAlignment:
                                     //         MainAxisAlignment.spaceBetween,
                                     //     children: [
-                                    //       Text('${LanguageTr.lg[authProvider.language]["SubTotal"]}',
+                                    //       Text('${authProvider.lg[authProvider.language]["SubTotal"]}',
                                     //           style: TextStyle(
                                     //               color: blackColor,
                                     //               fontWeight: FontWeight.normal)),
                                     //       Text(
-                                    //           "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["SubTotal"] ?? 0.0).toStringAsFixed(2))}",
+                                    //           "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["SubTotal"] ?? 0.0).toStringAsFixed(2))}",
                                     //           style: TextStyle(
                                     //               color: blackColor,
                                     //               fontWeight: FontWeight.normal)),
@@ -213,12 +213,12 @@ getData() async {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('${LanguageTr.lg[authProvider.language]["Total"]}',
+                                          Text('${authProvider.lg[authProvider.language]["Total"]}',
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
                                           Text(
-                                              "${LanguageTr.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
+                                              "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
                                               style: TextStyle(
                                                   color: blackColor,
                                                   fontWeight: FontWeight.normal)),
@@ -238,7 +238,7 @@ getData() async {
                           padding: const EdgeInsets.all(8),
                           child: Column(
                             children: [
-                              Text('${LanguageTr.lg[authProvider.language]["Bill sharing"]}',style:TextStyle(color:Colors.black)),
+                              Text('${authProvider.lg[authProvider.language]["Bill sharing"]}',style:TextStyle(color:Colors.black)),
                               SizedBox(height: 10,),
                               Card(
                                 elevation: 5,
@@ -273,7 +273,7 @@ getData() async {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "${LanguageTr.lg[authProvider.language]["SAR"]} ${order.paymentFreind[index].amount}",
+                                                        "${authProvider.lg[authProvider.language]["SAR"]} ${order.paymentFreind[index].amount}",
                                                         style: TextStyle(
                                                             color: blackColor,
                                                             fontWeight:
@@ -299,7 +299,7 @@ getData() async {
                                   ? Center(
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Text("${LanguageTr.lg[authProvider.language]["Your food is donated"]}",
+                                        child: Text("${authProvider.lg[authProvider.language]["Your food is donated"]}",
 
                                           style: Theme.of(context)
                                               .textTheme
@@ -314,7 +314,7 @@ getData() async {
                                         child: Column(
                                           children: [
                                             Text(
-                                              '${LanguageTr.lg[authProvider.language]["Do you want to donate the rest of your food?"]}',
+                                              '${authProvider.lg[authProvider.language]["Do you want to donate the rest of your food?"]}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline1
@@ -336,7 +336,7 @@ getData() async {
                                                       setState(() {});
                                                     },
                                                     child: Text(
-                                                      '${LanguageTr.lg[authProvider.language]["Donate"]}',
+                                                      '${authProvider.lg[authProvider.language]["Donate"]}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .headline1,

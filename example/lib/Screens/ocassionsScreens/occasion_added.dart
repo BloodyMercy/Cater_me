@@ -140,7 +140,7 @@ String language;
               );
             },
             child: Text(
-              '${LanguageTr.lg[authProvider.language]["Order"]}',
+              '${authProvider.lg[authProvider.language]["Order"]}',
               style: Theme.of(context).textTheme.headline1,
             ),
             style: ElevatedButton.styleFrom(

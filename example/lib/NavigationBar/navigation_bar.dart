@@ -194,7 +194,7 @@ class _NavigationBarState extends State<Navigationbar> {
     return (await showDialog(
       context: context,
       builder: (context) => CustomDialog(
-        title: '${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}',
+        title: '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
         description: "",
         button1: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -206,13 +206,13 @@ class _NavigationBarState extends State<Navigationbar> {
 
 
             },
-            child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
+            child: Text('${authProvider.lg[authProvider.language]["Yes"]}')),
         oneOrtwo: true,
         button2: ElevatedButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
+          child: Text('${authProvider.lg[authProvider.language]["No"]}'),
         ),
       ),
     )) ??
@@ -364,13 +364,13 @@ class _NavigationBarState extends State<Navigationbar> {
                 icon: Icon(FontAwesomeIcons.home,
                   size: 25, //Icon Size//Color Of Icon
                 ),
-                label:   '${LanguageTr.lg[authProvider.language]["Home"]}',
+                label:   '${authProvider.lg[authProvider.language]["Home"]}',
               ),
                BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.calendarCheck,
                   size: 25, //Icon Size
                 ),
-                label: '${LanguageTr.lg[authProvider.language]["Occasions"]}',
+                label: '${authProvider.lg[authProvider.language]["Occasions"]}',
               ),
             package.nbnotification!="0"  ? BottomNavigationBarItem(
 
@@ -382,7 +382,7 @@ class _NavigationBarState extends State<Navigationbar> {
                     //  color: Theme.of(context).primaryColor,
                     ),
                 ),
-                label: '${LanguageTr.lg[authProvider.language]["Order"]}',
+                label: '${authProvider.lg[authProvider.language]["Order"]}',
               ):BottomNavigationBarItem(
           icon:  Icon(
 
@@ -390,14 +390,14 @@ class _NavigationBarState extends State<Navigationbar> {
                 size: 25,
 
               ),
-          label: '${LanguageTr.lg[authProvider.language]["Order"]}',
+          label: '${authProvider.lg[authProvider.language]["Order"]}',
         ),
                BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.solidUser,
                   size: 25, //Icon Size
 
                 ),
-                label: '${LanguageTr.lg[authProvider.language]["Settings"]}',
+                label: '${authProvider.lg[authProvider.language]["Settings"]}',
               ),
             ],
             currentIndex: widget._selectedIndex,

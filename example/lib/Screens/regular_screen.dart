@@ -199,7 +199,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: '${LanguageTr.lg[authProvider.language]["Event Description"]}',
+                                      labelText: '${authProvider.lg[authProvider.language]["Event Description"]}',
 
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
@@ -231,12 +231,12 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             Container(
                               height: MediaQuery.of(context).size.height / 12,
                               // child: CustomDatePickerFormField(
-                              //   label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
+                              //   label: '${authProvider.lg[authProvider.language]["Event Date"]}',
                               //   controller: address.evendatecontroller,
                               // ),
                               child: CustomDatePickerFormField(
                                 casee: "order",
-                                label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
+                                label: '${authProvider.lg[authProvider.language]["Event Date"]}',
                                 controller: address.evendatecontroller,
                                 controllerlan: address.evendatelancontroller,
                                 lang:authProvider.language
@@ -248,7 +248,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             Container(
                               height: MediaQuery.of(context).size.height / 12,
                               child: CustomDailyDate(
-                                label: '${LanguageTr.lg[authProvider.language]["Event Time "]}',
+                                label: '${authProvider.lg[authProvider.language]["Event Time "]}',
                                 controller: address.DailyDatecontroller,
                                 controllerlan: address.DailyDatelancontroller,
                                 lang:authProvider.language
@@ -257,7 +257,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
                             Container(height: MediaQuery.of(context).size.height / 12,
                               child: CustomCupertinoPicker(
-                                label:'${LanguageTr.lg[authProvider.language]["Number Of Guests"]}',
+                                label:'${authProvider.lg[authProvider.language]["Number Of Guests"]}',
 
 
                                 items: address.listnamenumber,
@@ -273,7 +273,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             // Container(height: MediaQuery.of(context).size.height / 12,
                             //   child: CustomCupertinoPicker(
                             //     label:
-                            //     '${LanguageTr.lg[authProvider.language]["Type Of Event"]}',
+                            //     '${authProvider.lg[authProvider.language]["Type Of Event"]}',
                             //     items: address.listnameevent,
                             //
                             //     events: address.regular.events,
@@ -286,7 +286,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                             SizedBox(height: screenHeight * 0.01),
                             Center(
                               child: Text(
-                                '${LanguageTr.lg[authProvider.language]["Contact Person"]}',
+                                '${authProvider.lg[authProvider.language]["Contact Person"]}',
                                 style: TextStyle(
                                     color: Color(0xFF3F5521),
                                     fontWeight: FontWeight.bold,
@@ -314,7 +314,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     });
                                   },
                                 ),
-                                Text('${LanguageTr.lg[authProvider.language]["Me"]}',),
+                                Text('${authProvider.lg[authProvider.language]["Me"]}',),
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width / 12,
                                 ),
@@ -334,7 +334,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                     });
                                   },
                                 ),
-                                Text('${LanguageTr.lg[authProvider.language]["Others"]}',),
+                                Text('${authProvider.lg[authProvider.language]["Others"]}',),
                               ],
                             ),
 
@@ -361,7 +361,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: '${LanguageTr.lg[authProvider.language]["Name"]}',
+                                      labelText: '${authProvider.lg[authProvider.language]["Name"]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,
@@ -411,7 +411,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: '${LanguageTr.lg[authProvider.language][ "Phone number"]}',
+                                      labelText: '${authProvider.lg[authProvider.language][ "Phone number"]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,

@@ -86,7 +86,7 @@ class _FreindsTextFieldState extends State<editfriend> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(height: _mediaQueryText * 0.06),
-                  customTextField(read: false,label:'${LanguageTr.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
+                  customTextField(read: false,label:'${personalInfo.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
 
                   //     SizedBox(height: _mediaQueryText * 0.02),
                   // customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
@@ -113,7 +113,7 @@ class _FreindsTextFieldState extends State<editfriend> {
                                 fontSize: focusnode.hasFocus ? 18 : 16.0,//I believe the size difference here is 6.0 to account padding
                                 color:
                                 focusnode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
-                            labelText: '${LanguageTr.lg[personalInfo.language]["Phone number"]}',
+                            labelText: '${personalInfo.lg[personalInfo.language]["Phone number"]}',
                             hintStyle:TextStyle(
                                 color: Colors.black87,
                                 fontSize: 15,
@@ -175,7 +175,7 @@ class _FreindsTextFieldState extends State<editfriend> {
 
 
                     child: Text(
-                      '${LanguageTr.lg[personalInfo.language]["edit"]}',
+                      '${personalInfo.lg[personalInfo.language]["edit"]}',
                       style: Theme
                           .of(context)
                           .textTheme

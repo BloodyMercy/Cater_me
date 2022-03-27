@@ -83,7 +83,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            '${LanguageTr.lg[user.language]["Personal Info"]}',
+            '${user.lg[user.language]["Personal Info"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -122,7 +122,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         ? Color(0xFF3F5521)
                                         : Colors.grey,
                                   ),
-                                  labelText:  '${LanguageTr.lg[user.language]["Full Name"]}',
+                                  labelText:  '${user.lg[user.language]["Full Name"]}',
                                   hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -150,7 +150,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
+                                RequiredValidator(errorText: '${user.lg[user.language][ "Required"]}',),
                               ]),
                             ),
                             SizedBox(height: _mediaQuery * 0.03),
@@ -169,7 +169,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         ? Color(0xFF3F5521)
                                         : Colors.grey,
                                   ),
-                                  labelText: '${LanguageTr.lg[user.language]["Email"]}',
+                                  labelText: '${user.lg[user.language]["Email"]}',
                                   hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -197,8 +197,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                EmailValidator(errorText: '${LanguageTr.lg[user.language]["Please enter email"]}',),
-                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
+                                EmailValidator(errorText: '${user.lg[user.language]["Please enter email"]}',),
+                                RequiredValidator(errorText: '${user.lg[user.language][ "Required"]}',),
                               ]),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -218,7 +218,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     color: focusNode.hasFocus
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
-                                labelText:'${LanguageTr.lg[user.language]["Phone number"]}',
+                                labelText:'${user.lg[user.language]["Phone number"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -247,7 +247,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               validator: MultiValidator([
-                                RequiredValidator(errorText: '${LanguageTr.lg[user.language][ "Required"]}',),
+                                RequiredValidator(errorText: '${user.lg[user.language][ "Required"]}',),
                               ]),
                               keyboardType: TextInputType.phone,
                             ),
@@ -255,7 +255,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Container(
                               height: MediaQuery.of(context).size.height / 8,
                               child: CustomBirthdayPicker(
-                                label: '${LanguageTr.lg[user.language]["birthdate"]}',
+                                label: '${user.lg[user.language]["birthdate"]}',
                                 controller: user.birthday,
                                 controllerlan: user.birthdaylan,
                                 lan: user.language,
@@ -282,18 +282,18 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                         });
                                         // ScaffoldMessenger.of(context)
                                         //     .showSnackBar(SnackBar(
-                                        //   content: Text( '${LanguageTr.lg[user.language]['Cannot Update Info']',),}
+                                        //   content: Text( '${authProvider.lg[user.language]['Cannot Update Info']',),}
                                         // ));
                                         MotionToast.error(
                                           title:  "Cater me",
                                           titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                          description:  "${LanguageTr.lg[user.language]['Cannot Update Info']}",
+                                          description:  "${user.lg[user.language]['Cannot Update Info']}",
                                           //  animationType: ANIMATION.FROM_LEFT,
                                         ).show(context);
                                       }
                                     },
                                     child: Text(
-                                      '${LanguageTr.lg[user.language]["Submit"]}',
+                                      '${user.lg[user.language]["Submit"]}',
                                       style:
                                           Theme.of(context).textTheme.headline1,
                                     ),
