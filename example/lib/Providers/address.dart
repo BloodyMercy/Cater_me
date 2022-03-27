@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:CaterMe/Services/address.dart';
 import 'package:CaterMe/Services/timeSpanService.dart';
 import 'package:CaterMe/model/TimeSpanModel.dart';
@@ -8,7 +10,12 @@ import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Services/ApiLink.dart';
+import '../model/RestCallAPi.dart';
+
+import 'package:http/http.dart' as http;
 class AdressProvider extends ChangeNotifier{
 
   // TextEditingController radioButton = TextEditingController();
@@ -335,7 +342,46 @@ notifyListeners();
   }
 
 
+updatecontact(){
 
+  Future<ErrorMessage> updateInfo(String name,String email,String phoneNumber,String birthDate)async{
+
+    ErrorMessage msg=ErrorMessage();
+    try{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {
+        'Authorization': 'Bearer ${prefs.getString("token")}'   };
+      var request = http.MultipartRequest('POST', Uri.parse(ApiLink.UpdatePersonalInfo));
+      request.headers.addAll(headers);
+      request.fields.addAll({
+        'name': name,
+        'phoneNumber': phoneNumber,
+        'email': email,
+
+      });
+
+      http.StreamedResponse responses = await request.send();
+
+      var response = await http.Response.fromStream(responses);
+      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseData = json.decode(response.body);
+        msg.response=true;
+        return msg;
+
+      } else {
+        print(response.reasonPhrase);
+        msg.response=false;
+        return msg;
+      }
+
+    }catch(e){
+      print(e);
+    }
+    return msg;
+  }
+
+}
  int _value2Index = 0;
 
 

@@ -43,7 +43,7 @@ bool _loadinglanguage=false;
 
   getLanguage() async{
 
-    lg= await PersonalInfoService().getLangauge();
+    lg= LanguageTr.lg;
     loadinglanguage=true;
     notifyListeners();
   }

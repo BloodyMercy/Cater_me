@@ -275,12 +275,17 @@ class LanguageTr {
     'Items Ordered':"العناصر المطلوبة",
       'Payment Details : ':'بيانات الدفع : ',
       "Order Total : ":"الطلب الكلي : ",
-
+"Contact info":"معلومات الاتصال",
+      "Change contact info":"تغيير معلومات الاتصال",
+      "change":"تغير",
     },
 
 
 
     "en": {
+      "change":"change",
+      "Change contact info":"Change contact info",
+      "Contact info":"Contact info",
       "Tax":"Tax",
       "Order Total : ":"Order Total : ",
       'Payment Details : ':'Payment Details : ',

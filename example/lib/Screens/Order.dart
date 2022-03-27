@@ -624,6 +624,7 @@ String url3ds="";
                                                       );
 Navigator.of(context).pop();
                                                       if(a!=0) {
+                                                        orderProvider.paymemtstep=true;
                                                         orderProvider.orderid=a;
                                                         orderProvider.spets++;
                                                         _animateToIndex(

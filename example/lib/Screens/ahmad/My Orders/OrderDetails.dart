@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Providers/address.dart';
 import '../../../Providers/orderStatus_provider.dart';
 import '../../../Providers/user.dart';
 import '../../../colors/colors.dart';
@@ -55,6 +56,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     super.initState();
     getData();
   }
+
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -205,102 +207,210 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             SizedBox(
                               height: 5,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: TextFormField(
-                                  style: const TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: 'BerlinSansFB'),
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          left:
-                                          MediaQuery.of(context).size.width *
+                           Text(
+
+                             '${authProvider.lg[authProvider.language]["Contact info"]}',
+                             style: TextStyle(
+
+                                 fontWeight: FontWeight.w400,
+
+                                 fontSize: 14),
+                           ),
+                            Row(children: [
+                              Text(
+
+                                '${_order.orderbyId["event"]["contactName"]} , ${_order.orderbyId["event"]["contactPhoneNumber"]}',
+                                style: TextStyle(
+
+                                    fontWeight: FontWeight.w400,
+
+                                    fontSize: 14),
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(left: 10.0 ,right: 10),
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      final _address= Provider.of<AdressProvider>(context, listen: false );
+                                      _address.name.text=_order.orderbyId["event"]["contactName"];
+                                      _address.phone.text=_order.orderbyId["event"]["contactPhoneNumber"];
+                                      showDialog(context: context, builder: (context){
+                                        return Dialog(
+                                          child: Container(
+                                            height: height/3,
+                                            child: Column(children: [
+                                              Text(
+
+                                                '${authProvider.lg[authProvider.language]["Contact info"]}',
+                                                style: TextStyle(
+
+                                                    fontWeight: FontWeight.w400,
+
+                                                    fontSize: 24),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.all(10.0),
+                                                child: TextFormField(
+                                                    style: const TextStyle(
+                                                        color: Colors.grey,
+                                                        fontSize: 15,
+                                                        fontWeight: FontWeight.normal,
+                                                        fontFamily: 'BerlinSansFB'),
+                                                    decoration: InputDecoration(
+                                                        contentPadding: EdgeInsets.only(
+                                                            left:
+                                                            MediaQuery.of(context).size.width *
+                                                                0.04),
+                                                        alignLabelWithHint: true,
+                                                        labelStyle: TextStyle(
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize:
+                                                            focusNode.hasFocus ? 18 : 16.0,
+                                                            //I believe the size difference here is 6.0 to account padding
+                                                            color: focusNode.hasFocus
+                                                                ? Color(0xFF3F5521)
+                                                                : Colors.grey),
+                                                        labelText: '${authProvider.lg[authProvider.language]["Name"]}',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.black87,
+                                                            fontSize: 15,
+                                                            fontWeight: FontWeight.bold,
+                                                            fontFamily: 'BerlinSansFB'),
+                                                        filled: true,
+                                                        fillColor: Colors.white,
+                                                        enabledBorder: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.circular(5.0),
+                                                          borderSide: const BorderSide(
+                                                            color: Colors.grey,
+                                                          ),
+                                                        ),
+                                                        focusedBorder: OutlineInputBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(5.0),
+                                                            borderSide: const BorderSide(
+                                                              color: Color(0xFF3F5521),
+                                                            ))),
+                                                     controller: _address.name,
+
+                                                    // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                                    keyboardType: TextInputType.text),
+                                              ),
+
+                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+                                              Padding(
+                                              padding: const EdgeInsets.all(10.0),
+                                              child: TextFormField(
+                                              style: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.normal,
+                                              fontFamily: 'BerlinSansFB'),
+                                              decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(
+                                              left:
+                                              MediaQuery.of(context).size.width *
                                               0.04),
-                                      alignLabelWithHint: true,
-                                      labelStyle: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize:
-                                          focusNode.hasFocus ? 18 : 16.0,
-                                          //I believe the size difference here is 6.0 to account padding
-                                          color: focusNode.hasFocus
+                                              alignLabelWithHint: true,
+                                              labelStyle: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize:
+                                              16.0,
+                                              //I believe the size difference here is 6.0 to account padding
+                                              color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
-                                              : Colors.grey),
-                                      labelText: '${authProvider.lg[authProvider.language]["Name"]}',
-                                      hintStyle: TextStyle(
-                                          color: Colors.black87,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'BerlinSansFB'),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                          color: Colors.grey,
-                                        ),
+                                                  : Colors.grey),
+                                              labelText: '${authProvider.lg[authProvider.language][ "Phone number"]}',
+                                              hintStyle: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'BerlinSansFB'),
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(5.0),
+                                              borderSide: const BorderSide(
+                                              color: Colors.grey,
+                                              ),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.circular(5.0),
+                                              borderSide: const BorderSide(
+                                              color: Color(0xFF3F5521),
+                                              ))),
+                                                controller: _address.phone,
+
+                                              // autovalidateMode: AutovalidateMode.onUserInteraction,
+                                              keyboardType: TextInputType.phone),
+                                              ),
+Center(child:  Padding(
+  padding: const EdgeInsets.only(left: 10.0 ,right: 10),
+  child: ElevatedButton(
+    onPressed: () {
+     //////////////////////////////////////////
+    },
+    child: Container(
+      width: width/3.65,
+      child: Row(
+         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '${authProvider.lg[authProvider.language]["change"]}',
+            style: TextStyle(
+                color: Color.fromRGBO(85, 115, 116, 1),
+                fontSize: 13,
+                fontFamily: 'Geomanist',
+                fontWeight: FontWeight.bold),
+          ),
+          SizedBox(width: 5,),
+          FaIcon(Icons.person,color:Color(0xFF3F5521)
+            ,)
+        ],
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      primary: Color(0xffF5F6F7),
+      side: BorderSide(
+        color: Color.fromRGBO(85, 115, 116, 1),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+  ),
+),)
+                                            ]),
+                                          ),
+
+                                        );
+                                      });
+                                    },
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            '${authProvider.lg[authProvider.language]["Change contact info"]}',
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(85, 115, 116, 1),
+                                                fontSize: 13,
+                                                fontFamily: 'Geomanist',
+                                                fontWeight: FontWeight.bold),
+
+                                            )
+                                        ],
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                            color: Color(0xFF3F5521),
-                                          ))),
-                                  controller: address.name,
-
-                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
-                                  keyboardType: TextInputType.text),
-                            ),
-
-                            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                 Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: TextFormField(
-                                  style: const TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: 'BerlinSansFB'),
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          left:
-                                          MediaQuery.of(context).size.width *
-                                              0.04),
-                                      alignLabelWithHint: true,
-                                      labelStyle: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize:
-                                          focusNode =FocusNode().hasFocus ? 18 : 16.0,
-                                          //I believe the size difference here is 6.0 to account padding
-                                          color: focusNode.hasFocus
-                                              ? Color(0xFF3F5521)
-                                              : Colors.grey),
-                                      labelText: '${authProvider.lg[authProvider.language][ "Phone number"]}',
-                                      hintStyle: TextStyle(
-                                          color: Colors.black87,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'BerlinSansFB'),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(5.0),
-                                        borderSide: const BorderSide(
-                                          color: Colors.grey,
-                                        ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xffF5F6F7),
+                                      side: BorderSide(
+                                        color: Color.fromRGBO(85, 115, 116, 1),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                            color: Color(0xFF3F5521),
-                                          ))),
-                                  controller: address.phone,
-
-                                  // autovalidateMode: AutovalidateMode.onUserInteraction,
-                                  keyboardType: TextInputType.phone),
-                            ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    ),
+                                  ),)
+                            ]),
 
                             SizedBox(
                               height: 5,
@@ -386,7 +496,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 10.0 ,right: 10),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -397,7 +507,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   );
                 },
                 child: Container(
-                  width: width/3.75,
+                  width: width/3.65,
                   child: Row(
                     children: [
                       Text(
