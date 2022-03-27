@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
 getLanguage() async{
   final user=Provider.of<UserProvider>(context,listen:false);
   await user.getLanguage();
-  print(user.lg[user.language]["Home"]);
+ // print(user.lg[user.language]["Home"]);
   user.status=Status.Authenticated;
  // user.notifyListeners();
   getdata();
@@ -62,8 +62,7 @@ getdata() async{
         MaterialPageRoute(builder: (context) =>
            LanguagePicker()), (Route<dynamic> route) => false);
 
-  }else
-  if(sh.getBool("logged")??false){
+  }else if(sh.getBool("logged")??false){
    user.language=sh.getString("locale");
     user.status=Status.Authenticated;
    user.notifyListeners(); Navigator.of(context).pushReplacement(

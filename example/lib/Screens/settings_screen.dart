@@ -357,15 +357,15 @@ class _TABBarState extends State<TABBar> {
                                           sharedPreferences.setBool(
                                               "wlkdone", aw);
                                           sharedPreferences.setString("locale", l);
+                                          Navigator.of(context).pop();
 
-
-                                          Navigator.of(context)
-                                              .pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SplashScreen(),
-                                              ),
-                                                  (route) => false);
+                                          // Navigator.of(context)
+                                          //     .pushAndRemoveUntil(
+                                          //     MaterialPageRoute(
+                                          //       builder: (context) =>
+                                          //           SplashScreen(),
+                                          //     ),
+                                          //         (route) => false);
                                         },
                                         child: Text(
                                           '${personalInfo.lg[personalInfo.language]["Logout"]}',
@@ -909,15 +909,15 @@ class _TABBarState extends State<TABBar> {
                                                     "locale", "ar");
                                                 MyApp.setLocale(context,
                                                     Locale("ar", "AE"));
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          SplashScreen(),
-                                                    ),
-                                                        (Route<dynamic>
-                                                    route) =>
-                                                    false);
+                                                // Navigator.of(context)
+                                                //     .pushAndRemoveUntil(
+                                                //     MaterialPageRoute(
+                                                //       builder: (context) =>
+                                                //           SplashScreen(),
+                                                //     ),
+                                                //         (Route<dynamic>
+                                                //     route) =>
+                                                //     false);
                                                 // AppLocalizations.of(context)!.locale.toString()
 
                                                 // .language="ar";
@@ -974,16 +974,17 @@ class _TABBarState extends State<TABBar> {
                                                       "locale", "en");
                                                   MyApp.setLocale(context,
                                                       Locale("en", "US"));
-                                                  Navigator.of(context)
-                                                      .pushAndRemoveUntil(
-                                                      MaterialPageRoute(
-                                                        builder:
-                                                            (context) =>
-                                                            SplashScreen(),
-                                                      ),
-                                                          (Route<dynamic>
-                                                      route) =>
-                                                      false);
+                                                  Navigator.of(context).pop();
+                                                  // Navigator.of(context)
+                                                  //     .pushAndRemoveUntil(
+                                                  //     MaterialPageRoute(
+                                                  //       builder:
+                                                  //           (context) =>
+                                                  //           SplashScreen(),
+                                                  //     ),
+                                                  //         (Route<dynamic>
+                                                  //     route) =>
+                                                  //     false);
                                                   // AppLocalizations.of(context)!.locale.toString()
 
                                                   // .language="ar";                                              },
@@ -1045,15 +1046,16 @@ class _TABBarState extends State<TABBar> {
                                                           "locale", "ar");
                                                       MyApp.setLocale(context,
                                                           Locale("ar", "AE"));
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                              MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    SplashScreen(),
-                                                              ),
-                                                              (Route<dynamic>
-                                                                      route) =>
-                                                                  false);
+                                                      Navigator.of(context).pop();
+                                                      // Navigator.of(context)
+                                                      //     .pushAndRemoveUntil(
+                                                      //         MaterialPageRoute(
+                                                      //           builder: (context) =>
+                                                      //               SplashScreen(),
+                                                      //         ),
+                                                      //         (Route<dynamic>
+                                                      //                 route) =>
+                                                      //             false);
                                                       // AppLocalizations.of(context)!.locale.toString()
 
                                                       // .language="ar";
@@ -1110,16 +1112,16 @@ class _TABBarState extends State<TABBar> {
                                                           "locale", "en");
                                                       MyApp.setLocale(context,
                                                           Locale("en", "US"));
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                            builder:
-                                                                (context) =>
-                                                                SplashScreen(),
-                                                          ),
-                                                              (Route<dynamic>
-                                                          route) =>
-                                                          false);
+                                                      // Navigator.of(context)
+                                                      //     .pushAndRemoveUntil(
+                                                      //     MaterialPageRoute(
+                                                      //       builder:
+                                                      //           (context) =>
+                                                      //           SplashScreen(),
+                                                      //     ),
+                                                      //         (Route<dynamic>
+                                                      //     route) =>
+                                                      //     false);
                                                       // AppLocalizations.of(context)!.locale.toString()
 
                                                       // .language="ar";                                              },
