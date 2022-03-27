@@ -35,23 +35,24 @@ class GalleryService{
       return [];
     }
 
-  }  Future<List> getimageseeall() async {
+  }  Future<List<GalleryModel>> getimageseeall() async {
     List<GalleryModel> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
 
-      var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'
-      };
+
       var request = http.Request('GET', Uri.parse(ApiLink.getseeall));
-      request.headers.addAll(headers);
+
 
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         List<dynamic> responseData = json.decode(response.body);
+        print(responseData);
+        print("----------");
         responseData.forEach((element) {
+          print(element);
           l.add(GalleryModel.fromJson(element));
         });
         return l;
@@ -61,6 +62,7 @@ class GalleryService{
         return [];
       }
     } catch (e) {
+      print(e);
       return [];
     }
 
