@@ -8,13 +8,25 @@ import 'OrderTimeline.dart';
 import 'widgets/OrderList.dart';
 
 class OrderDetailsView extends StatefulWidget {
-  const OrderDetailsView({Key key}) : super(key: key);
+  int id ;
+   OrderDetailsView({Key key, this.id}) : super(key: key);
 
   @override
   _OrderDetailsViewState createState() => _OrderDetailsViewState();
 }
 
 class _OrderDetailsViewState extends State<OrderDetailsView> {
+  getdata(){
+
+    final _order= Provider.of<OrderByIdProvider>(context,listen:false);
+    _order.getOrderById(widget.id);
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getdata();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -48,7 +60,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: _order.loading?SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -380,7 +392,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             ),
           ],
         ),
-      ),
+      ):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
     );
   }
 }

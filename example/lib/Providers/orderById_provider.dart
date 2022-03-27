@@ -86,9 +86,10 @@ Map<String,dynamic> _orderbyId={};
   set orderbyId(Map<String, dynamic> value) {
     _orderbyId = value;
   }
-
+bool loading=false  ;
   getOrderById(int id,) async{
     orderbyId= await _orderByIdService.getOrdersDetailsById(id);
+    loading=true ;
     notifyListeners();
   }
 

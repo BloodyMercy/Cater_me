@@ -15,6 +15,7 @@ import '../../Providers/packages.dart';
 import '../../Providers/user.dart';
 import '../../language/language.dart';
 import '../Order.dart';
+import '../ahmad/My Orders/OrderDetails.dart';
 import '../auth/login_screen.dart';
 import '../auth/reset_password_screen.dart';
 import '../auth/signup_screen.dart';
@@ -203,9 +204,9 @@ class _YourOrdersState extends State<YourOrders> {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (builder) =>
-                                              OrderId(
-                                                  orders.listOrder[index].id,
-                                                  0),
+                                              OrderDetailsView(
+                                                 id:  orders.listOrder[index].id,
+                                                  ),
                                         ),
                                       );
                                     }
