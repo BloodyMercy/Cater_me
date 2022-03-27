@@ -205,7 +205,7 @@ class _YourOrdersState extends State<YourOrders> {
                                         MaterialPageRoute(
                                           builder: (builder) =>
                                               OrderDetailsView(
-                                                 id:  orders.listOrder[index].id,
+                                                  orders.listOrder[index].id,
                                                   ),
                                         ),
                                       );

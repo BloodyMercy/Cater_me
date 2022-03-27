@@ -29,6 +29,7 @@ import '../Providers/GalleryProvider.dart';
 import '../Providers/user.dart';
 import '../Screens/ahmad/My Orders/OrderDetails.dart';
 import '../Screens/full_photo_page.dart';
+import '../Screens/settings_screen.dart';
 import '../language/language.dart';
 import 'Packages/test_package_add_details.dart';
 
@@ -237,7 +238,7 @@ class _HomePageState extends State<HomePage>
                                           Navigator.of(context).push(
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  Notifications(),
+                                                  TABBar(),
                                             ),
                                           );
                                         },

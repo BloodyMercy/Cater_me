@@ -49,14 +49,19 @@ class OrderItems {
   double price;
   double total;
   double tax;
+  String image;
 
   OrderItems({this.item, this.quantity, this.price, this.total, this.tax});
 
   OrderItems.fromJson(Map<String, dynamic> json,String a) {
     if(a=="ar"){
       item = json['itemAR']??"غير معروف";
-    }else
-    item = json['item']??"not found";
+      image=json["imageAR"]??"";
+    }
+    else {
+      item = json['item'] ?? "not found";
+      image=json["image"]??"";
+    }
     quantity = json['quantity']??0;
     price = json['price'].toDouble()??0.0;
     total = json['total'].toDouble()??0.0;

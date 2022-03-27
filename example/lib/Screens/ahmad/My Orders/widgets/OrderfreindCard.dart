@@ -1,20 +1,22 @@
 import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../Providers/user.dart';
 import '../../../../model/orderById.dart';
 import '../../../../model/packages.dart';
 import 'UserOrders.dart';
 
-class OrderCard extends StatefulWidget {
-  OrderItems a;
-   OrderCard({Key key, this.a}) : super(key: key);
+class OrderfreindCard extends StatefulWidget {
+  PaymentFriend a;
+   OrderfreindCard({Key key, this.a}) : super(key: key);
 
   @override
-  State<OrderCard> createState() => _OrderCardState();
+  State<OrderfreindCard> createState() => _OrderfreindCardState();
 }
 
-class _OrderCardState extends State<OrderCard> {
+class _OrderfreindCardState extends State<OrderfreindCard> {
   String lang="en";
   @override
   void initState() {
@@ -29,6 +31,7 @@ class _OrderCardState extends State<OrderCard> {
   }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Row(
       children: [
         Stack(
@@ -41,23 +44,23 @@ class _OrderCardState extends State<OrderCard> {
                 fit: BoxFit.cover,
               ),
             ),
-            Positioned(
-                bottom: 0,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.8),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(4),
-                      topRight: Radius.circular(4),
-                    ),
-                  ),
-                  child: Text("x${widget.a.quantity}",
-                      style: TextStyle(
-                        //  color: Colors.black,
-                         // fontFamily: 'Valencia',
-                          fontSize: 15)),
-                )),
+            // Positioned(
+            //     bottom: 0,
+            //     child: Container(
+            //       padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+            //       decoration: BoxDecoration(
+            //         color: Colors.white.withOpacity(0.8),
+            //         borderRadius: BorderRadius.only(
+            //           bottomRight: Radius.circular(4),
+            //           topRight: Radius.circular(4),
+            //         ),
+            //       ),
+            //       child: Text("${widget.a.}",
+            //           style: TextStyle(
+            //             //  color: Colors.black,
+            //              // fontFamily: 'Valencia',
+            //               fontSize: 15)),
+            //     )),
           ],
         ),
         SizedBox(
@@ -67,7 +70,7 @@ class _OrderCardState extends State<OrderCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${widget.a.price}",
+              Text("${widget.a.name}",
                   style: TextStyle(
                    // fontFamily: 'Geomanist',
                     fontSize: 16,
@@ -79,7 +82,7 @@ class _OrderCardState extends State<OrderCard> {
               Container(
                 child: Text.rich(
                   TextSpan(
-                    text:widget.a.item,
+                    text:widget.a.phoneNumber,
                     style: TextStyle(
                      // color: Colors.black,
                       fontSize: 13,
@@ -101,7 +104,7 @@ class _OrderCardState extends State<OrderCard> {
               ),
               Text.rich(
                 TextSpan(
-                  text: "QTY: " + "${widget.a.quantity}",
+                  text: "${authProvider.lg[authProvider.language]["SAR"]} ${widget.a.amount}",
                   style: TextStyle(
                   //  color: Color.fromRGBO(180, 187, 197, 1),
                     fontSize: 13,
