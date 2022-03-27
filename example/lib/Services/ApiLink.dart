@@ -68,6 +68,8 @@ class ApiLink{
  static String getLanguage=host+"HomePage/GetLanguage";
  static String getsurvey=host+"Survey/GetFeedBackOptions";
  static String submitsurvey=host+"Survey/SubmitSurvey";
+ static String gethomepageimage=host+"";
+ static String getseeall=host+"";
 
 
 

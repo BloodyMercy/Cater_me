@@ -29,6 +29,7 @@ import 'Helpers/Constant.dart';
 import 'IntroTest/on_boarding_screen.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'Payment/OrderSucc.dart';
+import 'Providers/GalleryProvider.dart';
 import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
 import 'Providers/occasion.dart';
@@ -179,6 +180,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         ChangeNotifierProvider.value(value: OrderStatusProvider()),
+        ChangeNotifierProvider.value(value: GalleryProvider.getdata()),
         ChangeNotifierProvider.value(value: OrderByIdProvider()),
         ChangeNotifierProvider.value(value: ContactUsProvider()),
         ChangeNotifierProvider.value(value: NotificationProvider()),

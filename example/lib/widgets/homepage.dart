@@ -25,6 +25,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../Providers/GalleryProvider.dart';
 import '../Providers/user.dart';
 import '../Screens/full_photo_page.dart';
 import '../language/language.dart';
@@ -126,6 +127,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final gallery = Provider.of<GalleryProvider>(context, listen: true);
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
