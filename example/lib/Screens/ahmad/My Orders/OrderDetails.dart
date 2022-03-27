@@ -1,5 +1,6 @@
 
 import 'package:CaterMe/Providers/orderById_provider.dart';
+import 'package:CaterMe/Screens/ahmad/My%20Orders/widgets/FreindList.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Providers/orderStatus_provider.dart';
 import '../../../Providers/user.dart';
+import '../../../colors/colors.dart';
 import '../../orders/order_tracking.dart';
 import 'OrderTimeline.dart';
 import 'widgets/OrderList.dart';
@@ -55,7 +57,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
-
+    final _width=MediaQuery.of(context).size.width;
     final _order= Provider.of<OrderByIdProvider>(context,listen:true);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -262,6 +264,44 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             SizedBox(
               height: 30,
             ),
+
+
+            _order.paymentFreind.length == 0?  Container() :   Container(
+              color: Colors.white,
+              width: width,
+              height: height * 0.4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 8.0),
+                    child: Text(
+                      '${authProvider.lg[authProvider.language]["Bill sharing"]}',
+                      style: TextStyle(
+                        //color: Color.fromRGBO(146, 156, 170, 1),
+                        // fontFamily: 'Geomanist',
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: Color.fromRGBO(112, 112, 112, 1),
+                    indent: 20,
+                    endIndent: 20,
+                    thickness: 1,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  OrderfreindList(a:_order.paymentFreind),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: ElevatedButton(
@@ -297,6 +337,14 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             SizedBox(
               height: 30,
             ),
+
+
+
+
+            SizedBox(
+              height: 30,
+            ),
+
             Container(
               color: Colors.white,
               height: height * 0.12,
@@ -363,7 +411,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "Sub total",
+                                    text: "${authProvider.lg[authProvider.language]["Tax"]}",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -374,7 +422,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    "${_order.orderbyId["subTotal"]}",
+                                    "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((_order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -392,7 +440,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "Total",
+                                    text: "${authProvider.lg[authProvider.language]["Total"]} ",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -403,7 +451,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    "${_order.orderbyId["total"]}",
+                                    "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((_order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
                                     style: TextStyle(
 
                                         fontSize: 14,
