@@ -8,6 +8,7 @@ import 'package:CaterMe/widgets/order_tracking/order_received.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Providers/user.dart';
 import '../../widgets/order_tracking/OTP_Pending.dart';
 
 class TrackingOrder extends StatefulWidget {
@@ -45,7 +46,23 @@ class _TrackingOrderState extends State<TrackingOrder> {
   Widget build(BuildContext context) {
     final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
 
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('${authProvider.lg[authProvider.language][ "Tracking"]}'),
+        leading:  IconButton(
+          icon: Image.asset(
+            'images/icon_back.png',
+            color: Color.fromRGBO(86, 115, 116, 1),
+            height: 25,
+            width: 25,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
