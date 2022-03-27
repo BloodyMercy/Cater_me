@@ -1,5 +1,8 @@
 
+import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import 'OrderTimeline.dart';
 import 'widgets/OrderList.dart';
@@ -14,6 +17,8 @@ class OrderDetailsView extends StatefulWidget {
 class _OrderDetailsViewState extends State<OrderDetailsView> {
   @override
   Widget build(BuildContext context) {
+
+    final _order= Provider.of<OrderByIdProvider>(context,listen:true);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -60,7 +65,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Order ahmad birthday",
+                        "${_order.orderbyId["event"]["eventName"]}",
                         style: TextStyle(
 
                             fontWeight: FontWeight.w600,
@@ -72,7 +77,9 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "Order Date: 12 November 2021",
+                          text: "Order Date:${
+                              DateFormat("dd-MM-yyyy").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
+                              } 12 November 2021",
                           style: TextStyle(
 
                               fontWeight: FontWeight.w400,
@@ -120,7 +127,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "ahmad rifai",
+                              "${_order.orderbyId["event"]["contactName"]}",
                               style: TextStyle(
 
                                   fontWeight: FontWeight.w400,
@@ -132,7 +139,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "Street X,Building Y",
+                                text: "Street :${_order.orderbyId["address"]["street"]},Building ${_order.orderbyId["address"]["buildingName"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,
@@ -145,7 +152,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "City Z, State NY",
+                                text: "City ${_order.orderbyId["address"]["city"]},${_order.orderbyId["address"]["country"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,
@@ -156,16 +163,16 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             SizedBox(
                               height: 5,
                             ),
-                            Text.rich(
-                              TextSpan(
-                                text: "0000",
-                                style: TextStyle(
-
-                                    fontWeight: FontWeight.w400,
-
-                                    fontSize: 14),
-                              ),
-                            ),
+                            // Text.rich(
+                            //   TextSpan(
+                            //     text: "0000",
+                            //     style: TextStyle(
+                            //
+                            //         fontWeight: FontWeight.w400,
+                            //
+                            //         fontSize: 14),
+                            //   ),
+                            // ),
 
                             SizedBox(
                               height: 5,
@@ -210,7 +217,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   SizedBox(
                     height: 10,
                   ),
-                  OrderList(),
+                  OrderList(_order.orderbyId["orderItems"]),
                 ],
               ),
             ),
@@ -311,7 +318,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "Sub-Total",
+                                    text: "Sub total",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -322,7 +329,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    '\$123456',
+                                    "${_order.orderbyId["subTotal"]}",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -340,7 +347,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "TOTAL",
+                                    text: "Total",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -351,7 +358,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    '\$123456',
+                                    "${_order.orderbyId["total"]}",
                                     style: TextStyle(
 
                                         fontSize: 14,

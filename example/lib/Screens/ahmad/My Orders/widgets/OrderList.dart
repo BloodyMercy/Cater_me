@@ -7,7 +7,8 @@ import 'OrderCard.dart';
 import 'UserOrders.dart';
 
 class OrderList extends StatefulWidget {
-  const OrderList({Key key}) : super(key: key);
+  List<Map<String,dynamic>>a;
+   OrderList({Key key, this.a}) : super(key: key);
 
   @override
   State<OrderList> createState() => _OrderListState();
@@ -17,12 +18,11 @@ class _OrderListState extends State<OrderList> {
 
   @override
   Widget build(BuildContext context) {
-    final package = Provider.of<PackagesProvider>(context, listen: true);
     return Flexible(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: package.allpackages.length,
+        itemCount: widget.a.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10),
           child: OrderCard(

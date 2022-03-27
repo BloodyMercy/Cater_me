@@ -107,6 +107,8 @@ class _HomePageState extends State<HomePage>
 
   Future getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
+    final gallery = Provider.of<GalleryProvider>(context, listen: false);
+    gallery.gethomepage();
     SharedPreferences sh = await SharedPreferences.getInstance();
 
     await occasion.getallnewoccasion(sh.getString("locale"));

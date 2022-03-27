@@ -5,8 +5,8 @@ import '../../../../model/packages.dart';
 import 'UserOrders.dart';
 
 class OrderCard extends StatefulWidget {
-  final Package userOrder;
-  const OrderCard({Key key, this.userOrder}) : super(key: key);
+  Map<String,dynamic>a;
+   OrderCard({Key key, this.a}) : super(key: key);
 
   @override
   State<OrderCard> createState() => _OrderCardState();
