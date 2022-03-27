@@ -318,7 +318,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                //   changeScreen(context, OrderTimeLine());
                 },
                 child: Container(
-                  width: width/4,
+                  width: width/3.75,
                   child: Row(
                     children: [
                       Text(
