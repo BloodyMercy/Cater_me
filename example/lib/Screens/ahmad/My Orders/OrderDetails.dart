@@ -2,6 +2,7 @@
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Screens/ahmad/My%20Orders/widgets/FreindList.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -315,13 +316,18 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                 //  TrackingOrder(widget.id)
                //   changeScreen(context, OrderTimeLine());
                 },
-                child: Text(
-                  '${authProvider.lg[authProvider.language]["Tracking"]}',
-                  style: TextStyle(
-                      color: Color.fromRGBO(85, 115, 116, 1),
-                      fontSize: 13,
-                      fontFamily: 'Geomanist',
-                      fontWeight: FontWeight.bold),
+                child: Row(
+                  children: [
+                    Text(
+                      '${authProvider.lg[authProvider.language]["Tracking"]}',
+                      style: TextStyle(
+                          color: Color.fromRGBO(85, 115, 116, 1),
+                          fontSize: 13,
+                          fontFamily: 'Geomanist',
+                          fontWeight: FontWeight.bold),
+                    ),
+                    FaIcon(FontAwesomeIcons.truck)
+                  ],
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xffF5F6F7),
