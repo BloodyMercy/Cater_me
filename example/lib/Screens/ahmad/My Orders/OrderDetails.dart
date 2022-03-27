@@ -180,7 +180,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "Street :${_order.orderbyId["address"]["street"]},Building ${_order.orderbyId["address"]["buildingName"]}",
+                                text: "${authProvider.lg[authProvider.language][ "Street"]} :${_order.orderbyId["address"]["street"]},${authProvider.lg[authProvider.language][ "Building"]} ${_order.orderbyId["address"]["buildingName"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,

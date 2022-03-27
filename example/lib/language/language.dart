@@ -270,13 +270,27 @@ class LanguageTr {
 
 
 "you must agree terms and conditions":"يجب أن توافق على الشروط والأحكام",
-
+   "Order Date:":"تاريخ الطلب:",
+      "Delivery Address :":"عنوان التسليم :",
+    'Items Ordered':"العناصر المطلوبة",
+      'Payment Details : ':'بيانات الدفع : ',
+      "Order Total : ":"الطلب الكلي : ",
 
     },
 
 
 
     "en": {
+      "Tax":"Tax",
+      "Order Total : ":"Order Total : ",
+      'Payment Details : ':'Payment Details : ',
+      "Bill sharing":"Bill sharing",
+      'Items Ordered':'Items Ordered',
+      "Building":"Building",
+      "Street":"Street",
+      "Delivery Address :":"Delivery Address :",
+      "Order Date:":"Order Date:",
+      "Order Details":"Order Details",
       "you must agree terms and conditions":"you must agree terms and conditions",
       "Email verification was send":"Email verification was send",
       "all fields required":"All fields required",
