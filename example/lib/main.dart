@@ -103,6 +103,8 @@ class _appstateState extends State<appstate> {
 
 
 
+case Status.spalchscreen:
+  return SplashScreen();
               case Status.walkingpage:
                 return OnBoardingScreens();
 
@@ -267,7 +269,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home:SplashScreen()
+        home: SplashScreen()
       ),
     );
   }

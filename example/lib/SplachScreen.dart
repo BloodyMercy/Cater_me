@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:CaterMe/IntroTest/on_boarding_screen.dart';
+import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,10 @@ class _SplashScreenState extends State<SplashScreen>
 getLanguage() async{
   final user=Provider.of<UserProvider>(context,listen:false);
   await user.getLanguage();
+  print(user.lg[user.language]["Home"]);
+  user.status=Status.Authenticated;
+ // user.notifyListeners();
+  getdata();
 }
 AssetImage image;
   @override
@@ -32,7 +38,7 @@ AssetImage image;
     //   duration: Duration(seconds: (1)),
     //   vsync: this,
     // );
-    chechkdata();
+ //   chechkdata();
   }
   bool lg=true;
 
@@ -45,37 +51,55 @@ chechkdata() async{
         lg=false;
       });
 }
+getdata() async{
+  SharedPreferences sh=await SharedPreferences.getInstance();
+  final user=Provider.of<UserProvider>(context,listen:false);
+
+  if(sh.getString("locale")==null){
+
+    user.status=Status.language;
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) =>
+           LanguagePicker()), (Route<dynamic> route) => false);
+
+  }else
+  if(sh.getBool("logged")??false){
+   user.language=sh.getString("locale");
+    user.status=Status.Authenticated;
+   user.notifyListeners(); Navigator.of(context).pushReplacement(
+       MaterialPageRoute(builder: (context) =>
+           Navigationbar(0)));
+
+  }
+
+  else if(sh.getBool("wlkdone")==null){
+    user.language=sh.getString("locale");
+
+    user.status=Status.walkingpage;
+    user.notifyListeners();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) =>
+           OnBoardingScreens()), (Route<dynamic> route) => false);
+
+
+  }
+  else{
+    user.language=sh.getString("locale");
+
+    user.status=Status.Unauthenticated;
+    user.notifyListeners();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) =>
+            Navigationbar(0)));
+  }
+
+}
   @override
   Widget build(BuildContext context) {
-    final user=Provider.of<UserProvider>(context,listen:false);
-    Timer(
-      Duration(milliseconds: 7000),
-      () { if (lg){
-if(user.loadinglanguage) {
-  Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (BuildContext context) =>
-            appstate(),
-      ), (Route<dynamic> route) => false
-  );
-}
-      else {
-        print("failed to get data");
-      }
-      }
-       else{
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (BuildContext context) =>
-                LanguagePicker(),
-          ), (Route<dynamic> route) => false
-        );
-      }
+    final user=Provider.of<UserProvider>(context,listen:true);
 
 
-      }
 
-    );
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(

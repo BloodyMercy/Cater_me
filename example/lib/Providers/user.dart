@@ -17,6 +17,7 @@ import '../language/language.dart';
 enum Status {
   Authenticated, //inside application
   Unauthenticated,
+  spalchscreen,
   walkingpage,
   language,
 }
@@ -113,7 +114,7 @@ bool _loadinglanguage=false;
     _birthDate = value;
   }
 
-  Status _status=Status.Unauthenticated;
+  Status _status=Status.spalchscreen;
 
 
   Status get status => _status;
@@ -170,7 +171,7 @@ bool _loadinglanguage=false;
   }
 
   UserProvider.statusfunction() {
-getdata();
+//getdata();
   }
 
 
