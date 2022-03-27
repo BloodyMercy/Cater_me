@@ -135,12 +135,18 @@ class _NavigationBarState extends State<Navigationbar> {
     ),
   );
 
+  getLanguage() async{
+    final user=Provider.of<UserProvider>(context,listen:false);
+    await user.getLanguage();
+    print(user.lg[user.language]["Home"]);
+    user.status=Status.Authenticated;
+}
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-
+getLanguage();
     startinto();
  //   playaudio();
     inAppMessaging(context,SplashScreen());

@@ -16,7 +16,7 @@ class GalleryProvider with ChangeNotifier{
 
   bool get loading => _loading;
   gethomepage() async {
-    _homepage=await _service.getimageshomepage();
+   // _homepage=await _service.getimageshomepage();
     _loading=true;
     notifyListeners();
   }
