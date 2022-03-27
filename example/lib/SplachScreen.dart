@@ -62,8 +62,7 @@ getdata() async{
         MaterialPageRoute(builder: (context) =>
            LanguagePicker()), (Route<dynamic> route) => false);
 
-  }else
-  if(sh.getBool("logged")??false){
+  }else if(sh.getBool("logged")??false){
    user.language=sh.getString("locale");
     user.status=Status.Authenticated;
    user.notifyListeners(); Navigator.of(context).pushReplacement(
