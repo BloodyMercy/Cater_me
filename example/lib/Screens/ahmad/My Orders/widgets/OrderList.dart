@@ -26,7 +26,7 @@ class _OrderListState extends State<OrderList> {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 10),
           child: OrderCard(
-            userOrder:package.allpackages[index],
+            a:widget.a[0],
           ),
         ),
       ),

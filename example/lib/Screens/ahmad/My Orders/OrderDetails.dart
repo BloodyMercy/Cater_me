@@ -217,7 +217,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   SizedBox(
                     height: 10,
                   ),
-                  OrderList(_order.orderbyId["orderItems"]),
+                  OrderList(a:_order.orderbyId["orderItems"]),
                 ],
               ),
             ),

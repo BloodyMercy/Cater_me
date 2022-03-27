@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
 getLanguage() async{
   final user=Provider.of<UserProvider>(context,listen:false);
   await user.getLanguage();
-  print(user.lg[user.language]["Home"]);
+ // print(user.lg[user.language]["Home"]);
   user.status=Status.Authenticated;
  // user.notifyListeners();
   getdata();

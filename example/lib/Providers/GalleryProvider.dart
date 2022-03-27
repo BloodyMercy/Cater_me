@@ -8,7 +8,7 @@ class GalleryProvider with ChangeNotifier{
   List<GalleryModel> _seeall =[];
   bool _loading =false;
   GalleryProvider.getdata(){
-    gethomepage();
+    // gethomepage();
   }
   List<GalleryModel> get seeall => _seeall;
 

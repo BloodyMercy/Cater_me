@@ -1,5 +1,6 @@
 import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../model/packages.dart';
 import 'UserOrders.dart';
@@ -13,6 +14,18 @@ class OrderCard extends StatefulWidget {
 }
 
 class _OrderCardState extends State<OrderCard> {
+  String lang="en";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getlang();
+  }
+  getlang() async {
+    SharedPreferences _pref= await SharedPreferences.getInstance();
+    lang=_pref.getString("locale")??"en";
+
+  }
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,7 +36,7 @@ class _OrderCardState extends State<OrderCard> {
               width: 100.0,
               color: Colors.white,
               child: Image.network(
-                widget.userOrder.image,
+                lang=="en"? widget.a["image"]:widget.a["imageAR"],
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,7 +51,7 @@ class _OrderCardState extends State<OrderCard> {
                       topRight: Radius.circular(4),
                     ),
                   ),
-                  child: Text("x${widget.userOrder.min}",
+                  child: Text("x${widget.a["quantity"]}",
                       style: TextStyle(
                         //  color: Colors.black,
                          // fontFamily: 'Valencia',
@@ -53,7 +66,7 @@ class _OrderCardState extends State<OrderCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${widget.userOrder.price}\$",
+              Text("${widget.a["price"]}",
                   style: TextStyle(
                    // fontFamily: 'Geomanist',
                     fontSize: 16,
@@ -65,7 +78,7 @@ class _OrderCardState extends State<OrderCard> {
               Container(
                 child: Text.rich(
                   TextSpan(
-                    text: widget.userOrder.title,
+                    text: lang=="en"?widget.a["item"]:widget.a["itemAR"],
                     style: TextStyle(
                      // color: Colors.black,
                       fontSize: 13,
@@ -87,7 +100,7 @@ class _OrderCardState extends State<OrderCard> {
               ),
               Text.rich(
                 TextSpan(
-                  text: "QTY: " + widget.userOrder.min.toString(),
+                  text: "QTY: " + "${widget.a["quantity"]}",
                   style: TextStyle(
                   //  color: Color.fromRGBO(180, 187, 197, 1),
                     fontSize: 13,
