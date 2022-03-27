@@ -23,7 +23,7 @@ class _SavedOrdersState extends State<SavedOrders> {
   Future getData() async {
     final orders = Provider.of<OrderProvider>(context, listen: false);
     SharedPreferences sh = await SharedPreferences.getInstance();
-    await orders.getAllOrders(sh.getString("locale"));
+    await orders.getAllOrders();
     setState(() {
       language = sh.getString("locale");
     });
@@ -39,7 +39,7 @@ class _SavedOrdersState extends State<SavedOrders> {
     SharedPreferences sh = await SharedPreferences.getInstance();
     await orders.clearData();
 
-    await orders.getAllOrders(sh.getString("locale"));
+    await orders.getAllOrders();
     return;
   }
 
