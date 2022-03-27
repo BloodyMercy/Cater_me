@@ -93,7 +93,7 @@ class _CartCardState extends State<CartCard> {
 
               Text(
 
-                "${widget.card.price} ${LanguageTr.lg[authProvider.language]["SAR"]}",
+                "${widget.card.price} ${authProvider.lg[authProvider.language]["SAR"]}",
 
                 style: TextStyle(
                   fontFamily: 'Geomanist',
@@ -107,7 +107,7 @@ class _CartCardState extends State<CartCard> {
             height: 3,
           ),
           Text(
-            '${LanguageTr.lg[authProvider.language]["Total: "]}'+ widget.card.totalprice.toString(),//widget.card.product.size[0],
+            '${authProvider.lg[authProvider.language]["Total: "]}'+ widget.card.totalprice.toString(),//widget.card.product.size[0],
             style:
             TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
@@ -124,7 +124,7 @@ class _CartCardState extends State<CartCard> {
           ),
           Row(
             children: [
-              Text('${LanguageTr.lg[authProvider.language]["Quantity: "]}'
+              Text('${authProvider.lg[authProvider.language]["Quantity: "]}'
                 ,
                 style: TextStyle(
                     fontSize: 12, fontWeight: FontWeight.w400),

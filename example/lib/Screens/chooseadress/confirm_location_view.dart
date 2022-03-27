@@ -282,7 +282,7 @@ if(address.isUpdate){
                     });
               },
               child: Text(
-                '${LanguageTr.lg[user.language][ "Confirm location"]}',
+                '${user.lg[user.language][ "Confirm location"]}',
                 style: const TextStyle(
                     fontFamily: 'Ubuntu',
                     fontWeight: FontWeight.w500,

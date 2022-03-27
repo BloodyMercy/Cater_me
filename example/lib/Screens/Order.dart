@@ -51,7 +51,7 @@ String url3ds="";
     return (await showDialog(
           context: context,
           builder: (context) => CustomDialog(
-            title: '${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}',
+            title: '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
 
             description: "",
             button1: ElevatedButton(
@@ -64,13 +64,13 @@ String url3ds="";
                   Navigator.of(context).pop();
                   Navigator.of(context).pop();
                 },
-                child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}')),
+                child: Text('${authProvider.lg[authProvider.language]["Yes"]}')),
             oneOrtwo: true,
             button2: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
+              child: Text('${authProvider.lg[authProvider.language]["No"]}'),
             ),
           ),
         )) ??
@@ -160,7 +160,7 @@ String url3ds="";
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.white,
-            title:  Text('${LanguageTr.lg[authProvider.language]["Order"]}'
+            title:  Text('${authProvider.lg[authProvider.language]["Order"]}'
               ,
               style: const TextStyle(
                   color: Color(0xFF3F5521),
@@ -177,7 +177,7 @@ String url3ds="";
                     context: context,
                     builder: (BuildContext context) {
                       return CustomDialog(
-                        title:'${LanguageTr.lg[authProvider.language]["Are you sure you want to exit?"]}' ,
+                        title:'${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}' ,
                         description: "",
                         button1: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -191,14 +191,14 @@ String url3ds="";
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
                             },
-                            child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
+                            child: Text('${authProvider.lg[authProvider.language]["Yes"]}'
                                 )),
                         oneOrtwo: true,
                         button2: ElevatedButton(
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text('${LanguageTr.lg[authProvider.language]["No"]}'),
+                          child: Text('${authProvider.lg[authProvider.language]["No"]}'),
                         ),
                       );
                     });
@@ -230,7 +230,7 @@ String url3ds="";
                                     //     _key.currentState.showSnackBar(
                                     //        SnackBar(
                                     //         content:
-                                    //             Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}'),
+                                    //             Text('${authProvider.lg[authProvider.language]["Please choose an address"]}'),
                                     //                ),
                                     //
                                     //     );
@@ -242,7 +242,7 @@ String url3ds="";
                                     //   if (orderProvider.value.id == 0) {
                                     //     _key.currentState.showSnackBar(
                                     //        SnackBar(
-                                    //         content:  Text('${LanguageTr.lg[authProvider.language]["please choose one from the following offers "]}'
+                                    //         content:  Text('${authProvider.lg[authProvider.language]["please choose one from the following offers "]}'
                                     //             ),
                                     //       ),
                                     //     );
@@ -259,7 +259,7 @@ String url3ds="";
                                     //       address.typeofeventcontroller.text == "") {
                                     //      SnackBar(
                                     //       content:
-                                    //           Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                    //           Text('${authProvider.lg[authProvider.language][ "Please fill the empty fields"]}'
                                     //               ),
                                     //     );
                                     //     // );
@@ -315,7 +315,7 @@ String url3ds="";
                                     //   if (a)
                                     //      SnackBar(
                                     //       content:
-                                    //           Text('${LanguageTr.lg[authProvider.language][ "Please fill the empty fields"]}'
+                                    //           Text('${authProvider.lg[authProvider.language][ "Please fill the empty fields"]}'
                                     //               ),
                                     //     );
                                     //   else
@@ -335,14 +335,14 @@ String url3ds="";
                                     // }
                                   },
                                   text:  [
-                                    '${LanguageTr.lg[authProvider.language]["Location"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Event Details"]}',
-                                   !orderProvider.setup? '${LanguageTr.lg[authProvider.language]["Service"]}':    '${LanguageTr.lg[authProvider.language]["Setup"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Menus"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Add-Ons"]}',
-                                    '${LanguageTr.lg[authProvider.language]["Checkout"]}',
-                                    orderProvider.spets!=8?'${LanguageTr.lg[authProvider.language]["Payment"]}':'${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
-                                   // '${LanguageTr.lg[authProvider.language]["OTP Verification"]}',
+                                    '${authProvider.lg[authProvider.language]["Location"]}',
+                                    '${authProvider.lg[authProvider.language]["Event Details"]}',
+                                   !orderProvider.setup? '${authProvider.lg[authProvider.language]["Service"]}':    '${authProvider.lg[authProvider.language]["Setup"]}',
+                                    '${authProvider.lg[authProvider.language]["Menus"]}',
+                                    '${authProvider.lg[authProvider.language]["Add-Ons"]}',
+                                    '${authProvider.lg[authProvider.language]["Checkout"]}',
+                                    orderProvider.spets!=8?'${authProvider.lg[authProvider.language]["Payment"]}':'${authProvider.lg[authProvider.language]["OTP Verification"]}',
+                                   // '${authProvider.lg[authProvider.language]["OTP Verification"]}',
 
 
                                   ],
@@ -421,7 +421,7 @@ String url3ds="";
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "${LanguageTr.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${LanguageTr.lg[authProvider.language]["SAR"]}",
+                                                "${authProvider.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${authProvider.lg[authProvider.language]["SAR"]}",
                                                 style: const TextStyle(
                                                     fontSize: 18,
                                                     fontFamily: 'BerlinSansFB',
@@ -435,7 +435,7 @@ String url3ds="";
                                                     0.02,
                                               ),
                                               orderProvider.vatshisha > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]['*(Shisha VAT 100%)']}'
+                                                  ? Text('${authProvider.lg[authProvider.language]['*(Shisha VAT 100%)']}'
                                                       ,
                                                       style: TextStyle(
                                                         fontSize: 10,
@@ -446,7 +446,7 @@ String url3ds="";
                                                     )
                                                   : Container(),
                                               orderProvider.vatfood > 0.0
-                                                  ? Text('${LanguageTr.lg[authProvider.language]["*(VAT included 15%)"]}'
+                                                  ? Text('${authProvider.lg[authProvider.language]["*(VAT included 15%)"]}'
                                                       ,
                                                       style: TextStyle(
                                                         fontSize: 10,
@@ -472,7 +472,7 @@ String url3ds="";
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please choose an address"]}',
+                                                      content: Text('${authProvider.lg[authProvider.language]["Please choose an address"]}',
                                                           ),
                                                     ),
                                                   );
@@ -501,7 +501,7 @@ String url3ds="";
                                                                 Navigator.of(context).pop();
                                                               },
                                                               child: Text(
-                                                                '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                                '${authProvider.lg[authProvider.language]["Close"]}',
                                                                 style: TextStyle(
                                                                     fontFamily: 'BerlinSansFB'),
                                                               ),
@@ -511,7 +511,7 @@ String url3ds="";
                                                             //     Navigator.of(context).pop();
                                                             //   },
                                                             //   child: Text(
-                                                            //       '${LanguageTr.lg[authProvider.language]["Close"]}',
+                                                            //       '${authProvider.lg[authProvider.language]["Close"]}',
                                                             //       style: TextStyle(
                                                             //           fontFamily:
                                                             //           'BerlinSansFB')),
@@ -522,7 +522,7 @@ String url3ds="";
                                                     // _key.currentState
                                                     //     .showSnackBar(
                                                     //   SnackBar(
-                                                    //     content: Text('${LanguageTr.lg[authProvider.language]["Sorry! We are fully booked."]}',
+                                                    //     content: Text('${authProvider.lg[authProvider.language]["Sorry! We are fully booked."]}',
                                                     //     ),
                                                     //   ),
                                                     // );}
@@ -534,7 +534,7 @@ String url3ds="";
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content:  Text('${LanguageTr.lg[authProvider.language]["Please choose one from the following offers "]}'
+                                                      content:  Text('${authProvider.lg[authProvider.language]["Please choose one from the following offers "]}'
                                                           ),
                                                     ),
                                                   );
@@ -569,7 +569,7 @@ String url3ds="";
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language]["Please fill the empty fields"]}'
                                                           ),
                                                     ),
                                                   );
@@ -583,7 +583,7 @@ String url3ds="";
                                                           .showSnackBar(
                                                          SnackBar(
                                                           content: Text(
-                                                            '${LanguageTr.lg[authProvider.language][  "Please fill the empty fields"]}',),
+                                                            '${authProvider.lg[authProvider.language][  "Please fill the empty fields"]}',),
                                                         ),
                                                       );
                                                     } else {
@@ -616,7 +616,7 @@ String url3ds="";
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please choose a package to order"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language][ "please choose a package to order"]}'
                                                          ),
                                                     ),
                                                   );
@@ -628,7 +628,7 @@ String url3ds="";
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["you can’t order less than 5 shishas"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language]["you can’t order less than 5 shishas"]}'
                                                           ),
                                                     ),
                                                   );
@@ -656,7 +656,7 @@ String url3ds="";
                                                           _key.currentState
                                                               .showSnackBar(
                                                              SnackBar(
-                                                              content: Text('${LanguageTr.lg[authProvider.language]["Please choose someone to share your bill with"]}'
+                                                              content: Text('${authProvider.lg[authProvider.language]["Please choose someone to share your bill with"]}'
                                                                   ),
                                                             ),
                                                           );
@@ -677,7 +677,7 @@ String url3ds="";
                                                               Future<bool>.value(
                                                                   false),
                                                               child: AlertDialog(
-                                                                title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                                title:  Text('${authProvider.lg[authProvider.language]["Loading..."]}'
                                                                 ),
                                                                 content: Column(
                                                                     mainAxisSize:
@@ -746,7 +746,7 @@ Navigator.of(context).pop();
                                                     _key.currentState
                                                         .showSnackBar(
                                                        SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language]["no items to order"]}'
+                                                        content: Text('${authProvider.lg[authProvider.language]["no items to order"]}'
                                                         ),
                                                           ),
 
@@ -763,7 +763,7 @@ Navigator.of(context).pop();
                                                   _key.currentState
                                                       .showSnackBar(
                                                     SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["no credit cards selected"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language]["no credit cards selected"]}'
                                                       ),
                                                     ),
                                                   );
@@ -780,7 +780,7 @@ Navigator.of(context).pop();
                                                           Future<bool>.value(
                                                               false),
                                                           child: AlertDialog(
-                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                            title:  Text('${authProvider.lg[authProvider.language]["Loading..."]}'
                                                             ),
                                                             content: Column(
                                                                 mainAxisSize:
@@ -817,7 +817,7 @@ Navigator.of(context).pop();
                                                       _key.currentState
                                                           .showSnackBar(
                                                         SnackBar(
-                                                          content: Text('${LanguageTr.lg[authProvider.language]["error to place order"]}'
+                                                          content: Text('${authProvider.lg[authProvider.language]["error to place order"]}'
                                                           ),
                                                         ),
                                                       );
@@ -836,7 +836,7 @@ Navigator.of(context).pop();
                                                     _key.currentState
                                                         .showSnackBar(
                                                       SnackBar(
-                                                        content: Text('${LanguageTr.lg[authProvider.language]["error to place order"]}'
+                                                        content: Text('${authProvider.lg[authProvider.language]["error to place order"]}'
                                                         ),
                                                       ),
                                                     );
@@ -861,7 +861,7 @@ Navigator.of(context).pop();
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "no credit cards selected"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language][ "no credit cards selected"]}'
                                                          ),
                                                     ),
                                                   );
@@ -876,7 +876,7 @@ Navigator.of(context).pop();
                                                               Future<bool>.value(
                                                                   false),
                                                           child: AlertDialog(
-                                                            title:  Text('${LanguageTr.lg[authProvider.language]["Loading..."]}'
+                                                            title:  Text('${authProvider.lg[authProvider.language]["Loading..."]}'
                                                                 ),
                                                             content: Column(
                                                                 mainAxisSize:
@@ -917,14 +917,14 @@ Navigator.of(context).pop();
                                                           builder: (BuildContext
                                                           context) {
                                                             return AlertDialog(
-                                                              title:  Text('${LanguageTr.lg[authProvider.language]["otp verification"]}'
+                                                              title:  Text('${authProvider.lg[authProvider.language]["otp verification"]}'
                                                               ),
-                                                              content:  Text('${LanguageTr.lg[authProvider.language]["otp not valid"]}'
+                                                              content:  Text('${authProvider.lg[authProvider.language]["otp not valid"]}'
                                                               ),
                                                               actions: <Widget>[
                                                                 TextButton(
                                                                     child:
-                                                                    Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                                    Text('${authProvider.lg[authProvider.language]["Close"]}'
                                                                     ),
                                                                     onPressed: () =>
                                                                         Navigator.pop(
@@ -949,14 +949,14 @@ Navigator.of(context).pop();
                                                     //   builder: (BuildContext
                                                     //       context) {
                                                     //     return AlertDialog(
-                                                    //       title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                                    //       title:  Text('${authProvider.lg[authProvider.language]["error"]}'
                                                     //           ),
-                                                    //       content:  Text('${LanguageTr.lg[authProvider.language][ "try again"]}'
+                                                    //       content:  Text('${authProvider.lg[authProvider.language][ "try again"]}'
                                                     //          ),
                                                     //       actions: <Widget>[
                                                     //         TextButton(
                                                     //             child:
-                                                    //                  Text('${LanguageTr.lg[authProvider.language]["Close"]}'
+                                                    //                  Text('${authProvider.lg[authProvider.language]["Close"]}'
                                                     //                    ),
                                                     //             onPressed: () =>
                                                     //                 Navigator.pop(
@@ -979,7 +979,7 @@ Navigator.of(context).pop();
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language][ "please add a package"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language][ "please add a package"]}'
                                                          ),
                                                     ),
                                                   );
@@ -1008,7 +1008,7 @@ Navigator.of(context).pop();
                                                   _key.currentState
                                                       .showSnackBar(
                                                      SnackBar(
-                                                      content: Text('${LanguageTr.lg[authProvider.language]["minimun quantity for shisha is 5"]}'
+                                                      content: Text('${authProvider.lg[authProvider.language]["minimun quantity for shisha is 5"]}'
                                                           ),
                                                     ),
                                                   );
@@ -1031,7 +1031,7 @@ Navigator.of(context).pop();
                                               });
                                             },
                                             child:
-                                            Text('${LanguageTr.lg[authProvider.language]['Next']}',
+                                            Text('${authProvider.lg[authProvider.language]['Next']}',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontFamily: 'BerlinSansFB',

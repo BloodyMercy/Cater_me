@@ -79,7 +79,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return '${LanguageTr.lg[user.language]["Title can't be empty"]}';
+                              return '${user.lg[user.language]["Title can't be empty"]}';
                             } else
                               return null;
                           },
@@ -98,7 +98,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["Address Title"]}',
+                                  '${user.lg[user.language]["Address Title"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -163,7 +163,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["Country"]}',
+                                  '${user.lg[user.language]["Country"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -222,7 +222,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["City"]}',
+                                  '${user.lg[user.language]["City"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -286,7 +286,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["Street"]}',
+                                  '${user.lg[user.language]["Street"]}',
                               enabled: false,
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
@@ -359,7 +359,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["Building"]}',
+                                  '${user.lg[user.language]["Building"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -432,7 +432,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       ? Color(0xFF3F5521)
                                       : Colors.grey),
                               labelText:
-                                  '${LanguageTr.lg[user.language]["Floor"]}',
+                                  '${user.lg[user.language]["Floor"]}',
                               hintStyle: const TextStyle(
                                   color: Colors.black87,
                                   fontSize: 15,
@@ -497,7 +497,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                               titleStyle: TextStyle(
                                                   fontWeight: FontWeight.bold),
                                               description:
-                                                  '${LanguageTr.lg[user.language]["Failed to add address"]}'
+                                                  '${user.lg[user.language]["Failed to add address"]}'
                                               //  animationType: ANIMATION.FROM_LEFT,
                                               )
                                           .show(context);
@@ -505,7 +505,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       // ScaffoldMessenger.of(context)
                                       //     .showSnackBar(SnackBar(
                                       //         content: Text(
-                                      //   '${LanguageTr.lg[user.language]["Failed to add address"]}',
+                                      //   '${authProvider.lg[user.language]["Failed to add address"]}',
                                       // )));
                                     } else {
                                       MotionToast.success(
@@ -513,7 +513,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         titleStyle: TextStyle(
                                             fontWeight: FontWeight.bold),
                                         description:
-                                            '${LanguageTr.lg[user.language]["Address added"]}',
+                                            '${user.lg[user.language]["Address added"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);
                                       await Future.delayed(Duration(seconds: 2));
@@ -521,7 +521,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       //     .showSnackBar(
                                       //   SnackBar(
                                       //     content: Text(
-                                      //       '${LanguageTr.lg[user.language]["Address added"]}',
+                                      //       '${authProvider.lg[user.language]["Address added"]}',
                                       //     ),
                                       //   ),
                                       // );
@@ -541,7 +541,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         titleStyle: TextStyle(
                                             fontWeight: FontWeight.bold),
                                         description:
-                                            '${LanguageTr.lg[user.language]["updated done"]}',
+                                            '${user.lg[user.language]["updated done"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);
                                       await Future.delayed(Duration(seconds: 2));
@@ -550,7 +550,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                       //     .showSnackBar(Snack
                                       //     Bar(
                                       //         content: Text(t
-                                      //   '${LanguageTr.lg[user.language]["updated done"]}',
+                                      //   '${authProvider.lg[user.language]["updated done"]}',
                                       // )));
                                       //   await  Future.delayed(Duration(seconds: 2));
                                       Navigator.of(context)
@@ -568,14 +568,14 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                         titleStyle: TextStyle(
                                             fontWeight: FontWeight.bold),
                                         description:
-                                            '${LanguageTr.lg[user.language]["Updated failed"]}',
+                                            '${user.lg[user.language]["Updated failed"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);
 
                                       // ScaffoldMessenger.of(context)
                                       //     .showSnackBar(SnackBar(
                                       //         content: Text(
-                                      //   '${LanguageTr.lg[user.language]["Updated failed"]}',
+                                      //   '${authProvider.lg[user.language]["Updated failed"]}',
                                       // )));
                                       // Navigator.of(context).pop();
                                     }
@@ -586,7 +586,7 @@ class _AddressesTextFields extends State<AddressesTextField> {
                                 // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ConfirmLocation() ));
                               },
                               child: Text(
-                                '${LanguageTr.lg[user.language]["Save"]}',
+                                '${user.lg[user.language]["Save"]}',
                                 style: Theme.of(context).textTheme.headline1,
                               ),
                               style: ElevatedButton.styleFrom(

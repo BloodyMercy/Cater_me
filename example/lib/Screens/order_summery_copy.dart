@@ -175,7 +175,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
           child: CustomScrollView(slivers: <Widget>[
             SliverToBoxAdapter(
                 child: Center(
-                    child: Text('${LanguageTr.lg[authProvider.language]["VAT  311085799400003"]}',
+                    child: Text('${authProvider.lg[authProvider.language]["VAT  311085799400003"]}',
 
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
@@ -183,7 +183,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
             details.itemOrders.length == 0
                 ? SliverToBoxAdapter(
                 child: Center(
-                    child: Text('${LanguageTr.lg[authProvider.language]["no items added"]}'
+                    child: Text('${authProvider.lg[authProvider.language]["no items added"]}'
                         ,
                         style: TextStyle(
                             fontWeight: FontWeight.normal,
@@ -244,7 +244,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                         issearch = !issearch;
                       });
                     },
-                    child:  Text('${LanguageTr.lg[authProvider.language]["Share Bill"]}'
+                    child:  Text('${authProvider.lg[authProvider.language]["Share Bill"]}'
                       ,
                       style: TextStyle(
                           decoration: TextDecoration.underline,
@@ -320,9 +320,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                         padding: const EdgeInsets.only(left: 15.0),
                         child: Text(
                           frnd.listFriends.length > 0
-                              ? '${LanguageTr.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
+                              ? '${authProvider.lg[authProvider.language]["Choose the friends you want to share the order with."]}'
 
-                              :'${LanguageTr.lg[authProvider.language]["No freind to share"]}'
+                              :'${authProvider.lg[authProvider.language]["No freind to share"]}'
                           ,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
@@ -336,7 +336,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                         onPressed: () {
                           _startAddNewFriend(context);
                         },
-                        child: Text('${LanguageTr.lg[authProvider.language]["Add Friend"]}'
+                        child: Text('${authProvider.lg[authProvider.language]["Add Friend"]}'
                           ,
                           style: TextStyle(
                             decoration: TextDecoration.underline,
@@ -466,7 +466,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 setState(() {});
                               },
                               decoration: InputDecoration(
-                                hintText: '${LanguageTr.lg[authProvider.language]['Price']}',
+                                hintText: '${authProvider.lg[authProvider.language]['Price']}',
                                 fillColor: Colors.black,
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(

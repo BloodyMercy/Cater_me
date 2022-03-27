@@ -170,13 +170,13 @@ setState(() {
                                 ,size: 20,),
                               onTap: (){
                                 showDialog(context: context, builder: (BuildContext context)=>
-                                    CustomDialog( title: '${LanguageTr.lg[authProvider.language]["Do you want to delete this friend"]}',
+                                    CustomDialog( title: '${authProvider.lg[authProvider.language]["Do you want to delete this friend"]}',
 
 
                                       description: "",
                                       button1:ElevatedButton(
                                         style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                        child: Text('${LanguageTr.lg[authProvider.language]["Yes"]}'
+                                        child: Text('${authProvider.lg[authProvider.language]["Yes"]}'
                                             ),
                                         onPressed: ()async{
                                           showDialog(
@@ -187,7 +187,7 @@ setState(() {
                                               return WillPopScope(
                                                 // onWillPop: () => Future<bool>.value(false),
                                                   child: AlertDialog(
-                                                    title: Text('${LanguageTr.lg[authProvider.language]["Loading..."]}',style: TextStyle(color: colorCustom),),
+                                                    title: Text('${authProvider.lg[authProvider.language]["Loading..."]}',style: TextStyle(color: colorCustom),),
                                                     content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
                                                   ));
                                             },
@@ -200,11 +200,11 @@ setState(() {
                                             MotionToast.success(
                                               title:  "Cater me",
                                               titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                              description:  '${LanguageTr.lg[authProvider.language]['Friend Deleted']}',
+                                              description:  '${authProvider.lg[authProvider.language]['Friend Deleted']}',
                                               //  animationType: ANIMATION.FROM_LEFT,
                                             ).show(context);
                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            //     content: Text('${LanguageTr.lg[authProvider.language]['Friend Deleted']}'
+                                            //     content: Text('${authProvider.lg[authProvider.language]['Friend Deleted']}'
                                             //         )));
                                           }else{
                                             Navigator.pop(context);
@@ -213,11 +213,11 @@ setState(() {
                                             MotionToast.error(
                                               title:  "Cater me",
                                               titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                              description:  '${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}',
+                                              description:  '${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}',
                                               //  animationType: ANIMATION.FROM_LEFT,
                                             ).show(context);
                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            //   content: Text('${LanguageTr.lg[authProvider.language]['Friend cannot be Deleted']}'
+                                            //   content: Text('${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}'
                                             //       ),
                                             // ));
                                           }
@@ -226,7 +226,7 @@ setState(() {
                                       button2: ElevatedButton(
                                         onPressed: (){
                                           Navigator.of(context).pop();
-                                        },child: Text('${LanguageTr.lg[authProvider.language]["No"]}'
+                                        },child: Text('${authProvider.lg[authProvider.language]["No"]}'
                                           ),
                                       ),
                                       oneOrtwo: true,

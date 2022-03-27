@@ -89,7 +89,7 @@ class _BodyState extends State<Body> {
                         userprovider.status=Status.Unauthenticated;
                         //  onDone(context);
                       },
-                      child: Text('${LanguageTr.lg[authProvider.language]["Get Started"]}'
+                      child: Text('${authProvider.lg[authProvider.language]["Get Started"]}'
                        ,
                         style: TextStyle(
                           fontSize: 18,

@@ -36,7 +36,7 @@ bool loading=false;
     final authprovider=Provider.of<UserProvider>(context,listen:true);
     var appbar = AppBar(
       title: Text(
-        '${LanguageTr.lg[authprovider.language]["Forgot Password"]}',
+        '${authprovider.lg[authprovider.language]["Forgot Password"]}',
         style: TextStyle(fontWeight: FontWeight.bold,
         fontFamily: 'BerlinSansFB',
         fontSize: 16),
@@ -71,7 +71,7 @@ bool loading=false;
               children: [
                 SizedBox(height: screenHeight * 0.12),
                 Text(
-                  '${LanguageTr.lg[authprovider.language]["Email"]}',
+                  '${authprovider.lg[authprovider.language]["Email"]}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: screenHeight * 0.12),
@@ -105,13 +105,13 @@ bool loading=false;
                                     left: screenHeight * 0.03,
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
-                                hintText: '${LanguageTr.lg[authprovider.language][ "Email"]}',
+                                hintText: '${authprovider.lg[authprovider.language][ "Email"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
 
                               validator: MultiValidator([
-                                RequiredValidator(errorText:'${LanguageTr.lg[authprovider.language][ "Required"]}'),
+                                RequiredValidator(errorText:'${authprovider.lg[authprovider.language][ "Required"]}'),
                               ]),
 
                               keyboardType: TextInputType.emailAddress,
@@ -153,7 +153,7 @@ bool loading=false;
                                 titleStyle:
                                 TextStyle(fontWeight: FontWeight.bold),
                                 description:
-                                '${LanguageTr.lg[authprovider.language]["Email verification was send"]}',
+                                '${authprovider.lg[authprovider.language]["Email verification was send"]}',
                                 //  animationType: ANIMATION.FROM_LEFT,
                               ).show(context);
 
@@ -174,7 +174,7 @@ bool loading=false;
                                 titleStyle:
                                 TextStyle(fontWeight: FontWeight.bold),
                                 description:
-                                '${LanguageTr.lg[authprovider.language]["error try again"]}',
+                                '${authprovider.lg[authprovider.language]["error try again"]}',
                                 //  animationType: ANIMATION.FROM_LEFT,
                               ).show(context);
 
@@ -202,7 +202,7 @@ bool loading=false;
                         //   }
                         },
                         child: Text(
-                          '${LanguageTr.lg[authprovider.language][ "Send"]}',
+                          '${authprovider.lg[authprovider.language][ "Send"]}',
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         style: ElevatedButton.styleFrom(

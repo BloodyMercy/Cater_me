@@ -67,7 +67,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
         // ),
         centerTitle: true,
         title: Text(
-          '${LanguageTr.lg[authProvider.language]['My Credit Cards']}',
+          '${authProvider.lg[authProvider.language]['My Credit Cards']}',
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).primaryColor,
@@ -96,9 +96,9 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                           SliverToBoxAdapter(
                             child: _buildTitleSection(
                                 title:
-                                    '${LanguageTr.lg[authProvider.language]["Payment Details"]}',
+                                    '${authProvider.lg[authProvider.language]["Payment Details"]}',
                                 subTitle:
-                                    '${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}'),
+                                    '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}'),
                           ),
                           SliverList(
                             delegate: SliverChildBuilderDelegate(
@@ -144,9 +144,9 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                               context) {
                                                             return CustomDialog(
                                                               title:
-                                                                  '${LanguageTr.lg[authProvider.language]["Delete Credit Card"]}',
+                                                                  '${authProvider.lg[authProvider.language]["Delete Credit Card"]}',
                                                               description:
-                                                                  '${LanguageTr.lg[authProvider.language]["Are you sure do you want to delete this card?"]}',
+                                                                  '${authProvider.lg[authProvider.language]["Are you sure do you want to delete this card?"]}',
                                                               button1:
                                                                   ElevatedButton(
                                                                 onPressed:
@@ -171,7 +171,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                       titleStyle: TextStyle(
                                                                           fontWeight: FontWeight.bold),
                                                                       description:
-                                                                      '${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'
+                                                                      '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'
                                                                       //  animationType: ANIMATION.FROM_LEFT,
                                                                     ).show(this.context);
 
@@ -180,7 +180,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                     //     .showSnackBar(
                                                                     //         SnackBar(
                                                                     //   content: Text(
-                                                                    //       '${LanguageTr.lg[authProvider.language]["Credit card Deleted"]}'),
+                                                                    //       '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'),
 
                                                                       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                                       //   content: Text('Address Deleted'),
@@ -191,7 +191,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                         .showSnackBar(
                                                                             SnackBar(
                                                                       content: Text(
-                                                                          '${LanguageTr.lg[authProvider.language]["Credit card cannot be deleted"]}'),
+                                                                          '${authProvider.lg[authProvider.language]["Credit card cannot be deleted"]}'),
                                                                     )
                                                                             // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                                                             //   content: Text('Address Deleted'),
@@ -207,7 +207,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                       .notifyListeners();
                                                                 },
                                                                 child: Text(
-                                                                    '${LanguageTr.lg[authProvider.language]["Yes"]}'),
+                                                                    '${authProvider.lg[authProvider.language]["Yes"]}'),
                                                               ),
                                                               oneOrtwo: true,
                                                               button2:
@@ -218,7 +218,7 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                                                             context);
                                                                       },
                                                                       child: Text(
-                                                                          '${LanguageTr.lg[authProvider.language]["No"]}')),
+                                                                          '${authProvider.lg[authProvider.language]["No"]}')),
                                                             );
                                                           });
                                                     },
@@ -245,13 +245,13 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                                               children: <Widget>[
                                                 _buildDetailsBlock(
                                                   label:
-                                                      '${LanguageTr.lg[authProvider.language]["CARDHOLDER"]}',
+                                                      '${authProvider.lg[authProvider.language]["CARDHOLDER"]}',
                                                   value: _creditCards
                                                       .list[i].ownerName,
                                                 ),
                                                 _buildDetailsBlock(
                                                     label:
-                                                        '${LanguageTr.lg[authProvider.language]["VALID THRU"]}',
+                                                        '${authProvider.lg[authProvider.language]["VALID THRU"]}',
                                                     value:
                                                         "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
                                               ],

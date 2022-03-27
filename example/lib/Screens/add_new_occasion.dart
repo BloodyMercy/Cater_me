@@ -25,10 +25,11 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
   getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
+
     SharedPreferences sh = await SharedPreferences.getInstance();
 
     await occasion.getallnewoccasion(sh.getString("locale"));
-    await occasion.getAllOccasionType(sh.getString("locale"));
+    await occasion.getAllOccasionType(sh.getString("locale"),context);
     occasion.nameofoccasioncontroller.text = "";
     occasion.datechosencontroller.text = "";
     occasion.typeofoccasioncontrollername.text = "";
@@ -74,7 +75,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
+            '${authProvider.lg[authProvider.language]["Add an occasion"]}',
             style: Theme.of(context).textTheme.headline1,
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -107,7 +108,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                             ? Color(0xFF3F5521)
                                             : Colors.grey),
                                     labelText:
-                                        '${LanguageTr.lg[authProvider.language]["Name of Occasion"]}',
+                                        '${authProvider.lg[authProvider.language]["Name of Occasion"]}',
                                     hintStyle: TextStyle(
                                         color: Colors.black87,
                                         fontSize: 15,
@@ -137,7 +138,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
 
                         CustomCupertinoPicker(
                           label:
-                              '${LanguageTr.lg[authProvider.language]["Type of Occasion"]}',
+                              '${authProvider.lg[authProvider.language]["Type of Occasion"]}',
                           items: occasion.listoccasiontypename,
                           listoccasiontype: occasion.listoccasiontype,
                           selectedValue: widget.getposition,
@@ -145,7 +146,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                           controller: occasion.typeofoccasioncontrollername,
                         ),
                         CustomDatePickerFormField(
-                            label: '${LanguageTr.lg[authProvider.language]["Event Date"]}',
+                            label: '${authProvider.lg[authProvider.language]["Event Date"]}',
                             controller: occasion.datechosencontroller,
                             controllerlan: occasion.datechosencontrollerl,
                             lang:authProvider.language
@@ -172,7 +173,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                         // _scaff.currentState.showSnackBar(
                                         //    SnackBar(
                                         //     content:
-                                        //         Text(            '${LanguageTr.lg[authProvider.language]["you can’t add an empty occasion"]}',
+                                        //         Text(            '${authProvider.lg[authProvider.language]["you can’t add an empty occasion"]}',
                                         //         ),
                                         //   ),
                                         //
@@ -183,7 +184,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                           titleStyle: TextStyle(
                                               fontWeight: FontWeight.bold),
                                           description:
-                                              '${LanguageTr.lg[authProvider.language]["you can’t add an empty occasion"]}',
+                                              '${authProvider.lg[authProvider.language]["you can’t add an empty occasion"]}',
                                           //  animationType: ANIMATION.FROM_LEFT,
                                         ).show(context);
                                       } else {
@@ -201,14 +202,14 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                           // _scaff.currentState.showSnackBar(
                                           //   SnackBar(
                                           //     content: Text(
-                                          //       '${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}',
+                                          //       '${authProvider.lg[authProvider.language]["Please fill the empty fields"]}',
                                           //     ),
                                           //   ),
                                           // );
                                           MotionToast.error(
                                             title:  "Cater me",
                                             titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                            description: '${LanguageTr.lg[authProvider.language]["Please fill the empty fields"]}',
+                                            description: '${authProvider.lg[authProvider.language]["Please fill the empty fields"]}',
                                             //  animationType: ANIMATION.FROM_LEFT,
                                           ).show(context);
                                         } else {
@@ -238,7 +239,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                                       }
                                     },
                                     child: Text(
-                                      '${LanguageTr.lg[authProvider.language]["Add"]}',
+                                      '${authProvider.lg[authProvider.language]["Add"]}',
                                       style:
                                           Theme.of(context).textTheme.headline1,
                                     ),

@@ -227,7 +227,7 @@ final authProvider = Provider.of<UserProvider>(context, listen: true);
                   ),
                   Row(
                     children: [
-                      Text("${LanguageTr.lg[authProvider.language]["SAR"]} ${widget.cart.totalprice.toStringAsFixed(2)}",
+                      Text("${authProvider.lg[authProvider.language]["SAR"]} ${widget.cart.totalprice.toStringAsFixed(2)}",
                         style:  TextStyle(
                           color: Color(0xFF3F5521),
                           fontSize: 15

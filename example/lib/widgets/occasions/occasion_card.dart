@@ -127,7 +127,7 @@ class _OccasionCardState extends State<OccasionCard> {
                     .primaryColor,
               ),
               Text(
-                  "${LanguageTr.lg[authProvider.language]["Add an occasion"]}",
+                  "${authProvider.lg[authProvider.language]["Add an occasion"]}",
                 style: TextStyle(
                     fontWeight:
                     FontWeight

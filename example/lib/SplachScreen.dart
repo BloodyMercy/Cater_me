@@ -47,17 +47,22 @@ chechkdata() async{
 }
   @override
   Widget build(BuildContext context) {
-
+    final user=Provider.of<UserProvider>(context,listen:false);
     Timer(
       Duration(milliseconds: 7000),
       () { if (lg){
-
-        Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (BuildContext context) =>
-              appstate(),
-        ), (Route<dynamic> route) => false
-      );}
+if(user.loadinglanguage) {
+  Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (BuildContext context) =>
+            appstate(),
+      ), (Route<dynamic> route) => false
+  );
+}
+      else {
+        print("failed to get data");
+      }
+      }
        else{
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(

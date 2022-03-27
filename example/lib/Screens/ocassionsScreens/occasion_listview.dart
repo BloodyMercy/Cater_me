@@ -29,7 +29,7 @@ class _OccasionListViewState extends State<OccasionListView> {
 
     final occa = Provider.of<OccasionProvider>(context, listen: false);
     SharedPreferences sh=await SharedPreferences.getInstance();
-    await occa.getAllOccasionType(sh.getString("locale"));
+    await occa.getAllOccasionType(sh.getString("locale"),context);
     await occa.getallnewoccasion(sh.getString("locale"));
 
     setState(() {
@@ -57,7 +57,7 @@ class _OccasionListViewState extends State<OccasionListView> {
     occa.all.clear();
     occa.listoccasiontype.clear();
     SharedPreferences sh=await SharedPreferences.getInstance();
-    await occa.getAllOccasionType(sh.getString("locale"));
+    await occa.getAllOccasionType(sh.getString("locale"),context);
     await occa.getallnewoccasion(sh.getString("locale"));
 
    setState(() {
@@ -181,7 +181,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                               builder: (context) => LoginScreen(),
                             ),
                           );
-                        }, child: Text( '${LanguageTr.lg[authProvider.language]["Log In"]}',)):Container()
+                        }, child: Text( '${authProvider.lg[authProvider.language]["Log In"]}',)):Container()
                       ],
                     ),
 
@@ -258,7 +258,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                           height: 20,
                                         ),
                                         Text(
-                                            '${LanguageTr.lg[authProvider.language]["edit"]}',
+                                            '${authProvider.lg[authProvider.language]["edit"]}',
                                             //  locale: ,
                                             style: TextStyle(
                                                 color: Colors.black54,

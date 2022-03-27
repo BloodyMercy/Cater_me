@@ -142,7 +142,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                   );
                 },
               ))
-          : Center(child: Text('${LanguageTr.lg[authProvider.language]["No Cuisines To Dispaly"]}'
+          : Center(child: Text('${authProvider.lg[authProvider.language]["No Cuisines To Dispaly"]}'
          )),
       !loadingitems
           ? Container(

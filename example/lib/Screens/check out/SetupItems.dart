@@ -64,7 +64,7 @@ class _SetupItemsState extends State<SetupItems> {
                 : SingleChildScrollView(
                   child: Column(
                     children: [
-                      Text('${LanguageTr.lg[authProvider.language]["Please choose what do you need"]}',),
+                      Text('${authProvider.lg[authProvider.language]["Please choose what do you need"]}',),
                       Container(
                         height: MediaQuery.of(context).size.height /1.8,
                         child: ListView.builder(
@@ -84,7 +84,7 @@ class _SetupItemsState extends State<SetupItems> {
                                             fontSize: 17, fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        '${LanguageTr.lg[authProvider.language]["Free"]}',
+                                        '${authProvider.lg[authProvider.language]["Free"]}',
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,

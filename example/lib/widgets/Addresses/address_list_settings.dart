@@ -152,11 +152,11 @@ super.initState();
                                 IconButton(
                                     onPressed: () {
                                      showDialog(context: context, builder: (BuildContext context)=>
-                                         CustomDialog(title: '${LanguageTr.lg[user.language]["Do you want to delete this address"]}',
+                                         CustomDialog(title: '${user.lg[user.language]["Do you want to delete this address"]}',
                                            description: "",
                                            button1:ElevatedButton(
                                              style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                             child: Text('${LanguageTr.lg[user.language][ "Yes"]}',),
+                                             child: Text('${user.lg[user.language][ "Yes"]}',),
                                              onPressed: ()async{
                                                showDialog(
                                                  context: this.context,
@@ -166,7 +166,7 @@ super.initState();
                                                    return WillPopScope(
                                                      // onWillPop: () => Future<bool>.value(false),
                                                        child: AlertDialog(
-                                                         title: Text("${LanguageTr.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
+                                                         title: Text("${user.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
                                                          content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
                                                        ));
                                                  },
@@ -185,7 +185,7 @@ super.initState();
                                                  MotionToast.success(
                                                      title:  "Cater me",
                                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                                     description:  "${LanguageTr.lg[user.language]["Address Deleted"]}"
+                                                     description:  "${user.lg[user.language]["Address Deleted"]}"
                                                    //  animationType: ANIMATION.FROM_LEFT,
                                                  ).show(context);
                                                  //  },
@@ -196,12 +196,12 @@ super.initState();
                                                  MotionToast.error(
                                                      title:  "Cater me",
                                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                                     description:  "${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
+                                                     description:  "${user.lg[user.language]["Address cannot be Deleted"]}"
                                                    //  animationType: ANIMATION.FROM_LEFT,
                                                  ).show(context);
 
                                                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                 //   content: Text("${LanguageTr.lg[user.language]["Address cannot be Deleted"]}"
+                                                 //   content: Text("${authProvider.lg[user.language]["Address cannot be Deleted"]}"
                                                  //       ),
                                                  // ));
                                                }
@@ -210,7 +210,7 @@ super.initState();
                                            button2: ElevatedButton(
                                              onPressed: (){
                                              Navigator.of(context).pop();
-                                             },child: Text('${LanguageTr.lg[user.language][ "No"]}',),
+                                             },child: Text('${user.lg[user.language][ "No"]}',),
                                            ),
                                            oneOrtwo: true,
                                          )

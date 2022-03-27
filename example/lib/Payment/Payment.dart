@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
-      appBar: AppBar(title: Text('${LanguageTr.lg[authProvider.language]["Add Card"]}'
+      appBar: AppBar(title: Text('${authProvider.lg[authProvider.language]["Add Card"]}'
         ,style: Theme.of(context).textTheme.headline1,),centerTitle: true,
  actions: [
                IconButton(icon: Icon(Icons.done),onPressed: _cardValidation)
@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: AlertDialog(
-                title: Text( '${LanguageTr.lg[authProvider.language]["Loading..."]}',),
+                title: Text( '${authProvider.lg[authProvider.language]["Loading..."]}',),
                 content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
               ));
         },
@@ -173,9 +173,9 @@ if(card.id==0){
     builder: (BuildContext context) {
       final authProvider = Provider.of<UserProvider>(context, listen: true);
       return AlertDialog(
-        title: Text( '${LanguageTr.lg[authProvider.language]["error"]}',),
+        title: Text( '${authProvider.lg[authProvider.language]["error"]}',),
         content: Text("try again"),
-        actions: <Widget>[TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
+        actions: <Widget>[TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
       );
     },
   );
@@ -214,9 +214,9 @@ else {
           final authProvider = Provider.of<UserProvider>(context, listen: true);
 
           return AlertDialog(
-            title: Text( '${LanguageTr.lg[authProvider.language]["error"]}',),
+            title: Text( '${authProvider.lg[authProvider.language]["error"]}',),
             content: Text("${ex.toString()}"),
-            actions: <Widget>[TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
+            actions: <Widget>[TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
           );
         },
       );
@@ -234,7 +234,7 @@ else {
           return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: AlertDialog(
-                title: Text( '${LanguageTr.lg[authProvider.language]["Loading..."]}',),
+                title: Text( '${authProvider.lg[authProvider.language]["Loading..."]}',),
                 content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
               ));
         },
@@ -272,7 +272,7 @@ else {
           return AlertDialog(
             title: Text("Token"),
             content: Text("${response?.token}"),
-            actions: <Widget>[TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
+            actions: <Widget>[TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
           );
         },
       );
@@ -286,9 +286,9 @@ else {
         builder: (BuildContext context) {
           final authProvider = Provider.of<UserProvider>(context, listen: true);
           return AlertDialog(
-            title: Text( '${LanguageTr.lg[authProvider.language]["error"]}',),
+            title: Text( '${authProvider.lg[authProvider.language]["error"]}',),
             content: Text("${ex.toString()}"),
-            actions: <Widget>[TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
+            actions: <Widget>[TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
           );
         },
       );
@@ -306,7 +306,7 @@ else {
           return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: AlertDialog(
-                title: Text( '${LanguageTr.lg[authProvider.language]["Loading..."]}',),
+                title: Text( '${authProvider.lg[authProvider.language]["Loading..."]}',),
                 content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator()]),
               ));
         },
@@ -332,10 +332,10 @@ else {
           builder: (BuildContext context) {
             final authProvider = Provider.of<UserProvider>(context, listen: true);
             return AlertDialog(
-              title: Text( '${LanguageTr.lg[authProvider.language]["Card not Valid"]}',),
+              title: Text( '${authProvider.lg[authProvider.language]["Card not Valid"]}',),
               // content: Text("$isValid"),
               actions: <Widget>[
-                TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',),
+                TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',),
                     onPressed: () => Navigator.pop(context))
               ],
             );
@@ -352,9 +352,9 @@ else {
         builder: (BuildContext context) {
           final authProvider = Provider.of<UserProvider>(context, listen: true);
           return AlertDialog(
-            title: Text( '${LanguageTr.lg[authProvider.language]["error"]}',),
+            title: Text( '${authProvider.lg[authProvider.language]["error"]}',),
             content: Text("${ex.toString()}"),
-            actions: <Widget>[TextButton(child: Text( '${LanguageTr.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
+            actions: <Widget>[TextButton(child: Text( '${authProvider.lg[authProvider.language]["Close"]}',), onPressed: () => Navigator.pop(context))],
           );
         },
       );

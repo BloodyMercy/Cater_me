@@ -81,7 +81,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                     children: [
                       Image.asset('images/CaterMe.png',
                           height: screenHeight * 0.28,),
-                      Text('${LanguageTr.lg[authProvider.language]["after"]} ${addresProvider.hours.timespan}',
+                      Text('${authProvider.lg[authProvider.language]["after"]} ${addresProvider.hours.timespan}',
                           style:TextStyle(fontWeight: FontWeight.normal,color:Colors.black),)
                     ],
                   ),
@@ -118,7 +118,7 @@ class _RegularDaberneScreenState extends State<RegularDaberneScreen> {
                         child: SvgPicture.asset('images/daberni.svg',
                             height: screenHeight * 0.15),
                       ),
-                      Text(" ${LanguageTr.lg[authProvider.language][ "before"]} ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
+                      Text(" ${authProvider.lg[authProvider.language][ "before"]} ${addresProvider.hours.timespan} ",style: TextStyle(fontWeight: FontWeight.normal,color:Colors.black)),
                     ],
                   ),
                 ],

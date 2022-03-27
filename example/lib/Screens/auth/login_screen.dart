@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           ? Color(0xFF3F5521)
                                           : Colors.grey),
                                   labelText:
-                                      '${LanguageTr.lg[authProvider.language]["Email"]}',
+                                      '${authProvider.lg[authProvider.language]["Email"]}',
                                   hintStyle: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,
@@ -199,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ? Color(0xFF3F5521)
                                         : Colors.grey),
                                 labelText:
-                                    '${LanguageTr.lg[authProvider.language]["Password"]}',
+                                    '${authProvider.lg[authProvider.language]["Password"]}',
                                 hintStyle: TextStyle(
                                     color: Colors.black87,
                                     fontSize: 15,
@@ -242,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             overflow: TextOverflow.ellipsis,
                             text: TextSpan(
                               text:
-                                  '${LanguageTr.lg[authProvider.language]["Forgot Password"]}',
+                                  '${authProvider.lg[authProvider.language]["Forgot Password"]}',
                               style: Theme.of(context).textTheme.headline3,
                             ),
                           ),
@@ -304,7 +304,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     titleStyle:
                                         TextStyle(fontWeight: FontWeight.bold),
                                     description:
-                                        '${LanguageTr.lg[authProvider.language][authProvider.messagelogin.toString()]}',
+                                        '${authProvider.lg[authProvider.language][authProvider.messagelogin.toString()]}',
                                     //  animationType: ANIMATION.FROM_LEFT,
                                   ).show(context);
                                   // _scaffoldKey.currentState.showSnackBar(
@@ -319,7 +319,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               }
                             },
                             child: Text(
-                                '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                                '${authProvider.lg[authProvider.language]["Log In"]}',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -346,7 +346,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: InkWell(
                         child: FittedBox(
                           child: Text(
-                            '${LanguageTr.lg[authProvider.language]["Create New Account"]}',
+                            '${authProvider.lg[authProvider.language]["Create New Account"]}',
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),

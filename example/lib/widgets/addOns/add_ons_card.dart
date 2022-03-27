@@ -51,7 +51,7 @@ class _AddOnsCardState extends State<AddOnsCard> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: GestureDetector(
-                    child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
+                    child:  Text('${authProvider.lg[authProvider.language]["See All"]}',
 
                         style: TextStyle( fontSize: 12)),
                     onTap: () {

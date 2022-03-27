@@ -78,7 +78,7 @@ class _DonationAddedState extends State<DonationAdded> {
                 );
               },
               child: Text(
-                '${LanguageTr.lg[authProvider.language][ "Close"]}',
+                '${authProvider.lg[authProvider.language][ "Close"]}',
                 style: Theme.of(context).textTheme.headline1,
               ),
               style: ElevatedButton.styleFrom(

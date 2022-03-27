@@ -65,7 +65,7 @@ class _FourthReviewState extends State<FourthReview> {
                   style: TextStyle(color: Colors.white),
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
-                    hintText: '${LanguageTr.lg[authProvider.language]["Type your answer here..."]}'
+                    hintText: '${authProvider.lg[authProvider.language]["Type your answer here..."]}'
                     ,
                     hintStyle: TextStyle(color: Colors.white),
                     fillColor: Colors.white,
@@ -104,7 +104,7 @@ class _FourthReviewState extends State<FourthReview> {
                       ));
 
                 },
-                child: Text('${LanguageTr.lg[authProvider.language]["Submit"]}'
+                child: Text('${authProvider.lg[authProvider.language]["Submit"]}'
                   ,
                   style: TextStyle(color: Colors.black, fontSize: 25),
                 ),

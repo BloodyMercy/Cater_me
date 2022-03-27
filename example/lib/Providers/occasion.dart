@@ -120,8 +120,8 @@ Occasion _occasioncreated=Occasion();
     }
   }
 
-  getAllOccasionType(String a) async {
-    _listoccasiontype = await _occasionService.getAllOcasionType(a);
+  getAllOccasionType(String a,BuildContext context) async {
+    _listoccasiontype = await _occasionService.getAllOcasionType(a,context);
     List<String> listname=[];
    for(int i=0;i<_listoccasiontype.length;i++){
      if(_listoccasiontype[i].id!=-700)

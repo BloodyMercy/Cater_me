@@ -66,7 +66,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   SizedBox(height: _mediaQueryText * 0.06),
                   customTextField(
                     read: false,
-                    label: '${LanguageTr.lg[authProvider.language]['Full Name']}',
+                    label: '${authProvider.lg[authProvider.language]['Full Name']}',
                     controller: friends.namecontroller,
                   ),
 
@@ -89,7 +89,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   //               color: focusNode.hasFocus
                   //                   ? Color(0xFF3F5521)
                   //                   : Colors.grey),
-                  //           labelText: '${LanguageTr.lg[authProvider.language]["Email"]}',
+                  //           labelText: '${authProvider.lg[authProvider.language]["Email"]}',
                   //           hintStyle: TextStyle(
                   //               color: Colors.black87,
                   //               fontSize: 15,
@@ -127,7 +127,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                         validator: (value){
                           if(value.isEmpty){
 
-                            return  '${LanguageTr.lg[authProvider.language]["Please enter phone number"]}'
+                            return  '${authProvider.lg[authProvider.language]["Please enter phone number"]}'
                               ;
                           }else return null;
                         },
@@ -148,7 +148,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 color: focusnode.hasFocus
                                     ? Color(0xFF3F5521)
                                     : Colors.grey),
-                            labelText: '${LanguageTr.lg[authProvider.language]['Phone number']}'
+                            labelText: '${authProvider.lg[authProvider.language]['Phone number']}'
                             ,
                             hintStyle: TextStyle(
                                 color: Colors.black87,
@@ -185,7 +185,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                             });
                             if (formkey.currentState.validate() == false) {
                               // ignore: avoid_print
-                              print('${LanguageTr.lg[authProvider.language]['Not Validated']}'
+                              print('${authProvider.lg[authProvider.language]['Not Validated']}'
                                   );
                               setState(() {
                                 loading = false;
@@ -208,14 +208,14 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                   builder: (BuildContext
                                   context) {
                                     return AlertDialog(
-                                      title:  Text('${LanguageTr.lg[authProvider.language]["error"]}'
+                                      title:  Text('${authProvider.lg[authProvider.language]["error"]}'
                                           ),
-                                      content:  Text('${LanguageTr.lg[authProvider.language]["friend already exists!"]}'
+                                      content:  Text('${authProvider.lg[authProvider.language]["friend already exists!"]}'
                                           ),
                                       actions: <Widget>[
                                         TextButton(
                                             child:
-                                             Text('${LanguageTr.lg[authProvider.language]["Ok"]}'
+                                             Text('${authProvider.lg[authProvider.language]["Ok"]}'
                                                 ),
                                             onPressed: () =>
                                                 Navigator.pop(
@@ -228,7 +228,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
                             }
                           },
-                          child: Text('${LanguageTr.lg[authProvider.language]['Add']}'
+                          child: Text('${authProvider.lg[authProvider.language]['Add']}'
                             ,
                             style: Theme.of(context).textTheme.headline1,
                           ),

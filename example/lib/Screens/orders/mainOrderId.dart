@@ -33,7 +33,7 @@ class _OrderIdState extends State<OrderId> {
     List<Widget> _screen = [DetailsOrder(widget.id), TrackingOrder(widget.id)];
     return Scaffold(
       appBar: AppBar(
-        title: Text('${LanguageTr.lg[authProvider.language]["Order Info" ]}',style: Theme.of(context).textTheme.headline1,),
+        title: Text('${authProvider.lg[authProvider.language]["Order Info" ]}',style: Theme.of(context).textTheme.headline1,),
         centerTitle: true,
       ),
       body: SafeArea(child: _screen[widget.screen]),
@@ -44,8 +44,8 @@ class _OrderIdState extends State<OrderId> {
           currentIndex: widget.screen,
           onTap: _onItemTapped,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: '${LanguageTr.lg[authProvider.language][ "Details"]}',),
-            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: '${LanguageTr.lg[authProvider.language][ "Tracking"]}',),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: '${authProvider.lg[authProvider.language][ "Details"]}',),
+            BottomNavigationBarItem(icon:FaIcon(FontAwesomeIcons.truck) , label: '${authProvider.lg[authProvider.language][ "Tracking"]}',),
           ]),
     );
   }

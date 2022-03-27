@@ -65,9 +65,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                           SliverToBoxAdapter(
                             child: _buildTitleSection(
                               title:
-                                  '${LanguageTr.lg[authProvider.language]["Payment Details"]}',
+                                  '${authProvider.lg[authProvider.language]["Payment Details"]}',
                               subTitle:
-                                  '${LanguageTr.lg[authProvider.language]["How would you like to pay ?"]}',
+                                  '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}',
                             ),
                           ),
                           SliverList(

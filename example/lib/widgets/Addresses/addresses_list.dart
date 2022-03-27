@@ -136,7 +136,7 @@ class _AddressesListState extends State<AddressesList> {
                       //       mainAxisAlignment: MainAxisAlignment.center,
                       //       children: [
                       //         Text(
-                      //           '${LanguageTr.lg[authProvider.language]["Add an Address"]}',
+                      //           '${authProvider.lg[authProvider.language]["Add an Address"]}',
                       //           style: TextStyle(
                       //               decoration: TextDecoration.underline,
                       //               color: Color(0xFF3F5521),
@@ -254,7 +254,7 @@ class _AddressesListState extends State<AddressesList> {
                                                       children: <TextSpan>[
                                                         TextSpan(
                                                             text:
-                                                                '${LanguageTr.lg[authProvider.language]["Street:"]}',
+                                                                '${authProvider.lg[authProvider.language]["Street:"]}',
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -282,7 +282,7 @@ class _AddressesListState extends State<AddressesList> {
                                                       children: <TextSpan>[
                                                         TextSpan(
                                                             text:
-                                                                '${LanguageTr.lg[authProvider.language]["Building:"]}',
+                                                                '${authProvider.lg[authProvider.language]["Building:"]}',
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -310,7 +310,7 @@ class _AddressesListState extends State<AddressesList> {
                                                       children: <TextSpan>[
                                                         TextSpan(
                                                             text:
-                                                                '${LanguageTr.lg[authProvider.language]["Floor:"]}',
+                                                                '${authProvider.lg[authProvider.language]["Floor:"]}',
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -350,7 +350,7 @@ class _AddressesListState extends State<AddressesList> {
                           //       mainAxisAlignment: MainAxisAlignment.center,
                           //       children: [
                           //         Text(
-                          //           '${LanguageTr.lg[authProvider.language]["Add an Address"]}',
+                          //           '${authProvider.lg[authProvider.language]["Add an Address"]}',
                           //           style: TextStyle(
                           //               decoration: TextDecoration.underline,
                           //               color: Color(0xFF3F5521),

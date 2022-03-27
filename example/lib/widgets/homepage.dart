@@ -26,6 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Providers/user.dart';
+import '../Screens/ahmad/My Orders/OrderDetails.dart';
 import '../Screens/full_photo_page.dart';
 import '../language/language.dart';
 import 'Packages/test_package_add_details.dart';
@@ -171,7 +172,7 @@ class _HomePageState extends State<HomePage>
                                           filled: true,
                                           fillColor: LightColors.kLightYellow2,
                                           hintText:
-                                              '${LanguageTr.lg[authProvider.language]["Search"]}',
+                                              '${authProvider.lg[authProvider.language]["Search"]}',
                                           prefixIcon: const Icon(Icons.search),
                                           prefixIconColor:
                                               Theme.of(context).primaryColor,
@@ -197,7 +198,7 @@ class _HomePageState extends State<HomePage>
                                                       peerId: "admin",
                                                       peerAvatar: "",
                                                       peerNickname:
-                                                          '${LanguageTr.lg[authProvider.language]["Customer Service"]}',
+                                                          '${authProvider.lg[authProvider.language]["Customer Service"]}',
                                                     ),
                                                   ),
                                                 )
@@ -273,7 +274,7 @@ class _HomePageState extends State<HomePage>
                               padding: EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 30),
                               child: Text(
-                                '${LanguageTr.lg[authProvider.language]["Menus"]}',
+                                '${authProvider.lg[authProvider.language]["Menus"]}',
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                             ),
@@ -346,7 +347,7 @@ class _HomePageState extends State<HomePage>
                                         // top: mediaQuery.size.height * 0.05
                                         ),
                                     child: Text(
-                                      '${LanguageTr.lg[authProvider.language]["Upcoming Occasions"]}',
+                                      '${authProvider.lg[authProvider.language]["Upcoming Occasions"]}',
                                       style:
                                           Theme.of(context).textTheme.headline2,
                                     ),
@@ -364,7 +365,7 @@ class _HomePageState extends State<HomePage>
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 20),
                                         child: Text(
-                                          '${LanguageTr.lg[authProvider.language]["See All"]}',
+                                          '${authProvider.lg[authProvider.language]["See All"]}',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'BerlinSansFB',
@@ -478,7 +479,7 @@ class _HomePageState extends State<HomePage>
                                                                     0.02),
                                                         child: FittedBox(
                                                           child: Text(
-                                                            '${LanguageTr.lg[authProvider.language]["You don't have any upcoming occasions"]}',
+                                                            '${authProvider.lg[authProvider.language]["You don't have any upcoming occasions"]}',
                                                             style: TextStyle(
                                                                 color: Theme.of(
                                                                         context)
@@ -499,7 +500,7 @@ class _HomePageState extends State<HomePage>
                                                                 .primaryColor,
                                                           ),
                                                           Text(
-                                                            '${LanguageTr.lg[authProvider.language]["Add an occasion"]}',
+                                                            '${authProvider.lg[authProvider.language]["Add an occasion"]}',
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -542,7 +543,7 @@ class _HomePageState extends State<HomePage>
                                                 vertical: 10,
                                               ),
                                               child: Text(
-                                                '${LanguageTr.lg[authProvider.language]["Shishas"]}',
+                                                '${authProvider.lg[authProvider.language]["Shishas"]}',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .headline2,
@@ -554,7 +555,7 @@ class _HomePageState extends State<HomePage>
                                                     horizontal: 20,vertical: 10 ),
                                                 child: GestureDetector(
                                                     child: Text(
-                                                        '${LanguageTr.lg[authProvider.language]["See All"]}',
+                                                        '${authProvider.lg[authProvider.language]["See All"]}',
                                                         style: TextStyle(
                                                             fontSize: 12,
                                                             fontFamily:
@@ -605,7 +606,7 @@ class _HomePageState extends State<HomePage>
                         EdgeInsets.symmetric(
                           horizontal: 20,),
                           child: Text(
-                            '${LanguageTr.lg[authProvider.language]["Gallery"]}',
+                            '${authProvider.lg[authProvider.language]["Gallery"]}',
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
@@ -613,7 +614,7 @@ class _HomePageState extends State<HomePage>
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: GestureDetector(
-                              child:  Text('${LanguageTr.lg[authProvider.language]["See All"]}',
+                              child:  Text('${authProvider.lg[authProvider.language]["See All"]}',
 
                                   style: TextStyle( fontSize: 12)),
                               onTap: () {
@@ -680,7 +681,7 @@ class _HomePageState extends State<HomePage>
 
 
                             Row(mainAxisAlignment: MainAxisAlignment.center,
-                              children:[ Text('${LanguageTr.lg[authProvider.language]["Follow Us"]}'
+                              children:[ Text('${authProvider.lg[authProvider.language]["Follow Us"]}'
                                 ,style:Theme.of(context)
                                   .textTheme
                                   .headline2,),
@@ -811,7 +812,7 @@ class _HomePageState extends State<HomePage>
                                   fillColor:
                                       const Color.fromRGBO(232, 232, 232, 1),
                                   hintText:
-                                      '${LanguageTr.lg[authProvider.language]["Search"]}',
+                                      '${authProvider.lg[authProvider.language]["Search"]}',
                                   prefixIcon: const Icon(Icons.search),
                                   prefixIconColor: Colors.black,
                                   hintStyle: TextStyle(

@@ -234,7 +234,7 @@ bool isCheckedcolor =false ;
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
                               title:  Text(
-                                '${LanguageTr.lg[authProvider.language]["Camera"]}',
+                                '${authProvider.lg[authProvider.language]["Camera"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontSize: 16,
@@ -252,7 +252,7 @@ bool isCheckedcolor =false ;
                                 color: Color.fromRGBO(63, 85, 33, 1),
                               ),
                               title:  Text(
-                                '${LanguageTr.lg[authProvider.language]["Gallery"]}',
+                                '${authProvider.lg[authProvider.language]["Gallery"]}',
                                 style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontSize: 16,
@@ -299,12 +299,12 @@ bool isCheckedcolor =false ;
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
-                                    '${LanguageTr.lg[authProvider.language]["Name"]}',
+                                    '${authProvider.lg[authProvider.language]["Name"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               validator: MultiValidator([
-                                RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
+                                RequiredValidator(errorText: '${authProvider.lg[authProvider.language]["Required"]}',),
                                 // EmailValidator(errorText: 'Not a valid Name'),
                               ]),
                               keyboardType: TextInputType.emailAddress,
@@ -329,14 +329,14 @@ bool isCheckedcolor =false ;
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
-                                    '${LanguageTr.lg[authProvider.language]["Email"]}',
+                                    '${authProvider.lg[authProvider.language]["Email"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.email,
                               validator: MultiValidator([
-                                RequiredValidator(errorText:'${LanguageTr.lg[authProvider.language]["Required"]}',),
-                                EmailValidator(errorText: '${LanguageTr.lg[authProvider.language]["Not a valid email"]}',),
+                                RequiredValidator(errorText:'${authProvider.lg[authProvider.language]["Required"]}',),
+                                EmailValidator(errorText: '${authProvider.lg[authProvider.language]["Not a valid email"]}',),
                               ]),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -372,16 +372,16 @@ bool isCheckedcolor =false ;
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
-                                    '${LanguageTr.lg[authProvider.language]['Password']}',
+                                    '${authProvider.lg[authProvider.language]['Password']}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.password,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return '${LanguageTr.lg[authProvider.language]["Required"]}';
+                                  return '${authProvider.lg[authProvider.language]["Required"]}';
                                 } else if (val.length < 6) {
-                                  return '${LanguageTr.lg[authProvider.language]['Password should be at least 6 characters']}'
+                                  return '${authProvider.lg[authProvider.language]['Password should be at least 6 characters']}'
                                     ;
                                 }
 
@@ -421,15 +421,15 @@ bool isCheckedcolor =false ;
                                     bottom: screenHeight * 0.025,
                                     top: screenHeight * 0.025),
                                 hintText:
-                                    '${LanguageTr.lg[authProvider.language]["Confirm Password"]}',
+                                    '${authProvider.lg[authProvider.language]["Confirm Password"]}',
                                 hintStyle:
                                     Theme.of(context).textTheme.headline4,
                               ),
                               controller: authProvider.confirmpassword,
                               validator: (val) {
-                                if (val.isEmpty) return '${LanguageTr.lg[authProvider.language]["Confirm Password"]}';
+                                if (val.isEmpty) return '${authProvider.lg[authProvider.language]["Confirm Password"]}';
                                 if (val != authProvider.password.text)
-                                  return '${LanguageTr.lg[authProvider.language]["Password dosen't match"]}'
+                                  return '${authProvider.lg[authProvider.language]["Password dosen't match"]}'
                                     ;
                                 return null;
                               },
@@ -455,7 +455,7 @@ bool isCheckedcolor =false ;
                                           ),
                                           prefixIcon:      CountryPicker(
                                             _callBackFunction,
-                                            '${LanguageTr.lg[authProvider.language]["Select Country"]}',
+                                            '${authProvider.lg[authProvider.language]["Select Country"]}',
                                             Theme.of(context).primaryColor,
                                             Colors.white,
                                           ),
@@ -492,7 +492,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                         validator: (String value){
                                           if(value=="" || value == null)
                                           {
-                                            return '${LanguageTr.lg[authProvider.language]["Please enter phone number"]}';
+                                            return '${authProvider.lg[authProvider.language]["Please enter phone number"]}';
                                           }
 
                                           return null;
@@ -515,13 +515,13 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                             //         bottom: screenHeight * 0.025,
                             //         top: screenHeight * 0.025),
                             //     hintText:
-                            //         '${LanguageTr.lg[authProvider.language]["Phone number"]}',
+                            //         '${authProvider.lg[authProvider.language]["Phone number"]}',
                             //     hintStyle:
                             //         Theme.of(context).textTheme.headline4,
                             //   ),
                             //   controller: authProvider.phoneNumber,
                             //   validator: MultiValidator([
-                            //     RequiredValidator(errorText: '${LanguageTr.lg[authProvider.language]["Required"]}',),
+                            //     RequiredValidator(errorText: '${authProvider.lg[authProvider.language]["Required"]}',),
                             //     // EmailValidator(errorText: 'Not a Phone number,
                             //   ]),
                             //   keyboardType: TextInputType.phone,
@@ -529,10 +529,10 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                             SizedBox(height: screenHeight * 0.015),
                             CustomCupertinoPicker(
                               label:
-                                  '${LanguageTr.lg[authProvider.language]["Gender"]}',
+                                  '${authProvider.lg[authProvider.language]["Gender"]}',
                               items: [
-                                '${LanguageTr.lg[authProvider.language]["Female"]}',
-                                '${LanguageTr.lg[authProvider.language]["Male"]}',
+                                '${authProvider.lg[authProvider.language]["Female"]}',
+                                '${authProvider.lg[authProvider.language]["Male"]}',
                               ],
                               // events: address.regular.events,
                               selectedValue: 0,
@@ -543,7 +543,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
 
                 CustomDatePickerFormField(
                   casee: "signup",
-                    label: '${LanguageTr.lg[authProvider.language]["birthdate"]}',
+                    label: '${authProvider.lg[authProvider.language]["birthdate"]}',
                     controller: address.evendatecontroller,
                     controllerlan: address.evendatelancontroller,
                     lang:authProvider.language
@@ -586,7 +586,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                   ),
                                 ),
                                 SizedBox(width: 5,),
-                                Text('${LanguageTr.lg[authProvider.language]["I agree to the "]}',
+                                Text('${authProvider.lg[authProvider.language]["I agree to the "]}',
 
                                   style: TextStyle(
                                     color: !isCheckedcolor?Color(0xFF3F5521):Colors.red,
@@ -606,7 +606,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
 
                                     ///gotopage
                                   },
-                                  child: Text('${LanguageTr.lg[authProvider.language]["Terms & Conditions"]}',
+                                  child: Text('${authProvider.lg[authProvider.language]["Terms & Conditions"]}',
 
                                     style: TextStyle(
                                       decoration:TextDecoration.underline,
@@ -642,7 +642,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                 _scaffKey.currentState.showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                        "${LanguageTr.lg[authProvider.language]["all fields required"]}"),
+                                        "${authProvider.lg[authProvider.language]["all fields required"]}"),
                                   ),
                                 );
                                 setState(() {
@@ -654,7 +654,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                 _scaffKey.currentState.showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                        "${LanguageTr.lg[authProvider.language]["you must agree terms and conditions"]}"),
+                                        "${authProvider.lg[authProvider.language]["you must agree terms and conditions"]}"),
                                   ),
                                 );
                                 setState(() {
@@ -677,7 +677,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                   _scaffKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                          "${LanguageTr.lg[authProvider.language]["all fields required"]}"),
+                                          "${authProvider.lg[authProvider.language]["all fields required"]}"),
                                     ),
                                   );
                                   }else{
@@ -691,7 +691,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                               }
 ,
                       child: Text(
-                              '${LanguageTr.lg[authProvider.language]["SignUp"]}',
+                              '${authProvider.lg[authProvider.language]["SignUp"]}',
                               style: TextStyle(
                                   fontFamily: 'BerlinSansFB',
                                   fontWeight: FontWeight.bold,
@@ -722,7 +722,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                          Center(
                           child: FittedBox(
                             child: Text(
-                              '${LanguageTr.lg[authProvider.language]["Already have an account?"]}',
+                              '${authProvider.lg[authProvider.language]["Already have an account?"]}',
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'BerlinSansFB',
@@ -734,7 +734,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                         InkWell(
                           child:  FittedBox(
                             child: Text(
-                              '${LanguageTr.lg[authProvider.language]["Log In"]}',
+                              '${authProvider.lg[authProvider.language]["Log In"]}',
                               style: TextStyle(
                                 decoration: TextDecoration.none,
                                 fontWeight: FontWeight.normal,
