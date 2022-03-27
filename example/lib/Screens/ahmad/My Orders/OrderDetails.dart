@@ -71,7 +71,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
           elevation: 0,
           backgroundColor: Colors.white,
           title: Text(
-            "Order Details",
+            '${authProvider.lg[authProvider.language][ "Order Details"]}',
             style: TextStyle(
                 fontWeight: FontWeight.w600,
                fontSize: 25),
@@ -118,7 +118,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "Order Date: ${
+                          text: "'${authProvider.lg[authProvider.language][ "Order Date:"]}' ${
                               DateFormat("dd-MM-yyyy").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
                               } ",
                           style: TextStyle(
@@ -150,7 +150,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      "Delivery Address :",
+                      '${authProvider.lg[authProvider.language][ "Delivery Address :"]}',
                       style: TextStyle(
 
 
@@ -193,7 +193,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "City ${_order.orderbyId["address"]["city"]}, Country ${_order.orderbyId["address"]["country"]}",
+                                text: "City ${_order.orderbyId["address"]["city"]},'${authProvider.lg[authProvider.language]["Country"]}' ${_order.orderbyId["address"]["country"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,
@@ -241,7 +241,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 8.0),
                     child: Text(
-                      'Items Ordered',
+                      '${authProvider.lg[authProvider.language]['Items Ordered']}',
                       style: TextStyle(
                         //color: Color.fromRGBO(146, 156, 170, 1),
                        // fontFamily: 'Geomanist',
@@ -265,8 +265,6 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             SizedBox(
               height: 30,
             ),
-
-
             _order.paymentFreind.length == 0?  Container() :   Container(
               color: Colors.white,
               width: width,
@@ -280,8 +278,6 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     child: Text(
                       '${authProvider.lg[authProvider.language]["Bill sharing"]}',
                       style: TextStyle(
-                        //color: Color.fromRGBO(146, 156, 170, 1),
-                        // fontFamily: 'Geomanist',
                         fontSize: 14,
                       ),
                     ),
@@ -302,11 +298,9 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             SizedBox(
               height: 30,
             ),
-
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: ElevatedButton(
-
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -314,8 +308,6 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                           TrackingOrder(widget.id),
                     ),
                   );
-                //  TrackingOrder(widget.id)
-               //   changeScreen(context, OrderTimeLine());
                 },
                 child: Container(
                   width: width/3.75,
@@ -332,12 +324,10 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       SizedBox(width: 5,),
                       FaIcon(FontAwesomeIcons.truck,color:Color(0xFF3F5521)
                     ,)
-
                     ],
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-
                   primary: Color(0xffF5F6F7),
                   side: BorderSide(
                     color: Color.fromRGBO(85, 115, 116, 1),
@@ -351,14 +341,9 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
             SizedBox(
               height: 30,
             ),
-
-
-
-
             SizedBox(
               height: 30,
             ),
-
             Container(
               color: Colors.white,
               height: height * 0.12,
@@ -370,7 +355,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 8.0),
                     child: Text(
-                      'Payment Details : ',
+                      '${authProvider.lg[authProvider.language]['Payment Details : ']}',
                       style: TextStyle(
 
 
@@ -411,7 +396,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Order Total : ",
+                              '${authProvider.lg[authProvider.language]["Order Total : "]}',
                               style: TextStyle(
                                   color: Color.fromRGBO(146, 156, 170, 1),
                                   fontFamily: 'Geomanist',
@@ -448,8 +433,6 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             SizedBox(
                               height: 10,
                             ),
-
-
                             Row(
                               children: [
                                 Text.rich(
