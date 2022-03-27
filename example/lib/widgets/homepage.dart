@@ -648,7 +648,7 @@ class _HomePageState extends State<HomePage>
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  gallery.homepage[i].link),
+                                    builder: (context) => FullPhotoPage(url:  package.alldata["gallery"][i]["image"]),
                                   ),
                                 );
                               },
