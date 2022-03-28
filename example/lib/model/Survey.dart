@@ -3,6 +3,13 @@ class surveyModel {
   String title = "catch";
   String titleAr = "catch";
   bool isChecked = false;
+double _stars= 0.0 ;
+
+  double get stars => _stars;
+
+  set stars(double value) {
+    _stars = value;
+  }
 
   surveyModel({id, title, titleAr, isChecked});
 

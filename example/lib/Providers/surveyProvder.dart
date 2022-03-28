@@ -36,7 +36,20 @@ List<int>_listid=[];
   set listid(List<int> value) {
     _listid = value;
   }
-
+changelistid( int index ){
+    if(_listsurvey[index].isChecked==true){
+      _listid.remove(_listsurvey[index].id);
+      _listsurvey[index].isChecked=false;
+    }else{
+  _listid.add(_listsurvey[index].id);
+  _listsurvey[index].isChecked=true;
+    }
+  notifyListeners();
+}
+updaterating(int index, double a){
+  _listsurvey[index].stars=a; 
+  notifyListeners();
+}
   List<Map<String, String >> get feedbackoptionid => _feedbackoptionid;
 
   set feedbackoptionid(List<Map<String, String >> value) {
@@ -50,6 +63,14 @@ notifyListeners();
 
   }
 postsurvey() async {
+
+    for(int i=0 ; i<_listsurvey.length; i++){
+      if(_listsurvey[i].isChecked)
+      _feedbackoptionid.add({
+        "id":_listsurvey[i].id.toString(),
+        "rating":_listsurvey[i].stars.toString()
+      });
+    }
  await  _service.postreview(complaint: comment.text, feedbackoptionid: _feedbackoptionid, rating:_stars );
 comment.text="";
  _feedbackoptionid.clear();

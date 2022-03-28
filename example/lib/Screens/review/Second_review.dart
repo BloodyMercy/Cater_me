@@ -38,7 +38,6 @@ class _SecondReviewState extends State<SecondReview> {
     final survey = Provider.of<SurveyProvider>(context, listen: true);
     var mediaQueryHeight = MediaQuery.of(context).size.height;
     var mediaQueryWidth = MediaQuery.of(context).size.width;
-    final surveyP = Provider.of<SurveyProvider>(context, listen: true);
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return SafeArea(
@@ -87,7 +86,7 @@ class _SecondReviewState extends State<SecondReview> {
                       child: ListView.builder(
                         itemCount: survey.listsurvey.length,
                         itemBuilder: (context, index) {
-                          double stars = 0 ;
+
                           return Padding(
                             padding: EdgeInsets.only(
                                 bottom: mediaQueryHeight * 0.01),
@@ -97,22 +96,7 @@ class _SecondReviewState extends State<SecondReview> {
                               ),
                               child: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    if (survey.listsurvey[index].isChecked) {
-                                      survey.feedbackoptionid
-                                          .remove(survey.listsurvey[index].id);
-                                      survey.listsurvey[index].isChecked =
-                                          false;
-                                    } else {
-                                      survey.listid
-                                          .add(survey.listsurvey[index].id);
-                                      survey.feedbackoptionid.add({
-                                        "id":survey.listsurvey[index].id.toString(),
-                                        "rating":"";
-                                      });
-                                      survey.listsurvey[index].isChecked = true;
-                                    }
-                                  });
+           survey.changelistid(index);
                                 },
                                 child: Container(
                                   child: Row(
@@ -157,7 +141,7 @@ class _SecondReviewState extends State<SecondReview> {
                                                     color: Colors.white,
                                                   ),
                                                   onRatingUpdate: (rating) {
-                                                    =rating;
+                                                 survey.updaterating(index, rating);
                                                   },
                                                 ),
                                               ):Container(),
