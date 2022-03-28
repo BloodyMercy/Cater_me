@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'IntroTest/on_boarding_screen.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'Providers/user.dart';
 import 'SplachScreen.dart';
@@ -13,6 +14,52 @@ class LanguagePicker extends StatefulWidget {
 }
 
 class _LanguagePickerState extends State<LanguagePicker> {
+
+
+  getdata() async{
+    SharedPreferences sh=await SharedPreferences.getInstance();
+    final user=Provider.of<UserProvider>(context,listen:false);
+
+    if(sh.getString("locale")==null){
+
+      user.status=Status.language;
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) =>
+              LanguagePicker()), (Route<dynamic> route) => false);
+
+    }else if(sh.getBool("logged")??false){
+      user.language=sh.getString("locale");
+      user.status=Status.Authenticated;
+      user.notifyListeners(); Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) =>
+              Navigationbar(0)));
+
+    }
+
+    else if(sh.getBool("wlkdone")==null){
+      user.language=sh.getString("locale");
+
+      user.status=Status.walkingpage;
+      user.notifyListeners();
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) =>
+              OnBoardingScreens()), (Route<dynamic> route) => false);
+
+
+    }
+    else{
+      user.language=sh.getString("locale");
+
+      user.status=Status.Unauthenticated;
+      user.notifyListeners();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) =>
+              Navigationbar(0)));
+    }
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final personalInfo = Provider.of<UserProvider>(context, listen: true);
@@ -44,17 +91,18 @@ class _LanguagePickerState extends State<LanguagePicker> {
                         SharedPreferences _prefs =
                             await SharedPreferences.getInstance();
                         _prefs.setString("locale", "en");
-                        personalInfo.language = "en";
-                        MyApp.setLocale(context, Locale("en", "US"));
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => appstate(),
-                            ),
-                            (Route<dynamic> route) => false);
+                         personalInfo.language = "en";
+                         MyApp.setLocale(context, Locale("en", "US"));
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => appstate(),
+                        //     ),
+                        //     (Route<dynamic> route) => false);
                         // AppLocalizations.of(context)!.locale.toString()
 
                         // .language="ar";                                              },
-                      },
+                         getdata();
+                  },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: mediaQueryWidth * 0.1,
@@ -63,17 +111,13 @@ class _LanguagePickerState extends State<LanguagePicker> {
                   ElevatedButton(
                       onPressed: () async {
                         SharedPreferences _prefs =
-                            await SharedPreferences.getInstance();
+                        await SharedPreferences.getInstance();
                         _prefs.setString("locale", "ar");
                         personalInfo.language = "ar";
                         MyApp.setLocale(context, Locale("ar", "AE"));
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) => appstate(),
-                            ),
-                            (Route<dynamic> route) => false);
+                        getdata();
                       },
-                      child: Text('العربية'),
+                        child: Text('العربية'),
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: mediaQueryWidth * 0.125,

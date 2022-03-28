@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../NavigationBar/navigation_bar.dart';
 import '../language/language.dart';
 import 'on_boarding_contant.dart';
 
@@ -87,6 +88,9 @@ class _BodyState extends State<Body> {
 
 
                         userprovider.status=Status.Unauthenticated;
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) =>
+                                Navigationbar(0)));
                         //  onDone(context);
                       },
                       child: Text('${authProvider.lg[authProvider.language]["Get Started"]}'
