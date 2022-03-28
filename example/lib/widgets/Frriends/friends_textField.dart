@@ -71,14 +71,19 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   ),
 
                       SizedBox(height: _mediaQueryText * 0.02),
-                       customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
-                  Container(
+                     Container(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: friends.emailcontroller,
                         focusNode: focusNode,
-                      //  autovalidateMode: AutovalidateMode.onUserInteraction,
+                       autovalidateMode: AutovalidateMode.onUserInteraction,
+validator: (value){
+  if(value.isEmpty){
 
+    return  '${authProvider.lg[authProvider.language]["Please enter email"]}'
+    ;
+  }else return null;
+},
                         decoration: InputDecoration(
                             // contentPadding: EdgeInsets.only(
                             //     left: mediaQuery.size.width * 0.04),

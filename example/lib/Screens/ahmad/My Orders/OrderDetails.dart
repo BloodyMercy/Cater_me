@@ -123,7 +123,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       Text.rich(
                         TextSpan(
                           text: "'${authProvider.lg[authProvider.language][ "Order Date:"]}' ${
-                              DateFormat("dd-MM-yyyy").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
+                              DateFormat("dd-MM-yyyy  hh:mm").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
                               } ",
                           style: TextStyle(
 
@@ -624,7 +624,7 @@ Center(child:  Padding(
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "${authProvider.lg[authProvider.language]["Tax"]}",
+                                    text: "${authProvider.lg[authProvider.language]["Tax from total"]}",
                                     style: TextStyle(
 
                                         fontSize: 14,
@@ -651,7 +651,7 @@ Center(child:  Padding(
                               children: [
                                 Text.rich(
                                   TextSpan(
-                                    text: "${authProvider.lg[authProvider.language]["Total"]} ",
+                                    text: "${authProvider.lg[authProvider.language]["Total including VAT"]} ",
                                     style: TextStyle(
 
                                         fontSize: 14,

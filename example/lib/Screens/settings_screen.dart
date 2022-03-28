@@ -366,13 +366,13 @@ class _TABBarState extends State<TABBar> {
                                           sharedPreferences.setString("locale", l);
                                           Navigator.of(context).pop();
 
-                                          // Navigator.of(context)
-                                          //     .pushAndRemoveUntil(
-                                          //     MaterialPageRoute(
-                                          //       builder: (context) =>
-                                          //           SplashScreen(),
-                                          //     ),
-                                          //         (route) => false);
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Navigationbar(0),
+                                              ),
+                                                  (route) => false);
                                         },
                                         child: Text(
                                           '${personalInfo.lg[personalInfo.language]["Logout"]}',

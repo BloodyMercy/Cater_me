@@ -129,8 +129,10 @@ class LanguageTr {
       "Order Info": "معلومات طلبك",
       "Invoice": "فاتورة",
       "Tax": "الضريبه",
+      "Tax from total":"الضريبة من الإجمالي",
       "SubTotal": "الحساب كامل",
       "Total": "المجموع",
+      "Total included VAT":"إجمالي ضريبة القيمة المضافة المدرجة",
       "Add an Address": "ضيف عنوانك",
       "Please choose an address": "اختار عنوانك",
       "Are you sure you want to exit?": "متاكد تبي تطلع من الصفحه؟ ",
@@ -266,7 +268,7 @@ class LanguageTr {
       "all fields required":"جميع الحقول مطلوبة",
       'Start':'إبدأ هنا',
       "Type your answer here...":"اكتب إجابتك هنا...    ",
-
+       "Total including VAT":"إجمالي ضريبة القيمة المضافة المدرجة",
 
 
       "you must agree terms and conditions":"يجب أن توافق على الشروط والأحكام",
@@ -308,7 +310,7 @@ class LanguageTr {
       "Setup":"Setup",
       "*(VAT included 15%)":"*(VAT included 15%)",
       "Saved Orders":"Saved Orders",
-
+      "Total including VAT":"Total including VAT",
       "Menus":"Menus",
       "Update the Date":"Update the Date",
       "Address:":"Address:",
@@ -438,7 +440,7 @@ class LanguageTr {
       "Tracking": "Tracking",
       "Order Info": "Order Info",
       "Invoice": "Invoice",
-      "Tax": "Tax",
+      "Tax from total": "Tax from total",
       "Sub Total": "Sub Total",
       "Total": "Total",
       "Add an Address": "Add an Address",
