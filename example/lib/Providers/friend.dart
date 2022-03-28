@@ -52,9 +52,14 @@ FriendModel _FriendCreated = FriendModel();
      int.parse(phonecontroller.text.toString()),
       emailcontroller.text.toString(),
     );
+    namecontroller.text="";
+    phonecontroller.text="";
+    emailcontroller.text="";
     if(_FriendCreated.id!=0) {
       _listFriends.insert(0, _FriendCreated);
+      getAllFriends();
       return true;
+
     }
     else{
       return false;

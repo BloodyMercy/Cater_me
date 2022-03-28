@@ -119,12 +119,12 @@ getdata()async{
                                       style: const TextStyle(
                                           fontSize: 20, fontWeight: FontWeight.bold),
                                     ),
-                                    // Text(
-                                    //   widget.friend[index].email,
-                                    //   style: const TextStyle(
-                                    //       fontSize: 15, fontWeight: FontWeight.normal),
-                                    // ),
-                                    // SizedBox(height: _mediaQuery * 0.01),
+                                    Text(
+                                      widget.friend[index].email,
+                                      style: const TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.normal),
+                                    ),
+                                    SizedBox(height: _mediaQuery * 0.01),
                                     Text(
                                       widget.friend[index].phoneNumber,
                                       style: const TextStyle(
