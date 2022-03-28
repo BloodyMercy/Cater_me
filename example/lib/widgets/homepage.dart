@@ -638,7 +638,7 @@ class _HomePageState extends State<HomePage>
 
                       ],
                     ),
-                    Container(
+                    package.allgallery.length==0? Container(
                         height: MediaQuery.of(context).size.height/5,
 
                         child:     ListView.builder(
@@ -668,7 +668,7 @@ class _HomePageState extends State<HomePage>
                                   ),
                                   width: mediaQuery.size.width /3,
                                   height: mediaQuery.size.height /5,
-                                  child:Image.network(package.alldata["gallery"][i]["image"],
+                                  child:Image.network(package.allgallery[i].link,
                                     loadingBuilder: (context, child, loadingProgress) => Center(child: CircularProgressIndicator(),),
                                     fit: BoxFit.fill,
                                     width: mediaQuery.size.width * 0.3,
@@ -678,7 +678,7 @@ class _HomePageState extends State<HomePage>
                               ),
                             );
                           },
-                        )),
+                        )):Container(),
                   ]
                   )),
 
