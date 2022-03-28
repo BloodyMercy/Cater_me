@@ -601,7 +601,7 @@ class _HomePageState extends State<HomePage>
 
 
 
-              Container(
+                              Container(
                   height: mediaQuery.size.height/4,
                   child: Column(children: [
                     Row(
@@ -616,7 +616,7 @@ class _HomePageState extends State<HomePage>
                           ),
                         ),
                         // SizedBox(width: mediaQuery.size.width*0.6),
-                        gallery.homepage.length==0?Padding(
+                        Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: GestureDetector(
                               child:  Text('${authProvider.lg[authProvider.language]["See All"]}',
@@ -629,7 +629,7 @@ class _HomePageState extends State<HomePage>
 
                                 );
                               }),
-                        ):Container(),
+                        )
 
 
 
@@ -641,7 +641,7 @@ class _HomePageState extends State<HomePage>
 
                         child:     ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: package.alldata["gallery"].length,
+                          itemCount: package.allgallery.length,
                           itemBuilder: (context, i) {
                             //  final cards = widget.card[i];
                             return           InkWell(
@@ -649,7 +649,7 @@ class _HomePageState extends State<HomePage>
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  package.alldata["gallery"][i]["image"]),
+                                    builder: (context) => FullPhotoPage(url:  package.allgallery[i].link),
                                   ),
                                 );
                               },

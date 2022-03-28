@@ -10,6 +10,8 @@ import 'package:CaterMe/model/packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../model/GaleryModel.dart';
+
 class PackagesProvider extends  ChangeNotifier{
 
 
@@ -37,6 +39,7 @@ List<Package> get allpackagesorder => _allpackagesorder;
   set allpackages(List<Package> value) {
     _allpackages = value;
   }
+  List<GalleryModel> _allgallery=[];
   List<Cuisins> _allcuisins=[];
 List<Package> _allons=[];
 List<Package> _allonsorder=[];
@@ -157,6 +160,9 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3,String a)async {
 
       _allpackagesorder = List<Package>.from(
           _alldata['packages'].map((model) => Package.fromJson(model,a)));
+
+      _allgallery=List<GalleryModel>.from(
+          _alldata['gallery'].map((model) => GalleryModel.fromJson(model)));
       //  _nbnotification=_alldata["notificationCount"].toString();
     }
 
@@ -166,6 +172,12 @@ Future<void>  getallpacakgesorder(int id,int id2,int id3,String a)async {
   loading=true;
   notifyListeners();
 }
+
+List<GalleryModel> get allgallery => _allgallery;
+
+  set allgallery(List<GalleryModel> value) {
+    _allgallery = value;
+  }
 
   Future<void>  getallpacakges(BuildContext c,String a)async {
 
