@@ -53,7 +53,7 @@ class SurveyService {
        request.body=json.encode({
          "complaint":complaint ,
          "rating": rating,
-         "feedbackOptionId": feedbackoptionid
+         "feedbackOptions": feedbackoptionid
        });
 
        http.StreamedResponse responses =await request.send();
