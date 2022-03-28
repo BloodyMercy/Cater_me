@@ -4,6 +4,7 @@ import 'package:CaterMe/Screens/ahmad/My%20Orders/widgets/FreindList.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -196,7 +197,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                             ),
                             Text.rich(
                               TextSpan(
-                                text: "City ${_order.orderbyId["address"]["city"]},'${authProvider.lg[authProvider.language]["Country"]}' ${_order.orderbyId["address"]["country"]}",
+                                text: "${_order.orderbyId["address"]["city"]}, ${_order.orderbyId["address"]["country"]}",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.w400,
@@ -346,8 +347,24 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
 Center(child:  Padding(
   padding: const EdgeInsets.only(left: 10.0 ,right: 10),
   child: ElevatedButton(
-    onPressed: () {
-     //////////////////////////////////////////
+    onPressed: () async {
+     if(await _address.updatecontact(widget.id.toString())){
+      _order.orderbyId["event"]["contactName"]= _address.name.text;
+     _order.orderbyId["event"]["contactPhoneNumber"]= _address.phone.text;
+     setState(() {
+
+     });
+     Navigator.pop(context);
+      }else{
+       MotionToast.error(
+         title: "Cater me",
+         titleStyle: TextStyle(
+             fontWeight: FontWeight.bold),
+         description:
+         '${authProvider.lg[authProvider.language]["Update failed"]}',
+         //  animationType: ANIMATION.FROM_LEFT,
+       ).show(context);
+     }
     },
     child: Container(
       width: width/3.65,

@@ -15,6 +15,7 @@ import 'package:motion_toast/motion_toast.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/address.dart';
 import '../../Providers/user.dart';
 import '../../SplachScreen.dart';
@@ -294,7 +295,7 @@ lang: authProvider.language,
                                  Navigator.pushAndRemoveUntil(
                                      context,
                                      MaterialPageRoute(
-                                       builder: (context) => SplashScreen(),
+                                       builder: (context) => Navigationbar(0),
                                      ),
                                          (Route<dynamic> route) => false
                                  );

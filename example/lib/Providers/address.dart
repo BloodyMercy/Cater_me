@@ -341,47 +341,37 @@ notifyListeners();
     _addressService = value;
   }
 
+  updatecontact(String id) async {
 
-updatecontact(){
-
-  Future<ErrorMessage> updateInfo(String name,String email,String phoneNumber,String birthDate)async{
-
-    ErrorMessage msg=ErrorMessage();
     try{
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {
-        'Authorization': 'Bearer ${prefs.getString("token")}'   };
-      var request = http.MultipartRequest('POST', Uri.parse(ApiLink.UpdatePersonalInfo));
+        'Authorization': 'Bearer ${prefs.getString("token")}'
+      };
+      var request = http.Request('POST', Uri.parse(ApiLink.updatecactinfo+"/$id"));
       request.headers.addAll(headers);
-      request.fields.addAll({
-        'name': name,
-        'phoneNumber': phoneNumber,
-        'email': email,
-
-      });
-
+      request.bodyFields ={
+        'contactName': name.text,
+        'contactPhone': phone.text,};
       http.StreamedResponse responses = await request.send();
 
       var response = await http.Response.fromStream(responses);
-      print("ssssssssssssssssssssssssssssssssss${response.statusCode}");
       if (response.statusCode == 200) {
-        Map<String, dynamic> responseData = json.decode(response.body);
-        msg.response=true;
-        return msg;
+
+
+        return true;
 
       } else {
         print(response.reasonPhrase);
-        msg.response=false;
-        return msg;
+
+        return false;
       }
 
     }catch(e){
       print(e);
     }
-    return msg;
+    return false;
   }
-
-}
  int _value2Index = 0;
 
 

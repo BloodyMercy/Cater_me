@@ -70,6 +70,7 @@ class ApiLink{
  static String submitsurvey=host+"Survey/SubmitSurvey";
  static String gethomepageimage=host+"";
  static String getseeall=host+"HomePage/GetGalleryImages";
+ static String updatecactinfo=host+"Orders/UpdateEventContact";
 
 
 

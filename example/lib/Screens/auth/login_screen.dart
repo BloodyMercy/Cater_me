@@ -289,7 +289,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => SplashScreen()),
+                                          builder: (context) => Navigationbar(0)),
                                       (Route<dynamic> route) => false);
                                   //authProvider.status=Status.Authenticated;
                                   setState(() {});
