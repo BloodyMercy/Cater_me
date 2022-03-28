@@ -238,7 +238,7 @@ class LanguageTr {
       "friend already exists!":"الصديق موجود بالفعل!",
       "Address Deleted":"تم حذف العنوان",
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
-      "Event Description":"وصف مناسبة",
+      "Event Description":"وصف المناسبة",
       "Free":"مجانا",
       "otp verification":"التحقق من الرمز",
       "otp not valid":" الرمز غير صالح",
