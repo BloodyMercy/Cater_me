@@ -26,7 +26,7 @@ getLanguage() async{
  // print(user.lg[user.language]["Home"]);
 //  user.status=Status.Authenticated;
  // user.notifyListeners();
-  getdata();
+
 }
 AssetImage image;
   @override
@@ -96,7 +96,7 @@ getdata() async{
   @override
   Widget build(BuildContext context) {
     final user=Provider.of<UserProvider>(context,listen:true);
-
+Timer(Duration(seconds: 7), (){  getdata(); });
 
 
     return Scaffold(
