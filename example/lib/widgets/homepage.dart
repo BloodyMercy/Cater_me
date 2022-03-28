@@ -26,6 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Providers/GalleryProvider.dart';
+import '../Providers/contact_us_provider.dart';
 import '../Providers/user.dart';
 import '../Screens/ahmad/My Orders/OrderDetails.dart';
 import '../Screens/full_photo_page.dart';
@@ -133,6 +134,7 @@ class _HomePageState extends State<HomePage>
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final gallery = Provider.of<GalleryProvider>(context, listen: true);
     final package = Provider.of<PackagesProvider>(context, listen: true);
+    final contact = Provider.of<ContactUsProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
@@ -695,80 +697,174 @@ class _HomePageState extends State<HomePage>
 
                             ]),
                             SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                         Column(
+                           children: [
+                             Padding(padding: EdgeInsets.all(8.0),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                              children: [
-                                IconButton(onPressed: ()async{
-                                  final url = 'https://www.facebook.com/Cater-Me-103856805573526/';
-                                  if(await canLaunch(url)){
-                                    await launch(url,forceSafariVC: false);
-                                  }
-
-
-                                } ,
-                                  icon:Icon(
-
-                                    FontAwesomeIcons.facebook,
-
-                                    color: colorCustom,
-                                    size: 30,
-                                  ),),
-
-                                IconButton(onPressed: ()async{
-                                  final url = 'https://www.instagram.com/caterme.online/?hl=en';
-                                  if(await canLaunch(url)){
-                                    await launch(url,forceSafariVC: false);
-                                  }
+                                 children: [
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.facebook.com/Cater-Me-103856805573526/';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
 
 
-                                },
-                                  icon:Icon(
+                                   } ,
+                                     icon:Icon(
 
-                                    FontAwesomeIcons.instagram,
+                                       FontAwesomeIcons.facebook,
 
-                                    color: colorCustom,
-                                    size: 30,
-                                  ),),
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
 
-
-
-
-                                IconButton(
-                                  onPressed: ()async{
-                                    final url = 'https://www.linkedin.com/company/cater-me/';
-                                    if(await canLaunch(url)){
-                                      await launch(url,forceSafariVC: false);
-                                    }
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.instagram.com/caterme.online/?hl=en';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false,);
+                                     }
 
 
-                                  } ,
-                                  icon:Icon(
+                                   },
+                                     icon:Icon(
 
-                                    FontAwesomeIcons.linkedin,
+                                       FontAwesomeIcons.instagram,
 
-                                    color: colorCustom,
-                                    size: 30,
-                                  ),),
-                                IconButton(onPressed: ()async{
-                                  final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
-                                  if(await canLaunch(url)){
-                                    await launch(url,forceSafariVC: false);
-                                  }
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
 
 
-                                } ,
-                                  icon:Icon(
-
-                                    FontAwesomeIcons.snapchat,
-
-                                    color: colorCustom,
-                                    size: 30,
-                                  ),),
 
 
-                              ],
-                            ),
+
+
+                                   IconButton(
+                                     onPressed: ()async{
+                                       final url = 'https://www.linkedin.com/company/cater-me/';
+                                       if(await canLaunch(url)){
+                                         await launch(url,forceSafariVC: false);
+                                       }
+
+
+                                     } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.linkedin,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.snapchat,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+                                 ],
+                               ),
+                             ),
+
+                             Padding(padding: EdgeInsets.all(8.0),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                 children: [
+                                   IconButton(onPressed: ()async{
+                                     final url = "https://wa.me/${contact.UsContact.phoneNumber}";
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.whatsapp,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://twitter.com/caterme_online';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false,);
+                                     }
+
+
+                                   },
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.twitter,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+
+
+
+
+                                   IconButton(
+                                     onPressed: ()async{
+                                       Navigator.of(context).push(
+                                           MaterialPageRoute(
+                                             builder: (context) =>
+                                                 ChatPage(
+                                                   peerId: "admin",
+                                                   peerAvatar: "",
+                                                   peerNickname:
+                                                   '${authProvider.lg[authProvider.language]["Customer Service"]}',
+                                                 ),
+                                           ));
+
+
+
+                                     } ,
+                                     icon:Icon(
+
+                                       Icons.live_help,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.caterme.online/';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       Icons.language,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+                                 ],
+                               ),
+                             ),
+                           ],
+                         ),
                             SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                           ]),
                     ),
