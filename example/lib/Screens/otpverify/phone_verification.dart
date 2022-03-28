@@ -272,7 +272,12 @@ lang: authProvider.language,
 
                              );
                              setState(() {
+
                                smsOTP = value as String;
+                               if(authProvider.language=="ar"){
+                                 smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
+
+                               }
                              });
                              if (smsOTP == null || smsOTP == '') {
                                showAlertDialog(context, 'please enter 6 digit otp');
