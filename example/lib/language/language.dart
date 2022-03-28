@@ -238,7 +238,7 @@ class LanguageTr {
       "friend already exists!":"الصديق موجود بالفعل!",
       "Address Deleted":"تم حذف العنوان",
       "Address cannot be Deleted":"لا يمكن حذف العنوان",
-      "Event Description":"وصف الحدث",
+      "Event Description":"وصف مناسبة",
       "Free":"مجانا",
       "otp verification":"التحقق من الرمز",
       "otp not valid":" الرمز غير صالح",
@@ -278,13 +278,12 @@ class LanguageTr {
 "Contact info":"معلومات الاتصال",
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
-      "event description":"وصف الحدث",
     },
 
 
 
     "en": {
-      "event description":"event description",
+
       "change":"change",
       "Change contact info":"Change contact info",
       "Contact info":"Contact info",
