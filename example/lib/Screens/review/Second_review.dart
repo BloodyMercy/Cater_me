@@ -137,7 +137,8 @@ class _SecondReviewState extends State<SecondReview> {
                                               survey.listsurvey[index].isChecked
                                                   ?  Padding(
                                                 padding: EdgeInsets.all(10.0),
-                                                child: RatingBar.builder(
+                                                child:
+                                                RatingBar.builder(
                                                   itemSize: 30,
                                                   unratedColor: Colors.white10,
                                                   initialRating: 0,
