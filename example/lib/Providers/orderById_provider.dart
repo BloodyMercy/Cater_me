@@ -88,6 +88,8 @@ Map<String,dynamic> _orderbyId={};
   }
 bool loading=false  ;
   getOrderById(int id) async{
+    orderbyId={};
+    loading=false ;
     orderbyId= await _orderByIdService.getOrdersDetailsById(id);
     loading=true ;
     notifyListeners();
