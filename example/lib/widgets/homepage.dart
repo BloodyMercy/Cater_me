@@ -110,14 +110,11 @@ class _HomePageState extends State<HomePage>
   Future getData() async {
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     final gallery = Provider.of<GalleryProvider>(context, listen: false);
-    final contact = Provider.of<ContactUsProvider>(context, listen: false);
     gallery.gethomepage();
     SharedPreferences sh = await SharedPreferences.getInstance();
 
     await occasion.getallnewoccasion(sh.getString("locale"));
     // await occasion.getAllOccasionType(a);
-
-    await contact.getPersonalInfo();
 
     setState(() {
       loading = false;
@@ -242,7 +239,8 @@ class _HomePageState extends State<HomePage>
                                         onPressed: () {
                                           Navigator.of(context).push(
                                             MaterialPageRoute(
-                                              builder: (context) => TABBar(),
+                                              builder: (context) =>
+                                                  TABBar(),
                                             ),
                                           );
                                         },
@@ -251,8 +249,7 @@ class _HomePageState extends State<HomePage>
                                                 0
                                             ? Badge(
                                                 badgeColor: Color.fromRGBO(
-                                                    253, 202, 29, 1
-                                                ),
+                                                    253, 202, 29, 1),
                                                 badgeContent: Text(
                                                   int.parse(package
                                                               .nbnotification
@@ -291,10 +288,7 @@ class _HomePageState extends State<HomePage>
                             Center(child: PackagesCard()),
                             // SizedBox(height: MediaQuery.of(context).size.height*0.05),
                             Column(children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.01,
-                              ),
+                              SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                               authProvider.status == Status.Unauthenticated
                                   ? language == "en"
                                       ? SlideTransition(
@@ -540,10 +534,7 @@ class _HomePageState extends State<HomePage>
                                       ))
                                   : Center(
                                       child: OccasionCard(Axis.horizontal)),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
+                              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                               //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
                               package.cuisins.id != 0
@@ -568,8 +559,7 @@ class _HomePageState extends State<HomePage>
                                             // SizedBox(width: mediaQuery.size.width*0.6),
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: 20,
-                                                    vertical: 10),
+                                                    horizontal: 20,vertical: 10 ),
                                                 child: GestureDetector(
                                                     child: Text(
                                                         '${authProvider.lg[authProvider.language]["See All"]}',
@@ -609,264 +599,274 @@ class _HomePageState extends State<HomePage>
 
                             ...getAddOnsCard(package.addonsall),
 
-                            Container(
-                                height: mediaQuery.size.height / 4,
-                                child: Column(children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                        ),
-                                        child: Text(
-                                          '${authProvider.lg[authProvider.language]["Gallery"]}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1,
-                                        ),
-                                      ),
-                                      // SizedBox(width: mediaQuery.size.width*0.6),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        child: GestureDetector(
-                                            child: Text(
-                                                '${authProvider.lg[authProvider.language]["See All"]}',
-                                                style: TextStyle(fontSize: 12)),
-                                            onTap: () {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        seeAllGallery()),
-                                              );
-                                            }),
-                                      )
-                                    ],
-                                  ),
-                                  Container(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: package.allgallery.length,
-                                        itemBuilder: (context, i) {
-                                          //  final cards = widget.card[i];
-                                          return InkWell(
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      FullPhotoPage(
-                                                          url: package
-                                                              .allgallery[i]
-                                                              .link),
-                                                ),
-                                              );
-                                            },
-                                            child: Card(
-                                              shape:
-                                                  const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(20),
-                                                ),
-                                              ),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      style: BorderStyle.none),
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(20)),
-                                                ),
-                                                width:
-                                                    mediaQuery.size.width / 3,
-                                                height:
-                                                    mediaQuery.size.height / 5,
-                                                child: Image.network(
-                                                  package.alldata["gallery"][i]
-                                                      ["image"],
-                                                  fit: BoxFit.fill,
-                                                  width: mediaQuery.size.width *
-                                                      0.3,
-                                                  height:
-                                                      mediaQuery.size.height *
-                                                          0.50,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      )),
-                                ])),
 
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '${authProvider.lg[authProvider.language]["Follow Us"]}',
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
+
+
+
+                              Container(
+                  height: mediaQuery.size.height/4,
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(padding:
+                        EdgeInsets.symmetric(
+                          horizontal: 20,),
+                          child: Text(
+                            '${authProvider.lg[authProvider.language]["Gallery"]}',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ),
+                        // SizedBox(width: mediaQuery.size.width*0.6),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: GestureDetector(
+                              child:  Text('${authProvider.lg[authProvider.language]["See All"]}',
+
+                                  style: TextStyle( fontSize: 12)),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => seeAllGallery()),
+
+                                );
+                              }),
+                        )
+
+
+
+
+                      ],
+                    ),
+                    Container(
+                        height: MediaQuery.of(context).size.height/5,
+
+                        child:     ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: package.allgallery.length,
+                          itemBuilder: (context, i) {
+                            //  final cards = widget.card[i];
+                            return           InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FullPhotoPage(url:  package.allgallery[i].link),
                                   ),
-                                ]),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://www.facebook.com/Cater-Me-103856805573526/';
-                                          if (await canLaunch(url)) {
-                                            await launch(url,
-                                                forceSafariVC: false);
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.facebook,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://www.instagram.com/caterme.online/?hl=en';
-                                          if (await canLaunch(url)) {
-                                            await launch(
-                                              url,
-                                              forceSafariVC: false,
-                                            );
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.instagram,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://www.linkedin.com/company/cater-me/';
-                                          if (await canLaunch(url)) {
-                                            await launch(url,
-                                                forceSafariVC: false);
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.linkedin,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
-                                          if (await canLaunch(url)) {
-                                            await launch(url,
-                                                forceSafariVC: false);
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.snapchat,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                    ],
+                                );
+                              },
+                              child: Card(
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              "https://wa.me/${contact.UsContact.phoneNumber}";
-                                          if (await canLaunch(url)) {
-                                            await launch(url,
-                                                forceSafariVC: false);
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.whatsapp,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://twitter.com/caterme_online';
-                                          if (await canLaunch(url)) {
-                                            await launch(
-                                              url,
-                                              forceSafariVC: false,
-                                            );
-                                          }
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.twitter,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          Navigator.of(context)
-                                              .push(MaterialPageRoute(
-                                            builder: (context) => ChatPage(
-                                              peerId: "admin",
-                                              peerAvatar: "",
-                                              peerNickname:
-                                                  '${authProvider.lg[authProvider.language]["Customer Service"]}',
-                                            ),
-                                          ));
-                                        },
-                                        icon: Icon(
-                                          Icons.live_help,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () async {
-                                          final url =
-                                              'https://www.caterme.online/';
-                                          if (await canLaunch(url)) {
-                                            await launch(url,
-                                                forceSafariVC: false);
-                                          }
-                                        },
-                                        icon: Icon(
-                                          Icons.language,
-                                          color: colorCustom,
-                                          size: 40,
-                                        ),
-                                      ),
-                                    ],
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(style: BorderStyle.none),
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  width: mediaQuery.size.width /3,
+                                  height: mediaQuery.size.height /5,
+                                  child:Image.network(package.alldata["gallery"][i]["image"],
+                                    loadingBuilder: (context, child, loadingProgress) => Center(child: CircularProgressIndicator(),),
+                                    fit: BoxFit.fill,
+                                    width: mediaQuery.size.width * 0.3,
+                                    height: mediaQuery.size.height * 0.50,
                                   ),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.05,
-                            ),
+                              ),
+                            );
+                          },
+                        )),
+                  ]
+                  )),
+
+
+
+
+
+
+
+                            Row(mainAxisAlignment: MainAxisAlignment.center,
+                              children:[ Text('${authProvider.lg[authProvider.language]["Follow Us"]}'
+                                ,style:Theme.of(context)
+                                  .textTheme
+                                  .headline2,),
+
+
+
+                            ]),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                         Column(
+                           children: [
+                             Padding(padding: EdgeInsets.all(8.0),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                 children: [
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.facebook.com/Cater-Me-103856805573526/';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.facebook,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.instagram.com/caterme.online/?hl=en';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false,);
+                                     }
+
+
+                                   },
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.instagram,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+
+
+
+
+                                   IconButton(
+                                     onPressed: ()async{
+                                       final url = 'https://www.linkedin.com/company/cater-me/';
+                                       if(await canLaunch(url)){
+                                         await launch(url,forceSafariVC: false);
+                                       }
+
+
+                                     } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.linkedin,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.snapchat,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+                                 ],
+                               ),
+                             ),
+
+                             Padding(padding: EdgeInsets.all(8.0),
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                 children: [
+                                   IconButton(onPressed: ()async{
+                                     final url = "https://wa.me/${contact.UsContact.phoneNumber}";
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.whatsapp,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://twitter.com/caterme_online';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false,);
+                                     }
+
+
+                                   },
+                                     icon:Icon(
+
+                                       FontAwesomeIcons.twitter,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+
+
+
+
+                                   IconButton(
+                                     onPressed: ()async{
+                                       Navigator.of(context).push(
+                                           MaterialPageRoute(
+                                             builder: (context) =>
+                                                 ChatPage(
+                                                   peerId: "admin",
+                                                   peerAvatar: "",
+                                                   peerNickname:
+                                                   '${authProvider.lg[authProvider.language]["Customer Service"]}',
+                                                 ),
+                                           ));
+
+
+
+                                     } ,
+                                     icon:Icon(
+
+                                       Icons.live_help,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+                                   IconButton(onPressed: ()async{
+                                     final url = 'https://www.caterme.online/';
+                                     if(await canLaunch(url)){
+                                       await launch(url,forceSafariVC: false);
+                                     }
+
+
+                                   } ,
+                                     icon:Icon(
+
+                                       Icons.language,
+
+                                       color: colorCustom,
+                                       size: 40,
+                                     ),),
+
+
+                                 ],
+                               ),
+                             ),
+                           ],
+                         ),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                           ]),
                     ),
                   ),
@@ -925,6 +925,7 @@ class _HomePageState extends State<HomePage>
                                 controller: controllersearch,
                               ),
                             )),
+
                       ],
                     ),
 
@@ -1010,6 +1011,7 @@ class _HomePageState extends State<HomePage>
                         },
                       ),
                     ),
+
                   ],
                 )),
     );
