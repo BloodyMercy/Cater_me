@@ -278,11 +278,13 @@ class LanguageTr {
 "Contact info":"معلومات الاتصال",
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
+      "event description":"وصف الحدث",
     },
 
 
 
     "en": {
+      "event description":"event description",
       "change":"change",
       "Change contact info":"Change contact info",
       "Contact info":"Contact info",
