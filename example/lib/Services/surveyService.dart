@@ -40,7 +40,7 @@ class SurveyService {
     Future<bool> postreview({
       String complaint,
       double rating ,
-      List<int> feedbackoptionid
+      List<Map<String, String >> feedbackoptionid
     })async {
      try{
        SharedPreferences prefs=await SharedPreferences.getInstance();

@@ -11,7 +11,7 @@ class SurveyProvider with ChangeNotifier{
   List<surveyModel> _listsurvey=[];
   TextEditingController comment =TextEditingController();
   double _stars=0.0;
-  List<int>_feedbackoptionid=[];
+  List<Map<String, String >>_feedbackoptionid=[];
 bool _loading=false;
 
   bool get loading => _loading;
@@ -29,10 +29,10 @@ bool _loading=false;
     _stars = value;
     notifyListeners();
   }
+List<int>listid=[];
+  List<Map<String, String >> get feedbackoptionid => _feedbackoptionid;
 
-  List<int> get feedbackoptionid => _feedbackoptionid;
-
-  set feedbackoptionid(List<int> value) {
+  set feedbackoptionid(List<Map<String, String >> value) {
     _feedbackoptionid = value;
     notifyListeners();
   }

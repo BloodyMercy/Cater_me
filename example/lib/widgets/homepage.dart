@@ -251,7 +251,8 @@ class _HomePageState extends State<HomePage>
                                                 0
                                             ? Badge(
                                                 badgeColor: Color.fromRGBO(
-                                                    253, 202, 29, 1),
+                                                    253, 202, 29, 1
+                                                ),
                                                 badgeContent: Text(
                                                   int.parse(package
                                                               .nbnotification
