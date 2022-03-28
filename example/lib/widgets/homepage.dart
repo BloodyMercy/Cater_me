@@ -638,7 +638,7 @@ class _HomePageState extends State<HomePage>
 
                       ],
                     ),
-                    package.allgallery.length==0? Container(
+                    package.allgallery.length!=0? Container(
                         height: MediaQuery.of(context).size.height/5,
 
                         child:     ListView.builder(
