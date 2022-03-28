@@ -70,55 +70,55 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                     controller: friends.namecontroller,
                   ),
 
-                  //     SizedBox(height: _mediaQueryText * 0.02),
-                  //      customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
-                  // Container(
-                  //     padding: const EdgeInsets.all(10.0),
-                  //     child: TextFormField(
-                  //       controller: friends.emailcontroller,
-                  //       focusNode: focusNode,
-                  //     //  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  //
-                  //       decoration: InputDecoration(
-                  //           // contentPadding: EdgeInsets.only(
-                  //           //     left: mediaQuery.size.width * 0.04),
-                  //           alignLabelWithHint: true,
-                  //           labelStyle: TextStyle(
-                  //               fontSize: focusNode.hasFocus ? 18 : 16.0,
-                  //               //I believe the size difference here is 6.0 to account padding
-                  //               color: focusNode.hasFocus
-                  //                   ? Color(0xFF3F5521)
-                  //                   : Colors.grey),
-                  //           labelText: '${authProvider.lg[authProvider.language]["Email"]}',
-                  //           hintStyle: TextStyle(
-                  //               color: Colors.black87,
-                  //               fontSize: 15,
-                  //               fontWeight: FontWeight.bold,
-                  //               fontFamily: 'BerlinSansFB'),
-                  //           filled: true,
-                  //           fillColor: Colors.white,
-                  //           enabledBorder: OutlineInputBorder(
-                  //             borderRadius: BorderRadius.circular(5.0),
-                  //             borderSide: const BorderSide(
-                  //               color: Colors.grey,
-                  //             ),
-                  //           ),
-                  //           errorBorder: OutlineInputBorder(
-                  //               borderRadius: BorderRadius.circular(5.0),
-                  //               borderSide:  BorderSide(
-                  //                 color: redColor,
-                  //               )),
-                  //           focusedBorder: OutlineInputBorder(
-                  //               borderRadius: BorderRadius.circular(5.0),
-                  //               borderSide: const BorderSide(
-                  //                 color: Color(0xFF3F5521),
-                  //               ))),
-                  //       style: const TextStyle(
-                  //           color: Colors.grey,
-                  //           fontSize: 15,
-                  //           fontWeight: FontWeight.bold,
-                  //           fontFamily: 'BerlinSansFB'),
-                  //     )),
+                      SizedBox(height: _mediaQueryText * 0.02),
+                       customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
+                  Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        controller: friends.emailcontroller,
+                        focusNode: focusNode,
+                      //  autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                        decoration: InputDecoration(
+                            // contentPadding: EdgeInsets.only(
+                            //     left: mediaQuery.size.width * 0.04),
+                            alignLabelWithHint: true,
+                            labelStyle: TextStyle(
+                                fontSize: focusNode.hasFocus ? 18 : 16.0,
+                                //I believe the size difference here is 6.0 to account padding
+                                color: focusNode.hasFocus
+                                    ? Color(0xFF3F5521)
+                                    : Colors.grey),
+                            labelText: '${authProvider.lg[authProvider.language]["Email"]}',
+                            hintStyle: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'BerlinSansFB'),
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              borderSide: const BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide:  BorderSide(
+                                  color: redColor,
+                                )),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: const BorderSide(
+                                  color: Color(0xFF3F5521),
+                                ))),
+                        style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'BerlinSansFB'),
+                      )),
                   Container(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(

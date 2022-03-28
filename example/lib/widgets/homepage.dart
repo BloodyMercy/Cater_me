@@ -669,7 +669,6 @@ class _HomePageState extends State<HomePage>
                                   width: mediaQuery.size.width /3,
                                   height: mediaQuery.size.height /5,
                                   child:Image.network(package.allgallery[i].link,
-                                    loadingBuilder: (context, child, loadingProgress) => Center(child: CircularProgressIndicator(),),
                                     fit: BoxFit.fill,
                                     width: mediaQuery.size.width * 0.3,
                                     height: mediaQuery.size.height * 0.50,
