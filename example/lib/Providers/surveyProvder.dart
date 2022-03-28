@@ -29,7 +29,14 @@ bool _loading=false;
     _stars = value;
     notifyListeners();
   }
-List<int>listid=[];
+List<int>_listid=[];
+
+  List<int> get listid => _listid;
+
+  set listid(List<int> value) {
+    _listid = value;
+  }
+
   List<Map<String, String >> get feedbackoptionid => _feedbackoptionid;
 
   set feedbackoptionid(List<Map<String, String >> value) {

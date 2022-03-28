@@ -87,6 +87,7 @@ class _SecondReviewState extends State<SecondReview> {
                       child: ListView.builder(
                         itemCount: survey.listsurvey.length,
                         itemBuilder: (context, index) {
+                          double stars = 0 ;
                           return Padding(
                             padding: EdgeInsets.only(
                                 bottom: mediaQueryHeight * 0.01),
@@ -103,8 +104,12 @@ class _SecondReviewState extends State<SecondReview> {
                                       survey.listsurvey[index].isChecked =
                                           false;
                                     } else {
-                                      survey.feedbackoptionid
+                                      survey.listid
                                           .add(survey.listsurvey[index].id);
+                                      survey.feedbackoptionid.add({
+                                        "id":survey.listsurvey[index].id.toString(),
+                                        "rating":"";
+                                      });
                                       survey.listsurvey[index].isChecked = true;
                                     }
                                   });
@@ -152,7 +157,7 @@ class _SecondReviewState extends State<SecondReview> {
                                                     color: Colors.white,
                                                   ),
                                                   onRatingUpdate: (rating) {
-                                                    surveyP.stars=rating;
+                                                    =rating;
                                                   },
                                                 ),
                                               ):Container(),
