@@ -27,8 +27,10 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
   getData(
 
       ) async {
+    print(widget.food.increment);
     SharedPreferences root=await SharedPreferences.getInstance();
-    setState(() {lg=root.getString("locale");
+    setState(() {
+      lg=root.getString("locale");
       count =widget.food.min;
     });
     // final pack = Provider.of<PackagesProvider>(context, listen: false);
