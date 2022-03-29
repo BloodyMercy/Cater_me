@@ -35,7 +35,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     SharedPreferences sh =await SharedPreferences.getInstance();
     language=sh.getString("locale");
     await orders.getOrderItems(sh.getString("locale"));
-    await orders.getOrderPaymentFreind();
+    await orders.getOrderPaymentFreind(sh.getString("locale"));
     print(orders.items.length);
     final orderStatus =
     Provider.of<OrderStatusProvider>(context, listen: false);

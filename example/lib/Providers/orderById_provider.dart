@@ -109,11 +109,11 @@ bool loading=false  ;
     }
 
   }
-  Future getOrderPaymentFreind() async{
+  Future getOrderPaymentFreind(String a) async{
 paymentFreind=[];
 
     if(orderbyId["paymentFriend"]!=0){
-      paymentFreind=List<PaymentFriend>.from(orderbyId["paymentFriend"].map((model)=>PaymentFriend.fromJson(model)));
+      paymentFreind=List<PaymentFriend>.from(orderbyId["paymentFriend"].map((model)=>PaymentFriend.fromJson(model,a)));
 
     }else{
       return paymentFreind=[];

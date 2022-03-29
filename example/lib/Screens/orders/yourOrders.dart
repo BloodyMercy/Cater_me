@@ -67,6 +67,7 @@ class _YourOrdersState extends State<YourOrders> {
 
   @override
   Color _getColorByEvent(String orderStatus) {
+
     if (orderStatus == "Preparing") return Color(0xFFEAB316);
     if (orderStatus == "جاري التحضير") return Color(0xFFEAB316);
 
@@ -90,12 +91,13 @@ class _YourOrdersState extends State<YourOrders> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final orders = Provider.of<OrderProvider>(context, listen: true);
-  //  final authProvider = Provider.of<UserProvider>(context, listen: true);
+    //  final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     final package = Provider.of<PackagesProvider>(context, listen: true);
-    final orderCaterprovider=Provider.of<OrderCaterProvider>(context,listen: true);
-    final address=Provider.of<AdressProvider>(context,listen: true);
-    final credit=Provider.of<CreditCardsProvider>(context,listen: true);
+    final orderCaterprovider =
+        Provider.of<OrderCaterProvider>(context, listen: true);
+    final address = Provider.of<AdressProvider>(context, listen: true);
+    final credit = Provider.of<CreditCardsProvider>(context, listen: true);
     final order = Provider.of<OrderByIdProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
@@ -143,74 +145,68 @@ class _YourOrdersState extends State<YourOrders> {
                               itemBuilder: (context, index) {
                                 return GestureDetector(
                                   onTap: () {
-                                    if(orders.listOrder[index].orderStatus=="Payment Pending" || orders.listOrder[index].orderStatus=="انتظار الدفع" )
-                                      {
+                                    if (orders.listOrder[index].orderStatus ==
+                                            "Payment Pending" ||
+                                        orders.listOrder[index].orderStatus ==
+                                            "انتظار الدفع") {
+                                      //    if(authProvider.status == Status.Authenticated) {
+                                      address.clearAddressController();
+                                      orderCaterprovider.spets = 7;
+                                      orderCaterprovider.vatshisha = 0.0;
+                                      orderCaterprovider.vatfood = 0.0;
 
+                                      orderCaterprovider.totale =
+                                          orders.listOrder[index].total;
+                                      orderCaterprovider.choosebillFriend = [];
+                                      orderCaterprovider.choosebillFriend = [];
+                                      orderCaterprovider.itemOrders = [];
+                                      orderCaterprovider.totalssha = 0;
+                                      orderCaterprovider.totalpackage = 0;
+                                      orderCaterprovider.finaldonatesteps =
+                                          false;
+                                      orderCaterprovider
+                                          .finaldonatestepsCancel = false;
+                                      orderCaterprovider.orderid =
+                                          orders.listOrder[index].id;
+                                      credit.value = -1;
+                                      orderCaterprovider.setup = false;
+                                      orderCaterprovider.serviceId = 1;
+                                      address.form = false;
+                                      address.valueIndex = -1;
+                                      // orderCaterprovider.
+                                      address.phone.text = "";
+                                      address.name.text = "";
+                                      order.check1 = false;
+                                      order.check2 = false;
+                                      orderCaterprovider.finaldonatesteps =
+                                          false;
+                                      orderCaterprovider.paymemtstep = true;
+                                      order.check3 = false;
+                                      order.check4 = false;
+                                      orderCaterprovider.checkotp = false;
+                                      // orderCaterprovider.listFriend=[];
+                                      address.value2Index = -1;
+                                      orderCaterprovider.valueIndex = -1;
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => Order(),
+                                        ),
+                                      );
+                                      //    }
+                                      //   else{
 
+                                      //   }
 
-
-                                    //    if(authProvider.status == Status.Authenticated) {
-                                          address.clearAddressController();
-                                          orderCaterprovider.spets = 7;
-                                          orderCaterprovider.vatshisha = 0.0;
-                                          orderCaterprovider.vatfood = 0.0;
-
-                                          orderCaterprovider.totale = orders.listOrder[index].total;
-                                          orderCaterprovider.choosebillFriend = [];
-                                          orderCaterprovider.choosebillFriend = [];
-                                          orderCaterprovider.itemOrders = [];
-                                          orderCaterprovider.totalssha = 0;
-                                          orderCaterprovider.totalpackage = 0;
-                                          orderCaterprovider.finaldonatesteps=false;
-                                          orderCaterprovider.finaldonatestepsCancel=false;
-                                          orderCaterprovider.orderid=orders.listOrder[index].id;
-                                          credit.value = -1;
-                                          orderCaterprovider.setup=false;
-                                          orderCaterprovider.serviceId = 1;
-                                          address.form = false;
-                                          address.valueIndex = -1;
-                                          // orderCaterprovider.
-                                          address.phone.text = "";
-                                          address.name.text = "";
-                                          order.check1 = false;
-                                          order.check2 = false;
-                                          orderCaterprovider.finaldonatesteps=false;
-                                          orderCaterprovider.paymemtstep=true;
-                                          order.check3 = false;
-                                          order.check4 = false;
-                                          orderCaterprovider.checkotp=false;
-                                          // orderCaterprovider.listFriend=[];
-                                          address.value2Index = -1;
-                                          orderCaterprovider.valueIndex = -1;
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) => Order(),
-                                            ),
-                                          );
-                                    //    }
-                                     //   else{
-
-                                     //   }
-
-
-
-
-
-
-
-
-                                      }
-                                    else {
+                                    } else {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (builder) =>
                                               OrderDetailsView(
-                                                  orders.listOrder[index].id,
-                                                  ),
+                                            orders.listOrder[index].id,
+                                          ),
                                         ),
                                       );
                                     }
-
                                   },
                                   child: Card(
                                       elevation: 5,
