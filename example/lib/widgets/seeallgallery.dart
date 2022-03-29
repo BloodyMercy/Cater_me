@@ -17,7 +17,11 @@ class _seeAllGalleryState extends State<seeAllGallery> {
   getdata(){
    final _gallery= Provider.of<GalleryProvider> (context, listen: false );
    _gallery.getseeall();
+   setState(() {
+     loading = false;
+   });
   }
+  bool loading = true;
   @override
   void initState() {
     getdata();
@@ -48,7 +52,7 @@ class _seeAllGalleryState extends State<seeAllGallery> {
             iconSize: 30,
           ),
        ),
-      body:_gallery.loading?GridView.builder(
+      body:!loading?GridView.builder(
           itemCount: _gallery.seeall.length,
           gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount:  2 ), itemBuilder:(context ,inde){
