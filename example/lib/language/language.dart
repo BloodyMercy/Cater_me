@@ -284,12 +284,28 @@ class LanguageTr {
 ,"VAT Number":"الرقم الضريبي",
       "Photo":"الصور",
 
+"User already exists":"المستخدم موجود اصلا",
+      "Failed to create account":"فشل إنشاء الحساب",
+      "Register Failed":"فشل التسجيل",
+      "Failed to update device token":"فشل تحديث رمز الجهاز",
+      "Could not sign user in":"تعذر تسجيل دخول المستخدم",
+      "Login failed, user doesn't exist":"فشل تسجيل الدخول ، المستخدم غير موجود",
+      "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
+      "No packages available":"لا قوائم طعام",
 
     },
 
 
 
     "en": {
+      "No packages available":"No packages available",
+      "User doesn't exist or invalid credentials":"User doesn't exist or invalid credentials",
+      "Login failed, user doesn't exist":"Login failed, user doesn't exist",
+      "Could not sign user in":"Could not sign user in",
+      "Failed to update device token":"Failed to update device token",
+      "Register Failed":"Register Failed",
+      "Failed to create account":"Failed to create account",
+      "User already exists":"User already exists",
       "VAT Number":"VAT Number",
       "Click here,and make your order":"Click here,and make your order",
 "View all packages,add your occassions,track your orders":"View all packages,add your occassions,track your orders",

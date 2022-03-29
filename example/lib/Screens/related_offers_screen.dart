@@ -180,7 +180,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                 itemCount: pack.allpackagesorder.length,
               )
             : Center(
-                child: Text('no packages available'),
+                child: Text("${authProvider.lg[authProvider.language]["No packages available"]}"),
               )
         : Center(
             child: CircularProgressIndicator(),
