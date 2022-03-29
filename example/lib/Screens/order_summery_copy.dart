@@ -362,7 +362,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                         if (val == true){
                           if(!adonce){
                             FriendModel you = FriendModel();
-                            you.name="you";
+                            you.name="Me";
                             you.id=-69;
                             you.image=imageurl;
                             details.addfriend(you);

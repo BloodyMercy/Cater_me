@@ -192,7 +192,7 @@ class LanguageTr {
       "Order Details":"تفاصيل طلبك",
       "Do You Want To Donate The Rest Of Your Food?":"ودك تتبرع بالاكل الباقي؟",
       "*(Shisha VAT 100%)":"ضريبه الشيشه ١٠٠ ٪",
-      "*(VAT included 15%)":"متضمن ضريبة القيمة المضافة 15٪",
+      "*(VAT included 15%)":"شامل الضريبة القيمة المضافة 15٪",
       "*(VAT 15%)":"ضريبه ١٥ ٪",
       "yes":"ايه",
       "No Packages": "مافي باقات",
