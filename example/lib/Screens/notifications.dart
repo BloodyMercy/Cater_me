@@ -20,6 +20,7 @@ import '../Providers/user.dart';
 import '../chat/pages/chat_page.dart';
 import '../language/language.dart';
 import 'Order.dart';
+import 'ahmad/My Orders/OrderDetails.dart';
 import 'auth/login_screen.dart';
 import 'auth/reset_password_screen.dart';
 import 'auth/signup_screen.dart';
@@ -230,11 +231,10 @@ else       if(       allNotification
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (builder) =>
-                                            OrderId(
+                                            OrderDetailsView(
                                                 allNotification
                                                     .notificationlist[index]
-                                                    .orderId,
-                                                1),
+                                                    .orderId),
                                       ),
                                     );
                                   }

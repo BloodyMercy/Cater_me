@@ -624,17 +624,20 @@ String url3ds="";
                                                       );
 Navigator.of(context).pop();
                                                       if(a!=0) {
-                                                        if(    orderProvider
-                                                            .choosebillFriend[0].price==0.0)
-                                                          {
-
-                                                            Navigator.pushReplacement(
+                                                        if(orderProvider.choosebillFriend.length>0) {
+                                                          if (orderProvider
+                                                              .choosebillFriend[0]
+                                                              .price == 0.0) {
+                                                            Navigator
+                                                                .pushReplacement(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                    builder: (context) =>
+                                                                    builder: (
+                                                                        context) =>
                                                                         AppointmentSuccess(
                                                                             0)));
                                                           }
+                                                        }
                                                         else{
 
 
