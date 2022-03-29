@@ -204,6 +204,7 @@ loading=false;
       _occasions = List<Occasion>.from(_alldata['occasions'].map((model) => Occasion.fromJson(model,a)));
       if(_alldata['dropDown']!=null)
        _listItems = List<Package>.from(_alldata['dropDown'].map((model) => Package.fromJson(model,a)));
+      if(_alldata['gallery']!=null)
       _allgallery = List<GalleryModel>.from(_alldata['gallery'].map((model) => GalleryModel.fromJson(model)));
        _nbnotification=_alldata["notificationCount"].toString();
 
