@@ -4,7 +4,11 @@
 
 class ApiLink{
 
+
 // static String host="https://caterme.azurewebsites.net/api/";
+
+ //static String host="https://caterme.azurewebsites.net/api/";
+
  static String host="https://catermedevelopment.azurewebsites.net/api/";
 // static String host="https://66a5-185-142-40-150.ngrok.io/api/";
  static String hostlocal="http://192.168.0.1/api/";//elna
