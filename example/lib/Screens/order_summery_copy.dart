@@ -359,10 +359,12 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                       value: details.choosebillFriend
                           .contains(frnd.listFriends[index]),
                       onChanged: (val) {
+
                         if (val == true){
                           if(!adonce){
                             FriendModel you = FriendModel();
-                            you.name="Me";
+
+                            you.name=authProvider.lg[authProvider.language]["Me"];
                             you.id=-69;
                             you.image=imageurl;
                             details.addfriend(you);
