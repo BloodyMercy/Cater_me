@@ -4,6 +4,9 @@ import 'dart:async';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
+import 'package:credit_card/credit_card_form.dart';
+import 'package:credit_card/credit_card_model.dart';
+import 'package:credit_card/credit_card_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
-import 'CreditPligin.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
