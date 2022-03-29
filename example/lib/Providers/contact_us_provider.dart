@@ -9,6 +9,10 @@ class ContactUsProvider extends ChangeNotifier{
   ContactUsService _ContactUs=ContactUsService();
   ContactUsModel _UsContact=ContactUsModel();
 
+
+
+
+
   ContactUsModel get UsContact => _UsContact;
 
 

@@ -10,26 +10,36 @@ import 'UserOrders.dart';
 
 class OrderfreindCard extends StatefulWidget {
   PaymentFriend a;
-   OrderfreindCard({Key key, this.a}) : super(key: key);
+
+  OrderfreindCard({Key key, this.a}) : super(key: key);
 
   @override
   State<OrderfreindCard> createState() => _OrderfreindCardState();
 }
 
 class _OrderfreindCardState extends State<OrderfreindCard> {
-  String lang="en";
+  String lang = "en";
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getlang();
   }
-  getlang() async {
-    SharedPreferences _pref= await SharedPreferences.getInstance();
-    lang=_pref.getString("locale")??"en";
 
+  getlang() async {
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    lang = _pref.getString("locale") ?? "en";
   }
+
   @override
+  Color _getColorByEvent(int orderStatus) {
+    if (orderStatus == 1) return Color(0xFFEA4D47);
+    else  return Color(0xFFEA4D47);
+
+    return Colors.blue;
+  }
+
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     return Row(
@@ -40,7 +50,7 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
               width: 100.0,
               color: Colors.white,
               child: Image.network(
-             widget.a.image,
+                widget.a.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -72,9 +82,9 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
             children: [
               Text("${widget.a.name}",
                   style: TextStyle(
-                   // fontFamily: 'Geomanist',
+                    // fontFamily: 'Geomanist',
                     fontSize: 16,
-                  //  color: Color.fromRGBO(180, 187, 197, 1),
+                    //  color: Color.fromRGBO(180, 187, 197, 1),
                   )),
               SizedBox(
                 height: 5,
@@ -82,11 +92,11 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
               Container(
                 child: Text.rich(
                   TextSpan(
-                    text:widget.a.phoneNumber,
+                    text: widget.a.phoneNumber,
                     style: TextStyle(
-                     // color: Colors.black,
+                      // color: Colors.black,
                       fontSize: 13,
-                    //  fontFamily: 'Geomanist',
+                      //  fontFamily: 'Geomanist',
                     ),
                   ),
                 ),
@@ -94,21 +104,35 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
               SizedBox(
                 height: 2,
               ),
-
               SizedBox(
                 height: 2,
               ),
-
               SizedBox(
                 height: 2,
               ),
               Text.rich(
                 TextSpan(
-                  text: "${authProvider.lg[authProvider.language]["SAR"]} ${widget.a.amount}",
+                  text:
+                      "${authProvider.lg[authProvider.language]["SAR"]} ${widget.a.amount}",
                   style: TextStyle(
-                  //  color: Color.fromRGBO(180, 187, 197, 1),
+                    //  color: Color.fromRGBO(180, 187, 197, 1),
                     fontSize: 13,
-                  //  fontFamily: 'Geomanist',
+                    //  fontFamily: 'Geomanist',
+                  ),
+                ),
+              ),
+              Text.rich(
+                TextSpan(
+                  text: '${widget.a.paymentStatus}',
+                  // text: "${authProvider.lg[authProvider.language]["Bill"]} ${widget.a.amount}",
+                  style: TextStyle(
+                    color: _getColorByEvent(
+                      widget.a.paymentStatusId
+                    ),
+
+                    //  color: Color.fromRGBO(180, 187, 197, 1),
+                    fontSize: 13,
+                    //  fontFamily: 'Geomanist',
                   ),
                 ),
               ),
