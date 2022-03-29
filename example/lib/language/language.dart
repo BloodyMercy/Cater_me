@@ -26,7 +26,7 @@ class LanguageTr {
       "Send": "ارسل",
       "Name": "اسمك",
       "Confirm Password": "اكد كلمه السر ",
-      "Phone number": "رقم جوالك",
+      "Phone number": "رقم جوال",
       "Gender": "الجنس",
       "birthdate": "متى ولدت ",
       "SignUp": "اعمل لك حساب جديد ",

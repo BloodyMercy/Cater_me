@@ -12,6 +12,7 @@ import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_pic
 import 'package:form_field_validator/form_field_validator.dart';
 import "package:image_picker/image_picker.dart";
 import 'package:intl/intl.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -639,12 +640,18 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                               if (!formkey.currentState.validate() ) {
                                 // ignore: avoid_print
                                 print('Not Validated');
-                                _scaffKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        "${authProvider.lg[authProvider.language]["all fields required"]}"),
-                                  ),
-                                );
+                                MotionToast.error(
+                                  title:  "Cater me",
+                                  titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                  description:   "${authProvider.lg[authProvider.language]["all fields required"]}",
+                                  //  animationType: ANIMATION.FROM_LEFT,
+                                ).show(context);
+                                // _scaffKey.currentState.showSnackBar(
+                                //   SnackBar(
+                                //     content: Text(
+                                //         "${authProvider.lg[authProvider.language]["all fields required"]}"),
+                                //   ),
+                                // );
                                 setState(() {
                                   _loading = false;
                                 });

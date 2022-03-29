@@ -261,16 +261,22 @@ lang: authProvider.language,
                            length: 6,
                            onCompleted: (value) async{
                              FocusScope.of(context).unfocus();
-                             _scaffoldKey.currentState.showSnackBar(
-                                 SnackBar(content: Row(
-                                   children: [
-                                     CircularProgressIndicator(),
-                                     SizedBox(width: 15,),
-                                     Text("Loading...")
-                                   ],
-                                 ))
-
-                             );
+                             MotionToast.info(
+                               title:  "Cater me",
+                               titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                               description:  '${authProvider.lg[authProvider.language]["Loading"]}',
+                               //  animationType: ANIMATION.FROM_LEFT,
+                             ).show(context);
+                             // _scaffoldKey.currentState.showSnackBar(
+                             //     SnackBar(content: Row(
+                             //       children: [
+                             //         CircularProgressIndicator(),
+                             //         SizedBox(width: 15,),
+                             //         Text("Loading...")
+                             //       ],
+                             //     ))
+                             //
+                             // );
                              setState(() {
 
                                smsOTP = value as String;

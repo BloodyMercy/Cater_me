@@ -348,10 +348,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                       fontWeight: FontWeight.normal,
                                       fontFamily: 'BerlinSansFB'),
                                   decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          left:
-                                          MediaQuery.of(context).size.width *
-                                              0.04),
+                                      // contentPadding: EdgeInsets.only(
+                                      //     left:
+                                      //     MediaQuery.of(context).size.width *
+                                      //         0.04),
                                       alignLabelWithHint: true,
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -398,10 +398,10 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                       fontWeight: FontWeight.normal,
                                       fontFamily: 'BerlinSansFB'),
                                   decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          left:
-                                          MediaQuery.of(context).size.width *
-                                              0.04),
+                                      // contentPadding: EdgeInsets.only(
+                                      //     left:
+                                      //     MediaQuery.of(context).size.width *
+                                      //         0.04),
                                       alignLabelWithHint: true,
                                       labelStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
