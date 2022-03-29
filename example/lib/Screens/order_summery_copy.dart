@@ -175,7 +175,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
           child: CustomScrollView(slivers: <Widget>[
             SliverToBoxAdapter(
                 child: Center(
-                    child: Text('${authProvider.lg[authProvider.language]["VAT  311085799400003"]}',
+                    child: Text('${authProvider.lg[authProvider.language]["VAT Number"]}  311085799400003',
 
                         style: TextStyle(
                             fontWeight: FontWeight.normal,

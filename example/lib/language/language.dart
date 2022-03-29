@@ -281,12 +281,13 @@ class LanguageTr {
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
       "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك"
-
+,"VAT Number":"الرقم الضريبي"
     },
 
 
 
     "en": {
+      "VAT Number":"VAT Number",
       "Click here,and make your order":"Click here,and make your order",
 "View all packages,add your occassions,track your orders":"View all packages,add your occassions,track your orders",
       "change":"change",
