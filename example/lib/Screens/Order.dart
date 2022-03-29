@@ -627,13 +627,13 @@ Navigator.of(context).pop();
                                                         if(    orderProvider
                                                             .choosebillFriend[0].price==0.0)
                                                           {
-
                                                             Navigator.pushReplacement(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder: (context) =>
                                                                         AppointmentSuccess(
                                                                             0)));
+
                                                           }
                                                         else{
 
@@ -804,16 +804,16 @@ Navigator.of(context).pop();
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
                                                  // await orderProvider.getotpverify(url3ds);
-                                                  avigator.pushReplacement(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              AppointmentSuccess(
-                                                                  0)));                       //   int a = await orderProvider.p
+                                              //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
                                                   if (orderProvider.checkotp)
-                                                    N
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                AppointmentSuccess(
+                                                                    0)));
                                                   else if(orderProvider.checkotp)
                                                       {
                                                         showDialog(
