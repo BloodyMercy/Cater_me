@@ -58,7 +58,7 @@ class _costumTextFieldState extends State<customTextField> {
                 maximumDate: DateTime(DateTime.now().year+1),
                 initialDateTime: _chosenDate,
 
-                minimumDate:DateTime.now(),
+                minimumDate:_chosenDate,
                 onDateTimeChanged: (dateTime) {
                   setState(() {
                     _chosenDate = dateTime;
