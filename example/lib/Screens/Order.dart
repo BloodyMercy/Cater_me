@@ -624,12 +624,26 @@ String url3ds="";
                                                       );
 Navigator.of(context).pop();
                                                       if(a!=0) {
+                                                        if(    orderProvider
+                                                            .choosebillFriend[0].price==0.0)
+                                                          {
+
+                                                            Navigator.pushReplacement(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        AppointmentSuccess(
+                                                                            0)));
+                                                          }
+                                                        else{
+
+
                                                         orderProvider.paymemtstep=true;
                                                         orderProvider.orderid=a;
                                                         orderProvider.spets++;
                                                         _animateToIndex(
                                                             orderProvider
-                                                                .spets);
+                                                                .spets);}
                                                       }
                                                     }
                                                   } else {
@@ -790,16 +804,16 @@ Navigator.of(context).pop();
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
                                                  // await orderProvider.getotpverify(url3ds);
-                                              //   int a = await orderProvider.p
+                                                  avigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              AppointmentSuccess(
+                                                                  0)));                       //   int a = await orderProvider.p
 
                                                   Navigator.of(context).pop();
                                                   if (orderProvider.checkotp)
-                                                    Navigator.pushReplacement(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AppointmentSuccess(
-                                                                    0)));
+                                                    N
                                                   else if(orderProvider.checkotp)
                                                       {
                                                         showDialog(
