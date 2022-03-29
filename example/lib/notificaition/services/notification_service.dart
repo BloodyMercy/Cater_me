@@ -4,6 +4,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
+import '../../Screens/ahmad/My Orders/OrderDetails.dart';
 import '../../main.dart';
 
 
@@ -140,7 +141,7 @@ class NotificationServices {
     await navigatorKey.currentState
         ?.push(MaterialPageRoute(builder: (_) {
           return
-            OrderId(int.parse(payload), 0);
+            OrderDetailsView(int.parse(payload));
 
 
       //   DetailsPage(payload: payload);
