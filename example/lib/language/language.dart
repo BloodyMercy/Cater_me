@@ -280,12 +280,15 @@ class LanguageTr {
       "Contact info":"معلومات الاتصال",
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
+      "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك"
+
     },
 
 
 
     "en": {
-
+      "Click here,and make your order":"Click here,and make your order",
+"View all packages,add your occassions,track your orders":"View all packages,add your occassions,track your orders",
       "change":"change",
       "Change contact info":"Change contact info",
       "Contact info":"Contact info",

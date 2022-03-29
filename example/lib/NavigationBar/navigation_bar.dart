@@ -156,17 +156,34 @@ getLanguage();
 
 
   startinto() async{
+SharedPreferences _prefs = await SharedPreferences.getInstance();
+final authProvider =Provider.of<UserProvider>(context,  listen: false);
+    intro=Intro(
+      stepCount: 2,
+      maskClosable: true,
+      onHighlightWidgetTap: (introStatus) {
+        print(introStatus);
+      },
 
+      /// use defaultTheme
+      widgetBuilder: StepWidgetBuilder.useDefaultTheme(
+        texts: [
+          '${authProvider.lg[_prefs.getString("locale")][ "Click here,and make your order"]}'
+          ,'${authProvider.lg[_prefs.getString("locale")][ "View all packages,add your occassions,track your orders"]}'
 
-
-    SharedPreferences sh=await SharedPreferences.getInstance();
+        ],
+        buttonTextBuilder: (currPage, totalPage) {
+          return currPage < totalPage - 1 ? '${authProvider.lg[_prefs.getString("locale")]["Next"]}' :'${authProvider.lg[_prefs.getString("locale")]["Finish"]}' ;
+        },
+      ),
+    );
     //bool a=sh.getBool("startintro")==null;
 
     intro.setStepConfig(
       0,
       borderRadius: BorderRadius.circular(64),
     );
-    if(sh.getBool("startintro")??true) {
+    if(_prefs.getBool("startintro")??true) {
       Timer(
         Duration(
           seconds: 3,
@@ -193,7 +210,7 @@ getLanguage();
         // ).show(context);
     //  },
    // );
-    sh.setBool("startintro", false);
+    _prefs.setBool("startintro", false);
   }
   Future<bool> _onWillPop() async {
     final authProvider = Provider.of<UserProvider>(context, listen: false);

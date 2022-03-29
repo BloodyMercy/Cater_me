@@ -655,25 +655,17 @@ class _HomePageState extends State<HomePage>
                                   ),
                                 );
                               },
-                              child: Card(
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(style: BorderStyle.none),
+                                  borderRadius: BorderRadius.all(Radius.circular(20)),
                                 ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(style: BorderStyle.none),
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  width: mediaQuery.size.width /3,
-                                  height: mediaQuery.size.height /5,
-                                  child:Image.network(package.allgallery[i].link,
-                                    fit: BoxFit.fill,
-                                    width: mediaQuery.size.width * 0.3,
-                                    height: mediaQuery.size.height * 0.50,
-                                  ),
-                                ),
+                                width: 150,
+                                height: 150,
+                                child:Image.network(package.allgallery[i].link,
+                                  fit: BoxFit.fitHeight,
+                                  width: 150,
+                                  height: 90, ),
                               ),
                             );
                           },
