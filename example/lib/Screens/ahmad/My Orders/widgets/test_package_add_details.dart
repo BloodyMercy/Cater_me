@@ -309,6 +309,9 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                         children: [
                           Row(
                             children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*0.05,
+                              ),
                               IconButton(
                                   onPressed: () {
                                     setState(() {
@@ -323,16 +326,23 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                                       }
                                     });
                                   },
+
                                   icon: Icon(
-                                    Icons.remove_circle,
+                                    Icons.remove_circle,size: 25,
                                     color: Color.fromRGBO(63, 85, 33, 1),
                                   )),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*0.01,
+                              ),
                               Text(
                                 "${count}",
                                 style: TextStyle(
                                   color: Color.fromRGBO(63, 85, 33, 1),
-                                  fontSize: 30,
+                                  fontSize: 35,
                                 ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*0.01,
                               ),
                               IconButton(
                                   onPressed: () {
@@ -344,7 +354,7 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                                     }
                                   },
                                   icon: Icon(
-                                    Icons.add_circle,
+                                    Icons.add_circle,size: 25,
                                     color: Color.fromRGBO(63, 85, 33, 1),
                                   )),
                             ],

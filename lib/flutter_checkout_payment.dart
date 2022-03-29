@@ -30,7 +30,7 @@ class FlutterCheckoutPayment {
   ///
   /// [key] public sdk key.
   /// [environment] the environment of initialization { SANDBOX, LIVE }, default SANDBOX.
-  static Future<bool?> init({required String key, Environment environment = Environment.SANDBOX}) async {
+  static Future<bool?> init({required String key, Environment environment = Environment.LIVE}) async {
     try {
       return await _channel.invokeMethod(METHOD_INIT, <String, String>{'key': key, 'environment': environment.toString()});
     } on PlatformException catch (e) {
