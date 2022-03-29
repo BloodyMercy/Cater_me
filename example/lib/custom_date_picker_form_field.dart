@@ -32,7 +32,7 @@ TextEditingController lol =TextEditingController();
   String _chosenMonth = "";
   String _chosenYear = "";
   String _chosenDay = "";
-  DateTime beta = DateTime.now();
+  DateTime beta = DateTime.now().add(Duration(hours: 3));
   @override
   void initState() {
     // TODO: implement initState
@@ -40,10 +40,10 @@ TextEditingController lol =TextEditingController();
     _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
     _chosenDate = DateTime.now();
     if(widget.controller.text==""){
-    widget.controller.text=_dateFormat.format(DateTime.now()).toString();}
+    widget.controller.text=_dateFormat.format(DateTime.now().add(Duration(hours: 3))).toString();}
     beta =DateTime.parse(widget.controller.text);
     if(widget.controllerlan.text==""){
-    widget.controllerlan.text=_dateFormatlan.format(DateTime.now()).toString();
+    widget.controllerlan.text=_dateFormatlan.format(DateTime.now().add(Duration(hours: 3))).toString();
 
     }
     _chosenMonth = _monthFormat.format(_chosenDate);

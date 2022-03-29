@@ -291,7 +291,7 @@ class LanguageTr {
       "Could not sign user in":"تعذر تسجيل دخول المستخدم",
       "Login failed, user doesn't exist":"فشل تسجيل الدخول ، المستخدم غير موجود",
       "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
-      "No packages available":"لا قوائم طعام",
+      "No packages available":"لا توجد حزم متاحة",
 
     },
 
