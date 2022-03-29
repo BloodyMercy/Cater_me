@@ -1,4 +1,4 @@
-import 'package:CaterMe/Payment/Payment.dart';
+
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Payment/Payment.dart';
 import '../../Providers/user.dart';
 import '../../Screens/occasion/theme/colors/light_colors.dart';
 import '../../language/language.dart';
