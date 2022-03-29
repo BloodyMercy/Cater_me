@@ -49,6 +49,7 @@ dependencies:
   http: any
   cached_network_image:
   provider:
+  credit_card: 0.1.6
   flutter_cupertino_datetime_picker: ^3.0.0
   firebase_core: ^1.10.5
   firebase_messaging: ^11.1.0
