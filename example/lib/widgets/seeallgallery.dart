@@ -14,12 +14,13 @@ class seeAllGallery extends StatefulWidget {
 }
 
 class _seeAllGalleryState extends State<seeAllGallery> {
-  getdata(){
+  getdata()async{
    final _gallery= Provider.of<GalleryProvider> (context, listen: false );
-   _gallery.getseeall();
+   await _gallery.getseeall();
    setState(() {
      loading = false;
    });
+
   }
   bool loading = true;
   @override
@@ -27,6 +28,7 @@ class _seeAllGalleryState extends State<seeAllGallery> {
     getdata();
     // TODO: implement initState
     super.initState();
+
   }
   @override
 
@@ -52,9 +54,12 @@ class _seeAllGalleryState extends State<seeAllGallery> {
             iconSize: 30,
           ),
        ),
-      body:!loading?GridView.builder(
+      body:
+      !loading?
+      GridView.builder(
           itemCount: _gallery.seeall.length,
-          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount:  2 ), itemBuilder:(context ,inde){
         return  InkWell(
           onTap: () {
