@@ -643,7 +643,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                 MotionToast.error(
                                   title:  "Cater me",
                                   titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                  description:   "${authProvider.lg[authProvider.language]["all fields required"]}",
+                                  // description:   "${authProvider.lg[authProvider.language]["all fields required"]}",
                                   //  animationType: ANIMATION.FROM_LEFT,
                                 ).show(context);
                                 // _scaffKey.currentState.showSnackBar(
