@@ -281,9 +281,9 @@ class LanguageTr {
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
       "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك"
-,"VAT Number":"الرقم الضريبي"
-      "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك",
+,"VAT Number":"الرقم الضريبي",
       "Photo":"الصور",
+
 
     },
 
