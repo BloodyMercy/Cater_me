@@ -637,6 +637,15 @@ Navigator.of(context).pop();
                                                                         AppointmentSuccess(
                                                                             0)));
                                                           }
+                                                          else{
+
+
+                                                            orderProvider.paymemtstep=true;
+                                                            orderProvider.orderid=a;
+                                                            orderProvider.spets++;
+                                                            _animateToIndex(
+                                                                orderProvider
+                                                                    .spets);}
                                                         }
                                                         else{
 
