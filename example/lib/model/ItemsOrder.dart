@@ -9,10 +9,16 @@ int tax = 0;
   double price = 0;
   int quantity = 0;
   double totalprice=0.0;
-int min=1,max=1000,increment=5;
+int _min=1,_max=1000,_increment=1;
   bool isfavorite = false;
   bool isShisha = false;
   bool ispack=false;
+
+   int get min => _min;
+
+  set min(int value) {
+    _min = value;
+  }
 
   List<Details> itemDetails = [];
 
@@ -53,5 +59,17 @@ int min=1,max=1000,increment=5;
       data['itemDetails'] = itemDetails.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  get max => _max;
+
+  set max(value) {
+    _max = value;
+  }
+
+  get increment => _increment;
+
+  set increment(value) {
+    _increment = value;
   }
 }
