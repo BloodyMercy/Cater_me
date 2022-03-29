@@ -361,7 +361,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                           color: focusNode.hasFocus
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
-                                      labelText: '${authProvider.lg[authProvider.language]["Name"]}',
+                                      labelText: '${authProvider.lg[authProvider.language]["Name1"]}',
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,

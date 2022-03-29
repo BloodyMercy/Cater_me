@@ -75,7 +75,7 @@ class _FirstReviewState extends State<FirstReview> {
               )
               ,
               Text(
-                '  ما هو تقييمك لللتجربة ؟',
+                '  ما هو تقييمك للتجربة ؟',
                   style: TextStyle(color: Colors.white, fontSize: 25),
               ),
             Padding(

@@ -609,6 +609,7 @@ class _HomePageState extends State<HomePage>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+
                         Padding(padding:
                         EdgeInsets.symmetric(
                           horizontal: 20,),
@@ -617,7 +618,7 @@ class _HomePageState extends State<HomePage>
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
-                        // SizedBox(width: mediaQuery.size.width*0.6),
+
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           child: GestureDetector(

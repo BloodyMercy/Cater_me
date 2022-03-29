@@ -488,7 +488,8 @@ bool isloading=true;
       body:Stack(
         children: [
           WebView(
-          initialUrl: "https://caterme.azurewebsites.net/chat?lang=${authProvider.language}",
+
+          initialUrl: "https://caterme.azurewebsites.net/chat",
 
 
           javascriptMode: JavascriptMode.unrestricted,

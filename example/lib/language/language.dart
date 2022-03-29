@@ -292,6 +292,7 @@ class LanguageTr {
       "Login failed, user doesn't exist":"فشل تسجيل الدخول ، المستخدم غير موجود",
       "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
       "No packages available":"لا توجد حزم متاحة",
+      "Name1":"الاسم",
 
     },
 
@@ -580,6 +581,7 @@ class LanguageTr {
       'Start':'Start',
       "Type your answer here...":"Type your answer here...",
       "Photo":"Photo",
+      "Name1":"Name",
 
 
 
