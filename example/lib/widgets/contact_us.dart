@@ -86,7 +86,11 @@ class _Contact_UsState extends State<Contact_Us> {
                         Icons.call,
                         color: colorCustom,
                       ),
-                      title: Text(contact.UsContact.phoneNumber,
+                      title:
+
+                      Text(contact.UsContact.phoneNumber,
+    textDirection:TextDirection.ltr,
+    textAlign:authProvider.language=="ar"?TextAlign.right:TextAlign.left,
                           // contact.UsContact.phoneNumber,
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
@@ -203,7 +207,7 @@ class _Contact_UsState extends State<Contact_Us> {
                       IconButton(
                         onPressed: () async {
                           final url =
-                              'https://www.facebook.com/Cater-Me-103856805573526/';
+                              'https://www.facebook.com/caterme.ksa/';
                           if (await canLaunch(url)) {
                             await launch(url, forceSafariVC: false);
                           }

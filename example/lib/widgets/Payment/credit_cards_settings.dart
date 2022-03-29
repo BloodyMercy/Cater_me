@@ -91,210 +91,213 @@ class _CreditCardsSettingsState extends State<CreditCardsSettings> {
                   child: Column(
                     children: <Widget>[
                       Expanded(
-                          child: CustomScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: CustomScrollView(
                         slivers: [
-                          SliverToBoxAdapter(
-                            child: _buildTitleSection(
-                                title:
-                                    '${authProvider.lg[authProvider.language]["Payment Details"]}',
-                                subTitle:
-                                    '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}'),
-                          ),
-                          SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int i) {
-                              return Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Card(
-                                      elevation: 4.0,
-                                      color: Colors.black,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(14),
-                                      ),
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.2,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.8,
-                                        padding: const EdgeInsets.only(
-                                            left: 16.0,
-                                            right: 16.0,
-                                            bottom: 22.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                IconButton(
-                                                    onPressed: () {
-                                                      _creditCards.valueIndex =
-                                                          i;
-                                                      showDialog(
-                                                          context: context,
-                                                          builder: (BuildContext
-                                                              context) {
-                                                            return CustomDialog(
-                                                              title:
-                                                                  '${authProvider.lg[authProvider.language]["Delete Credit Card"]}',
-                                                              description:
-                                                                  '${authProvider.lg[authProvider.language]["Are you sure do you want to delete this card?"]}',
-                                                              button1:
-                                                                  ElevatedButton(
-                                                                onPressed:
-                                                                    () async {
-                                                                  _creditCards
-                                                                          .loading =
-                                                                      true;
-                                                                  _creditCards
-                                                                      .notifyListeners();
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                  var delete = await _creditCards.deleteCard(
-                                                                      _creditCards
-                                                                          .list[
-                                                                              i]
-                                                                          .id);
-                                                                  if (delete ==
-                                                                      "deleted") {
+                            SliverToBoxAdapter(
+                              child: _buildTitleSection(
+                                  title:
+                                      '${authProvider.lg[authProvider.language]["Payment Details"]}',
+                                  subTitle:
+                                      '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}'),
+                            ),
+                            SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                  (BuildContext context, int i) {
+                                return Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Card(
+                                        elevation: 4.0,
+                                        color: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(14),
+                                        ),
+                                        child: Container(
+                                          height:
+                                              MediaQuery.of(context).size.height *
+                                                  0.2,
+                                          width:
+                                              MediaQuery.of(context).size.width *
+                                                  0.8,
+                                          padding: const EdgeInsets.only(
+                                              left: 16.0,
+                                              right: 16.0,
+                                              bottom: 22.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        _creditCards.valueIndex =
+                                                            i;
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext
+                                                                context) {
+                                                              return CustomDialog(
+                                                                title:
+                                                                    '${authProvider.lg[authProvider.language]["Delete Credit Card"]}',
+                                                                description:
+                                                                    '${authProvider.lg[authProvider.language]["Are you sure do you want to delete this card?"]}',
+                                                                button1:
+                                                                    ElevatedButton(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _creditCards
+                                                                            .loading =
+                                                                        true;
+                                                                    _creditCards
+                                                                        .notifyListeners();
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                    var delete = await _creditCards.deleteCard(
+                                                                        _creditCards
+                                                                            .list[
+                                                                                i]
+                                                                            .id);
+                                                                    if (delete ==
+                                                                        "deleted") {
 
-                                                                    MotionToast.delete(
-                                                                      title: "Cater me",
-                                                                      titleStyle: TextStyle(
-                                                                          fontWeight: FontWeight.bold),
-                                                                      description:
-                                                                      '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'
-                                                                      //  animationType: ANIMATION.FROM_LEFT,
-                                                                    ).show(this.context);
+                                                                      MotionToast.delete(
+                                                                        title: "Cater me",
+                                                                        titleStyle: TextStyle(
+                                                                            fontWeight: FontWeight.bold),
+                                                                        description:
+                                                                        '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'
+                                                                        //  animationType: ANIMATION.FROM_LEFT,
+                                                                      ).show(this.context);
 
-                                                                    // _scaffoldKey
-                                                                    //     .currentState
-                                                                    //     .showSnackBar(
-                                                                    //         SnackBar(
-                                                                    //   content: Text(
-                                                                    //       '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'),
+                                                                      // _scaffoldKey
+                                                                      //     .currentState
+                                                                      //     .showSnackBar(
+                                                                      //         SnackBar(
+                                                                      //   content: Text(
+                                                                      //       '${authProvider.lg[authProvider.language]["Credit card Deleted"]}'),
 
-                                                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                                      //   content: Text('Address Deleted'),
+                                                                        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                        //   content: Text('Address Deleted'),
 
-                                                                  } else {
-                                                                    _scaffoldKey
-                                                                        .currentState
-                                                                        .showSnackBar(
-                                                                            SnackBar(
-                                                                      content: Text(
-                                                                          '${authProvider.lg[authProvider.language]["Credit card cannot be deleted"]}'),
-                                                                    )
-                                                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                                            //   content: Text('Address Deleted'),
-                                                                            );
-                                                                  }
+                                                                    } else {
+                                                                      _scaffoldKey
+                                                                          .currentState
+                                                                          .showSnackBar(
+                                                                              SnackBar(
+                                                                        content: Text(
+                                                                            '${authProvider.lg[authProvider.language]["Credit card cannot be deleted"]}'),
+                                                                      )
+                                                                              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                              //   content: Text('Address Deleted'),
+                                                                              );
+                                                                    }
 
-                                                                  await _creditCards
-                                                                      .getAllCards();
-                                                                  _creditCards
-                                                                          .loading =
-                                                                      false;
-                                                                  _creditCards
-                                                                      .notifyListeners();
-                                                                },
-                                                                child: Text(
-                                                                    '${authProvider.lg[authProvider.language]["Yes"]}'),
-                                                              ),
-                                                              oneOrtwo: true,
-                                                              button2:
-                                                                  ElevatedButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      },
-                                                                      child: Text(
-                                                                          '${authProvider.lg[authProvider.language]["No"]}')),
-                                                            );
-                                                          });
-                                                    },
-                                                    icon: Icon(Icons.delete,
-                                                        color: Colors.red)),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 16.0),
-                                              child: Text(
-                                                "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 21,
-                                                    fontFamily:
-                                                        'CourrierPrime'),
+                                                                    await _creditCards
+                                                                        .getAllCards();
+                                                                    _creditCards
+                                                                            .loading =
+                                                                        false;
+                                                                    _creditCards
+                                                                        .notifyListeners();
+                                                                  },
+                                                                  child: Text(
+                                                                      '${authProvider.lg[authProvider.language]["Yes"]}'),
+                                                                ),
+                                                                oneOrtwo: true,
+                                                                button2:
+                                                                    ElevatedButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child: Text(
+                                                                            '${authProvider.lg[authProvider.language]["No"]}')),
+                                                              );
+                                                            });
+                                                      },
+                                                      icon: Icon(Icons.delete,
+                                                          color: Colors.red)),
+                                                ],
                                               ),
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: <Widget>[
-                                                _buildDetailsBlock(
-                                                  label:
-                                                      '${authProvider.lg[authProvider.language]["CARDHOLDER"]}',
-                                                  value: _creditCards
-                                                      .list[i].ownerName,
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 16.0),
+                                                child: Text(
+                                                  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 21,
+                                                      fontFamily:
+                                                          'CourrierPrime'),
                                                 ),
-                                                _buildDetailsBlock(
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  _buildDetailsBlock(
                                                     label:
-                                                        '${authProvider.lg[authProvider.language]["VALID THRU"]}',
-                                                    value:
-                                                        "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
-                                              ],
-                                            ),
-                                          ],
+                                                        '${authProvider.lg[authProvider.language]["CARDHOLDER"]}',
+                                                    value: _creditCards
+                                                        .list[i].ownerName,
+                                                  ),
+                                                  _buildDetailsBlock(
+                                                      label:
+                                                          '${authProvider.lg[authProvider.language]["VALID THRU"]}',
+                                                      value:
+                                                          "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}"),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    // _buildCreditCard(
-                                    //     color: LightColors.kLightYellow2,
-                                    //     cardExpiration: _creditCards.list[i].expiryDate,
-                                    //     cardHolder: _creditCards.list[i].ownerName,
-                                    //     cardNumber: "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}"),
+                                      // _buildCreditCard(
+                                      //     color: LightColors.kLightYellow2,
+                                      //     cardExpiration: _creditCards.list[i].expiryDate,
+                                      //     cardHolder: _creditCards.list[i].ownerName,
+                                      //     cardNumber: "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}"),
 
-                                    // Slidable(
-                                    //   key: UniqueKey(),
-                                    //   endActionPane: ActionPane(
-                                    //     motion:  BehindMotion(),
-                                    //     children:  [
-                                    //       Spacer(),
-                                    //
-                                    //
-                                    //     ],
-                                    //   ),
-                                    //   child: Row(
-                                    //     children: [
-                                    //
-                                    //     ],
-                                    //   ),
-                                    //
-                                    // )
-                                  ],
-                                ),
-                              );
-                            }, childCount: _creditCards.list.length),
-                          ),
-                          SliverToBoxAdapter(
-                            child: SizedBox(
-                              height: 15,
+                                      // Slidable(
+                                      //   key: UniqueKey(),
+                                      //   endActionPane: ActionPane(
+                                      //     motion:  BehindMotion(),
+                                      //     children:  [
+                                      //       Spacer(),
+                                      //
+                                      //
+                                      //     ],
+                                      //   ),
+                                      //   child: Row(
+                                      //     children: [
+                                      //
+                                      //     ],
+                                      //   ),
+                                      //
+                                      // )
+                                    ],
+                                  ),
+                                );
+                              }, childCount: _creditCards.list.length),
                             ),
-                          ),
+                            SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: 15,
+                              ),
+                            ),
                         ],
-                      ))
+                      ),
+                          ))
                     ],
                   ),
                 ),

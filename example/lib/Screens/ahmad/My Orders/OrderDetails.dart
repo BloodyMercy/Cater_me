@@ -81,11 +81,9 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                fontSize: 25),
           ),
           leading: IconButton(
-            icon: Image.asset(
-              'images/icon_back.png',
+            icon: Icon(Icons.arrow_back_rounded,
               color: Color.fromRGBO(86, 115, 116, 1),
-              height: 25,
-              width: 25,
+
             ),
             onPressed: () {
               Navigator.pop(context);

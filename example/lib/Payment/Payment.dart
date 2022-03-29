@@ -4,9 +4,7 @@ import 'dart:async';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/model/credit_card_model.dart';
-import 'package:credit_card/credit_card_form.dart';
-import 'package:credit_card/credit_card_model.dart';
-import 'package:credit_card/credit_card_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_checkout_payment/flutter_checkout_payment.dart';
@@ -14,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
 import '../language/language.dart';
+import 'CreditPligin.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -34,19 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     initPaymentSDK();
   }
 
-  // paymentsdk() async{
-  //  bool a= await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53");
-  //
-  //  print(a);
-  // bool b=  await FlutterCheckoutPayment.init(key: "sk_test_9397b67c-51a9-4bbf-924f-a3b663329b53", environment: Environment.LIVE);
-  //   print(b);
-  //  CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(number: "4242424242424242", name: "name", expiryMonth: "05", expiryYear: "21", cvv: "100");
-  //  print(response.token);
-  // // print(response.token);
-  // }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPaymentSDK() async {
+ Future<void> initPaymentSDK() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
      // bool isSuccess = await FlutterCheckoutPayment.init(key: "pk_3a939f67-bce1-4e9a-b83f-3b4d1e8b77f6");
@@ -75,11 +62,12 @@ class _HomeScreenState extends State<HomeScreen> {
               //SizedBox(height: 10),
              // Text("Checkout Init: $_isInit", style: TextStyle(fontSize: 18)),
               CreditCardWidget(
+
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
                 cardHolderName: cardNameHolder,
                 cvvCode: cvv,
-                textStyle: TextStyle(color: Colors.white,fontSize: 17),
+                textStyle: TextStyle(color: Colors.white,fontSize: 17,),
                 showBackView: cvvFocused,
                 height: 200,
                 width: 270,
