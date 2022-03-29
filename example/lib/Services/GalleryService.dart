@@ -49,10 +49,10 @@ class GalleryService{
       var response = await http.Response.fromStream(responses);
       if (response.statusCode == 200) {
         List<dynamic> responseData = json.decode(response.body);
-        print(responseData);
+        //print(responseData);
         print("----------");
         responseData.forEach((element) {
-          print(element);
+         // print(element);
           l.add(GalleryModel.fromJson(element));
         });
         return l;

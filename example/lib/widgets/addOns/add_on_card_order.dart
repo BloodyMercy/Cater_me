@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
+import '../../Screens/ahmad/My Orders/widgets/test_package_add_details.dart';
 import '../../language/language.dart';
 
 class AddOnCardOrder extends StatelessWidget {
@@ -40,23 +41,30 @@ class AddOnCardOrder extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Container(
-                            alignment: Alignment.topLeft,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.close,
-                                color: Color.fromRGBO(63, 85, 33, 1),
-                              ),
-                              onPressed: () => Navigator.of(context).pop(false),
-                            ),
-                          ),
-                          content: setupAlertDialoadContainer(context, addOn),
-                        );
-                      });
+                  Navigator.of(context)
+                      .push(
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          packageAdsDetailTestorder(addOn),
+                    ),
+                  );
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) {
+                  //       return AlertDialog(
+                  //         title: Container(
+                  //           alignment: Alignment.topLeft,
+                  //           child: IconButton(
+                  //             icon: Icon(
+                  //               Icons.close,
+                  //               color: Color.fromRGBO(63, 85, 33, 1),
+                  //             ),
+                  //             onPressed: () => Navigator.of(context).pop(false),
+                  //           ),
+                  //         ),
+                  //         content: setupAlertDialoadContainer(context, addOn),
+                  //       );
+                  //     });
                 },
                 child: Container(
                   // width: mediaQuery.size.width*0.8 ,

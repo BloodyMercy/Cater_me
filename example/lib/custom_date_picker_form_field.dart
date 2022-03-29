@@ -9,8 +9,8 @@ class CustomDatePickerFormField extends StatefulWidget {
   String label;
   String lang;
   String casee;
-  TextEditingController controller = TextEditingController();
-  TextEditingController controllerlan = TextEditingController();
+  TextEditingController controller ;
+  TextEditingController controllerlan ;
 
   CustomDatePickerFormField({this.label,this.lang, this.controller,this.controllerlan,this.casee});
 
@@ -32,15 +32,20 @@ TextEditingController lol =TextEditingController();
   String _chosenMonth = "";
   String _chosenYear = "";
   String _chosenDay = "";
-
+  DateTime beta = DateTime.now();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
     _chosenDate = DateTime.now();
-    widget.controller.text=_dateFormat.format(DateTime.now()).toString();
+    if(widget.controller.text==""){
+    widget.controller.text=_dateFormat.format(DateTime.now()).toString();}
+    beta =DateTime.parse(widget.controller.text);
+    if(widget.controllerlan.text==""){
     widget.controllerlan.text=_dateFormatlan.format(DateTime.now()).toString();
+
+    }
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
     _chosenDay = _dayFormat.format(_chosenDate);
@@ -80,7 +85,7 @@ maximumYear: DateTime.now().year,
                   widget.controller.text=_dateFormat.format(value).toString();
                   widget.controllerlan.text=_dateFormatlan.format(value).toString();
                 },
-                initialDateTime: DateTime(DateTime.now().year,DateTime.now().month,DateTime.now().day),
+                initialDateTime: beta,
               ):                  widget.casee=="order"?
                   CupertinoDatePicker(
 
@@ -128,7 +133,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    initialDateTime: DateTime.now(),
+                    initialDateTime: beta,
                   )
           );
         });

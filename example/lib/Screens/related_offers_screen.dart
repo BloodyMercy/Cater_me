@@ -14,6 +14,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../Providers/user.dart';
 import '../colors/colors.dart';
 import '../language/language.dart';
+import 'ahmad/My Orders/widgets/test_package_add_details.dart';
 
 class RelatedOffersScreen extends StatefulWidget {
   RelatedOffersScreen({Key key}) : super(key: key);
@@ -57,7 +58,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
 
 
-    return OrderAdsDetail(
+    return packageAdsDetailTestorder(
       pack.allpackagesorder[index],
     );
   }
@@ -143,25 +144,33 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           ])),
                     ),
                     onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Container(
-                                alignment: Alignment.topLeft,
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.close,
-                                    color: Color.fromRGBO(63, 85, 33, 1),
-                                  ),
-                                  onPressed: () =>
-                                      Navigator.of(context).pop(false),
-                                ),
-                              ),
-                              content: setupAlertDialoadContainer(
-                                  context, pack, index),
-                            );
-                          });
+
+                      Navigator.of(context)
+                          .push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            packageAdsDetailTestorder(pack.allpackagesorder[index]),
+                          ),
+                      );
+                      // showDialog(
+                      //     context: context,
+                      //     builder: (BuildContext context) {
+                      //       return AlertDialog(
+                      //         title: Container(
+                      //           alignment: Alignment.topLeft,
+                      //           child: IconButton(
+                      //             icon: Icon(
+                      //               Icons.close,
+                      //               color: Color.fromRGBO(63, 85, 33, 1),
+                      //             ),
+                      //             onPressed: () =>
+                      //                 Navigator.of(context).pop(false),
+                      //           ),
+                      //         ),
+                      //         content: setupAlertDialoadContainer(
+                      //             context, pack, index),
+                      //       );
+                      //     });
                     },
                   ),
                 ),
