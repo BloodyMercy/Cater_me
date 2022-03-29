@@ -28,7 +28,7 @@ class _CustomDatePickerFormFieldState extends State<CustomDatePickerFormField> {
   DateFormat _dayFormat = DateFormat('dd');
   DateFormat alpha = DateFormat.yMMMMd("ar");
 TextEditingController lol =TextEditingController();
-  DateTime _chosenDate = DateTime.now();
+  DateTime _chosenDate = DateTime.now().add(Duration(hours: 3));
   String _chosenMonth = "";
   String _chosenYear = "";
   String _chosenDay = "";
@@ -38,7 +38,7 @@ TextEditingController lol =TextEditingController();
     // TODO: implement initState
     super.initState();
     _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
-    _chosenDate = DateTime.now();
+    _chosenDate = DateTime.now().add(Duration(hours: 3));
     if(widget.controller.text==""){
     widget.controller.text=_dateFormat.format(DateTime.now().add(Duration(hours: 3))).toString();}
     beta =DateTime.parse(widget.controller.text);
