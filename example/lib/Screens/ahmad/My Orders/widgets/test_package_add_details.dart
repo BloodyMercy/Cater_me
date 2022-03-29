@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeleton_loader/skeleton_loader.dart';
 
 
@@ -75,13 +76,21 @@ class _OrderAdsDetailState extends State<packageAdsDetailTestorder> {
 
   bool selected = false;
   bool loading = false;
-
   getData() async {
-    final pack = Provider.of<PackagesProvider>(context, listen: false);
-    await pack.getpacakgesby(pack.packages.id);
+    SharedPreferences rifai=await SharedPreferences.getInstance();
+    setState(() {
+      count=widget.food.min;
+    });
     setState(() {
       loading = false;
+      lg=rifai.getString("locale");
     });
+    final pack = Provider.of<PackagesProvider>(context, listen: false);
+    await pack.getpacakgesby(pack.packages.id);
+
+
+
+
   }
 
   ItemOrders a = ItemOrders();
