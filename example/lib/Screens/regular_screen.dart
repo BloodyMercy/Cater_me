@@ -262,7 +262,7 @@ class _ReguarScreenState extends State<ReguarScreen> {
 
                                 items: address.listnamenumber,
                                 numberOfGuests: address.regular.numberOfGuests,
-                                selectedValue: 1,
+                               // selectedValue: 1,
                                 inputType: TextInputType.number,
                                 controller: address.numberofguestcontrollerstring,
                               ),

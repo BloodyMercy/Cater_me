@@ -330,6 +330,8 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                   orderCaterprovider.serviceId = 1;
                   address.form = false;
                   address.valueIndex = -1;
+                  address.numberofguestcontrollerstring.text="";
+                  address.numberofguestcontroller.text="";
                   // orderCaterprovider.
                   address.phone.text = "";
                   address.name.text = "";

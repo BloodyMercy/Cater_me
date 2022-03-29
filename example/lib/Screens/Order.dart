@@ -541,7 +541,7 @@ String url3ds="";
                                                                 .choosebillFriend[
                                                                     i]
                                                                 .price ==
-                                                            0) {
+                                                            0 && i!=0) {
                                                           _key.currentState
                                                               .showSnackBar(
                                                              SnackBar(
