@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "334510025178-ajbv4dn2dreq6mjdr4lu41o3svrdeepp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.megabee.caterme",
+            "certificate_hash": "3a7bb59aac9c25b1a316aa731fc371c541c88e6e"
+          }
+        },
+        {
+          "client_id": "334510025178-db155vq11lq1hvqvs8m2pfccjeqrs0rh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.megabee.caterme",
+            "certificate_hash": "c5139a73b1663bf2f5a215b0ba5f3a815ed96850"
+          }
+        },
+        {
           "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,121 @@
             {
               "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "334510025178-1k5td2k4r4mi1qtp0j1v8589h6ihb7am.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabe.drivercatermee"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334510025178:android:a5c686c8bce72ff30438e3",
+        "android_client_info": {
+          "package_name": "com.megabee.drivercaterme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEd1MPrvFsDWARRZiqeek-QJ1YbV6gNGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "334510025178-1k5td2k4r4mi1qtp0j1v8589h6ihb7am.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabe.drivercatermee"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334510025178:android:e14fa9e1158417fb0438e3",
+        "android_client_info": {
+          "package_name": "com.megabee.drivercaterme.drivercaterme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEd1MPrvFsDWARRZiqeek-QJ1YbV6gNGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "334510025178-1k5td2k4r4mi1qtp0j1v8589h6ihb7am.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabe.drivercatermee"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334510025178:android:faa443f46a2469ad0438e3",
+        "android_client_info": {
+          "package_name": "com.tayaragroup.caterme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEd1MPrvFsDWARRZiqeek-QJ1YbV6gNGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334510025178-816au0u0kvp6kffeidjncjp7sumgcefc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "334510025178-1k5td2k4r4mi1qtp0j1v8589h6ihb7am.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabe.drivercatermee"
+              }
             }
           ]
         }

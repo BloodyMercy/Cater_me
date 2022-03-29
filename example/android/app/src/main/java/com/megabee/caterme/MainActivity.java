@@ -1,4 +1,4 @@
-package com.megabee.caterme;
+package com.tayaragroup.caterme;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
