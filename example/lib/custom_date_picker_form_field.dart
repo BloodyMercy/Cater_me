@@ -41,6 +41,7 @@ TextEditingController lol =TextEditingController();
     _chosenDate = DateTime.now();
     if(widget.controller.text==""){
     widget.controller.text=_dateFormat.format(DateTime.now()).toString();}
+
     beta =DateTime.parse(widget.controller.text);
     if(widget.controllerlan.text==""){
     widget.controllerlan.text=_dateFormatlan.format(DateTime.now()).toString();
