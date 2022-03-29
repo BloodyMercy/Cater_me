@@ -291,11 +291,14 @@ class LanguageTr {
       "Could not sign user in":"تعذر تسجيل دخول المستخدم",
       "Login failed, user doesn't exist":"فشل تسجيل الدخول ، المستخدم غير موجود",
       "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
+      "No packages available":"لا قوائم طعام",
+
     },
 
 
 
     "en": {
+      "No packages available":"No packages available",
       "User doesn't exist or invalid credentials":"User doesn't exist or invalid credentials",
       "Login failed, user doesn't exist":"Login failed, user doesn't exist",
       "Could not sign user in":"Could not sign user in",
