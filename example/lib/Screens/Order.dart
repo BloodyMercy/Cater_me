@@ -804,7 +804,7 @@ Navigator.of(context).pop();
                                                       listen: false);
                                                   final order = Provider.of<OrderByIdProvider>(context, listen: false);
                                                  // await orderProvider.getotpverify(url3ds);
-                                                  avigator.pushReplacement(
+                                                  Navigator.pushReplacement(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
