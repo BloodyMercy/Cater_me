@@ -556,7 +556,7 @@ Center(child:  Padding(
             SizedBox(
               height: 30,
             ),
-            Container(
+            _order.orderbyId["creditCard"]!=null?   Container(
               color: Colors.white,
               height: height * 0.12,
               width: width,
@@ -584,7 +584,7 @@ Center(child:  Padding(
                   )
                 ],
               ),
-            ),
+            ):Container(),
             SizedBox(
               height: 30,
             ),
