@@ -280,7 +280,8 @@ class LanguageTr {
       "Contact info":"معلومات الاتصال",
       "Change contact info":"تغيير معلومات الاتصال",
       "change":"تغير",
-      "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك"
+      "View all packages,add your occassions,track your orders":"عرض جميع الطرود ، إضافة المناسبات الخاصة بك ، تتبع طلباتك",
+      "Photo":"الصور",
 
     },
 
@@ -559,6 +560,7 @@ class LanguageTr {
       "Wrong password":"Wrong password",
       'Start':'Start',
       "Type your answer here...":"Type your answer here...",
+      "Photo":"Photo",
 
 
 
