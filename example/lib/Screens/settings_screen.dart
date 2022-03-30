@@ -46,7 +46,9 @@ class _TABBarState extends State<TABBar> {
     // TODO: implement initState
     super.initState();
     getPersonalInfo();
-    getLanguage();
+   // getdata();
+  //  getLanguage();
+
   }
   getLanguage() async{
     final user=Provider.of<UserProvider>(context,listen:false);
@@ -58,9 +60,10 @@ class _TABBarState extends State<TABBar> {
   getPersonalInfo() async {
     final personalInfo =
         await Provider.of<UserProvider>(context, listen: false);
-    personalInfo.loading = true;
+    await personalInfo.getLanguage();
+    //personalInfo.loading = true;
     await personalInfo.getPersonalInfo();
-    personalInfo.loading = false;
+   // personalInfo.loading = false;
   }
 
   File image;
