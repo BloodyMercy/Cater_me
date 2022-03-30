@@ -293,7 +293,7 @@ class LanguageTr {
       "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
       "No packages available":"لا توجد حزم متاحة",
       "Name1":"الاسم",
-"view All":"مشاهدة الكل"
+"view All":"شوف زيادة"
     },
 
 
