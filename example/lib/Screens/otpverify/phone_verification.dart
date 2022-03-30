@@ -279,7 +279,7 @@ lang: authProvider.language,
                              // );
                              setState(() {
 
-                               smsOTP = value as String;
+                               smsOTP = value ;
                                if(authProvider.language=="ar"){
                                  smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
 

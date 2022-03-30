@@ -66,7 +66,7 @@ class _seeAllGalleryState extends State<seeAllGallery> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => FullPhotoPage(url:  _gallery.seeall[inde].link),
+                builder: (context) => FullPhotoPage(url:  _gallery.seeall,ind: inde),
               ),
             );
           },
