@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       bool isSuccess = await FlutterCheckoutPayment.init(key: "pk_3a939f67-bce1-4e9a-b83f-3b4d1e8b77f6");
-  //   bool isSuccess = await FlutterCheckoutPayment.init(key: "pk_test_3d1705b5-c273-44c2-a8f3-ed737498c04e");
+   //  bool isSuccess = await FlutterCheckoutPayment.init(key: "pk_test_3d1705b5-c273-44c2-a8f3-ed737498c04e");
       //bool isSuccess =  await FlutterCheckoutPayment.init(key: "${Keys.TEST_KEY}", environment: Environment.LIVE);
       print(isSuccess);
       if (mounted) setState(() => _isInit = "true");
@@ -156,7 +156,6 @@ print(response.token);
       final address = Provider.of<OrderCaterProvider>(context, listen: false);
 
 CreditCardsModel  card=  await address.sendtokeknpayemnt(response.token,cardNameHolder,cvv);
-     // Navigator.of(context).pop();
 if(card.id==0){
   Navigator.of(context).pop();
 

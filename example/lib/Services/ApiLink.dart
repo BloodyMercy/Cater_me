@@ -4,10 +4,10 @@
 
 class ApiLink{
 
-  static String host="https://caterme.azurewebsites.net/api/";
+  // static String host="https://caterme.azurewebsites.net/api/";
 
  //static String host="https://caterme.azurewebsites.net/api/";
-// static String host="https://catermedevelopment.azurewebsites.net/api/";
+static String host="https://catermedevelopment.azurewebsites.net/api/";
 // static String host="https://66a5-185-142-40-150.ngrok.io/api/";
  static String hostlocal="http://192.168.0.1/api/";//elna
  static String devicetoken  ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJwZXRlckBnbWFpbC5jb20iLCJVSUQiOiJhYTlhZTU0OS03ZGJlLTRkZDctYTI4MS02NDNlNjQ4ZWJjMjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJhYTlhZTU0OS03ZGJlLTRkZDctYTI4MS02NDNlNjQ4ZWJjMjIiLCJuYmYiOjE2NDMxMjEzNjMsImV4cCI6MTY0NTcxMzM2MywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMTAiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMxMCJ9.qeg6OJrOzi90Xpz9V3ZPAC7Lk-m50qDK8G8RtWQ6-AK";
