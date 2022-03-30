@@ -19,6 +19,7 @@ import '../../language/language.dart';
 class ConfirmLocation extends StatefulWidget {
   //String  idprof;
   ConfirmLocation();
+
   @override
   _ConfirmLocationState createState() => _ConfirmLocationState();
 }
@@ -41,6 +42,7 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
       bearing: 45.0,
     )));
   }
+
 // requestlocation() async{
 //   var status = await Permission.locationWhenInUse.status;
 //   if(!status.isGranted){
@@ -77,36 +79,15 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
 // }
   void getCurrentLocation() async {
     // await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-final address=Provider.of<AdressProvider>(context,listen: false);
+    final address = Provider.of<AdressProvider>(context, listen: false);
     await Geolocator.requestPermission();
 
-if(address.isUpdate){
-  double latitude=double.parse(address.latitudenumbercontroller.text);
-  double longitude=double.parse(address.longtituenumbercontroller.text);
-  setState(() {
-    currentLatLng =
-    new LatLng(latitude, longitude);
-  });
-
-
-  final GoogleMapController controller = await _controller.future;
-
-  controller.animateCamera(CameraUpdate.newCameraPosition(
-    CameraPosition(
-      bearing: 0,
-      target: currentLatLng,
-      zoom: 15.0,
-    ),
-  ));
-}else{
-    await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      forceAndroidLocationManager: true
-    )
-        .then((currLocation) async {
+    if (address.isUpdate) {
+      double latitude = double.parse(address.latitudenumbercontroller.text);
+      double longitude = double.parse(address.longtituenumbercontroller.text);
       setState(() {
         currentLatLng =
-            new LatLng(currLocation.latitude, currLocation.longitude);
+        new LatLng(latitude, longitude);
       });
 
 
@@ -119,13 +100,35 @@ if(address.isUpdate){
           zoom: 15.0,
         ),
       ));
+    } else {
+      await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+          forceAndroidLocationManager: true
+      )
+          .then((currLocation) async {
+        setState(() {
+          currentLatLng =
+          new LatLng(currLocation.latitude, currLocation.longitude);
+        });
 
-      address.latitudenumbercontroller.text = currentLatLng.latitude.toString();
-      address.longtituenumbercontroller.text =
-          currentLatLng.longitude.toString();
-     // await getcityname(currLocation.latitude, currLocation.longitude);
-    });
-}
+
+        final GoogleMapController controller = await _controller.future;
+
+        controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+            bearing: 0,
+            target: currentLatLng,
+            zoom: 15.0,
+          ),
+        ));
+
+        address.latitudenumbercontroller.text =
+            currentLatLng.latitude.toString();
+        address.longtituenumbercontroller.text =
+            currentLatLng.longitude.toString();
+        // await getcityname(currLocation.latitude, currLocation.longitude);
+      });
+    }
   }
 
   Future<void> getcityname(double a, double b) async {
@@ -133,7 +136,7 @@ if(address.isUpdate){
 
     List<Placemark> placemarks = await placemarkFromCoordinates(a, b);
     print(placemarks[0]);
-  //  for(int i=0;)
+    //  for(int i=0;)
     address.countrycontrollerstring.text = placemarks[0].country;
     address.countrycontroller.text = placemarks[0].country;
     address.citycontrollerstring.text = placemarks[0].locality;
@@ -145,6 +148,7 @@ if(address.isUpdate){
 
   String cityselected = "";
   LocationPermission permission = LocationPermission.denied;
+
   void checkPermission() async {
     permission = await Geolocator.checkPermission();
     if (permission.name == "denied") {
@@ -185,9 +189,10 @@ if(address.isUpdate){
 
   Uint8List myIcon;
   BitmapDescriptor mybit;
+
   @override
   initState() {
-  //  requestlocation();
+    //  requestlocation();
     checkPermission();
     getCurrentLocation();
 
@@ -212,15 +217,15 @@ if(address.isUpdate){
   }
 
   List<Addresses> _address = [];
-  void _addNewAddress(
-    String contactName,
-    String email,
-    String phoneNumber,
-    String country,
-    String city,
-    String addressTitle,
-    // String id,
-  ) {
+
+  void _addNewAddress(String contactName,
+      String email,
+      String phoneNumber,
+      String country,
+      String city,
+      String addressTitle,
+      // String id,
+      ) {
     final newAddress = Addresses(
       // image: image,
       contactName: contactName,
@@ -237,10 +242,16 @@ if(address.isUpdate){
     });
   }
 
+  bool loadingconf = false;
+
   bool loadingMap = true;
+
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     final address = Provider.of<AdressProvider>(context, listen: true);
     final user = Provider.of<UserProvider>(context, listen: true);
     return Scaffold(
@@ -248,14 +259,17 @@ if(address.isUpdate){
         floatingActionButton: Stack(children: [
           Align(
             alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
+            child: !loadingconf ? ElevatedButton(
               onPressed: () async {
-                _gotoLocation(
+                setState(() {
+                  loadingconf = true;
+                });
+                await _gotoLocation(
                     double.parse(
                         address.latitudenumbercontroller.text.toString()),
                     double.parse(
                         address.longtituenumbercontroller.text.toString()));
-                getcityname(
+                await getcityname(
                     double.parse(
                         address.latitudenumbercontroller.text.toString()),
                     double.parse(
@@ -265,7 +279,11 @@ if(address.isUpdate){
                 // address.isUpdate=false;
 
                 // address.createOrUpdate = 0;
-                if(!address.isUpdate) {
+                setState(() {
+                  loadingconf = false;
+                });
+                if (!address.isUpdate) {
+
                   address.addresstitlecontroller.clear();
                   address.buildingcontroller.clear();
                   address.floornumbercontroller.clear();
@@ -295,10 +313,10 @@ if(address.isUpdate){
                 minimumSize: MaterialStateProperty.all(Size(200, 50)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                )),
+                      borderRadius: BorderRadius.circular(5),
+                    )),
               ),
-            ),
+            ):CircularProgressIndicator()
           ),
         ]),
         backgroundColor: Color(0xFF3F5521),
@@ -346,33 +364,35 @@ if(address.isUpdate){
           ),
 
 
-              Padding(
-          padding: const EdgeInsets.only(top: 35,left: 13),
-          child:
-          Align(alignment: Alignment.topLeft,
-             child: Container(width: 50,height: 50,
-               child: Card(
-                    shape: RoundedRectangleBorder(
+          Padding(
+            padding: const EdgeInsets.only(top: 35, left: 13),
+            child:
+            Align(alignment: Alignment.topLeft,
+                child: Container(width: 50, height: 50,
+                  child: Card(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45),
 
-                    ),
-                  child: IconButton(onPressed:(){
-                    Navigator.of(context).pop(); }
-                    , icon: Icon(Icons.close,size: 25,),color:Color(0xFF3F5521),)),
-             )),),
-
+                      ),
+                      child: IconButton(onPressed: () {
+                        Navigator.of(context).pop();
+                      }
+                        ,
+                        icon: Icon(Icons.close, size: 25,),
+                        color: Color(0xFF3F5521),)),
+                )),),
 
 
           Align(
             alignment: Alignment.center,
             child: InkWell(
-              onTap: (){
-                getCurrentLocation();
-              },
-                child:Icon(
-              Icons.place,
-              size: 30,
-            )),
+                onTap: () {
+                  getCurrentLocation();
+                },
+                child: Icon(
+                  Icons.place,
+                  size: 30,
+                )),
           ),
           // Align(
           //   alignment: Alignment.bottomLeft,
