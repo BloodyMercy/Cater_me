@@ -644,15 +644,16 @@ class _HomePageState extends State<HomePage>
 
                         child:     ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: package.allgallery.length,
+                          itemCount: package.allgallery.length+1,
                           itemBuilder: (context, i) {
                             //  final cards = widget.card[i];
                             return           InkWell(
                               onTap: () {
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  package.allgallery , ind: i),
+                                    builder: (context) => FullPhotoPage(url:  package.allgallery , ind: package.allgallery.length<i?(i-1):i),
                                   ),
                                 );
                               },
