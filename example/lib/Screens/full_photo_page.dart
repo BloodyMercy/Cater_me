@@ -49,7 +49,8 @@ class _FullPhotoPageState extends State<FullPhotoPage> {
           return  Container(
 decoration: BoxDecoration( borderRadius: BorderRadius.all(Radius.circular(18))),
             child: PhotoView(
-
+              minScale: PhotoViewComputedScale.contained,
+              maxScale: PhotoViewComputedScale.covered * 2,
          tightMode: true,
 
               imageProvider: NetworkImage(widget.url[index].link,  ),
