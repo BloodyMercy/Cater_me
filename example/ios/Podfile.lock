@@ -439,8 +439,6 @@ PODS:
     - Flutter
   - flutter_pay (0.0.1):
     - Flutter
-  - flutter_pdfview (1.0.2):
-    - Flutter
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
@@ -553,7 +551,6 @@ DEPENDENCIES:
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_pay (from `.symlinks/plugins/flutter_pay/ios`)
-  - flutter_pdfview (from `.symlinks/plugins/flutter_pdfview/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - geocoding (from `.symlinks/plugins/geocoding/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
@@ -618,8 +615,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_pay:
     :path: ".symlinks/plugins/flutter_pay/ios"
-  flutter_pdfview:
-    :path: ".symlinks/plugins/flutter_pdfview/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
   geocoding:
@@ -668,7 +663,6 @@ SPEC CHECKSUMS:
   flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_pay: b9fda1c5be6ddc7af769f26553e9c648fc551263
-  flutter_pdfview: 25f53dd6097661e6395b17de506e6060585946bd
   fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Frames: 9090a075bd8fe0fc883e32e380cd09e41c9cc0bc

@@ -649,15 +649,19 @@ class _HomePageState extends State<HomePage>
                             //  final cards = widget.card[i];
                             return           InkWell(
                               onTap: () {
-
+                                package.allgallery.length>i?
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  package.allgallery , ind: package.allgallery.length<i?(i-1):i),
+                                    builder: (context) => FullPhotoPage(url:  package.allgallery , ind: i),
                                   ),
+                                ): Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => seeAllGallery()),
+
                                 );
                               },
-                              child: Padding(
+                              child:    package.allgallery.length>i?Padding(
                                 padding:  EdgeInsets.symmetric(horizontal: 4),
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -667,6 +671,21 @@ class _HomePageState extends State<HomePage>
                                   ),
                                   width: mediaQuery.size.width*0.43,
                                   height: mediaQuery.size.height*0.1,
+                                ),
+                              ):Padding(
+                                padding:  EdgeInsets.symmetric(horizontal: 4),
+                                child: Container(
+                                  decoration: BoxDecoration(
+
+                                    image: DecorationImage(image: NetworkImage(package.allgallery[i-1].link,),fit: BoxFit.cover,opacity: 0.3),
+                                    border: Border.all(style: BorderStyle.none),
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  width: mediaQuery.size.width*0.43,
+                                  height: mediaQuery.size.height*0.1,
+                                  child: Center(child: Text('${authProvider.lg[authProvider.language]["view All"]}',
+
+                                      style: TextStyle( fontSize: 16 ,color: Colors.white))),
                                 ),
                               ),
                             );
