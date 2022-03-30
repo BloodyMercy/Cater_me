@@ -17,14 +17,17 @@ class FullPhotoPage extends StatefulWidget {
   @override
   State<FullPhotoPage> createState() => _FullPhotoPageState();
 }
-
 class _FullPhotoPageState extends State<FullPhotoPage> {
+
+
+  PageController cont ;
   @override
   void initState() {
+cont=PageController(initialPage: widget.ind);
     // TODO: implement initState
     super.initState();
-    widget.url.insert(0, widget.url[widget.ind]);
-    widget.url.removeAt(widget.ind);
+    // widget.url.insert(0, widget.url[widget.ind]);
+    // widget.url.removeAt(widget.ind);
   }
   @override
 
@@ -32,7 +35,7 @@ class _FullPhotoPageState extends State<FullPhotoPage> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return Scaffold(
-      backgroundColor:  Color(0xFF3F5521),
+      backgroundColor:  Colors.black,
       appBar: AppBar(
         backgroundColor: Color(0xFF3F5521),
         title: Text(
@@ -44,14 +47,18 @@ class _FullPhotoPageState extends State<FullPhotoPage> {
       body:
         PageView.builder(
           itemCount: widget.url.length,
+          controller:cont ,
+
 
           itemBuilder: (context, index) {
           return  Container(
-
+decoration: BoxDecoration( borderRadius: BorderRadius.all(Radius.circular(18))),
             child: PhotoView(
-              minScale: 1,
-              maxScale: 2,
-              imageProvider: NetworkImage(widget.url[index].link),
+              minScale: PhotoViewComputedScale.contained,
+              maxScale: PhotoViewComputedScale.covered * 2,
+
+
+              imageProvider: NetworkImage(widget.url[index].link,  ),
             ),
             );
         },)
