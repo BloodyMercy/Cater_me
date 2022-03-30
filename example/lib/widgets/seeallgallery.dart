@@ -78,16 +78,13 @@ class _seeAllGalleryState extends State<seeAllGallery> {
             ),
             child: Container(
               decoration: BoxDecoration(
+                image: DecorationImage(image: NetworkImage(_gallery.seeall[inde].link,
+                ),  fit: BoxFit.cover,),
                 border: Border.all(style: BorderStyle.none),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               width: mediaQuery.size.width /3,
               height: mediaQuery.size.height /5,
-              child:Image.network(_gallery.seeall[inde].link,
-                fit: BoxFit.fill,
-                width: mediaQuery.size.width * 0.3,
-                height: mediaQuery.size.height * 0.50,
-              ),
             ),
           ),
         );

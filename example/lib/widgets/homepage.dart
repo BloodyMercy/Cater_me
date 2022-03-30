@@ -656,17 +656,17 @@ class _HomePageState extends State<HomePage>
                                   ),
                                 );
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(style: BorderStyle.none),
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                              child: Padding(
+                                padding:  EdgeInsets.symmetric(horizontal: 4),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(image: NetworkImage(package.allgallery[i].link,),fit: BoxFit.cover,),
+                                    border: Border.all(style: BorderStyle.none),
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  width: mediaQuery.size.width*0.43,
+                                  height: mediaQuery.size.height*0.1,
                                 ),
-                                width: 150,
-                                height: 150,
-                                child:Image.network(package.allgallery[i].link,
-                                  fit: BoxFit.fitHeight,
-                                  width: 150,
-                                  height: 90, ),
                               ),
                             );
                           },
