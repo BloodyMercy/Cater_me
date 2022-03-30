@@ -685,7 +685,7 @@ class _HomePageState extends State<HomePage>
                                   height: mediaQuery.size.height*0.1,
                                   child: Center(child: Text('${authProvider.lg[authProvider.language]["view All"]}',
 
-                                      style: TextStyle( fontSize: 16 ,color: Colors.white))),
+                                      style: TextStyle( fontSize: 19 ,color: colorCustom))),
                                 ),
                               ),
                             );
