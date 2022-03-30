@@ -32,7 +32,7 @@ class _FullPhotoPageState extends State<FullPhotoPage> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     return Scaffold(
-      backgroundColor:  Color(0xFF3F5521),
+      backgroundColor:  Colors.black,
       appBar: AppBar(
         backgroundColor: Color(0xFF3F5521),
         title: Text(
@@ -47,11 +47,12 @@ class _FullPhotoPageState extends State<FullPhotoPage> {
 
           itemBuilder: (context, index) {
           return  Container(
-
+decoration: BoxDecoration( borderRadius: BorderRadius.all(Radius.circular(18))),
             child: PhotoView(
-              minScale: 1,
-              maxScale: 2,
-              imageProvider: NetworkImage(widget.url[index].link),
+
+         tightMode: true,
+
+              imageProvider: NetworkImage(widget.url[index].link,  ),
             ),
             );
         },)
