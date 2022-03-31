@@ -47,7 +47,6 @@
 	<string>CaterMe would like access to your photo gallery to upload your profile photo</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

@@ -277,7 +277,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
                               for(int c=0; c<details.choosebillFriend.length; c++){
                                 TextEditingController alpha = TextEditingController();
-                                alpha.text=(details.totale/details.choosebillFriend.length).toString();
+                                alpha.text=(details.totale/details.choosebillFriend.length).floor().toString();
                                 details.addcontroller(alpha);
                                 details.updateprocefreind((details.totale/details.choosebillFriend.length).floor().toDouble(), c);
 

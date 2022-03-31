@@ -34,6 +34,8 @@ class _CartCardState extends State<CartCard> {
   }
   @override
   Widget build(BuildContext context) {
+
+    final details = Provider.of<OrderCaterProvider>(context, listen: true);
     final _cartP=Provider.of<OrderCaterProvider>(context,listen: false);
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     return ListTile(
@@ -169,6 +171,15 @@ class _CartCardState extends State<CartCard> {
 
                       }
                     //  _cart.editquantity(_itemCount,widget.index);
+                      details.controllers.clear();
+
+                      for(int c=0; c<details.choosebillFriend.length; c++){
+                        TextEditingController alpha = TextEditingController();
+                        alpha.text=(details.totale/details.choosebillFriend.length).floor().toString();
+                        details.addcontroller(alpha);
+                        details.updateprocefreind((details.totale/details.choosebillFriend.length).floor().toDouble(), c);
+
+                      }
                     },
                   )),
 
@@ -220,7 +231,15 @@ class _CartCardState extends State<CartCard> {
 
                         _cartP.modifyItems(_itemCount, widget.index);
                       }
+                      details.controllers.clear();
 
+                      for(int c=0; c<details.choosebillFriend.length; c++){
+                        TextEditingController alpha = TextEditingController();
+                        alpha.text=(details.totale/details.choosebillFriend.length).floor().toString();
+                        details.addcontroller(alpha);
+                        details.updateprocefreind((details.totale/details.choosebillFriend.length).floor().toDouble(), c);
+
+                      }
 
                     }),
               )
