@@ -52,11 +52,9 @@ class _TrackingOrderState extends State<TrackingOrder> {
         centerTitle: true,
         title: Text('${authProvider.lg[authProvider.language][ "Tracking"]}'),
         leading:  IconButton(
-          icon: Image.asset(
-            'images/icon_back.png',
-            color: Color.fromRGBO(86, 115, 116, 1),
-            height: 25,
-            width: 25,
+          icon: Icon(Icons.arrow_back_rounded,
+            color:Colors.white,size: 30,
+
           ),
           onPressed: () {
             Navigator.pop(context);
