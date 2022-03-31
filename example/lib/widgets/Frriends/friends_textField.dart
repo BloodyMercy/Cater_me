@@ -3,6 +3,7 @@ import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
@@ -37,6 +38,18 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   bool loading = false;
   var _key = GlobalKey<ScaffoldState>();
+  static const platform =
+  const MethodChannel('flutter_contacts/launch_contacts');
+
+  void launchContacts() async {
+    try {
+      await platform.invokeMethod('launch');
+    } on PlatformException catch (e) {
+      print("Failed to launch contacts: ${e.message}");
+    }
+    setState(() {
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);

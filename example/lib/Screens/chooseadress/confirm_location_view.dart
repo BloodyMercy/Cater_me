@@ -103,9 +103,8 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
     } else {
       await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high,
-          forceAndroidLocationManager: true
-      )
-          .then((currLocation) async {
+        //  forceAndroidLocationManager: true
+      ).then((currLocation) async {
         setState(() {
           currentLatLng =
           new LatLng(currLocation.latitude, currLocation.longitude);
@@ -129,6 +128,9 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
         // await getcityname(currLocation.latitude, currLocation.longitude);
       });
     }
+    setState(() {
+
+    });
   }
 
   Future<void> getcityname(double a, double b) async {
@@ -385,14 +387,22 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
 
           Align(
             alignment: Alignment.center,
-            child: InkWell(
-                onTap: () {
-                  getCurrentLocation();
+            child: !loadingconf?
+            InkWell(
+
+                onTap: () async {
+                  setState(() {
+                    loadingconf==true;
+                  });
+                  await getCurrentLocation();
+                  setState(() {
+                    loadingconf==false;
+                  });
                 },
                 child: Icon(
                   Icons.place,
                   size: 30,
-                )),
+                )): CircularProgressIndicator()
           ),
           // Align(
           //   alignment: Alignment.bottomLeft,
