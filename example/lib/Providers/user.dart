@@ -106,8 +106,6 @@ bool _loadinglanguage=false;
   }
 
 
-
-
   String get birthDate => _birthDate;
 
   set birthDate(String value) {

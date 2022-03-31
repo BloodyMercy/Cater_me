@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
+import '../../Screens/otpverify/widget/country_picker.dart';
 import '../../language/language.dart';
 
 class FreindsTextField extends StatefulWidget {
@@ -19,8 +20,11 @@ class FreindsTextField extends StatefulWidget {
 }
 
 class _FreindsTextFieldState extends State<FreindsTextField> {
+  var _dialCode="";
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  void _callBackFunction(String name, String dialCode, String flag) {
+    _dialCode = dialCode;
+  }
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -166,6 +170,12 @@ validator: (value){
                                 color: focusnode.hasFocus
                                     ? Color(0xFF3F5521)
                                     : Colors.grey),
+                            prefixIcon:CountryPicker(
+                          _callBackFunction,
+                          '${authProvider.lg[authProvider.language]["Select Country"]}',
+                          Theme.of(context).primaryColor,
+                          Colors.white,
+                        ),
                             labelText: '${authProvider.lg[authProvider.language]['Phone number']}'
                             ,
                             hintStyle: TextStyle(

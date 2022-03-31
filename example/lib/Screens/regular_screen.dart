@@ -14,6 +14,7 @@ import '../Providers/user.dart';
 import '../custom_date_picker_form_field.dart';
 import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
+import 'otpverify/widget/country_picker.dart';
 
 class ReguarScreen extends StatefulWidget {
   ReguarScreen(List<FriendModel> friends);
@@ -27,7 +28,10 @@ class ReguarScreen extends StatefulWidget {
 
 class _ReguarScreenState extends State<ReguarScreen> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  var _dialCode="";
+  void _callBackFunction(String name, String dialCode, String flag) {
+    _dialCode = dialCode;
+  }
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -412,6 +416,12 @@ class _ReguarScreenState extends State<ReguarScreen> {
                                               ? Color(0xFF3F5521)
                                               : Colors.grey),
                                       labelText: '${authProvider.lg[authProvider.language][ "Phone number"]}',
+                                      prefixIcon:      CountryPicker(
+                                        _callBackFunction,
+                                        '${authProvider.lg[authProvider.language]["Select Country"]}',
+                                        Theme.of(context).primaryColor,
+                                        Colors.white,
+                                      ),
                                       hintStyle: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15,

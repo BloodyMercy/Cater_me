@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../Screens/otpverify/widget/country_picker.dart';
 import '../../language/language.dart';
 
 class editfriend extends StatefulWidget {
@@ -22,7 +23,10 @@ class editfriend extends StatefulWidget {
 
 class _FreindsTextFieldState extends State<editfriend> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  var _dialCode="";
+  void _callBackFunction(String name, String dialCode, String flag) {
+    _dialCode = dialCode;
+  }
   bool validate() {
     if (formkey.currentState != null) {
       if (formkey.currentState.validate()) {
@@ -48,7 +52,7 @@ class _FreindsTextFieldState extends State<editfriend> {
 
     final friends = Provider.of<FriendsProvider>(context, listen: false);
     friends.namecontroller.text=widget.alpha.name;
-    // friends.emailcontroller.text=widget.alpha.email;
+    friends.emailcontroller.text=widget.alpha.email;
     friends.phonecontroller.text=widget.alpha.phoneNumber;
     setState(() {
 
@@ -57,6 +61,7 @@ class _FreindsTextFieldState extends State<editfriend> {
   @override
   Widget build(BuildContext context) {
     FocusNode focusnode =FocusNode();
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     final personalInfo = Provider.of<UserProvider>(context, listen: true);
 
@@ -88,8 +93,8 @@ class _FreindsTextFieldState extends State<editfriend> {
                   SizedBox(height: _mediaQueryText * 0.06),
                   customTextField(read: false,label:'${personalInfo.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
 
-                  //     SizedBox(height: _mediaQueryText * 0.02),
-                  // customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
+                      SizedBox(height: _mediaQueryText * 0.02),
+                  customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
 
                   Container(
                       padding: const EdgeInsets.all(10.0),
@@ -114,6 +119,12 @@ class _FreindsTextFieldState extends State<editfriend> {
                                 color:
                                 focusnode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
                             labelText: '${personalInfo.lg[personalInfo.language]["Phone number"]}',
+                            prefixIcon:      CountryPicker(
+                              _callBackFunction,
+                              '${authProvider.lg[authProvider.language]["Select Country"]}',
+                              Theme.of(context).primaryColor,
+                              Colors.white,
+                            ),
                             hintStyle:TextStyle(
                                 color: Colors.black87,
                                 fontSize: 15,
@@ -167,7 +178,7 @@ class _FreindsTextFieldState extends State<editfriend> {
                         });
                     //    final friends = Provider.of<FriendsProvider>(context, listen: false);
                         friends.namecontroller.text="";
-                        // friends.emailcontroller.text="";
+                        friends.emailcontroller.text="";
                         friends.phonecontroller.text="";
                         Navigator.of(context).pop();
                       }
