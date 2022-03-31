@@ -12,6 +12,7 @@ import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/language_picker.dart';
+import 'package:CaterMe/pdf/lol.dart' as lol;
 import 'package:CaterMe/webview/webview.dart';
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
 import 'package:CaterMe/widgets/homepage.dart';
@@ -22,6 +23,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -47,7 +49,7 @@ import 'notificaition/services/notification_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
+  await Permission.contacts.request();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 

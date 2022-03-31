@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart'as not;
+import 'package:path_provider/path_provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -77,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await _showProgressNotification();
+
         },
         backgroundColor: colorCustom,
         tooltip: 'Download Notification',
@@ -86,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _showProgressNotification() async {
-  //  downloadFile();
+ downloadFile();
     const int maxProgress = 5;
     for (int i = 0; reviced <all; i++) {
       await Future<void>.delayed(const Duration(seconds: 1), () async {
@@ -116,9 +118,12 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
   }
-  void downloadFile() {
+String appDocPath;
+  void downloadFile() async  {
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+     appDocPath = appDocDir.path+"q";
     Dio dio = Dio();
-    dio.download("https://yaz.in/assets/flutter/Flutter%20Cheat%20Sheet.pdf", '"a"/"b"',
+    dio.download("https://yaz.in/assets/flutter/Flutter%20Cheat%20Sheet.pdf", (appDocPath),
         onReceiveProgress:  (rec,total) {
       setState(() {
         reviced=rec ;

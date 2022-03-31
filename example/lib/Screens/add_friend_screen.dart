@@ -2,6 +2,7 @@ import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/widgets/Frriends/friends_list.dart';
 import 'package:CaterMe/widgets/Frriends/friends_textField.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -63,10 +64,22 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
       loading = false;
     });
   }
+getcontacts() async {
+  Iterable<Contact> contacts = await ContactsService.getContacts();
+  Iterable<Item> phones = contacts.first.phones;
 
+  if (phones != null && phones.isNotEmpty) {
+    phoneNumber = phones.first.value;
+    setState(() {
+
+    });
+  }
+}
+  String phoneNumber= "";
   @override
   void initState() {
-    getData();
+    getData();getcontacts();
+
     super.initState();
   }
 
@@ -101,7 +114,9 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           elevation: 0,
 
           centerTitle: true,
-          title: Text('${authProvider.lg[authProvider.language]['Add New Friend']}'
+          title: Text(
+            phoneNumber
+            // '${authProvider.lg[authProvider.language]['Add New Friend']}'
             ,
             style: Theme.of(context).textTheme.headline1,
           ),
