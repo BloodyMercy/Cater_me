@@ -7,6 +7,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
 import '../NavigationBar/navigation_bar.dart';
+import '../Screens/otpverify/widget/country_picker.dart';
 import '../customBirthdayPicker.dart';
 import '../language/language.dart';
 
@@ -29,7 +30,10 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   bool loading = true;
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  var _dialCode="";
+  void _callBackFunction(String name, String dialCode, String flag) {
+    _dialCode = dialCode;
+  }
   getData() async {
     final personalInfo = Provider.of<UserProvider>(context, listen: false);
     await personalInfo.getPersonalInfo();
@@ -57,6 +61,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   @override
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
     final address = Provider.of<AdressProvider>(context, listen: true);
     final user = Provider.of<UserProvider>(context, listen: true);
 
@@ -207,7 +212,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             TextFormField(
                               controller: user.phoneNumber,
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.phone),
+                                prefixIcon:      CountryPicker(
+                                  _callBackFunction,
+                                  '${authProvider.lg[authProvider.language]["Select Country"]}',
+                                  Theme.of(context).primaryColor,
+                                  Colors.white,
+                                ),
                                 contentPadding: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width *
                                         0.01),

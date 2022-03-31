@@ -21,9 +21,9 @@ Packages _packages=new Packages();
  List<Package> _seeallpackages = [];
 
 
-bool get reviewPending => _reviewPending;
+bool get getReviewPending => _reviewPending;
 
-  set reviewPending(bool value) {
+  set setReviewPending(bool value) {
     _reviewPending = value;
   }
 

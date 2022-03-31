@@ -263,8 +263,12 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
             duration: Duration(milliseconds: 500),
             child: buildLoading(context),
           ),
-          AnimatedOpacity(opacity: packageprovider.reviewPending
-              ? 1: 0, duration: Duration(milliseconds: 500), child:
+          AnimatedOpacity(opacity:
+           packageprovider.getReviewPending
+               ?
+          1
+               : 0
+              , duration: Duration(milliseconds: 500), child:
           // showDialog(
           //     context: context,
           //     builder: (BuildContext context) {
@@ -293,23 +297,45 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                             textAlign: TextAlign.center,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
-                                top: mediaQuery.size.height *
-                                    0.05),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            Review()));
-                              },
-                              child: Text(
-                                'Rate your order',
-                                style: TextStyle(
-                                    color: Colors.white),
-                              ),
+                            padding:  EdgeInsets.only(top:mediaQuery.size.height*0.02),
+                            child: Divider(
+                              color: Colors.white,
                             ),
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(top:mediaQuery.size.height*0.01),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding:  EdgeInsets.symmetric(horizontal: mediaQuery.size.width*0.05),
+                                  child: TextButton(
+                                    child: Text('Cancel', style: TextStyle(
+                                        color: Colors.white),
+                                    ),
+                                    onPressed: (){setState(() {
+                                      packageprovider.setReviewPending=false;
+                                    });
+                                    },
+                                  ),
+                                ),
+                                Divider(
+                                  color: Colors.white,
+                                ),
+                                TextButton(
+                                  child: Text('Rate your order', style: TextStyle(
+                                      color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Review()));
+                                  },
+                                ),
+                              ],),
                           )
+
                         ],
                       ),
                     ),

@@ -256,133 +256,134 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
         .height;
     final address = Provider.of<AdressProvider>(context, listen: true);
     final user = Provider.of<UserProvider>(context, listen: true);
-    return Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Stack(children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: !loadingconf ? ElevatedButton(
-              onPressed: () async {
-                setState(() {
-                  loadingconf = true;
-                });
-                await _gotoLocation(
-                    double.parse(
-                        address.latitudenumbercontroller.text.toString()),
-                    double.parse(
-                        address.longtituenumbercontroller.text.toString()));
-                await getcityname(
-                    double.parse(
-                        address.latitudenumbercontroller.text.toString()),
-                    double.parse(
-                        address.longtituenumbercontroller.text.toString()));
-                //address.loading=true;
-                // address.notifyListeners();
-                // address.isUpdate=false;
+    return SafeArea(
+      child: Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Stack(children: [
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: !loadingconf ? ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    loadingconf = true;
+                  });
+                  await _gotoLocation(
+                      double.parse(
+                          address.latitudenumbercontroller.text.toString()),
+                      double.parse(
+                          address.longtituenumbercontroller.text.toString()));
+                  await getcityname(
+                      double.parse(
+                          address.latitudenumbercontroller.text.toString()),
+                      double.parse(
+                          address.longtituenumbercontroller.text.toString()));
+                  //address.loading=true;
+                  // address.notifyListeners();
+                  // address.isUpdate=false;
 
-                // address.createOrUpdate = 0;
-                setState(() {
-                  loadingconf = false;
-                });
-                if (!address.isUpdate) {
+                  // address.createOrUpdate = 0;
+                  setState(() {
+                    loadingconf = false;
+                  });
+                  if (!address.isUpdate) {
 
-                  address.addresstitlecontroller.clear();
-                  address.buildingcontroller.clear();
-                  address.floornumbercontroller.clear();
-                }
-                // address.countrycontroller.clear();
-                //  address.citycontrollerstring.clear();
-                // address.streetcontroller.clear();
+                    address.addresstitlecontroller.clear();
+                    address.buildingcontroller.clear();
+                    address.floornumbercontroller.clear();
+                  }
+                  // address.countrycontroller.clear();
+                  //  address.citycontrollerstring.clear();
+                  // address.streetcontroller.clear();
 
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (_) {
-                      return AddressesTextField(_addNewAddress, context);
-                    });
-              },
-              child: Text(
-                '${user.lg[user.language][ "Confirm location"]}',
-                style: const TextStyle(
-                    fontFamily: 'Ubuntu',
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF3F5521)),
-              ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  Color.fromRGBO(255, 255, 255, 1.0),
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (_) {
+                        return AddressesTextField(_addNewAddress, context);
+                      });
+                },
+                child: Text(
+                  '${user.lg[user.language][ "Confirm location"]}',
+                  style: const TextStyle(
+                      fontFamily: 'Ubuntu',
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF3F5521)),
                 ),
-                minimumSize: MaterialStateProperty.all(Size(200, 50)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    )),
-              ),
-            ):CircularProgressIndicator()
-          ),
-        ]),
-        backgroundColor: Color(0xFF3F5521),
-        body: Stack(children: <Widget>[
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Color.fromRGBO(255, 255, 255, 1.0),
+                  ),
+                  minimumSize: MaterialStateProperty.all(Size(200, 50)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      )),
+                ),
+              ):CircularProgressIndicator()
+            ),
+          ]),
+          backgroundColor: Color(0xFF3F5521),
+          body: Stack(children: <Widget>[
 
 
-          GoogleMap(
-            myLocationEnabled: true,
-            myLocationButtonEnabled: true,
-            zoomControlsEnabled: false,
-            //   markers: Set<Marker>.of(
-            //     <Marker>[
-            //   Marker(
-            //   onTap: () {
-            // print('Tapped');
-            // },
-            //     draggable: true,
-            //     markerId: MarkerId('Marker'),
-            //     // icon: mybit,
-            //     position: LatLng(currentLatLng.latitude, currentLatLng.longitude),
-            //     onDragEnd: ((newPosition) {
-            //       print(newPosition.latitude);
-            //       print(newPosition.longitude);
-            //       address.latitudenumbercontroller.text=newPosition.latitude.toString();
-            //       address.longtituenumbercontroller.text=newPosition.longitude.toString();
-            //     })),
-            //
-            //     ],
-            //   ),
-            onCameraMove: (position) {
-              if (position != null) {
-                address.latitudenumbercontroller.text =
-                    position.target.latitude.toString();
-                address.longtituenumbercontroller.text =
-                    position.target.longitude.toString();
-              } // setState(() {
-              //   markers.add(Marker(markerId: markerId,position: position.target));
-              // });
-            },
-            initialCameraPosition: CameraPosition(target: currentLatLng),
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-              //  controller.setMapStyle('[  {    "elementType": "geometry",    "stylers": [      {        "color": "#212121"      }    ]  },  {    "elementType": "labels.icon",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "elementType": "labels.text.stroke",    "stylers": [      {        "color": "#212121"      }    ]  },  {    "featureType": "administrative",    "elementType": "geometry",    "stylers": [      {        "color": "#757575"      },      {        "visibility": "off"      }    ]  },  {    "featureType": "administrative.country",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#9e9e9e"      }    ]  },  {    "featureType": "administrative.land_parcel",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "administrative.locality",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#bdbdbd"      }    ]  },  {    "featureType": "poi",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "poi",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "featureType": "poi.park",    "elementType": "geometry",    "stylers": [      {        "color": "#181818"      }    ]  },  {    "featureType": "poi.park",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#616161"      }    ]  },  {    "featureType": "poi.park",    "elementType": "labels.text.stroke",    "stylers": [      {        "color": "#1b1b1b"      }    ]  },  {    "featureType": "road",    "elementType": "geometry.fill",    "stylers": [      {        "color": "#2c2c2c"      }    ]  },  {    "featureType": "road",    "elementType": "labels.icon",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "road",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#8a8a8a"      }    ]  },  {    "featureType": "road.arterial",    "elementType": "geometry",    "stylers": [      {        "color": "#373737"      }    ]  },  {    "featureType": "road.highway",    "elementType": "geometry",    "stylers": [      {        "color": "#3c3c3c"      }    ]  },  {    "featureType": "road.highway.controlled_access",    "elementType": "geometry",    "stylers": [      {        "color": "#4e4e4e"      }    ]  },  {    "featureType": "road.local",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#616161"      }    ]  },  {    "featureType": "transit",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "transit",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "featureType": "water",    "elementType": "geometry",    "stylers": [      {        "color": "#000000"      }    ]  },  {    "featureType": "water",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#3d3d3d"      }    ]  }]');
-            },
-          ),
+            GoogleMap(
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
+              zoomControlsEnabled: false,
+              //   markers: Set<Marker>.of(
+              //     <Marker>[
+              //   Marker(
+              //   onTap: () {
+              // print('Tapped');
+              // },
+              //     draggable: true,
+              //     markerId: MarkerId('Marker'),
+              //     // icon: mybit,
+              //     position: LatLng(currentLatLng.latitude, currentLatLng.longitude),
+              //     onDragEnd: ((newPosition) {
+              //       print(newPosition.latitude);
+              //       print(newPosition.longitude);
+              //       address.latitudenumbercontroller.text=newPosition.latitude.toString();
+              //       address.longtituenumbercontroller.text=newPosition.longitude.toString();
+              //     })),
+              //
+              //     ],
+              //   ),
+              onCameraMove: (position) {
+                if (position != null) {
+                  address.latitudenumbercontroller.text =
+                      position.target.latitude.toString();
+                  address.longtituenumbercontroller.text =
+                      position.target.longitude.toString();
+                } // setState(() {
+                //   markers.add(Marker(markerId: markerId,position: position.target));
+                // });
+              },
+              initialCameraPosition: CameraPosition(target: currentLatLng),
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+                //  controller.setMapStyle('[  {    "elementType": "geometry",    "stylers": [      {        "color": "#212121"      }    ]  },  {    "elementType": "labels.icon",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "elementType": "labels.text.stroke",    "stylers": [      {        "color": "#212121"      }    ]  },  {    "featureType": "administrative",    "elementType": "geometry",    "stylers": [      {        "color": "#757575"      },      {        "visibility": "off"      }    ]  },  {    "featureType": "administrative.country",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#9e9e9e"      }    ]  },  {    "featureType": "administrative.land_parcel",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "administrative.locality",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#bdbdbd"      }    ]  },  {    "featureType": "poi",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "poi",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "featureType": "poi.park",    "elementType": "geometry",    "stylers": [      {        "color": "#181818"      }    ]  },  {    "featureType": "poi.park",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#616161"      }    ]  },  {    "featureType": "poi.park",    "elementType": "labels.text.stroke",    "stylers": [      {        "color": "#1b1b1b"      }    ]  },  {    "featureType": "road",    "elementType": "geometry.fill",    "stylers": [      {        "color": "#2c2c2c"      }    ]  },  {    "featureType": "road",    "elementType": "labels.icon",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "road",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#8a8a8a"      }    ]  },  {    "featureType": "road.arterial",    "elementType": "geometry",    "stylers": [      {        "color": "#373737"      }    ]  },  {    "featureType": "road.highway",    "elementType": "geometry",    "stylers": [      {        "color": "#3c3c3c"      }    ]  },  {    "featureType": "road.highway.controlled_access",    "elementType": "geometry",    "stylers": [      {        "color": "#4e4e4e"      }    ]  },  {    "featureType": "road.local",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#616161"      }    ]  },  {    "featureType": "transit",    "stylers": [      {        "visibility": "off"      }    ]  },  {    "featureType": "transit",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#757575"      }    ]  },  {    "featureType": "water",    "elementType": "geometry",    "stylers": [      {        "color": "#000000"      }    ]  },  {    "featureType": "water",    "elementType": "labels.text.fill",    "stylers": [      {        "color": "#3d3d3d"      }    ]  }]');
+              },
+            ),
 
 
-          Padding(
-            padding: const EdgeInsets.only(top: 35, left: 13),
-            child:
-            Align(alignment: Alignment.topLeft,
-                child: Container(width: 50, height: 50,
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(45),
+            Padding(
+              padding: const EdgeInsets.only(top: 35, left: 13),
+              child:
+              Align(alignment: Alignment.topLeft,
+                  child: Container(width: 50, height: 50,
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(45),
 
-                      ),
-                      child: IconButton(onPressed: () {
-                        Navigator.of(context).pop();
-                      }
-                        ,
-                        icon: Icon(Icons.close, size: 25,),
-                        color: Color(0xFF3F5521),)),
-                )),),
+                        ),
+                        child: IconButton(onPressed: () {
+                          Navigator.of(context).pop();
+                        }
+                          ,
+                          icon: Icon(Icons.close, size: 25,),
+                          color: Color(0xFF3F5521),)),
+                  )),),
 
 
           Align(
@@ -413,6 +414,6 @@ class _ConfirmLocationState extends State<ConfirmLocation> {
           //     }, icon: Icon(Icons.chevron_left, size: 50,)),
           //   ),
           // ),
-        ]));
+        ])));
   }
 }
