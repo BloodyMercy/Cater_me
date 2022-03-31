@@ -14,13 +14,20 @@ import '../model/GaleryModel.dart';
 
 class PackagesProvider extends  ChangeNotifier{
 
-
+bool _reviewPending=false;
 Packages _packages=new Packages();
  List<Package> _allpackages=[];
  List<Package> _allpackagesorder=[];
  List<Package> _seeallpackages = [];
 
-List<Package> get seeallpackages => _seeallpackages;
+
+bool get reviewPending => _reviewPending;
+
+  set reviewPending(bool value) {
+    _reviewPending = value;
+  }
+
+  List<Package> get seeallpackages => _seeallpackages;
 
   set seeallpackages(List<Package> value) {
     _seeallpackages = value;
@@ -207,6 +214,7 @@ loading=false;
       if(_alldata['gallery']!=null)
       _allgallery = List<GalleryModel>.from(_alldata['gallery'].map((model) => GalleryModel.fromJson(model)));
        _nbnotification=_alldata["notificationCount"].toString();
+       _reviewPending=_alldata["reviewPending"];
 
 
     }

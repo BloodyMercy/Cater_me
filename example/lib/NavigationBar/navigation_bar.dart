@@ -12,6 +12,7 @@ import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
+import 'package:CaterMe/Screens/review/review.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
@@ -244,6 +245,7 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
   @override
   Widget build(BuildContext context){
     final packageprovider=Provider.of<PackagesProvider>(context,listen: true);
+    final mediaQuery = MediaQuery.of(context);
 
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -261,6 +263,66 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
             duration: Duration(milliseconds: 500),
             child: buildLoading(context),
           ),
+          AnimatedOpacity(opacity: packageprovider.reviewPending
+              ? 1: 0, duration: Duration(milliseconds: 500), child:
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return
+          Dialog(
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              child: Stack(
+                overflow: Overflow.visible,
+                alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    height: mediaQuery.size.height * 0.25,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                          10, 70, 10, 10),
+                      child: Column(
+                        children: [
+                          Text(
+                            'We hope our service met your expectations!',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: mediaQuery.size.height *
+                                    0.05),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Review()));
+                              },
+                              child: Text(
+                                'Rate your order',
+                                style: TextStyle(
+                                    color: Colors.white),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                      top: -60,
+                      child: Image.asset(
+                        'images/Logoicon.png',
+                        height: 100,
+                      )),
+                ],
+              ))
+           )
         ],
       ),
     );

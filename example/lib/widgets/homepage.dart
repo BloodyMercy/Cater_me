@@ -6,6 +6,7 @@ import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
+import 'package:CaterMe/Screens/review/review.dart';
 import 'package:CaterMe/chat/pages/chat_page.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
@@ -19,6 +20,7 @@ import 'package:CaterMe/widgets/seeallgallery.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -146,399 +148,503 @@ class _HomePageState extends State<HomePage>
                     child: ColoredBox(
                       color: LightColors.kLightYellow,
                       child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                    width: mediaQuery.size.width * 0.7,
-                                    height: mediaQuery.size.height / 13,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 10),
-                                      child: TextField(
-                                        showCursor: true,
-                                        readOnly: true,
-                                        autofocus: false,
-                                        onTap: () {
-                                          setState(() {
-                                            isSearch = true;
-                                          });
-                                        },
-                                        decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: colorCustom,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Theme.of(context)
-                                                      .primaryColor)),
-                                          filled: true,
-                                          fillColor: LightColors.kLightYellow2,
-                                          hintText:
-                                              '${authProvider.lg[authProvider.language]["Search"]}',
-                                          prefixIcon: const Icon(Icons.search),
-                                          prefixIconColor:
-                                              Theme.of(context).primaryColor,
-                                          hintStyle: TextStyle(
-                                              color: Theme.of(context)
-                                                  .primaryColor,
-                                              fontSize: 13,
-                                              fontFamily: 'Segoe UI'),
-                                        ),
-                                      ),
-                                    )),
-                                Expanded(
-                                  child: Row(
+                                  Row(
                                     children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          authProvider.status ==
-                                                  Status.Authenticated
-                                              ? Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ChatPage(
-                                                      peerId: "admin",
-                                                      peerAvatar: "",
-                                                      peerNickname:
-                                                          '${authProvider.lg[authProvider.language]["Customer Service"]}',
-                                                    ),
-                                                  ),
-                                                )
-                                              : Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        LoginScreen(),
-                                                  ),
-                                                );
-                                        },
-                                        icon: Icon(
-                                          Icons.chat,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
-                                      // IconButton(
-                                      //   onPressed: () {
-                                      //     Navigator.of(context).push(
-                                      //       MaterialPageRoute(
-                                      //         builder: (context) =>
-                                      //             MyFavorites(),
-                                      //       ),
-                                      //     );
-                                      //   },
-                                      //   icon: Icon(
-                                      //     Icons.favorite,
-                                      //     color: Theme.of(context).primaryColor,
-                                      //   ),
-                                      // ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Notifications(),
+                                      SizedBox(
+                                          width: mediaQuery.size.width * 0.7,
+                                          height: mediaQuery.size.height / 13,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 10),
+                                            child: TextField(
+                                              showCursor: true,
+                                              readOnly: true,
+                                              autofocus: false,
+                                              onTap: () {
+                                                setState(() {
+                                                  isSearch = true;
+                                                });
+                                              },
+                                              decoration: InputDecoration(
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: colorCustom,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .primaryColor)),
+                                                filled: true,
+                                                fillColor:
+                                                    LightColors.kLightYellow2,
+                                                hintText:
+                                                    '${authProvider.lg[authProvider.language]["Search"]}',
+                                                prefixIcon:
+                                                    const Icon(Icons.search),
+                                                prefixIconColor:
+                                                    Theme.of(context)
+                                                        .primaryColor,
+                                                hintStyle: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    fontSize: 13,
+                                                    fontFamily: 'Segoe UI'),
+                                              ),
                                             ),
-                                          );
-                                        },
-                                        icon: int.parse(package.nbnotification
-                                                    .toString()) !=
-                                                0
-                                            ? Badge(
-                                                badgeColor: Color.fromRGBO(
-                                                    253, 202, 29, 1),
-                                                badgeContent: Text(
-                                                  int.parse(package
-                                                              .nbnotification
-                                                              .toString()) >
-                                                          99
-                                                      ? "99+"
-                                                      : package.nbnotification,
-                                                  style:
-                                                      TextStyle(fontSize: 10),
-                                                ),
-                                                child: Icon(
-                                                  Icons.notifications,
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
-                                                ))
-                                            : Icon(
-                                                Icons.notifications,
+                                          )),
+                                      Expanded(
+                                        child: Row(
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                authProvider.status ==
+                                                        Status.Authenticated
+                                                    ? Navigator.of(context)
+                                                        .push(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              ChatPage(
+                                                            peerId: "admin",
+                                                            peerAvatar: "",
+                                                            peerNickname:
+                                                                '${authProvider.lg[authProvider.language]["Customer Service"]}',
+                                                          ),
+                                                        ),
+                                                      )
+                                                    : Navigator.of(context)
+                                                        .push(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              LoginScreen(),
+                                                        ),
+                                                      );
+                                              },
+                                              icon: Icon(
+                                                Icons.chat,
                                                 color: Theme.of(context)
                                                     .primaryColor,
                                               ),
-                                      ),
+                                            ),
+                                            // IconButton(
+                                            //   onPressed: () {
+                                            //     Navigator.of(context).push(
+                                            //       MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             MyFavorites(),
+                                            //       ),
+                                            //     );
+                                            //   },
+                                            //   icon: Icon(
+                                            //     Icons.favorite,
+                                            //     color: Theme.of(context).primaryColor,
+                                            //   ),
+                                            // ),
+                                            IconButton(
+                                              onPressed: () {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Notifications(),
+                                                  ),
+                                                );
+                                              },
+                                              icon: int.parse(package
+                                                          .nbnotification
+                                                          .toString()) !=
+                                                      0
+                                                  ? Badge(
+                                                      badgeColor:
+                                                          Color.fromRGBO(
+                                                              253, 202, 29, 1),
+                                                      badgeContent: Text(
+                                                        int.parse(package
+                                                                    .nbnotification
+                                                                    .toString()) >
+                                                                99
+                                                            ? "99+"
+                                                            : package
+                                                                .nbnotification,
+                                                        style: TextStyle(
+                                                            fontSize: 10),
+                                                      ),
+                                                      child: Icon(
+                                                        Icons.notifications,
+                                                        color: Theme.of(context)
+                                                            .primaryColor,
+                                                      ))
+                                                  : Icon(
+                                                      Icons.notifications,
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                    ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   ),
-                                )
-                              ],
-                            ),
 
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 30),
-                              child: Text(
-                                '${authProvider.lg[authProvider.language]["Menus"]}',
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                            ),
-                            Center(child: PackagesCard()),
-                            // SizedBox(height: MediaQuery.of(context).size.height*0.05),
-                            Column(children: [
-                              SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                              authProvider.status == Status.Unauthenticated
-                                  ? language == "en"
-                                      ? SlideTransition(
-                                          position: offsetAnimation,
-                                          transformHitTests: true,
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen(),
-                                              ));
-                                            },
-                                            child: Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.055,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.7,
-                                              child: Image.asset(
-                                                "images/login-01.png",
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      : SlideTransition(
-                                          position: offsetAnimation2,
-                                          transformHitTests: true,
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.of(context)
-                                                  .push(MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen(),
-                                              ));
-                                            },
-                                            child: Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.055,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.7,
-                                              child: Image.asset(
-                                                "images/login-04.png",
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                  : Container(),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20
-
-                                        // top: mediaQuery.size.height * 0.05
-                                        ),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 30),
                                     child: Text(
-                                      '${authProvider.lg[authProvider.language]["Upcoming Occasions"]}',
+                                      '${authProvider.lg[authProvider.language]["Menus"]}',
                                       style:
                                           Theme.of(context).textTheme.headline2,
                                     ),
                                   ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                Navigationbar(1),
+                                  Center(child: PackagesCard()),
+                                  // SizedBox(height: MediaQuery.of(context).size.height*0.05),
+                                  Column(children: [
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.01,
+                                    ),
+                                    authProvider.status ==
+                                            Status.Unauthenticated
+                                        ? language == "en"
+                                            ? SlideTransition(
+                                                position: offsetAnimation,
+                                                transformHitTests: true,
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Navigator.of(context)
+                                                        .push(MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoginScreen(),
+                                                    ));
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.055,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.7,
+                                                    child: Image.asset(
+                                                      "images/login-01.png",
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : SlideTransition(
+                                                position: offsetAnimation2,
+                                                transformHitTests: true,
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Navigator.of(context)
+                                                        .push(MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoginScreen(),
+                                                    ));
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.055,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.7,
+                                                    child: Image.asset(
+                                                      "images/login-04.png",
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                        : Container(),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20
+
+                                              // top: mediaQuery.size.height * 0.05
+                                              ),
+                                          child: Text(
+                                            '${authProvider.lg[authProvider.language]["Upcoming Occasions"]}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline2,
                                           ),
-                                        );
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        child: Text(
-                                          '${authProvider.lg[authProvider.language]["See All"]}',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'BerlinSansFB',
-                                              fontSize: 12),
                                         ),
-                                      ))
-                                ],
-                              ),
-                              ((getOccasionsToday(package.occasions).length ==
-                                      0))
-                                  ? InkWell(
-                                      onTap: authProvider.status ==
-                                              Status.Authenticated
-                                          ? () {
-                                              Navigator.of(context).push(
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context)
+                                                  .pushReplacement(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      AddNewOccasion(0),
+                                                      Navigationbar(1),
                                                 ),
-                                              );
-                                            }
-                                          : () {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        LoginScreen()),
                                               );
                                             },
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              mediaQuery.size.width * 0.01,
-                                        ),
-                                        child: Column(children: [
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.97,
-                                            // height: mediaQuery.size.height * 0.15,
-                                            child: Card(
-                                              shape:
-                                                  const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(20),
-                                                ),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20),
+                                              child: Text(
+                                                '${authProvider.lg[authProvider.language]["See All"]}',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'BerlinSansFB',
+                                                    fontSize: 12),
                                               ),
-                                              child: Row(
-                                                children: [
-                                                  SizedBox(
-                                                    height:
-                                                        mediaQuery.size.height *
-                                                            0.17,
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.23,
-                                                    child: Card(
-                                                        color: Theme.of(context)
-                                                            .primaryColor,
-                                                        shape:
-                                                            const RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                            Radius.circular(20),
-                                                          ),
+                                            ))
+                                      ],
+                                    ),
+                                    ((getOccasionsToday(package.occasions)
+                                                .length ==
+                                            0))
+                                        ? InkWell(
+                                            onTap: authProvider.status ==
+                                                    Status.Authenticated
+                                                ? () {
+                                                    Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AddNewOccasion(0),
+                                                      ),
+                                                    );
+                                                  }
+                                                : () {
+                                                    Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              LoginScreen()),
+                                                    );
+                                                  },
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    mediaQuery.size.width *
+                                                        0.01,
+                                              ),
+                                              child: Column(children: [
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.97,
+                                                  // height: mediaQuery.size.height * 0.15,
+                                                  child: Card(
+                                                    shape:
+                                                        const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(20),
+                                                      ),
+                                                    ),
+                                                    child: Row(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: mediaQuery
+                                                                  .size.height *
+                                                              0.17,
+                                                          width: mediaQuery
+                                                                  .size.width *
+                                                              0.23,
+                                                          child: Card(
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .primaryColor,
+                                                              shape:
+                                                                  const RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20),
+                                                                ),
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    DateFormat.MMM(authProvider
+                                                                            .language)
+                                                                        .format(
+                                                                            DateTime.now()),
+                                                                    style: const TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
+                                                                  Text(
+                                                                      DateFormat.d(authProvider.language).format(
+                                                                          DateTime
+                                                                              .now()),
+                                                                      style: const TextStyle(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontSize:
+                                                                              20,
+                                                                          fontWeight:
+                                                                              FontWeight.bold))
+                                                                ],
+                                                              )),
                                                         ),
-                                                        child: Column(
+                                                        Column(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Text(
-                                                              DateFormat.MMM(
-                                                                      authProvider
-                                                                          .language)
-                                                                  .format(DateTime
-                                                                      .now()),
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize: 15,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
+                                                            Padding(
+                                                              padding: EdgeInsets.only(
+                                                                  left: mediaQuery
+                                                                          .size
+                                                                          .width *
+                                                                      0.02),
+                                                              child: FittedBox(
+                                                                child: Text(
+                                                                  '${authProvider.lg[authProvider.language]["You don't have any upcoming occasions"]}',
+                                                                  style: TextStyle(
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor,
+                                                                      fontSize:
+                                                                          13,
+                                                                      fontFamily:
+                                                                          'BerlinSansFB'),
+                                                                ),
+                                                              ),
                                                             ),
-                                                            Text(
-                                                                DateFormat.d(
-                                                                        authProvider
-                                                                            .language)
-                                                                    .format(DateTime
-                                                                        .now()),
-                                                                style: const TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold))
+                                                            Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .add_circle_outline_rounded,
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                ),
+                                                                Text(
+                                                                  '${authProvider.lg[authProvider.language]["Add an occasion"]}',
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor,
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontFamily:
+                                                                          'BerlinSansFB'),
+                                                                ),
+                                                              ],
+                                                            )
                                                           ],
-                                                        )),
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: mediaQuery
-                                                                        .size
-                                                                        .width *
-                                                                    0.02),
-                                                        child: FittedBox(
-                                                          child: Text(
-                                                            '${authProvider.lg[authProvider.language]["You don't have any upcoming occasions"]}',
-                                                            style: TextStyle(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                fontSize: 13,
-                                                                fontFamily:
-                                                                    'BerlinSansFB'),
-                                                          ),
                                                         ),
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons
-                                                                .add_circle_outline_rounded,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                          ),
-                                                          Text(
-                                                            '${authProvider.lg[authProvider.language]["Add an occasion"]}',
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                fontSize: 15,
-                                                                fontFamily:
-                                                                    'BerlinSansFB'),
-                                                          ),
-                                                        ],
-                                                      )
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
+                                                ),
+                                                // Center(
+                                                //     child:
+                                                //         OccasionCard(Axis.horizontal)),
+                                              ]),
+                                            ))
+                                        : Center(
+                                            child:
+                                                OccasionCard(Axis.horizontal)),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+
+                                    //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
+                                    package.cuisins.id != 0
+                                        ? Container(
+                                            child: Column(children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10,
+                                                    ),
+                                                    child: Text(
+                                                      '${authProvider.lg[authProvider.language]["Shishas"]}',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline2,
+                                                    ),
+                                                  ),
+                                                  // SizedBox(width: mediaQuery.size.width*0.6),
+                                                  Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 20,
+                                                              vertical: 10),
+                                                      child: GestureDetector(
+                                                          child: Text(
+                                                              '${authProvider.lg[authProvider.language]["See All"]}',
+                                                              style: TextStyle(
+                                                                  fontSize: 12,
+                                                                  fontFamily:
+                                                                      'BerlinSansFB')),
+                                                          onTap: () {
+                                                            Navigator.of(
+                                                                    context)
+                                                                .push(
+                                                              MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    CuisinsScreen(
+                                                                        package
+                                                                            .cuisins
+                                                                            .id),
+                                                              ),
+                                                            );
+                                                          }))
                                                 ],
                                               ),
-                                            ),
-                                          ),
-                                          // Center(
-                                          //     child:
-                                          //         OccasionCard(Axis.horizontal)),
-                                        ]),
-                                      ))
-                                  : Center(
-                                      child: OccasionCard(Axis.horizontal)),
-                              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                                              SizedBox(
+                                                  height:
+                                                      mediaQuery.size.height *
+                                                          0.15,
+                                                  //width: mediaQuery.size.width,
+                                                  child: CuisinCard()),
+                                              // SizedBox(height:mediaQuery.size.height * 0.212,
+                                              //   child:adss[0]),
+                                              //  SizedBox(height:mediaQuery.size.height * 0.212,
+                                              //  child:adss[1]),
+                                            ]),
+                                          )
+                                        : Container(),
+                                    // SizedBox(height: mediaQuery.size.height*0.05,)
+                                  ]),
+                                  // SizedBox(height: mediaQuery.size.height * 0.1,),
 
-                              //     SizedBox(height: MediaQuery.of(context).size.height*0.005),
-                              package.cuisins.id != 0
-                                  ? Container(
+                                  ...getAddOnsCard(package.addonsall),
+
+                                  Container(
+                                      height: mediaQuery.size.height / 4,
                                       child: Column(children: [
                                         Row(
                                           mainAxisAlignment:
@@ -547,339 +653,325 @@ class _HomePageState extends State<HomePage>
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                 horizontal: 20,
-                                                vertical: 10,
                                               ),
                                               child: Text(
-                                                '${authProvider.lg[authProvider.language]["Shishas"]}',
+                                                '${authProvider.lg[authProvider.language]["Gallery"]}',
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline2,
+                                                    .bodyText1,
                                               ),
                                             ),
-                                            // SizedBox(width: mediaQuery.size.width*0.6),
                                             Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 20,vertical: 10 ),
-                                                child: GestureDetector(
-                                                    child: Text(
-                                                        '${authProvider.lg[authProvider.language]["See All"]}',
-                                                        style: TextStyle(
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'BerlinSansFB')),
-                                                    onTap: () {
-                                                      Navigator.of(context)
-                                                          .push(
-                                                        MaterialPageRoute(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20),
+                                              child: GestureDetector(
+                                                  child: Text(
+                                                      '${authProvider.lg[authProvider.language]["See All"]}',
+                                                      style: TextStyle(
+                                                          fontSize: 12)),
+                                                  onTap: () {
+                                                    Navigator.of(context).push(
+                                                      MaterialPageRoute(
                                                           builder: (context) =>
-                                                              CuisinsScreen(
-                                                                  package
-                                                                      .cuisins
-                                                                      .id),
-                                                        ),
-                                                      );
-                                                    }))
+                                                              seeAllGallery()),
+                                                    );
+                                                  }),
+                                            )
                                           ],
                                         ),
-                                        SizedBox(
-                                            height:
-                                                mediaQuery.size.height * 0.15,
-                                            //width: mediaQuery.size.width,
-                                            child: CuisinCard()),
-                                        // SizedBox(height:mediaQuery.size.height * 0.212,
-                                        //   child:adss[0]),
-                                        //  SizedBox(height:mediaQuery.size.height * 0.212,
-                                        //  child:adss[1]),
+                                        package.allgallery.length != 0
+                                            ? Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    5,
+                                                child: ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: package
+                                                          .allgallery.length +
+                                                      1,
+                                                  itemBuilder: (context, i) {
+                                                    //  final cards = widget.card[i];
+                                                    return InkWell(
+                                                      onTap: () {
+                                                        package.allgallery
+                                                                    .length >
+                                                                i
+                                                            ? Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                  builder: (context) =>
+                                                                      FullPhotoPage(
+                                                                          url: package
+                                                                              .allgallery,
+                                                                          ind:
+                                                                              i),
+                                                                ),
+                                                              )
+                                                            : Navigator.of(
+                                                                    context)
+                                                                .push(
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            seeAllGallery()),
+                                                              );
+                                                      },
+                                                      child:
+                                                          package.allgallery
+                                                                      .length >
+                                                                  i
+                                                              ? Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          horizontal:
+                                                                              4),
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      image:
+                                                                          DecorationImage(
+                                                                        image:
+                                                                            NetworkImage(
+                                                                          package
+                                                                              .allgallery[i]
+                                                                              .link,
+                                                                        ),
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                      border: Border.all(
+                                                                          style:
+                                                                              BorderStyle.none),
+                                                                      borderRadius:
+                                                                          BorderRadius.all(
+                                                                              Radius.circular(20)),
+                                                                    ),
+                                                                    width: mediaQuery
+                                                                            .size
+                                                                            .width *
+                                                                        0.43,
+                                                                    height: mediaQuery
+                                                                            .size
+                                                                            .height *
+                                                                        0.1,
+                                                                  ),
+                                                                )
+                                                              : Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          horizontal:
+                                                                              4),
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      image: DecorationImage(
+                                                                          image: NetworkImage(
+                                                                            package.allgallery[i - 1].link,
+                                                                          ),
+                                                                          fit: BoxFit.cover,
+                                                                          opacity: 0.3),
+                                                                      border: Border.all(
+                                                                          style:
+                                                                              BorderStyle.none),
+                                                                      borderRadius:
+                                                                          BorderRadius.all(
+                                                                              Radius.circular(20)),
+                                                                    ),
+                                                                    width: mediaQuery
+                                                                            .size
+                                                                            .width *
+                                                                        0.43,
+                                                                    height: mediaQuery
+                                                                            .size
+                                                                            .height *
+                                                                        0.1,
+                                                                    child: Center(
+                                                                        child: Text(
+                                                                            '${authProvider.lg[authProvider.language]["view All"]}',
+                                                                            style:
+                                                                                TextStyle(fontSize: 19, color: colorCustom))),
+                                                                  ),
+                                                                ),
+                                                    );
+                                                  },
+                                                ))
+                                            : Container(),
+                                      ])),
+
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${authProvider.lg[authProvider.language]["Follow Us"]}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
+                                        ),
                                       ]),
-                                    )
-                                  : Container(),
-                              // SizedBox(height: mediaQuery.size.height*0.05,)
-                            ]),
-                            // SizedBox(height: mediaQuery.size.height * 0.1,),
-
-                            ...getAddOnsCard(package.addonsall),
-
-
-
-
-
-                              Container(
-                  height: mediaQuery.size.height/4,
-                  child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        Padding(padding:
-                        EdgeInsets.symmetric(
-                          horizontal: 20,),
-                          child: Text(
-                            '${authProvider.lg[authProvider.language]["Gallery"]}',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                        ),
-
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: GestureDetector(
-                              child:  Text('${authProvider.lg[authProvider.language]["See All"]}',
-
-                                  style: TextStyle( fontSize: 12)),
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => seeAllGallery()),
-
-                                );
-                              }),
-                        )
-
-
-
-
-                      ],
-                    ),
-                    package.allgallery.length!=0? Container(
-                        height: MediaQuery.of(context).size.height/5,
-
-                        child:     ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: package.allgallery.length+1,
-                          itemBuilder: (context, i) {
-                            //  final cards = widget.card[i];
-                            return           InkWell(
-                              onTap: () {
-                                package.allgallery.length>i?
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FullPhotoPage(url:  package.allgallery , ind: i),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
                                   ),
-                                ): Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => seeAllGallery()),
-
-                                );
-                              },
-                              child:    package.allgallery.length>i?Padding(
-                                padding:  EdgeInsets.symmetric(horizontal: 4),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(image: NetworkImage(package.allgallery[i].link,),fit: BoxFit.cover,),
-                                    border: Border.all(style: BorderStyle.none),
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://www.facebook.com/caterme.ksa/';
+                                                if (await canLaunch(url)) {
+                                                  await launch(url,
+                                                      forceSafariVC: false);
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.facebook,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://www.instagram.com/caterme.online/?hl=en';
+                                                if (await canLaunch(url)) {
+                                                  await launch(
+                                                    url,
+                                                    forceSafariVC: false,
+                                                  );
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.instagram,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://www.linkedin.com/company/cater-me/';
+                                                if (await canLaunch(url)) {
+                                                  await launch(url,
+                                                      forceSafariVC: false);
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.linkedin,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+                                                if (await canLaunch(url)) {
+                                                  await launch(url,
+                                                      forceSafariVC: false);
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.snapchat,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    "https://wa.me/${contact.UsContact.phoneNumber}";
+                                                if (await canLaunch(url)) {
+                                                  await launch(url,
+                                                      forceSafariVC: false);
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.whatsapp,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://twitter.com/caterme_online';
+                                                if (await canLaunch(url)) {
+                                                  await launch(
+                                                    url,
+                                                    forceSafariVC: false,
+                                                  );
+                                                }
+                                              },
+                                              icon: Icon(
+                                                FontAwesomeIcons.twitter,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                Navigator.of(context)
+                                                    .push(MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ChatPage(
+                                                    peerId: "admin",
+                                                    peerAvatar: "",
+                                                    peerNickname:
+                                                        '${authProvider.lg[authProvider.language]["Customer Service"]}',
+                                                  ),
+                                                ));
+                                              },
+                                              icon: Icon(
+                                                Icons.live_help,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () async {
+                                                final url =
+                                                    'https://www.caterme.online/';
+                                                if (await canLaunch(url)) {
+                                                  await launch(url,
+                                                      forceSafariVC: false);
+                                                }
+                                              },
+                                              icon: Icon(
+                                                Icons.language,
+                                                color: colorCustom,
+                                                size: 40,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  width: mediaQuery.size.width*0.43,
-                                  height: mediaQuery.size.height*0.1,
-                                ),
-                              ):Padding(
-                                padding:  EdgeInsets.symmetric(horizontal: 4),
-                                child: Container(
-                                  decoration: BoxDecoration(
-
-                                    image: DecorationImage(image: NetworkImage(package.allgallery[i-1].link,),fit: BoxFit.cover,opacity: 0.3),
-                                    border: Border.all(style: BorderStyle.none),
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
                                   ),
-                                  width: mediaQuery.size.width*0.43,
-                                  height: mediaQuery.size.height*0.1,
-                                  child: Center(child: Text('${authProvider.lg[authProvider.language]["view All"]}',
-
-                                      style: TextStyle( fontSize: 19 ,color: colorCustom))),
-                                ),
-                              ),
-                            );
-                          },
-                        )):Container(),
-                  ]
-                  )),
-
-
-
-
-
-
-
-                            Row(mainAxisAlignment: MainAxisAlignment.center,
-                              children:[ Text('${authProvider.lg[authProvider.language]["Follow Us"]}'
-                                ,style:Theme.of(context)
-                                  .textTheme
-                                  .headline2,),
-
-
-
-                            ]),
-                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                         Column(
-                           children: [
-                             Padding(padding: EdgeInsets.all(8.0),
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                                 children: [
-                                   IconButton(onPressed: ()async{
-                                     final url = 'https://www.facebook.com/caterme.ksa/';
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false);
-                                     }
-
-
-                                   } ,
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.facebook,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-                                   IconButton(onPressed: ()async{
-                                     final url = 'https://www.instagram.com/caterme.online/?hl=en';
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false,);
-                                     }
-
-
-                                   },
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.instagram,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-
-
-
-
-
-                                   IconButton(
-                                     onPressed: ()async{
-                                       final url = 'https://www.linkedin.com/company/cater-me/';
-                                       if(await canLaunch(url)){
-                                         await launch(url,forceSafariVC: false);
-                                       }
-
-
-                                     } ,
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.linkedin,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-                                   IconButton(onPressed: ()async{
-                                     final url = 'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false);
-                                     }
-
-
-                                   } ,
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.snapchat,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-
-                                 ],
-                               ),
-                             ),
-
-                             Padding(padding: EdgeInsets.all(8.0),
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                                 children: [
-                                   IconButton(onPressed: ()async{
-                                     final url = "https://wa.me/${contact.UsContact.phoneNumber}";
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false);
-                                     }
-
-
-                                   } ,
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.whatsapp,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-                                   IconButton(onPressed: ()async{
-                                     final url = 'https://twitter.com/caterme_online';
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false,);
-                                     }
-
-
-                                   },
-                                     icon:Icon(
-
-                                       FontAwesomeIcons.twitter,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-
-
-
-
-
-                                   IconButton(
-                                     onPressed: ()async{
-                                       Navigator.of(context).push(
-                                           MaterialPageRoute(
-                                             builder: (context) =>
-                                                 ChatPage(
-                                                   peerId: "admin",
-                                                   peerAvatar: "",
-                                                   peerNickname:
-                                                   '${authProvider.lg[authProvider.language]["Customer Service"]}',
-                                                 ),
-                                           ));
-
-
-
-                                     } ,
-                                     icon:Icon(
-
-                                       Icons.live_help,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-                                   IconButton(onPressed: ()async{
-                                     final url = 'https://www.caterme.online/';
-                                     if(await canLaunch(url)){
-                                       await launch(url,forceSafariVC: false);
-                                     }
-
-
-                                   } ,
-                                     icon:Icon(
-
-                                       Icons.language,
-
-                                       color: colorCustom,
-                                       size: 40,
-                                     ),),
-
-
-                                 ],
-                               ),
-                             ),
-                           ],
-                         ),
-                            SizedBox(height: MediaQuery.of(context).size.height*0.05,),
-                          ]),
+                                ]),
                     ),
                   ),
                 )
@@ -937,7 +1029,6 @@ class _HomePageState extends State<HomePage>
                                 controller: controllersearch,
                               ),
                             )),
-
                       ],
                     ),
 
@@ -1023,7 +1114,6 @@ class _HomePageState extends State<HomePage>
                         },
                       ),
                     ),
-
                   ],
                 )),
     );
