@@ -72,8 +72,9 @@ dependencies:
 
   webview_flutter: ^3.0.1
   photo_view:
+  pdf: ^3.7.3
 
-
+  dio: ^4.0.6
   font_awesome_flutter:
   flutter_html:
   flutter_pay: ^1.0.2
