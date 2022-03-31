@@ -98,10 +98,11 @@ class _FourthReviewState extends State<FourthReview> {
                    loading = false;
                  });
 
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Navigationbar(0),
-                      ));
+                  Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (BuildContext context) => Navigationbar(0)),
+                          ModalRoute.withName('/'),
+                      );
 
                 },
                 child: Text('${authProvider.lg[authProvider.language]["Submit"]}'
