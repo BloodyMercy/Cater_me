@@ -264,8 +264,7 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
             child: buildLoading(context),
           ),
           AnimatedOpacity(opacity:
-           packageprovider.getReviewPending
-               ?
+           packageprovider.getReviewPending ?
           1
                : 0
               , duration: Duration(milliseconds: 500), child:
@@ -284,8 +283,7 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                   Container(
                     height: mediaQuery.size.height * 0.25,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                          10, 70, 10, 10),
+                      padding:  EdgeInsets.only(top: mediaQuery.size.height*0.07, left: mediaQuery.size.width*0.05, right: mediaQuery.size.width*0.05),
                       child: Column(
                         children: [
                           Text(
@@ -341,7 +339,7 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                     ),
                   ),
                   Positioned(
-                      top: -60,
+                      top: -mediaQuery.size.height*0.06,
                       child: Image.asset(
                         'images/Logoicon.png',
                         height: 100,
