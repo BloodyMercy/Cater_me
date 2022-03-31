@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../Providers/user.dart';
 import '../../Screens/otpverify/widget/country_picker.dart';
 import '../../language/language.dart';
-
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 class FreindsTextField extends StatefulWidget {
   final Function addFriend;
 
@@ -64,7 +64,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
     FocusNode focusnode = FocusNode();
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
-    FocusNode focusNode = FocusNode();
 
     var _mediaQueryText = MediaQuery.of(context).size.height;
     return Card(
@@ -89,7 +88,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       // controller: widget.controller,
-                      focusNode: focusNode,
+
                       controller: friends.namecontroller,
                       decoration: InputDecoration(
                         // contentPadding:
@@ -97,9 +96,9 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
                           alignLabelWithHint: true,
                           labelStyle: TextStyle(
-                              fontSize: focusNode.hasFocus ? 18 : 16.0,
+                              fontSize:  16.0,
                               //I believe the size difference here is 6.0 to account padding
-                              color: focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
+                              color:  Color(0xFF3F5521)),
                           labelText:
                           '${authProvider.lg[authProvider.language]['Full Name']}',
 
@@ -124,8 +123,11 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           ),
                           suffixIcon: IconButton(onPressed: () async {
                            Contact a =await ContactsService.openDeviceContactPicker();
+
+                             PhoneNumber number = await PhoneNumber.getRegionInfoFromPhoneNumber(a.phones.first.value);
+
                             friends.namecontroller.text=a.displayName;
-                            friends.phonecontroller.text=a.phones.first.value;
+                            friends.phonecontroller.text=number.phoneNumber;
                           }, icon: Icon(Icons.contact_phone))
 
                       ),
@@ -151,7 +153,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: friends.emailcontroller,
-                        focusNode: focusNode,
+
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -164,11 +166,11 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           //     left: mediaQuery.size.width * 0.04),
                           alignLabelWithHint: true,
                           labelStyle: TextStyle(
-                              fontSize: focusNode.hasFocus ? 18 : 16.0,
+                              fontSize:  16.0,
                               //I believe the size difference here is 6.0 to account padding
-                              color: focusNode.hasFocus
-                                  ? Color(0xFF3F5521)
-                                  : Colors.grey),
+                              color:
+                                   Color(0xFF3F5521)
+                                 ),
                           labelText:
                               '${authProvider.lg[authProvider.language]["Email"]}',
                           hintStyle: TextStyle(
@@ -202,6 +204,34 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                             fontWeight: FontWeight.bold,
                             fontFamily: 'BerlinSansFB'),
                       )),
+                  // InternationalPhoneNumberInput(
+                  //   locale: authProvider.language,
+                  //
+                  //   onInputChanged: (PhoneNumber number) {
+                  //     print(number.phoneNumber);
+                  //   },
+                  //
+                  //   onInputValidated: (bool value) {
+                  //     print(value);
+                  //   },
+                  //
+                  //   selectorConfig: SelectorConfig(
+                  //
+                  //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                  //   ),
+                  //   ignoreBlank: false,
+                  //   autoValidateMode: AutovalidateMode.disabled,
+                  //   selectorTextStyle: TextStyle(color: Colors.black),
+                  //
+                  //   textFieldController: friends.phonecontroller,
+                  //   formatInput: false,
+                  //   keyboardType:
+                  //   TextInputType.numberWithOptions(signed: true, decimal: true),
+                  //   inputBorder: OutlineInputBorder(),
+                  //   onSaved: ( number) {
+                  //     print('On Saved: $number');
+                  //   },
+                  // ),
                   Container(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
