@@ -151,10 +151,10 @@ String get nbnotification => _nbnotification;
   }
 
 
-Future<void>  getallpacakgesorder(int id,int id2,int id3,String a)async {
+Future<void>  getallpacakgesorder(int id,int id2,int id3,String a,String date)async {
   loading=false;
 //notifyListeners();
-  _alldata=await PackageService.getPackagesrder(id,id2,id3);
+  _alldata=await PackageService.getPackagesrder(id,id2,id3,date);
 
 
     if( _alldata['packages']!=null) {

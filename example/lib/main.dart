@@ -14,6 +14,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/language_picker.dart';
 import 'package:CaterMe/pdf/lol.dart' as lol;
 import 'package:CaterMe/webview/webview.dart';
+
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,6 +32,7 @@ import 'Helpers/Constant.dart';
 import 'IntroTest/on_boarding_screen.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'Payment/OrderSucc.dart';
+
 import 'Providers/GalleryProvider.dart';
 import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
