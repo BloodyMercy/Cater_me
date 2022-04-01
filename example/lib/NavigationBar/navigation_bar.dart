@@ -315,8 +315,7 @@ class _NavigationBarState extends State<Navigationbar> {
             //     child: Text('${authProvider.lg[authProvider.language]["No"]}'),
             //   ),
             // ),
-            )) ??
-        false;
+            )) ;
   }
 
   @override
@@ -340,7 +339,7 @@ class _NavigationBarState extends State<Navigationbar> {
             child: buildLoading(context),
           ),
           AnimatedOpacity(
-              opacity: packageprovider.getReviewPending ? 1 : 0,
+              opacity: packageprovider.reviewPending ? 1 : 0,
               duration: Duration(milliseconds: 500),
               child:
                   // showDialog(
@@ -399,7 +398,7 @@ class _NavigationBarState extends State<Navigationbar> {
                                             onPressed: () {
                                               setState(() {
                                                 packageprovider
-                                                    .setReviewPending = false;
+                                                    .reviewPending = false;
                                               });
                                             },
                                           ),
@@ -419,7 +418,7 @@ class _NavigationBarState extends State<Navigationbar> {
                                                     builder: (context) =>
                                                         Review()));
                                             setState(() {
-                                              packageprovider.setReviewPending =
+                                              packageprovider.reviewPending =
                                                   false;
                                             });
                                           },

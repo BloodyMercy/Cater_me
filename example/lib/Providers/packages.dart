@@ -21,9 +21,9 @@ Packages _packages=new Packages();
  List<Package> _seeallpackages = [];
 
 
-bool get getReviewPending => _reviewPending;
+bool get reviewPending => _reviewPending;
 
-  set setReviewPending(bool value) {
+  set reviewPending(bool value) {
     _reviewPending = value;
   }
 
@@ -214,7 +214,7 @@ loading=false;
       if(_alldata['gallery']!=null)
       _allgallery = List<GalleryModel>.from(_alldata['gallery'].map((model) => GalleryModel.fromJson(model)));
        _nbnotification=_alldata["notificationCount"].toString();
-       _reviewPending=_alldata["reviewPending"];
+       _reviewPending=_alldata["reviewPending"]??false;
 
 
     }
