@@ -3,11 +3,14 @@ import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/model/friend_model.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
 import '../../Screens/otpverify/widget/country_picker.dart';
+import '../../colors/colors.dart';
 import '../../language/language.dart';
 
 class editfriend extends StatefulWidget {
@@ -91,10 +94,126 @@ class _FreindsTextFieldState extends State<editfriend> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(height: _mediaQueryText * 0.06),
-                  customTextField(read: false,label:'${personalInfo.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
+                  Container(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      // controller: widget.controller,
+
+                      controller: friends.namecontroller,
+                      // autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return '${authProvider.lg[authProvider.language]["Please enter the name"]}';
+                        } else
+                          return null;
+                      },
+                      decoration: InputDecoration(
+                        // contentPadding:
+                        // EdgeInsets.only(left: mediaQuery.size.width * 0.04),
+
+                          alignLabelWithHint: true,
+                          labelStyle: TextStyle(
+                              fontSize:  16.0,
+                              //I believe the size difference here is 6.0 to account padding
+                              color:  Color(0xFF3F5521)),
+                          labelText:
+                          '${authProvider.lg[authProvider.language]['Full Name']}',
+
+                          hintStyle: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'BerlinSansFB'),
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            borderSide: const BorderSide(
+                              color: Color(0xFF3F5521),
+                            ),
+                          ),
+                          suffixIcon: IconButton(onPressed: () async {
+                            Contact a =await ContactsService.openDeviceContactPicker();
+
+                            PhoneNumber number = await PhoneNumber.getRegionInfoFromPhoneNumber(a.phones.first.value);
+
+                            friends.namecontroller.text=a.displayName;
+                            friends.phonecontroller.text=number.phoneNumber;
+                          }, icon: Icon(Icons.contact_phone))
+
+                      ),
+                      style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'BerlinSansFB'),
+                    ),
+                  ),
+                  // customTextField(read: false,label:'${personalInfo.lg[personalInfo.language]["Name"]}', controller:friends.namecontroller ,),
 
                       SizedBox(height: _mediaQueryText * 0.02),
-                  customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
+                  // Container(
+                  //     padding: const EdgeInsets.all(10.0),
+                  //     child: TextFormField(
+                  //       controller: friends.emailcontroller,
+                  //
+                  //       // autovalidateMode: AutovalidateMode.onUserInteraction,
+                  //       validator: (value) {
+                  //         if (value.isEmpty) {
+                  //           return '${authProvider.lg[authProvider.language]["Please enter email"]}';
+                  //         } else
+                  //           return null;
+                  //       },
+                  //       decoration: InputDecoration(
+                  //         // contentPadding: EdgeInsets.only(
+                  //         //     left: mediaQuery.size.width * 0.04),
+                  //         alignLabelWithHint: true,
+                  //         labelStyle: TextStyle(
+                  //             fontSize:  16.0,
+                  //             //I believe the size difference here is 6.0 to account padding
+                  //             color:
+                  //             Color(0xFF3F5521)
+                  //         ),
+                  //         labelText:
+                  //         '${authProvider.lg[authProvider.language]["Email"]}',
+                  //         hintStyle: TextStyle(
+                  //             color: Colors.black87,
+                  //             fontSize: 15,
+                  //             fontWeight: FontWeight.bold,
+                  //             fontFamily: 'BerlinSansFB'),
+                  //         filled: true,
+                  //         fillColor: Colors.white,
+                  //         enabledBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           borderSide: const BorderSide(
+                  //             color: Colors.grey,
+                  //           ),
+                  //         ),
+                  //         errorBorder: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(5.0),
+                  //             borderSide: BorderSide(
+                  //               color: redColor,
+                  //             )),
+                  //         focusedBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           borderSide: const BorderSide(
+                  //             color: Color(0xFF3F5521),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       style: const TextStyle(
+                  //           color: Colors.grey,
+                  //           fontSize: 15,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontFamily: 'BerlinSansFB'),
+                  //     )),
+                  // customTextField(read: false,label:'Email' ,controller:friends.emailcontroller ,),
 
                   Container(
                       padding: const EdgeInsets.all(10.0),
@@ -159,6 +278,9 @@ class _FreindsTextFieldState extends State<editfriend> {
                       setState(() {
                         loading = true;
                       });
+
+
+
                       if (formkey.currentState.validate() == false) {
                         // ignore: avoid_print
                         print('Not Validated');
@@ -176,10 +298,6 @@ class _FreindsTextFieldState extends State<editfriend> {
                           loading = false;
 
                         });
-                    //    final friends = Provider.of<FriendsProvider>(context, listen: false);
-                        friends.namecontroller.text="";
-                        friends.emailcontroller.text="";
-                        friends.phonecontroller.text="";
                         Navigator.of(context).pop();
                       }
                     },

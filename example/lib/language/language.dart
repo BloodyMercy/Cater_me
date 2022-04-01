@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Please enter the name":"الرجاء إدخال الاسم",
       "Email verification was send":"تم إرسال التحقق من البريد الإلكتروني",
       "Please choose what do you need":"الرجاء اختيار ما تريد",
       "Reset succeed":"تم التعيين بنجاح",
@@ -300,6 +301,7 @@ class LanguageTr {
 
 
     "en": {
+      "Please enter the name":"Please enter the name",
       "view All":"View All",
       "No packages available":"No packages available",
       "User doesn't exist or invalid credentials":"User doesn't exist or invalid credentials",

@@ -45,17 +45,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   bool loading = false;
   var _key = GlobalKey<ScaffoldState>();
-  static const platform =
-      const MethodChannel('flutter_contacts/launch_contacts');
 
-  void launchContacts() async {
-    try {
-      await platform.invokeMethod('launch');
-    } on PlatformException catch (e) {
-      print("Failed to launch contacts: ${e.message}");
-    }
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +80,13 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       // controller: widget.controller,
 
                       controller: friends.namecontroller,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return '${authProvider.lg[authProvider.language]["Please enter the name"]}';
+                        } else
+                          return null;
+                      },
                       decoration: InputDecoration(
                         // contentPadding:
                         // EdgeInsets.only(left: mediaQuery.size.width * 0.04),
@@ -149,61 +146,61 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   //
                   // ),
                   SizedBox(height: _mediaQueryText * 0.02),
-                  Container(
-                      padding: const EdgeInsets.all(10.0),
-                      child: TextFormField(
-                        controller: friends.emailcontroller,
-
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return '${authProvider.lg[authProvider.language]["Please enter email"]}';
-                          } else
-                            return null;
-                        },
-                        decoration: InputDecoration(
-                          // contentPadding: EdgeInsets.only(
-                          //     left: mediaQuery.size.width * 0.04),
-                          alignLabelWithHint: true,
-                          labelStyle: TextStyle(
-                              fontSize:  16.0,
-                              //I believe the size difference here is 6.0 to account padding
-                              color:
-                                   Color(0xFF3F5521)
-                                 ),
-                          labelText:
-                              '${authProvider.lg[authProvider.language]["Email"]}',
-                          hintStyle: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'BerlinSansFB'),
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            borderSide: const BorderSide(
-                              color: Colors.grey,
-                            ),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                              borderSide: BorderSide(
-                                color: redColor,
-                              )),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3F5521),
-                            ),
-                          ),
-                        ),
-                        style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'BerlinSansFB'),
-                      )),
+                  // Container(
+                  //     padding: const EdgeInsets.all(10.0),
+                  //     child: TextFormField(
+                  //       controller: friends.emailcontroller,
+                  //
+                  //       autovalidateMode: AutovalidateMode.onUserInteraction,
+                  //       validator: (value) {
+                  //         if (value.isEmpty) {
+                  //           return '${authProvider.lg[authProvider.language]["Please enter email"]}';
+                  //         } else
+                  //           return null;
+                  //       },
+                  //       decoration: InputDecoration(
+                  //         // contentPadding: EdgeInsets.only(
+                  //         //     left: mediaQuery.size.width * 0.04),
+                  //         alignLabelWithHint: true,
+                  //         labelStyle: TextStyle(
+                  //             fontSize:  16.0,
+                  //             //I believe the size difference here is 6.0 to account padding
+                  //             color:
+                  //                  Color(0xFF3F5521)
+                  //                ),
+                  //         labelText:
+                  //             '${authProvider.lg[authProvider.language]["Email"]}',
+                  //         hintStyle: TextStyle(
+                  //             color: Colors.black87,
+                  //             fontSize: 15,
+                  //             fontWeight: FontWeight.bold,
+                  //             fontFamily: 'BerlinSansFB'),
+                  //         filled: true,
+                  //         fillColor: Colors.white,
+                  //         enabledBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           borderSide: const BorderSide(
+                  //             color: Colors.grey,
+                  //           ),
+                  //         ),
+                  //         errorBorder: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(5.0),
+                  //             borderSide: BorderSide(
+                  //               color: redColor,
+                  //             )),
+                  //         focusedBorder: OutlineInputBorder(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           borderSide: const BorderSide(
+                  //             color: Color(0xFF3F5521),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       style: const TextStyle(
+                  //           color: Colors.grey,
+                  //           fontSize: 15,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontFamily: 'BerlinSansFB'),
+                  //     )),
                   // InternationalPhoneNumberInput(
                   //   locale: authProvider.language,
                   //
@@ -309,7 +306,9 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 loading = false;
                               });
                               // reset!=null?
-                            } else {
+                            }
+
+                            else {
                               if (await friends.createNewFriend()) {
                                 setState(() {
                                   loading = false;
