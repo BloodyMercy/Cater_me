@@ -311,7 +311,8 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                                     child: Text('Cancel', style: TextStyle(
                                         color: Colors.white),
                                     ),
-                                    onPressed: (){setState(() {
+                                    onPressed: (){
+                                      setState(() {
                                       packageprovider.setReviewPending=false;
                                     });
                                     },
@@ -329,6 +330,9 @@ final authProvider =Provider.of<UserProvider>(context,  listen: false);
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 Review()));
+                                    setState(() {
+                                      packageprovider.setReviewPending=false;
+                                    });
                                   },
                                 ),
                               ],),
