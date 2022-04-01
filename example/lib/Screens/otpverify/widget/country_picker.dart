@@ -66,7 +66,7 @@ class _CountryPickerState extends State<CountryPicker> {
               ),
               Text(
                 selectedCountryData != null ? selectedCountryData.dialCode : '',
-                style: const TextStyle(fontSize: 17,color:  Color(0xff9FACBD)),
+                style: const TextStyle(fontSize: 16,color:Colors.grey),
               )
             ],
           ),

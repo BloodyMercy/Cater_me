@@ -12,14 +12,14 @@ import '../ApiLink.dart';
 
 class PackageService {
   static Future<Map<String, dynamic>> getPackagesrder(
-      int id, int id2, int id3) async {
+      int id, int id2, int id3,String date) async {
     List<Package> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request(
-          'GET', Uri.parse(ApiLink.GetPackagesorder + "/$id/$id2/$id3"));
+          'GET', Uri.parse(ApiLink.GetPackagesorder + "/$id/$id2/$id3/$date"));
 
       request.headers.addAll(headers);
 

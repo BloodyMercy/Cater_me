@@ -37,3 +37,8 @@ flutter:
         pluginClass: FlutterCheckoutPaymentPlugin
       ios:
         pluginClass: FlutterCheckoutPaymentPlugin
+
+
+
+
+
