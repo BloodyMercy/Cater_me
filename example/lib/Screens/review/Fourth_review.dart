@@ -43,85 +43,87 @@ class _FourthReviewState extends State<FourthReview> {
               )),
         ),
         backgroundColor: Colors.black,
-        body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: mediaQueryHeight * 0.05),
-                child: Text(
-                  'Complaints and suggestions',
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: mediaQueryHeight * 0.05),
+                  child: Text(
+                    'Complaints and suggestions',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                ),
+                Text(
+                  'الاقتراحات والشكاوى',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
-              ),
-              Text(
-                'الاقتراحات والشكاوى',
-                style: TextStyle(color: Colors.white, fontSize: 25),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: mediaQueryHeight * 0.1,
-                    horizontal: mediaQueryWidth * 0.05),
-                child: TextFormField(
-                  style: TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    hintText: '${authProvider.lg[authProvider.language]["Type your answer here..."]}'
-                    ,
-                    hintStyle: TextStyle(color: Colors.white),
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Colors.white,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: mediaQueryHeight * 0.1,
+                      horizontal: mediaQueryWidth * 0.05),
+                  child: TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      hintText: '${authProvider.lg[authProvider.language]["Type your answer here..."]}'
+                      ,
+                      hintStyle: TextStyle(color: Colors.white),
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(
+                          color: Colors.white10,
+                          width: 2.0,
+                        ),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Colors.white10,
-                        width: 2.0,
-                      ),
-                    ),
+                    controller: surveyP.comment,
                   ),
-                  controller: surveyP.comment,
                 ),
-              ),
-             !loading? ElevatedButton(
-                onPressed: () async{
-                  setState(() {
-                    loading = true;
-                  });
-              // var submit = await   surveyP.postsurvey();
-               await  surveyP.postsurvey();
-                 Navigator.of(context).pop();
-                 setState(() {
-                   loading = false;
-                 });
-
-                  Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (BuildContext context) => Navigationbar(0)),
-                          ModalRoute.withName('/'),
-                      );
-
-                },
-                child: Text('${authProvider.lg[authProvider.language]["Submit"]}'
-                  ,
-                  style: TextStyle(color: Colors.black, fontSize: 25),
-                ),
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                        const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15)))),
-                    padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(
-                          vertical: (mediaQueryHeight * 0.074) * 0.3,
-                          horizontal: (mediaQueryWidth * 0.35)),
-                    ),
-                    backgroundColor: MaterialStateProperty.all(Colors.white)),
-              ):CircularProgressIndicator()
-            ],
+               !loading? ElevatedButton(
+                  onPressed: () async{
+                    setState(() {
+                      loading = true;
+                    });
+                // var submit = await   surveyP.postsurvey();
+                 await  surveyP.postsurvey();
+                   Navigator.of(context).pop();
+                   setState(() {
+                     loading = false;
+                   });
+        
+                    Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (BuildContext context) => Navigationbar(0)),
+                            ModalRoute.withName('/'),
+                        );
+        
+                  },
+                  child: Text('${authProvider.lg[authProvider.language]["Submit"]}'
+                    ,
+                    style: TextStyle(color: Colors.black, fontSize: 25),
+                  ),
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                          const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)))),
+                      padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(
+                            vertical: (mediaQueryHeight * 0.074) * 0.3,
+                            horizontal: (mediaQueryWidth * 0.35)),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
+                ):CircularProgressIndicator()
+              ],
+            ),
           ),
         ),
       ),
