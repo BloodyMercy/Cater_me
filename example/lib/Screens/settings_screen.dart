@@ -46,15 +46,15 @@ class _TABBarState extends State<TABBar> {
     // TODO: implement initState
     super.initState();
     getPersonalInfo();
-   // getdata();
-  //  getLanguage();
-
+    // getdata();
+    //  getLanguage();
   }
-  getLanguage() async{
-    final user=Provider.of<UserProvider>(context,listen:false);
+
+  getLanguage() async {
+    final user = Provider.of<UserProvider>(context, listen: false);
     await user.getLanguage();
-   // print(user.lg[user.language]["Home"]);
-  //  user.status=Status.Authenticated;
+    // print(user.lg[user.language]["Home"]);
+    //  user.status=Status.Authenticated;
   }
 
   getPersonalInfo() async {
@@ -63,7 +63,7 @@ class _TABBarState extends State<TABBar> {
     await personalInfo.getLanguage();
     //personalInfo.loading = true;
     await personalInfo.getPersonalInfo();
-   // personalInfo.loading = false;
+    // personalInfo.loading = false;
   }
 
   File image;
@@ -83,9 +83,6 @@ class _TABBarState extends State<TABBar> {
       print('Failed : $e');
     }
   }
-
-
-
 
   String showname = '';
   String phoneNumb = '';
@@ -129,108 +126,111 @@ class _TABBarState extends State<TABBar> {
         body: SingleChildScrollView(
           child: Container(
             color: LightColors.kLightYellow,
-            height: mediaQuery.size.height+100,
+            height: mediaQuery.size.height + 100,
             child: Column(
               children: [
-                 personalInfo.status == Status.Authenticated?
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: (){
-                        showModalBottomSheet(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20))),
-                            context: context,
-                            builder: (context) {
-                              return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  ListTile(
-                                    leading: const Icon(
-                                      Icons.camera,
-                                      color:
-                                      Color.fromRGBO(63, 85, 33, 1),
-                                    ),
-                                    title: Text(
-                                      '${personalInfo.lg[personalInfo.language]["Camera"]}',
-                                      style: TextStyle(
-                                        fontFamily: 'BerlinSansFB',
-                                        fontSize: 14,
-                                        color: Color.fromRGBO(
-                                            63, 85, 33, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      Navigator.pop(context);
-                                      setState(() {
-                                        loadingImage = true;
-                                      });
-                                      await PickImage(
-                                          ImageSource.camera);
-                                      await personalInfo
-                                          .updateProfile(image);
-                                      setState(() {
-                                        loadingImage = false;
-                                      });
-                                    },
-                                  ),
-                                  ListTile(
-                                    leading: const Icon(
-                                      Icons.image,
-                                      color:
-                                      Color.fromRGBO(63, 85, 33, 1),
-                                    ),
-                                    title: Text(
-                                      '${personalInfo.lg[personalInfo.language]["Gallery"]}',
-                                      style: TextStyle(
-                                        fontFamily: 'BerlinSansFB',
-                                        fontSize: 14,
-                                        color: Color.fromRGBO(
-                                            63, 85, 33, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      Navigator.pop(context);
-                                      setState(() {
-                                        loadingImage = true;
-                                      });
-                                      await PickImage(
-                                          ImageSource.gallery);
-                                      await personalInfo
-                                          .updateProfile(image);
-                                      setState(() {
-                                        loadingImage = false;
-                                      });
-                                      //    personalInfo.notifyListeners();
-                                      // if (a != "") {
-                                      //   setState(() {
-                                      //     imageprof = a;
-                                      //   });
-                                      // }
+                personalInfo.status == Status.Authenticated
+                    ? Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20))),
+                                  context: context,
+                                  builder: (context) {
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        ListTile(
+                                          leading: const Icon(
+                                            Icons.camera,
+                                            color:
+                                                Color.fromRGBO(63, 85, 33, 1),
+                                          ),
+                                          title: Text(
+                                            '${personalInfo.lg[personalInfo.language]["Camera"]}',
+                                            style: TextStyle(
+                                              fontFamily: 'BerlinSansFB',
+                                              fontSize: 14,
+                                              color:
+                                                  Color.fromRGBO(63, 85, 33, 1),
+                                            ),
+                                          ),
+                                          onTap: () async {
+                                            Navigator.pop(context);
+                                            setState(() {
+                                              loadingImage = true;
+                                            });
+                                            await PickImage(ImageSource.camera);
+                                            await personalInfo
+                                                .updateProfile(image);
+                                            setState(() {
+                                              loadingImage = false;
+                                            });
+                                          },
+                                        ),
+                                        ListTile(
+                                          leading: const Icon(
+                                            Icons.image,
+                                            color:
+                                                Color.fromRGBO(63, 85, 33, 1),
+                                          ),
+                                          title: Text(
+                                            '${personalInfo.lg[personalInfo.language]["Gallery"]}',
+                                            style: TextStyle(
+                                              fontFamily: 'BerlinSansFB',
+                                              fontSize: 14,
+                                              color:
+                                                  Color.fromRGBO(63, 85, 33, 1),
+                                            ),
+                                          ),
+                                          onTap: () async {
+                                            Navigator.pop(context);
+                                            setState(() {
+                                              loadingImage = true;
+                                            });
+                                            await PickImage(
+                                                ImageSource.gallery);
+                                            await personalInfo
+                                                .updateProfile(image);
+                                            setState(() {
+                                              loadingImage = false;
+                                            });
+                                            //    personalInfo.notifyListeners();
+                                            // if (a != "") {
+                                            //   setState(() {
+                                            //     imageprof = a;
+                                            //   });
+                                            // }
 
-                                      // personalInfo.loading=false;
-                                    },
-                                  ),
-                                ],
-                              );
-                            });
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(top: height*0.05,bottom: height*0.03, left: width*0.1,right: width*0.1),
-                        child: ClipOval(
-                          child: Container(
-                            color: Colors.white,
-                            child:
-
-                            CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                width: 100,
-                                height: 100,
-                                placeholder: (context, url) =>
-                                CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1),)
-,                                    // SkeletonGridLoader(
+                                            // personalInfo.loading=false;
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: height * 0.05,
+                                  bottom: height * 0.03,
+                                  left: width * 0.1,
+                                  right: width * 0.1),
+                              child: ClipOval(
+                                child: Container(
+                                  color: Colors.white,
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.fill,
+                                    width: 100,
+                                    height: 100,
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(
+                                      color: Color.fromRGBO(63, 85, 33, 1),
+                                    ),
+                                    // SkeletonGridLoader(
                                     //
                                     //   builder: Container(
                                     //       width: 100,
@@ -250,179 +250,179 @@ class _TABBarState extends State<TABBar> {
                                     //   direction: SkeletonDirection.ltr,
                                     //   childAspectRatio: 1,
                                     // ),
-                                imageUrl:
-                                personalInfo.imageUrl,
+                                    imageUrl: personalInfo.imageUrl,
+                                  ),
 
-
-                            ),
-
-                            // Image.network(
-                            //   personalInfo.imageUrl,
-                            //   errorBuilder:
-                            //       (BuildContext context,
-                            //       Object exception,
-                            //       StackTrace stackTrace) {
-                            //     return Icon(
-                            //         Icons.do_not_disturb,
-                            //         color: Colors.red);
-                            //   },
-                            //   loadingBuilder:
-                            //       (BuildContext context,
-                            //       Widget child,
-                            //       ImageChunkEvent
-                            //       loadingProgress) {
-                            //     if (loadingProgress == null)
-                            //       return child;
-                            //     return Padding(
-                            //       padding:
-                            //       const EdgeInsets.all(
-                            //           25.0),
-                            //       child: Center(
-                            //         child:
-                            //         CircularProgressIndicator(
-                            //           value: loadingProgress
-                            //               .expectedTotalBytes !=
-                            //               null
-                            //               ? loadingProgress
-                            //               .cumulativeBytesLoaded /
-                            //               loadingProgress
-                            //                   .expectedTotalBytes
-                            //               : null,
-                            //         ),
-                            //       ),
-                            //     );
-                            //   },
-                            //   fit: BoxFit.fill,
-                            //   width: 100,
-                            //   height: 100,
-                            // ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                          personalInfo.name.text,
-                            style: TextStyle(
-                               // color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                               // fontFamily: 'Geomanist',
-                                fontSize: 19),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text.rich(
-                            TextSpan(
-                              text: personalInfo.phoneNumber.text,
-                              style: TextStyle(
-                                //  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                 // fontFamily: 'Geomanist',
-                                  fontSize: 17),
+                                  // Image.network(
+                                  //   personalInfo.imageUrl,
+                                  //   errorBuilder:
+                                  //       (BuildContext context,
+                                  //       Object exception,
+                                  //       StackTrace stackTrace) {
+                                  //     return Icon(
+                                  //         Icons.do_not_disturb,
+                                  //         color: Colors.red);
+                                  //   },
+                                  //   loadingBuilder:
+                                  //       (BuildContext context,
+                                  //       Widget child,
+                                  //       ImageChunkEvent
+                                  //       loadingProgress) {
+                                  //     if (loadingProgress == null)
+                                  //       return child;
+                                  //     return Padding(
+                                  //       padding:
+                                  //       const EdgeInsets.all(
+                                  //           25.0),
+                                  //       child: Center(
+                                  //         child:
+                                  //         CircularProgressIndicator(
+                                  //           value: loadingProgress
+                                  //               .expectedTotalBytes !=
+                                  //               null
+                                  //               ? loadingProgress
+                                  //               .cumulativeBytesLoaded /
+                                  //               loadingProgress
+                                  //                   .expectedTotalBytes
+                                  //               : null,
+                                  //         ),
+                                  //       ),
+                                  //     );
+                                  //   },
+                                  //   fit: BoxFit.fill,
+                                  //   width: 100,
+                                  //   height: 100,
+                                  // ),
+                                ),
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          ElevatedButton(
-                            onPressed: () async {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return CustomDialog(
-                                      title:
-                                      '${personalInfo.lg[personalInfo.language]["Sad to see you leave"]}',
-                                      description: "",
-                                      oneOrtwo: true,
-                                      button2: ElevatedButton(
-                                        onPressed: () async {
-                                          final SharedPreferences
-                                          sharedPreferences =
-                                          await SharedPreferences
-                                              .getInstance();
-                                          final occa = Provider.of<
-                                              OccasionProvider>(
-                                              context,
-                                              listen: false);
-                                          occa.all = [];
-                                          personalInfo.status =
-                                              Status.Unauthenticated;
-                                          // sharedPreferences.remove('Email');
-                                          //  sharedPreferences.remove('Password');
-                                          personalInfo
-                                              .clearAllTextController();
-                                          bool a = sharedPreferences
-                                              .getBool("startintro");
-                                          bool aw = sharedPreferences
-                                              .getBool("wlkdone")??false;
-                                          String l = sharedPreferences
-                                              .getString("locale")??"en";
-                                          sharedPreferences.clear();
-                                          sharedPreferences.setBool(
-                                              "startintro", a);
-                                          sharedPreferences.setBool(
-                                              "wlkdone", aw);
-                                          sharedPreferences.setString("locale", l);
-                                          Navigator.of(context).pop();
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  personalInfo.name.text,
+                                  style: TextStyle(
+                                      // color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                      // fontFamily: 'Geomanist',
+                                      fontSize: 19),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text.rich(
+                                  TextSpan(
+                                    text: personalInfo.phoneNumber.text,
+                                    style: TextStyle(
+                                        //  color: Colors.black,
+                                        fontWeight: FontWeight.w400,
+                                        // fontFamily: 'Geomanist',
+                                        fontSize: 17),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return CustomDialog(
+                                            title:
+                                                '${personalInfo.lg[personalInfo.language]["Sad to see you leave"]}',
+                                            description: "",
+                                            oneOrtwo: true,
+                                            button2: ElevatedButton(
+                                              onPressed: () async {
+                                                final SharedPreferences
+                                                    sharedPreferences =
+                                                    await SharedPreferences
+                                                        .getInstance();
+                                                final occa = Provider.of<
+                                                        OccasionProvider>(
+                                                    context,
+                                                    listen: false);
+                                                occa.all = [];
+                                                personalInfo.status =
+                                                    Status.Unauthenticated;
+                                                // sharedPreferences.remove('Email');
+                                                //  sharedPreferences.remove('Password');
+                                                personalInfo
+                                                    .clearAllTextController();
+                                                bool a = sharedPreferences
+                                                    .getBool("startintro");
+                                                bool aw = sharedPreferences
+                                                        .getBool("wlkdone") ??
+                                                    false;
+                                                String l = sharedPreferences
+                                                        .getString("locale") ??
+                                                    "en";
+                                                sharedPreferences.clear();
+                                                sharedPreferences.setBool(
+                                                    "startintro", a);
+                                                sharedPreferences.setBool(
+                                                    "wlkdone", aw);
+                                                sharedPreferences.setString(
+                                                    "locale", l);
+                                                Navigator.of(context).pop();
 
-                                          Navigator.of(context)
-                                              .pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Navigationbar(0),
+                                                Navigator.of(context)
+                                                    .pushAndRemoveUntil(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Navigationbar(0),
+                                                        ),
+                                                        (route) => false);
+                                              },
+                                              child: Text(
+                                                '${personalInfo.lg[personalInfo.language]["Logout"]}',
+                                                style: TextStyle(
+                                                    fontFamily: 'BerlinSansFB'),
                                               ),
-                                                  (route) => false);
-                                        },
-                                        child: Text(
-                                          '${personalInfo.lg[personalInfo.language]["Logout"]}',
-                                          style: TextStyle(
-                                              fontFamily: 'BerlinSansFB'),
-                                        ),
-                                      ),
-                                      button1: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text(
-                                            '${personalInfo.lg[personalInfo.language]["No"]}',
-                                            style: TextStyle(
-                                                fontFamily:
-                                                'BerlinSansFB')),
-                                      ),
-                                    );
-                                  });
-                            },
-                            child: Text(
-                              '${personalInfo.lg[personalInfo.language]["Logout"]}',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontFamily: 'Geomanist',
-                              ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: Color.fromRGBO(63, 85, 33, 1),
-                              side: BorderSide(
-                                color: Color.fromRGBO(63, 85, 33, 1),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(1),
-                              ),
+                                            ),
+                                            button1: ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text(
+                                                  '${personalInfo.lg[personalInfo.language]["No"]}',
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          'BerlinSansFB')),
+                                            ),
+                                          );
+                                        });
+                                  },
+                                  child: Text(
+                                    '${personalInfo.lg[personalInfo.language]["Logout"]}',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontFamily: 'Geomanist',
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color.fromRGBO(63, 85, 33, 1),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(63, 85, 33, 1),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(1),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
+                      )
+                    : Image.asset(
+                        "images/CaterMe.png",
+                        height: 100,
                       ),
-                    ),
-                  ],
-                ):Image.asset(
-      "images/CaterMe.png",
-      height: 100,
-    ),
-
                 DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -456,15 +456,14 @@ class _TABBarState extends State<TABBar> {
                     children: [
                       personalInfo.status == Status.Authenticated
                           ? GestureDetector(
-                        onTap: () {
-
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => PersonalInfo(),
-                            ),
-                          );
-                        },
-                            child: Card(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PersonalInfo(),
+                                  ),
+                                );
+                              },
+                              child: Card(
                                 color: const Color.fromARGB(206, 255, 255, 255),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
@@ -525,80 +524,86 @@ class _TABBarState extends State<TABBar> {
                                         ),
                                       ],
                                     ),
-
                                   ],
                                 ),
                               ),
-                          )
+                            )
                           : Container(),
-                      personalInfo.status == Status.Authenticated?  Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(
-                          onTap: () {
-                            personalInfo.clearAllTextController();
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    AccountInfo(),
-                              ),
-                            );
-                          },
-                          child: Card(
-                            color: const Color.fromARGB(206, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                      personalInfo.status == Status.Authenticated
+                          ? Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  personalInfo.clearAllTextController();
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AccountInfo(),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  color:
+                                      const Color.fromARGB(206, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Column(
                                     children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                          Icon(
-                                            Icons.vpn_key_sharp,
-                                            size: 20, //Icon Size
-                                            color: Color(
-                                                0xFF3F5521), //Color Of Icon
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.05,
-                                          ),
-                                          Text(
-                                            '${personalInfo.lg[personalInfo.language]["Reset Password"]}',
-                                            style: TextStyle(
-                                                color: Color(0xFF3F5521),
-                                                fontSize: 20,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-
-                                        ],
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                                Icon(
+                                                  Icons.vpn_key_sharp,
+                                                  size: 20, //Icon Size
+                                                  color: Color(
+                                                      0xFF3F5521), //Color Of Icon
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.05,
+                                                ),
+                                                Text(
+                                                  '${personalInfo.lg[personalInfo.language]["Reset Password"]}',
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ):Container(),
+                              ),
+                            )
+                          : Container(),
                       personalInfo.status == Status.Authenticated
                           ? Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -612,9 +617,11 @@ class _TABBarState extends State<TABBar> {
                                   );
                                 },
                                 child: Card(
-                                  color: const Color.fromARGB(206, 255, 255, 255),
+                                  color:
+                                      const Color.fromARGB(206, 255, 255, 255),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0)),
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
                                   child: Column(
                                     children: [
                                       Padding(
@@ -635,8 +642,9 @@ class _TABBarState extends State<TABBar> {
                                               Row(
                                                 children: [
                                                   SizedBox(
-                                                    width: mediaQuery.size.width *
-                                                        0.03,
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.03,
                                                   ),
                                                   Icon(
                                                     FontAwesomeIcons.building,
@@ -645,13 +653,15 @@ class _TABBarState extends State<TABBar> {
                                                         0xFF3F5521), //Color Of Icon
                                                   ),
                                                   SizedBox(
-                                                    width: mediaQuery.size.width *
-                                                        0.05,
+                                                    width:
+                                                        mediaQuery.size.width *
+                                                            0.05,
                                                   ),
                                                   Text(
                                                     '${personalInfo.lg[personalInfo.language]["My Addresses"]}',
                                                     style: TextStyle(
-                                                        color: Color(0xFF3F5521),
+                                                        color:
+                                                            Color(0xFF3F5521),
                                                         fontSize: 20,
                                                         fontFamily:
                                                             'BerlinSansFB',
@@ -674,7 +684,6 @@ class _TABBarState extends State<TABBar> {
                                           ),
                                         ),
                                       ),
-
 
                                       // Divider(
                                       //   thickness: 1,
@@ -744,274 +753,549 @@ class _TABBarState extends State<TABBar> {
                               ),
                             )
                           : Container(),
-                      personalInfo.status == Status.Authenticated?       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CreditCardsSettings(),
-                              ),
-                            );
-                          },
-                          child: Card(
-                            color: const Color.fromARGB(206, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                      personalInfo.status == Status.Authenticated
+                          ? Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CreditCardsSettings(),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  color:
+                                      const Color.fromARGB(206, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Column(
                                     children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                          Icon(
-                                            FontAwesomeIcons.creditCard,
-                                            size: 20, //Icon Size
-                                            color: Color(
-                                                0xFF3F5521), //Color Of Icon
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.05,
-                                          ),
-                                          Text(
-                                            '${personalInfo.lg[personalInfo.language]["My Credit Cards"]}',
-                                            style: TextStyle(
-                                                color: Color(0xFF3F5521),
-                                                fontSize: 20,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-
-                                        ],
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                                Icon(
+                                                  FontAwesomeIcons.creditCard,
+                                                  size: 20, //Icon Size
+                                                  color: Color(
+                                                      0xFF3F5521), //Color Of Icon
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.05,
+                                                ),
+                                                Text(
+                                                  '${personalInfo.lg[personalInfo.language]["My Credit Cards"]}',
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ):Container(),
-                      personalInfo.status == Status.Authenticated?   Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    AddFriendScreen(),
                               ),
-                            );
-                          },
-                          child: Card(
-                            color: const Color.fromARGB(206, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            )
+                          : Container(),
+                      personalInfo.status == Status.Authenticated
+                          ? Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AddFriendScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  color:
+                                      const Color.fromARGB(206, 255, 255, 255),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  child: Column(
                                     children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                          Icon(
-                                            FontAwesomeIcons.userPlus,
-                                            size: 20, //Icon Size
-                                            color: Color(
-                                                0xFF3F5521), //Color Of Icon
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.05,
-                                          ),
-                                          Text(
-                                            '${personalInfo.lg[personalInfo.language]["My Friends"]}',
-                                            style: TextStyle(
-                                                color: Color(0xFF3F5521),
-                                                fontSize: 20,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-
-                                        ],
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                                Icon(
+                                                  FontAwesomeIcons.userPlus,
+                                                  size: 20, //Icon Size
+                                                  color: Color(
+                                                      0xFF3F5521), //Color Of Icon
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.05,
+                                                ),
+                                                Text(
+                                                  '${personalInfo.lg[personalInfo.language]["My Friends"]}',
+                                                  style: TextStyle(
+                                                      color: Color(0xFF3F5521),
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: Color(0xFF3F5521),
+                                                ),
+                                                SizedBox(
+                                                  width: mediaQuery.size.width *
+                                                      0.03,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ):Container(),
+                              ),
+                            )
+                          : Container(),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
                           onTap: () {
-                            if(personalInfo.language =="en"){
+                            if (personalInfo.language == "en") {
                               showDialog(
                                   context: context,
-                                  builder: (_) => AlertDialog(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(25),
-                                      ),
-                                    ),
-                                    title: Center(
-                                      child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 19,
-                                          )),
-                                    ),
-                                    actions: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: _mediaWidth * 0.08),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceBetween,
-                                          children: [
-                                            TextButton(
-                                              child: Text('العربيّة'),
-                                              onPressed: () async {
-                                                personalInfo.language =
-                                                "ar";
-                                                SharedPreferences _prefs =
-                                                await SharedPreferences
-                                                    .getInstance();
-                                                _prefs.setString(
-                                                    "locale", "ar");
-                                                MyApp.setLocale(context,
-                                                    Locale("ar", "AE"));
-                                                 Navigator.of(context).pop();
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Navigationbar(0),
+                                  builder: (_) => Dialog(
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      child: Stack(
+                                        overflow: Overflow.visible,
+                                        alignment: Alignment.topCenter,
+                                        children: [
+                                          Container(
+                                            height:
+                                                mediaQuery.size.height * 0.25,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: mediaQuery.size.height *
+                                                      0.09,
+                                                  left: mediaQuery.size.width *
+                                                      0.05,
+                                                  right: mediaQuery.size.width *
+                                                      0.05),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                      '${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 19,
+                                                      )),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: mediaQuery
+                                                                .size.height *
+                                                            0.02),
+                                                    child: Divider(
+                                                      color: Colors.white,
                                                     ),
-                                                        (Route<dynamic>
-                                                    route) =>
-                                                    false);
-                                                // AppLocalizations.of(context)!.locale.toString()
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: mediaQuery
+                                                                .size.height *
+                                                            0.01),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      mediaQuery
+                                                                              .size
+                                                                              .width *
+                                                                          0.05),
+                                                          child: TextButton(
+                                                            child: Text(
+                                                              'العربيّة',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            onPressed:
+                                                                () async {
+                                                              personalInfo
+                                                                      .language =
+                                                                  "ar";
+                                                              SharedPreferences
+                                                                  _prefs =
+                                                                  await SharedPreferences
+                                                                      .getInstance();
+                                                              _prefs.setString(
+                                                                  "locale",
+                                                                  "ar");
+                                                              MyApp.setLocale(
+                                                                  context,
+                                                                  Locale("ar",
+                                                                      "AE"));
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pushAndRemoveUntil(
+                                                                      MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                Navigationbar(0),
+                                                                      ),
+                                                                      (Route<dynamic>
+                                                                              route) =>
+                                                                          false);
+                                                              // AppLocalizations.of(context)!.locale.toString()
 
-                                                // .language="ar";
-                                              },
+                                                              // .language="ar";
+                                                            },
+                                                          ),
+                                                        ),
+                                                        Divider(
+                                                          color: Colors.white,
+                                                        ),
+                                                        TextButton(
+                                                            child: Text(
+                                                              '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            }),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                            TextButton(
-                                                child: Text(
-                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
-                                                ),
-                                                onPressed: (){
-                                                  Navigator.of(context).pop();
-                                                }),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ));}
-                            else{
+                                          ),
+                                          Positioned(
+                                              top: -mediaQuery.size.height *
+                                                  0.06,
+                                              child: Image.asset(
+                                                'images/Logoicon.png',
+                                                height: 100,
+                                              )),
+                                        ],
+                                      ))
+                                  //     AlertDialog(
+                                  //   shape: const RoundedRectangleBorder(
+                                  //     borderRadius: BorderRadius.all(
+                                  //       Radius.circular(25),
+                                  //     ),
+                                  //   ),
+                                  //   title: Center(
+                                  //     child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                  //         style: TextStyle(
+                                  //           color: Colors.black,
+                                  //           fontSize: 19,
+                                  //         )),
+                                  //   ),
+                                  //   actions: [
+                                  //     Padding(
+                                  //       padding: EdgeInsets.symmetric(
+                                  //           horizontal: _mediaWidth * 0.08),
+                                  //       child: Row(
+                                  //         mainAxisAlignment:
+                                  //         MainAxisAlignment
+                                  //             .spaceBetween,
+                                  //         children: [
+                                  //           TextButton(
+                                  //             child: Text('العربيّة'),
+                                  //             onPressed: () async {
+                                  //               personalInfo.language =
+                                  //               "ar";
+                                  //               SharedPreferences _prefs =
+                                  //               await SharedPreferences
+                                  //                   .getInstance();
+                                  //               _prefs.setString(
+                                  //                   "locale", "ar");
+                                  //               MyApp.setLocale(context,
+                                  //                   Locale("ar", "AE"));
+                                  //                Navigator.of(context).pop();
+                                  //               Navigator.of(context)
+                                  //                   .pushAndRemoveUntil(
+                                  //                   MaterialPageRoute(
+                                  //                     builder: (context) =>
+                                  //                         Navigationbar(0),
+                                  //                   ),
+                                  //                       (Route<dynamic>
+                                  //                   route) =>
+                                  //                   false);
+                                  //               // AppLocalizations.of(context)!.locale.toString()
+                                  //
+                                  //               // .language="ar";
+                                  //             },
+                                  //           ),
+                                  //           TextButton(
+                                  //               child: Text(
+                                  //                 '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                  //               ),
+                                  //               onPressed: (){
+                                  //                 Navigator.of(context).pop();
+                                  //               }),
+                                  //         ],
+                                  //       ),
+                                  //     )
+                                  //   ],
+                                  //
+                                  //
+                                  // ))
+                                  );
+                            } else {
                               showDialog(
                                   context: context,
-                                  builder: (_) => AlertDialog(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(25),
-                                      ),
-                                    ),
-                                    title: Center(
-                                      child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 19,
-                                          )),
-                                    ),
-                                    actions: [
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: _mediaWidth * 0.08),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceBetween,
-                                          children: [
-                                            TextButton(
-                                                child: Text(
-                                                  'English',
-                                                ),
-                                                onPressed: () async {
-                                                  personalInfo.language =
-                                                  "en";
-                                                  SharedPreferences _prefs =
-                                                  await SharedPreferences
-                                                      .getInstance();
-                                                  _prefs.setString(
-                                                      "locale", "en");
-                                                  MyApp.setLocale(context,
-                                                      Locale("en", "US"));
-                                                  Navigator.of(context).pop();
-                                                  Navigator.of(context)
-                                                      .pushAndRemoveUntil(
-                                                      MaterialPageRoute(
-                                                        builder:
-                                                            (context) =>
-                                                                Navigationbar(0),
-                                                      ),
-                                                          (Route<dynamic>
-                                                      route) =>
-                                                      false);
-                                                  // AppLocalizations.of(context)!.locale.toString()
+                                  builder: (_) => Dialog(
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      child: Stack(
+                                        overflow: Overflow.visible,
+                                        alignment: Alignment.topCenter,
+                                        children: [
+                                          Container(
+                                            height:
+                                                mediaQuery.size.height * 0.25,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: mediaQuery.size.height *
+                                                      0.09,
+                                                  left: mediaQuery.size.width *
+                                                      0.05,
+                                                  right: mediaQuery.size.width *
+                                                      0.05),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                      '${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 19,
+                                                      )),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: mediaQuery
+                                                                .size.height *
+                                                            0.02),
+                                                    child: Divider(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: mediaQuery
+                                                                .size.height *
+                                                            0.01),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      mediaQuery
+                                                                              .size
+                                                                              .width *
+                                                                          0.05),
+                                                          child: TextButton(
+                                                              child: Text(
+                                                                'English',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                              ),
+                                                              onPressed:
+                                                                  () async {
+                                                                personalInfo
+                                                                        .language =
+                                                                    "en";
+                                                                SharedPreferences
+                                                                    _prefs =
+                                                                    await SharedPreferences
+                                                                        .getInstance();
+                                                                _prefs.setString(
+                                                                    "locale",
+                                                                    "en");
+                                                                MyApp.setLocale(
+                                                                    context,
+                                                                    Locale("en",
+                                                                        "US"));
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pop();
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pushAndRemoveUntil(
+                                                                        MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              Navigationbar(0),
+                                                                        ),
+                                                                        (Route<dynamic>
+                                                                                route) =>
+                                                                            false);
+                                                                // AppLocalizations.of(context)!.locale.toString()
 
-                                                  // .language="ar";                                              },
-                                                }),
-                                            TextButton(
-                                                child: Text(
-                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
-                                                ),
-                                                onPressed: (){
-                                                  Navigator.of(context).pop();
-                                                }),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ));
+                                                                // .language="ar";                                              },
+                                                              }),
+                                                        ),
+                                                        Divider(
+                                                          color: Colors.white,
+                                                        ),
+                                                        TextButton(
+                                                            child: Text(
+                                                              '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            }),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                              top: -mediaQuery.size.height *
+                                                  0.06,
+                                              child: Image.asset(
+                                                'images/Logoicon.png',
+                                                height: 100,
+                                              )),
+                                        ],
+                                      ))
+                                  //     AlertDialog(
+                                  //   shape: const RoundedRectangleBorder(
+                                  //     borderRadius: BorderRadius.all(
+                                  //       Radius.circular(25),
+                                  //     ),
+                                  //   ),
+                                  //   title: Center(
+                                  //     child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                  //         style: TextStyle(
+                                  //           color: Colors.black,
+                                  //           fontSize: 19,
+                                  //         )),
+                                  //   ),
+                                  //   actions: [
+                                  //     Padding(
+                                  //       padding: EdgeInsets.symmetric(
+                                  //           horizontal: _mediaWidth * 0.08),
+                                  //       child: Row(
+                                  //         mainAxisAlignment:
+                                  //         MainAxisAlignment
+                                  //             .spaceBetween,
+                                  //         children: [
+                                  //           TextButton(
+                                  //               child: Text(
+                                  //                 'English',
+                                  //               ),
+                                  //               onPressed: () async {
+                                  //                 personalInfo.language =
+                                  //                 "en";
+                                  //                 SharedPreferences _prefs =
+                                  //                 await SharedPreferences
+                                  //                     .getInstance();
+                                  //                 _prefs.setString(
+                                  //                     "locale", "en");
+                                  //                 MyApp.setLocale(context,
+                                  //                     Locale("en", "US"));
+                                  //                 Navigator.of(context).pop();
+                                  //                 Navigator.of(context)
+                                  //                     .pushAndRemoveUntil(
+                                  //                     MaterialPageRoute(
+                                  //                       builder:
+                                  //                           (context) =>
+                                  //                               Navigationbar(0),
+                                  //                     ),
+                                  //                         (Route<dynamic>
+                                  //                     route) =>
+                                  //                     false);
+                                  //                 // AppLocalizations.of(context)!.locale.toString()
+                                  //
+                                  //                 // .language="ar";                                              },
+                                  //               }),
+                                  //           TextButton(
+                                  //               child: Text(
+                                  //                 '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                  //               ),
+                                  //               onPressed: (){
+                                  //                 Navigator.of(context).pop();
+                                  //               }),
+                                  //         ],
+                                  //       ),
+                                  //     )
+                                  //   ],
+                                  // )
+                                  );
                             }
                           },
                           child: Card(
@@ -1020,136 +1304,398 @@ class _TABBarState extends State<TABBar> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             child: GestureDetector(
                               onTap: () {
-                                if(personalInfo.language =="en"){
-                                showDialog(
-                                    context: context,
-                                    builder: (_) => AlertDialog(
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(25),
-                                            ),
-                                          ),
-                                          title: Center(
-                                            child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 19,
-                                                )),
-                                          ),
-                                          actions: [
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: _mediaWidth * 0.08),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  TextButton(
-                                                    child: Text('العربيّة'),
-                                                    onPressed: () async {
-                                                      personalInfo.language =
-                                                          "ar";
-                                                      SharedPreferences _prefs =
-                                                          await SharedPreferences
-                                                              .getInstance();
-                                                      _prefs.setString(
-                                                          "locale", "ar");
-                                                      MyApp.setLocale(context,
-                                                          Locale("ar", "AE"));
-                                                      Navigator.of(context).pop();
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                              MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    Navigationbar(0),
-                                                              ),
-                                                              (Route<dynamic>
-                                                                      route) =>
-                                                                  false);
-                                                      // AppLocalizations.of(context)!.locale.toString()
-
-                                                      // .language="ar";
-                                                    },
-                                                  ),
-                                                  TextButton(
-                                                      child: Text(
-                                                          '${personalInfo.lg[personalInfo.language]["Close"]}',
-                                                      ),
-                                                      onPressed: (){
-                                                        Navigator.of(context).pop();
-                                                      }),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ));}
-                                else{
+                                if (personalInfo.language == "en") {
                                   showDialog(
                                       context: context,
-                                      builder: (_) => AlertDialog(
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(25),
-                                          ),
-                                        ),
-                                        title: Center(
-                                          child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 19,
-                                              )),
-                                        ),
-                                        actions: [
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: _mediaWidth * 0.08),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
-                                              children: [
-                                                TextButton(
-                                                    child: Text(
-                                                      'English',
-                                                    ),
-                                                    onPressed: () async {
-                                                      personalInfo.language =
-                                                      "en";
-                                                      SharedPreferences _prefs =
-                                                      await SharedPreferences
-                                                          .getInstance();
-                                                      _prefs.setString(
-                                                          "locale", "en");
-                                                      MyApp.setLocale(context,
-                                                          Locale("en", "US"));
-                                                      Navigator.of(context).pop();
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                            builder:
-                                                                (context) =>
-                                                                    Navigationbar(0),
-                                                          ),
-                                                              (Route<dynamic>
-                                                          route) =>
-                                                          false);
-                                                      // AppLocalizations.of(context)!.locale.toString()
+                                      builder: (_) => Dialog(
+                                          backgroundColor: Colors.black,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0)),
+                                          child: Stack(
+                                            overflow: Overflow.visible,
+                                            alignment: Alignment.topCenter,
+                                            children: [
+                                              Container(
+                                                height: mediaQuery.size.height *
+                                                    0.25,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: mediaQuery
+                                                              .size.height *
+                                                          0.09,
+                                                      left: mediaQuery
+                                                              .size.width *
+                                                          0.05,
+                                                      right: mediaQuery
+                                                              .size.width *
+                                                          0.05),
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          '${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 19,
+                                                          )),
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: mediaQuery.size
+                                                                    .height *
+                                                                0.02),
+                                                        child: Divider(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: mediaQuery.size
+                                                                    .height *
+                                                                0.01),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsets.symmetric(
+                                                                  horizontal:
+                                                                      mediaQuery
+                                                                              .size
+                                                                              .width *
+                                                                          0.05),
+                                                              child: TextButton(
+                                                                child: Text(
+                                                                  'العربيّة',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                                onPressed:
+                                                                    () async {
+                                                                  personalInfo
+                                                                          .language =
+                                                                      "ar";
+                                                                  SharedPreferences
+                                                                      _prefs =
+                                                                      await SharedPreferences
+                                                                          .getInstance();
+                                                                  _prefs.setString(
+                                                                      "locale",
+                                                                      "ar");
+                                                                  MyApp.setLocale(
+                                                                      context,
+                                                                      Locale(
+                                                                          "ar",
+                                                                          "AE"));
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pushAndRemoveUntil(
+                                                                          MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                Navigationbar(0),
+                                                                          ),
+                                                                          (Route<dynamic> route) =>
+                                                                              false);
+                                                                  // AppLocalizations.of(context)!.locale.toString()
 
-                                                      // .language="ar";                                              },
-                                                    }),
-                                                TextButton(
-                                                    child: Text(
-                                                      '${personalInfo.lg[personalInfo.language]["Close"]}',
-                                                    ),
-                                                    onPressed: (){
-                                                      Navigator.of(context).pop();
-                                                    }),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ));
+                                                                  // .language="ar";
+                                                                },
+                                                              ),
+                                                            ),
+                                                            Divider(
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            TextButton(
+                                                                child: Text(
+                                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                }),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Positioned(
+                                                  top: -mediaQuery.size.height *
+                                                      0.06,
+                                                  child: Image.asset(
+                                                    'images/Logoicon.png',
+                                                    height: 100,
+                                                  )),
+                                            ],
+                                          ))
+                                      // AlertDialog(
+                                      //   shape: const RoundedRectangleBorder(
+                                      //     borderRadius: BorderRadius.all(
+                                      //       Radius.circular(25),
+                                      //     ),
+                                      //   ),
+                                      //   title: Center(
+                                      //     child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                      //         style: TextStyle(
+                                      //           color: Colors.black,
+                                      //           fontSize: 19,
+                                      //         )),
+                                      //   ),
+                                      //   actions: [
+                                      //     Padding(
+                                      //       padding: EdgeInsets.symmetric(
+                                      //           horizontal: _mediaWidth * 0.08),
+                                      //       child: Row(
+                                      //         mainAxisAlignment:
+                                      //             MainAxisAlignment
+                                      //                 .spaceBetween,
+                                      //         children: [
+                                      //           TextButton(
+                                      //             child: Text('العربيّة'),
+                                      //             onPressed: () async {
+                                      //               personalInfo.language =
+                                      //                   "ar";
+                                      //               SharedPreferences _prefs =
+                                      //                   await SharedPreferences
+                                      //                       .getInstance();
+                                      //               _prefs.setString(
+                                      //                   "locale", "ar");
+                                      //               MyApp.setLocale(context,
+                                      //                   Locale("ar", "AE"));
+                                      //               Navigator.of(context).pop();
+                                      //               Navigator.of(context)
+                                      //                   .pushAndRemoveUntil(
+                                      //                       MaterialPageRoute(
+                                      //                         builder: (context) =>
+                                      //                             Navigationbar(0),
+                                      //                       ),
+                                      //                       (Route<dynamic>
+                                      //                               route) =>
+                                      //                           false);
+                                      //               // AppLocalizations.of(context)!.locale.toString()
+                                      //
+                                      //               // .language="ar";
+                                      //             },
+                                      //           ),
+                                      //           TextButton(
+                                      //               child: Text(
+                                      //                   '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                      //               ),
+                                      //               onPressed: (){
+                                      //                 Navigator.of(context).pop();
+                                      //               }),
+                                      //         ],
+                                      //       ),
+                                      //     )
+                                      //   ],
+                                      // )
+                                      );
+                                } else {
+                                  showDialog(
+                                      context: context,
+                                      builder: (_) => Dialog(
+                                          backgroundColor: Colors.black,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0)),
+                                          child: Stack(
+                                            overflow: Overflow.visible,
+                                            alignment: Alignment.topCenter,
+                                            children: [
+                                              Container(
+                                                height: mediaQuery.size.height *
+                                                    0.25,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: mediaQuery
+                                                              .size.height *
+                                                          0.09,
+                                                      left: mediaQuery
+                                                              .size.width *
+                                                          0.05,
+                                                      right: mediaQuery
+                                                              .size.width *
+                                                          0.05),
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          '${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 19,
+                                                          )),
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: mediaQuery.size
+                                                                    .height *
+                                                                0.02),
+                                                        child: Divider(
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                            top: mediaQuery.size
+                                                                    .height *
+                                                                0.01),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsets.symmetric(
+                                                                  horizontal:
+                                                                      mediaQuery
+                                                                              .size
+                                                                              .width *
+                                                                          0.05),
+                                                              child: TextButton(
+                                                                  child: Text(
+                                                                    'English',
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    personalInfo
+                                                                            .language =
+                                                                        "en";
+                                                                    SharedPreferences
+                                                                        _prefs =
+                                                                        await SharedPreferences
+                                                                            .getInstance();
+                                                                    _prefs.setString(
+                                                                        "locale",
+                                                                        "en");
+                                                                    MyApp.setLocale(
+                                                                        context,
+                                                                        Locale(
+                                                                            "en",
+                                                                            "US"));
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .pop();
+                                                                    Navigator.of(
+                                                                            context)
+                                                                        .pushAndRemoveUntil(
+                                                                            MaterialPageRoute(
+                                                                              builder: (context) => Navigationbar(0),
+                                                                            ),
+                                                                            (Route<dynamic> route) =>
+                                                                                false);
+                                                                    // AppLocalizations.of(context)!.locale.toString()
+
+                                                                    // .language="ar";                                              },
+                                                                  }),
+                                                            ),
+                                                            Divider(
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            TextButton(
+                                                                child: Text(
+                                                                  '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop();
+                                                                }),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Positioned(
+                                                  top: -mediaQuery.size.height *
+                                                      0.06,
+                                                  child: Image.asset(
+                                                    'images/Logoicon.png',
+                                                    height: 100,
+                                                  )),
+                                            ],
+                                          ))
+                                      //     AlertDialog(
+                                      //   shape: const RoundedRectangleBorder(
+                                      //     borderRadius: BorderRadius.all(
+                                      //       Radius.circular(25),
+                                      //     ),
+                                      //   ),
+                                      //   title: Center(
+                                      //     child: Text('${personalInfo.lg[personalInfo.language]["Choose language"]}',
+                                      //         style: TextStyle(
+                                      //           color: Colors.black,
+                                      //           fontSize: 19,
+                                      //         )),
+                                      //   ),
+                                      //   actions: [
+                                      //     Padding(
+                                      //       padding: EdgeInsets.symmetric(
+                                      //           horizontal: _mediaWidth * 0.08),
+                                      //       child: Row(
+                                      //         mainAxisAlignment:
+                                      //         MainAxisAlignment
+                                      //             .spaceBetween,
+                                      //         children: [
+                                      //           TextButton(
+                                      //               child: Text(
+                                      //                 'English',
+                                      //               ),
+                                      //               onPressed: () async {
+                                      //                 personalInfo.language =
+                                      //                 "en";
+                                      //                 SharedPreferences _prefs =
+                                      //                 await SharedPreferences
+                                      //                     .getInstance();
+                                      //                 _prefs.setString(
+                                      //                     "locale", "en");
+                                      //                 MyApp.setLocale(context,
+                                      //                     Locale("en", "US"));
+                                      //                 Navigator.of(context).pop();
+                                      //                 Navigator.of(context)
+                                      //                     .pushAndRemoveUntil(
+                                      //                     MaterialPageRoute(
+                                      //                       builder:
+                                      //                           (context) =>
+                                      //                               Navigationbar(0),
+                                      //                     ),
+                                      //                         (Route<dynamic>
+                                      //                     route) =>
+                                      //                     false);
+                                      //                 // AppLocalizations.of(context)!.locale.toString()
+                                      //
+                                      //                 // .language="ar";                                              },
+                                      //               }),
+                                      //           TextButton(
+                                      //               child: Text(
+                                      //                 '${personalInfo.lg[personalInfo.language]["Close"]}',
+                                      //               ),
+                                      //               onPressed: (){
+                                      //                 Navigator.of(context).pop();
+                                      //               }),
+                                      //         ],
+                                      //       ),
+                                      //     )
+                                      //   ],
+                                      // )
+                                      );
                                 }
                               },
                               child: Padding(
@@ -1180,20 +1726,16 @@ class _TABBarState extends State<TABBar> {
                                               fontFamily: 'BerlinSansFB',
                                               fontWeight: FontWeight.normal),
                                         ),
-
                                       ],
-
                                     ),
-                                    Row(
-                                      children: [
-                                        Icon(
+                                    Row(children: [
+                                      Icon(
                                         Icons.chevron_right,
                                         color: Color(0xFF3F5521),
                                       ),
-                                        SizedBox(
-                                          width: mediaQuery.size.width *
-                                              0.03,
-                                        ),
+                                      SizedBox(
+                                        width: mediaQuery.size.width * 0.03,
+                                      ),
                                     ]),
                                     // InkWell(
                                     //     onTap: () async {
@@ -1265,8 +1807,7 @@ class _TABBarState extends State<TABBar> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    WebViewExample(),
+                                builder: (context) => WebViewExample(),
                               ),
                             );
                           },
@@ -1280,8 +1821,7 @@ class _TABBarState extends State<TABBar> {
                                   onTap: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            WebViewExample(),
+                                        builder: (context) => WebViewExample(),
                                       ),
                                     );
                                   },
@@ -1294,7 +1834,8 @@ class _TABBarState extends State<TABBar> {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width: mediaQuery.size.width * 0.03,
+                                              width:
+                                                  mediaQuery.size.width * 0.03,
                                             ),
                                             Icon(
                                               Icons.article_rounded,
@@ -1303,7 +1844,8 @@ class _TABBarState extends State<TABBar> {
                                                   0xFF3F5521), //Color Of Icon
                                             ),
                                             SizedBox(
-                                              width: mediaQuery.size.width * 0.05,
+                                              width:
+                                                  mediaQuery.size.width * 0.05,
                                             ),
                                             Text(
                                               '${personalInfo.lg[personalInfo.language]["Terms & Conditions"]}',
@@ -1311,7 +1853,8 @@ class _TABBarState extends State<TABBar> {
                                                   color: Color(0xFF3F5521),
                                                   fontSize: 20,
                                                   fontFamily: 'BerlinSansFB',
-                                                  fontWeight: FontWeight.normal),
+                                                  fontWeight:
+                                                      FontWeight.normal),
                                             ),
                                           ],
                                         ),
@@ -1322,17 +1865,15 @@ class _TABBarState extends State<TABBar> {
                                               color: Color(0xFF3F5521),
                                             ),
                                             SizedBox(
-                                              width: mediaQuery.size.width * 0.03,
+                                              width:
+                                                  mediaQuery.size.width * 0.03,
                                             ),
-
                                           ],
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-
-
                               ],
                             ),
                           ),
@@ -1344,8 +1885,7 @@ class _TABBarState extends State<TABBar> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    Contact_Us(),
+                                builder: (context) => Contact_Us(),
                               ),
                             );
                           },
@@ -1359,7 +1899,7 @@ class _TABBarState extends State<TABBar> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
@@ -1453,7 +1993,6 @@ class _TABBarState extends State<TABBar> {
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.03,
                                           ),
-
                                         ],
                                       ),
                                     ],
