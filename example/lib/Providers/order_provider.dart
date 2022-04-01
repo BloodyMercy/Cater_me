@@ -400,7 +400,7 @@ orderid=int.parse(i);
 
   addItems(ItemOrders item,bool a){
 
-   // subTotal=subTotal+item.totalprice;
+    //subTotal=subTotal+(item.totalprice*((100-item.tax)/100));
     totale= totale+item.totalprice;
     if(a) {
       vatshisha = vatshisha + item.tax;
