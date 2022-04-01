@@ -295,13 +295,17 @@ class LanguageTr {
       "User doesn't exist or invalid credentials":"المستخدم غير موجود أو بيانات اعتماد غير صالحة",
       "No packages available":"لا توجد حزم متاحة",
       "Name1":"الاسم",
-"view All":"شوف زيادة"
+"view All":"شوف زيادة",
+      "email already exist":"الايميل موجود بالفعل",
+  "phone already exist":"الهاتف موجود بالفعل",
     },
 
 
 
     "en": {
       "Please enter the name":"Please enter the name",
+      "phone already exist":"phone already exist",
+      "email already exist":"email already exist",
       "view All":"View All",
       "No packages available":"No packages available",
       "User doesn't exist or invalid credentials":"User doesn't exist or invalid credentials",

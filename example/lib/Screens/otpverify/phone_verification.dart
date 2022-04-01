@@ -6,6 +6,7 @@ import 'dart:io';
 
 
 import 'package:CaterMe/Screens/otpverify/phoneverificationplugin.dart';
+import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,36 +61,41 @@ Future<void> generateOtp(String contact) async {
 
 
 
-  final PhoneCodeSent smsOTPSent =
-      (String verId, [int forceCodeResend]) {
-    verificationId = verId;
-    _resendToken = forceCodeResend;
-
-  };
+  // final PhoneCodeSent smsOTPSent =
+  //     (String verId, [int forceCodeResend]) {
+  //   verificationId = verId;
+  //   _resendToken = forceCodeResend;
+  //
+  // };
   try {
-    await _auth.verifyPhoneNumber(
-        phoneNumber: contact,
-        codeAutoRetrievalTimeout: (String verId) {
-          verificationId = verId;
-        },
-        codeSent: smsOTPSent,
-        forceResendingToken: _resendToken,
-        timeout: const Duration(seconds: 25),
 
-        verificationCompleted: (AuthCredential phoneAuthCredential) async {
+  // await AuthModelSignUp.GenerateOTPservice(widget._contact)
+ await  AuthModelSignUp.GenerateOTPservice(widget._contact);
 
 
-        },
-        verificationFailed: (FirebaseAuthException exception) {
-       //   UserProvider _user = Provider.of<UserProvider>(context, listen: true);
-
-       //   SnackBar(content: Text("${keysLang[_user.language]!["Registration failed!"]} "));
-
-          print(exception.toString());
-
-
-
-        });
+    // await _auth.verifyPhoneNumber(
+    //     phoneNumber: contact,
+    //     codeAutoRetrievalTimeout: (String verId) {
+    //       verificationId = verId;
+    //     },
+    //     codeSent: smsOTPSent,
+    //     forceResendingToken: _resendToken,
+    //     timeout: const Duration(seconds: 25),
+    //
+    //     verificationCompleted: (AuthCredential phoneAuthCredential) async {
+    //
+    //
+    //     },
+    //     verificationFailed: (FirebaseAuthException exception) {
+    //    //   UserProvider _user = Provider.of<UserProvider>(context, listen: true);
+    //
+    //    //   SnackBar(content: Text("${keysLang[_user.language]!["Registration failed!"]} "));
+    //
+    //       print(exception.toString());
+    //
+    //
+    //
+    //     });
   } catch (e) {
     handleError(e as PlatformException);
     // Navigator.pop(context, (e as PlatformException).message);
@@ -290,47 +296,67 @@ lang: authProvider.language,
                                return;
                              }
                              try {
-                               final AuthCredential credential = PhoneAuthProvider.credential(
-                                 verificationId: verificationId,
-                                 smsCode: smsOTP,
-                               );
-                               final UserCredential user = await _auth.signInWithCredential(credential);
-                               final User currentUser = await _auth.currentUser;
-                            //   assert(user.user.uid == currentUser.uid);
 
-                               if (await authProvider.signUp(
-                                   widget.image, address.evendatecontroller.text)) {
-                                 // setState(() {
-                                 //   _loading = false;
-                                 // });
-                                 Navigator.pushAndRemoveUntil(
-                                     context,
-                                     MaterialPageRoute(
-                                       builder: (context) => Navigationbar(0),
-                                     ),
-                                         (Route<dynamic> route) => false
-                                 );
-                               } else {
-                                 // setState(() {
-                                 //   _loading = false;
-                                 // });
 
-                                 MotionToast.error(
-                                   title: "Cater me",
-                                   titleStyle:
-                                   TextStyle(fontWeight: FontWeight.bold),
-                                   description:
-                                   '${authProvider.lg[authProvider.language]["${authProvider.messageSignUp.toString()}"]}',
-                                   //  animationType: ANIMATION.FROM_LEFT,
-                                 ).show(context);
-                                 // _scaffoldKey.currentState.showSnackBar(
-                                 //   SnackBar(
-                                 //     content: Text(
-                                 //         "${authProvider.messageSignUp.toString()}"),
-                                 //   ),
-                                 // );
-                                 authProvider.messageSignUp = "";
+                               if( await  AuthModelSignUp.ConfirmOTPservice(widget._contact,smsOTP))
+                               {
+                                 if (await authProvider.signUp(
+                                     widget.image,
+                                     address.evendatecontroller.text)) {
+                                   // setState(() {
+                                   //   _loading = false;
+                                   // });
+                                   Navigator.pushAndRemoveUntil(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => Navigationbar(0),
+                                       ),
+                                           (Route<dynamic> route) => false
+                                   );
+                                 } else {
+                                   // setState(() {
+                                   //   _loading = false;
+                                   // });
+
+                                   MotionToast.error(
+                                     title: "Cater me",
+                                     titleStyle:
+                                     TextStyle(fontWeight: FontWeight.bold),
+                                     description:
+                                     '${authProvider.lg[authProvider
+                                         .language]["${authProvider
+                                         .messageSignUp.toString()}"]}',
+                                     //  animationType: ANIMATION.FROM_LEFT,
+                                   ).show(context);
+                                   // _scaffoldKey.currentState.showSnackBar(
+                                   //   SnackBar(
+                                   //     content: Text(
+                                   //         "${authProvider.messageSignUp.toString()}"),
+                                   //   ),
+                                   // );
+                                   authProvider.messageSignUp = "";
+                                 }
                                }
+
+                               else{
+                                 MotionToast.error(
+                                     title: "Cater me",
+                                     titleStyle:
+                                     TextStyle(fontWeight: FontWeight.bold),
+                                     description:
+                                     '${authProvider.lg[authProvider.language]["otp not valid"]}'
+                                 ).show(context);
+                                 //alert
+                               }
+                            //    final AuthCredential credential = PhoneAuthProvider.credential(
+                            //      verificationId: verificationId,
+                            //      smsCode: smsOTP,
+                            //    );
+                            //    final UserCredential user = await _auth.signInWithCredential(credential);
+                            //    final User currentUser = await _auth.currentUser;
+                            // //   assert(user.user.uid == currentUser.uid);
+
+
 
                              } catch (e) {
                                {

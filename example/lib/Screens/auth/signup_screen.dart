@@ -454,11 +454,16 @@ bool isCheckedcolor =false ;
                                             color: Colors.transparent,
                                             fontSize: 0,
                                           ),
-                                          prefixIcon:      CountryPicker(
-                                            _callBackFunction,
-                                            '${authProvider.lg[authProvider.language]["Select Country"]}',
-                                            Theme.of(context).primaryColor,
-                                            Colors.white,
+                                          prefixIcon:      InkWell(
+                                            onTap: (){
+
+                                            },
+                                            child: CountryPicker(
+                                              _callBackFunction,
+                                              '${authProvider.lg[authProvider.language]["Select Country"]}',
+                                              Theme.of(context).primaryColor,
+                                              Colors.white,
+                                            ),
                                           ),
                                           hintText: "xxxxxxxxxx",
 
@@ -634,67 +639,78 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                     !_loading
                         ? ElevatedButton(
                             onPressed: () async {
-                              // setState(() {
-                              //   _loading = true;
-                              // });
-                              if (!formkey.currentState.validate() ) {
-                                // ignore: avoid_print
-                                print('Not Validated');
-                                MotionToast.error(
-                                  title:  "Cater me",
-                                  titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                  // description:   "${authProvider.lg[authProvider.language]["all fields required"]}",
-                                  //  animationType: ANIMATION.FROM_LEFT,
-                                ).show(context);
-                                // _scaffKey.currentState.showSnackBar(
-                                //   SnackBar(
-                                //     content: Text(
-                                //         "${authProvider.lg[authProvider.language]["all fields required"]}"),
-                                //   ),
-                                // );
-                                setState(() {
-                                  _loading = false;
-                                });
-                                // reset!=null?
-                              }else  if (!isChecked) {
+    // setState(() {
+    //   _loading = true;
+    // });
+    if (!formkey.currentState.validate() ) {
+    // ignore: avoid_print
+    print('Not Validated');
+    MotionToast.error(
+    title: "Cater me",
+    titleStyle: TextStyle(fontWeight: FontWeight.bold),
+    // description:   "${authProvider.lg[authProvider.language]["all fields required"]}",
+    //  animationType: ANIMATION.FROM_LEFT,
+    ).show(context);
+    // _scaffKey.currentState.showSnackBar(
+    //   SnackBar(
+    //     content: Text(
+    //         "${authProvider.lg[authProvider.language]["all fields required"]}"),
+    //   ),
+    // );
+    setState(() {
+    _loading = false;
+    });
+    // reset!=null?
+    }else if (!isChecked) {
 
-                                _scaffKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        "${authProvider.lg[authProvider.language]["you must agree terms and conditions"]}"),
-                                  ),
-                                );
-                                setState(() {
+    _scaffKey.currentState.showSnackBar(
+    SnackBar(
+    content: Text(
+    "${authProvider.lg[authProvider.language]["you must agree terms and conditions"]}"),
+    ),
+    );
+    setState(() {
 
-                                  isCheckedcolor=true;
-                                  _loading = false;
-                                });
-                              }
-                           else if(
-                              authProvider.name.text==""||
-                              authProvider.name.text==""||
-                              authProvider.password.text==""||
-                              authProvider.confirmpassword.text==""||
+    isCheckedcolor=true;
+    _loading = false;
+    });
+    }
+    else if(
+    authProvider.name.text==""||
+    authProvider.name.text==""||
+    authProvider.password.text==""||
+    authProvider.confirmpassword.text==""||
 
-                              authProvider.phoneNumber.text==""||
-                              authProvider.genderselected.text==""||
-                              address.evendatecontroller.text==""
-                              )
-                                {
-                                  _scaffKey.currentState.showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          "${authProvider.lg[authProvider.language]["all fields required"]}"),
-                                    ),
-                                  );
-                                  }else{
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => PhoneVerification(_dialCode+authProvider.phoneNumber.text.toString(),_dialCode,image)),
-                                );
+    authProvider.phoneNumber.text==""||
+    authProvider.genderselected.text==""||
+    address.evendatecontroller.text==""
+    )
+    {
+    _scaffKey.currentState.showSnackBar(
+    SnackBar(
+    content: Text(
+    "${authProvider.lg[authProvider.language]["all fields required"]}"),
+    ),
+    );
+    }
+    else {
+      await authProvider.checkingexistprovider();
+if (authProvider.error!="true"){
+  _scaffKey.currentState.showSnackBar(
+    SnackBar(
+      content: Text(
+          "${authProvider.lg[authProvider.language][authProvider.error]}"),
+    ),
+  );
+}
+    else{
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => PhoneVerification(authProvider.phoneNumber.text.toString(),_dialCode,image)),
+    );
 
-                              }
-
+    }
+    }
                               }
 ,
                       child: Text(

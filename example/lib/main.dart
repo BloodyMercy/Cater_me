@@ -92,6 +92,7 @@ void main() async {
         ),
         ChangeNotifierProvider.value(value: OrderStatusProvider()),
         ChangeNotifierProvider.value(value: GalleryProvider.getdata()),
+
         ChangeNotifierProvider.value(value: OrderByIdProvider()),
         ChangeNotifierProvider.value(value: ContactUsProvider()),
         ChangeNotifierProvider.value(value: NotificationProvider()),

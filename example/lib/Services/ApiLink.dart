@@ -74,6 +74,9 @@ class ApiLink{
  static String gethomepageimage=host+"";
  static String getseeall=host+"HomePage/GetGalleryImages";
  static String updatecactinfo=host+"Orders/UpdateEventContact";
+ static String Checkifexist=host+"Accounts/CheckIfExist";
+ static String GenerateOTP=host+"Accounts/GenerateOtp";
+ static String ConfirmOTP=host+"Accounts/ConfirmOtp";
 
 
 

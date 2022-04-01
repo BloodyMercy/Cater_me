@@ -1,4 +1,18 @@
 
+class checkingifexist {
+  bool phone=false;
+  bool email=false;
+
+  checkingifexist();
+
+  checkingifexist.fromJson(Map<String, dynamic> json) {
+    phone = json['phone']??true;
+    email = json['email']??true;
+  }
+
+
+}
+
 
 class Users {
   int id=0;

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:CaterMe/model/Users.dart';
 import 'package:CaterMe/model/RestCallAPi.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -10,6 +10,124 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../ApiLink.dart';
 
 class AuthModelSignUp {
+
+  static Future<bool> ConfirmOTPservice(String phoneNumber,String OTP)async {
+    try{
+      SharedPreferences prefs=await SharedPreferences.getInstance();
+      // var headers={'Content-Type':'application/json'};
+      var request=http.MultipartRequest('POST',Uri.parse(ApiLink.ConfirmOTP));
+
+      // request.headers.addAll(headers);
+      request.fields.addAll({
+        'phone':phoneNumber.toString(),
+        'otp':OTP.toString(),
+      });
+
+
+      http.StreamedResponse responses = await request.send();
+
+      var response = await http.Response.fromStream(responses);
+
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200) {
+        //   print(response.body);
+        bool responseData = json.decode(response.body);
+
+        return responseData;
+
+      }
+      else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+
+
+  static Future<bool> GenerateOTPservice(String phoneNumber)async {
+    try{
+      SharedPreferences prefs=await SharedPreferences.getInstance();
+    //  var headers={'Content-Type':'application/json'};
+      var request=http.MultipartRequest('POST',Uri.parse(ApiLink.GenerateOTP));
+
+     // request.headers.addAll(headers);
+      request.fields.addAll({
+        'phone':phoneNumber.toString(),
+      });
+
+
+      http.StreamedResponse responses = await request.send();
+
+      var response = await http.Response.fromStream(responses);
+
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200) {
+     //   print(response.body);
+        bool responseData = json.decode(response.body);
+
+        return responseData;
+
+      }
+      else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+
+
+  static Checkinguserexist(String email, String phoneNumber)async {
+    try{
+      SharedPreferences prefs=await SharedPreferences.getInstance();
+      var request = http.MultipartRequest('POST', Uri.parse(ApiLink.Checkifexist));
+      request.fields.addAll({
+        'email':email.toString(),
+        'phone':phoneNumber.toString(),
+      });
+
+      // request.headers.addAll(headers);
+      // request.body=json.encode({
+      //   'email':email.toString(),
+      //   'phone':phoneNumber.toString(),
+      // });
+
+
+      http.StreamedResponse responses = await request.send();
+
+      var response = await http.Response.fromStream(responses);
+
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200) {
+        print(response.body);
+        Map<String, dynamic> responseData = json.decode(response.body);
+
+       return checkingifexist.fromJson(responseData);
+
+      }
+      else {
+        print(response.reasonPhrase);
+        return checkingifexist();
+      }
+    } catch (e) {
+      print(e);
+      return checkingifexist();
+    }
+  }
+
+
+
+
   static Future<ErrorMessage> SignUp(
     String name,
     String email,

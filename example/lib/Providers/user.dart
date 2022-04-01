@@ -13,6 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../language/language.dart';
+import '../model/Users.dart';
 
 enum Status {
   Authenticated, //inside application
@@ -23,7 +24,46 @@ enum Status {
 }
 
 class UserProvider with ChangeNotifier {
+  AuthModelSignUp userexist =AuthModelSignUp();
 
+
+  checkingifexist _user = checkingifexist();
+  String _error="";
+
+  String get error => _error;
+
+  set error(String value) {
+    _error = value;
+  }
+
+  // GenerateOTPprovider() async {
+  //   _user= await  AuthModelSignUp.GenerateOTPservice(phoneNumber.text) ;
+  //   if(!_user.phone){
+  //     _error="true";
+  //
+  //   }else{
+  //     _error="phone already exist";
+  //
+  //   }
+  //   notifyListeners();
+  // }
+
+
+
+  checkingexistprovider() async {
+    _user= await  AuthModelSignUp.Checkinguserexist(email.text, phoneNumber.text) ;
+    // phoneNumber.text="";
+    // email.text="";
+
+
+    if(_user.phone||!_user.email){
+     _error= _user.phone?"email already exist":"phone already exist";
+    }else{
+      _error="true";
+
+    }
+  notifyListeners();
+  }
   Map<String,Map<String,dynamic>> _lg={};
 
 
