@@ -1427,7 +1427,7 @@ class _TABBarState extends State<TABBar> {
                                             width: mediaQuery.size.width * 0.03,
                                           ),
                                           Icon(
-                                            Icons.clear_outlined,
+                                             FontAwesomeIcons.trash,
                                             size: 20, //Icon Size
                                             color: Color.fromARGB(255, 163, 9, 9), //Color Of Icon
                                           ),
