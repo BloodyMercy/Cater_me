@@ -1986,10 +1986,7 @@ class _TABBarState extends State<TABBar> {
                                       ),
                                       Row(
                                         children: [
-                                          Icon(
-                                            Icons.chevron_right,
-                                            color: Color(0xFF3F5521),
-                                          ),
+                                         
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.03,
                                           ),
