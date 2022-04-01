@@ -7,6 +7,7 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../../Screens/otpverify/widget/country_picker.dart';
@@ -139,12 +140,15 @@ class _FreindsTextFieldState extends State<editfriend> {
                             ),
                           ),
                           suffixIcon: IconButton(onPressed: () async {
+                            await Permission.contacts.request();
+                            if(
+                            await Permission.contacts.request().isGranted){
                             Contact a =await ContactsService.openDeviceContactPicker();
 
                             PhoneNumber number = await PhoneNumber.getRegionInfoFromPhoneNumber(a.phones.first.value);
 
                             friends.namecontroller.text=a.displayName;
-                            friends.phonecontroller.text=number.phoneNumber;
+                            friends.phonecontroller.text=number.phoneNumber;}
                           }, icon: Icon(Icons.contact_phone))
 
                       ),
