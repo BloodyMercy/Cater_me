@@ -1394,12 +1394,16 @@ class _TABBarState extends State<TABBar> {
                                           SizedBox(
                                             width: mediaQuery.size.width * 0.03,
                                           ),
-
-                                        ],
-                                      ),
-                                    ],
+ ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                                 Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: GestureDetector(
@@ -1866,12 +1870,12 @@ class _TABBarState extends State<TABBar> {
                   ),
                 )
                         
-                        )),],
+                        ],
             ),
           ),
             
-              ]
-            )))));
+              
+            )));
     
   }
 }
