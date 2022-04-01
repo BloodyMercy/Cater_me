@@ -70,272 +70,274 @@ class _Contact_UsState extends State<Contact_Us> {
       ),
       //End Appbar
       body: !loading
-          ? Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    launchUrl("tel://${contact.UsContact.phoneNumber}.");
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.call,
-                        color: colorCustom,
-                      ),
-                      title:
+          ? SingleChildScrollView(
+            child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      launchUrl("tel://${contact.UsContact.phoneNumber}.");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.call,
+                          color: colorCustom,
+                        ),
+                        title:
 
-                      Text(contact.UsContact.phoneNumber,
+                        Text(contact.UsContact.phoneNumber,
     textDirection:TextDirection.ltr,
     textAlign:authProvider.language=="ar"?TextAlign.right:TextAlign.left,
-                          // contact.UsContact.phoneNumber,
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    launchUrl("mailto:${contact.UsContact.email}");
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.email,
-                        color: colorCustom,
-                      ),
-                      title: Text(
-                        contact.UsContact.email,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                            // contact.UsContact.phoneNumber,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.04,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: mediaQuery.size.height * 0.06,
-                        child: AnimatedTextKit(
-                          onTap: () {},
-                          animatedTexts: [
-                            for (final txt in [
-                              '${authProvider.lg[authProvider.language]["Special Thank You For Using"]}',
-                              'CaterMe'
-                            ])
-                              FadeAnimatedText(txt,
-                                  textStyle: TextStyle(
-                                      fontSize: 20,
-                                      color: colorCustom,
-                                      fontWeight: FontWeight.bold))
-                          ],
-                          repeatForever: true,
+                  GestureDetector(
+                    onTap: () async {
+                      launchUrl("mailto:${contact.UsContact.email}");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.email,
+                          color: colorCustom,
+                        ),
+                        title: Text(
+                          contact.UsContact.email,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                    ),
-                    Text(
-                      '${authProvider.lg[authProvider.language]["We/’d Love to Hear From You"]}',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                    Text(
-                      '${authProvider.lg[authProvider.language]["Ready to answer any and all questions"]}',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                authProvider.status == Status.Authenticated
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                            Container(
-                              child: Card(
-                                elevation: 1,
-                                color: colorCustom,
-                                shape: BeveledRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => Review()));
-                                  },
-                                  child: Text(
-                                    '${authProvider.lg[authProvider.language]["Rate Us"]}',
-                                    style: TextStyle(color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: mediaQuery.size.height * 0.06,
+                          child: AnimatedTextKit(
+                            onTap: () {},
+                            animatedTexts: [
+                              for (final txt in [
+                                '${authProvider.lg[authProvider.language]["Special Thank You For Using"]}',
+                                'CaterMe'
+                              ])
+                                FadeAnimatedText(txt,
+                                    textStyle: TextStyle(
+                                        fontSize: 20,
+                                        color: colorCustom,
+                                        fontWeight: FontWeight.bold))
+                            ],
+                            repeatForever: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                      ),
+                      Text(
+                        '${authProvider.lg[authProvider.language]["We/’d Love to Hear From You"]}',
+                        style: TextStyle(fontSize: 22),
+                      ),
+                      Text(
+                        '${authProvider.lg[authProvider.language]["Ready to answer any and all questions"]}',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  authProvider.status == Status.Authenticated
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                              Container(
+                                child: Card(
+                                  elevation: 1,
+                                  color: colorCustom,
+                                  shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => Review()));
+                                    },
+                                    child: Text(
+                                      '${authProvider.lg[authProvider.language]["Rate Us"]}',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ])
-                    : Container(),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.08,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        '${authProvider.lg[authProvider.language]["Follow Us"]}',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                    ]),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          final url =
-                              'https://www.facebook.com/caterme.ksa/';
-                          if (await canLaunch(url)) {
-                            await launch(url, forceSafariVC: false);
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.facebook,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          final url =
-                              'https://www.instagram.com/caterme.online/?hl=en';
-                          if (await canLaunch(url)) {
-                            await launch(
-                              url,
-                              forceSafariVC: false,
-                            );
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.instagram,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          final url =
-                              'https://www.linkedin.com/company/cater-me/';
-                          if (await canLaunch(url)) {
-                            await launch(url, forceSafariVC: false);
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.linkedin,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          final url =
-                              'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
-                          if (await canLaunch(url)) {
-                            await launch(url, forceSafariVC: false);
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.snapchat,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                    ],
+                            ])
+                      : Container(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.08,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          final url =
-                              "https://wa.me/${contact.UsContact.phoneNumber}";
-                          if (await canLaunch(url)) {
-                            await launch(url, forceSafariVC: false);
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.whatsapp,
-                          color: colorCustom,
-                          size: 40,
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          '${authProvider.lg[authProvider.language]["Follow Us"]}',
+                          style: Theme.of(context).textTheme.headline2,
                         ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          final url = 'https://twitter.com/caterme_online';
-                          if (await canLaunch(url)) {
-                            await launch(
-                              url,
-                              forceSafariVC: false,
-                            );
-                          }
-                        },
-                        icon: Icon(
-                          FontAwesomeIcons.twitter,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ChatPage(
-                              peerId: "admin",
-                              peerAvatar: "",
-                              peerNickname:
-                                  '${authProvider.lg[authProvider.language]["Customer Service"]}',
-                            ),
-                          ));
-                        },
-                        icon: Icon(
-                          Icons.live_help,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          final url = 'https://www.caterme.online/';
-                          if (await canLaunch(url)) {
-                            await launch(url, forceSafariVC: false);
-                          }
-                        },
-                        icon: Icon(
-                          Icons.language,
-                          color: colorCustom,
-                          size: 40,
-                        ),
-                      ),
-                    ],
+                      ]),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                ),
-              ],
-            )
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          onPressed: () async {
+                            final url =
+                                'https://www.facebook.com/caterme.ksa/';
+                            if (await canLaunch(url)) {
+                              await launch(url, forceSafariVC: false);
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.facebook,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            final url =
+                                'https://www.instagram.com/caterme.online/?hl=en';
+                            if (await canLaunch(url)) {
+                              await launch(
+                                url,
+                                forceSafariVC: false,
+                              );
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.instagram,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            final url =
+                                'https://www.linkedin.com/company/cater-me/';
+                            if (await canLaunch(url)) {
+                              await launch(url, forceSafariVC: false);
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.linkedin,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            final url =
+                                'https://www.snapchat.com/add/caterme.online?share_id=Q0UzMUVF&locale=en_US';
+                            if (await canLaunch(url)) {
+                              await launch(url, forceSafariVC: false);
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.snapchat,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          onPressed: () async {
+                            final url =
+                                "https://wa.me/${contact.UsContact.phoneNumber}";
+                            if (await canLaunch(url)) {
+                              await launch(url, forceSafariVC: false);
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.whatsapp,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            final url = 'https://twitter.com/caterme_online';
+                            if (await canLaunch(url)) {
+                              await launch(
+                                url,
+                                forceSafariVC: false,
+                              );
+                            }
+                          },
+                          icon: Icon(
+                            FontAwesomeIcons.twitter,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ChatPage(
+                                peerId: "admin",
+                                peerAvatar: "",
+                                peerNickname:
+                                    '${authProvider.lg[authProvider.language]["Customer Service"]}',
+                              ),
+                            ));
+                          },
+                          icon: Icon(
+                            Icons.live_help,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            final url = 'https://www.caterme.online/';
+                            if (await canLaunch(url)) {
+                              await launch(url, forceSafariVC: false);
+                            }
+                          },
+                          icon: Icon(
+                            Icons.language,
+                            color: colorCustom,
+                            size: 40,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+          )
           : Center(child: CircularProgressIndicator()),
     );
   }
