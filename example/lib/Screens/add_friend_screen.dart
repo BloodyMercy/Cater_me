@@ -28,6 +28,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
   ) {
     final newFriend = FriendModel();
 
+
     setState(() {
       _friend.add(newFriend);
     });
