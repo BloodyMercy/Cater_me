@@ -22,6 +22,7 @@ import 'package:CaterMe/widgets/homepage.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_circular_text/circular_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:provider/provider.dart';
@@ -44,7 +45,14 @@ class Navigationbar extends StatefulWidget {
 
 class _NavigationBarState extends State<Navigationbar> {
   NotificationServices notificationService = NotificationServices();
+  String language;
+  getData() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    setState(() {
 
+      language = sh.getString("locale");
+    });
+  }
   //AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
@@ -472,7 +480,9 @@ class _NavigationBarState extends State<Navigationbar> {
           index: widget._selectedIndex,
           children: _widgetOptions,
         ),
-        floatingActionButton: SizedBox(
+        floatingActionButton:
+
+        SizedBox(
           key: intro.keys[0],
           height: 55,
           width: 55,
@@ -480,7 +490,8 @@ class _NavigationBarState extends State<Navigationbar> {
             child: FloatingActionButton(
               elevation: 0,
               foregroundColor: Colors.transparent,
-              shape: CircleBorder(
+              shape:
+              CircleBorder(
                 side: BorderSide(
                     color: Theme.of(context).primaryColor, width: 0.5),
               ),
@@ -536,14 +547,65 @@ class _NavigationBarState extends State<Navigationbar> {
                   );
                 }
               },
-              child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Theme.of(context).primaryColor),
-                  child: const Icon(Icons.add_rounded,
-                      color: Color.fromRGBO(253, 202, 29, 1), size: 35)),
+
+              child: Stack(
+                children:[ CircularText(
+                    children:[
+                      language == "en" ?
+                      TextItem(
+                          text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
+
+                           ,
+
+                            style: TextStyle(fontSize: 42,color: colorCustom,fontWeight: FontWeight.bold,),),
+                          space:25,
+                          startAngle: -220,
+                          startAngleAlignment: StartAngleAlignment.start,
+                          direction: CircularTextDirection.clockwise
+                      ):  TextItem(
+                          text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
+
+                            ,
+
+                            style: TextStyle(fontSize: 42,color: colorCustom,fontWeight: FontWeight.bold,),),
+                          space:25,
+                          startAngle: -180,
+                          startAngleAlignment: StartAngleAlignment.start,
+                          direction: CircularTextDirection.clockwise
+                      ),
+
+                      // space: 25,
+                      // startAngle: -200,
+                      // startAngleAlignment: StartAngleAlignment.start,
+                      // direction: CircularTextDirection.clockwise,
+                      // height: 40,
+                      // width: 40,
+                      // decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(50),
+                      //     color: Theme.of(context).primaryColor),
+                      // child: const Icon(Icons.add_rounded,
+                      //     color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
+                    ]),
+                  Center(
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Theme.of(context).primaryColor),
+                        child: const Icon(Icons.add_rounded,
+                            color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
+                  ),
+              ]),
+              //
+              // child: Container(
+              //   height: 40,
+              //   width: 40,
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(50),
+              //       color: Theme.of(context).primaryColor),
+              //   child: const Icon(Icons.add_rounded,
+              //       color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
             ),
           ),
         ),

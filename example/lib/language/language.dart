@@ -298,6 +298,8 @@ class LanguageTr {
 "view All":"شوف زيادة",
       "email already exist":"الايميل موجود بالفعل",
   "phone already exist":"الهاتف موجود بالفعل",
+      "Order  Here":"أطلب  هنا",
+
     },
 
 
@@ -591,6 +593,7 @@ class LanguageTr {
       "Type your answer here...":"Type your answer here...",
       "Photo":"Photo",
       "Name1":"Name",
+      "Order  Here":"Order  Here",
 
 
 

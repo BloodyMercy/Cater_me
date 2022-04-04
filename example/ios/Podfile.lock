@@ -351,6 +351,42 @@ PODS:
     - Firebase/Firestore (= 8.11.0)
     - firebase_core
     - Flutter
+  - contacts_service (0.2.2):
+    - Flutter
+  - DKImagePickerController/Core (4.3.3):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.3.3)
+  - DKImagePickerController/PhotoGallery (4.3.3):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.3.3)
+  - DKPhotoGallery (0.0.17):
+    - DKPhotoGallery/Core (= 0.0.17)
+    - DKPhotoGallery/Model (= 0.0.17)
+    - DKPhotoGallery/Preview (= 0.0.17)
+    - DKPhotoGallery/Resource (= 0.0.17)
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Core (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Model (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Preview (0.0.17):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage
+    - SwiftyGif
+  - DKPhotoGallery/Resource (0.0.17):
+    - SDWebImage
+    - SwiftyGif
+  - file_picker (0.0.1):
+    - DKImagePickerController/PhotoGallery
+    - Flutter
   - Firebase/Auth (8.11.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.11.0)
@@ -439,6 +475,8 @@ PODS:
     - Flutter
   - flutter_pay (0.0.1):
     - Flutter
+  - flutter_pdfview (1.0.2):
+    - Flutter
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
@@ -509,6 +547,14 @@ PODS:
   - image_picker (0.0.1):
     - Flutter
   - leveldb-library (1.22.1)
+  - libphonenumber (0.0.1):
+    - Flutter
+    - libPhoneNumber-iOS
+  - libPhoneNumber-iOS (0.9.15)
+  - libphonenumber_plugin (0.0.1):
+    - Flutter
+    - libphonenumber
+    - libPhoneNumber-iOS
   - multi_select_item (0.0.1):
     - Flutter
   - nanopb (2.30908.0):
@@ -516,6 +562,8 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - open_file (0.0.1):
+    - Flutter
   - OrderedSet (5.0.0)
   - path_provider_ios (0.0.1):
     - Flutter
@@ -528,11 +576,15 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
   - PromisesObjC (2.0.0)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
   - shared_preferences_ios (0.0.1):
     - Flutter
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
+  - SwiftyGif (5.4.3)
   - Toast (4.0.0)
   - url_launcher_ios (0.0.1):
     - Flutter
@@ -542,6 +594,8 @@ PODS:
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
+  - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
@@ -551,12 +605,16 @@ DEPENDENCIES:
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_pay (from `.symlinks/plugins/flutter_pay/ios`)
+  - flutter_pdfview (from `.symlinks/plugins/flutter_pdfview/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - geocoding (from `.symlinks/plugins/geocoding/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - libphonenumber (from `.symlinks/plugins/libphonenumber/ios`)
+  - libphonenumber_plugin (from `.symlinks/plugins/libphonenumber_plugin/ios`)
   - multi_select_item (from `.symlinks/plugins/multi_select_item/ios`)
+  - open_file (from `.symlinks/plugins/open_file/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
@@ -569,6 +627,8 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - CheckoutEventLoggerKit
+    - DKImagePickerController
+    - DKPhotoGallery
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -586,10 +646,13 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - libPhoneNumber-iOS
     - nanopb
     - OrderedSet
     - PhoneNumberKit
     - PromisesObjC
+    - SDWebImage
+    - SwiftyGif
     - Toast
 
 EXTERNAL SOURCES:
@@ -597,6 +660,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audioplayers/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  contacts_service:
+    :path: ".symlinks/plugins/contacts_service/ios"
+  file_picker:
+    :path: ".symlinks/plugins/file_picker/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -615,6 +682,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_pay:
     :path: ".symlinks/plugins/flutter_pay/ios"
+  flutter_pdfview:
+    :path: ".symlinks/plugins/flutter_pdfview/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
   geocoding:
@@ -625,8 +694,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_maps_flutter/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  libphonenumber:
+    :path: ".symlinks/plugins/libphonenumber/ios"
+  libphonenumber_plugin:
+    :path: ".symlinks/plugins/libphonenumber_plugin/ios"
   multi_select_item:
     :path: ".symlinks/plugins/multi_select_item/ios"
+  open_file:
+    :path: ".symlinks/plugins/open_file/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   permission_handler_apple:
@@ -646,6 +721,10 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CheckoutEventLoggerKit: 18f1afe34ff217c3624396f2c2b4d26db8e6c2d9
   cloud_firestore: c6c42fe62809b7417aa3c45a6ef0c2812f7fb0d6
+  contacts_service: 849e1f84281804c8bfbec1b4c3eedcb23c5d3eca
+  DKImagePickerController: 72fd378f244cef3d27288e0aebf217a4467e4012
+  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
+  file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
   Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
   firebase_auth: bdfbd5b10da1db6d5eb6ae7dbda5d81365b9cc9d
   firebase_core: 08f6a85f62060111de5e98d6a214810d11365de9
@@ -663,6 +742,7 @@ SPEC CHECKSUMS:
   flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_pay: b9fda1c5be6ddc7af769f26553e9c648fc551263
+  flutter_pdfview: 25f53dd6097661e6395b17de506e6060585946bd
   fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Frames: 9090a075bd8fe0fc883e32e380cd09e41c9cc0bc
@@ -677,15 +757,21 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   image_picker: 541dcbb3b9cf32d87eacbd957845d8651d6c62c3
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  libphonenumber: bd14d5abfc5939ab0b0767234e2d8e2593af258e
+  libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
+  libphonenumber_plugin: 7cf755ad1656145935d6c208173a476bd3f12898
   multi_select_item: b70b78aac4d208141e5d7de8640655570fb40e90
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   permission_handler_apple: d21b38e1a4b2e041c63af9568f9165e114e507a6
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  SwiftyGif: 6c3eafd0ce693cad58bb63d2b2fb9bacb8552780
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   webview_flutter_wkwebview: 005fbd90c888a42c5690919a1527ecc6649e1162

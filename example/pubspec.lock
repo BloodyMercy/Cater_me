@@ -78,13 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-  barcode:
-    dependency: transitive
-    description:
-      name: barcode
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -288,6 +281,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.5.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -405,6 +405,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  flutter_circular_text:
+    dependency: "direct main"
+    description:
+      name: flutter_circular_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   flutter_cupertino_datetime_picker:
     dependency: "direct main"
     description:
@@ -467,7 +474,7 @@ packages:
     source: hosted
     version: "1.0.2"
   flutter_pdfview:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_pdfview
       url: "https://pub.dartlang.org"
@@ -588,13 +595,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-  google_fonts:
-    dependency: "direct main"
-    description:
-      name: google_fonts
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.1"
   google_maps_flutter:
     dependency: "direct main"
     description:
@@ -770,6 +770,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  open_file:
+    dependency: "direct main"
+    description:
+      name: open_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.1"
   package_config:
     dependency: transitive
     description:
@@ -847,13 +854,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  pdf:
-    dependency: "direct main"
-    description:
-      name: pdf
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.7.3"
   pedantic:
     dependency: transitive
     description:
@@ -945,13 +945,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  qr:
-    dependency: transitive
-    description:
-      name: qr
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   quiver:
     dependency: transitive
     description:

@@ -78,4 +78,29 @@ class OrderByIdService {
        print(e);
      }
   }
+  Future<String> generateInvoicepdf(int id)async {
+    try{
+      SharedPreferences prefs=await SharedPreferences.getInstance();
+      var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
+      var request=http.Request('GET',Uri.parse(ApiLink.GenerateInvoice+"/$id"));
+      request.headers.addAll(headers);
+      http.StreamedResponse responses =await request.send();
+      var response = await http.Response.fromStream(responses);
+      if (response.statusCode == 200) {
+        print(response);
+        print(response.body);
+        print(response.statusCode);
+        dynamic responseData = json.decode(response.body);
+        print(responseData);
+        // String link = responseData[];
+        return responseData??'Not found';
+      } else {
+        print(response.reasonPhrase);
+        return "";
+      }
+    } catch (e) {
+      print(e);
+      return "";
+    }
+  }
 }

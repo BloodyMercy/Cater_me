@@ -12,7 +12,7 @@ import 'package:CaterMe/Screens/auth/newlogin/screens/loginScreen.dart';
 import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/language_picker.dart';
-import 'package:CaterMe/pdf/lol.dart' as lol;
+
 import 'package:CaterMe/webview/webview.dart';
 
 import 'package:CaterMe/widgets/Payment/credit_cards_page.dart';

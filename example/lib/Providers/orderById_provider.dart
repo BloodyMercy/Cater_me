@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 class OrderByIdProvider extends ChangeNotifier{
   OrderByIdService _orderByIdService=OrderByIdService();
+
   List<OrderDetailsModel> _orderListDetails=[];
   List<setupItemsModel> _setupItemmodel=[];
   List _setupItemModelId = [];
@@ -145,6 +146,21 @@ bool _buttonDonate=false;
   bool donate= await _orderByIdService.Donate(id,check1,check2,check3,check4);
    notifyListeners();
    return donate;
+  }
+
+  String _pdfLink = "";
+
+  String get pdfLink => _pdfLink;
+
+  set pdfLink(String value) {
+    _pdfLink = value;
+    notifyListeners();
+  }
+
+  GeneratePDF(int id)async{
+    pdfLink = await _orderByIdService.generateInvoicepdf(id);
+
+    notifyListeners();
   }
 
   bool get check1 => _check1;

@@ -8,12 +8,15 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Pdf/pdf.dart';
+
+
 import '../../../Providers/address.dart';
 import '../../../Providers/orderStatus_provider.dart';
 import '../../../Providers/user.dart';
 import '../../../colors/colors.dart';
 import '../../orders/order_tracking.dart';
-import 'OrderTimeline.dart';
+
 import 'widgets/OrderList.dart';
 
 class OrderDetailsView extends StatefulWidget {
@@ -63,6 +66,8 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final _width=MediaQuery.of(context).size.width;
     final _order= Provider.of<OrderByIdProvider>(context,listen:true);
+    final orderStatus = Provider.of<OrderStatusProvider>(context, listen: true);
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     FocusNode focusNode =FocusNode();
@@ -128,8 +133,26 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                               fontWeight: FontWeight.w400,
 
                               fontSize: 14),
+
                         ),
                       ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Card(
+                        color: colorCustom,
+                        child:
+                        orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
+                        TextButton(
+                          child: Text("Generate Invoice",style: TextStyle(color: Colors.white),),
+                        onPressed:  () async{
+                           await _order.GeneratePDF(widget.id);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyPdf()),
+                          );
+                        }
+                        ):Container()),
                       SizedBox(
                         height: 3,
                       ),
@@ -669,6 +692,9 @@ Center(child:  Padding(
                                 ),
                               ],
                             ),
+                            SizedBox(height: 10,),
+
+
                           ],
                         ),
                       ),
@@ -680,6 +706,7 @@ Center(child:  Padding(
             SizedBox(
               height: 30,
             ),
+
           ],
         ),
       ):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
