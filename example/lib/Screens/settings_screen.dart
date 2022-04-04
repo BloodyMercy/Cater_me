@@ -1944,64 +1944,64 @@ class _TABBarState extends State<TABBar> {
                           ),
                         ),
                       ),
-                                Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: GestureDetector(
-                          onTap: () {},
-                          
-                          child: Card(
-                            color: const Color.fromARGB(206, 255, 255, 255),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                          Icon(
-                                             FontAwesomeIcons.trash,
-                                            size: 20, //Icon Size
-                                            color: Color.fromARGB(255, 163, 9, 9), //Color Of Icon
-                                          ),
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.05,
-                                          ),
-                                          Text(
-                                            '${personalInfo.lg[personalInfo.language]["Delete Account"]}',
-                                            style: TextStyle(
-                                                color: Color(0xFF3F5521),
-                                                fontSize: 20,
-                                                fontFamily: 'BerlinSansFB',
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                         
-                                          SizedBox(
-                                            width: mediaQuery.size.width * 0.03,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      //           Padding(
+                      //   padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      //   child: GestureDetector(
+                      //     onTap: () {},
+                      //
+                      //     child: Card(
+                      //       color: const Color.fromARGB(206, 255, 255, 255),
+                      //       shape: RoundedRectangleBorder(
+                      //           borderRadius: BorderRadius.circular(20.0)),
+                      //       child: Column(
+                      //         children: [
+                      //           Padding(
+                      //             padding: const EdgeInsets.all(8.0),
+                      //             child: Row(
+                      //               mainAxisAlignment:
+                      //               MainAxisAlignment.spaceBetween,
+                      //               children: [
+                      //                 Row(
+                      //                   children: [
+                      //                     SizedBox(
+                      //                       width: mediaQuery.size.width * 0.03,
+                      //                     ),
+                      //                     Icon(
+                      //                        FontAwesomeIcons.trash,
+                      //                       size: 20, //Icon Size
+                      //                       color: Color.fromARGB(255, 163, 9, 9), //Color Of Icon
+                      //                     ),
+                      //                     SizedBox(
+                      //                       width: mediaQuery.size.width * 0.05,
+                      //                     ),
+                      //                     // Text(
+                      //                     //   '${personalInfo.lg[personalInfo.language]["Delete Account"]}',
+                      //                     //   style: TextStyle(
+                      //                     //       color: Color(0xFF3F5521),
+                      //                     //       fontSize: 20,
+                      //                     //       fontFamily: 'BerlinSansFB',
+                      //                     //       fontWeight: FontWeight.normal),
+                      //                     // ),
+                      //                   ],
+                      //                 ),
+                      //                 Row(
+                      //                   children: [
+                      //
+                      //                     SizedBox(
+                      //                       width: mediaQuery.size.width * 0.03,
+                      //                     ),
+                      //                   ],
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ),
+                      //
+                      //
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       
                       
 

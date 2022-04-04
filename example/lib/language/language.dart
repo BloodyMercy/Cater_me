@@ -298,7 +298,7 @@ class LanguageTr {
 "view All":"شوف زيادة",
       "email already exist":"الايميل موجود بالفعل",
   "phone already exist":"الهاتف موجود بالفعل",
-      "Order  Here":"أطلب  هنا",
+      "Order  Here":"انه  بلطأ",
 
     },
 

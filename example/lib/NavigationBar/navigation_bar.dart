@@ -37,7 +37,9 @@ import '../language/language.dart';
 class Navigationbar extends StatefulWidget {
   int _selectedIndex;
 
+
   Navigationbar(this._selectedIndex);
+
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -45,14 +47,11 @@ class Navigationbar extends StatefulWidget {
 
 class _NavigationBarState extends State<Navigationbar> {
   NotificationServices notificationService = NotificationServices();
-  String language;
-  getData() async {
-    SharedPreferences sh = await SharedPreferences.getInstance();
-    setState(() {
 
-      language = sh.getString("locale");
-    });
-  }
+
+
+
+
   //AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
@@ -60,6 +59,10 @@ class _NavigationBarState extends State<Navigationbar> {
     YourOrders(),
     TABBar()
   ];
+
+
+
+
 
   Widget customThemeWidgetBuilder(StepWidgetParams stepWidgetParams) {
     List<String> texts = [
@@ -142,12 +145,24 @@ class _NavigationBarState extends State<Navigationbar> {
     ),
   );
 
+  String language;
+
+
   getLanguage() async {
     final user = Provider.of<UserProvider>(context, listen: false);
     await user.getLanguage();
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    setState(() {
+
+      language = sh.getString("locale");
+    });
     // print(user.lg[user.language]["Home"]);
     //  user.status=Status.Authenticated;
   }
+
+
+
+
 
   @override
   void initState() {
@@ -495,7 +510,7 @@ class _NavigationBarState extends State<Navigationbar> {
                 side: BorderSide(
                     color: Theme.of(context).primaryColor, width: 0.5),
               ),
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.white,
               onPressed: () {
                 if (authProvider.status == Status.Authenticated) {
                   address.clearAddressController();
@@ -548,31 +563,45 @@ class _NavigationBarState extends State<Navigationbar> {
                 }
               },
 
-              child: Stack(
-                children:[ CircularText(
+              child:
+
+              Stack(
+                children:[
+
+                  CircularText(
                     children:[
-                      language == "en" ?
-                      TextItem(
+
+                      language =="en"?TextItem(
                           text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
 
                            ,
 
-                            style: TextStyle(fontSize: 42,color: colorCustom,fontWeight: FontWeight.bold,),),
-                          space:25,
-                          startAngle: -220,
+                            style: TextStyle(fontSize: 38,color: colorCustom,fontWeight: FontWeight.bold),),
+                          space:20,
+                          startAngle: -190,
                           startAngleAlignment: StartAngleAlignment.start,
-                          direction: CircularTextDirection.clockwise
-                      ):  TextItem(
+                          direction: CircularTextDirection.clockwise):TextItem(
                           text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
 
                             ,
 
-                            style: TextStyle(fontSize: 42,color: colorCustom,fontWeight: FontWeight.bold,),),
+                            style: TextStyle(fontSize: 35,color: colorCustom,fontWeight: FontWeight.bold,),),
                           space:25,
-                          startAngle: -180,
+                          startAngle: -190,
                           startAngleAlignment: StartAngleAlignment.start,
-                          direction: CircularTextDirection.clockwise
-                      ),
+                          direction: CircularTextDirection.clockwise)
+                      // ):  TextItem(
+                      //     text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
+                      //
+                      //       ,
+                      //
+                      //       style: TextStyle(fontSize: 35,color: colorCustom,fontWeight: FontWeight.bold,),),
+                      //     space:25,
+                      //
+                      //     startAngle: 180,
+                      //     startAngleAlignment: StartAngleAlignment.start,
+                      //     direction: CircularTextDirection.clockwise,
+                      // ),
 
                       // space: 25,
                       // startAngle: -200,
