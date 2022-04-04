@@ -77,7 +77,7 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String Checkifexist=host+"Accounts/CheckIfExist";
  static String GenerateOTP=host+"Accounts/GenerateOtp";
  static String ConfirmOTP=host+"Accounts/ConfirmOtp";
- static String GenerateInvoice=host+"Orders/GenerateInvoice/:orderId";
+ static String GenerateInvoice=host+"Orders/GenerateInvoice";
 
 
 

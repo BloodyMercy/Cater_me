@@ -334,6 +334,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                       ),
                       TextButton(
                         onPressed: () {
+                          details.controllers.clear();
+                          details.choosebillFriend.clear();
                           _startAddNewFriend(context);
                         },
                         child: Text('${authProvider.lg[authProvider.language]["Add Friend"]}'

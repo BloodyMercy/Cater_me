@@ -1132,9 +1132,12 @@ class _OrderState extends State<Order> {
                                                   } else if (orderProvider
                                                           .spets ==
                                                       4) {
-                                                    if (orderProvider
+                                                    if (
+                                                    orderProvider
                                                             .itemOrders.length >
-                                                        0) {
+                                                        0
+                                                    )
+                                                    {
                                                       orderProvider.spets++;
                                                     } else {
                                                       _key.currentState
