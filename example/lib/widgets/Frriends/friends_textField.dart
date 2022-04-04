@@ -12,6 +12,7 @@ import '../../Providers/user.dart';
 import '../../Screens/otpverify/widget/country_picker.dart';
 import '../../language/language.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
 class FreindsTextField extends StatefulWidget {
   final Function addFriend;
 
@@ -46,7 +47,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   bool loading = false;
   var _key = GlobalKey<ScaffoldState>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -89,17 +89,16 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           return null;
                       },
                       decoration: InputDecoration(
-                        // contentPadding:
-                        // EdgeInsets.only(left: mediaQuery.size.width * 0.04),
+                          // contentPadding:
+                          // EdgeInsets.only(left: mediaQuery.size.width * 0.04),
 
                           alignLabelWithHint: true,
                           labelStyle: TextStyle(
-                              fontSize:  16.0,
+                              fontSize: 16.0,
                               //I believe the size difference here is 6.0 to account padding
-                              color:  Color(0xFF3F5521)),
+                              color: Color(0xFF3F5521)),
                           labelText:
-                          '${authProvider.lg[authProvider.language]['Full Name']}',
-
+                              '${authProvider.lg[authProvider.language]['Full Name']}',
                           hintStyle: TextStyle(
                               color: Colors.black87,
                               fontSize: 15,
@@ -119,20 +118,25 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                               color: Color(0xFF3F5521),
                             ),
                           ),
-                          suffixIcon: IconButton(onPressed: () async {
+                          suffixIcon: IconButton(
+                              onPressed: () async {
+                                await Permission.contacts.request();
+                                if (await Permission.contacts
+                                    .request()
+                                    .isGranted) {
+                                  Contact a = await ContactsService
+                                      .openDeviceContactPicker();
 
-                            await Permission.contacts.request();
-                            if(
-                            await Permission.contacts.request().isGranted){
-                           Contact a =await ContactsService.openDeviceContactPicker();
+                                  PhoneNumber number = await PhoneNumber
+                                      .getRegionInfoFromPhoneNumber(
+                                          a.phones.first.value);
 
-                             PhoneNumber number = await PhoneNumber.getRegionInfoFromPhoneNumber(a.phones.first.value);
-
-                            friends.namecontroller.text=a.displayName;
-                            friends.phonecontroller.text=number.phoneNumber;}
-                          }, icon: Icon(Icons.contact_phone))
-
-                      ),
+                                  friends.namecontroller.text = a.displayName;
+                                  friends.phonecontroller.text =
+                                      number.phoneNumber;
+                                }
+                              },
+                              icon: Icon(Icons.contact_phone))),
                       style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 15,
@@ -140,8 +144,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           fontFamily: 'BerlinSansFB'),
                     ),
                   ),
-
-
 
                   // customTextField(
                   //   read: false,
@@ -264,7 +266,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                     : Colors.grey),
                             prefixIcon: CountryPicker(
                               _callBackFunction,
-
                               '${authProvider.lg[authProvider.language]["Select Country"]}',
                               Theme.of(context).primaryColor,
                               Colors.white,
@@ -311,9 +312,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 loading = false;
                               });
                               // reset!=null?
-                            }
-
-                            else {
+                            } else {
                               if (await friends.createNewFriend()) {
                                 setState(() {
                                   loading = false;
