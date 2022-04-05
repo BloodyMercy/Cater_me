@@ -147,7 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
       String number = cardNumber.replaceAll(" ", "");
       String expiryMonth = expiryDate.substring(0, 2);
       String expiryYear = expiryDate.substring(3);
-
+      number=ToEnglishNumbers(number);
+      cvv=ToEnglishNumbers(cvv);
+      expiryYear=ToEnglishNumbers(expiryYear);
+      expiryMonth=ToEnglishNumbers(expiryMonth);
       print("$cardNumber, $cardNameHolder, $expiryMonth, $expiryYear, $cvv");
 //FlutterCheckoutPayment.
       CardTokenisationResponse response = await FlutterCheckoutPayment.generateToken(
@@ -287,6 +290,20 @@ else {
       );
     }
   }
+  String ToEnglishNumbers(String s)
+  {
+    return
+      s.replaceAll(RegExp(r"٠"),"0").
+      replaceAll(RegExp(r"۱"), "1").
+      replaceAll(RegExp(r"۲"), "2").
+      replaceAll(RegExp(r"۳"), "3").
+      replaceAll(RegExp(r"٤"), "4").
+      replaceAll(RegExp(r"٥"), "5").
+      replaceAll(RegExp(r"٦"), "6").
+      replaceAll(RegExp(r"٧"), "7").
+      replaceAll(RegExp(r"٨"), "8").
+      replaceAll(RegExp(r"٩"), "9");
+  }
 
   Future<void> _cardValidation() async {
     try {
@@ -306,7 +323,7 @@ else {
       );
 
       String number = cardNumber.replaceAll(" ", "");
-
+      number= ToEnglishNumbers(number);
       print("$cardNumber");
 
       bool isValid = await FlutterCheckoutPayment.isCardValid(number: number);

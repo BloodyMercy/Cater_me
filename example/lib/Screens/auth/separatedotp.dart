@@ -42,12 +42,12 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
   String ToEnglishNumbers(String s)
   {
     return
-      s.replaceAll(RegExp(r"٠"),"0" ).
+      s.replaceAll(RegExp(r"٠"),"0").
       replaceAll(RegExp(r"۱"), "1").
       replaceAll(RegExp(r"۲"), "2").
       replaceAll(RegExp(r"۳"), "3").
-      replaceAll(RegExp(r"٤"), "4")
-          .replaceAll(RegExp(r"٥"), "5").
+      replaceAll(RegExp(r"٤"), "4").
+      replaceAll(RegExp(r"٥"), "5").
       replaceAll(RegExp(r"٦"), "6").
       replaceAll(RegExp(r"٧"), "7").
       replaceAll(RegExp(r"٨"), "8").
