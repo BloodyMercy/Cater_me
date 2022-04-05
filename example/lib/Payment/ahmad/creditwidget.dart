@@ -207,7 +207,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                         Expanded(
                           flex: 3,
                           child: Container(
-                            color: Colors.white,
+                            color: Colors.black,
                             child: Padding(
                               padding: const EdgeInsets.all(5),
                               child: Text(
