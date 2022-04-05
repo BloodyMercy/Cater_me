@@ -15,7 +15,15 @@ class OrderProvider extends ChangeNotifier{
   set listOrder(List<OrderModel> value) {
     _listOrder = value;
   }
-
+deleteorder(int index)async{
+  if(await _orderServices.deleteorder(_listOrder[index].id.toString())){
+    _listOrder.removeAt(index);
+    notifyListeners();
+    return true;
+  }else{
+    return false ;
+  }
+}
   getAllOrders() async{
     _listOrder=[];
     _listOrder=await _orderServices.getAllOrders();

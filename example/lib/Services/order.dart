@@ -32,6 +32,31 @@ class OrderServices {
     }
   }
 
+  Future<bool> deleteorder(String id) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
+      var request = http.Request('POST', Uri.parse(ApiLink.deleteorder));
+      request.headers.addAll(headers);
+      request.bodyFields={
+"OrderId":id
+      };
+      http.StreamedResponse responses = await request.send();
+      var response = await http.Response.fromStream(responses);
+      if (response.statusCode == 200) {
+        dynamic  responsedata= json.decode(response.body);
+       // /map to list
+        return responsedata;
+      } else {
+        print(response.reasonPhrase);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
 
 
   Future<OrderModel> getOrdersById(int id,String a) async {
