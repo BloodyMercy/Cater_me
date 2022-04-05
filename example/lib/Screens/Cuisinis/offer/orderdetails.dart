@@ -40,7 +40,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
     // });
   }
 
-  ItemOrders a = ItemOrders();
+  ItemOrders a = ItemOrders(1);
 
   @override
   void initState() {
@@ -220,6 +220,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                         Expanded(
                           child: FloatingActionButton(
                             onPressed: () {
+                             a= ItemOrders(widget.food.increment);
                               if (count == 0) {
                               } else {
                                 if(widget.food.isShisha
@@ -240,6 +241,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
                                 a.tax=widget.food.tax;
                                 a.min=widget.food.min;
                                 a.max=widget.food.max;
+
                                 a.increment=widget.food.increment;
 
 

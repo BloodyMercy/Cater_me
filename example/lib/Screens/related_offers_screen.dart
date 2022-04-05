@@ -42,7 +42,8 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
       int.parse(address.typeofeventcontroller.text.toString()),
 
       int.parse(address.numberofguestcontroller.text.toString()),
-      sh.getString("locale"),  address.evendatecontroller.text.toString()
+      sh.getString("locale"),  address.evendatecontroller.text.toString(),
+      orderprovider.value.id.toString()
     );
     setState(() {
       loading = true;

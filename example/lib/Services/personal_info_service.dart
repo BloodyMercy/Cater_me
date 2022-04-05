@@ -162,6 +162,7 @@ print(e);
       if (response.statusCode == 200) {
 
         msg.response=true;
+
         return msg;
 
       } else {
@@ -172,8 +173,10 @@ print(e);
 
     }catch(e){
       print(e);
+      msg.response=false;
+      return msg;
     }
-    return msg;
+
   }
 
   Future<ErrorMessage> resetPassword(String oldPassword,String newPassword,String confirmPassword) async{

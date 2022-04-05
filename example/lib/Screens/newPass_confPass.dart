@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
@@ -215,13 +216,30 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
 
                               user.LogIn();
                               if (resetPassword) {
-                                print('${user.lg[user.language]["Reset succeed"]}');
+                                print('${user.lg[user
+                                    .language]["Reset succeed"]}');
                                 setState(() {
                                   loadingButton = false;
                                 });
                                 Navigator.of(context).pop();
+
+
+                                user.clearAllTextController();
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(builder: (context) =>
+                                        LoginScreen()), (
+                                    Route<dynamic> route) => false);
                               }
-                              // user.clearAllTextController();
+                            else{
+                                MotionToast.error(
+                                  title: "Cater me",
+                                  titleStyle: TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                  description: "${user.lg[user
+                                      .language]['Cannot Update Info']}",
+                                  //  animationType: ANIMATION.FROM_LEFT,
+                                ).show(context);
+                              }
                             }
                           },
                           child: Text(

@@ -22,7 +22,7 @@ int _min=1,_max=1000,_increment=1;
 
   List<Details> itemDetails = [];
 
-  ItemOrders();
+  ItemOrders(this._increment);
 
   ItemOrders.fromJson(Map<String, dynamic> json) {
     tax = json['tax']==null?0:json['tax'];

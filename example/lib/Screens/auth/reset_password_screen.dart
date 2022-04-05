@@ -174,7 +174,7 @@ TextEditingController alpha =TextEditingController();
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                             PhoneVerification1(check: true,contact:  alpha.text, dialcode: "+966")));
+                                             PhoneVerification1(check: true,contact: "+966"+alpha.text, dialcode: "+966")));
 
                        },
                       child: Text(

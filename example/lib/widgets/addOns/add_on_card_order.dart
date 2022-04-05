@@ -45,7 +45,7 @@ class AddOnCardOrder extends StatelessWidget {
                       .push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          packageAdsDetailTestorder(addOn),
+                          OrderAdscuisDetail(addOn),
                     ),
                   );
                   // showDialog(

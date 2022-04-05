@@ -47,7 +47,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     // await package.getcuisinsbyid(widget.id);
     if (_cuisin.addonsallorder.length > 0) {
       await _cuisin.getonidorder(
-          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false,sh.getString("locale"));
+          _cuisin.addonsallorder[0].id, orderprov.serviceId,int.parse(address.numberofguestcontroller.text.toString()), false,sh.getString("locale"),address.evendatecontroller.text,orderprov.value.id.toString());
     }
     setState(() {
       loadingitems = false;
@@ -64,7 +64,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
     var _width = MediaQuery.of(context).size.width;
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final _cuisin = Provider.of<PackagesProvider>(context, listen: true);
-
+    final address = Provider.of<AdressProvider>(context, listen: true);
     final orderprov = Provider.of<OrderCaterProvider>(context, listen: false);
 
     final mediaQuery = MediaQuery.of(context);
@@ -95,7 +95,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                         });
                         SharedPreferences sh=await SharedPreferences.getInstance();
                         await _cuisin.getonidorder(_cuisin.addonsallorder[index].id,
-                            orderprov.serviceId, 0,false,sh.getString("locale"));
+                            orderprov.serviceId, int.parse(address.numberofguestcontroller.text.toString()),false,sh.getString("locale"),address.evendatecontroller.text,orderprov.value.id.toString());
                         setState(() {
                           loadingitems = false;
                         });

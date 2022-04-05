@@ -41,7 +41,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
 
   }
 
-  ItemOrders a = ItemOrders();
+  ItemOrders a = ItemOrders(1);
 
   @override
   void initState() {
@@ -245,6 +245,7 @@ class _OrderAdsDetailState extends State<OrderAdsDetail> {
                               Expanded(
                                 child: FloatingActionButton(
                                   onPressed: () {
+                                  a=  ItemOrders(widget.food.increment);
                                     if (count == 0) {
                                     } else {
                                       orderprovider.totalpackage=orderprovider.totalpackage+1;

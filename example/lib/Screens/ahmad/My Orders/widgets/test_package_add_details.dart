@@ -93,7 +93,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTestorder> {
 
   }
 
-  ItemOrders a = ItemOrders();
+  ItemOrders a = ItemOrders(1);
 
   @override
   void initState() {
@@ -365,6 +365,7 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                           Expanded(
                             child: FloatingActionButton(
                               onPressed: () {
+                                a=  ItemOrders(widget.food.increment);
                                 if (count == 0) {
                                 } else {
                                   orderprovider.totalpackage=orderprovider.totalpackage+1;
@@ -382,6 +383,7 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                                   a.tax=widget.food.tax;
                                   a.min=widget.food.min;
                                   a.max=widget.food.max;
+                                  a.increment=widget.food.increment;
 
                                   orderprovider.addItems(a,widget.food.isShisha);
                                   Navigator.of(context).pop(false);
