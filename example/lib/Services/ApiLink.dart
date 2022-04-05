@@ -6,6 +6,8 @@ class ApiLink{
 
  // static String host="https://caterme.azurewebsites.net/api/";
 
+ // static String host="https://caterme.azurewebsites.net/api/";
+static String host="https://catermedevelopment.azurewebsites.net/api/";
  //static String host="https://caterme.azurewebsites.net/api/";
 static String host="https://catermedevelopment.azurewebsites.net/api/";
 // static String host="https://66a5-185-142-40-150.ngrok.io/api/";
@@ -52,7 +54,7 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String Updateoccasions=host+"Occasions/UpdateOccasion";
  static String Deleteoccasions=host+"Occasions/DeleteOccasion";
  static String UpdatePersonalInfo=host+"Accounts/UpdateProfile";
- static String ResetPassword=host+"Accounts/ResetPassword";
+ static String ForgotPassword=host+"Accounts/ForgetPassword";
  static String DeleteAddress=host+"Addresses/DeleteAddress";
  static String makeorder=host+"Orders/PlaceOrder";
  static String GetAllCreditCards=host+"Checkout/GetAllCreditCards";
@@ -62,7 +64,8 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String SeenNotification=host+"Notifications/MarkAsSeen";
  static String DonateFood=host+"Orders/DonateOrder";
  static String DonateFoodss=host+"Orders/DonateOrder";
- static String ForgetPassword=host+"Accounts/ForgetPassword";
+ static String ResetPasswordbyphone=host+"Accounts/ResetPasswordPhone";
+ static String ResetPasswordbyemail=host+"Accounts/ResetPasswordEmail";
  static String getAllPackages = host+"Orders/GetAllPackages";
  static String contactus=host+"Settings/GetContactUs";
  static String getDistance = host+"Orders/IsInCoverage/";
@@ -78,6 +81,7 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String GenerateOTP=host+"Accounts/GenerateOtp";
  static String ConfirmOTP=host+"Accounts/ConfirmOtp";
  static String GenerateInvoice=host+"Orders/GenerateInvoice";
+ static String ResendOTP=host+"Accounts/ResendOTP";
 
 
 
