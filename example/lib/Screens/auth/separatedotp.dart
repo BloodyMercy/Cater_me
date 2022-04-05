@@ -23,21 +23,21 @@ import '../../SplachScreen.dart';
 import '../../language/language.dart';
 
 
-class PhoneVerification extends StatefulWidget {
+class PhoneVerification1 extends StatefulWidget {
 
 bool check ;
-  var _contact;
+  String contact;
   String dialcode;
 
   // const PhoneVerification({Key? key}) : super(key: key);
-  PhoneVerification(this._contact ,this.dialcode,this.check);
+  PhoneVerification1({ this.contact ,this.dialcode,this.check});
 
   @override
-  _PhoneVerificationState createState() => _PhoneVerificationState();
+  _PhoneVerification1State createState() => _PhoneVerification1State();
 
 }
 
-class _PhoneVerificationState extends State<PhoneVerification> {
+class _PhoneVerification1State extends State<PhoneVerification1> {
   String ToEnglishNumbers(String s)
   {
     return
@@ -67,7 +67,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
     super.initState();
 
     //  widget._contact = '${ModalRoute.of(context)!.settings.arguments as String}';
-    generateOtp(widget._contact);
+    generateOtp(widget.contact);
   }
   int _resendToken;
 
@@ -85,7 +85,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
     try {
 
       // await AuthModelSignUp.GenerateOTPservice(widget._contact)
-      await  AuthModelSignUp.GenerateOTPservice(widget._contact);
+      await  AuthModelSignUp.GenerateOTPservice(widget.contact);
 
 
       // await _auth.verifyPhoneNumber(
@@ -314,7 +314,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                   try {
 
 
-                    if( await  AuthModelSignUp.ConfirmOTPservice(widget._contact,smsOTP)){
+                    if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP)){
 
                       if(widget.check){
 
@@ -334,15 +334,6 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       ).show(context);
                       //alert
                     }
-                    //    final AuthCredential credential = PhoneAuthProvider.credential(
-                    //      verificationId: verificationId,
-                    //      smsCode: smsOTP,
-                    //    );
-                    //    final UserCredential user = await _auth.signInWithCredential(credential);
-                    //    final User currentUser = await _auth.currentUser;
-                    // //   assert(user.user.uid == currentUser.uid);
-
-
 
                   } catch (e) {
                     {
@@ -353,16 +344,6 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                           description:
                           '${authProvider.lg[authProvider.language]["otp not valid"]}'
                       ).show(context);
-                      // _scaffoldKey.currentState.showSnackBar(
-                      //     SnackBar(content: Row(
-                      //       children: [
-                      //        // CircularProgressIndicator(),
-                      //       //  SizedBox(width: 15,),
-                      //         Text('${authProvider.lg[authProvider.language]["otp not valid"]}'),
-                      //       ],
-                      //     ))
-                      //
-                      // );
                       return;
                     }
                   }
@@ -376,7 +357,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
               height: MediaQuery.of(context).size.height/50,
             ),
             TextButton(onPressed: (){
-              generateOtp(widget._contact);
+              generateOtp(widget.contact);
 
             },
               child:  Text('${authProvider.lg[authProvider.language]["Resend code"]}',

@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/auth/separatedotp.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/otpverify/widget/country_picker.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   void _callBackFunction(String name, String dialCode, String flag) {
     _dialCode = dialCode;
   }
+TextEditingController alpha =TextEditingController();
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
@@ -95,6 +97,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               padding: const EdgeInsets.all(10.0),
                               child:
                                TextFormField(
+                                 controller:alpha ,
                                 // controller: friends.phonecontroller,
                                 // focusNode: focusnode,
                                 validator: (value) {
@@ -165,84 +168,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               !loading
                   ? ElevatedButton(
                       onPressed: () async {
-                        setState(() {
-                          loading = true;
-                        });
-                        // final SharedPreferences sharedPreferences =
-                        //     await SharedPreferences.getInstance();
-                        // sharedPreferences.setString(
-                        //     'email', emailController.text);
 
-                        if (formkey.currentState.validate() == false) {
-                          // ignore: avoid_print
-                          print('Not Validated');
-                          setState(() {
-                            loading = false;
-                          });
-                          // reset!=null?
-                        } else {
-                          if (await authprovider.forgetpassword()) {
-                            print("logged");
-                            setState(() {
-                              loading = false;
-                            });
-                            SharedPreferences sh =
-                                await SharedPreferences.getInstance();
-                            sh.setBool("logged", true);
+                        Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                             PhoneVerification1(check: true,contact:  alpha.text, dialcode: "+966")));
 
-                            MotionToast.success(
-                              title: "Cater me",
-                              titleStyle:
-                                  TextStyle(fontWeight: FontWeight.bold),
-                              description:
-                                  '${authprovider.lg[authprovider.language]["Email verification was send"]}',
-                              //  animationType: ANIMATION.FROM_LEFT,
-                            ).show(context);
-
-                            // Navigator.of(context).pushReplacement(
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             ConfirmEmailSent()),
-                            //         );
-                            //authProvider.status=Status.Authenticated;
-                            setState(() {});
-                          } else {
-                            print("hello");
-                            setState(() {
-                              loading = false;
-                            });
-                            MotionToast.error(
-                              title: "Cater me",
-                              titleStyle:
-                                  TextStyle(fontWeight: FontWeight.bold),
-                              description:
-                                  '${authprovider.lg[authprovider.language]["error try again"]}',
-                              //  animationType: ANIMATION.FROM_LEFT,
-                            ).show(context);
-
-                            // _scaffold.currentState.showSnackBar(
-                            //   SnackBar(
-                            //     content: Text(
-                            //         "error try again"),
-                            //   ),
-                            // );
-                            authprovider.forgetpass = "";
-                          }
-                        }
-                        // {
-                        //   if (formkey.currentState.validate() == false) {
-                        //     // ignore: avoid_print
-                        //     print('Not Validated');
-                        //     // reset!=null?
-                        //   } else {
-                        //
-                        //     Navigator.push(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //             builder: (context) =>
-                        //                 const ConfirmEmailSent()));
-                        //   }
-                      },
+                       },
                       child: Text(
                         '${authprovider.lg[authprovider.language]["Send"]}',
                         style: Theme.of(context).textTheme.headline1,
