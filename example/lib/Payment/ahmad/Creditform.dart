@@ -2,6 +2,9 @@ import 'package:credit_card/credit_card_model.dart';
 import 'package:credit_card/credit_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+
+import '../../Providers/user.dart';
 
 class CreditCardForm extends StatefulWidget {
   const CreditCardForm({
@@ -117,6 +120,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context, listen: true);
     return Theme(
       data: ThemeData(
         primaryColor: themeColor.withOpacity(0.8),
@@ -137,7 +141,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Card number',
+                  labelText: '${user.lg[user.language]['Card number']}',
                   hintText: 'xxxx xxxx xxxx xxxx',
                 ),
                 keyboardType: TextInputType.number,
@@ -155,7 +159,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Expired Date',
+                    labelText:'${user.lg[user.language]['Expired Date']}',
                     hintText: 'MM/YY'),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
@@ -196,7 +200,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Card Holder',
+                  labelText: '${user.lg[user.language]['Card Holder']}',
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,

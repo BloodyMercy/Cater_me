@@ -82,7 +82,8 @@ TextEditingController alpha =TextEditingController();
           color: LightColors.kLightYellow,
           child: Column(
             children: [
-              SizedBox(height: screenHeight * 0.3, child: Center(child: Text('Change Password by Phone OTP'),),),
+              SizedBox(height: screenHeight * 0.3, child: Center(child:
+              Text('${authprovider.lg[authprovider.language]['Change Password by Phone OTP']}'),),),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(left: 37.0, right: 37.0),
