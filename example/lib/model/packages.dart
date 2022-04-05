@@ -3,6 +3,7 @@ import 'package:CaterMe/model/details.dart';
 class Package {
 
 int id;
+bool perperson =false ;
   String image = "";
   int tax = 0;
   String title = "";
@@ -34,6 +35,7 @@ bool isShisha=false;
     isfavorite = json['isFavorite']??false;
     min=json["min"]??1;
    max=json["max"]??1000;
+    perperson=json["isSoldPerPackage"]??false;
     increment=json["increment"]??1;
    isShisha=json["isShisha"]??false;
     if (json['itemDetails'] != null) {
