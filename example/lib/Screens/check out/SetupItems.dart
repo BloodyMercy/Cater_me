@@ -98,13 +98,9 @@ class _SetupItemsState extends State<SetupItems> {
                                       _isChecked[index] = val;
                                     });
                                     if (val == true) {
-                                      orderCater.setupItemModelId
-                                          .add(order.setupItemmodel[index].id);
+                                      orderCater.addtotitemlist(order.setupItemmodel[index]);
                                     } else {
-                                      orderCater.setupItemModelId.removeWhere(
-                                          (element) =>
-                                              element ==
-                                              order.setupItemmodel[index].id);
+                                      orderCater.removetotitemlist(order.setupItemmodel[index]);
                                     }
                                   });
 

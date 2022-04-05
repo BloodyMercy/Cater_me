@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage>
     await occasion.getallnewoccasion(sh.getString("locale"));
     // await occasion.getAllOccasionType(a);
 
-    setState(() {
+     setState(() {
       loading = false;
     });
     setState(() {

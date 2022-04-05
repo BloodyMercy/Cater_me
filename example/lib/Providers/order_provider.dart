@@ -23,14 +23,21 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _listFriend=[];
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
-  List _setupItemModelId = [];
-  //InAppWebViewController _webview=new InAppWebViewController();
-  List get setupItemModelId => _setupItemModelId;
+  List<int> _setupItemModelId = [];
 
-  set setupItemModelId(List value) {
+  List<int> get setupItemModelId => _setupItemModelId;
+
+  set setupItemModelId(List<int> value) {
     _setupItemModelId = value;
+  } //InAppWebViewController _webview=new InAppWebViewController();
+ addtotitemlist(setupItemsModel index){
+   _setupItemModelId.add(index.id);
+   notifyListeners();
+ }
+ removetotitemlist(setupItemsModel index){
+    _setupItemModelId.remove(index.id);
+    notifyListeners();
   }
-
   bool get checkotp => _checkotp;
 
   set checkotp(bool value) {
@@ -46,10 +53,6 @@ bool _setotppage=false;
   }
 
   bool _checkotp=false;
-  List<setupItemsModel> get setupItemmodel => _setupItemModelId;
-  set setupItemmodel(List<setupItemsModel> value) {
-    _setupItemModelId = value;
-  }
 
   List<int> _setupOrderList=[];
   List<int> _setupsurvey=[];
