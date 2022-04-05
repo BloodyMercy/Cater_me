@@ -540,7 +540,10 @@ Center(child:  Padding(
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          TrackingOrder(widget.id),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TrackingOrder(widget.id),
+                          ),
                     ),
                   );
                 },

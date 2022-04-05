@@ -38,7 +38,22 @@ PhoneVerification(this._contact ,this.dialcode,this.image);
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
- String phoneNo;
+  String ToEnglishNumbers(String s)
+  {
+    return
+      s.replaceAll(RegExp(r"٠"),"0" ).
+      replaceAll(RegExp(r"۱"), "1").
+      replaceAll(RegExp(r"۲"), "2").
+      replaceAll(RegExp(r"۳"), "3").
+      replaceAll(RegExp(r"٤"), "4")
+          .replaceAll(RegExp(r"٥"), "5").
+      replaceAll(RegExp(r"٦"), "6").
+      replaceAll(RegExp(r"٧"), "7").
+      replaceAll(RegExp(r"٨"), "8").
+      replaceAll(RegExp(r"٩"), "9");
+  }
+
+  String phoneNo;
  String smsOTP='';
  String verificationId;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -287,8 +302,9 @@ lang: authProvider.language,
 
                                smsOTP = value ;
                                if(authProvider.language=="ar"){
-                                 smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
 
+                                 smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
+                                 smsOTP= ToEnglishNumbers(smsOTP);
                                }
                              });
                              if (smsOTP == null || smsOTP == '') {
