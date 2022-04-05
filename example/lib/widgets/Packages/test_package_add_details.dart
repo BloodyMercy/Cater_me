@@ -85,7 +85,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
     });
   }
 
-  ItemOrders a = ItemOrders();
+  ItemOrders a = ItemOrders(1);
 
   @override
   void initState() {

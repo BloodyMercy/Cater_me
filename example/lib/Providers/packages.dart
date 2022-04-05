@@ -151,10 +151,10 @@ String get nbnotification => _nbnotification;
   }
 
 
-Future<void>  getallpacakgesorder(int id,int id2,int id3,String a,String date)async {
+Future<void>  getallpacakgesorder(int id,int id2,int id3,String a,String date,String idadress)async {
   loading=false;
 //notifyListeners();
-  _alldata=await PackageService.getPackagesrder(id,id2,id3,date);
+  _alldata=await PackageService.getPackagesrder(id,id2,id3,date,idadress);
 
 
     if( _alldata['packages']!=null) {
@@ -255,11 +255,11 @@ Future<void>  getonid(int id)async {
   notifyListeners();
 }
 
-Future<void>  getonidorder(int id,int idservice,int idnbguest,bool a,String ar)async {
+Future<void>  getonidorder(int id,int idservice,int idnbguest,bool a,String ar,String date,String idadress)async {
     print(id);
   loading = false;
   // notifyListeners();
-  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,idnbguest,a,ar);
+  _allonsorder = await PackageService.getOnsbyidorder(id,idservice,idnbguest,a,ar, date,idadress);
   loading = true;
   //         Cuisines.fromJson(_alldata['cuisine']);
   // _addonsall = List<Addonall>.from(

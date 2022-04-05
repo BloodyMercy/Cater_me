@@ -12,14 +12,14 @@ import '../ApiLink.dart';
 
 class PackageService {
   static Future<Map<String, dynamic>> getPackagesrder(
-      int id, int id2, int id3,String date) async {
+      int id, int id2, int id3,String date,String idadress) async {
     List<Package> l = [];
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request(
-          'GET', Uri.parse(ApiLink.GetPackagesorder + "/$id/$id2/$id3/$date"));
+          'GET', Uri.parse(ApiLink.GetPackagesorder+"/$id/$id2/$date/$idadress/$id3"));
 
       request.headers.addAll(headers);
 
@@ -103,7 +103,7 @@ class PackageService {
   }
 
   static Future<List<Package>> getOnsbyidorder(
-      int id, int idservice, int idnbguest, bool a,String ar) async {
+      int id, int idservice, int idnbguest, bool a,String ar,String date,String idadress) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -114,9 +114,9 @@ class PackageService {
             Uri.parse(ApiLink.GetItemByCuisine + "$id/$idservice/$idnbguest"));
       else
         request = http.Request('GET',
-            Uri.parse(ApiLink.GetItemByadd + "$id/$idservice/$idnbguest"));
+            Uri.parse(ApiLink.GetItemByadd + "$id/$idservice/$date/$idadress/$idnbguest"));
       request.headers.addAll(headers);
-      print(ApiLink.GetItemByadd + "$id/$idservice");
+     // print(ApiLink.GetItemByadd + "$id/$idservice");
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
 

@@ -185,7 +185,7 @@ bool _loadinglanguage=false;
     birthDate=_personalInfo.birthDate;
     //birthday.text=_personalInfo.birthDate;
     if(_personalInfo.birthDate!="") {
-      birthday.text = DateFormat("dd-MM-yyyy").format(
+      birthday.text = DateFormat("yyyy-MM-dd").format(
           DateTime.parse(_personalInfo.birthDate));
       birthdaylan.text = DateFormat("dd-MM-yyyy").format(
           DateTime.parse(_personalInfo.birthDate));
