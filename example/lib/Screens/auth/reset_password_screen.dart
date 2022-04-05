@@ -38,7 +38,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   bool loading = false;
-  bool phoneEmail = false;
   final TextEditingController reset = TextEditingController();
   final _scaffold = GlobalKey<ScaffoldState>();
 
@@ -81,7 +80,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           color: LightColors.kLightYellow,
           child: Column(
             children: [
-              SizedBox(height: screenHeight * 0.3, child: Center(child: Text(phoneEmail?'Change Password by Phone OTP': 'Change Password by Email'),),),
+              SizedBox(height: screenHeight * 0.3, child: Center(child: Text('Change Password by Phone OTP'),),),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(left: 37.0, right: 37.0),
@@ -95,7 +94,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           Container(
                               padding: const EdgeInsets.all(10.0),
                               child:
-                              phoneEmail? TextFormField(
+                               TextFormField(
                                 // controller: friends.phonecontroller,
                                 // focusNode: focusnode,
                                 validator: (value) {
@@ -154,66 +153,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'BerlinSansFB'),
-                              ): TextFormField(
-                            controller:authprovider.forgetPassword,
-                            // onSaved: (value) => email = value,
-                            autovalidateMode:
-                            AutovalidateMode.onUserInteraction,
-                            decoration: InputDecoration(
-                              prefixIcon: IconButton(
-                                icon: const Icon(Icons.mail_outline),
-                                onPressed: () {},
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(5.0),
-                                    borderSide: const BorderSide(
-                                      color: Color(0xFF3F5521),
-                                    )),
-                              contentPadding: EdgeInsets.only(
-                                  left: screenHeight * 0.03,
-                                  bottom: screenHeight * 0.025,
-                                  top: screenHeight * 0.025),
-                              hintText: '${authprovider.lg[authprovider.language][ "Email"]}',
-                              hintStyle:
-                              Theme.of(context).textTheme.headline4,
-                            ),
+                              )),
 
-                            validator: MultiValidator([
-                              RequiredValidator(errorText:'${authprovider.lg[authprovider.language][ "Required"]}'),
-                            ]),
-
-                            keyboardType: TextInputType.emailAddress,
-                          )),
-                          !loading
-                              ? Padding(
-                                padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width*0.47),
-                                child: TextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        phoneEmail = !phoneEmail;
-                                      });
-                                    },
-                                    child: Text(
-                                     phoneEmail? 'Send by email': 'Send by phone number',
-                                      style:
-                                          TextStyle(
-                                            decoration: TextDecoration.underline,
-                                          ),
-                                    ),
-                                  ),
-                              )
-                              : Center(
-                                  child: CircularProgressIndicator(),
-                                ),
                         ],
                       ),
                     ),
