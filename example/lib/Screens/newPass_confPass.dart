@@ -1,4 +1,5 @@
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
@@ -221,7 +222,11 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                                 });
                                 Navigator.of(context).pop();
                               }
-                              // user.clearAllTextController();
+                              user.clearAllTextController();
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(builder: (context) =>
+                                      LoginScreen()), (Route<dynamic> route) => false);
+
                             }
                           },
                           child: Text(
