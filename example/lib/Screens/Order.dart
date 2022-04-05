@@ -55,7 +55,7 @@ class _OrderState extends State<Order> {
                   alignment: Alignment.topCenter,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.35,
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: MediaQuery.of(context).size.height * 0.09,
@@ -266,7 +266,7 @@ class _OrderState extends State<Order> {
                                 children: [
                                   Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.25,
+                                        0.35,
                                     child: Padding(
                                       padding: EdgeInsets.only(
                                           top: MediaQuery.of(context)
