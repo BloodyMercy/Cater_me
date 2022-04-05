@@ -29,8 +29,19 @@ class OrderCaterProvider extends ChangeNotifier{
 
   set setupItemModelId(List<int> value) {
     _setupItemModelId = value;
+
+  }
+
+  double _taxes= 0.0;
+
+  double get taxes => _taxes;
+
+  set taxes(double value) {
+    _taxes = value;
   } //InAppWebViewController _webview=new InAppWebViewController();
- addtotitemlist(setupItemsModel index){
+
+
+  addtotitemlist(setupItemsModel index){
    _setupItemModelId.add(index.id);
    notifyListeners();
  }
@@ -401,7 +412,12 @@ orderid=int.parse(i);
   set itemOrders(List<ItemOrders> value) {
     _itemOrders = value;
   }
-
+calculate(){
+  _taxes=0;
+    _itemOrders.forEach((element) {
+      // element.pr
+    });
+}
   addItems(ItemOrders item,bool a){
 
     //subTotal=subTotal+(item.totalprice*((100-item.tax)/100));
