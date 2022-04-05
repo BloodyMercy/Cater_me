@@ -33,8 +33,8 @@ class LanguageTr {
       "SignUp": "اعمل لك حساب جديد ",
       "Already have an account?": "عندك حساب ؟",
       "Pick": "حدد",
-      "Female": "بنت",
-      "Male": "ولد",
+      "Female": "أنثى",
+      "Male": "ذكر",
       "Search": "ابحث هنا",
       "Customer Service": "هنا نخدمك",
       "Type your message...": "…اكتب رسالتك",
@@ -299,12 +299,23 @@ class LanguageTr {
       "email already exist":"الايميل موجود بالفعل",
   "phone already exist":"الهاتف موجود بالفعل",
       "Order  Here":"انه  بلطأ",
-
+      'Change Password by Phone OTP':"تغيير كلمة المرور عبر الهاتف OTP",
+      "Card number":"رقم البطاقة",
+      "Expired Date": "منتهي الصلاحية",
+      'Card Holder': "حامل البطاقة",
+      "Expiry":"انقضاء",
+      "CARD HOLDER":"حامل البطاقة",
     },
 
 
 
     "en": {
+      "CARD HOLDER":"CARD HOLDER",
+      "Expiry":"Expiry",
+      "Card number":"Card number",
+      "Card Holder": "Card Holder",
+      "Expired Date": "Expired Date",
+      'Change Password by Phone OTP':'Change Password by Phone OTP',
       "Please enter the name":"Please enter the name",
       "phone already exist":"phone already exist",
       "email already exist":"email already exist",

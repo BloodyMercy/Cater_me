@@ -540,10 +540,7 @@ Center(child:  Padding(
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TrackingOrder(widget.id),
-                          ),
+                          TrackingOrder(widget.id),
                     ),
                   );
                 },
@@ -551,13 +548,16 @@ Center(child:  Padding(
                   width: width/3.65,
                   child: Row(
                     children: [
-                      Text(
-                        '${authProvider.lg[authProvider.language]["Tracking"]}',
-                        style: TextStyle(
-                            color: Color.fromRGBO(85, 115, 116, 1),
-                            fontSize: 13,
-                            fontFamily: 'Geomanist',
-                            fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          '${authProvider.lg[authProvider.language]["Tracking"]}',
+                          style: TextStyle(
+                              color: Color.fromRGBO(85, 115, 116, 1),
+                              fontSize: 13,
+                              fontFamily: 'Geomanist',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                       SizedBox(width: 5,),
                       FaIcon(FontAwesomeIcons.truck,color:Color(0xFF3F5521)

@@ -146,6 +146,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
       Orientation orientation,
       ) {
     final TextStyle defaultTextStyle = Theme.of(context).textTheme.bodyText1;
+    final user = Provider.of<UserProvider>(context, listen:true);
 
     return Container(
       decoration: BoxDecoration(
@@ -261,6 +262,8 @@ final user = Provider.of<UserProvider>(context, listen:true);
       String a
       ) {
     final TextStyle defaultTextStyle = Theme.of(context).textTheme.bodyText1;
+    final user = Provider.of<UserProvider>(context, listen:true);
+
     return Container(
       margin: const EdgeInsets.all(16),
       width: widget.width ?? width,
@@ -311,7 +314,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Expiry',
+                          '${user.lg[user.language]['Expiry']}' ,
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
@@ -339,7 +342,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Text(
                       widget.cardHolderName.isEmpty ||
                           widget.cardHolderName == null
-                          ? 'CARD HOLDER'
+                          ? '${user.lg[user.language]['CARD HOLDER']}'
                           : widget.cardHolderName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
