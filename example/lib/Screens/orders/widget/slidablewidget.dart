@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Providers/order.dart';
+import '../../../Providers/user.dart';
 
 
 class SlidableWidget extends StatelessWidget {
@@ -21,7 +22,7 @@ class SlidableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final orders = Provider.of<OrderProvider>(context, listen: true);
 
-    // UserProvider _user=Provider.of<UserProvider>(context,listen: true);
+    UserProvider authProvider=Provider.of<UserProvider>(context,listen: true);
     return Slidable(
       actionPane: const SlidableDrawerActionPane(),
       child: child,
@@ -35,11 +36,36 @@ class SlidableWidget extends StatelessWidget {
             color: Colors.white,
             size: 20.0,
           ),
-          onTap: () {
-            orders.deleteorder(index);
+          onTap: () async {
+    showDialog(
+    context: context,
+    barrierDismissible:
+    false,
+    builder: (BuildContext
+    context) {
+    return WillPopScope(
+    onWillPop: () =>
+    Future<bool>.value(
+    false),
+    child:
+    AlertDialog(
+    title: Text(
+    '${authProvider.lg[authProvider.language]["Loading..."]}'),
+    content: Column(
+    mainAxisSize:
+    MainAxisSize.min,
+    children: <Widget>[
+    const CircularProgressIndicator()
+    ]),
+    ));
+
+
              // changescreenuntill(context, HomeViewProfession(1));
           },
-        )
+        );
+   await orders.deleteorder(index);
+       Navigator.pop(context);
+          })
       ],
     );
   }
