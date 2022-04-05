@@ -258,6 +258,20 @@ language=sh.getString("locale");
 
 
   }
+  String ToEnglishNumbers(String s)
+  {
+    return
+      s.replaceAll(RegExp(r"٠"),"0").
+      replaceAll(RegExp(r"۱"), "1").
+      replaceAll(RegExp(r"۲"), "2").
+      replaceAll(RegExp(r"۳"), "3").
+      replaceAll(RegExp(r"٤"), "4").
+      replaceAll(RegExp(r"٥"), "5").
+      replaceAll(RegExp(r"٦"), "6").
+      replaceAll(RegExp(r"٧"), "7").
+      replaceAll(RegExp(r"٨"), "8").
+      replaceAll(RegExp(r"٩"), "9");
+  }
 
   Future<bool> LogIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -266,7 +280,7 @@ language=sh.getString("locale");
       //_status = Status.Authenticating;
       notifyListeners();
       ErrorMessage u = await AuthModelSignin.login(
-          email.text.toString(), password.text.toString());
+          ToEnglishNumbers(email.text.toString()), password.text.toString());
 
       String token = "";
 
@@ -307,7 +321,7 @@ language=sh.getString("locale");
       ErrorMessage u = await AuthModelSignUp.SignUp(
         name.text.toString(),
         email.text.toString(),
-        phoneNumber.text.toString(),
+          ToEnglishNumbers(phoneNumber.text.toString()),
         password.text.toString(),
         password.text.toString(),
         b,
@@ -377,7 +391,7 @@ imageUrl=u.message;
       ErrorMessage msg = await PersonalInfoService().updateInfo(
         name.text.toString(),
         email.text.toString(),
-        phoneNumber.text.toString(),
+          ToEnglishNumbers(phoneNumber.text.toString()),
         birthday.text
       );
       _messageUpdateInfo = msg.message;
