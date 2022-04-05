@@ -21,6 +21,7 @@ import '../../Providers/address.dart';
 import '../../Providers/user.dart';
 import '../../SplachScreen.dart';
 import '../../language/language.dart';
+import '../newPass_confPass.dart';
 
 
 class PhoneVerification1 extends StatefulWidget {
@@ -202,7 +203,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
   @override
   Widget build(BuildContext context) {
 
-    // UserProvider _user = Provider.of<UserProvider>(context, listen: true);
+    UserProvider user = Provider.of<UserProvider>(context, listen: true);
     //UserProvider authProvider = Provider.of<UserProvider>(context);
 
     //WorkProvider work = Provider.of<WorkProvider>(context);
@@ -317,9 +318,31 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
                     if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP)){
 
                       if(widget.check){
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    NewPassConfPass()));
+
 
 
                       }else{
+
+                        var update = await user.updateInfo();
+                        if (update) {
+                          Navigator.of(context).pop();
+
+                        } else {
+                          MotionToast.error(
+                            title: "Cater me",
+                            titleStyle: TextStyle(
+                                fontWeight: FontWeight.bold),
+                            description: "${user.lg[user
+                                .language]['Cannot Update Info']}",
+                            //  animationType: ANIMATION.FROM_LEFT,
+                          ).show(context);
+                        }
+Navigator.pop(context);
 
                       }
                     }

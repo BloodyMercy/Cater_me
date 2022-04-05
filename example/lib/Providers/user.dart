@@ -35,7 +35,18 @@ class UserProvider with ChangeNotifier {
   set error(String value) {
     _error = value;
   }
+  ResetPassword() async {
+    ErrorMessage a;
+    a =await  PersonalInfoService().resetPasswordbyphone(phoneNumber.text, password1.text, confirmpassword.text);
+    return a.response;
 
+
+  }
+  ResetPasswordout()async{
+    ErrorMessage a;
+   a =await  PersonalInfoService().resetPassword(oldPassword.text, password1.text, confirmpassword.text);
+  return a.response;
+  }
   // GenerateOTPprovider() async {
   //   _user= await  AuthModelSignUp.GenerateOTPservice(phoneNumber.text) ;
   //   if(!_user.phone){
@@ -163,6 +174,8 @@ bool _loadinglanguage=false;
   }
 
   PersonalInfoModel _personalInfo=PersonalInfoModel();
+
+  PersonalInfoModel get personalInfo => _personalInfo;
 
   getPersonalInfo() async{
     _personalInfo=  await PersonalInfoService().getAllInfo();
@@ -385,7 +398,7 @@ imageUrl=u.message;
       print(error);
     }
   }
-  Future ResetPasswordbyphone()async{
+  Future ResetPasswordbyphones()async{
     try{
       notifyListeners();
       ErrorMessage msg = await PersonalInfoService().resetPasswordbyphone(phoneNumber.text.toString(), password1.text.toString(), confirmpassword.text.toString());

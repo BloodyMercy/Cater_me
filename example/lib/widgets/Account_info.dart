@@ -308,7 +308,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                     });
                                     validateText();
                                     var resetPassword =
-                                        await user.ResetPassword();
+                                        await user.ResetPasswordout();
                                     print(resetPassword);
                                     if (resetPassword) {
                                       print('${user.lg[user.language]["Reset succeed"]}');

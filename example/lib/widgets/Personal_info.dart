@@ -1,5 +1,6 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/user.dart';
+import 'package:CaterMe/Screens/auth/separatedotp.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -7,6 +8,7 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
 import '../NavigationBar/navigation_bar.dart';
+import '../Screens/otpverify/phone_verification.dart';
 import '../Screens/otpverify/widget/country_picker.dart';
 import '../customBirthdayPicker.dart';
 import '../language/language.dart';
@@ -276,32 +278,41 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                 ? CircularProgressIndicator()
                                 : ElevatedButton(
                                     onPressed: () async {
-                                      setState(() {
-                                        loadingButton = true;
-                                      });
-                                      validate();
-                                      var update = await user.updateInfo();
-                                      if (update) {
-                                        Navigator.of(context).pop();
+                                      if(user.phoneNumber.text!=user.personalInfo.phoneNumber){
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => PhoneVerification1(check: false , contact: user.phoneNumber.text,dialcode: "+966"),
+                                          ),
+                                        );
+                                      }else {
                                         setState(() {
-                                          loadingButton = false;
+                                          loadingButton = true;
                                         });
-                                      } else {
-                                        setState(() {
-                                          loadingButton = false;
-                                        });
-                                        // ScaffoldMessenger.of(context)
-                                        //     .showSnackBar(SnackBar(
-                                        //   content: Text( '${authProvider.lg[user.language]['Cannot Update Info']',),}
-                                        // ));
-                                        MotionToast.error(
-                                          title:  "Cater me",
-                                          titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                          description:  "${user.lg[user.language]['Cannot Update Info']}",
-                                          //  animationType: ANIMATION.FROM_LEFT,
-                                        ).show(context);
-                                      }
-                                    },
+                                        validate();
+                                        var update = await user.updateInfo();
+                                        if (update) {
+                                          Navigator.of(context).pop();
+                                          setState(() {
+                                            loadingButton = false;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            loadingButton = false;
+                                          });
+                                          // ScaffoldMessenger.of(context)
+                                          //     .showSnackBar(SnackBar(
+                                          //   content: Text( '${authProvider.lg[user.language]['Cannot Update Info']',),}
+                                          // ));
+                                          MotionToast.error(
+                                            title: "Cater me",
+                                            titleStyle: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                            description: "${user.lg[user
+                                                .language]['Cannot Update Info']}",
+                                            //  animationType: ANIMATION.FROM_LEFT,
+                                          ).show(context);
+                                        }
+                                      }  },
                                     child: Text(
                                       '${user.lg[user.language]["Submit"]}',
                                       style:

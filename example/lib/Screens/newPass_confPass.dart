@@ -212,6 +212,8 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                               validateText();
                               var resetPassword = await user.ResetPassword();
                               print(resetPassword);
+
+                              user.LogIn();
                               if (resetPassword) {
                                 print('${user.lg[user.language]["Reset succeed"]}');
                                 setState(() {
@@ -219,7 +221,7 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                                 });
                                 Navigator.of(context).pop();
                               }
-                              user.clearAllTextController();
+                              // user.clearAllTextController();
                             }
                           },
                           child: Text(
