@@ -158,12 +158,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: screenHeight * 0.015,
                           ),
                           TextFormField(
+
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 15,
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'BerlinSansFB'),
                             decoration: InputDecoration(
+
                                 prefixIcon: IconButton(
                                   icon: Icon(
                                     passObscure
