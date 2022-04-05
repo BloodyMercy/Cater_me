@@ -305,11 +305,13 @@ class LanguageTr {
       'Card Holder': " حامل البطاقة ",
       "Expiry":" انقضاء ",
       "CARD HOLDER":" حامل البطاقة ",
+      "perperson":" للشخص الواحد "
     },
 
 
 
     "en": {
+      "perperson":"Per person",
       "CARD HOLDER":" CARD HOLDER ",
       "Expiry":" Expiry ",
       "Card number":" Card number ",

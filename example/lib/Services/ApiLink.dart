@@ -70,6 +70,7 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String getAllPackages = host+"Orders/GetAllPackages";
  static String contactus=host+"Settings/GetContactUs";
  static String getDistance = host+"Orders/IsInCoverage/";
+ static String deleteorder = host+"Orders/HideOrderFromMobileApp";
  static String setupitems=host+"Settings/GetOrderSettings";
  static String checkorder=host+"Checkout/RequestPayment";
  static String getLanguage=host+"HomePage/GetLanguage";

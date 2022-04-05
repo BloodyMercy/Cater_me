@@ -57,7 +57,7 @@ dependencies:
   flutter_svg:
   firebase_auth: ^3.1.1
   badges: ^2.0.2
-  flutter_slidable: ^1.2.0
+  flutter_slidable: ^0.6.0
   google_maps_flutter: ^2.0.3
   geolocator: ^7.7.1
   permission_handler: ^9.2.0
