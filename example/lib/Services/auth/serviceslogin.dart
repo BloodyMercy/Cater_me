@@ -164,11 +164,15 @@ class AuthModelSignin {
 
   static Future<bool> forgetPassword(String email) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var request =
-        http.MultipartRequest('POST', Uri.parse(ApiLink.ForgetPassword));
+    var request = http.MultipartRequest('POST', Uri.parse('https://caterme.azurewebsites.net/api/Accounts/ForgetPassword'));
     request.fields.addAll({
-      'identifier': email,
+      'identifier': email
     });
+    // var request =
+    // http.MultipartRequest('POST', Uri.parse(ApiLink.ForgotPassword));
+    // request.fields.addAll({
+    //   'identifier':email
+    // });
     var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
     request.headers.addAll(headers);
 
@@ -182,4 +186,5 @@ class AuthModelSignin {
       return false;
     }
   }
+
 }

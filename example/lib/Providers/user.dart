@@ -338,6 +338,7 @@ imageUrl=u.message;
       return "";
     }
   }
+
   Future<bool> forgetpassword( ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -346,17 +347,11 @@ imageUrl=u.message;
     bool u = await AuthModelSignin.forgetPassword(
           forgetPassword.text
       );
-//_forgetpass=u.message;
-
-  //    mess = u.message;
-
-     // notifyListeners();
       return u;
     } catch (error) {
       print(error);
       _forgetpass = "error try again later from provider";
 
-   //  notifyListeners();
       return false;
     }
   }
@@ -379,10 +374,21 @@ imageUrl=u.message;
       print(error);
     }
   }
-  Future ResetPassword()async{
+  Future ResetPasswordbymail()async{
     try{
       notifyListeners();
-      ErrorMessage msg = await PersonalInfoService().resetPassword(oldPassword.text.toString(), password1.text.toString(), confirmpassword.text.toString());
+      ErrorMessage msg = await PersonalInfoService().resetPasswordbymail(email.text.toString(), password1.text.toString(), confirmpassword.text.toString());
+
+      notifyListeners();
+      return msg.response;
+    }catch(error){
+      print(error);
+    }
+  }
+  Future ResetPasswordbyphone()async{
+    try{
+      notifyListeners();
+      ErrorMessage msg = await PersonalInfoService().resetPasswordbyphone(phoneNumber.text.toString(), password1.text.toString(), confirmpassword.text.toString());
 
       notifyListeners();
       return msg.response;
