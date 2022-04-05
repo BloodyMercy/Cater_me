@@ -245,6 +245,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   alignment: Alignment.topCenter,
                   children: [
                     Container(
+                      height:MediaQuery.of(context).size.height * 0.35,
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: MediaQuery.of(context).size.height * 0.09,
