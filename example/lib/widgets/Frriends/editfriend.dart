@@ -242,12 +242,12 @@ class _FreindsTextFieldState extends State<editfriend> {
                                 color:
                                 focusnode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
                             labelText: '${personalInfo.lg[personalInfo.language]["Phone number"]}',
-                            prefixIcon:      CountryPicker(
-                              _callBackFunction,
-                              '${authProvider.lg[authProvider.language]["Select Country"]}',
-                              Theme.of(context).primaryColor,
-                              Colors.white,
-                            ),
+                            // prefixIcon:      CountryPicker(
+                            //   _callBackFunction,
+                            //   '${authProvider.lg[authProvider.language]["Select Country"]}',
+                            //   Theme.of(context).primaryColor,
+                            //   Colors.white,
+                            // ),
                             hintStyle:TextStyle(
                                 color: Colors.black87,
                                 fontSize: 15,

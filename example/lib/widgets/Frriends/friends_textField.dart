@@ -264,12 +264,12 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 color: focusnode.hasFocus
                                     ? Color(0xFF3F5521)
                                     : Colors.grey),
-                            prefixIcon: CountryPicker(
-                              _callBackFunction,
-                              '${authProvider.lg[authProvider.language]["Select Country"]}',
-                              Theme.of(context).primaryColor,
-                              Colors.white,
-                            ),
+                            // prefixIcon: CountryPicker(
+                            //   _callBackFunction,
+                            //   '${authProvider.lg[authProvider.language]["Select Country"]}',
+                            //   Theme.of(context).primaryColor,
+                            //   Colors.white,
+                            // ),
                             labelText:
                                 '${authProvider.lg[authProvider.language]['Phone number']}',
                             hintStyle: TextStyle(
