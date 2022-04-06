@@ -136,6 +136,7 @@ onTap: (){
 
   }
 ,
+        autofillHints: ["1","2","3","4"],
         keyboardType: widget.keyboardType,
         inputFormatters: widget.digitsOnly ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         maxLines: 1,

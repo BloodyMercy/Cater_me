@@ -269,113 +269,140 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
 
             Center(
 
-              child: VerificationCode(
-                underlineWidth: 0.5,
-                itemSize:MediaQuery.of(context).size.width/10,
-                lang: authProvider.language,
-                keyboardType: TextInputType.number,
-                textStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontFamily: 'Ubuntu',
-                  fontWeight: FontWeight.w300,
-                ),
-                underlineColor:  Color(0xFF3F5521),
-                underlineUnfocusedColor:  Color(0xFF3F5521),
-                length: 4,
-                onCompleted: (value) async{
-                  FocusScope.of(context).unfocus();
-                  MotionToast.info(
-                    title:  "Cater me",
-                    titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                    description:  '${authProvider.lg[authProvider.language]["Loading"]}',
-                    //  animationType: ANIMATION.FROM_LEFT,
-                  ).show(context);
-                  // _scaffoldKey.currentState.showSnackBar(
-                  //     SnackBar(content: Row(
-                  //       children: [
-                  //         CircularProgressIndicator(),
-                  //         SizedBox(width: 15,),
-                  //         Text("Loading...")
-                  //       ],
-                  //     ))
-                  //
-                  // );
-                  setState(() {
-
-                    smsOTP = value ;
-                    if(authProvider.language=="ar"){
-
-                      smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
-                      smsOTP= ToEnglishNumbers(smsOTP);
-                    }
-                  });
-                  if (smsOTP == null || smsOTP == '') {
-                    showAlertDialog(context, 'please enter 6 digit otp');
-                    return;
-                  }
-                  try {
-
-
-                    if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP)){
-
-                      if(widget.check){
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    NewPassConfPass()));
 
 
 
-                      }else{
+              child:
+              Container(
+                width:MediaQuery.of(context).size.height/3 ,
+                child: TextField(
+                  maxLength: 4,
 
-                        var update = await user.updateInfo();
-                        if (update) {
-                          Navigator.of(context).pop();
+                  keyboardType:TextInputType.phone ,
+                  decoration: new InputDecoration(
 
-                        } else {
-                          MotionToast.error(
-                            title: "Cater me",
-                            titleStyle: TextStyle(
-                                fontWeight: FontWeight.bold),
-                            description: "${user.lg[user
-                                .language]['Cannot Update Info']}",
-                            //  animationType: ANIMATION.FROM_LEFT,
-                          ).show(context);
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                    ),
+                  focusedBorder:  const OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                  ),
+                  ),
+                  textAlign: TextAlign.center,
+                  textDirection:TextDirection.ltr ,
+                  onChanged: (value) async {
+                    if(value.length==4){
+                      FocusScope.of(context).unfocus();
+                      MotionToast.info(
+                        title:  "Cater me",
+                        titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                        description:  '${authProvider.lg[authProvider.language]["Loading"]}',
+                        //  animationType: ANIMATION.FROM_LEFT,
+                      ).show(context);
+                      // _scaffoldKey.currentState.showSnackBar(
+                      //     SnackBar(content: Row(
+                      //       children: [
+                      //         CircularProgressIndicator(),
+                      //         SizedBox(width: 15,),
+                      //         Text("Loading...")
+                      //       ],
+                      //     ))
+                      //
+                      // );
+                      setState(() {
+
+                        smsOTP = value ;
+                        if(authProvider.language=="ar"){
+
+                          smsOTP= ToEnglishNumbers(smsOTP);
                         }
-Navigator.pop(context);
-
+                      });
+                      if (smsOTP == null || smsOTP == '') {
+                        showAlertDialog(context, 'please enter 6 digit otp');
+                        return;
                       }
+                      try {
+
+
+                        if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP)){
+
+                    if(widget.check){
+                    Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) =>
+                    NewPassConfPass()));
+
+
+
+                    }else{
+
+                    var update = await user.updateInfo();
+                    if (update) {
+                    Navigator.of(context).pop();
+
+                    } else {
+                    MotionToast.error(
+                    title: "Cater me",
+                    titleStyle: TextStyle(
+                    fontWeight: FontWeight.bold),
+                    description: "${user.lg[user
+                        .language]['Cannot Update Info']}",
+                    //  animationType: ANIMATION.FROM_LEFT,
+                    ).show(context);
+                    }
+                    Navigator.pop(context);
+
+                    }
                     }
 
                     else{
-                      MotionToast.error(
-                          title: "Cater me",
-                          titleStyle:
-                          TextStyle(fontWeight: FontWeight.bold),
-                          description:
-                          '${authProvider.lg[authProvider.language]["otp not valid"]}'
-                      ).show(context);
-                      //alert
+                    MotionToast.error(
+                    title: "Cater me",
+                    titleStyle:
+                    TextStyle(fontWeight: FontWeight.bold),
+                    description:
+                    '${authProvider.lg[authProvider.language]["otp not valid"]}'
+                    ).show(context);
+                    //alert
                     }
 
-                  } catch (e) {
+                    } catch (e) {
                     {
-                      MotionToast.error(
-                          title: "Cater me",
-                          titleStyle:
-                          TextStyle(fontWeight: FontWeight.bold),
-                          description:
-                          '${authProvider.lg[authProvider.language]["otp not valid"]}'
-                      ).show(context);
-                      return;
+                    MotionToast.error(
+                    title: "Cater me",
+                    titleStyle:
+                    TextStyle(fontWeight: FontWeight.bold),
+                    description:
+                    '${authProvider.lg[authProvider.language]["otp not valid"]}'
+                    ).show(context);
+                    return;
                     }
+                    }
+
                   }
-                  //  verifyOtp();
-                },
-                onEditing: (value){},
-              ),
+                  },
+                ),
+              )
+              // VerificationCode(
+              //   underlineWidth: 0.5,
+              //   itemSize:MediaQuery.of(context).size.width/10,
+              //   lang: authProvider.language,
+              //   keyboardType: TextInputType.number,
+              //   textStyle: TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 30,
+              //     fontFamily: 'Ubuntu',
+              //     fontWeight: FontWeight.w300,
+              //   ),
+              //   underlineColor:  Color(0xFF3F5521),
+              //   underlineUnfocusedColor:  Color(0xFF3F5521),
+              //   length: 4,
+              //   onCompleted: (value) async{
+              //     //  verifyOtp();
+              //   },
+              //   onEditing: (value){},
+              // ),
             ),
 
             Container(

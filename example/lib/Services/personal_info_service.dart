@@ -140,6 +140,9 @@ print(e);
   Future<ErrorMessage> resetPasswordbyphone(String phone,String newPassword,String confirmPassword) async{
     ErrorMessage msg=ErrorMessage();
     try{
+      print(phone);
+      print(newPassword);
+      print(confirmPassword);
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
       var request = http.MultipartRequest('POST', Uri.parse(ApiLink.ResetPasswordbyphone));
@@ -149,7 +152,11 @@ print(e);
         'NewPassword': newPassword,
         'ConfirmPassword': confirmPassword
       });
-
+      // request.fields.addAll({
+      //   'PhoneNumber': '',
+      //   'NewPassword': '',
+      //   'ConfirmPassword': ''
+      // });
 
       // open a bytestream
 

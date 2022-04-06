@@ -242,6 +242,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                     onPressed: () {
                       setState(() {
                         issearch = !issearch;
+                   details.issearch=issearch;
+
                       });
                     },
                     child:  Text('${authProvider.lg[authProvider.language]["Share Bill"]}'
@@ -283,10 +285,18 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
                               }
 
+    if(details.choosebillFriend.isNotEmpty) {
+      double beta = (details.totale / details.choosebillFriend.length) -
+          (details.totale / details.choosebillFriend.length).floor();
+      double teta = double.parse(details.controllers[0].text);
+      details.controllers[0].text =
+          (teta + (beta * details.choosebillFriend.length)).toString();
+    }
                               // Navigator.pop(context);
                               setState(() {
                                 issearch = true;
                               });
+                              details.issearch=issearch;
                             },
                             icon: Icon(
                               Icons.close,
@@ -304,10 +314,17 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   details.updateprocefreind((details.totale/details.choosebillFriend.length).floor().toDouble(), c);
 
                                 }
-
-                                setState(() {
+if(details.choosebillFriend.isNotEmpty) {
+  double beta = (details.totale / details.choosebillFriend.length) -
+      (details.totale / details.choosebillFriend.length).floor();
+  double teta = double.parse(details.controllers[0].text);
+  details.controllers[0].text =
+      (teta + (beta * details.choosebillFriend.length)).toString();
+}
+setState(() {
                                   issearch = true;
                                 });
+                                details.issearch=issearch;
                                 //  Navigator.pop(context);
                               },
                               icon: Icon(
@@ -447,7 +464,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                       details.controllers[i].text ==
                                           null) {
                                     details.updateprocefreind(0, index);
-
+                                    details.controllers[i].text="0";
                                   } else {
                                     sum += double.parse(
                                         details.controllers[i].text);
@@ -468,6 +485,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   details.updateprocefreind( lastinput, index);
 
                                 }
+
                                 setState(() {});
                               },
                               decoration: InputDecoration(
