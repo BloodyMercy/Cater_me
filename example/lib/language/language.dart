@@ -320,9 +320,11 @@ class LanguageTr {
       "Hide": "إخفاء",
       "PDF Invoice": "الفاتورة",
       "perperson": " للشخص الواحد ",
-      "Update Password": "غير كلمة السر"
+      "Update Password": "غير كلمة السر",
+      "No Cuisines To Dispaly":"لا توجد إضافات لعرضها"
     },
     "en": {
+      "No Cuisines To Dispaly":"No addons To Dispaly",
       "Update Password": "Update Password",
       "Email or phone number": "Email or phone number",
       "perperson": "Per person",
