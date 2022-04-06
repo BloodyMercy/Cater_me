@@ -5,6 +5,7 @@ class LanguageTr {
 
 
     "ar": {
+      "Email or phone number":"ايميلك او جوالك",
       "Please enter the name":"الرجاء إدخال الاسم",
       "Email verification was send":"تم إرسال التحقق من البريد الإلكتروني",
       "Please choose what do you need":"الرجاء اختيار ما تريد",
@@ -311,6 +312,7 @@ class LanguageTr {
 
 
     "en": {
+      "Email or phone number":"Email or phone number",
       "perperson":"Per person",
       "CARD HOLDER":" CARD HOLDER ",
       "Expiry":" Expiry ",
