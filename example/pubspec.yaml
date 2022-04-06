@@ -74,7 +74,6 @@ dependencies:
   flutter_circular_text: ^0.3.0
   webview_flutter: ^3.0.1
   photo_view:
-  flutter_pdfview: ^1.0.4
   file_picker:
   open_file:
   dio: ^4.0.6

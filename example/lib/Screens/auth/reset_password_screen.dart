@@ -169,7 +169,7 @@ TextEditingController alpha =TextEditingController();
               !loading
                   ? ElevatedButton(
                       onPressed: () async {
-
+                        authprovider.phoneNumber.text=alpha.text;
                         Navigator.push(
                                     context,
                                     MaterialPageRoute(
