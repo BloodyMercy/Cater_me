@@ -143,6 +143,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                   border: OutlineInputBorder(),
                   labelText: '${user.lg[user.language]['Card number']}',
                   hintText: 'xxxx xxxx xxxx xxxx',
+
                 ),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
