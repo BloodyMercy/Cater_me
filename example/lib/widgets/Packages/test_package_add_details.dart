@@ -200,7 +200,8 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                 width: double.maxFinite,
                 child: FittedBox(
                   fit: BoxFit.contain,
-                  child: CachedNetworkImage(
+                  child:
+                  CachedNetworkImage(
                       height: screenHeight * 0.175,
                       width: width * 0.8,
                       placeholder: (context, url) =>
@@ -235,9 +236,12 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                           //   direction: SkeletonDirection.ltr,
                           //   childAspectRatio: 2.8,
                           // ),
-                          CircularProgressIndicator(
-                              color: Color.fromRGBO(63, 85, 33, 1)),
-                      imageUrl: widget.food.image),
+CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
+                      imageUrl:widget.food.image
+
+
+                  ),
+
                 ),
               ),
             ),
@@ -276,9 +280,7 @@ class _OrderAdsDetailState extends State<packageAdsDetailTest> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              widget.food.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${widget.food.price.toString()} ${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${widget.food.price.toString()}",
-
-                              // "${authProvider.lg[authProvider.language]["SAR"]} ${widget.food.price.toString()}",
+                              widget.food.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${widget.food.price.toString()} /${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${widget.food.price.toString()}",
                               style: const TextStyle(
                                   fontSize: 18,
                                   fontFamily: 'BerlinSansFB',
