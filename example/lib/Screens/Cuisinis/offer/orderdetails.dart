@@ -58,7 +58,7 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
     var screenHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
-    return SingleChildScrollView(
+    return Scaffold(body:SingleChildScrollView(
       child: Container(
         height: screenHeight * 1,
         width: MediaQuery.of(context).size.width * 1,
@@ -359,6 +359,6 @@ class _OrderAdscuisDetailState extends State<OrderAdscuisDetail> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

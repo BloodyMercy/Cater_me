@@ -62,6 +62,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
 
     return packageAdsDetailTestorder(
       pack.allpackagesorder[index],
+      true
     );
   }
 
@@ -151,7 +152,7 @@ class _RelatedOffersScreenState extends State<RelatedOffersScreen> {
                           .push(
                           MaterialPageRoute(
                             builder: (context) =>
-                            packageAdsDetailTestorder(pack.allpackagesorder[index]),
+                            packageAdsDetailTestorder(pack.allpackagesorder[index],true),
                           ),
                       );
                       // showDialog(
