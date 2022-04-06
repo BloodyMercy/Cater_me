@@ -306,7 +306,9 @@ class LanguageTr {
       'Card Holder': " حامل البطاقة ",
       "Expiry":" انقضاء ",
       "CARD HOLDER":" حامل البطاقة ",
-      "perperson":" للشخص الواحد "
+      "perperson":" للشخص الواحد ",
+      "Hide":"إخفاء",
+      "PDF Invoice":"الفاتورة",
     },
 
 
@@ -609,6 +611,8 @@ class LanguageTr {
       "Photo":"Photo",
       "Name1":"Name",
       "Order  Here":"Order  Here",
+      "Hide":"Hide",
+      "PDF Invoice": "PDF Invoice",
 
 
 

@@ -115,6 +115,8 @@ class _TABBarState extends State<TABBar> {
     final personalInfo = Provider.of<UserProvider>(context, listen: true);
     var _mediaQueryText = MediaQuery.of(context).size.height;
     var _mediaWidth = MediaQuery.of(context).size.width;
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -330,7 +332,148 @@ class _TABBarState extends State<TABBar> {
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
-                                          return CustomDialog(
+                                          return Dialog(
+                                              backgroundColor: Colors.black,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(20.0)),
+                                              child: Stack(
+                                                overflow: Overflow.visible,
+                                                alignment: Alignment.topCenter,
+                                                children: [
+                                                  Container(
+                                                    height: MediaQuery.of(context).size.height *
+                                                        0.30,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                              0.09,
+                                                          left: MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                              0.05,
+                                                          right: MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                              0.05),
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            '${authProvider.lg[authProvider.language]["Sad to see you leave"]}',
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.bold,
+                                                                fontSize: 20,
+                                                                color: Colors.white),
+                                                            textAlign: TextAlign.center,
+                                                          ),
+                                                          Padding(
+                                                            padding: EdgeInsets.only(
+                                                                top: MediaQuery.of(context)
+                                                                    .size
+                                                                    .height *
+                                                                    0.02),
+                                                            child: Divider(
+                                                              color: Colors.white,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding: EdgeInsets.only(
+                                                                top: MediaQuery.of(context)
+                                                                    .size
+                                                                    .height *
+                                                                    0.01),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsets.symmetric(
+                                                                      horizontal:
+                                                                      MediaQuery.of(context)
+                                                                          .size
+                                                                          .width *
+                                                                          0.05),
+                                                                  child: TextButton(
+                                                                    child: Text(
+                                                                      '${authProvider.lg[authProvider.language]["Logout"]}',
+                                                                      style: TextStyle(
+                                                                          color: Colors.white),
+                                                                    ),
+                                                                    onPressed: () async {
+                                                                      final SharedPreferences
+                                                                      sharedPreferences =
+                                                                      await SharedPreferences
+                                                                          .getInstance();
+                                                                      final occa = Provider.of<
+                                                                          OccasionProvider>(
+                                                                          context,
+                                                                          listen: false);
+                                                                      occa.all = [];
+                                                                      personalInfo.status =
+                                                                          Status.Unauthenticated;
+                                                                      // sharedPreferences.remove('Email');
+                                                                      //  sharedPreferences.remove('Password');
+                                                                      personalInfo
+                                                                          .clearAllTextController();
+                                                                      bool a = sharedPreferences
+                                                                          .getBool("startintro");
+                                                                      bool aw = sharedPreferences
+                                                                          .getBool("wlkdone") ??
+                                                                          false;
+                                                                      String l = sharedPreferences
+                                                                          .getString("locale") ??
+                                                                          "en";
+                                                                      sharedPreferences.clear();
+                                                                      sharedPreferences.setBool(
+                                                                          "startintro", a);
+                                                                      sharedPreferences.setBool(
+                                                                          "wlkdone", aw);
+                                                                      sharedPreferences.setString(
+                                                                          "locale", l);
+                                                                      Navigator.of(context).pop();
+
+                                                                      Navigator.of(context)
+                                                                          .pushAndRemoveUntil(
+                                                                          MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                Navigationbar(0),
+                                                                          ),
+                                                                              (route) => false);
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                                Divider(
+                                                                  color: Colors.white,
+                                                                ),
+                                                                TextButton(
+                                                                  child: Text(
+                                                                    '${authProvider.lg[authProvider.language]["No"]}',
+                                                                    style: TextStyle(
+                                                                        color: Colors.white),
+                                                                  ),
+                                                                  onPressed: () {
+                                                                    Navigator.of(context).pop();
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                      top: -MediaQuery.of(context).size.height *
+                                                          0.06,
+                                                      child: Image.asset(
+                                                        'images/Logoicon.png',
+                                                        height: 100,
+                                                      )),
+                                                ],
+                                              ));
+                                            CustomDialog(
                                             title:
                                                 '${personalInfo.lg[personalInfo.language]["Sad to see you leave"]}',
                                             description: "",

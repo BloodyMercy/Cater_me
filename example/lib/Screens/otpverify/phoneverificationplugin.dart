@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -138,7 +139,7 @@ onTap: (){
         keyboardType: widget.keyboardType,
         inputFormatters: widget.digitsOnly ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         maxLines: 1,
-
+        dragStartBehavior:  DragStartBehavior.start,
         maxLength: widget.length - index,
         controller: _listControllerText[index],
         focusNode: _listFocusNode[index],

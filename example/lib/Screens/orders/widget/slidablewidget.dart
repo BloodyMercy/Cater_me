@@ -1,3 +1,4 @@
+import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -24,16 +25,19 @@ class SlidableWidget extends StatelessWidget {
 
     UserProvider authProvider=Provider.of<UserProvider>(context,listen: true);
     return Slidable(
+
       actionPane: const SlidableDrawerActionPane(),
       child: child,
       secondaryActions: <Widget>[
 
         IconSlideAction(
-          caption: "Delete",
-          color: const Color.fromRGBO(159, 172, 189, 1),
+          caption:'${authProvider.lg[authProvider.language]["Hide"]}'
+          ,foregroundColor: Colors.black,
+          color: Color(0xFFFFCDD2),
+
           iconWidget: const Icon(
             Icons.delete,
-            color: Colors.white,
+            color: Colors.black38,
             size: 20.0,
           ),
           onTap: () async {
