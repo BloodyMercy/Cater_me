@@ -259,8 +259,8 @@ class LanguageTr {
       "Setup": "التجهيزات",
       "OTP Verification": "التحقق من الرمز",
       "error to place order": "خطأ في تقديم الطلب",
-      "Please enter the 6-digit code you received via text message":
-          "الرجاء إدخال الرمز المكون من 6 أرقام الذي تلقيته عبر رسالة نصية",
+      "Please enter the 4-digit code you received via text message":
+          "الرجاء إدخال الرمز المكون من 4 أرقام الذي تلقيته عبر رسالة نصية",
       "Resend code": "أعادة إرسال الرمز",
       "Password should be at least 6 characters":
           "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
@@ -622,8 +622,8 @@ class LanguageTr {
       "Close": "Close",
       "OTP Verification": "OTP Verification",
       "error to place order": "error to place order",
-      "Please enter the 6-digit code you received via text message":
-          "Please enter the 6-digit code you received via text message",
+      "Please enter the 4-digit code you received via text message":
+          "Please enter the 4-digit code you received via text message",
       "Verification": "Verification",
       "Resend code": "Resend code",
       "Password should be at least 6 characters":

@@ -252,7 +252,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text('${authProvider.lg[authProvider.language]["Please enter the 6-digit code you received via text message"]}'
+                child: Text('${authProvider.lg[authProvider.language]["Please enter the 4-digit code you received via text message"]}'
                   ,
                   style: TextStyle(
                     fontSize: 20,
