@@ -270,6 +270,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
             Center(
 
               child: VerificationCode(
+                underlineWidth: 0.5,
                 itemSize:MediaQuery.of(context).size.width/10,
                 lang: authProvider.language,
                 textStyle: TextStyle(

@@ -139,6 +139,7 @@ class _VerificationCodeState extends State<VerificationCode> {
             borderSide: BorderSide(
               color: widget.underlineUnfocusedColor ?? Colors.grey,
               width: widget.underlineWidth ?? 1,
+
             ),
           ),
           focusedBorder: UnderlineInputBorder(

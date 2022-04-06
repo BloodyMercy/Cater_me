@@ -269,6 +269,7 @@ void showAlertDialog(BuildContext context, String message) {
                  Center(
 
                    child: VerificationCode(
+                     underlineWidth: 0.5,
                            itemSize:MediaQuery.of(context).size.width/10,
 lang: authProvider.language,
                            textStyle: TextStyle(
