@@ -71,11 +71,12 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: true);
+
     var _mediaQuery = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Update Password"),
+        title: Text('${user.lg[user.language]["Update Password"]}',),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -243,7 +244,7 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                             }
                           },
                           child: Text(
-                            'Update Password',
+                            '${user.lg[user.language]["Update Password"]}',
                             style: Theme.of(context).textTheme.headline1,
                           ),
                           style: ElevatedButton.styleFrom(
