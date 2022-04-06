@@ -271,6 +271,7 @@ void showAlertDialog(BuildContext context, String message) {
                    child: VerificationCode(
                            itemSize:MediaQuery.of(context).size.width/10,
 lang: authProvider.language,
+                     keyboardType: TextInputType.number,
                            textStyle: TextStyle(
                                color: Colors.black,
                                fontSize: 30,

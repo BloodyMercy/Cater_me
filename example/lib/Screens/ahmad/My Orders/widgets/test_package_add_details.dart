@@ -63,8 +63,9 @@ import 'package:skeleton_loader/skeleton_loader.dart';
 
 class packageAdsDetailTestorder extends StatefulWidget {
   Package food;
+  bool addon;
 
-  packageAdsDetailTestorder(this.food);
+  packageAdsDetailTestorder(this.food,this.addon);
 
   @override
   State<packageAdsDetailTestorder> createState() => _OrderAdsDetailState();
@@ -367,9 +368,19 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                               onPressed: () {
                                 a=  ItemOrders(widget.food.increment);
                                 if (count == 0) {
-                                } else {
-                                  orderprovider.totalpackage=orderprovider.totalpackage+1;
-                                  a.ispack=true;
+                                } else {if(widget.addon) {
+                                  orderprovider.totalpackage =
+                                      orderprovider.totalpackage + 1;
+                                  a.ispack = true;
+                                }
+                                else{
+                                  if(widget.food.isShisha
+                                  ) {
+                                    orderprovider.totalssha =
+                                        orderprovider.totalssha + count;
+                                    a.ispack = false;
+                                  }
+                                }
                                   a.id = widget.food.id;
                                   a.image = widget.food.image;
                                   a.description = widget.food.description;

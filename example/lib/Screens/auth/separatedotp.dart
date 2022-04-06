@@ -272,6 +272,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
               child: VerificationCode(
                 itemSize:MediaQuery.of(context).size.width/10,
                 lang: authProvider.language,
+                keyboardType: TextInputType.number,
                 textStyle: TextStyle(
                   color: Colors.black,
                   fontSize: 30,
