@@ -13,7 +13,7 @@ import '../../Screens/ahmad/My Orders/widgets/test_package_add_details.dart';
 import '../../language/language.dart';
 
 class AddOnCardOrder extends StatelessWidget {
-  Package          addOn;
+  Package addOn;
 
   AddOnCardOrder(this.addOn);
 
@@ -27,6 +27,7 @@ class AddOnCardOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
     final pack = Provider.of<PackagesProvider>(context, listen: true);
+
     // final pack = Provider.of<PackagesProvider>(context, listen: true);
     var mediaQuery = MediaQuery.of(context);
     return Center(
@@ -42,11 +43,10 @@ class AddOnCardOrder extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          packageAdsDetailTestorder(addOn,false),
+                          packageAdsDetailTestorder(addOn, false),
                     ),
                   );
                   // showDialog(
@@ -73,12 +73,12 @@ class AddOnCardOrder extends StatelessWidget {
 
                   child: Column(
                     children: [
-                     CachedNetworkImage(
-                         height: 75,
-                         width: 75,
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          imageUrl: this.addOn.image,
+                      CachedNetworkImage(
+                        height: 75,
+                        width: 75,
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        imageUrl: this.addOn.image,
                       ),
                       // Image.network(
                       //   this.addOn.image,

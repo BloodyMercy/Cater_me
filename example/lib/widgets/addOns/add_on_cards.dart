@@ -124,13 +124,37 @@ class AddOnCards extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text(
-                        "${authProvider.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: this.addOn.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()} ${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()}",
+
+                              style: TextStyle(
+
+
+                                  fontSize: 12,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold
+
+                              ),
+                            ),
+                            TextSpan(
+                                text: this.addOn.perperson?"   ${authProvider.lg[authProvider.language]["perperson"]}":"",
+
+                                style: TextStyle(color: Colors.grey[500],fontSize: 9)),
+                          ],
+                        ),
                       ),
+                      // Text(
+                      //   !this.addOn.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()} ${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()}",
+                      //
+                      //   // "${authProvider.lg[authProvider.language]["SAR"]} ${this.addOn.price}",
+                      //   style: TextStyle(
+                      //       fontSize: 12,
+                      //       color: Colors.black87,
+                      //       fontWeight: FontWeight.bold),
+                      // ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
