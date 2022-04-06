@@ -67,8 +67,8 @@ class UserProvider with ChangeNotifier {
     // email.text="";
 
 
-    if(_user.phone||!_user.email){
-     _error= _user.phone?"email already exist":"phone already exist";
+    if(!_user.phone||!_user.email){
+     _error= !_user.phone?"email already exist":"phone already exist";
     }else{
       _error="true";
 
