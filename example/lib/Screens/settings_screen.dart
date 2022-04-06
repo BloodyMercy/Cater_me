@@ -626,62 +626,52 @@ class _TABBarState extends State<TABBar> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddAddressSettingsScreen(),
-                                              ),
-                                            );
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.03,
-                                                  ),
-                                                  Icon(
-                                                    FontAwesomeIcons.building,
-                                                    size: 20, //Icon Size
-                                                    color: Color(
-                                                        0xFF3F5521), //Color Of Icon
-                                                  ),
-                                                  SizedBox(
-                                                    width:
-                                                        mediaQuery.size.width *
-                                                            0.05,
-                                                  ),
-                                                  Text(
-                                                    '${personalInfo.lg[personalInfo.language]["My Addresses"]}',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF3F5521),
-                                                        fontSize: 20,
-                                                        fontFamily:
-                                                            'BerlinSansFB',
-                                                        fontWeight:
-                                                            FontWeight.normal),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(children: [
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width:
+                                                      mediaQuery.size.width *
+                                                          0.03,
+                                                ),
                                                 Icon(
-                                                  Icons.chevron_right,
-                                                  color: Color(0xFF3F5521),
+                                                  FontAwesomeIcons.building,
+                                                  size: 20, //Icon Size
+                                                  color: Color(
+                                                      0xFF3F5521), //Color Of Icon
                                                 ),
                                                 SizedBox(
-                                                  width: mediaQuery.size.width *
-                                                      0.03,
+                                                  width:
+                                                      mediaQuery.size.width *
+                                                          0.05,
                                                 ),
-                                              ]),
-                                            ],
-                                          ),
+                                                Text(
+                                                  '${personalInfo.lg[personalInfo.language]["My Addresses"]}',
+                                                  style: TextStyle(
+                                                      color:
+                                                          Color(0xFF3F5521),
+                                                      fontSize: 20,
+                                                      fontFamily:
+                                                          'BerlinSansFB',
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(children: [
+                                              Icon(
+                                                Icons.chevron_right,
+                                                color: Color(0xFF3F5521),
+                                              ),
+                                              SizedBox(
+                                                width: mediaQuery.size.width *
+                                                    0.03,
+                                              ),
+                                            ]),
+                                          ],
                                         ),
                                       ),
 
@@ -757,14 +747,14 @@ class _TABBarState extends State<TABBar> {
                           ? Padding(
                               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                               child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          CreditCardsSettings(),
-                                    ),
-                                  );
-                                },
+    onTap: () {
+    Navigator.of(context).push(
+    MaterialPageRoute(
+    builder: (context) =>
+    CreditCardsSettings(),
+    ),
+    );
+    },
                                 child: Card(
                                   color:
                                       const Color.fromARGB(206, 255, 255, 255),

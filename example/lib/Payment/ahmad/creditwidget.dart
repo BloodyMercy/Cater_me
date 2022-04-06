@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CreditCardWidget extends StatefulWidget {
   const CreditCardWidget({
@@ -98,7 +99,14 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       ],
     ).animate(controller);
   }
+  String language;
+  getData() async {
+    SharedPreferences sh = await SharedPreferences.getInstance();
+    setState(() {
 
+      language = sh.getString("locale");
+    });
+  }
   @override
   void dispose() {
     controller.dispose();
@@ -148,7 +156,9 @@ final user = Provider.of<UserProvider>(context, listen:true);
     final TextStyle defaultTextStyle = Theme.of(context).textTheme.bodyText1;
     final user = Provider.of<UserProvider>(context, listen:true);
 
-    return Container(
+    return
+
+      Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         boxShadow: const <BoxShadow>[
@@ -213,7 +223,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                               padding: const EdgeInsets.all(5),
                               child: Text(
                                 widget.cvvCode.isEmpty
-                                    ? isAmex ? 'XXXX' : 'XXX'
+                                    ? isAmex ? 'XXX' : 'XXX'
                                     : isAmex
                                     ? widget.cvvCode.length > 4
                                     ? widget.cvvCode.substring(0, 4)
@@ -314,7 +324,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Row(
                       children: <Widget>[
                         Text(
-                          '${user.lg[user.language]['Expiry']}' ,
+                          'Expiry' ,
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
@@ -342,7 +352,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Text(
                       widget.cardHolderName.isEmpty ||
                           widget.cardHolderName == null
-                          ? '${user.lg[user.language]['CARD HOLDER']}'
+                          ? 'CARD HOLDER'
                           : widget.cardHolderName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -359,7 +369,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
             ),
           ),
           Align(
-            alignment:a=="en"?Alignment.bottomRight:Alignment.bottomLeft,
+            alignment:a=="en"?Alignment.bottomRight:Alignment.bottomRight,
             child: Padding(
               padding:
               const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),

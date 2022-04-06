@@ -40,6 +40,7 @@ class FlutterCheckoutPayment {
     }
   }
 
+
   /// Generate Token.
   ///
   /// [number] The card number.
