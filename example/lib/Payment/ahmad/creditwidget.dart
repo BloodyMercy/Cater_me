@@ -1,7 +1,9 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:CaterMe/Providers/user.dart';
 import 'package:flutter/material.dart';
+// import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -305,13 +307,14 @@ final user = Provider.of<UserProvider>(context, listen:true);
                   height: 16,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 16),
+                  padding: const EdgeInsets.only(left: 16,right: 16),
                   child: Text(
 
                     widget.cardNumber.isEmpty || widget.cardNumber == null
                         ? 'XXXX XXXX XXXX XXXX'
                         : widget.cardNumber,
                     style: widget.textStyle ?? defaultTextStyle,
+                    textDirection: TextDirection.ltr,
                   ),
                 ),
                 Container(
@@ -324,7 +327,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Expiry' ,
+                          a=="en"?'Expiry':"انقضاء" ,
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
@@ -352,7 +355,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                     child: Text(
                       widget.cardHolderName.isEmpty ||
                           widget.cardHolderName == null
-                          ? 'CARD HOLDER'
+                          ? (a=="en"?'CARD HOLDER':"حامل البطاقة")
                           : widget.cardHolderName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -369,7 +372,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
             ),
           ),
           Align(
-            alignment:a=="en"?Alignment.bottomRight:Alignment.bottomRight,
+            alignment:a=="en"?Alignment.bottomRight:Alignment.bottomLeft,
             child: Padding(
               padding:
               const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),

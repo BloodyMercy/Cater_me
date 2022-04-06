@@ -118,7 +118,23 @@ class _VerificationCodeState extends State<VerificationCode> {
         }
       },
       child: TextField(
+onTap: (){
+  if(index!=0){
+  for(int k=_listControllerText.length ; k<0;k--){
 
+    setState(() {
+      if (_listControllerText[k].text.isNotEmpty)
+        return ;
+
+      _currentIndex = index - 1;
+    });
+    FocusScope.of(context).requestFocus(FocusNode());
+    FocusScope.of(context).requestFocus(_listFocusNode[k]);
+  }
+  }
+
+  }
+,
         keyboardType: widget.keyboardType,
         inputFormatters: widget.digitsOnly ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         maxLines: 1,
