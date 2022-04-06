@@ -282,7 +282,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
                 ),
                 underlineColor:  Color(0xFF3F5521),
                 underlineUnfocusedColor:  Color(0xFF3F5521),
-                length: 6,
+                length: 4,
                 onCompleted: (value) async{
                   FocusScope.of(context).unfocus();
                   MotionToast.info(

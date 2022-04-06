@@ -281,7 +281,7 @@ lang: authProvider.language,
                            ),
                            underlineColor:  Color(0xFF3F5521),
                            underlineUnfocusedColor:  Color(0xFF3F5521),
-                           length: 6,
+                           length: 4,
                            onCompleted: (value) async{
                              FocusScope.of(context).unfocus();
                              MotionToast.info(
