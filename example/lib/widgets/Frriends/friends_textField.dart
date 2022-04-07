@@ -5,7 +5,6 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -170,7 +169,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                // final canUseStorage = await requestPermission(Permission.storage);
 
 
-                                await FlutterContacts.requestPermission();
 
                                 // permissionServiceCall();
                                 if (await Permission.contacts
