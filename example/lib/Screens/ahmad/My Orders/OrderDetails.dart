@@ -534,7 +534,7 @@ Center(child:  Padding(
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0 ,right: 10),
+              padding: const EdgeInsets.only(left: 10.0 ,right: 20),
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
@@ -545,7 +545,7 @@ Center(child:  Padding(
                   );
                 },
                 child: Container(
-                  width: width/3.65,
+                  width: width/2.65,
                   child: Row(
                     children: [
                       Padding(
@@ -602,7 +602,7 @@ Center(child:  Padding(
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                    padding: EdgeInsets.only(left: 9.0,right: 10),
                     child: Text(
                       "${_order.orderbyId["creditCard"]["type"]} **** **** **${_order.orderbyId["creditCard"]["cardNumber"]}",
                       style: TextStyle(fontFamily: 'Geomanist', fontSize: 14),
@@ -657,7 +657,7 @@ Center(child:  Padding(
                                 ),
                                 Spacer(),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 25.0),
+                                  padding: const EdgeInsets.only(right: 25.0,left: 10),
                                   child: Text(
                                     "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((_order.orderbyId["tax"] ?? 0.0).toStringAsFixed(2))}",
                                     style: TextStyle(
@@ -684,7 +684,7 @@ Center(child:  Padding(
                                 ),
                                 Spacer(),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 25.0),
+                                  padding: const EdgeInsets.only(right: 25.0,left: 10),
                                   child: Text(
                                     "${authProvider.lg[authProvider.language]["SAR"]} ${double.parse((_order.orderbyId["total"] ?? 0.0).toStringAsFixed(2))}",
                                     style: TextStyle(
