@@ -128,7 +128,7 @@ class AddOnCards extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: this.addOn.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()} ${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()}",
+                              text: this.addOn.perperson?"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()} \n ${authProvider.lg[authProvider.language]["perperson"]}":"${authProvider.lg[authProvider.language]["SAR"]}  ${this.addOn.price.toString()}",
 
                               style: TextStyle(
 
