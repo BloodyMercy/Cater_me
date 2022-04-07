@@ -268,141 +268,136 @@ void showAlertDialog(BuildContext context, String message) {
 
                  Center(
 
-                   child: VerificationCode(
-                     underlineWidth: 0.5,
-                           itemSize:MediaQuery.of(context).size.width/10,
-lang: authProvider.language,
-                     keyboardType: TextInputType.number,
-                           textStyle: TextStyle(
-                               color: Colors.black,
-                               fontSize: 30,
-                             fontFamily: 'Ubuntu',
-                             fontWeight: FontWeight.w300,
-                           ),
-                           underlineColor:  Color(0xFF3F5521),
-                           underlineUnfocusedColor:  Color(0xFF3F5521),
-                           length: 4,
-                           onCompleted: (value) async{
-                             FocusScope.of(context).unfocus();
-                             MotionToast.info(
-                               title:  "Cater me",
-                               titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                               description:  '${authProvider.lg[authProvider.language]["Loading"]}',
-                               //  animationType: ANIMATION.FROM_LEFT,
-                             ).show(context);
-                             // _scaffoldKey.currentState.showSnackBar(
-                             //     SnackBar(content: Row(
-                             //       children: [
-                             //         CircularProgressIndicator(),
-                             //         SizedBox(width: 15,),
-                             //         Text("Loading...")
-                             //       ],
-                             //     ))
-                             //
-                             // );
-                             setState(() {
+                   child: Container(
+  width:MediaQuery.of(context).size.height/3 ,
+  child: TextField(
+  maxLength: 4,
+  keyboardType:TextInputType.phone ,
+  decoration: new InputDecoration(
+  enabledBorder: const OutlineInputBorder(
+  borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+  ),
+  focusedBorder:  const OutlineInputBorder(
+  borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+  ),
+  ),
+  textAlign: TextAlign.center,
+  textDirection:TextDirection.ltr ,
+  onChanged: (value) async {
+  if(value.length==4) {
+    FocusScope.of(context).unfocus();
+    MotionToast.info(
+      title: "Cater me",
+      titleStyle: TextStyle(fontWeight: FontWeight.bold),
+      description: '${authProvider.lg[authProvider.language]["Loading"]}',
+      //  animationType: ANIMATION.FROM_LEFT,
+    ).show(context);
+    // _scaffoldKey.currentState.showSnackBar(
+    //     SnackBar(content: Row(
+    //       children: [
+    //         CircularProgressIndicator(),
+    //         SizedBox(width: 15,),
+    //         Text("Loading...")
+    //       ],
+    //     ))
+    //
+    // );
+    setState(() {
+      smsOTP = value;
+      if (authProvider.language == "ar") {
 
-                               smsOTP = value ;
-                               if(authProvider.language=="ar"){
+        smsOTP = ToEnglishNumbers(smsOTP);
+      }
+    });
+    if (smsOTP == null || smsOTP == '') {
+      showAlertDialog(context, 'please enter 6 digit otp');
+      return;
+    }
+    try {
+      if (await AuthModelSignUp.ConfirmOTPservice(widget._contact, smsOTP)) {
+        if (await authProvider.signUp(
+            widget.image,
+            address.evendatecontroller.text)) {
+          // setState(() {
+          //   _loading = false;
+          // });
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Navigationbar(0),
+              ),
+                  (Route<dynamic> route) => false
+          );
+        } else {
+          // setState(() {
+          //   _loading = false;
+          // });
 
-                                 smsOTP= String.fromCharCodes(smsOTP.runes.toList().reversed);
-                                 smsOTP= ToEnglishNumbers(smsOTP);
-                               }
-                             });
-                             if (smsOTP == null || smsOTP == '') {
-                               showAlertDialog(context, 'please enter 6 digit otp');
-                               return;
-                             }
-                             try {
+          MotionToast.error(
+            title: "Cater me",
+            titleStyle:
+            TextStyle(fontWeight: FontWeight.bold),
+            description:
+            '${authProvider.lg[authProvider
+                .language]["${authProvider
+                .messageSignUp.toString()}"]}',
+            //  animationType: ANIMATION.FROM_LEFT,
+          ).show(context);
+          // _scaffoldKey.currentState.showSnackBar(
+          //   SnackBar(
+          //     content: Text(
+          //         "${authProvider.messageSignUp.toString()}"),
+          //   ),
+          // );
+          authProvider.messageSignUp = "";
+        }
+      }
 
-
-                               if( await  AuthModelSignUp.ConfirmOTPservice(widget._contact,smsOTP))
-                               {
-                                 if (await authProvider.signUp(
-                                     widget.image,
-                                     address.evendatecontroller.text)) {
-                                   // setState(() {
-                                   //   _loading = false;
-                                   // });
-                                   Navigator.pushAndRemoveUntil(
-                                       context,
-                                       MaterialPageRoute(
-                                         builder: (context) => Navigationbar(0),
-                                       ),
-                                           (Route<dynamic> route) => false
-                                   );
-                                 } else {
-                                   // setState(() {
-                                   //   _loading = false;
-                                   // });
-
-                                   MotionToast.error(
-                                     title: "Cater me",
-                                     titleStyle:
-                                     TextStyle(fontWeight: FontWeight.bold),
-                                     description:
-                                     '${authProvider.lg[authProvider
-                                         .language]["${authProvider
-                                         .messageSignUp.toString()}"]}',
-                                     //  animationType: ANIMATION.FROM_LEFT,
-                                   ).show(context);
-                                   // _scaffoldKey.currentState.showSnackBar(
-                                   //   SnackBar(
-                                   //     content: Text(
-                                   //         "${authProvider.messageSignUp.toString()}"),
-                                   //   ),
-                                   // );
-                                   authProvider.messageSignUp = "";
-                                 }
-                               }
-
-                               else{
-                                 MotionToast.error(
-                                     title: "Cater me",
-                                     titleStyle:
-                                     TextStyle(fontWeight: FontWeight.bold),
-                                     description:
-                                     '${authProvider.lg[authProvider.language]["otp not valid"]}'
-                                 ).show(context);
-                                 //alert
-                               }
-                            //    final AuthCredential credential = PhoneAuthProvider.credential(
-                            //      verificationId: verificationId,
-                            //      smsCode: smsOTP,
-                            //    );
-                            //    final UserCredential user = await _auth.signInWithCredential(credential);
-                            //    final User currentUser = await _auth.currentUser;
-                            // //   assert(user.user.uid == currentUser.uid);
+      else {
+        MotionToast.error(
+            title: "Cater me",
+            titleStyle:
+            TextStyle(fontWeight: FontWeight.bold),
+            description:
+            '${authProvider.lg[authProvider.language]["otp not valid"]}'
+        ).show(context);
+        //alert
+      }
+      //    final AuthCredential credential = PhoneAuthProvider.credential(
+      //      verificationId: verificationId,
+      //      smsCode: smsOTP,
+      //    );
+      //    final UserCredential user = await _auth.signInWithCredential(credential);
+      //    final User currentUser = await _auth.currentUser;
+      // //   assert(user.user.uid == currentUser.uid);
 
 
-
-                             } catch (e) {
-                               {
-                                 MotionToast.error(
-                                   title: "Cater me",
-                                   titleStyle:
-                                   TextStyle(fontWeight: FontWeight.bold),
-                                   description:
-                                   '${authProvider.lg[authProvider.language]["otp not valid"]}'
-                                 ).show(context);
-                                 // _scaffoldKey.currentState.showSnackBar(
-                                 //     SnackBar(content: Row(
-                                 //       children: [
-                                 //        // CircularProgressIndicator(),
-                                 //       //  SizedBox(width: 15,),
-                                 //         Text('${authProvider.lg[authProvider.language]["otp not valid"]}'),
-                                 //       ],
-                                 //     ))
-                                 //
-                                 // );
-                                 return;
-                               }
-                             }
-                      //  verifyOtp();
-                           },
-                           onEditing: (value){},
+    } catch (e) {
+      {
+        MotionToast.error(
+            title: "Cater me",
+            titleStyle:
+            TextStyle(fontWeight: FontWeight.bold),
+            description:
+            '${authProvider.lg[authProvider.language]["otp not valid"]}'
+        ).show(context);
+        // _scaffoldKey.currentState.showSnackBar(
+        //     SnackBar(content: Row(
+        //       children: [
+        //        // CircularProgressIndicator(),
+        //       //  SizedBox(width: 15,),
+        //         Text('${authProvider.lg[authProvider.language]["otp not valid"]}'),
+        //       ],
+        //     ))
+        //
+        // );
+        return;
+      }
+    }
+    //  verifyOtp();
+  }                         },
                          ),
-                 ),
+                 )),
 
             Container(
               height: MediaQuery.of(context).size.height/50,

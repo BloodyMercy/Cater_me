@@ -134,7 +134,7 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                             borderSide: const BorderSide(
                               color: Color(0xFF3F5521),
                             ))),
-                    controller: user.password1,
+                    controller: user.password1otp,
                     obscureText: true,
                     validator: validatePass,
                     autovalidateMode: AutovalidateMode.onUserInteraction),
@@ -188,10 +188,10 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                             borderSide: const BorderSide(
                               color: Color(0xFF3F5521),
                             ))),
-                    controller: user.confirmpassword,
+                    controller: user.confirmpasswordotp,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
-                      if (user.password1.text != user.confirmpassword.text) {
+                      if (user.password1otp.text != user.confirmpasswordotp.text) {
                         return '${user.lg[user.language]["Password dosen't match"]}';
                       }
                       return null;
@@ -215,7 +215,7 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                               var resetPassword = await user.ResetPassword();
                               print(resetPassword);
 
-                              user.LogIn();
+                             // user.LogIn();
                               if (resetPassword) {
                                 print('${user.lg[user
                                     .language]["Reset succeed"]}');
@@ -232,6 +232,9 @@ class _NewPassConfPassState extends State<NewPassConfPass> {
                                     Route<dynamic> route) => false);
                               }
                             else{
+                                setState(() {
+                                  loadingButton = false;
+                                });
                                 MotionToast.error(
                                   title: "Cater me",
                                   titleStyle: TextStyle(

@@ -546,7 +546,7 @@ class _OrderState extends State<Order> {
                                         : Container(),
                                     !loadingnext
                                         ? !orderProvider.finaldonatesteps
-                                            ? ElevatedButton(
+                                            ? details.issearch? ElevatedButton(
                                                 onPressed: () async {
                                                   setState(() {
                                                     loadingnext = true;
@@ -1217,7 +1217,7 @@ class _OrderState extends State<Order> {
                                                 //   primary: const Color.fromRGBO(63, 85, 33, 1),
                                                 //
                                                 // );
-                                                )
+                                                ):Container()
                                             : Container()
                                         : CircularProgressIndicator(),
                                   ])),
