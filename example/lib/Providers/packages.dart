@@ -213,7 +213,9 @@ loading=false;
        _listItems = List<Package>.from(_alldata['dropDown'].map((model) => Package.fromJson(model,a)));
       if(_alldata['gallery']!=null)
       _allgallery = List<GalleryModel>.from(_alldata['gallery'].map((model) => GalleryModel.fromJson(model)));
+      if(_alldata["notificationCount"] !=null)
        _nbnotification=_alldata["notificationCount"].toString();
+       if(_alldata["reviewPending"] !=null)
        _reviewPending=_alldata["reviewPending"]??false;
 
 
