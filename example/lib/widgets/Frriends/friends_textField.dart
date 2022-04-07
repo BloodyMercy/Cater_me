@@ -5,6 +5,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -47,7 +48,50 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
   bool loading = false;
   var _key = GlobalKey<ScaffoldState>();
+  permissionServiceCall() async {
+    await permissionServices().then(
+          (value) {
+        if (value != null) {
+          if (
+              value[Permission.contacts].isGranted) {
+            /* ========= New Screen Added  ============= */
+            //
+            // Navigator.pushReplacement(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => SplashScreen()),
+            // );
+          }
+        }
+      },
+    );
+  }
 
+  /*Permission services*/
+  Future<Map<Permission, PermissionStatus>> permissionServices() async {
+    // You can request multiple permissions at once.
+    Map<Permission, PermissionStatus> statuses = await [
+
+
+      Permission.contacts
+      //add more permission to request here.
+    ].request();
+
+    if (statuses[Permission.contacts].isPermanentlyDenied) {
+      openAppSettings();
+      //setState(() {});
+    } else {
+      if (statuses[Permission.contacts].isDenied) {
+        permissionServiceCall();
+      }
+    }
+
+
+
+
+
+    /*{Permission.camera: PermissionStatus.granted, Permission.storage: PermissionStatus.granted}*/
+    return statuses;
+  }
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -120,9 +164,16 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           ),
                           suffixIcon: IconButton(
                               onPressed: () async {
+
+
                                 await Permission.contacts.request();
+                               // final canUseStorage = await requestPermission(Permission.storage);
+
+
+                                await FlutterContacts.requestPermission();
+
+                                // permissionServiceCall();
                                 if (await Permission.contacts
-                                    .request()
                                     .isGranted) {
                                   Contact a = await ContactsService
                                       .openDeviceContactPicker();
@@ -134,6 +185,9 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                   friends.namecontroller.text = a.displayName;
                                   friends.phonecontroller.text =
                                       number.phoneNumber;
+                                }
+                                else{
+                                  print("no permission");
                                 }
                               },
                               icon: Icon(Icons.contact_phone))),

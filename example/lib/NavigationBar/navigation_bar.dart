@@ -361,15 +361,15 @@ class _NavigationBarState extends State<Navigationbar> {
             duration: Duration(milliseconds: 500),
             child: buildLoading(context),
           ),
-          AnimatedOpacity(
-              opacity: packageprovider.reviewPending ? 1 : 0,
-              duration: Duration(milliseconds: 500),
-              child:
+          // AnimatedOpacity(
+          //     opacity: packageprovider.reviewPending ? 1 : 0,
+          //     duration: Duration(milliseconds: 500),
+          //     child:
                   // showDialog(
                   //     context: context,
                   //     builder: (BuildContext context) {
                   //       return
-                  Dialog(
+          packageprovider.reviewPending ?  Dialog(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
@@ -460,7 +460,7 @@ class _NavigationBarState extends State<Navigationbar> {
                                 height: 100,
                               )),
                         ],
-                      )))
+                      )):Container()
         ],
       ),
     );
