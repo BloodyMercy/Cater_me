@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
@@ -171,8 +173,8 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
 
 
                                 // permissionServiceCall();
-                                if (await Permission.contacts
-                                    .isGranted) {
+                                if (await Permission.contacts.request()
+                                    .isGranted || Platform.isIOS) {
                                   Contact a = await ContactsService
                                       .openDeviceContactPicker();
 
