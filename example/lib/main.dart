@@ -26,6 +26,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:upgrader/upgrader.dart';
 
 import 'Helpers/Constant.dart';
 import 'IntroTest/on_boarding_screen.dart';
@@ -149,6 +150,8 @@ class _MyAppState extends State<MyApp> {
    @override
    void initState() {
      super.initState();
+     Upgrader();
+    // Upgrader().clearSavedSettings();
      this._fetchLocale().then((locale) {
        setState(() {
          this._locale = locale;
