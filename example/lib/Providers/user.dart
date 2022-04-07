@@ -37,7 +37,10 @@ class UserProvider with ChangeNotifier {
   }
   ResetPassword() async {
     ErrorMessage a;
-    a =await  PersonalInfoService().resetPasswordbyphone(phoneNumber.text, password1.text, confirmpassword.text);
+    a =await  PersonalInfoService().resetPasswordbyphone(phoneNumber.text, password1otp.text, confirmpasswordotp.text);
+   phoneNumber.clear();
+   password1otp.clear();
+   confirmpasswordotp.clear();
     return a.response;
 
 
@@ -105,8 +108,10 @@ bool _loadinglanguage=false;
   TextEditingController insta = TextEditingController();
   TextEditingController facebook = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
+  TextEditingController confirmpasswordotp = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController password1 = TextEditingController();
+  TextEditingController password1otp = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController birthday = TextEditingController();

@@ -22,6 +22,8 @@ class AuthModelSignUp {
         'phone':phoneNumber.toString(),
         'otp':OTP.toString(),
       });
+      print(OTP.toString());
+      print(phoneNumber.toString());
 
 
       http.StreamedResponse responses = await request.send();

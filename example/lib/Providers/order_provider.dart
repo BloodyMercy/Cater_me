@@ -24,6 +24,14 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
   List<int> _setupItemModelId = [];
+bool _issearch =true ;
+
+  bool get issearch => _issearch;
+
+  set issearch(bool value) {
+    _issearch = value;
+    notifyListeners();
+  }
 
   List<int> get setupItemModelId => _setupItemModelId;
 
