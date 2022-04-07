@@ -23,6 +23,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_text/circular_text.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:provider/provider.dart';
@@ -156,6 +157,7 @@ class _NavigationBarState extends State<Navigationbar> {
 
       language = sh.getString("locale");
     });
+    await FlutterContacts.requestPermission();
     // print(user.lg[user.language]["Home"]);
     //  user.status=Status.Authenticated;
   }
@@ -170,9 +172,11 @@ class _NavigationBarState extends State<Navigationbar> {
     super.initState();
 
     getLanguage();
+
     startinto();
     //   playaudio();
     inAppMessaging(context, SplashScreen());
+
   }
 
   startinto() async {
@@ -361,15 +365,15 @@ class _NavigationBarState extends State<Navigationbar> {
             duration: Duration(milliseconds: 500),
             child: buildLoading(context),
           ),
-          AnimatedOpacity(
-              opacity: packageprovider.reviewPending ? 1 : 0,
-              duration: Duration(milliseconds: 500),
-              child:
+          // AnimatedOpacity(
+          //     opacity: packageprovider.reviewPending ? 1 : 0,
+          //     duration: Duration(milliseconds: 500),
+          //     child:
                   // showDialog(
                   //     context: context,
                   //     builder: (BuildContext context) {
                   //       return
-                  Dialog(
+          packageprovider.reviewPending ?  Dialog(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
@@ -460,7 +464,7 @@ class _NavigationBarState extends State<Navigationbar> {
                                 height: 100,
                               )),
                         ],
-                      )))
+                      )):Container()
         ],
       ),
     );

@@ -18,6 +18,9 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+    <key>NSContactsUsageDescription</key>
+    <string>Reason we need access to the contact list</string>
+
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>

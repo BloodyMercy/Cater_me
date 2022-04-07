@@ -60,6 +60,7 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
     super.initState();
     getData();
   }
+bool butload =true ;
 
   @override
   Widget build(BuildContext context) {
@@ -139,20 +140,27 @@ class _OrderDetailsViewState extends State<OrderDetailsView> {
                       SizedBox(
                         height: 3,
                       ),
-                      Card(
+                      butload? Card(
                         color: colorCustom,
                         child:
                         orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
                         TextButton(
                           child: Text("Generate Invoice",style: TextStyle(color: Colors.white),),
                         onPressed:  () async{
+    setState(() {
+      butload=false;
+    });
                            await _order.GeneratePDF(widget.id);
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => MyPdf()),
+
                           );
+    setState(() {
+      butload=true;
+    });
                         }
-                        ):Container()),
+                        ):Container()):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
                       SizedBox(
                         height: 3,
                       ),
