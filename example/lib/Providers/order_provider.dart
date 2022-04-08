@@ -272,14 +272,14 @@ int _totalshisha=0;
       if(choosebillFriend[i].id==-69){}
       else{
         if (controllers[i].text.isEmpty || controllers[i].text == null ||
-            controllers[i].text == "0") {
+            controllers[i].text == ""|| controllers[i].text == "0"|| controllers[i].text == "0.0") {
           controllers.removeAt(i);
           choosebillFriend.removeAt(i);
         }
 
         mapitemf.add({
           "friendId": choosebillFriend[i].id,
-          "amount": int.parse(controllers[i].text)
+          "amount": double.parse(controllers[i].text)
         });
       }
     }

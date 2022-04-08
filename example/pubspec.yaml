@@ -48,6 +48,7 @@ dependencies:
   skeleton_loader: ^2.0.0+4
   http: any
   cached_network_image:
+  flutter_share: ^2.0.0
   provider:
   contacts_service: ^0.6.3
   credit_card: 0.1.6

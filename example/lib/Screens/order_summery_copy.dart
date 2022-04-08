@@ -466,8 +466,9 @@ setState(() {
                             child: TextFormField(
                               enabled: index!=0,
                               onChanged: (value) {
+                                details.controllers[0].text="0.0";
+
                                 double sum = 0.0;
-                                details.controllers[0].text="0";
                                 for (int i = 0;
                                 i < details.controllers.length;
                                 i++) {
@@ -476,8 +477,9 @@ setState(() {
                                       details.controllers[i].text ==
                                           null) {
                                     details.updateprocefreind(0, index);
-                                    details.controllers[i].text="0";
+                                    details.controllers[i].text="0.0";
                                   } else {
+
                                     sum += double.parse(
                                         details.controllers[i].text);
                                   }
@@ -510,7 +512,7 @@ setState(() {
                                   BorderRadius.circular(25.0),
                                 ),
                               ),
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.phone,
                               controller: details.controllers[index],
                             ))),
                   ); // you can add your unavailable item here

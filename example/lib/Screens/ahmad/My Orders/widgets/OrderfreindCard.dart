@@ -1,9 +1,11 @@
 import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Providers/user.dart';
+import '../../../../colors/colors.dart';
 import '../../../../model/orderById.dart';
 import '../../../../model/packages.dart';
 import 'UserOrders.dart';
@@ -77,69 +79,96 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
           width: 15,
         ),
         Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${widget.a.name}",
-                  style: TextStyle(
-                    // fontFamily: 'Geomanist',
-                    fontSize: 16,
-                    //  color: Color.fromRGBO(180, 187, 197, 1),
-                  )),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                child: Text.rich(
-                  TextSpan(
-                    text: widget.a.phoneNumber,
-                    style: TextStyle(
-                      // color: Colors.black,
-                      fontSize: 13,
-                      //  fontFamily: 'Geomanist',
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("${widget.a.name}",
+                      style: TextStyle(
+                        // fontFamily: 'Geomanist',
+                        fontSize: 16,
+                        //  color: Color.fromRGBO(180, 187, 197, 1),
+                      )),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    child: Text.rich(
+                      TextSpan(
+                        text: widget.a.phoneNumber,
+                        style: TextStyle(
+                          // color: Colors.black,
+                          fontSize: 13,
+                          //  fontFamily: 'Geomanist',
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 2,
-              ),
-              SizedBox(
-                height: 2,
-              ),
-              SizedBox(
-                height: 2,
-              ),
-              Text.rich(
-                TextSpan(
-                  text:
-                      "${authProvider.lg[authProvider.language]["SAR"]} ${widget.a.amount}",
-                  style: TextStyle(
-                    //  color: Color.fromRGBO(180, 187, 197, 1),
-                    fontSize: 13,
-                    //  fontFamily: 'Geomanist',
+                  SizedBox(
+                    height: 2,
                   ),
-                ),
-              ),
-              Text.rich(
-                TextSpan(
-                  text: '${widget.a.paymentStatus}',
-                  // text: "${authProvider.lg[authProvider.language]["Bill"]} ${widget.a.amount}",
-                  style: TextStyle(
-                    color: _getColorByEvent(
-                      widget.a.paymentStatusId
+                  SizedBox(
+                    height: 2,
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  Text.rich(
+                    TextSpan(
+                      text:
+                          "${authProvider.lg[authProvider.language]["SAR"]} ${widget.a.amount}",
+                      style: TextStyle(
+                        //  color: Color.fromRGBO(180, 187, 197, 1),
+                        fontSize: 13,
+                        //  fontFamily: 'Geomanist',
+                      ),
                     ),
+                  ),
+                  Text.rich(
+                    TextSpan(
+                      text: '${widget.a.paymentStatus}',
+                      // text: "${authProvider.lg[authProvider.language]["Bill"]} ${widget.a.amount}",
+                      style: TextStyle(
+                        color: _getColorByEvent(
+                          widget.a.paymentStatusId
+                        ),
 
-                    //  color: Color.fromRGBO(180, 187, 197, 1),
-                    fontSize: 13,
-                    //  fontFamily: 'Geomanist',
+                        //  color: Color.fromRGBO(180, 187, 197, 1),
+                        fontSize: 13,
+                        //  fontFamily: 'Geomanist',
+                      ),
+                    ),
                   ),
-                ),
+
+                ],
               ),
+              widget.a.paymentStatus=="Paid"?Container(
+                width: MediaQuery.of(context).size.width*0.20,
+
+                height:MediaQuery.of(context).size.width*0.03 ,
+                child: Card(
+
+                  color: colorCustom,
+                  child:
+                  TextButton(
+
+                      child: Text("${authProvider.lg[authProvider.language]["Share Bill"]}",style: TextStyle(color: Colors.white),),onPressed: (){
+                  share(widget.a.sharelink);
+                },)),
+              ):Container()
             ],
           ),
         ),
       ],
     );
+  }
+  Future<void> share(String link) async {
+    await FlutterShare.share(
+        title: 'cater me',
+        text: 'Share bill',
+        linkUrl: link,
+        chooserTitle: 'Share bill');
   }
 }

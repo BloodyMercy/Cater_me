@@ -889,6 +889,16 @@ class _OrderState extends State<Order> {
                                                                       .spets);
                                                             }
                                                           }
+                                                          else
+                                                            {
+                                                              _key.currentState
+                                                                  .showSnackBar(
+                                                                SnackBar(
+                                                                  content: Text(
+                                                                      '${authProvider.lg[authProvider.language]["error try again"]}'),
+                                                                ),
+                                                              );
+                                                            }
                                                         }
                                                       } else {
                                                         _key.currentState

@@ -107,7 +107,7 @@ class PaymentFriend {
   String paymentStatus;
   String paymentStatusAr;
   int paymentStatusId;
-
+String sharelink;
 
   PaymentFriend(
       {this.friendId,
@@ -127,6 +127,7 @@ class PaymentFriend {
     image = json['image'] ?? "not found";
     email = json['email'] ?? "not found";
     phoneNumber = json['phoneNumber'] ?? "not found";
+    sharelink=json["URLLink"]??"not found";
     if(a=="ar"){
       paymentStatus=json['paymentStatusAr']??"غير معروف";
     }else
