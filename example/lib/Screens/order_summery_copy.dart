@@ -477,24 +477,25 @@ setState(() {
                                       details.controllers[i].text ==
                                           null) {
                                     details.updateprocefreind(0, index);
-                                    details.controllers[i].text="0.0";
+                                    details.controllers[i].text="";
                                   } else {
 
                                     sum += double.parse(
-                                        details.controllers[i].text);
+                                        details.controllers[i].text==""?"0.0":details.controllers[i].text);
                                   }
                                 }
                                 double lastinput = double.parse(
-                                    details.controllers[index].text);
+                                    details.controllers[index].text==""?"0.0":details.controllers[index].text);
                                 if (sum > details.totale) {
                                   details.controllers[index].text =
                                       (details.totale - (sum - lastinput))
+                                          .toString()=="0.0"?"":(details.totale - (sum - lastinput))
                                           .toString();
                                   details.updateprocefreind(details.totale - (sum - lastinput), index);
                                 }
                                 else{
 
-                                  details.controllers[0].text =(details.totale-sum).toString();
+                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"":(details.totale-sum).toString();
                                   details.updateprocefreind( details.totale-sum, 0);
                                   details.updateprocefreind( lastinput, index);
 

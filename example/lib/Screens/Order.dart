@@ -740,19 +740,22 @@ class _OrderState extends State<Order> {
                                                                 .choosebillFriend
                                                                 .length >
                                                             0) {
-                                                          for (int i = 0;
-                                                              i <
+                                                          for (int g = 0;
+                                                              g <
                                                                   orderProvider
                                                                       .choosebillFriend
                                                                       .length;
-                                                              i++) {
-                                                            print(i);
+                                                              g++) {
+                                                            print(g);
                                                             if (orderProvider
                                                                         .choosebillFriend[
-                                                                            i]
+                                                                            g]
                                                                         .price ==
-                                                                    0 &&
-                                                                i != 0) {
+                                                                    0.0 &&
+                                                                orderProvider
+                                                                    .choosebillFriend[
+                                                                g]
+                                                                .id!=-69) {
                                                               _key.currentState
                                                                   .showSnackBar(
                                                                 SnackBar(
@@ -854,10 +857,11 @@ class _OrderState extends State<Order> {
                                                                     .length >
                                                                 0) {
                                                               if (orderProvider
-                                                                      .choosebillFriend[
-                                                                          0]
+                                                                      .choosebillFriend[0]
                                                                       .price ==
-                                                                  0.0) {
+                                                                  0.0
+ &&                                                            orderProvider
+                                                                      .choosebillFriend[0].id==-69 ) {
                                                                 Navigator.pushReplacement(
                                                                     context,
                                                                     MaterialPageRoute(
