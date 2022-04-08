@@ -168,6 +168,7 @@ class _NavigationBarState extends State<Navigationbar> {
 ratingg(){
   final packageprovider =
   Provider.of<PackagesProvider>(context, listen: false);
+  final user = Provider.of<UserProvider>(context, listen: true);
 
   Future.delayed(Duration(seconds: 15),() async {
 
@@ -191,7 +192,7 @@ ratingg(){
                     child: Column(
                       children: [
                         Text(
-                          'We hope our service met your expectations!',
+                          '${user.lg[user.language][ 'We hope our service met your expectations!']}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -218,7 +219,7 @@ ratingg(){
                                     MediaQuery.of(cont).size.width * 0.05),
                                 child: TextButton(
                                   child: Text(
-                                    'Cancel',
+                                    '${user.lg[user.language][ 'Cancel']}',
                                     style: TextStyle(
                                         color: Colors.white),
                                   ),
@@ -236,7 +237,7 @@ ratingg(){
                               ),
                               TextButton(
                                 child: Text(
-                                  'Rate your order',
+                                  '${user.lg[user.language][ 'Rate your order']}',
                                   style:
                                   TextStyle(color: Colors.white),
                                 ),

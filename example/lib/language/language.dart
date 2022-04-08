@@ -321,9 +321,15 @@ class LanguageTr {
       "PDF Invoice": "الفاتورة",
       "perperson": " للشخص الواحد ",
       "Update Password": "غير كلمة السر",
-      "No Cuisines To Dispaly":"لا توجد إضافات لعرضها"
+      "No Cuisines To Dispaly":"لا توجد إضافات لعرضها",
+      'We hope our service met your expectations!':"نأمل أن تلبي خدمتنا توقعاتك!",
+      'Cancel':'يلغي',
+      'Rate your order':"قيم طلبك",
     },
     "en": {
+      'Rate your order':'Rate your order',
+      'Cancel':'Cancel',
+      'We hope our service met your expectations!':'We hope our service met your expectations!',
       "No Cuisines To Dispaly":"No addons To Dispaly",
       "Update Password": "Update Password",
       "Email or phone number": "Email or phone number",
