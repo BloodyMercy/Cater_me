@@ -136,15 +136,7 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                         ),
                         // customTextField(controller: occasion.nameofoccasioncontroller,label:'Name Of Occasion' ,),
 
-                        CustomCupertinoPicker(
-                          label:
-                              '${authProvider.lg[authProvider.language]["Type of Occasion"]}',
-                          items: occasion.listoccasiontypename,
-                          listoccasiontype: occasion.listoccasiontype,
-                          selectedValue: widget.getposition,
-                          inputType: TextInputType.number,
-                          controller: occasion.typeofoccasioncontrollername,
-                        ),
+
                         CustomDatePickerFormField(
                             label: '${authProvider.lg[authProvider.language]["Event Date"]}',
                             controller: occasion.datechosencontroller,
@@ -162,6 +154,8 @@ class _AddNewOccasionState extends State<AddNewOccasion> {
                             !ispressed
                                 ? ElevatedButton(
                                     onPressed: () async {
+                                      occasion.typeofoccasioncontroller
+                                          .text="6";
                                       if (occasion.datechosencontroller.text ==
                                               "" ||
                                           occasion.typeofoccasioncontroller

@@ -90,13 +90,9 @@ class _OccasionListViewState extends State<OccasionListView> {
                   width: double.maxFinite,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.1,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(occa.listoccasiontype.length,
-                          (int index) {
-                        return GestureDetector(
+                    child:  GestureDetector(
                           onTap: () {
-                            if (occa.listoccasiontype[index].id == -700) {
+                            if (occa.listoccasiontype[0].id == -700) {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => AddNewOccasion(0),
@@ -105,7 +101,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                             } else {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => AddNewOccasion(index),
+                                  builder: (context) => AddNewOccasion(0),
                                 ),
                               );
                             }
@@ -122,35 +118,14 @@ class _OccasionListViewState extends State<OccasionListView> {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        occa.listoccasiontype[index].id == -700
-                                            ? Icon(
+                                         Icon(
                                                 Icons.add,
                                                 size: 40,
                                                 color: colorCustom,
                                               )
-                                            : Image.network(
-
-                                                occa.listoccasiontype[index]
-                                                    .image,
-                                          loadingBuilder: ((context, child, loadingProgress) {
-                                            if (loadingProgress == null) return child;
-                                            return Center(
-                                              child: CircularProgressIndicator(
-                                                strokeWidth: 1,
-                                                value: loadingProgress.expectedTotalBytes != null
-                                                    ? loadingProgress.cumulativeBytesLoaded /
-                                                    loadingProgress.expectedTotalBytes
-                                                    : null,
-                                              ),
-                                            );
-                                          }),
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.2,
-                                              ),
+                                            ,
                                         Text(
-                                          occa.listoccasiontype[index].name,
+                                          occa.listoccasiontype[0].name,
                                           style: TextStyle(fontSize: 18),
                                         )
                                       ],
@@ -160,9 +135,8 @@ class _OccasionListViewState extends State<OccasionListView> {
                               ),
                             ),
                           ),
-                        );
-                      }),
-                    ),
+                        )
+
                   ),
                 ),
               ),
@@ -250,10 +224,10 @@ class _OccasionListViewState extends State<OccasionListView> {
                                         // SizedBox(
                                         //   height: 65,
                                         // ),
-                                        Text('${occa.all[index].type}',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold)),
+                                        // Text('${occa.all[index].type}',
+                                        //     style: TextStyle(
+                                        //         color: Colors.black,
+                                        //         fontWeight: FontWeight.bold)),
                                         SizedBox(
                                           height: 20,
                                         ),
@@ -279,25 +253,25 @@ class _OccasionListViewState extends State<OccasionListView> {
                                 //       MediaQuery.of(context).size.width / 3,
                                 // ),
 
-                                Expanded(
-                                  child: Image.network(
-                                    occa.all[index].image,
-                                    loadingBuilder: ((context, child, loadingProgress) {
-                                      if (loadingProgress == null) return child;
-                                      return Center(
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 1,
-                                          value: loadingProgress.expectedTotalBytes != null
-                                              ? loadingProgress.cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes
-                                              : null,
-                                        ),
-                                      );
-                                    }),
-                                    // width:
-                                    //     MediaQuery.of(context).size.width / 5.5,
-                                  ),
-                                ),
+                                // Expanded(
+                                //   child: Image.network(
+                                //     occa.all[index].image,
+                                //     loadingBuilder: ((context, child, loadingProgress) {
+                                //       if (loadingProgress == null) return child;
+                                //       return Center(
+                                //         child: CircularProgressIndicator(
+                                //           strokeWidth: 1,
+                                //           value: loadingProgress.expectedTotalBytes != null
+                                //               ? loadingProgress.cumulativeBytesLoaded /
+                                //               loadingProgress.expectedTotalBytes
+                                //               : null,
+                                //         ),
+                                //       );
+                                //     }),
+                                //     // width:
+                                //     //     MediaQuery.of(context).size.width / 5.5,
+                                //   ),
+                                // ),
                                 //  ],
                                 //  )
                               ],
