@@ -194,8 +194,8 @@ class LanguageTr {
       "Order Details": "تفاصيل طلبك",
       "Do You Want To Donate The Rest Of Your Food?":
           "ودك تتبرع بالاكل الباقي؟",
-      "*(Shisha VAT 100%)": "ضريبه الشيشه ١٠٠ ٪",
-      "*(VAT included 15%)": "شامل الضريبة القيمة المضافة 15٪",
+      "*(Shisha VAT ": "ضريبه الشيشه  ",
+      "*(VAT included ": "شامل الضريبة القيمة المضافة ",
       "*(VAT 15%)": "ضريبه ١٥ ٪",
       "yes": "ايه",
       "No Packages": "مافي باقات",
@@ -321,9 +321,15 @@ class LanguageTr {
       "PDF Invoice": "الفاتورة",
       "perperson": " للشخص الواحد ",
       "Update Password": "غير كلمة السر",
-      "No Cuisines To Dispaly":"لا توجد إضافات لعرضها"
+      "No Cuisines To Dispaly":"لا توجد إضافات لعرضها",
+      'We hope our service met your expectations!':"نأمل أن تلبي خدمتنا توقعاتك!",
+      'Cancel':'يلغي',
+      'Rate your order':"قيم طلبك",
     },
     "en": {
+      'Rate your order':'Rate your order',
+      'Cancel':'Cancel',
+      'We hope our service met your expectations!':'We hope our service met your expectations!',
       "No Cuisines To Dispaly":"No addons To Dispaly",
       "Update Password": "Update Password",
       "Email or phone number": "Email or phone number",
@@ -376,7 +382,7 @@ class LanguageTr {
       "Reset succeed": "Reset succeed",
       "Delete Account": "Delete Account",
       "Setup": "Setup",
-      "*(VAT included 15%)": "*(VAT included 15%)",
+      "*(VAT included ": "*(VAT included ",
       "Saved Orders": "Saved Orders",
       "Total including VAT": "Total including VAT",
       "Menus": "Menus",
@@ -576,7 +582,7 @@ class LanguageTr {
       "Order Details": "Order Details",
       "Do You Want To Donate The Rest Of Your Food?":
           "Do You Want To Donate The Rest Of Your Food?",
-      "(*Shisha VAT 100%)": "*(Shisha VAT 100%)",
+      "(*Shisha VAT ": "*(Shisha VAT ",
       "(*VAT 15%)": "(*VAT 15%)",
       "Please choose someone to share your bill with":
           "Please choose someone to share your bill with",
