@@ -136,28 +136,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                           // ))
                         ],
                       ),
-                    Positioned(
-                      top:  MediaQuery.of(context).size.height * 0.52,
-                      left: MediaQuery.of(context).size.width*0.79,
-                      child:  ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 8,
-                          primary: Colors.white,
-                          fixedSize: const Size(50, 50),
-                          shape: const CircleBorder(),
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          size: 30,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => HomeScreen(),));
-                        },
-                      ),
-                    )
                   ],
                 )
                 : Center(
@@ -172,6 +150,25 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     ),
                   ),
       ),
+    floatingActionButton:  ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 8,
+        primary: Colors.white,
+        fixedSize: const Size(50, 50),
+        shape: const CircleBorder(),
+      ),
+      child: Icon(
+        Icons.add,
+        size: 30,
+        color: Theme.of(context).primaryColor,
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),));
+      },
+    ),
+
     );
   }
 

@@ -101,58 +101,70 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
     final details = Provider.of<OrderCaterProvider>(context, listen: true);
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
-    return SingleChildScrollView(
-      child: Container(
-        color: LightColors.kLightYellow2,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+    return
+      GestureDetector( behavior: HitTestBehavior.translucent,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
 
-            Container(
-              // color: Colors.white,
-              height: 400.0, // Change as per your requirement
-              width: 400.0, // Change as per your requirement
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: frnd.listFriends.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return listFriendssearch[index]
-                      .contains(controllersearch.text.toLowerCase())
-                      ? CheckboxListTile(
-                    activeColor: Theme.of(context).primaryColor,
-                    value: details.choosebillFriend
-                        .contains(frnd.listFriends[index]),
-                    onChanged: (val) {
-                      if (val == true)
-                        details.addfriend(frnd.listFriends[index]);
-                      else
-                        details.removefriend(frnd.listFriends[index]);
-                    },
-                    title: Card(
-                      color: LightColors.kLightYellow2,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween,
-                          children: [
-                            CircleAvatar(
-                              // radius: 25.0,
-                              backgroundImage: NetworkImage(l[index].image),
-                              backgroundColor: Colors.transparent,
-                              radius: screenHeight * 1,
-                            ),
-                            Text(l[index].name),
-                          ],
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+
+
+      child: SingleChildScrollView(
+        child: Container(
+          color: LightColors.kLightYellow2,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+
+              Container(
+                // color: Colors.white,
+                height: 400.0, // Change as per your requirement
+                width: 400.0, // Change as per your requirement
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: frnd.listFriends.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return listFriendssearch[index]
+                        .contains(controllersearch.text.toLowerCase())
+                        ? CheckboxListTile(
+                      activeColor: Theme.of(context).primaryColor,
+                      value: details.choosebillFriend
+                          .contains(frnd.listFriends[index]),
+                      onChanged: (val) {
+                        if (val == true)
+                          details.addfriend(frnd.listFriends[index]);
+                        else
+                          details.removefriend(frnd.listFriends[index]);
+                      },
+                      title: Card(
+                        color: LightColors.kLightYellow2,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              CircleAvatar(
+                                // radius: 25.0,
+                                backgroundImage: NetworkImage(l[index].image),
+                                backgroundColor: Colors.transparent,
+                                radius: screenHeight * 1,
+                              ),
+                              Text(l[index].name),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                      : Container();
-                },
+                    )
+                        : Container();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
