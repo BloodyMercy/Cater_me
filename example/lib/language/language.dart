@@ -323,7 +323,7 @@ class LanguageTr {
       "Update Password": "غير كلمة السر",
       "No Cuisines To Dispaly":"لا توجد إضافات لعرضها",
       'We hope our service met your expectations!':"نأمل أن تلبي خدمتنا توقعاتك!",
-      'Cancel':'يلغي',
+      'Cancel':'ما أبغى',
       'Rate your order':"قيم طلبك",
     },
     "en": {

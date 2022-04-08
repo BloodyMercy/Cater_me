@@ -136,8 +136,7 @@ Animation<Offset> offsetAnimation2;
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Container(
-          height: height,
-          width: width,
+
           color: LightColors.kLightYellow,
           child: Stack(children: [
             // Container(
