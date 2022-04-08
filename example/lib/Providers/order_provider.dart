@@ -179,6 +179,7 @@ bool _finaldonatestepsCancel=false;
   }
 updateprocefreind(double a,int index){
     print("i update");
+    print(index);
     // // FriendModel f=new FriendModel();
     // f.id = choosebillFriend[index].id;
     // f.name= choosebillFriend[index].name;

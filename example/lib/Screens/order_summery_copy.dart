@@ -461,12 +461,13 @@ setState(() {
                         ),
                         title: Text(details.choosebillFriend[index].name),
                         trailing: SizedBox(
-                            height: mediaQuery.size.height / 20,
+                            height: mediaQuery.size.height / 15,
                             width: mediaQuery.size.width / 3,
                             child: TextFormField(
                               enabled: index!=0,
                               onChanged: (value) {
-                                details.controllers[0].text="0.0";
+print(value);
+details.controllers[0].text="1";
 
                                 double sum = 0.0;
                                 for (int i = 0;
@@ -477,7 +478,7 @@ setState(() {
                                       details.controllers[i].text ==
                                           null) {
                                     details.updateprocefreind(0, index);
-                                    details.controllers[i].text="";
+                                    details.controllers[i].clear();
                                   } else {
 
                                     sum += double.parse(
@@ -495,13 +496,11 @@ setState(() {
                                 }
                                 else{
 
-                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"":(details.totale-sum).toString();
-                                  details.updateprocefreind( details.totale-sum, 0);
+                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"1":(details.totale-sum+1).toString();
+                                  details.updateprocefreind( details.totale-sum, 1);
                                   details.updateprocefreind( lastinput, index);
 
                                 }
-
-                                setState(() {});
                               },
                               decoration: InputDecoration(
                                 hintText: '${authProvider.lg[authProvider.language]['Price']}',
