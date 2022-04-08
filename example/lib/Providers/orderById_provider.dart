@@ -89,6 +89,7 @@ Map<String,dynamic> _orderbyId={};
   }
 bool loading=false  ;
   getOrderById(int id) async{
+    print("ahmad nak m,ahmad");
     orderbyId={};
     loading=false ;
     orderbyId= await _orderByIdService.getOrdersDetailsById(id);
@@ -97,7 +98,7 @@ bool loading=false  ;
   }
 
   Future getOrderItems(String a) async{
-
+print(orderbyId['orderItems']);
     if(orderbyId['orderItems']!=null){
       _items=List<OrderItems>.from(orderbyId['orderItems'].map((model)=> OrderItems.fromJson(model,a)));
      // return orderbyId['orderItems'].forEach((element) {

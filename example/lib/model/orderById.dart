@@ -127,7 +127,7 @@ String sharelink;
     image = json['image'] ?? "not found";
     email = json['email'] ?? "not found";
     phoneNumber = json['phoneNumber'] ?? "not found";
-    sharelink=json["URLLink"]??"not found";
+    sharelink=json["urlLink"]??"not found";
     if(a=="ar"){
       paymentStatus=json['paymentStatusAr']??"غير معروف";
     }else

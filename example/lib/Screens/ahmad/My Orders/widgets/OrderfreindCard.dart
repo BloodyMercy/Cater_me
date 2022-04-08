@@ -80,7 +80,7 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
         ),
         Flexible(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,17 +144,17 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
 
                 ],
               ),
-              widget.a.paymentStatus=="Paid"?Container(
-                width: MediaQuery.of(context).size.width*0.20,
+              widget.a.paymentStatusId==1?Container(
+                width: MediaQuery.of(context).size.width*0.30,
 
-                height:MediaQuery.of(context).size.width*0.03 ,
+                height:MediaQuery.of(context).size.width*0.1 ,
                 child: Card(
 
                   color: colorCustom,
                   child:
                   TextButton(
 
-                      child: Text("${authProvider.lg[authProvider.language]["Share Bill"]}",style: TextStyle(color: Colors.white),),onPressed: (){
+                      child: Center(child: Text("${authProvider.lg[authProvider.language]["Share Bill"]}",style: TextStyle(color: Colors.white),)),onPressed: (){
                   share(widget.a.sharelink);
                 },)),
               ):Container()

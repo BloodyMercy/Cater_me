@@ -102,7 +102,7 @@ bool butload =true ;
 
         ),
       ),
-      body: _order.loading?SingleChildScrollView(
+      body: _order.loading?_order.orderbyId["message"]==null?SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -725,7 +725,7 @@ Center(child:  Padding(
 
           ],
         ),
-      ):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
+      ):Center(child: Text(_order.orderbyId["message"]),):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
     );
   }
 }

@@ -8,26 +8,34 @@ import '../model/setup_items_model.dart';
 class OrderByIdService {
   Future<Map<String,dynamic>> getOrdersDetailsById(int id) async {
       try {
+        print(id);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var headers = {'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request = http.Request('GET', Uri.parse(ApiLink.GetAllOrdersById+"/$id"));
       request.headers.addAll(headers);
       http.StreamedResponse responses = await request.send();
       var response = await http.Response.fromStream(responses);
+      print(response.statusCode);
+      print(prefs.getString("token"));
       if (response.statusCode == 200) {
         Map<String,dynamic> responseData = json.decode(response.body);
         // OrderDetailsModel posts =  responseData.map((key, value) => null)
         //map to list
        // if(responseData["creditCard"]["cardNumber"]==null)
         print(responseData);
+        print("######");
         return responseData;
       } else {
+        Map<String,dynamic> responseData = json.decode(response.body);
+        print("###########");
         print(response.reasonPhrase);
-        return {};
+        return responseData;
       }
     } catch (e) {
+
+        print("################");
       print(e);
-      return {};
+      return {"message":"error try again"};
     }
   }
 
