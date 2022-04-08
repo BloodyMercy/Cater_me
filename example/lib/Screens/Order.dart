@@ -520,7 +520,7 @@ class _OrderState extends State<Order> {
                                                   ),
                                                   orderProvider.vatshisha > 0.0
                                                       ? Text(
-                                                          '${authProvider.lg[authProvider.language]['*(Shisha VAT 100%)']}',
+                                                          '${authProvider.lg[authProvider.language]['*(Shisha VAT ']}'+"${orderProvider.vatfood}"+"${authProvider.lg[authProvider.language]["SAR"]}",
                                                           style: TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:
@@ -531,7 +531,7 @@ class _OrderState extends State<Order> {
                                                       : Container(),
                                                   orderProvider.vatfood > 0.0
                                                       ? Text(
-                                                          '${authProvider.lg[authProvider.language]["*(VAT included 15%)"]}',
+                                                          '${authProvider.lg[authProvider.language]["*(VAT included "]}'+"${orderProvider.vatfood}"+"${authProvider.lg[authProvider.language]["SAR"]}",
                                                           style: TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:

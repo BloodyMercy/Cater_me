@@ -194,8 +194,8 @@ class LanguageTr {
       "Order Details": "تفاصيل طلبك",
       "Do You Want To Donate The Rest Of Your Food?":
           "ودك تتبرع بالاكل الباقي؟",
-      "*(Shisha VAT 100%)": "ضريبه الشيشه ١٠٠ ٪",
-      "*(VAT included 15%)": "شامل الضريبة القيمة المضافة 15٪",
+      "*(Shisha VAT ": "ضريبه الشيشه  ",
+      "*(VAT included ": "شامل الضريبة القيمة المضافة ",
       "*(VAT 15%)": "ضريبه ١٥ ٪",
       "yes": "ايه",
       "No Packages": "مافي باقات",
@@ -376,7 +376,7 @@ class LanguageTr {
       "Reset succeed": "Reset succeed",
       "Delete Account": "Delete Account",
       "Setup": "Setup",
-      "*(VAT included 15%)": "*(VAT included 15%)",
+      "*(VAT included ": "*(VAT included ",
       "Saved Orders": "Saved Orders",
       "Total including VAT": "Total including VAT",
       "Menus": "Menus",
@@ -576,7 +576,7 @@ class LanguageTr {
       "Order Details": "Order Details",
       "Do You Want To Donate The Rest Of Your Food?":
           "Do You Want To Donate The Rest Of Your Food?",
-      "(*Shisha VAT 100%)": "*(Shisha VAT 100%)",
+      "(*Shisha VAT ": "*(Shisha VAT ",
       "(*VAT 15%)": "(*VAT 15%)",
       "Please choose someone to share your bill with":
           "Please choose someone to share your bill with",
