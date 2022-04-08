@@ -97,7 +97,7 @@ getdata() async{
   @override
   Widget build(BuildContext context) {
     final user=Provider.of<UserProvider>(context,listen:true);
-Timer(Duration(seconds: 7), (){  getdata(); });
+Timer(Duration(seconds: 8), (){  getdata(); });
 
 
     return Scaffold(
@@ -116,6 +116,7 @@ Timer(Duration(seconds: 7), (){  getdata(); });
 @override
 void dispose() {
   image.evict();
+
   super.dispose();
 }
 
