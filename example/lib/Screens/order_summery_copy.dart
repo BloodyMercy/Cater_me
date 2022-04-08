@@ -461,7 +461,7 @@ setState(() {
                         ),
                         title: Text(details.choosebillFriend[index].name),
                         trailing: SizedBox(
-                            height: mediaQuery.size.height / 20,
+                            height: mediaQuery.size.height / 15,
                             width: mediaQuery.size.width / 3,
                             child: TextFormField(
                               enabled: index!=0,
