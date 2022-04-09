@@ -177,14 +177,14 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                     .isGranted || Platform.isIOS) {
                                   Contact a = await ContactsService
                                       .openDeviceContactPicker();
-
-                                  PhoneNumber number = await PhoneNumber
-                                      .getRegionInfoFromPhoneNumber(
-                                          a.phones.first.value);
+                                  //
+                                  // PhoneNumber number = await PhoneNumber
+                                  //     .getRegionInfoFromPhoneNumber(
+                                  //         a.phones.first.value);
 
                                   friends.namecontroller.text = a.displayName;
                                   friends.phonecontroller.text =
-                                      number.phoneNumber;
+                                      a.phones.first.value;
                                 }
                                 else{
                                   print("no permission");
@@ -301,6 +301,9 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                           } else
                             return null;
                         },
+                        textDirection:TextDirection.ltr ,
+                        textAlign:authProvider.language=="ar"?TextAlign.end:TextAlign.start ,
+
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -339,6 +342,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 color: Colors.grey,
                               ),
                             ),
+
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),
                                 borderSide: const BorderSide(
