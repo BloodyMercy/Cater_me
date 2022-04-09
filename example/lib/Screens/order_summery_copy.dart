@@ -288,10 +288,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                             onPressed: () {
                               details.controllers.clear();
 
-                              if(details.choosebillFriend.length==1){
-                                details.adonce=false;
-                                details.choosebillFriend.clear();
-                              }
+
                               if(!details.adonce&&details.choosebillFriend.isNotEmpty){
                                 FriendModel you = FriendModel();
 
@@ -299,7 +296,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 you.id=-69;
                                 you.image=imageurl;
                                 details.choosebillFriend.insert(0, you);
-
+                                if(details.choosebillFriend.length==1){
+                                  details.adonce=false;
+                                  details.choosebillFriend.clear();
+                                }
                                 details.adonce=true;
                               }
                               for(int c=0; c<details.choosebillFriend.length; c++){
@@ -348,6 +348,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   you.id=-69;
                                   you.image=imageurl;
                                   details.choosebillFriend.insert(0, you);
+                                  if(details.choosebillFriend.length==1){
+                                    details.choosebillFriend.clear();
+                                    details.adonce=false;
+                                  }
                                   details.adonce=true;
                                 }
                                 for(int c=0; c<details.choosebillFriend.length; c++){
@@ -363,6 +367,9 @@ if(details.choosebillFriend.isNotEmpty) {
   double teta = double.parse(details.controllers[0].text);
   details.controllers[0].text =
       (teta + (beta * details.choosebillFriend.length)).toString();
+
+
+  details.updateprocefreind(double.parse(details.controllers[0].text), 0);
 }
 setState(() {
                                   issearch = true;
@@ -433,10 +440,7 @@ setState(() {
                         else {
                           details
                               .removefriend(frnd.listFriends[index]);
-                          if(details.choosebillFriend.length==1){
-                            details.choosebillFriend.clear();
-                            details.adonce=false;
-                          }
+
                         }    },
                       title: Card(
                         child: Padding(
