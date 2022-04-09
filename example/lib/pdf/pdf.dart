@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:CaterMe/Providers/user.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:dio/dio.dart';
@@ -8,13 +10,6 @@ import 'package:provider/provider.dart';
 
 import '../Providers/orderById_provider.dart';
 
-void main() {
-  runApp(
-      MaterialApp(
-          home: MyPdf()
-      )
-  );
-}
 
 class MyPdf extends StatefulWidget{
 
@@ -80,7 +75,7 @@ class _MyPdfState extends State<MyPdf> {
              orders.pdfLink,
                // maxAgeCacheObject:Duration(days: 30), //duration of cache
               placeholder: (progress) => Center(child: Text('$progress %')),
-               errorWidget: (error) => Center(child: Text("hello")),
+               errorWidget: (error) { Timer(Duration(seconds: 1), (){Navigator.pop(context);});  return  Center(child: Text("faild ,try again later..."));},
              )
         )
     );
