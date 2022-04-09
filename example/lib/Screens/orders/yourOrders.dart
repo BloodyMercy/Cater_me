@@ -67,24 +67,22 @@ class _YourOrdersState extends State<YourOrders> {
   }
 
   @override
-  Color _getColorByEvent(String orderStatus) {
+  Color _getColorByEvent(int orderStatus) {
 
-    if (orderStatus == "Preparing") return Color(0xFFEAB316);
-    if (orderStatus == "جاري التحضير") return Color(0xFFEAB316);
+    if (orderStatus ==3 ) return Color(0xFFEAB316);
 
-    if (orderStatus == "Received") return Color(0xFFEAB316);
+    if (orderStatus == 2) return Color(0xFFEAB316);
 
-    if (orderStatus == "تم تلقي طلبك") return Color(0xFFEAB316);
-    if (orderStatus == "Rejected") return Color(0xFFEA4D47);
-    if (orderStatus == "تم رفض الطلب") return Color(0xFFEA4D47);
-    if (orderStatus == "On The Way") return Color(0xFFEAB316);
-    if (orderStatus == "على الطريق") return Color(0xFFEAB316);
-    if (orderStatus == "Delivered") return Color(0xFF3F5521);
-    if (orderStatus == "تم التوصيل") return Color(0xFF3F5521);
-    if (orderStatus == "OTP Pending") return Color(0xFFEAB316);
-    if (orderStatus == "بانتظار الرمز التحققي") return Color(0xFFEAB316);
-    if (orderStatus == "Payment Pending") return Color(0xFFEAB316);
-    if (orderStatus == "انتظار الدفع") return Color(0xFFEAB316);
+    if (orderStatus == 6) return Color(0xFFEA4D47);
+    // if (orderStatus == "تم رفض الطلب") return Color(0xFFEA4D47);
+    if (orderStatus ==4) return Color(0xFFEAB316);
+    // if (orderStatus == "على الطريق") return Color(0xFFEAB316);
+    if (orderStatus == 5) return Color(0xFF3F5521);
+    // if (orderStatus == "تم التوصيل") return Color(0xFF3F5521);
+    if (orderStatus == 1) return Color(0xFFEAB316);
+    // if (orderStatus == "بانتظار الرمز التحققي") return Color(0xFFEAB316);
+    if (orderStatus == 7) return Color(0xFFEAB316);
+    // if (orderStatus == "انتظار الدفع") return Color(0xFFEAB316);
 
     return Colors.blue;
   }
@@ -147,10 +145,8 @@ class _YourOrdersState extends State<YourOrders> {
                                 return SlidableWidget(index:index ,
                                   child: GestureDetector(
                                     onTap: () {
-                                      if (orders.listOrder[index].orderStatus ==
-                                              "Payment Pending" ||
-                                          orders.listOrder[index].orderStatus ==
-                                              "انتظار الدفع") {
+                                      if (orders.listOrder[index].orderStatusid ==
+                                             7  ) {
                                         //    if(authProvider.status == Status.Authenticated) {
                                         address.clearAddressController();
                                         orderCaterprovider.spets = 7;
@@ -240,8 +236,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                     style: TextStyle(
                                                       color: _getColorByEvent(
                                                           orders.listOrder[index]
-                                                              .orderStatus
-                                                              .toString()),
+                                                              .orderStatusid),
                                                       fontWeight: FontWeight.bold,
                                                     ),
                                                   )

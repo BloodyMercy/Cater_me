@@ -316,6 +316,10 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
       double teta = double.parse(details.controllers[0].text);
       details.controllers[0].text =
           (teta + (beta * details.choosebillFriend.length)).toString();
+
+
+      details.updateprocefreind(double.parse(details.controllers[0].text), 0);
+
     }
                               // Navigator.pop(context);
                               setState(() {
@@ -492,6 +496,7 @@ setState(() {
 print(value);
 details.controllers[0].text="1";
 
+details.updateprocefreind(1, 0);
                                 double sum = 0.0;
                                 for (int i = 0;
                                 i < details.controllers.length;
@@ -519,7 +524,7 @@ details.controllers[0].text="1";
                                 }
                                 else{
 
-                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"1":(details.totale-sum+1).toString();
+                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"1":(details.totale-sum).toString();
                                   details.updateprocefreind( details.totale-sum, 0);
                                   details.updateprocefreind( lastinput, index);
 

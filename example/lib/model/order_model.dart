@@ -10,6 +10,7 @@ class OrderModel {
   String buildingName='';
   int floorNumber=0;
   double total=0.0;
+  int orderStatusid=0;
   String orderStatus='';
   String eventType='';
   String eventDate="";
@@ -50,6 +51,7 @@ class OrderModel {
     buildingName = json['buildingName']??"not found";
     floorNumber = json['floorNumber']??0;
     total = json['total'].toDouble()??0.0;
+    orderStatusid=json["orderStatusId"]??0;
     if(a=="ar"){
       orderStatus = json['orderStatusAR']??"غير معروف";
     }else
