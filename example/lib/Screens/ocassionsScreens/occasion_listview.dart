@@ -83,7 +83,7 @@ class _OccasionListViewState extends State<OccasionListView> {
         CustomScrollView(
           slivers: [
             authProvider.status==Status.Unauthenticated?SliverToBoxAdapter(child:Container(height:MediaQuery.of(context).size.height/3 )) :
- :           SliverAppBar(
+            SliverAppBar(
               pinned: false,
               floating: false,
               expandedHeight: MediaQuery.of(context).size.height * 0.2,
