@@ -127,14 +127,7 @@ bool ispressed = false;
 
                   customTextField(controller: occasion.nameofoccasioncontroller,label:'${authProvider.lg[authProvider.language]["Name of Occasion"]}',),
 
-                  CustomCupertinoPicker(
-                    label: '${authProvider.lg[authProvider.language][ "Type of Occasion"]}',
-                    items: occasion.listoccasiontypename,
-                    listoccasiontype: occasion.listoccasiontype,
-                    selectedValue: 0,
-                    inputType: TextInputType.number,
-                    controller: occasion.typeofoccasioncontrollername,
-                  ),
+
 
                   customTextField(label:"Dd / mm / yyyy" ,controller:occasion.datechosencontroller ,read: true,),
 
@@ -150,8 +143,6 @@ bool ispressed = false;
                           ? ElevatedButton(
                         onPressed: () async {
                           if (occasion.datechosencontroller.text == "" ||
-                              occasion.typeofoccasioncontrollername.text ==
-                                  "" ||
                               occasion.nameofoccasioncontroller.text ==
                                   "") {
                             // _scaff.currentState.showSnackBar(

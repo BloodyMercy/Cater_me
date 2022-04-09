@@ -100,8 +100,9 @@ class AddOnCardOrder extends StatelessWidget {
                                       '${this.addOn.title}',
                                       maxLines: 2,
                                       style: TextStyle(
+
                                           color: colorCustom,
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'BerlinSansFB'),
                                       overflow: TextOverflow.ellipsis,

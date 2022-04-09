@@ -171,7 +171,7 @@ deleteoccation(Occasion occ) async {
 updateoccation({int idss }) async {
   datechosencontroller.text=datechosencontroller.text.replaceAll(RegExp('[^A-Za-z0-9]'), '-');
     return await _occasionService.update(id:idss ,       name: nameofoccasioncontroller.text,
-  typeId: int.parse(typeofoccasioncontroller.text),
+  typeId: 4,
   date: datechosencontroller.text,);
 }
 }

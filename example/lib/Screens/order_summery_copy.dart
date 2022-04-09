@@ -523,9 +523,14 @@ details.updateprocefreind(1, 0);
                                   details.updateprocefreind(details.totale - (sum - lastinput), index);
                                 }
                                 else{
+if((details.totale-sum).toString()=="0.0"){
+                                  details.controllers[0].text ="1";
 
-                                  details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"1":(details.totale-sum).toString();
-                                  details.updateprocefreind( details.totale-sum, 0);
+                                  details.updateprocefreind( 1, 0);
+}else{
+  details.controllers[0].text =                           (details.totale-sum).toString();
+                                details.updateprocefreind( details.totale-sum, 0);
+                                }
                                   details.updateprocefreind( lastinput, index);
 
                                 }
