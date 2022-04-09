@@ -59,84 +59,87 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 child: CircularProgressIndicator(),
               )
             : _creditCards.list.length != 0
-                ? Stack(
-                  children: [
-                    CustomScrollView(
-                        slivers: [
-                          SliverToBoxAdapter(
-                            child: _buildTitleSection(
-                              title:
-                                  '${authProvider.lg[authProvider.language]["Payment Details"]}',
-                              subTitle:
-                                  '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}',
+                ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Stack(
+                    children: [
+                      CustomScrollView(
+                          slivers: [
+                            SliverToBoxAdapter(
+                              child: _buildTitleSection(
+                                title:
+                                    '${authProvider.lg[authProvider.language]["Payment Details"]}',
+                                subTitle:
+                                    '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}',
+                              ),
                             ),
-                          ),
-                          SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int i) {
-                                return Container(
-                                  child:
-                                  InkWell(
-                                    onTap: (){
-                                      _creditCards.value = i;
-                                      setState(() {
-                                        _value = i;
-                                      });
-                                      _creditCards.credit =
-                                      _creditCards.list[i];
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Radio(
-                                          fillColor: MaterialStateColor.resolveWith(
-                                              (states) => colorCustom),
-                                          toggleable: true,
-                                          groupValue: _creditCards.value,
-                                          value: i,
-                                          onChanged: (value) {
-                                            _creditCards.value = i;
-                                            setState(() {
-                                              _value = i;
-                                            });
-                                            _creditCards.credit =
-                                                _creditCards.list[i];
-                                          },
-                                        ),
-                                        _buildCreditCard(
-                                          color: Colors.black,
-                                          cardExpiration:
-                                              "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                                          cardHolder: _creditCards.list[i].ownerName,
-                                          cardNumber:
-                                              "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                        ),
-                                      ],
+                            SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (BuildContext context, int i) {
+                                  return Container(
+                                    child:
+                                    InkWell(
+                                      onTap: (){
+                                        _creditCards.value = i;
+                                        setState(() {
+                                          _value = i;
+                                        });
+                                        _creditCards.credit =
+                                        _creditCards.list[i];
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Radio(
+                                            fillColor: MaterialStateColor.resolveWith(
+                                                (states) => colorCustom),
+                                            toggleable: true,
+                                            groupValue: _creditCards.value,
+                                            value: i,
+                                            onChanged: (value) {
+                                              _creditCards.value = i;
+                                              setState(() {
+                                                _value = i;
+                                              });
+                                              _creditCards.credit =
+                                                  _creditCards.list[i];
+                                            },
+                                          ),
+                                          _buildCreditCard(
+                                            color: Colors.black,
+                                            cardExpiration:
+                                                "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                            cardHolder: _creditCards.list[i].ownerName,
+                                            cardNumber:
+                                                "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                              childCount: _creditCards.list.length,
+                                  );
+                                },
+                                childCount: _creditCards.list.length,
+                              ),
                             ),
-                          ),
-                          // SliverToBoxAdapter(
-                          //     child: IconButton(
-                          //   onPressed: () {
-                          //     Navigator.of(context).push(
-                          //       MaterialPageRoute(
-                          //         builder: (context) => HomeScreen(),
-                          //       ),
-                          //     );
-                          //
-                          //
-                          //   },
-                          //   icon: Icon(
-                          //     Icons.add,
-                          //     color: colorCustom,
-                          //   ),
-                          // ))
-                        ],
-                      ),
-                  ],
+                            // SliverToBoxAdapter(
+                            //     child: IconButton(
+                            //   onPressed: () {
+                            //     Navigator.of(context).push(
+                            //       MaterialPageRoute(
+                            //         builder: (context) => HomeScreen(),
+                            //       ),
+                            //     );
+                            //
+                            //
+                            //   },
+                            //   icon: Icon(
+                            //     Icons.add,
+                            //     color: colorCustom,
+                            //   ),
+                            // ))
+                          ],
+                        ),
+                    ],
+                  ),
                 )
                 : Center(
                     child: InkWell(
