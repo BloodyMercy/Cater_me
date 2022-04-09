@@ -503,7 +503,7 @@ class _OrderState extends State<Order> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    "${authProvider.lg[authProvider.language]["Total"]} ${details.totale.toStringAsFixed(2)} ${authProvider.lg[authProvider.language]["SAR"]}",
+                                                    "${authProvider.lg[authProvider.language]["Total"]} ${details.adonce?details.controllers[0].text:details.totale.toStringAsFixed(2)} ${authProvider.lg[authProvider.language]["SAR"]}",
                                                     style: const TextStyle(
                                                         fontSize: 18,
                                                         fontFamily:

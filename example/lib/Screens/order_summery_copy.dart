@@ -29,7 +29,6 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
   @override
   bool loading = false;
-  bool adonce=false ;
   @override
   void initState() {
     super.initState();
@@ -258,7 +257,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
 
                       });
                     },
-                    child:  Text('${authProvider.lg[authProvider.language]["Share Bill"]}'
+                    child:  Text('${authProvider.lg[authProvider.language]["bill"]}'
                       ,
                       style: TextStyle(
                           decoration: TextDecoration.underline,
@@ -365,7 +364,7 @@ setState(() {
                         onPressed: () {
                           details.controllers.clear();
                           details.choosebillFriend.clear();
-                          adonce=false;
+                          details.adonce=false;
                           _startAddNewFriend(context);
                         },
                         child: Text('${authProvider.lg[authProvider.language]["Add Friend"]}'
@@ -389,18 +388,18 @@ setState(() {
                         ? CheckboxListTile(
                       activeColor: Theme.of(context).primaryColor,
                       value: details.choosebillFriend
-                          .contains(frnd.listFriends[index]),
+                           .contains(frnd.listFriends[index]),
                       onChanged: (val) {
 
                         if (val == true){
-                          if(!adonce){
+                          if(!details.adonce){
                             FriendModel you = FriendModel();
 
                             you.name=authProvider.lg[authProvider.language]["Me"];
                             you.id=-69;
                             you.image=imageurl;
                             details.addfriend(you);
-                            adonce=true;
+                            details.    adonce=true;
                           }
                           details.addfriend(frnd.listFriends[index]);}
                         else {
@@ -408,7 +407,7 @@ setState(() {
                               .removefriend(frnd.listFriends[index]);
                           if(details.choosebillFriend.length==1){
                             details.choosebillFriend.clear();
-                            adonce=false;
+                            details.adonce=false;
                           }
                         }    },
                       title: Card(
@@ -497,7 +496,7 @@ details.controllers[0].text="1";
                                 else{
 
                                   details.controllers[0].text =(details.totale-sum).toString()=="0.0"?"1":(details.totale-sum+1).toString();
-                                  details.updateprocefreind( details.totale-sum, 1);
+                                  details.updateprocefreind( details.totale-sum, 0);
                                   details.updateprocefreind( lastinput, index);
 
                                 }

@@ -124,6 +124,7 @@ class LanguageTr {
       "Occasions": "كل المناسبات",
       "Orders": "كل الطلبات",
       "Settings": "الاعدادات",
+
       "Details": "تفاصيل",
       "Tracking": "شوف وين طلبك",
       "Order Info": "معلومات طلبك",
@@ -325,8 +326,10 @@ class LanguageTr {
       'We hope our service met your expectations!':"نأمل أن تلبي خدمتنا توقعاتك!",
       'Cancel':'ما أبغى',
       'Rate your order':"قيم طلبك",
+      "bill":"شارك فاتورتك"
     },
     "en": {
+      "bill":"Share bill",
       'Rate your order':'Rate your order',
       'Cancel':'Cancel',
       'We hope our service met your expectations!':'We hope our service met your expectations!',
