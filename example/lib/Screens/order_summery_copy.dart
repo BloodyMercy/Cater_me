@@ -493,8 +493,8 @@ setState(() {
                             child: TextFormField(
                               enabled: index!=0,
                               onChanged: (value) {
-print(value);
-details.controllers[0].text="1";
+// print(value);
+details.controllers[0].text="0";
 
 details.updateprocefreind(1, 0);
                                 double sum = 0.0;
@@ -505,7 +505,7 @@ details.updateprocefreind(1, 0);
                                       .controllers[i].text.isEmpty ||
                                       details.controllers[i].text ==
                                           null) {
-                                    details.updateprocefreind(1, index);
+                                    // details.updateprocefreind(1, index);
                                     details.controllers[i].clear();
                                   } else {
 
@@ -513,6 +513,7 @@ details.updateprocefreind(1, 0);
                                         details.controllers[i].text==""?"0.0":details.controllers[i].text);
                                   }
                                 }
+details.controllers[0].text="1";
                                 double lastinput = double.parse(
                                     details.controllers[index].text==""?"0.0":details.controllers[index].text);
                                 if (sum > details.totale) {
@@ -527,8 +528,8 @@ if((details.totale-sum).toString()=="0.0"){
                                   details.controllers[0].text ="1";
 
                                   details.updateprocefreind( 1, 0);
-}else{
-  details.controllers[0].text =                           (details.totale-sum).toString();
+         }else{
+                        details.controllers[0].text = (details.totale-sum).toString();
                                 details.updateprocefreind( details.totale-sum, 0);
                                 }
                                   details.updateprocefreind( lastinput, index);

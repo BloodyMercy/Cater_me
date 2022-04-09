@@ -391,7 +391,8 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
 
                                   a.price=widget.food.price;
                                   a.totalprice = count * widget.food.price;
-                                  a.tax=widget.food.tax;
+                                  a.tax=count*widget.food.tax;
+                                  a.oldtax=widget.food.tax;
                                   a.min=widget.food.min;
                                   a.max=widget.food.max;
                                   a.increment=widget.food.increment;

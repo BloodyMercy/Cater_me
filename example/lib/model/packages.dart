@@ -5,7 +5,7 @@ class Package {
   bool perperson = false;
 
   String image = "";
-  int tax = 0;
+  double tax = 0.0;
   String title = "";
   String description = "";
   double price = 0;

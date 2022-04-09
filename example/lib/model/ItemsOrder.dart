@@ -3,7 +3,8 @@ import 'package:CaterMe/model/details.dart';
 class ItemOrders {
    int id;
   String image = "";
-int tax = 0;
+double tax = 0.0;
+double oldtax=0.0;
   String title = "";
   String description = "";
   double price = 0;

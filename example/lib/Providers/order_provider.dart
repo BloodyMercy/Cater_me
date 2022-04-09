@@ -445,11 +445,11 @@ calculate(){
     print("******************88");
 print(item.tax);
     if(a) {
-      vatshisha = vatshisha + (item.tax * item.totalprice)/100;
+      vatshisha = vatshisha + item.tax ;
       item.isShisha=true;
     }
     else {
-      vatfood = vatfood + (item.tax * item.totalprice)/100;
+      vatfood = vatfood + item.tax ;
       item.isShisha=false;
     }
     _itemOrders.add(item);
@@ -483,9 +483,9 @@ print(item.tax);
 
     _itemOrders.remove(item);
     if(item.isShisha)
-      vatshisha=vatshisha-(item.tax *item.totalprice/100);
+      vatshisha=vatshisha-(item.tax);
     else
-      vatfood=vatfood-(item.tax *item.totalprice/100);
+      vatfood=vatfood-(item.tax );
 
     totale= totale-item.totalprice;
     notifyListeners();
@@ -503,13 +503,13 @@ modifyItems(int count,int index){
 
 
   if(_itemOrders[index].isShisha) {
-    vatshisha = vatshisha - (  _itemOrders[index].tax *  totalold)/100;
-    vatshisha = vatshisha + (  _itemOrders[index].tax *   _itemOrders[index].totalprice)/100;
+    vatshisha = vatshisha - (  _itemOrders[index].tax );
+    vatshisha = vatshisha + ( count * _itemOrders[index].oldtax );
     //   item.isShisha=true;
   }
   else {
-    vatfood = vatfood - (  _itemOrders[index].tax *  totalold)/100;
-    vatfood = vatfood + (  _itemOrders[index].tax *   _itemOrders[index].totalprice)/100;
+    vatfood = vatfood - (  _itemOrders[index].tax );
+    vatfood = vatfood + ( count * _itemOrders[index].oldtax );
   }
   // _itemOrders.remove(item);
   // subTotal=subTotal+(count*_itemOrders[index].price);
@@ -524,13 +524,13 @@ modifyItems(int count,int index){
     _itemOrders[index].totalprice=count*_itemOrders[index].price;
 
     if(_itemOrders[index].isShisha) {
-      vatshisha = vatshisha - (  _itemOrders[index].tax *  totalold)/100;
-      vatshisha = vatshisha + (  _itemOrders[index].tax *   _itemOrders[index].totalprice)/100;
+      vatshisha = vatshisha - (  _itemOrders[index].tax );
+      vatshisha = vatshisha + (  _itemOrders[index].oldtax *count );
    //   item.isShisha=true;
     }
     else {
-      vatfood = vatfood - (  _itemOrders[index].tax *  totalold)/100;
-      vatfood = vatfood + (  _itemOrders[index].tax *   _itemOrders[index].totalprice)/100;
+      vatfood = vatfood - (  _itemOrders[index].tax );
+      vatfood = vatfood + (  _itemOrders[index].oldtax *count) ;
     }
 
     // _itemOrders.remove(item);
