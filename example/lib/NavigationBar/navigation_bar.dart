@@ -432,6 +432,8 @@ class _NavigationBarState extends State<Navigationbar> {
                   orderCaterprovider.spets = 1;
                   orderCaterprovider.vatshisha = 0.0;
                   orderCaterprovider.vatfood = 0.0;
+                  orderCaterprovider.adonce = false;
+                  orderCaterprovider.issearch = true;
 
                   orderCaterprovider.totale = 0.0;
                   orderCaterprovider.orderid = 0;
@@ -460,6 +462,7 @@ class _NavigationBarState extends State<Navigationbar> {
                   order.check4 = false;
                   orderCaterprovider.checkotp = false;
                   // orderCaterprovider.listFriend=[];
+
                   address.value2Index = -1;
                   //address.value1Index = -1;
                   orderCaterprovider.valueIndex = -1;
