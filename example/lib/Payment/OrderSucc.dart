@@ -136,7 +136,7 @@ Animation<Offset> offsetAnimation2;
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Container(
-
+height: height,
           color: LightColors.kLightYellow,
           child: Stack(children: [
             // Container(
@@ -162,7 +162,7 @@ Animation<Offset> offsetAnimation2;
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height / 2,
+                        .height / 3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image:  _serpres.serviceId != 1

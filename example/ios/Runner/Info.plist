@@ -18,9 +18,6 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-    <key>NSContactsUsageDescription</key>
-    <string>Reason we need access to the contact list</string>
-
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -42,6 +39,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>this app need to access your camera to upload your profile photo</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Reason we need access to the contact list</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>this app need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
