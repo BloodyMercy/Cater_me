@@ -75,7 +75,7 @@ class _MyPdfState extends State<MyPdf> {
              orders.pdfLink,
                // maxAgeCacheObject:Duration(days: 30), //duration of cache
               placeholder: (progress) => Center(child: Text('$progress %')),
-               errorWidget: (error) { Timer(Duration(seconds: 1), (){Navigator.pop(context);});  return  Center(child: Text("failed ,try again later..."));},
+               errorWidget: (error) { Timer(Duration(seconds: 1,milliseconds: 500), (){Navigator.pop(context);});  return  Center(child: Text("failed ,try again later..."));},
              )
         )
     );
