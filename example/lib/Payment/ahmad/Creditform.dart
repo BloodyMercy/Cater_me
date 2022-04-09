@@ -161,7 +161,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText:'${user.lg[user.language]['Expired Date']}',
-                    hintText: 'MM/YY'),
+                    hintText:user.language=="ar"?'YY/MM': 'MM/YY'),
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.next,
               ),

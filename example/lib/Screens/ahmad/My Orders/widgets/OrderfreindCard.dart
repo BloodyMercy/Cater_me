@@ -147,7 +147,7 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
               widget.a.paymentStatusId==1?Container(
                 width: MediaQuery.of(context).size.width*0.30,
 
-                height:MediaQuery.of(context).size.width*0.1 ,
+                height:MediaQuery.of(context).size.width*0.11 ,
                 child: Card(
 
                   color: colorCustom,
