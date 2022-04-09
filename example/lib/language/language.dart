@@ -169,6 +169,7 @@ class LanguageTr {
       "Others": "أحد ثاني",
       "Pick number of guests": "اختار عدد معازيمك",
       "Pick type of event": "اختار نوع المناسبه",
+      "Pick type of event": "اختار نوع المناسبه",
       "Please fill the empty fields": "املا الخانات الفاضيه",
       "after": "بعد",
       "before": "قبل",
