@@ -19,7 +19,7 @@ class Package {
       this.isfavorite, this.itemDetails);
 
   Package.fromJson(Map<String, dynamic> json, String a) {
-    tax = json['tax'] == null ? 0 : json['tax'];
+    tax = json['tax'] == null ? 0 : double.parse(json['tax'].toString());
     id = json['id'] ?? 0;
 
     if (a == "ar") {
