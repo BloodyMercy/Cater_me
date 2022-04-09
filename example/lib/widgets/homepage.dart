@@ -760,6 +760,7 @@ ratingg();
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                 horizontal: 20,
+                                                vertical: 8,
                                               ),
                                               child: Text(
                                                 '${authProvider.lg[authProvider.language]["Gallery"]}',

@@ -62,12 +62,12 @@ class LanguageTr {
       "Reset Password": "غير كلمه السر",
       "My Addresses": "عناويني",
       "My Credit Cards": "بطاقاتك",
-      "My Friends": "اصدقائك",
+      "My Friends": "أصحابك",
       "Language": "اللغة",
       "Contact Us": "تواصل معنا",
       "Logout": "تسجيل خروجك",
       "Full Name": "الإسم",
-      "Submit": "ارسال",
+      "Submit": "حفظ",
       "Required": "مطلوبه",
       "Please enter email": "اكتب  ايميلك",
       "Change Password": "غير  كلمه السر",
@@ -326,9 +326,11 @@ class LanguageTr {
       'We hope our service met your expectations!':"نأمل أن تلبي خدمتنا توقعاتك!",
       'Cancel':'ما أبغى',
       'Rate your order':"قيم طلبك",
-      "bill":"شارك فاتورتك"
+      "bill":"شارك فاتورتك",
+      "Register":"تسجيل"
     },
     "en": {
+"Register":"Register",
       "bill":"Share bill",
       'Rate your order':'Rate your order',
       'Cancel':'Cancel',

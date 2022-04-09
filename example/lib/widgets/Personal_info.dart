@@ -73,19 +73,10 @@ class _PersonalInfoState extends State<PersonalInfo> {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed:(){
-  Navigator.of(context).pushReplacement(
-  MaterialPageRoute(
-  builder: (context) => Navigationbar(3),
-  ));
-
-},
-
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            iconSize: 30,
+            icon: Icon(Icons.arrow_back_ios_outlined),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           elevation: 0,
           centerTitle: true,
