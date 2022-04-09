@@ -76,10 +76,14 @@ class _OccasionListViewState extends State<OccasionListView> {
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return SafeArea(
       child: RefreshIndicator(
-        onRefresh: refreshocasionData,
-        child: CustomScrollView(
+
+        onRefresh:authProvider.status==Status.Unauthenticated?(){}: refreshocasionData,
+        child:
+
+        CustomScrollView(
           slivers: [
-            authProvider.status==Status.Unauthenticated?Container(height:MediaQuery.of(context).size.height/3 ,) : SliverAppBar(
+            authProvider.status==Status.Unauthenticated?SliverToBoxAdapter(child:Container(height:MediaQuery.of(context).size.height/3 )) :
+ :           SliverAppBar(
               pinned: false,
               floating: false,
               expandedHeight: MediaQuery.of(context).size.height * 0.2,
@@ -125,7 +129,7 @@ class _OccasionListViewState extends State<OccasionListView> {
                                               )
                                             ,
                                         Text(
-                                          occa.listoccasiontype[0].name,
+                                          '${authProvider.lg[authProvider.language]["Add occasion"]}',
                                           style: TextStyle(fontSize: 18),
                                         )
                                       ],
@@ -143,7 +147,9 @@ class _OccasionListViewState extends State<OccasionListView> {
             ),
             occa.all.length == 0
                 ? SliverToBoxAdapter(
+
                     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
 
                       !loading?  language=="en"?Image.asset('images/NoOccassionsYet.png'):Image.asset('images/nooccasionyetAR.png'):Center(

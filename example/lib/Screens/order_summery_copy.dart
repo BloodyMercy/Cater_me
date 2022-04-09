@@ -289,8 +289,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                               details.controllers.clear();
 
                               if(details.choosebillFriend.length==1){
-                                details.choosebillFriend.clear();
                                 details.adonce=false;
+                                details.choosebillFriend.clear();
                               }
                               if(!details.adonce&&details.choosebillFriend.isNotEmpty){
                                 FriendModel you = FriendModel();
@@ -298,8 +298,9 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 you.name=authProvider.lg[authProvider.language]["Me"];
                                 you.id=-69;
                                 you.image=imageurl;
-                                details.addfriend(you);
+                                details.choosebillFriend.insert(0, you);
 
+                                details.adonce=true;
                               }
                               for(int c=0; c<details.choosebillFriend.length; c++){
                                 TextEditingController alpha = TextEditingController();
@@ -321,7 +322,6 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                 issearch = true;
                               });
 
-    details.adonce=true;
     details.issearch=issearch;
                             },
                             icon: Icon(
@@ -343,8 +343,8 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                                   you.name=authProvider.lg[authProvider.language]["Me"];
                                   you.id=-69;
                                   you.image=imageurl;
-                                  details.addfriend(you);
-
+                                  details.choosebillFriend.insert(0, you);
+                                  details.adonce=true;
                                 }
                                 for(int c=0; c<details.choosebillFriend.length; c++){
                                   TextEditingController alpha = TextEditingController();
@@ -364,7 +364,7 @@ setState(() {
                                   issearch = true;
                                 });
                                 details.issearch=issearch;
-                                details.adonce=true;
+
                                 //  Navigator.pop(context);
                               },
                               icon: Icon(
@@ -500,7 +500,7 @@ details.controllers[0].text="1";
                                       .controllers[i].text.isEmpty ||
                                       details.controllers[i].text ==
                                           null) {
-                                    details.updateprocefreind(0, index);
+                                    details.updateprocefreind(1, index);
                                     details.controllers[i].clear();
                                   } else {
 

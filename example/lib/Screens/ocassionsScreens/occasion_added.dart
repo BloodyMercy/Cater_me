@@ -113,6 +113,8 @@ String language;
 
               address.value2Index=-1;
               orderCaterprovider.spets=1;
+              orderCaterprovider.issearch=true;
+              orderCaterprovider.adonce=false;
               orderCaterprovider.vatshisha=0.0;
               orderCaterprovider.vatfood=0.0;
 

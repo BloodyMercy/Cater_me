@@ -651,8 +651,9 @@ class _OrderState extends State<Order> {
                                                     if (address.eventnamecontroller.text == "" ||
                                                         address.evendatecontroller
                                                                 .text ==
-                                                            "" ||
-                                                        address.numberofguestcontroller
+                                                            "" ||address.DailyDatecontroller.text ==
+                                                        ""||
+                                                    address.numberofguestcontroller
                                                                 .text ==
                                                             "") {
                                                       _key.currentState

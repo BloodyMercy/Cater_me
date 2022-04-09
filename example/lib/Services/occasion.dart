@@ -80,7 +80,7 @@ class OccasionService {
         List<dynamic> responseData = json.decode(response.body);
 
         // List<City> posts = List<City>.from(responseData.map((model)=> City.fromJson(model)));  //map to list
-       l.add( OccassionType(id: -700, name: '${user.lg[prefs.getString("locale")]["Add occasion"]}', image: ''));
+
         for (int i = 1; i < responseData.length; i++) {
           l.add(OccassionType.fromJson(responseData[i],a));
         }
