@@ -185,21 +185,30 @@ bool isCheckedcolor =false ;
     var screenHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
+        appBar: AppBar(
+
+        centerTitle: true,
+        backgroundColor: Color(0xFF3F5521),
+        title: Text(
+          '${authProvider.lg[authProvider.language]["Register"]}' ,
+        style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.normal,
+        fontSize: 19),
+    ),
+    leading: IconButton(
+    icon: Icon(Icons.arrow_back_ios_outlined),
+    onPressed: () {
+    Navigator.pop(context);
+    },
+    ),),
       key: _scaffKey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.chevron_left,
-                    color: Colors.black,
-                    size: 30,
-                  )),
+
               GestureDetector(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
@@ -537,8 +546,8 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                               label:
                                   '${authProvider.lg[authProvider.language]["Gender"]}',
                               items: [
-                                '${authProvider.lg[authProvider.language]["Female"]}',
                                 '${authProvider.lg[authProvider.language]["Male"]}',
+                                '${authProvider.lg[authProvider.language]["Female"]}',
                               ],
                               // events: address.regular.events,
                               selectedValue: 0,

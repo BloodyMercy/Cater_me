@@ -87,7 +87,9 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                 itemBuilder: (context, index) {
                   //  final cards = card[i];
                   return Container(
+
                     child: GestureDetector(
+
                       onTap: () async {
                         setState(() {
                           loadingitems = true;
@@ -107,6 +109,7 @@ class _AddonsCuisinCardofferState extends State<AddonsCardoffer> {
                         // );
                       },
                       child: Card(
+
                           color: LightColors.kLightYellow2,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(

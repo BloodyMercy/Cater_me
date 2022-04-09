@@ -32,7 +32,7 @@ class AddOnCardOrder extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.3,
         child: Stack(
           children: [
             Card(
@@ -69,7 +69,7 @@ class AddOnCardOrder extends StatelessWidget {
                 },
                 child: Container(
                   // width: mediaQuery.size.width*0.8 ,
-                  height: mediaQuery.size.height * 0.25,
+                  height: mediaQuery.size.height * 0.35,
 
                   child: Column(
                     children: [
