@@ -500,7 +500,7 @@ setState(() {
                               enabled: index!=0,
                               onChanged: (value) {
 // print(value);
-details.controllers[0].text="1";
+details.controllers[0].text="0";
 
 details.updateprocefreind(1, 0);
                                 double sum = 0.0;
@@ -524,8 +524,8 @@ details.controllers[0].text="1";
                                     details.controllers[index].text==""?"0.0":details.controllers[index].text);
                                 if (sum > details.totale) {
                                   details.controllers[index].text =
-                                      (details.totale - (sum - lastinput))
-                                          .toString()=="0.0"?"":(details.totale - (sum - lastinput))
+                                      (details.totale - (sum - lastinput)-1)
+                                          .toString()=="0.0"?"":(details.totale - (sum - lastinput)-1)
                                           .toString();
                                   details.updateprocefreind(details.totale - (sum - lastinput), index);
                                 }
