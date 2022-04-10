@@ -500,7 +500,7 @@ setState(() {
                               enabled: index!=0,
                               onChanged: (value) {
 // print(value);
-details.controllers[0].text="0";
+details.controllers[0].text="1";
 
 details.updateprocefreind(1, 0);
                                 double sum = 0.0;

@@ -569,7 +569,7 @@ class _OrderState extends State<Order> {
                                                       await orderProvider
                                                           .getdistance();
 
-                                                      if (!orderProvider
+                                                      if (orderProvider
                                                           .coverageAddressModel
                                                           .isInCoverage) {
                                                         // if(true) {
