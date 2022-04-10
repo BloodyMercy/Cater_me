@@ -57,107 +57,145 @@ class _HomePageState extends State<HomePage>
     final user = Provider.of<UserProvider>(context, listen: false);
 
     Future.delayed(Duration(seconds: 2),() async {
-
-      if(packageprovider.reviewPending ) await showDialog(
-          context: context,
-          builder: (cont) => Dialog(
-              backgroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              child: Stack(
-                overflow: Overflow.visible,
-                alignment: Alignment.topCenter,
-                children: [
-                  Container(
-                    height: MediaQuery.of(cont).size.height * 0.25,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(cont).size.height * 0.07,
-                          left: MediaQuery.of(cont).size.width * 0.05,
-                          right: MediaQuery.of(cont).size.width * 0.05),
-                      child: Column(
-                        children: [
-                          Text(
-                            '${user.lg[user.language][ 'We hope our service met your expectations!']}',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          Padding(
+      print(packageprovider.reviewPending);
+      print("))))))))))))))))))))))))");
+      if(packageprovider.reviewPending ) {
+        print(packageprovider.reviewPending);
+        print("))))))))))))))))))))))))");
+        await showDialog(
+            context: context,
+            builder: (cont) =>
+                Dialog(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Stack(
+                      overflow: Overflow.visible,
+                      alignment: Alignment.topCenter,
+                      children: [
+                        Container(
+                          height: MediaQuery
+                              .of(cont)
+                              .size
+                              .height * 0.25,
+                          child: Padding(
                             padding: EdgeInsets.only(
-                                top: MediaQuery.of(cont).size.height * 0.02),
-                            child: Divider(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: MediaQuery.of(cont).size.height * 0.01),
-                            child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                                top: MediaQuery
+                                    .of(cont)
+                                    .size
+                                    .height * 0.07,
+                                left: MediaQuery
+                                    .of(cont)
+                                    .size
+                                    .width * 0.05,
+                                right: MediaQuery
+                                    .of(cont)
+                                    .size
+                                    .width * 0.05),
+                            child: Column(
                               children: [
+                                Text(
+                                  '${user.lg[user
+                                      .language][ 'We hope our service met your expectations!']}',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                      MediaQuery.of(cont).size.width * 0.05),
-                                  child: TextButton(
-                                    child: Text(
-                                      '${user.lg[user.language][ 'Cancel']}',
-                                      style: TextStyle(
-                                          color: Colors.white),
-                                    ),
-                                    onPressed: () async {
-                                     await  packageprovider.hidesurvey();
-                                      setState(() {
-                                        packageprovider
-                                            .reviewPending = false;
-                                      });
-                                      Navigator.pop(cont);
-                                    },
+                                  padding: EdgeInsets.only(
+                                      top: MediaQuery
+                                          .of(cont)
+                                          .size
+                                          .height * 0.02),
+                                  child: Divider(
+                                    color: Colors.white,
                                   ),
                                 ),
-                                Divider(
-                                  color: Colors.white,
-                                ),
-                                TextButton(
-                                  child: Text(
-                                    '${user.lg[user.language][ 'Rate your order']}',
-                                    style:
-                                    TextStyle(color: Colors.white),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: MediaQuery
+                                          .of(cont)
+                                          .size
+                                          .height * 0.01),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                            MediaQuery
+                                                .of(cont)
+                                                .size
+                                                .width * 0.05),
+                                        child: TextButton(
+                                          child: Text(
+                                            '${user.lg[user
+                                                .language][ 'Cancel']}',
+                                            style: TextStyle(
+                                                color: Colors.white),
+                                          ),
+                                          onPressed: () async {
+                                            await packageprovider.hidesurvey();
+                                            setState(() {
+                                              packageprovider
+                                                  .reviewPending = false;
+                                            });
+                                            Navigator.pop(cont);
+                                          },
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: Colors.white,
+                                      ),
+                                      TextButton(
+                                        child: Text(
+                                          '${user.lg[user
+                                              .language][ 'Rate your order']}',
+                                          style:
+                                          TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pop(cont);
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Review()));
+                                          setState(() {
+                                            packageprovider.reviewPending =
+                                            false;
+                                          });
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    Navigator.pop(cont);
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                Review()));
-                                    setState(() {
-                                      packageprovider.reviewPending =
-                                      false;
-                                    });
-                                  },
-                                ),
+                                )
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                      top: -MediaQuery.of(cont).size.height * 0.06,
-                      child: Image.asset(
-                        'images/Logoicon.png',
-                        height: 100,
-                      )),
-                ],
-              )));
-
-
-    });
+                          ),
+                        ),
+                        Positioned(
+                            top: -MediaQuery
+                                .of(cont)
+                                .size
+                                .height * 0.06,
+                            child: Image.asset(
+                              'images/Logoicon.png',
+                              height: 100,
+                            )),
+                      ],
+                    )));
+      } });
+  }
+  getPersonalInfo() async {
+    final personalInfo =
+    await Provider.of<UserProvider>(context, listen: false);
+    await personalInfo.getLanguage();
+    //personalInfo.loading = true;
+    await personalInfo.getPersonalInfo();
+    // personalInfo.loading = false;
   }
   @override
   void initState() {
@@ -165,6 +203,7 @@ class _HomePageState extends State<HomePage>
     super.initState();
     getalldata();
     getData();
+    getPersonalInfo();
 
     _controller = AnimationController(
       duration: Duration(seconds: 5),
