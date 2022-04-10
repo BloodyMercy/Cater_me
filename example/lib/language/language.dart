@@ -283,7 +283,7 @@ class LanguageTr {
       "all fields required": "جميع الحقول مطلوبة",
       'Start': 'إبدأ هنا',
       "Type your answer here...": "اكتب إجابتك هنا...    ",
-      "Total including VAT": "إجمالي ضريبة القيمة المضافة المدرجة",
+      "Total including VAT": "المجموع شامل الضريبة",
       "you must agree terms and conditions": "يجب أن توافق على الشروط والأحكام",
       "Order Date:": "تاريخ الطلب:",
       "Delivery Address :": "عنوان التسليم :",

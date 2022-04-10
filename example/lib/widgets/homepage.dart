@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage>
     final packageprovider =
     Provider.of<PackagesProvider>(context, listen: false);
     final user = Provider.of<UserProvider>(context, listen: false);
-
+bool load = true ; 
     Future.delayed(Duration(seconds: 2),() async {
       print(packageprovider.reviewPending);
       print("))))))))))))))))))))))))");
@@ -138,7 +138,21 @@ class _HomePageState extends State<HomePage>
                                                 color: Colors.white),
                                           ),
                                           onPressed: () async {
+                                            showDialog(
+                                              context: this.context,
+                                              barrierDismissible: false,
+                                              builder: (BuildContext contexts) {
+
+                                                return WillPopScope(
+                                                  // onWillPop: () => Future<bool>.value(false),
+                                                    child: AlertDialog(
+                                                      title: Text("${user.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
+                                                      content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
+                                                    ));
+                                              },
+                                            );
                                             await packageprovider.hidesurvey();
+                                            Navigator.pop(context);
                                             setState(() {
                                               packageprovider
                                                   .reviewPending = false;
@@ -748,7 +762,7 @@ ratingg();
                                                       padding:
                                                           EdgeInsets.symmetric(
                                                               horizontal: 20,
-                                                              vertical: 10),
+                                                              vertical: 8),
                                                       child: GestureDetector(
                                                           child: Text(
                                                               '${authProvider.lg[authProvider.language]["See All"]}',
@@ -771,6 +785,7 @@ ratingg();
                                                           }))
                                                 ],
                                               ),
+
                                               SizedBox(
                                                   height:
                                                       mediaQuery.size.height *
@@ -787,7 +802,11 @@ ratingg();
                                     // SizedBox(height: mediaQuery.size.height*0.05,)
                                   ]),
                                   // SizedBox(height: mediaQuery.size.height * 0.1,),
-
+                                SizedBox(
+                                  height:
+                                  MediaQuery.of(context).size.height *
+                                      0.04,
+                                ),
                                   ...getAddOnsCard(package.addonsall),
 
                                   Container(

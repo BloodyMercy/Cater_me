@@ -87,7 +87,7 @@ bool butload =true ;
           title: Text(
             "#${widget.id}",
             style: TextStyle(
-
+color: Color(0xFF3F5521),
                 fontWeight: FontWeight.w600,
 
                 fontSize: 16),
