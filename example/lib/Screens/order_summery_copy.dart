@@ -336,11 +336,7 @@ class _OrderSummeryCopyState extends State<OrderSummeryCopy> {
                           IconButton(
                               onPressed: () {
                                 details.controllers.clear();
-                                if(details.choosebillFriend.length==1){
-                                  details.adonce=false;
-                                  details.choosebillFriend.clear();
 
-                                }
                                 if(!details.adonce&&details.choosebillFriend.isNotEmpty){
                                   FriendModel you = FriendModel();
 
@@ -371,6 +367,11 @@ if(details.choosebillFriend.isNotEmpty) {
 
   details.updateprocefreind(double.parse(details.controllers[0].text), 0);
 }
+
+                                if(details.choosebillFriend.length==1){
+                                  details.choosebillFriend.clear();
+                                  details.adonce=false;
+                                }
 setState(() {
                                   issearch = true;
                                 });
