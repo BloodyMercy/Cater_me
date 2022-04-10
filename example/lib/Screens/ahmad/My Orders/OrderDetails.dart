@@ -85,10 +85,12 @@ bool butload =true ;
           elevation: 0,
           backgroundColor: Colors.white,
           title: Text(
-            '${authProvider.lg[authProvider.language][ "Order Details"]}',
+            "#${widget.id}",
             style: TextStyle(
+
                 fontWeight: FontWeight.w600,
-               fontSize: 25),
+
+                fontSize: 16),
           ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back_rounded,
@@ -109,6 +111,7 @@ bool butload =true ;
             SizedBox(
               height: 20,
             ),
+
             Row(
               children: [
                 SizedBox(
