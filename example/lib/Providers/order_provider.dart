@@ -513,6 +513,7 @@ modifyItems(int count,int index){
   }
   // _itemOrders.remove(item);
   // subTotal=subTotal+(count*_itemOrders[index].price);
+  _itemOrders[index].tax=count * _itemOrders[index].oldtax;
   totale= totale+  _itemOrders[index].totalprice;
   notifyListeners();
   }
@@ -538,6 +539,7 @@ modifyItems(int count,int index){
 
    // subTotal=subTotal+(count*_itemOrders[index].price);
     totale= totale+  _itemOrders[index].totalprice;
+    _itemOrders[index].tax=_itemOrders[index].oldtax *count;
     notifyListeners();
   }
 

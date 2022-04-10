@@ -84,6 +84,7 @@ static String host="https://catermedevelopment.azurewebsites.net/api/";
  static String ConfirmOTP=host+"Accounts/ConfirmOtp";
  static String GenerateInvoice=host+"Orders/GenerateInvoice";
  static String ResendOTP=host+"Accounts/ResendOTP";
+ static String hidesurvey=host+"Order/hidesurvey";
 
 
 

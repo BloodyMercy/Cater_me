@@ -65,7 +65,12 @@ List<Package> get listItems => _listItems;
   set allonsorder(List<Package> value) {
     _allonsorder = value;
   }
+  bool hidesurv =false;
 
+hidesurvey()  async {
+ hidesurv= await    PackageService().hidesurvey();
+ notifyListeners();
+}
   TextEditingController controllersearch=TextEditingController();
 
 

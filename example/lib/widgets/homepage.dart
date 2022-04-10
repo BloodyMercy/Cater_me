@@ -109,7 +109,8 @@ class _HomePageState extends State<HomePage>
                                       style: TextStyle(
                                           color: Colors.white),
                                     ),
-                                    onPressed: () {
+                                    onPressed: () async {
+                                     await  packageprovider.hidesurvey();
                                       setState(() {
                                         packageprovider
                                             .reviewPending = false;
