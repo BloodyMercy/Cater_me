@@ -145,7 +145,7 @@ bool butload =true ;
                       SizedBox(
                         height: 3,
                       ),
-                      butload? Card(
+                    orderStatus.orderStatus.statusId==1?Container():  butload? Card(
                         color: colorCustom,
                         child:
                         orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
