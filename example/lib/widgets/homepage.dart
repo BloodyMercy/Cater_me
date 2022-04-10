@@ -751,7 +751,7 @@ ratingg();
                                   ...getAddOnsCard(package.addonsall),
 
                                   Container(
-                                      height: mediaQuery.size.height / 4,
+                                      height: mediaQuery.size.height / 3.8,
                                       child: Column(children: [
                                         Row(
                                           mainAxisAlignment:
@@ -760,7 +760,7 @@ ratingg();
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                 horizontal: 20,
-                                                vertical: 8,
+                                                vertical: 2,
                                               ),
                                               child: Text(
                                                 '${authProvider.lg[authProvider.language]["Gallery"]}',

@@ -166,39 +166,40 @@ TextEditingController alpha =TextEditingController();
                 ]),
               ),
               SizedBox(height: screenHeight * 0.3),
-              !loading
-                  ? ElevatedButton(
-                      onPressed: () async {
-                        authprovider.phoneNumber.text=alpha.text;
-                        Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                             PhoneVerification1(check: true,contact: alpha.text, dialcode: "+966")));
-
-                       },
-                      child: Text(
-                        '${authprovider.lg[authprovider.language]["Send"]}',
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(
-                            screenHeight * 0.14,
-                            screenHeight * 0.02,
-                            screenHeight * 0.14,
-                            screenHeight * 0.02),
-                        onPrimary: const Color.fromRGBO(255, 255, 255, 1),
-                        primary: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                      ),
-                    )
-                  : Center(child: CircularProgressIndicator())
             ],
           ),
         ),
       ),
-    ));
+    floatingActionButton:    !loading
+        ? ElevatedButton(
+      onPressed: () async {
+        authprovider.phoneNumber.text=alpha.text;
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    PhoneVerification1(check: true,contact: alpha.text, dialcode: "+966")));
+
+      },
+      child: Text(
+        '${authprovider.lg[authprovider.language]["Send"]}',
+        style: Theme.of(context).textTheme.headline1,
+      ),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.fromLTRB(
+            screenHeight * 0.14,
+            screenHeight * 0.02,
+            screenHeight * 0.14,
+            screenHeight * 0.02),
+        onPrimary: const Color.fromRGBO(255, 255, 255, 1),
+        primary: Theme.of(context).primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+      ),
+    )
+        : Center(child: CircularProgressIndicator())
+          ,
+        floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat ,));
   }
 }
