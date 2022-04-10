@@ -32,7 +32,7 @@ class AddOnCardOrder extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.3,
+        height: MediaQuery.of(context).size.height * 0.25,
         child: Stack(
           children: [
             Card(
@@ -74,8 +74,8 @@ class AddOnCardOrder extends StatelessWidget {
                   child: Column(
                     children: [
                       CachedNetworkImage(
-                        height: 75,
-                        width: 75,
+                        height: 95,
+                        width: 95,
                         placeholder: (context, url) =>
                             CircularProgressIndicator(),
                         imageUrl: this.addOn.image,

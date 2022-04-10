@@ -266,26 +266,97 @@ language=sh.getString("locale");
   String ToEnglishNumbers(String s)
   {
     return
-      s.replaceAll(RegExp(r"٠"),"0").
-      replaceAll(RegExp(r"۱"), "1").
-      replaceAll(RegExp(r"۲"), "2").
-      replaceAll(RegExp(r"۳"), "3").
-      replaceAll(RegExp(r"٤"), "4").
-      replaceAll(RegExp(r"٥"), "5").
-      replaceAll(RegExp(r"٦"), "6").
-      replaceAll(RegExp(r"٧"), "7").
-      replaceAll(RegExp(r"٨"), "8").
-      replaceAll(RegExp(r"٩"), "9");
+      s.replaceAll("٠","0").
+      replaceAll("۱", "1").
+      replaceAll("۲", "2").
+      replaceAll("۳", "3").
+      replaceAll("٤", "4").
+      replaceAll("٥", "5").
+      replaceAll("٦", "6").
+      replaceAll("٧", "7").
+      replaceAll("٨", "8").
+      replaceAll("٩", "9");
   }
-
+  static String ConvertDigitsToLatin(String s) {
+    var sb = new StringBuffer();
+    for (int i = 0; i < s.length; i++) {
+      switch (s[i]) {
+        case '\u06f0':
+          sb.write('0');
+          break;
+        case '\u06f1':
+          sb.write('1');
+          break;
+        case '\u06f2':
+          sb.write('2');
+          break;
+        case '\u06f3':
+          sb.write('3');
+          break;
+        case '\u06f4':
+          sb.write('4');
+          break;
+        case '\u06f5':
+          sb.write('5');
+          break;
+        case '\u06f6':
+          sb.write('6');
+          break;
+        case '\u06f7':
+          sb.write('7');
+          break;
+        case '\u06f8':
+          sb.write('8');
+          break;
+        case '\u06f9':
+          sb.write('9');
+          break;
+        case '\u0660':
+          sb.write('0');
+          break;
+        case '\u0661':
+          sb.write('1');
+          break;
+        case '\u0662':
+          sb.write('2');
+          break;
+        case '\u0663':
+          sb.write('3');
+          break;
+        case '\u0664':
+          sb.write('4');
+          break;
+        case '\u0665':
+          sb.write('5');
+          break;
+        case '\u0666':
+          sb.write('6');
+          break;
+        case '\u0667':
+          sb.write('7');
+          break;
+        case '\u0668':
+          sb.write('8');
+          break;
+        case '\u0669':
+          sb.write('9');
+          break;
+        default:
+          sb.write(s[i]);
+          break;
+      }
+    }
+    return sb.toString();
+  }
   Future<bool> LogIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     try {
       //_status = Status.Authenticating;
       notifyListeners();
+      print(ConvertDigitsToLatin(email.text.toString()));
       ErrorMessage u = await AuthModelSignin.login(
-          ToEnglishNumbers(email.text.toString()), password.text.toString());
+          ConvertDigitsToLatin(email.text.toString()), password.text.toString());
 
       String token = "";
 

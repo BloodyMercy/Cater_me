@@ -207,14 +207,14 @@ class _OrderAdsDetailState extends State<packageAdsDetailTestorder> {
             backgroundColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               background: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.45,
                 width: double.maxFinite,
                 child: FittedBox(
                   fit: BoxFit.contain,
                   child:
                   CachedNetworkImage(
-                      height: screenHeight * 0.175,
-                      width: width * 0.8,
+                      height: screenHeight * 0.19,
+                      width: width * 0.5,
                       placeholder: (context, url) =>
                           // SkeletonGridLoader(
                           //
@@ -272,7 +272,7 @@ CircularProgressIndicator(color: Color.fromRGBO(63, 85, 33, 1)),
                       Padding(
                         padding: const EdgeInsets.all(15),
                         child: Text(
-                          widget.food.title,
+                          widget.food.title+"",
                           style: const TextStyle(
                               fontSize: 28,
                               fontFamily: 'BerlinSansFB',
