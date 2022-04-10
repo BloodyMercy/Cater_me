@@ -32,7 +32,8 @@ class _OrderDeliveredState extends State<OrderDelivered> {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
     return
-      language=="en"?Image.asset("images/new order tracking english/OrderDelivered.jpg",height: MediaQuery.of(context).size.height*0.80,fit:BoxFit.contain):Image.asset('images/order trackingArabic/5.png',height: MediaQuery.of(context).size.height*0.80,fit:BoxFit.contain);
+      language=="en"?Image.asset("images/new order tracking english/OrderDelivered.jpg",height: MediaQuery.of(context).size.height*0.80,fit:BoxFit.contain):
+      Image.asset('images/order trackingArabic/5.jpg',height: MediaQuery.of(context).size.height*0.80,fit:BoxFit.contain);
     //   Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,
