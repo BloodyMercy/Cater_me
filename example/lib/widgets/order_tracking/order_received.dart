@@ -29,7 +29,7 @@ class _OrderReceivedState extends State<OrderReceived> {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
     return Center(child: language=="en"?Image.asset("images/new order tracking english/OrderReceived.jpg",height: MediaQuery.of(context).size.height*0.75):
-    Image.asset("images/order trackingArabic/2.jpg",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
+    Image.asset("images/new order tracking english/2.jpg",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,

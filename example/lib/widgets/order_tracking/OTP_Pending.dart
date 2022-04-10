@@ -28,7 +28,7 @@ class _OTPPending extends State<OTPPending> {
   Widget build(BuildContext context) {
     final mediaquerywidth = MediaQuery.of(context).size.width;
     final mediaqueryheight = MediaQuery.of(context).size.height;
-    return Center(child: language=="en"?Image.asset("images/new order tracking english/OTPPending.jpg",fit:BoxFit.contain,height: MediaQuery.of(context).size.height*0.75):Image.asset("images/order trackingArabic/1.jpg",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
+    return Center(child: language=="en"?Image.asset("images/new order tracking english/OTPPending.jpg",fit:BoxFit.contain,height: MediaQuery.of(context).size.height*0.75):Image.asset("images/new order tracking english/1.jpg",height: MediaQuery.of(context).size.height*0.75,fit:BoxFit.contain));
     // Expanded(
     //   child: Container(
     //     color: LightColors.kLightYellow,
