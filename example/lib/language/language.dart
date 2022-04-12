@@ -111,7 +111,7 @@ class LanguageTr {
       "Add": "ضيف",
       "friend already exists": "صاحبك موجود من اول",
       "Ok": "تمام",
-      "Please enter phone number": "أدخل رقمك",
+      "Please enter phone number": "أدخل الرقم",
       "Camera": "الكاميرا",
       "Gallery": "الاستديو",
       "Ready to answer any and all questions": "جاهزين نجاوبك",
@@ -229,6 +229,7 @@ class LanguageTr {
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
           "لديك الحق في إلغاء طلب لمدة تصل إلى 5 دقائق من تقديم الطلب على موقعنا على الإنترنت ، وبينما نبذل قصارى جهدنا لضمان الحفاظ على الأسعار والأوصاف الدقيقة ، فإننا نحتفظ بالحق في إلغاء أي طلب يستند إلى معلومات غير دقيقة قد يتم إلغاء أي طلب لاحقًا من قِبل Cater me بعد تلقيك تأكيدًا وتحتفظ Cater me بالحق في إلغاء أي طلب ، قبل أو بعد القبول ، وسوف تقوم بإخطارك على الفور بأي إلغاء من هذا القبيل.",
       "No Shishas To Display": "لا شيشة لعرضها",
+      "No Shisha To Display": "لا شيشة لعرضها",
       "Do you want to delete this friend": "هل تريد حذف هذا الصديق",
       "Friend Deleted": "تم حذف الصديق",
       "Do you want catering equipment?": "هل تريد معدات تقديم الطعام؟",
@@ -328,9 +329,11 @@ class LanguageTr {
       'Cancel':'ما أبغى',
       'Rate your order':"قيم طلبك",
       "bill":"شارك فاتورتك",
-      "Register":"تسجيل"
+      "Register":"تسجيل",
+      "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
     },
     "en": {
+      "failed ,try again later...":"failed ,try again later...",
 "Register":"Register",
       "bill":"Share bill",
       'Rate your order':'Rate your order',
@@ -616,6 +619,7 @@ class LanguageTr {
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
           "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.",
       "No Shishas To Display": "No Shishas To Display",
+      "No Shisha To Display": "No Shisha To Display",
       "Do you want to delete this friend": "Do you want to delete this friend",
       "Friend Deleted": "Friend Deleted",
       "Do you want catering equipment?": "Do you want catering equipment?",
