@@ -224,81 +224,35 @@ class _TABBarState extends State<TABBar> {
                               child: ClipOval(
                                 child: Container(
                                   color: Colors.white,
-                                  child: CachedNetworkImage(
-                                    fit: BoxFit.fill,
+                                  child: Image.network(
+                                      personalInfo.imageUrl ,
+                                    errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+                                      return Icon(Icons.do_not_disturb,color:Colors.red);
+                                    },
+                                    loadingBuilder:(BuildContext context, Widget child,ImageChunkEvent loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Padding(
+                                        padding: const EdgeInsets.all(25.0),
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            color: Color.fromRGBO(63, 85, 33, 1),
+
+                                            value: loadingProgress.expectedTotalBytes != null ?
+                                            loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                                                : null,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    fit: BoxFit.cover,
                                     width: 100,
                                     height: 100,
-                                    placeholder: (context, url) =>
-                                        CircularProgressIndicator(
-                                      color: Color.fromRGBO(63, 85, 33, 1),
-                                    ),
-                                    // SkeletonGridLoader(
-                                    //
-                                    //   builder: Container(
-                                    //       width: 100,
-                                    //       height: 100,
-                                    //     color: Color(0xFF3F5521),
-                                    //     child: GridTile(
-                                    //
-                                    //       child:ClipOval(child: Container(height: 100,width:
-                                    //       100,),)
-                                    //     ),
-                                    //   ),
-                                    //   items: 1,
-                                    //   itemsPerRow: 1,
-                                    //   period: Duration(seconds: 1),
-                                    //   highlightColor: Color(0xFF3F5521),
-                                    //   baseColor: Color(0xffffffff),
-                                    //   direction: SkeletonDirection.ltr,
-                                    //   childAspectRatio: 1,
-                                    // ),
-                                    imageUrl: personalInfo.imageUrl,
                                   ),
 
-                                  // Image.network(
-                                  //   personalInfo.imageUrl,
-                                  //   errorBuilder:
-                                  //       (BuildContext context,
-                                  //       Object exception,
-                                  //       StackTrace stackTrace) {
-                                  //     return Icon(
-                                  //         Icons.do_not_disturb,
-                                  //         color: Colors.red);
-                                  //   },
-                                  //   loadingBuilder:
-                                  //       (BuildContext context,
-                                  //       Widget child,
-                                  //       ImageChunkEvent
-                                  //       loadingProgress) {
-                                  //     if (loadingProgress == null)
-                                  //       return child;
-                                  //     return Padding(
-                                  //       padding:
-                                  //       const EdgeInsets.all(
-                                  //           25.0),
-                                  //       child: Center(
-                                  //         child:
-                                  //         CircularProgressIndicator(
-                                  //           value: loadingProgress
-                                  //               .expectedTotalBytes !=
-                                  //               null
-                                  //               ? loadingProgress
-                                  //               .cumulativeBytesLoaded /
-                                  //               loadingProgress
-                                  //                   .expectedTotalBytes
-                                  //               : null,
-                                  //         ),
-                                  //       ),
-                                  //     );
-                                  //   },
-                                  //   fit: BoxFit.fill,
-                                  //   width: 100,
-                                  //   height: 100,
-                                  // ),
+),
                                 ),
                               ),
                             ),
-                          ),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

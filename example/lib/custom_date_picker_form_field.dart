@@ -96,7 +96,7 @@ maximumYear: DateTime.now().year,
                     minimumYear: DateTime.now().year,
                     //minimumDate: DateTime.now(),
 
-                    maximumDate: DateTime(DateTime.now().year+1),
+                    maximumDate: DateTime(DateTime.now().year+1,DateTime.now().month,DateTime.now().day),
 
                     onDateTimeChanged: (value) {
                       // _chosenDate = dateTime;

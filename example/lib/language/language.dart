@@ -328,9 +328,12 @@ class LanguageTr {
       'Cancel':'ما أبغى',
       'Rate your order':"قيم طلبك",
       "bill":"شارك فاتورتك",
-      "Register":"تسجيل"
+      "Register":"تسجيل",
+      "Failed to add friend":"فشل في إضافة صديق",
+
     },
     "en": {
+      "Failed to add friend":"Failed to add friend",
       "Register":"Register",
       "bill":"Share bill",
       'Rate your order':'Rate your order',
@@ -588,7 +591,7 @@ class LanguageTr {
       "Order Details": "Order Details",
       "Do You Want To Donate The Rest Of Your Food?":
       "Do You Want To Donate The Rest Of Your Food?",
-      "(*Shisha VAT ": "*(Shisha VAT ",
+      "*(Shisha VAT ": "*(Shisha VAT ",
       "(*VAT 15%)": "(*VAT 15%)",
       "Please choose someone to share your bill with":
       "Please choose someone to share your bill with",

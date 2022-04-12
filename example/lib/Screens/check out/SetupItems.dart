@@ -24,6 +24,8 @@ class _SetupItemsState extends State<SetupItems> {
 
   getData() async {
     final order = Provider.of<OrderByIdProvider>(context, listen: false);
+    final orderCater = Provider.of<OrderCaterProvider>(context, listen: false);
+
     setState(() {
       loading = true;
     });
@@ -32,6 +34,13 @@ class _SetupItemsState extends State<SetupItems> {
     if (order.setupItemmodel.length > 0) {
       _isChecked = List<bool>.filled(order.setupItemmodel.length, true);
     }
+
+    order.setupItemmodel.forEach((element) {
+      if(!order.setupItemModelId.contains(element.id)) {
+        orderCater.addtotitemlist(element);
+
+
+      }  });
     setState(() {
       loading = false;
     });

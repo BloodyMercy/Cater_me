@@ -388,7 +388,7 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                       title: Text(
                                           '${authProvider.lg[authProvider.language]["error"]}'),
                                       content: Text(
-                                          '${authProvider.lg[authProvider.language]["friend already exists!"]}'),
+                                          '${authProvider.lg[authProvider.language]["Failed to add friend"]}'),
                                       actions: <Widget>[
                                         TextButton(
                                             child: Text(

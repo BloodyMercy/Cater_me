@@ -520,7 +520,7 @@ class _OrderState extends State<Order> {
                                                   ),
                                                   orderProvider.vatshisha > 0.0
                                                       ? Text(
-                                                    orderProvider.spets!=7&&orderProvider.spets!=8?  '${authProvider.lg[authProvider.language]['*(Shisha VAT ']}'+"${orderProvider.vatshisha}"+"${authProvider.lg[authProvider.language]["SAR"]}":"",
+                                                    orderProvider.spets!=7&&orderProvider.spets!=8?  '${authProvider.lg[authProvider.language]["*(Shisha VAT "]}'+"${orderProvider.vatshisha}"+"${authProvider.lg[authProvider.language]["SAR"]}":"",
                                                           style: TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:
