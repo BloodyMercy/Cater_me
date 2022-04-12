@@ -144,11 +144,44 @@ class _YourOrdersState extends State<YourOrders> {
                               itemBuilder: (context, index) {
                                 return SlidableWidget(index:index ,
                                   child: GestureDetector(
-                                    onTap: () {
+                                    onTap: () async{
                                       if (orders.listOrder[index].orderStatusid ==
                                              7  ) {
+
+                                        showDialog(
+                                          context: this.context,
+                                          barrierDismissible:
+                                          false,
+                                          builder: (BuildContext
+                                          context) {
+                                            return WillPopScope(
+                                                onWillPop: () =>
+                                                Future<bool>.value(
+                                                    false),
+                                                child:
+                                                AlertDialog(
+                                                  title: Text(
+                                                      '${authProvider.lg[authProvider.language]["Loading..."]}'),
+                                                  content: Column(
+                                                      mainAxisSize:
+                                                      MainAxisSize.min,
+                                                      children: <Widget>[
+                                                        const CircularProgressIndicator()
+                                                      ]),
+                                                ));
+                                          },
+                                        );
                                         //    if(authProvider.status == Status.Authenticated) {
                                         address.clearAddressController();
+                                        final ordersid = Provider.of<OrderByIdProvider>(context, listen: false);
+                                        final _serpres = Provider.of<OrderCaterProvider>(context, listen: false);
+                                        await ordersid.getOrderById( orders.listOrder[index].id);
+                                        Navigator.of(context)
+                                            .pop();
+                                        address.eventnamecontroller.text=ordersid.orderbyId["event"]["eventName"];
+                                        address.evendatecontroller.text= DateFormat("dd-MM-yyyy  hh:mm").format(DateTime.parse(ordersid.orderbyId["event"]["eventDate"])).toString();
+                                        address.DailyDatecontroller.text= DateFormat("hh:mm").format(DateTime.parse(ordersid.orderbyId["event"]["eventDate"])).toString();
+_serpres.value.title=ordersid.orderbyId["address"]["title"];
                                         orderCaterprovider.spets = 7;
                                         orderCaterprovider.vatshisha = 0.0;
                                         orderCaterprovider.vatfood = 0.0;

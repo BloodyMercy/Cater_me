@@ -100,6 +100,7 @@ bool isLoading=true;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         title:  Text('${authProvider.lg[authProvider.language]["Terms & Conditions"]}'
             ),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.

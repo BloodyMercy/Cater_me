@@ -59,7 +59,7 @@ class _Contact_UsState extends State<Contact_Us> {
             Navigator.of(context).pop();
           },
           icon: Icon(Icons.arrow_back_rounded),
-          iconSize: 40,
+          // iconSize: 40,
           color: Colors.white,
         ),
         title: Text(

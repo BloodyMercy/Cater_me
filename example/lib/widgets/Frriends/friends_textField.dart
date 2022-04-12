@@ -7,6 +7,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -381,24 +382,20 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 setState(() {
                                   loading = false;
                                 });
-                                showDialog(
-                                  context: this.context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          '${authProvider.lg[authProvider.language]["error"]}'),
-                                      content: Text(
-                                          '${authProvider.lg[authProvider.language]["friend already exists!"]}'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                            child: Text(
-                                                '${authProvider.lg[authProvider.language]["Ok"]}'),
-                                            onPressed: () =>
-                                                Navigator.pop(context))
-                                      ],
-                                    );
-                                  },
-                                );
+
+
+                                MotionToast.error(
+                                    title: "Cater me",
+                                    titleStyle: TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                    description:
+    '${authProvider.lg[authProvider.language]["Failed to add friend"]}'  //  animationType: ANIMATION.FROM_LEFT,
+                                )
+                                    .show(context);
+
+
+
+
                               }
                             }
                           },

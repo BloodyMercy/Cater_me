@@ -167,7 +167,7 @@ class _OrderfreindCardState extends State<OrderfreindCard> {
   Future<void> share(String link) async {
     await FlutterShare.share(
         title: 'cater me',
-        text: 'Share bill',
+        text: 'a bill has been shared with you on Caterme',
         linkUrl: link,
         chooserTitle: 'Share bill');
   }
