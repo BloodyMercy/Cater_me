@@ -332,7 +332,7 @@ class LanguageTr {
       "Register":"تسجيل",
       "Failed to add friend":"فشل في إضافة صديق",
 "Generate Invoice":"إنشاء فاتورة",
-      "Update failed":"فشل التحديث"
+      "Update failed":"فشل التحديث",
       "Register":"تسجيل",
       "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
     },
