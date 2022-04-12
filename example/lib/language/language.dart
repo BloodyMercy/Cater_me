@@ -330,9 +330,12 @@ class LanguageTr {
       "bill":"شارك فاتورتك",
       "Register":"تسجيل",
       "Failed to add friend":"فشل في إضافة صديق",
-
+"Generate Invoice":"إنشاء فاتورة",
+      "Update failed":"فشل التحديث"
     },
     "en": {
+      "Update failed":"Update failed",
+      "Generate Invoice":"Generate Invoice",
       "Failed to add friend":"Failed to add friend",
       "Register":"Register",
       "bill":"Share bill",
@@ -353,7 +356,7 @@ class LanguageTr {
       "phone already exist": "phone already exist",
       "email already exist": "email already exist",
       "view All": "View All",
-      "No packages available": "No packages available",
+      "No packages available": "",
       "User doesn't exist or invalid credentials":
       "User doesn't exist or invalid credentials",
       "Login failed, user doesn't exist": "Login failed, user doesn't exist",

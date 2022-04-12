@@ -480,7 +480,7 @@ bool isloading=true;
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
-        },icon: Icon(Icons.chevron_left_outlined)),
+        },icon: Icon(Icons.arrow_back)),
         centerTitle: true,
         title: Text('${authProvider.lg[authProvider.language]["Customer Service"]}'
             ),

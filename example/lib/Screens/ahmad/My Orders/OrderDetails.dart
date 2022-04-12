@@ -153,7 +153,7 @@ color: Color(0xFF3F5521),
                         child:
                         orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
                         TextButton(
-                          child: Text("Generate Invoice",style: TextStyle(color: Colors.white),),
+                          child: Text("${authProvider.lg[authProvider.language][ "Generate Invoice"]}",style: TextStyle(color: Colors.white),),
                         onPressed:  () async{
     setState(() {
       butload=false;
