@@ -1,7 +1,9 @@
 import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../Providers/user.dart';
 import '../../../../model/orderById.dart';
 import '../../../../model/packages.dart';
 import 'UserOrders.dart';
@@ -29,6 +31,8 @@ class _OrderCardState extends State<OrderCard> {
   }
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserProvider>(context, listen: true);
+
     return Row(
       children: [
         Stack(
@@ -67,29 +71,21 @@ class _OrderCardState extends State<OrderCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${widget.a.price}",
-                  style: TextStyle(
-                   // fontFamily: 'Geomanist',
-                    fontSize: 16,
-                  //  color: Color.fromRGBO(180, 187, 197, 1),
-                  )),
-              SizedBox(
-                height: 5,
-              ),
               Container(
                 child: Text.rich(
                   TextSpan(
                     text:widget.a.item,
                     style: TextStyle(
-                     // color: Colors.black,
-                      fontSize: 13,
-                    //  fontFamily: 'Geomanist',
+                      // color: Colors.black,
+                      fontSize: 17,
+                      //  fontFamily: 'Geomanist',
                     ),
                   ),
                 ),
               ),
+
               SizedBox(
-                height: 2,
+                height: 6,
               ),
 
               SizedBox(
@@ -99,9 +95,11 @@ class _OrderCardState extends State<OrderCard> {
               SizedBox(
                 height: 2,
               ),
+
+
               Text.rich(
                 TextSpan(
-                  text: "QTY: " + "${widget.a.quantity}",
+                  text: "${authProvider.lg[authProvider.language]["QTY:"]} ${widget.a.quantity}",
                   style: TextStyle(
                   //  color: Color.fromRGBO(180, 187, 197, 1),
                     fontSize: 13,
@@ -109,6 +107,15 @@ class _OrderCardState extends State<OrderCard> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 2,
+              ),
+              Text("${authProvider.lg[authProvider.language]["PRICE"]} : ${widget.a.price*widget.a.quantity} ${authProvider.lg[authProvider.language]["SAR"]}",
+                  style: TextStyle(
+                    // fontFamily: 'Geomanist',
+                    fontSize: 13,
+                    //  color: Color.fromRGBO(180, 187, 197, 1),
+                  )),
             ],
           ),
         ),

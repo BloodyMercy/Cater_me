@@ -531,7 +531,7 @@ class _OrderState extends State<Order> {
                                                       : Container(),
                                                   orderProvider.vatfood > 0.0
                                                       ? Text(
-                                                    orderProvider.spets!=7&&orderProvider.spets!=8?'${authProvider.lg[authProvider.language]["*(VAT included "]}'+"${orderProvider.vatfood}"+"${authProvider.lg[authProvider.language]["SAR"]}":"",
+                                                    orderProvider.spets!=7&&orderProvider.spets!=8?'${authProvider.lg[authProvider.language]["*(VAT included "]}'+ "${orderProvider.vatfood.toStringAsFixed(2)} " + " ${authProvider.lg[authProvider.language]["SAR"]}":"",
                                                           style: TextStyle(
                                                             fontSize: 10,
                                                             fontWeight:

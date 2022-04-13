@@ -120,7 +120,7 @@ getData() async {
                                                   ),
                                                 ),
                                                 Text(
-                                                  " ${authProvider.lg[authProvider.language]["qty"]} ${order.items[i].quantity}  ",
+                                                  " ${authProvider.lg[authProvider.language]["QTY"]} ${order.items[i].quantity} ${authProvider.lg[authProvider.language]["SAR"]} ",
                                                   style: TextStyle(
                                                       color: blackColor,
                                                       fontWeight:

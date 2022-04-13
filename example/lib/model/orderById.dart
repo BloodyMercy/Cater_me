@@ -76,6 +76,7 @@ class Event {
   String numberOfGuests;
   String contactPhoneNumber;
   String contactName;
+  String OrderDate;
 
   Event(
       {this.eventType,
@@ -84,7 +85,8 @@ class Event {
       this.eventTypeId,
       this.numberOfGuests,
       this.contactPhoneNumber,
-      this.contactName});
+      this.contactName,
+      this.OrderDate});
 
   Event.fromJson(Map<String, dynamic> json) {
     eventType = json['eventType'] ?? "not found";
@@ -94,6 +96,7 @@ class Event {
     numberOfGuests = json['numberOfGuests'] ?? "not found";
     contactPhoneNumber = json['contactPhoneNumber'] ?? "not found";
     contactName = json['contactName'] ?? "not found";
+    OrderDate = json['OrderDate'] ?? "not found";
   }
 }
 

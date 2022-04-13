@@ -103,6 +103,14 @@ bool isLoading=true;
         centerTitle: true,
         title:  Text('${authProvider.lg[authProvider.language]["Terms & Conditions"]}'
             ),
+        leading:IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back_rounded),
+          // iconSize: 40,
+          color: Colors.white,
+        ),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
 
       ),
