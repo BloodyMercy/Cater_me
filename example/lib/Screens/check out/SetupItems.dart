@@ -34,13 +34,15 @@ class _SetupItemsState extends State<SetupItems> {
     if (order.setupItemmodel.length > 0) {
       _isChecked = List<bool>.filled(order.setupItemmodel.length, true);
     }
-
+    if(!orderCater.already){
+orderCater.setupItemModelId.clear();
     order.setupItemmodel.forEach((element) {
       if(!order.setupItemModelId.contains(element.id)) {
         orderCater.addtotitemlist(element);
 
-
       }  });
+    orderCater.already=true;
+    }
     setState(() {
       loading = false;
     });
@@ -101,12 +103,12 @@ class _SetupItemsState extends State<SetupItems> {
                                       )
                                     ],
                                   ),
-                                  value: _isChecked[index],
+                                  value: orderCater.setupItemModelId.contains(order.setupItemmodel[index].id),
                                   onChanged: (val) {
                                     setState(() {
                                       _isChecked[index] = val;
                                     });
-                                    if (val == true) {
+                                    if (val) {
                                       orderCater.addtotitemlist(order.setupItemmodel[index]);
                                     } else {
                                       orderCater.removetotitemlist(order.setupItemmodel[index]);

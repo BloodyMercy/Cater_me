@@ -24,7 +24,7 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
   List<int> _setupItemModelId = [];
-
+bool already =false;
   bool _adonce=false ;
 
   bool get adonce => _adonce;
@@ -61,10 +61,12 @@ class OrderCaterProvider extends ChangeNotifier{
 
   addtotitemlist(setupItemsModel index){
    _setupItemModelId.add(index.id);
+   print(_setupItemModelId);
    notifyListeners();
  }
  removetotitemlist(setupItemsModel index){
     _setupItemModelId.remove(index.id);
+    print(_setupItemModelId);
     notifyListeners();
   }
   bool get checkotp => _checkotp;
