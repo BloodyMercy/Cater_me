@@ -134,8 +134,12 @@ color: Color(0xFF3F5521),
                       ),
                       Text.rich(
                         TextSpan(
-                          text: "'${authProvider.lg[authProvider.language][ "Order Date:"]}' ${
-                              DateFormat("dd-MM-yyyy  hh:mm").format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
+                          text:language=="en"?
+                          "${authProvider.lg[authProvider.language]["Order Date:"]} ${
+                              DateFormat.yMMMMd('en_US').format(DateTime.parse(_order.orderbyId["orderDate"]))
+                          } ":
+                          "${authProvider.lg[authProvider.language]["Order Date:"]} ${
+                              DateFormat.yMMMMd('ar_SA').format(DateTime.parse(_order.orderbyId["orderDate"]))
                               } ",
                           style: TextStyle(
 
@@ -148,27 +152,45 @@ color: Color(0xFF3F5521),
                       SizedBox(
                         height: 3,
                       ),
-                    orderStatus.orderStatus.statusId==1?Container():  butload? Card(
-                        color: colorCustom,
-                        child:
-                        orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
-                        TextButton(
-                          child: Text("${authProvider.lg[authProvider.language][ "Generate Invoice"]}",style: TextStyle(color: Colors.white),),
-                        onPressed:  () async{
+                      Text.rich(
+                        TextSpan(
+                          text:language=="en"?
+                          "${authProvider.lg[authProvider.language][ "Event Date:"]} ${
+                              DateFormat.yMMMMd('en_US').format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
+                          } ":
+                          "${authProvider.lg[authProvider.language][ "Event Date:"]} ${
+                              DateFormat.yMMMMd('ar_SA').format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
+                          } ",
+                          style: TextStyle(
+
+                              fontWeight: FontWeight.w400,
+
+                              fontSize: 14),
+
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                    orderStatus.orderStatus.statusId==1?Container():  butload? orderStatus.orderStatus.statusId == 2 ||  orderStatus.orderStatus.statusId == 3|| orderStatus.orderStatus.statusId == 4|| orderStatus.orderStatus.statusId == 5?
+                    TextButton(
+                      child: Text("${authProvider.lg[authProvider.language][ "Generate Invoice"]}",style: TextStyle(fontSize: 12),),
+                        style: TextButton.styleFrom(side:BorderSide(color: colorCustom,width: 1),primary: colorCustom,backgroundColor: Colors.grey[200]) ,
+                    onPressed:  () async{
     setState(() {
       butload=false;
     });
-                           await _order.GeneratePDF(widget.id);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MyPdf()),
+                       await _order.GeneratePDF(widget.id);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyPdf()),
 
-                          );
+                      );
     setState(() {
       butload=true;
     });
-                        }
-                        ):Container()):Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
+                    }
+                    ):Container():Center(child: CircularProgressIndicator(color:Color(0xFF3F5521)),),
                       SizedBox(
                         height: 3,
                       ),
@@ -191,7 +213,7 @@ color: Color(0xFF3F5521),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      '${authProvider.lg[authProvider.language][ "Delivery Address :"]}',
+                      '${authProvider.lg[authProvider.language]["Delivery Address :"]}',
                       style: TextStyle(
 
 

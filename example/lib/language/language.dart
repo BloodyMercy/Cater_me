@@ -159,7 +159,7 @@ class LanguageTr {
       "you can’t add an empty occasion": "ماتقدر تضيف مناسبه فاضيه",
       "Event Name ": "اسم مناسبتك",
       "Event Time ": "وقت المناسبه",
-      "Event Date": "تاريخ المناسبه",
+      "Event Date:": "تاريخ المناسبة:",
       "Nothing to send": "مافي شي ترسله",
       "Number Of Guests": "عدد المعازيم",
       "Type Of Event": "نوع المناسبه",
@@ -238,7 +238,7 @@ class LanguageTr {
       "هل تريد التبرع بباقي الطعام؟",
       "extra services": "خدمات إضافية",
       "Payment": "دفع",
-      "qty": "الكميّة",
+      "QTY:": "الكميّة :",
       "Bill sharing": "تقاسم الفاتورة",
       "Donate": "تبرّع",
       "Sorry! We are fully booked.": "ما نبي نزعلك الطلبات محجوزة",
@@ -287,7 +287,8 @@ class LanguageTr {
       "Total including VAT": "المجموع شامل الضريبة",
       "you must agree terms and conditions": "يجب أن توافق على الشروط والأحكام",
       "Order Date:": "تاريخ الطلب:",
-      "Delivery Address :": "عنوان التسليم :",
+      "Delivery Address :":"تاريخ الحدث :",
+      "Delivery Address :": "عنوان المناسبة :",
       'Items Ordered': "العناصر المطلوبة",
       'Payment Details : ': 'بيانات الدفع : ',
       "Order Total : ": "الطلب الكلي : ",
@@ -331,10 +332,12 @@ class LanguageTr {
       "bill":"شارك فاتورتك",
       "Register":"تسجيل",
       "Failed to add friend":"فشل في إضافة صديق",
-"Generate Invoice":"إنشاء فاتورة",
+"Generate Invoice":" إظهار الفاتورة",
       "Update failed":"فشل التحديث",
       "Register":"تسجيل",
       "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
+      "PRICE":"السعر"
+
     },
     "en": {
       "Update failed":"Update failed",
@@ -417,13 +420,13 @@ class LanguageTr {
       "Title can't be empty": "Title can't be empty",
       "Sorry! We are fully booked.": "Sorry! We are fully booked.",
       "Bill sharing": "Bill sharing",
-      "qty": "qty",
+      "QTY:": "QTY",
       "Event Planning": "Event Planning",
       "You don't have any upcoming occasions":
       "You don't have any upcoming occasions",
       "please choose one from the following offers":
       "please choose one from the following offers",
-      "Event Date": "Event Date",
+      "Event Date": "Event Date :",
       "Payment": "Payment",
       "Address Title": "Address Title",
       "Country": "Country",
@@ -673,6 +676,8 @@ class LanguageTr {
       "Order  Here": "Order  Here",
       "Hide": "Hide",
       "PDF Invoice": "PDF Invoice",
+      "PRICE":"PRICE",
+      "Event Date:":"Event Date:",
     }
   };
 }
