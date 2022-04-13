@@ -34,6 +34,7 @@ import 'NavigationBar/navigation_bar.dart';
 import 'Payment/OrderSucc.dart';
 
 import 'Payment/Payments1.dart';
+import 'Payment/pay/pay.dart';
 import 'Providers/GalleryProvider.dart';
 import 'Providers/address.dart';
 import 'Providers/cuisines.dart';
@@ -238,7 +239,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: appstate()
+        home: PaySampleApp()
 
     );
   }

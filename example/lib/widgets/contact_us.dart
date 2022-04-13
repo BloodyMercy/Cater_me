@@ -73,6 +73,7 @@ class _Contact_UsState extends State<Contact_Us> {
           ? SingleChildScrollView(
             child: Column(
                 children: [
+
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
