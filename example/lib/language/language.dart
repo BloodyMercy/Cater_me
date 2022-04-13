@@ -288,7 +288,7 @@ class LanguageTr {
       "you must agree terms and conditions": "يجب أن توافق على الشروط والأحكام",
       "Order Date:": "تاريخ الطلب:",
       "Delivery Address :":"تاريخ الحدث :",
-      "Event Address :": "عنوان المناسبة :",
+      "Delivery Address :": "عنوان المناسبة :",
       'Items Ordered': "العناصر المطلوبة",
       'Payment Details : ': 'بيانات الدفع : ',
       "Order Total : ": "الطلب الكلي : ",
@@ -387,7 +387,7 @@ class LanguageTr {
       'Items Ordered': 'Items Ordered',
       "Building": "Building",
       "Street": "Street",
-      "Delivery Address :": "Event Address :",
+      "Delivery Address :": "Delivery Address :",
       "Order Date:": "Order Date:",
       "Order Details": "Order Details",
       "you must agree terms and conditions":

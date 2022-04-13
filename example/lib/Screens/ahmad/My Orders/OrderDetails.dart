@@ -213,7 +213,7 @@ color: Color(0xFF3F5521),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      '${authProvider.lg[authProvider.language][ "Delivery Address :"]}',
+                      '${authProvider.lg[authProvider.language]["Delivery Address :"]}',
                       style: TextStyle(
 
 
