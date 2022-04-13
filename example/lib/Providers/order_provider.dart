@@ -24,7 +24,7 @@ class OrderCaterProvider extends ChangeNotifier{
   List<FriendModel> _choosebillFriend=[];
   List<TextEditingController> _controllers = [];
   List<int> _setupItemModelId = [];
-
+bool already =false;
   bool _adonce=false ;
 
   bool get adonce => _adonce;
