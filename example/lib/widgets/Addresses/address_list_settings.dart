@@ -152,68 +152,157 @@ super.initState();
                                 IconButton(
                                     onPressed: () {
                                      showDialog(context: context, builder: (BuildContext context)=>
-                                         CustomDialog(title: '${user.lg[user.language]["Do you want to delete this address"]}',
-                                           description: "",
-                                           button1:ElevatedButton(
-                                             style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                             child: Text('${user.lg[user.language][ "Yes"]}',),
-                                             onPressed: ()async{
-                                               showDialog(
-                                                 context: this.context,
-                                                 barrierDismissible: false,
-                                                 builder: (BuildContext contexts) {
+                                         Dialog(
+                                             backgroundColor: Colors.black,
+                                             shape: RoundedRectangleBorder(
+                                                 borderRadius: BorderRadius.circular(20.0)),
+                                             child: Stack(
+                                               overflow: Overflow.visible,
+                                               alignment: Alignment.topCenter,
+                                               children: [
+                                                 Container(
+                                                   height: MediaQuery.of(context).size.height *
+                                                       0.30,
+                                                   child: Padding(
+                                                     padding: EdgeInsets.only(
+                                                         top: MediaQuery.of(context)
+                                                             .size
+                                                             .height *
+                                                             0.09,
+                                                         left: MediaQuery.of(context)
+                                                             .size
+                                                             .width *
+                                                             0.05,
+                                                         right: MediaQuery.of(context)
+                                                             .size
+                                                             .width *
+                                                             0.05),
+                                                     child: Column(
+                                                       children: [
+                                                         Text(
+                                                           '${user.lg[user.language]["Do you want to delete this address"]}',
+                                                           style: TextStyle(
+                                                               fontWeight: FontWeight.bold,
+                                                               fontSize: 20,
+                                                               color: Colors.white),
+                                                           textAlign: TextAlign.center,
+                                                         ),
+                                                         Padding(
+                                                           padding: EdgeInsets.only(
+                                                               top: MediaQuery.of(context)
+                                                                   .size
+                                                                   .height *
+                                                                   0.02),
+                                                           child: Divider(
+                                                             color: Colors.white,
+                                                           ),
+                                                         ),
+                                                         Padding(
+                                                           padding: EdgeInsets.only(
+                                                               top: MediaQuery.of(context)
+                                                                   .size
+                                                                   .height *
+                                                                   0.01),
+                                                           child: Row(
+                                                             mainAxisAlignment:
+                                                             MainAxisAlignment
+                                                                 .spaceBetween,
+                                                             children: [
+                                                               Padding(
+                                                                 padding: EdgeInsets.symmetric(
+                                                                     horizontal:
+                                                                     MediaQuery.of(context)
+                                                                         .size
+                                                                         .width *
+                                                                         0.05),
+                                                                 child: TextButton(
+                                                                   child: Text(
+                                                                     '${user.lg[user.language]["Yes"]}',
+                                                                     style: TextStyle(
+                                                                         color: Colors.white),
+                                                                   ),
+                                                                   onPressed:()async{
+                                      showDialog(
+                                      context: this.context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext contexts) {
 
-                                                   return WillPopScope(
-                                                     // onWillPop: () => Future<bool>.value(false),
-                                                       child: AlertDialog(
-                                                         title: Text("${user.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
-                                                         content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
-                                                       ));
-                                                 },
-                                               );
-                                               var delete= await  address.deleteAddress(widget.address[index].id);
-                                               if(delete=="deleted"){
-                                                 widget.address.remove(widget.address[index]);
-                                                 Navigator.pop(context);
-                                                 Navigator.of(context).pop();
-                                                 // Timer(
-                                                 //   Duration(
-                                                 //     seconds: 3,
-                                                 //   ),
-                                                 //  () {
-                                                 /// start the intro
-                                                 MotionToast.success(
-                                                     title:  "Cater me",
-                                                     titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                                     description:  "${user.lg[user.language]["Address Deleted"]}"
-                                                   //  animationType: ANIMATION.FROM_LEFT,
-                                                 ).show(context);
-                                                 //  },
-                                                 // );
-                                               }else{
-                                                 Navigator.pop(context);
-                                                 Navigator.of(context).pop();
-                                                 MotionToast.error(
-                                                     title:  "Cater me",
-                                                     titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                                     description:  "${user.lg[user.language]["Address cannot be Deleted"]}"
-                                                   //  animationType: ANIMATION.FROM_LEFT,
-                                                 ).show(context);
+                                      return WillPopScope(
+                                      // onWillPop: () => Future<bool>.value(false),
+                                      child: AlertDialog(
+                                      title: Text("${user.lg[user.language]["Loading"]}",style: TextStyle(color: colorCustom),),
+                                      content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
+                                      ));
+                                      },
+                                      );
+                                      var delete= await  address.deleteAddress(widget.address[index].id);
+                                      if(delete=="deleted"){
+                                      widget.address.remove(widget.address[index]);
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pop();
+                                      // Timer(
+                                      //   Duration(
+                                      //     seconds: 3,
+                                      //   ),
+                                      //  () {
+                                      /// start the intro
+                                      MotionToast.success(
+                                      title:  "Cater me",
+                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                      description:  "${user.lg[user.language]["Address Deleted"]}"
+                                      //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
+                                      //  },
+                                      // );
+                                      }else{
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pop();
+                                      MotionToast.error(
+                                      title:  "Cater me",
+                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                      description:  "${user.lg[user.language]["Address cannot be Deleted"]}"
+                                      //  animationType: ANIMATION.FROM_LEFT,
+                                      ).show(context);
 
-                                                 // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                 //   content: Text("${authProvider.lg[user.language]["Address cannot be Deleted"]}"
-                                                 //       ),
-                                                 // ));
-                                               }
-                                             },
-                                           ),
-                                           button2: ElevatedButton(
-                                             onPressed: (){
-                                             Navigator.of(context).pop();
-                                             },child: Text('${user.lg[user.language][ "No"]}',),
-                                           ),
-                                           oneOrtwo: true,
-                                         )
+                                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                      //   content: Text("${authProvider.lg[user.language]["Address cannot be Deleted"]}"
+                                      //       ),
+                                      // ));
+                                      }
+
+                                                                   },
+                                                                 ),
+                                                               ),
+                                                               Divider(
+                                                                 color: Colors.white,
+                                                               ),
+                                                               TextButton(
+                                                                 child: Text(
+                                                                   '${user.lg[user.language]["No"]}',
+                                                                   style: TextStyle(
+                                                                       color: Colors.white),
+                                                                 ),
+                                                                 onPressed: () {
+                                                                   Navigator.of(context).pop();
+                                                                 },
+                                                               ),
+                                                             ],
+                                                           ),
+                                                         )
+                                                       ],
+                                                     ),
+                                                   ),
+                                                 ),
+                                                 Positioned(
+                                                     top: -MediaQuery.of(context).size.height *
+                                                         0.06,
+                                                     child: Image.asset(
+                                                       'images/Logoicon.png',
+                                                       height: 100,
+                                                     )),
+                                               ],
+                                             )),
+
                                      )  ;
                                     }, icon:Icon(FontAwesomeIcons.trash,color: redColor,size: 20,) ),
 

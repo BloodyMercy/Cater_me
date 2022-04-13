@@ -111,7 +111,7 @@ class LanguageTr {
       "Add": "ضيف",
       "friend already exists": "صاحبك موجود من اول",
       "Ok": "تمام",
-      "Please enter phone number": "أدخل رقمك",
+      "Please enter phone number": "أدخل الرقم",
       "Camera": "الكاميرا",
       "Gallery": "الاستديو",
       "Ready to answer any and all questions": "جاهزين نجاوبك",
@@ -159,7 +159,7 @@ class LanguageTr {
       "you can’t add an empty occasion": "ماتقدر تضيف مناسبه فاضيه",
       "Event Name ": "اسم مناسبتك",
       "Event Time ": "وقت المناسبه",
-      "Event Date": "تاريخ المناسبه",
+      "Event Date:": "تاريخ المناسبة:",
       "Nothing to send": "مافي شي ترسله",
       "Number Of Guests": "عدد المعازيم",
       "Type Of Event": "نوع المناسبه",
@@ -229,6 +229,7 @@ class LanguageTr {
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
       "لديك الحق في إلغاء طلب لمدة تصل إلى 5 دقائق من تقديم الطلب على موقعنا على الإنترنت ، وبينما نبذل قصارى جهدنا لضمان الحفاظ على الأسعار والأوصاف الدقيقة ، فإننا نحتفظ بالحق في إلغاء أي طلب يستند إلى معلومات غير دقيقة قد يتم إلغاء أي طلب لاحقًا من قِبل Cater me بعد تلقيك تأكيدًا وتحتفظ Cater me بالحق في إلغاء أي طلب ، قبل أو بعد القبول ، وسوف تقوم بإخطارك على الفور بأي إلغاء من هذا القبيل.",
       "No Shishas To Display": "لا شيشة لعرضها",
+      "No Shisha To Display": "لا شيشة لعرضها",
       "Do you want to delete this friend": "هل تريد حذف هذا الصديق",
       "Friend Deleted": "تم حذف الصديق",
       "Do you want catering equipment?": "هل تريد معدات تقديم الطعام؟",
@@ -237,7 +238,7 @@ class LanguageTr {
       "هل تريد التبرع بباقي الطعام؟",
       "extra services": "خدمات إضافية",
       "Payment": "دفع",
-      "qty": "الكميّة",
+      "QTY:": "الكميّة :",
       "Bill sharing": "تقاسم الفاتورة",
       "Donate": "تبرّع",
       "Sorry! We are fully booked.": "ما نبي نزعلك الطلبات محجوزة",
@@ -286,7 +287,8 @@ class LanguageTr {
       "Total including VAT": "المجموع شامل الضريبة",
       "you must agree terms and conditions": "يجب أن توافق على الشروط والأحكام",
       "Order Date:": "تاريخ الطلب:",
-      "Delivery Address :": "عنوان التسليم :",
+      "Delivery Address :":"تاريخ الحدث :",
+      "Delivery Address :": "عنوان المناسبة :",
       'Items Ordered': "العناصر المطلوبة",
       'Payment Details : ': 'بيانات الدفع : ',
       "Order Total : ": "الطلب الكلي : ",
@@ -330,14 +332,20 @@ class LanguageTr {
       "bill":"شارك فاتورتك",
       "Register":"تسجيل",
       "Failed to add friend":"فشل في إضافة صديق",
-"Generate Invoice":"إنشاء فاتورة",
-      "Update failed":"فشل التحديث"
+"Generate Invoice":" إظهار الفاتورة",
+      "Update failed":"فشل التحديث",
+      "Register":"تسجيل",
+      "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
+      "PRICE":"السعر"
+
     },
     "en": {
       "Update failed":"Update failed",
       "Generate Invoice":"Generate Invoice",
       "Failed to add friend":"Failed to add friend",
       "Register":"Register",
+      "failed ,try again later...":"failed ,try again later...",
+"Register":"Register",
       "bill":"Share bill",
       'Rate your order':'Rate your order',
       'Cancel':'Cancel',
@@ -412,13 +420,13 @@ class LanguageTr {
       "Title can't be empty": "Title can't be empty",
       "Sorry! We are fully booked.": "Sorry! We are fully booked.",
       "Bill sharing": "Bill sharing",
-      "qty": "qty",
+      "QTY:": "QTY",
       "Event Planning": "Event Planning",
       "You don't have any upcoming occasions":
       "You don't have any upcoming occasions",
       "please choose one from the following offers":
       "please choose one from the following offers",
-      "Event Date": "Event Date",
+      "Event Date": "Event Date :",
       "Payment": "Payment",
       "Address Title": "Address Title",
       "Country": "Country",
@@ -622,6 +630,7 @@ class LanguageTr {
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.":
       "You have the right to cancel an order up to 5 minutes from placing the order on our website.While every effort is made to ensure that accurate pricing and descriptions are maintained, we reserve the right to cancel any order that is based on inaccurate information.An order may be subsequently cancelled by Cater me after you have received a confirmation and Cater me reserve the right to cancel any order, before or after acceptance, and will notify you immediately of any such cancellation.",
       "No Shishas To Display": "No Shishas To Display",
+      "No Shisha To Display": "No Shisha To Display",
       "Do you want to delete this friend": "Do you want to delete this friend",
       "Friend Deleted": "Friend Deleted",
       "Do you want catering equipment?": "Do you want catering equipment?",
@@ -667,6 +676,8 @@ class LanguageTr {
       "Order  Here": "Order  Here",
       "Hide": "Hide",
       "PDF Invoice": "PDF Invoice",
+      "PRICE":"PRICE",
+      "Event Date:":"Event Date:",
     }
   };
 }

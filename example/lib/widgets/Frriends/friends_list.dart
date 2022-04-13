@@ -170,68 +170,152 @@ setState(() {
                                 ,size: 20,),
                               onTap: (){
                                 showDialog(context: context, builder: (BuildContext context)=>
-                                    CustomDialog( title: '${authProvider.lg[authProvider.language]["Do you want to delete this friend"]}',
+                                    Dialog(
+                                        backgroundColor: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20.0)),
+                                        child: Stack(
+                                          overflow: Overflow.visible,
+                                          alignment: Alignment.topCenter,
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context).size.height *
+                                                  0.30,
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                        0.09,
+                                                    left: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                        0.05,
+                                                    right: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                        0.05),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      '${authProvider.lg[authProvider.language]["Do you want to delete this friend"]}',
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 20,
+                                                          color: Colors.white),
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                              0.02),
+                                                      child: Divider(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          top: MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                              0.01),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: EdgeInsets.symmetric(
+                                                                horizontal:
+                                                                MediaQuery.of(context)
+                                                                    .size
+                                                                    .width *
+                                                                    0.05),
+                                                            child: TextButton(
+                                                              child: Text(
+                                                                '${authProvider.lg[authProvider.language]["Yes"]}',
+                                                                style: TextStyle(
+                                                                    color: Colors.white),
+                                                              ),
+                                                                onPressed: ()async{
+                                                                  showDialog(
+                                                                    context: this.context,
+                                                                    barrierDismissible: false,
+                                                                    builder: (BuildContext contexts) {
 
+                                                                      return WillPopScope(
+                                                                        // onWillPop: () => Future<bool>.value(false),
+                                                                          child: AlertDialog(
+                                                                            title: Text('${authProvider.lg[authProvider.language]["Loading..."]}',style: TextStyle(color: colorCustom),),
+                                                                            content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
+                                                                          ));
+                                                                    },
+                                                                  );
+                                                                  var delete= await  friend.deleteFreind(widget.friend[index].id);
+                                                                  if(delete=="deleted"){
+                                                                    widget.friend.remove(widget.friend[index]);
+                                                                    Navigator.pop(context);
+                                                                    Navigator.of(context).pop();
+                                                                    MotionToast.success(
+                                                                      title:  "Cater me",
+                                                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                                                      description:  '${authProvider.lg[authProvider.language]['Friend Deleted']}',
+                                                                      //  animationType: ANIMATION.FROM_LEFT,
+                                                                    ).show(context);
+                                                                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                    //     content: Text('${authProvider.lg[authProvider.language]['Friend Deleted']}'
+                                                                    //         )));
+                                                                  }else{
+                                                                    Navigator.pop(context);
+                                                                    Navigator.of(context).pop();
 
-                                      description: "",
-                                      button1:ElevatedButton(
-                                        style: ElevatedButton.styleFrom(primary: Colors.grey),
-                                        child: Text('${authProvider.lg[authProvider.language]["Yes"]}'
+                                                                    MotionToast.error(
+                                                                      title:  "Cater me",
+                                                                      titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+                                                                      description:  '${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}',
+                                                                      //  animationType: ANIMATION.FROM_LEFT,
+                                                                    ).show(context);
+                                                                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                    //   content: Text('${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}'
+                                                                    //       ),
+                                                                    // ));
+                                                                  }
+                                                                }
+                                                            ),
+                                                          ),
+                                                          Divider(
+                                                            color: Colors.white,
+                                                          ),
+                                                          TextButton(
+                                                            child: Text(
+                                                              '${authProvider.lg[authProvider.language]["No"]}',
+                                                              style: TextStyle(
+                                                                  color: Colors.white),
+                                                            ),
+                                                            onPressed: () {
+                                                              Navigator.of(context).pop();
+                                                            },
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
                                             ),
-                                        onPressed: ()async{
-                                          showDialog(
-                                            context: this.context,
-                                            barrierDismissible: false,
-                                            builder: (BuildContext contexts) {
+                                            Positioned(
+                                                top: -MediaQuery.of(context).size.height *
+                                                    0.06,
+                                                child: Image.asset(
+                                                  'images/Logoicon.png',
+                                                  height: 100,
+                                                )),
+                                          ],
+                                        )),
 
-                                              return WillPopScope(
-                                                // onWillPop: () => Future<bool>.value(false),
-                                                  child: AlertDialog(
-                                                    title: Text('${authProvider.lg[authProvider.language]["Loading..."]}',style: TextStyle(color: colorCustom),),
-                                                    content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[CircularProgressIndicator(color: colorCustom,)]),
-                                                  ));
-                                            },
-                                          );
-                                          var delete= await  friend.deleteFreind(widget.friend[index].id);
-                                          if(delete=="deleted"){
-                                            widget.friend.remove(widget.friend[index]);
-                                            Navigator.pop(context);
-                                            Navigator.of(context).pop();
-                                            MotionToast.success(
-                                              title:  "Cater me",
-                                              titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                              description:  '${authProvider.lg[authProvider.language]['Friend Deleted']}',
-                                              //  animationType: ANIMATION.FROM_LEFT,
-                                            ).show(context);
-                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            //     content: Text('${authProvider.lg[authProvider.language]['Friend Deleted']}'
-                                            //         )));
-                                          }else{
-                                            Navigator.pop(context);
-                                            Navigator.of(context).pop();
-
-                                            MotionToast.error(
-                                              title:  "Cater me",
-                                              titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
-                                              description:  '${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}',
-                                              //  animationType: ANIMATION.FROM_LEFT,
-                                            ).show(context);
-                                            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                            //   content: Text('${authProvider.lg[authProvider.language]['Friend cannot be Deleted']}'
-                                            //       ),
-                                            // ));
-                                          }
-                                        },
-                                      ),
-                                      button2: ElevatedButton(
-                                        onPressed: (){
-                                          Navigator.of(context).pop();
-                                        },child: Text('${authProvider.lg[authProvider.language]["No"]}'
-                                          ),
-                                      ),
-                                      oneOrtwo: true,
-                                    )
-                                )  ;
+                                                                    )  ;
                               },
                             )
                             ),

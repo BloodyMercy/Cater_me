@@ -14,6 +14,7 @@ class OrderModel {
   String orderStatus='';
   String eventType='';
   String eventDate="";
+  String orderDate = "";
   String eventName='';
   String numberOfGuests='';
   // double percentageOfDaberni=0.0;
@@ -36,6 +37,7 @@ class OrderModel {
         eventDate,
         eventName,
         numberOfGuests,
+        orderDate,
         // percentageOfDaberni,
         // hoursOfDaberni,
         // tax
@@ -59,6 +61,8 @@ class OrderModel {
     eventType = json['eventType']??"not found";
     eventDate = json['eventDate']??"not found";
     eventName = json['eventName']??"not found";
+    orderDate = json['orderDate']??"not found";
+
 
     numberOfGuests = json['numberOfGuests']??"not found";
 
