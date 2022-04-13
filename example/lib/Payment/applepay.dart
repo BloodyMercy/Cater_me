@@ -23,7 +23,7 @@ class _ApplePaycatermeState extends State<ApplePaycaterme> {
     flutterPay.requestPayment(
       googleParameters: GoogleParameters(
         gatewayName: "example",
-        gatewayMerchantId: "example_id",
+        gatewayMerchantId: "01234567890123456789",
       ),
       appleParameters: AppleParameters(
         merchantIdentifier: "merchant.flutterpay.example",

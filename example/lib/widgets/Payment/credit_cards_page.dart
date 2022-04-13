@@ -1,9 +1,11 @@
 
 import 'package:CaterMe/Providers/credit_card_provider.dart';
+import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,10 +47,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     getAllData();
     super.initState();
   }
+  void onGooglePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
+
+  void onApplePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
+    final order = Provider.of<OrderCaterProvider>(context, listen: true);
 
     final _creditCards =
         Provider.of<CreditCardsProvider>(context, listen: true);
@@ -72,6 +82,46 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                 subTitle:
                                     '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}',
                               ),
+                            ),
+                            SliverToBoxAdapter(
+                              child:Column(
+                                children: [
+
+                                  GooglePayButton(
+                                    paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
+                                    paymentItems:  [ PaymentItem(
+                                      label: 'Cater me',
+                                      amount: order.totale.toString(),
+                                      status: PaymentItemStatus.final_price,
+                                    )],
+                                    style: GooglePayButtonStyle.black,
+                                    type: GooglePayButtonType.pay,
+                                    margin: const EdgeInsets.only(top: 15.0),
+                                    onPaymentResult: onGooglePayResult,
+                                    loadingIndicator: const Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    //onError:(){ Text("")},
+                                  ),
+                                  // ApplePayButton(
+                                  //   paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
+                                  //   paymentItems:  [ PaymentItem(
+                                  //     label: 'Cater me',
+                                  //     amount: order.totale.toString(),
+                                  //     status: PaymentItemStatus.final_price,
+                                  //   )],
+                                  //   style: ApplePayButtonStyle.black,
+                                  //   type: ApplePayButtonType.buy,
+                                  //   margin: const EdgeInsets.only(top: 15.0),
+                                  //   onPaymentResult: onApplePayResult,
+                                  //   loadingIndicator: const Center(
+                                  //     child: CircularProgressIndicator(),
+                                  //   ),
+                                  // ),
+
+                                ],
+
+                              )
                             ),
                             SliverList(
                               delegate: SliverChildBuilderDelegate(
@@ -147,10 +197,45 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
-                      child: Container(
+                      child: Column(children:[
+
+                                GooglePayButton(
+                                  paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
+                                  paymentItems:  [ PaymentItem(
+                                    label: 'Cater me',
+                                    amount: order.totale.toString(),
+                                    status: PaymentItemStatus.final_price,
+                                  )],
+                                  style: GooglePayButtonStyle.black,
+                                  type: GooglePayButtonType.pay,
+                                  margin: const EdgeInsets.only(top: 15.0),
+                                  onPaymentResult: onGooglePayResult,
+                                  loadingIndicator: const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  //onError:(){ Text("")},
+                                ),
+                                ApplePayButton(
+                                  paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
+                                  paymentItems:  [ PaymentItem(
+                                    label: 'Cater me',
+                                    amount: order.totale.toString(),
+                                    status: PaymentItemStatus.final_price,
+                                  )],
+                                  style: ApplePayButtonStyle.black,
+                                  type: ApplePayButtonType.buy,
+                                  margin: const EdgeInsets.only(top: 15.0),
+                                  onPaymentResult: onApplePayResult,
+                                  loadingIndicator: const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+
+
+                        Container(
                           color: Colors.transparent,
                           child: language=="en" ?Image.asset("images/CreditCardNewImage/no cards added yet in english.png"):Image.asset("images/CreditCardNewImage/no cards yet in arabic.png")),
-                    ),
+                  ])  ),
                   ),
       ),
     floatingActionButton:  ElevatedButton(

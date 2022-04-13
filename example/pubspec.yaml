@@ -137,6 +137,8 @@ flutter:
   assets:
 
     - images/
+    - assets/
+    - images/pay/
     - images/icon_back.png
     - images/countrycodes.json
     - images/iconphase2/

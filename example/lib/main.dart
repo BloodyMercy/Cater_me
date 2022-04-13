@@ -34,6 +34,7 @@ import 'NavigationBar/navigation_bar.dart';
 import 'Payment/OrderSucc.dart';
 
 import 'Payment/Payments1.dart';
+import 'Payment/applepay.dart';
 import 'Payment/pay/pay.dart';
 import 'Providers/GalleryProvider.dart';
 import 'Providers/address.dart';
@@ -165,6 +166,7 @@ class _MyAppState extends State<MyApp> {
      languageCode =  'en';
      String countryCode = prefs.getString('countryCode') ?? '';
 
+    // return Locale(prefs.getString("locale"), countryCode);
      return Locale(prefs.getString("locale"), countryCode);
    }
   // This widget is the root of your application.
@@ -239,7 +241,7 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'BerlinSansFB'),
           ),
         ),
-        home: PaySampleApp()
+        home: ApplePaycaterme()
 
     );
   }

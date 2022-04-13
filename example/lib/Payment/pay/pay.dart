@@ -32,13 +32,13 @@ class _PaySampleAppState extends State<PaySampleApp> {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: const Image(
-              image: AssetImage('assets/images/ts_10_11019a.jpg'),
-              height: 350,
-            ),
-          ),
+          // Container(
+          //   margin: const EdgeInsets.symmetric(vertical: 20),
+          //   child: const Image(
+          //     image: AssetImage('assets/images/ts_10_11019a.jpg'),
+          //     height: 350,
+          //   ),
+          // ),
           const Text(
             'Amanda\'s Polo Shirt',
             style: TextStyle(
@@ -73,8 +73,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
             ),
           ),
           GooglePayButton(
-            paymentConfigurationAsset:
-            'default_payment_profile_google_pay.json',
+            paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
             paymentItems: _paymentItems,
             style: GooglePayButtonStyle.black,
             type: GooglePayButtonType.pay,
@@ -83,9 +82,10 @@ class _PaySampleAppState extends State<PaySampleApp> {
             loadingIndicator: const Center(
               child: CircularProgressIndicator(),
             ),
+            //onError:(){ Text("")},
           ),
           ApplePayButton(
-            paymentConfigurationAsset: 'default_payment_profile_apple_pay.json',
+            paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
             paymentItems: _paymentItems,
             style: ApplePayButtonStyle.black,
             type: ApplePayButtonType.buy,
@@ -101,3 +101,38 @@ class _PaySampleAppState extends State<PaySampleApp> {
     );
   }
 }
+/*{
+  "provider": "google_pay",
+  "data": {
+    "environment": "TEST",
+    "apiVersion": 2,
+    "apiVersionMinor": 0,
+    "allowedPaymentMethods": [{
+      "type": "CARD",
+      "tokenizationSpecification": {
+        "type": "PAYMENT_GATEWAY",
+        "parameters": {
+          "gateway": "example",
+          "gatewayMerchantId": "gatewayMerchantId"
+        }
+      },
+      "parameters": {
+        "allowedCardNetworks": ["VISA", "MASTERCARD"],
+        "allowedAuthMethods": ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+        "billingAddressRequired": true,
+        "billingAddressParameters": {
+          "format": "FULL",
+          "phoneNumberRequired": true
+        }
+      }
+    }],
+    "merchantInfo": {
+      "merchantId": "01234567890123456789",
+      "merchantName": "Example Merchant Name"
+    },
+    "transactionInfo": {
+      "countryCode": "US",
+      "currencyCode": "USD"
+    }
+  }
+}*/
