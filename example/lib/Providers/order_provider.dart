@@ -61,10 +61,12 @@ class OrderCaterProvider extends ChangeNotifier{
 
   addtotitemlist(setupItemsModel index){
    _setupItemModelId.add(index.id);
+   print(_setupItemModelId);
    notifyListeners();
  }
  removetotitemlist(setupItemsModel index){
     _setupItemModelId.remove(index.id);
+    print(_setupItemModelId);
     notifyListeners();
   }
   bool get checkotp => _checkotp;
