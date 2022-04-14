@@ -13,6 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Payment/Payment.dart';
 import '../../Payment/applepay/flutter_pay.dart';
+import '../../Providers/address.dart';
+import '../../Providers/orderById_provider.dart';
 import '../../Providers/user.dart';
 import '../../Screens/occasion/theme/colors/light_colors.dart';
 import '../../language/language.dart';
@@ -28,6 +30,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   bool addcard = false;
   bool loading = true;
   String language;
+
   getAllData() async {
     var _creditCards = Provider.of<CreditCardsProvider>(context, listen: false);
     // _creditCards.loading=true;
@@ -51,6 +54,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     super.initState();
   }
 
+  final _key = GlobalKey<ScaffoldState>();
   FlutterPay flutterPay = FlutterPay();
   @override
   Widget build(BuildContext context) {
@@ -60,6 +64,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     final _creditCards =
         Provider.of<CreditCardsProvider>(context, listen: true);
     return Scaffold(
+      key: _key,
       body: SafeArea(
         child: loading
             ? Center(
@@ -153,7 +158,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .of<CreditCardsProvider>(
     context,
     listen: false);
-    final order = Provider.of<
+    final orders = Provider.of<
     OrderByIdProvider>(
     context,
     listen: false);
@@ -168,9 +173,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     order
         .orderid
         .toString(),
-    _creditCards
-        .credit
-        .cardId,true);
+    a,false);
 
     Navigator.of(context)
         .pop();
@@ -184,23 +187,24 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .paymentverify[
     "msg"] ==
     "error") {
-    // _key.currentState
-    //     .showSnackBar(
-    // SnackBar(
-    // content: Text(
-    // '${authProvider.lg[authProvider.language]["error to place order"]}'),
-    // ),
-    // );
+      print("error from api msg error");
+    _key.currentState
+        .showSnackBar(
+    SnackBar(
+    content: Text(
+    '${authProvider.lg[authProvider.language]["error to place order"]}'),
+    ),
+    );
     } else {
     setState(() {
-    url3ds = orderProvider
+    order.url3ds = order
         .paymentverify[
     "msg"];
     });
-    orderProvider.spets++;
-    _animateToIndex(
-    orderProvider
-        .spets);
+    order.spets++;
+    // _animateToIndex(
+    // orderProvider
+    //     .spets);
     }
     } else {
     _key.currentState
@@ -214,10 +218,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     }
 
 
-    }
+    },
 
                                       //ADD THE FUNCTIONS OF THIS BUTTON HERE
-                                    },
+
                                     child: Row(
 
                                       mainAxisAlignment: MainAxisAlignment.center,

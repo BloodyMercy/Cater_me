@@ -33,6 +33,13 @@ bool already =false;
     _adonce = value;
     notifyListeners();
   }
+String _url3ds="";
+
+  String get url3ds => _url3ds;
+
+  set url3ds(String value) {
+    _url3ds = value;
+  }
 
   bool _issearch =true ;
 

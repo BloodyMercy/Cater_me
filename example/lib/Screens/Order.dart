@@ -39,7 +39,7 @@ class _OrderState extends State<Order> {
   ///  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   double barheight = 0.0;
-  String url3ds = "";
+ // String url3ds = "";
 
   Future<bool> _onWillPop() async {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -457,7 +457,7 @@ class _OrderState extends State<Order> {
                                               : (orderProvider.spets == 1)
                                                   ? CreditCardsPage()
                                                   : (orderProvider.spets == 8)
-                                                      ? InAppWebViewPage(url3ds)
+                                                      ? InAppWebViewPage(orderProvider.url3ds)
                                                       : (orderProvider.spets ==
                                                               6)
                                                           ? OrderSummeryCopy(
@@ -998,11 +998,11 @@ class _OrderState extends State<Order> {
                                                             ),
                                                           );
                                                         } else {
-                                                          setState(() {
-                                                            url3ds = orderProvider
+                                                         // setState(() {
+                                                          orderProvider.url3ds = orderProvider
                                                                     .paymentverify[
                                                                 "msg"];
-                                                          });
+                                                         // });
                                                           orderProvider.spets++;
                                                           _animateToIndex(
                                                               orderProvider
