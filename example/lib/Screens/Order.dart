@@ -444,7 +444,7 @@ class _OrderState extends State<Order> {
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height / 1.65,
-                          child: (orderProvider.spets == 7)
+                          child: (orderProvider.spets == 1)
                               ? AddAddressScreen()
                               : (orderProvider.spets == 3)
                                   ? RegularDaberneScreen()
@@ -454,7 +454,7 @@ class _OrderState extends State<Order> {
                                           ? RelatedOffersScreen()
                                           : (orderProvider.spets == 5)
                                               ? AddonsCardoffer(0)
-                                              : (orderProvider.spets == 1)
+                                              : (orderProvider.spets == 7)
                                                   ? CreditCardsPage()
                                                   : (orderProvider.spets == 8)
                                                       ? InAppWebViewPage(orderProvider.url3ds)

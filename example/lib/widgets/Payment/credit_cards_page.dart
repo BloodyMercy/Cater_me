@@ -5,8 +5,10 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart'as intl;
 import 'dart:io' show Platform;
+
+
 // import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -90,7 +92,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
 
 
-                            SliverToBoxAdapter(child:
+                            SliverToBoxAdapter(
+                              child:
                              Platform.isAndroid?
                               Container(
 
@@ -98,14 +101,16 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                   width: MediaQuery.of(context).size.width/3,
 
                                   decoration: BoxDecoration(
+
                                       border: Border.all(color: Colors.black),
                                       borderRadius: BorderRadius.all(Radius.circular(18.0)),
                                       color: Colors.white
                                   ),
                                   child: GestureDetector(
+
                                     onTap: () async{
 
-                                      List<PaymentItem> items = [PaymentItem(name: "Caterme", price: 23)];
+                                      List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
 
                                       flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
@@ -222,18 +227,26 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
                                       //ADD THE FUNCTIONS OF THIS BUTTON HERE
 
-                                    child: Row(
+                                    child: Directionality(
 
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset("images/googlelogo.png",height: 25),
-                                        SizedBox(width: 8.0,),
-                                        Text('Pay with : Google Pay', style: TextStyle(color: Colors.black),)
-                                      ],
+                                      textDirection: TextDirection.ltr,
+                                      child: Row(
+
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+
+                                          // Text('Pay with ', style: TextStyle(color: Colors.black),),
+
+                                          Image.asset("images/googlelogo.png",height: 25),
+                                          SizedBox(width: 8.0,),
+                                          Text('Pay', style: TextStyle(color: Colors.black),)
+                                        ],
+                                      ),
                                     ),
                                   ))
                               :
                               Container(
+
                                   height: 35.0,
                                   width: MediaQuery.of(context).size.width/3,
                                   decoration: BoxDecoration(
@@ -249,9 +262,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                         flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
                                    String a=await     flutterPay.requestPayment(
+
                                           googleParameters: GoogleParameters(
                                             gatewayName: "example",
                                             gatewayMerchantId: "01234567890123456789",
+
                                           ),
                                           appleParameters: AppleParameters(
                                             merchantIdentifier: "merchant.caterme.tiaragroup.com",
@@ -275,7 +290,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                         Image.asset("images/applelogo.png"
                                             ,height: 25),
                                         SizedBox(width: 8.0,),
-                                        Text('Pay with  Apple Pay', style: TextStyle(color: Colors.white),)
+                                        Text('Pay', style: TextStyle(color: Colors.white),)
                                       ],
                                     ),
                                   ))
@@ -343,7 +358,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                           _buildCreditCard(
                                             color: Colors.black,
                                             cardExpiration:
-                                                "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                                "${intl.DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
                                             cardHolder: _creditCards.list[i].ownerName,
                                             cardNumber:
                                                 "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
