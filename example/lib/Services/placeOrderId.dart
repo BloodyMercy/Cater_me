@@ -6,17 +6,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
 class placeOrderId {
- static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2)async {
+ static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2,bool a)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
       var request=http.Request('POST',Uri.parse(ApiLink.checkorder+"/$idPlaceOrder1"));
       request.headers.addAll(headers);
+if(a) {
+  request.bodyFields = {
 
-      request.bodyFields={
+    "cardId": idPlaceOrder2
+  };
+}
+else{
+  request.bodyFields = {
 
-        "cardId":idPlaceOrder2
-      };
+    "token": idPlaceOrder2
+  };
+}
 
       http.StreamedResponse responses =await request.send();
       var response = await http.Response.fromStream(responses);

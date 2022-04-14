@@ -98,7 +98,124 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                       color: Colors.white
                                   ),
                                   child: GestureDetector(
-                                    onTap: (){
+                                    onTap: () async{
+
+                                      List<PaymentItem> items = [PaymentItem(name: "Caterme", price: 23)];
+
+                                      flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+
+                                   String a=await       flutterPay.requestPayment(
+                                        googleParameters: GoogleParameters(
+                                          gatewayName: "example",
+                                          gatewayMerchantId: "01234567890123456789",
+                                        ),
+                                        appleParameters: AppleParameters(
+                                          merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                          merchantCapabilities: [
+                                            MerchantCapability.threeDS,
+                                            MerchantCapability.credit,
+                                            MerchantCapability.debit
+                                          ],
+                                        ),
+                                        currencyCode: "SAR",
+                                        countryCode: "SA",
+                                        paymentItems: items,
+                                      );
+
+                                   if(a==""){
+
+                                   }
+                                   else{
+    showDialog(
+    context: this.context,
+    barrierDismissible:
+    false,
+    builder: (BuildContext
+    context) {
+    return WillPopScope(
+    onWillPop: () =>
+    Future<bool>.value(
+    false),
+    child:
+    AlertDialog(
+    title: Text(
+    '${authProvider.lg[authProvider.language]["Loading..."]}'),
+    content: Column(
+    mainAxisSize:
+    MainAxisSize.min,
+    children: <Widget>[
+    const CircularProgressIndicator()
+    ]),
+    ));
+    },
+    );
+    final _creditCards = Provider
+        .of<CreditCardsProvider>(
+    context,
+    listen: false);
+    final order = Provider.of<
+    OrderByIdProvider>(
+    context,
+    listen: false);
+
+    final address = Provider
+        .of<AdressProvider>(
+    context,
+    listen: false);
+
+    await order
+        .getPlaceOrderId(
+    order
+        .orderid
+        .toString(),
+    _creditCards
+        .credit
+        .cardId,true);
+
+    Navigator.of(context)
+        .pop();
+
+    //   else {
+
+    if (order
+        .paymentverify
+        .isNotEmpty) {
+    if (order
+        .paymentverify[
+    "msg"] ==
+    "error") {
+    // _key.currentState
+    //     .showSnackBar(
+    // SnackBar(
+    // content: Text(
+    // '${authProvider.lg[authProvider.language]["error to place order"]}'),
+    // ),
+    // );
+    } else {
+    setState(() {
+    url3ds = orderProvider
+        .paymentverify[
+    "msg"];
+    });
+    orderProvider.spets++;
+    _animateToIndex(
+    orderProvider
+        .spets);
+    }
+    } else {
+    _key.currentState
+        .showSnackBar(
+    SnackBar(
+    content: Text(
+    '${authProvider.lg[authProvider.language]["error to place order"]}'),
+    ),
+    );
+    }
+    }
+
+
+    }
+
                                       //ADD THE FUNCTIONS OF THIS BUTTON HERE
                                     },
                                     child: Row(

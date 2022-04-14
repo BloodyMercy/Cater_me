@@ -363,9 +363,9 @@ orderid=int.parse(i);
     // return 0;
   }
 
-  getPlaceOrderId(String id1,String id2) async{
+  getPlaceOrderId(String id1,String id2,bool a) async{
 
-    paymentverify=await placeOrderId.PlaceOrderId(id1, id2);
+    paymentverify=await placeOrderId.PlaceOrderId(id1, id2,a);
     notifyListeners();
   }
 
