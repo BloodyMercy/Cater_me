@@ -155,10 +155,10 @@ color: Color(0xFF3F5521),
                       Text.rich(
                         TextSpan(
                           text:language=="en"?
-                          "${authProvider.lg[authProvider.language][ "Event Date:"]} ${
+                          "${authProvider.lg[authProvider.language]["Event Date"]} ${
                               DateFormat.yMMMMd('en_US').format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
                           } ":
-                          "${authProvider.lg[authProvider.language][ "Event Date:"]} ${
+                          "${authProvider.lg[authProvider.language]["Event Date"]} ${
                               DateFormat.yMMMMd('ar_SA').format(DateTime.parse(_order.orderbyId["event"]["eventDate"]))
                           } ",
                           style: TextStyle(
