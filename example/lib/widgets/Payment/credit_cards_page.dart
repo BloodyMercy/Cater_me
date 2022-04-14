@@ -2,14 +2,17 @@
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'dart:io' show Platform;
 // import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Payment/Payment.dart';
+import '../../Payment/applepay/flutter_pay.dart';
 import '../../Providers/user.dart';
 import '../../Screens/occasion/theme/colors/light_colors.dart';
 import '../../language/language.dart';
@@ -47,14 +50,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     getAllData();
     super.initState();
   }
-  void onGooglePayResult(paymentResult) {
-    debugPrint(paymentResult.toString());
-  }
 
-  void onApplePayResult(paymentResult) {
-    debugPrint(paymentResult.toString());
-  }
-
+  FlutterPay flutterPay = FlutterPay();
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
@@ -83,72 +80,154 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                     '${authProvider.lg[authProvider.language]["How would you like to pay ?"]}',
                               ),
                             ),
-                            SliverToBoxAdapter(
-                              child:Column(
-                                children: [
 
-                                  // ApplePayButton(
-                                  //   paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
-                                  //   paymentItems:  [ PaymentItem(
-                                  //     label: 'Cater me',
-                                  //     amount: order.totale.toString(),
-                                  //     status: PaymentItemStatus.final_price,
-                                  //   )],
-                                  //   style: ApplePayButtonStyle.black,
-                                  //   type: ApplePayButtonType.buy,
-                                  //   margin: const EdgeInsets.only(top: 15.0),
-                                  //   onPaymentResult: onApplePayResult,
-                                  //   loadingIndicator: const Center(
-                                  //     child: CircularProgressIndicator(),
-                                  //   ),
-                                  // ),
 
-                                ],
 
-                              )
-                            ),
+
+
+                            SliverToBoxAdapter(child:
+                             Platform.isAndroid?
+                              Container(
+
+                                  height: 35.0,
+                                  width: MediaQuery.of(context).size.width/3,
+
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black),
+                                      borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                      color: Colors.white
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                                    },
+                                    child: Row(
+
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset("images/googlelogo.png",height: 25),
+                                        SizedBox(width: 8.0,),
+                                        Text('Pay with : Google Pay', style: TextStyle(color: Colors.black),)
+                                      ],
+                                    ),
+                                  ))
+                              :
+                              Container(
+                                  height: 35.0,
+                                  width: MediaQuery.of(context).size.width/3,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                      color: Colors.black
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () async{
+
+
+                                        List<PaymentItem> items = [PaymentItem(name: "Caterme", price: order.totale)];
+
+                                        flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+
+                                   String a=await     flutterPay.requestPayment(
+                                          googleParameters: GoogleParameters(
+                                            gatewayName: "example",
+                                            gatewayMerchantId: "01234567890123456789",
+                                          ),
+                                          appleParameters: AppleParameters(
+                                            merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                            merchantCapabilities: [
+                                              MerchantCapability.threeDS,
+                                              MerchantCapability.credit,
+                                              MerchantCapability.debit
+                                            ],
+                                          ),
+                                          currencyCode: "SAR",
+                                          countryCode: "SA",
+                                          paymentItems: items,
+                                        );
+
+
+                                      //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset("images/applelogo.png"
+                                            ,height: 25),
+                                        SizedBox(width: 8.0,),
+                                        Text('Pay with  Apple Pay', style: TextStyle(color: Colors.white),)
+                                      ],
+                                    ),
+                                  ))
+                              ,),
+
+                            SliverToBoxAdapter(child: Padding(
+                              padding: const EdgeInsets.all(9.0),
+                              child: Divider( color: Colors.black),
+                            ),),
+                            // SliverToBoxAdapter(
+                            //   child:Column(
+                            //     children: [
+                            //
+                            //       // ApplePayButton(
+                            //       //   paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
+                            //       //   paymentItems:  [ PaymentItem(
+                            //       //     label: 'Cater me',
+                            //       //     amount: order.totale.toString(),
+                            //       //     status: PaymentItemStatus.final_price,
+                            //       //   )],
+                            //       //   style: ApplePayButtonStyle.black,
+                            //       //   type: ApplePayButtonType.buy,
+                            //       //   margin: const EdgeInsets.only(top: 15.0),
+                            //       //   onPaymentResult: onApplePayResult,
+                            //       //   loadingIndicator: const Center(
+                            //       //     child: CircularProgressIndicator(),
+                            //       //   ),
+                            //       // ),
+                            //
+                            //     ],
+                            //
+                            //   )
+                            // ),
                             SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
-                                  return SliverToBoxAdapter (
-                                    child: Container(
-                                      child:
-                                      InkWell(
-                                        onTap: (){
-                                          _creditCards.value = i;
-                                          setState(() {
-                                            _value = i;
-                                          });
-                                          _creditCards.credit =
-                                          _creditCards.list[i];
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Radio(
-                                              fillColor: MaterialStateColor.resolveWith(
-                                                  (states) => colorCustom),
-                                              toggleable: true,
-                                              groupValue: _creditCards.value,
-                                              value: i,
-                                              onChanged: (value) {
-                                                _creditCards.value = i;
-                                                setState(() {
-                                                  _value = i;
-                                                });
-                                                _creditCards.credit =
-                                                    _creditCards.list[i];
-                                              },
-                                            ),
-                                            _buildCreditCard(
-                                              color: Colors.black,
-                                              cardExpiration:
-                                                  "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                                              cardHolder: _creditCards.list[i].ownerName,
-                                              cardNumber:
-                                                  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                            ),
-                                          ],
-                                        ),
+                                  return Container(
+                                    child:
+                                    InkWell(
+                                      onTap: (){
+                                        _creditCards.value = i;
+                                        setState(() {
+                                          _value = i;
+                                        });
+                                        _creditCards.credit =
+                                        _creditCards.list[i];
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Radio(
+                                            fillColor: MaterialStateColor.resolveWith(
+                                                (states) => colorCustom),
+                                            toggleable: true,
+                                            groupValue: _creditCards.value,
+                                            value: i,
+                                            onChanged: (value) {
+                                              _creditCards.value = i;
+                                              setState(() {
+                                                _value = i;
+                                              });
+                                              _creditCards.credit =
+                                                  _creditCards.list[i];
+                                            },
+                                          ),
+                                          _buildCreditCard(
+                                            color: Colors.black,
+                                            cardExpiration:
+                                                "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                            cardHolder: _creditCards.list[i].ownerName,
+                                            cardNumber:
+                                                "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   );
@@ -184,10 +263,65 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
                       child: Column(children:[
+                        // if (Platform.isAndroid) {
+                        //   // Android-specific code
+                        // } else if (Platform.isIOS) {
+                        //   // iOS-specific code
+                        // }
 
 
+                        Platform.isAndroid?
 
+                        Container(
 
+                            height: 35.0,
+                            width: MediaQuery.of(context).size.width/3,
+
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                color: Colors.white
+                            ),
+                            child: GestureDetector(
+                              onTap: (){
+                                //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                              },
+                              child: Row(
+
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("images/googlelogo.png",height: 25),
+                                  SizedBox(width: 8.0,),
+                                  Text('Google Pay', style: TextStyle(color: Colors.black),)
+                                ],
+                              ),
+                            ))
+                        :
+                        Container(
+                            height: 35.0,
+                            width: MediaQuery.of(context).size.width/3,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                color: Colors.black
+                            ),
+                            child: GestureDetector(
+                              onTap: (){
+                                //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("images/applelogo.png"
+                                      ,height: 25),
+                                  SizedBox(width: 8.0,),
+                                  Text('Apple Pay', style: TextStyle(color: Colors.white),)
+                                ],
+                              ),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.all(9.0),
+                          child: Divider(color: Colors.black,),
+                        ),
                         Container(
                           color: Colors.transparent,
                           child: language=="en" ?Image.asset("images/CreditCardNewImage/no cards added yet in english.png"):Image.asset("images/CreditCardNewImage/no cards yet in arabic.png")),
