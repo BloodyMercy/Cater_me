@@ -35,7 +35,7 @@ import 'Payment/OrderSucc.dart';
 
 import 'Payment/Payments1.dart';
 import 'Payment/applepay.dart';
-import 'Payment/pay/pay.dart';
+// import 'Payment/pay/pay.dart';
 import 'Providers/GalleryProvider.dart';
 import 'Providers/address.dart';
 import 'Providers/cuisines.dart';

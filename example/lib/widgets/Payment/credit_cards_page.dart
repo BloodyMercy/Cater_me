@@ -5,7 +5,7 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:pay/pay.dart';
+// import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -87,22 +87,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                               child:Column(
                                 children: [
 
-                                  GooglePayButton(
-                                    paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
-                                    paymentItems:  [ PaymentItem(
-                                      label: 'Cater me',
-                                      amount: order.totale.toString(),
-                                      status: PaymentItemStatus.final_price,
-                                    )],
-                                    style: GooglePayButtonStyle.black,
-                                    type: GooglePayButtonType.pay,
-                                    margin: const EdgeInsets.only(top: 15.0),
-                                    onPaymentResult: onGooglePayResult,
-                                    loadingIndicator: const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                    //onError:(){ Text("")},
-                                  ),
                                   // ApplePayButton(
                                   //   paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
                                   //   paymentItems:  [ PaymentItem(
@@ -126,43 +110,45 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
-                                  return Container(
-                                    child:
-                                    InkWell(
-                                      onTap: (){
-                                        _creditCards.value = i;
-                                        setState(() {
-                                          _value = i;
-                                        });
-                                        _creditCards.credit =
-                                        _creditCards.list[i];
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Radio(
-                                            fillColor: MaterialStateColor.resolveWith(
-                                                (states) => colorCustom),
-                                            toggleable: true,
-                                            groupValue: _creditCards.value,
-                                            value: i,
-                                            onChanged: (value) {
-                                              _creditCards.value = i;
-                                              setState(() {
-                                                _value = i;
-                                              });
-                                              _creditCards.credit =
-                                                  _creditCards.list[i];
-                                            },
-                                          ),
-                                          _buildCreditCard(
-                                            color: Colors.black,
-                                            cardExpiration:
-                                                "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
-                                            cardHolder: _creditCards.list[i].ownerName,
-                                            cardNumber:
-                                                "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
-                                          ),
-                                        ],
+                                  return SliverToBoxAdapter (
+                                    child: Container(
+                                      child:
+                                      InkWell(
+                                        onTap: (){
+                                          _creditCards.value = i;
+                                          setState(() {
+                                            _value = i;
+                                          });
+                                          _creditCards.credit =
+                                          _creditCards.list[i];
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Radio(
+                                              fillColor: MaterialStateColor.resolveWith(
+                                                  (states) => colorCustom),
+                                              toggleable: true,
+                                              groupValue: _creditCards.value,
+                                              value: i,
+                                              onChanged: (value) {
+                                                _creditCards.value = i;
+                                                setState(() {
+                                                  _value = i;
+                                                });
+                                                _creditCards.credit =
+                                                    _creditCards.list[i];
+                                              },
+                                            ),
+                                            _buildCreditCard(
+                                              color: Colors.black,
+                                              cardExpiration:
+                                                  "${DateFormat("MM/yy").format(DateTime.parse(_creditCards.list[i].expiryDate))}",
+                                              cardHolder: _creditCards.list[i].ownerName,
+                                              cardNumber:
+                                                  "XXXX XXXX XXXX ${_creditCards.list[i].cardNumber}",
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );
@@ -199,37 +185,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       },
                       child: Column(children:[
 
-                                GooglePayButton(
-                                  paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
-                                  paymentItems:  [ PaymentItem(
-                                    label: 'Cater me',
-                                    amount: order.totale.toString(),
-                                    status: PaymentItemStatus.final_price,
-                                  )],
-                                  style: GooglePayButtonStyle.black,
-                                  type: GooglePayButtonType.pay,
-                                  margin: const EdgeInsets.only(top: 15.0),
-                                  onPaymentResult: onGooglePayResult,
-                                  loadingIndicator: const Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                  //onError:(){ Text("")},
-                                ),
-                                ApplePayButton(
-                                  paymentConfigurationAsset: 'default_payment_profile_google_pay.json',
-                                  paymentItems:  [ PaymentItem(
-                                    label: 'Cater me',
-                                    amount: order.totale.toString(),
-                                    status: PaymentItemStatus.final_price,
-                                  )],
-                                  style: ApplePayButtonStyle.black,
-                                  type: ApplePayButtonType.buy,
-                                  margin: const EdgeInsets.only(top: 15.0),
-                                  onPaymentResult: onApplePayResult,
-                                  loadingIndicator: const Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                ),
+
 
 
                         Container(
