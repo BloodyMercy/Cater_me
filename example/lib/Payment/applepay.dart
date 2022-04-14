@@ -26,7 +26,7 @@ class _ApplePaycatermeState extends State<ApplePaycaterme> {
         gatewayMerchantId: "01234567890123456789",
       ),
       appleParameters: AppleParameters(
-        merchantIdentifier: "merchant.flutterpay.example",
+        merchantIdentifier: "merchant.caterme.tiaragroup.com",
         merchantCapabilities: [
           MerchantCapability.threeDS,
           MerchantCapability.credit,
@@ -93,6 +93,19 @@ class _ApplePaycatermeState extends State<ApplePaycaterme> {
                     }
                   },
                 ),
+
+                // ApplePayButton(
+                //   paymentConfigurationAsset: 'default_payment_profile_apple_pay.json',
+                //   paymentItems: _paymentItems,
+                //   style: ApplePayButtonStyle.black,
+                //   type: ApplePayButtonType.buy,
+                //   margin: const EdgeInsets.only(top: 15.0),
+                //   onPaymentResult: onApplePayResult,
+                //   loadingIndicator: const Center(
+                //     child: CircularProgressIndicator(),
+                //   ),
+                // ),
+
                 FlatButton(
                     child: Text("Try to pay?"),
                     onPressed: () {
