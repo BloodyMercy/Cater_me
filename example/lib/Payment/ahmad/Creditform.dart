@@ -267,125 +267,134 @@ class _CreditCardFormState extends State<CreditCardForm> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final user = Provider.of<UserProvider>(context, listen: true);
-    return Theme(
-      data: ThemeData(
-        primaryColor: themeColor.withOpacity(0.8),
-        primaryColorDark: themeColor,
-      ),
-      child: Form(
-        child: Column(
-          children: <Widget>[
-        Padding(
-        padding:
-        EdgeInsets.symmetric(vertical: 19,horizontal: 20),
-        child:   _customfieldnumber(_cardNumberController, '${user.lg[user.language]['Card number']}',
-                Icons.credit_card_outlined)),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: _customfield(_cardHolderNameController, '${user.lg[user.language]['Card Holder']}',
-                  Icons.person_outline_outlined),
-            ),
+    return   GestureDetector( behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  SizedBox(
-                    child: _customfieldnumber(_expiryDateController, '${user.lg[user.language]['Expired Date']}',
-                        Icons.calendar_today_outlined),
-                    height: height / 13,
-                    width: width / 2.5,
-                  ),
-                  SizedBox(
-                    child: _customfieldnumberotp(
-                       _cvvCodeController, "CCV Code", Icons.lock_outline),
-                    height: height / 13,
-                    width: width / 2.5,
-                  ),
-                ],
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Theme(
+        data: ThemeData(
+          primaryColor: themeColor.withOpacity(0.8),
+          primaryColorDark: themeColor,
+        ),
+        child: Form(
+          child: Column(
+            children: <Widget>[
+          Padding(
+          padding:
+          EdgeInsets.symmetric(vertical: 19,horizontal: 20),
+          child:   _customfieldnumber(_cardNumberController, '${user.lg[user.language]['Card number']}',
+                  Icons.credit_card_outlined)),
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: _customfield(_cardHolderNameController, '${user.lg[user.language]['Card Holder']}',
+                    Icons.person_outline_outlined),
               ),
-            ),
-            // Container(
-            //   padding: const EdgeInsets.symmetric(vertical: 8.0),
-            //   margin: const EdgeInsets.only(left: 16, top: 16, right: 16),
-            //   child: TextFormField(
-            //     textDirection: TextDirection.ltr,
-            //     controller: _cardNumberController,
-            //     cursorColor: widget.cursorColor ?? themeColor,
-            //     style: TextStyle(
-            //       color: widget.textColor,
-            //     ),
-            //     decoration: InputDecoration(
-            //       border: OutlineInputBorder(),
-            //       labelText: '${user.lg[user.language]['Card number']}',
-            //       hintText: 'xxxx xxxx xxxx xxxx',
-            //
-            //     ),
-            //     keyboardType: TextInputType.number,
-            //     textInputAction: TextInputAction.next,
-            //   ),
-            // ),
-            // Container(
-            //   padding: const EdgeInsets.symmetric(vertical: 8.0),
-            //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-            //   child: TextFormField(
-            //     controller: _expiryDateController,
-            //     cursorColor: widget.cursorColor ?? themeColor,
-            //     style: TextStyle(
-            //       color: widget.textColor,
-            //     ),
-            //     decoration: InputDecoration(
-            //         border: OutlineInputBorder(),
-            //         labelText:'${user.lg[user.language]['Expired Date']}',
-            //         hintText:user.language=="ar"?'YY/MM': 'MM/YY'),
-            //     keyboardType: TextInputType.number,
-            //     textInputAction: TextInputAction.next,
-            //   ),
-            // ),
-            // Container(
-            //   padding: const EdgeInsets.symmetric(vertical: 8.0),
-            //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-            //   child: TextField(
-            //     focusNode: cvvFocusNode,
-            //     controller: _cvvCodeController,
-            //     cursorColor: widget.cursorColor ?? themeColor,
-            //     style: TextStyle(
-            //       color: widget.textColor,
-            //     ),
-            //     decoration: InputDecoration(
-            //       border: OutlineInputBorder(),
-            //       labelText: 'CVV',
-            //       hintText: 'XXX',
-            //     ),
-            //     keyboardType: TextInputType.number,
-            //     textInputAction: TextInputAction.done,
-            //     onChanged: (String text) {
-            //       setState(() {
-            //         cvvCode = text;
-            //       });
-            //     },
-            //   ),
-            // ),
-            // Container(
-            //   padding: const EdgeInsets.symmetric(vertical: 8.0),
-            //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-            //   child: TextFormField(
-            //     controller: _cardHolderNameController,
-            //     cursorColor: widget.cursorColor ?? themeColor,
-            //     style: TextStyle(
-            //       color: widget.textColor,
-            //     ),
-            //     decoration: InputDecoration(
-            //       border: OutlineInputBorder(),
-            //       labelText: '${user.lg[user.language]['Card Holder']}',
-            //     ),
-            //     keyboardType: TextInputType.text,
-            //     textInputAction: TextInputAction.next,
-            //   ),
-            // ),
-          ],
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      child: _customfieldnumber(_expiryDateController, '${user.lg[user.language]['Expired Date']}',
+                          Icons.calendar_today_outlined),
+                      height: height / 13,
+                      width: width / 2.5,
+                    ),
+                    SizedBox(
+                      child: _customfieldnumberotp(
+                         _cvvCodeController, "CCV", Icons.lock_outline),
+                      height: height / 13,
+                      width: width / 2.5,
+                    ),
+                  ],
+                ),
+              ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 16, right: 16),
+              //   child: TextFormField(
+              //     textDirection: TextDirection.ltr,
+              //     controller: _cardNumberController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: '${user.lg[user.language]['Card number']}',
+              //       hintText: 'xxxx xxxx xxxx xxxx',
+              //
+              //     ),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextFormField(
+              //     controller: _expiryDateController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //         border: OutlineInputBorder(),
+              //         labelText:'${user.lg[user.language]['Expired Date']}',
+              //         hintText:user.language=="ar"?'YY/MM': 'MM/YY'),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextField(
+              //     focusNode: cvvFocusNode,
+              //     controller: _cvvCodeController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: 'CVV',
+              //       hintText: 'XXX',
+              //     ),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.done,
+              //     onChanged: (String text) {
+              //       setState(() {
+              //         cvvCode = text;
+              //       });
+              //     },
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextFormField(
+              //     controller: _cardHolderNameController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: '${user.lg[user.language]['Card Holder']}',
+              //     ),
+              //     keyboardType: TextInputType.text,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );
