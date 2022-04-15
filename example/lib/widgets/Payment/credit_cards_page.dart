@@ -32,7 +32,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   bool addcard = false;
   bool loading = true;
   String language;
-
+bool cardselected=true;
   getAllData() async {
     var _creditCards = Provider.of<CreditCardsProvider>(context, listen: false);
     // _creditCards.loading=true;
@@ -90,144 +90,193 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
 
 
+SliverToBoxAdapter(child:InkWell(
+  onTap: (){
+    setState(() {cardselected=true;
+    });
+  },
+  child:
+        Container(height: MediaQuery.of(context).size.height/20,
+        width: MediaQuery.of(context).size.width/3,
 
+      decoration: BoxDecoration(
 
+          border: Border.all(color:cardselected? Colors.yellow:Colors.black),
+          borderRadius: BorderRadius.all(Radius.circular(18.0)),
+          color: Colors.black
+      ),
+      child: Directionality(
+
+        textDirection: TextDirection.ltr,
+        child: Row(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+
+            // Text('Pay with ', style: TextStyle(color: Colors.black),),
+
+         //   Image.asset("images/googlelogo.png",height: 25),
+            Icon(
+            Icons.credit_card_outlined,
+              color: const Color(0xff8792A4),
+              size: 20,
+            ),
+            SizedBox(width: 8.0,),
+            Text('Credit/Debit Card', style: TextStyle(color: Colors.white),),
+            SizedBox(width: 8.0,),
+            Icon(
+             cardselected? Icons.check_circle:Icons.check_circle_outline,
+              color:  cardselected? Colors.yellow:Colors.white,
+              size: 20,
+            ),
+
+          ],
+        ),
+      ),
+
+    ),
+
+)),
+        SliverToBoxAdapter(child:Container(height: MediaQuery.of(context).size.height/50,
+        )),
                             SliverToBoxAdapter(
                               child:
                              Platform.isAndroid?
-                              Container(
+                             GestureDetector(
 
-                                  height: 35.0,
-                                  width: MediaQuery.of(context).size.width/3,
+                                 onTap: () async{
+                                   setState(() {
+                                     cardselected=false;
+                                   });
+                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
 
-                                  decoration: BoxDecoration(
-
-                                      border: Border.all(color: Colors.black),
-                                      borderRadius: BorderRadius.all(Radius.circular(18.0)),
-                                      color: Colors.white
-                                  ),
-                                  child: GestureDetector(
-
-                                    onTap: () async{
-
-                                      List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
-
-                                      flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
                                    String a=await       flutterPay.requestPayment(
-                                        googleParameters: GoogleParameters(
-                                          gatewayName: "example",
-                                          gatewayMerchantId: "01234567890123456789",
-                                        ),
-                                        appleParameters: AppleParameters(
-                                          merchantIdentifier: "merchant.caterme.tiaragroup.com",
-                                          merchantCapabilities: [
-                                            MerchantCapability.threeDS,
-                                            MerchantCapability.credit,
-                                            MerchantCapability.debit
-                                          ],
-                                        ),
-                                        currencyCode: "SAR",
-                                        countryCode: "SA",
-                                        paymentItems: items,
-                                      );
+                                     googleParameters: GoogleParameters(
+                                       gatewayName: "example",
+                                       gatewayMerchantId: "01234567890123456789",
+                                     ),
+                                     appleParameters: AppleParameters(
+                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantCapabilities: [
+                                         MerchantCapability.threeDS,
+                                         MerchantCapability.credit,
+                                         MerchantCapability.debit
+                                       ],
+                                     ),
+                                     currencyCode: "SAR",
+                                     countryCode: "SA",
+                                     paymentItems: items,
+                                   );
 
                                    if(a==""){
 
                                    }
                                    else{
-    showDialog(
-    context: this.context,
-    barrierDismissible:
-    false,
-    builder: (BuildContext
-    context) {
-    return WillPopScope(
-    onWillPop: () =>
-    Future<bool>.value(
-    false),
-    child:
-    AlertDialog(
-    title: Text(
-    '${authProvider.lg[authProvider.language]["Loading..."]}'),
-    content: Column(
-    mainAxisSize:
-    MainAxisSize.min,
-    children: <Widget>[
-    const CircularProgressIndicator()
-    ]),
-    ));
-    },
-    );
-    final _creditCards = Provider
-        .of<CreditCardsProvider>(
-    context,
-    listen: false);
-    final orders = Provider.of<
-    OrderByIdProvider>(
-    context,
-    listen: false);
+                                     showDialog(
+                                       context: this.context,
+                                       barrierDismissible:
+                                       false,
+                                       builder: (BuildContext
+                                       context) {
+                                         return WillPopScope(
+                                             onWillPop: () =>
+                                             Future<bool>.value(
+                                                 false),
+                                             child:
+                                             AlertDialog(
+                                               title: Text(
+                                                   '${authProvider.lg[authProvider.language]["Loading..."]}'),
+                                               content: Column(
+                                                   mainAxisSize:
+                                                   MainAxisSize.min,
+                                                   children: <Widget>[
+                                                     const CircularProgressIndicator()
+                                                   ]),
+                                             ));
+                                       },
+                                     );
+                                     final _creditCards = Provider
+                                         .of<CreditCardsProvider>(
+                                         context,
+                                         listen: false);
+                                     final orders = Provider.of<
+                                         OrderByIdProvider>(
+                                         context,
+                                         listen: false);
 
-    final address = Provider
-        .of<AdressProvider>(
-    context,
-    listen: false);
+                                     final address = Provider
+                                         .of<AdressProvider>(
+                                         context,
+                                         listen: false);
 
-    await order
-        .getPlaceOrderId(
-    order
-        .orderid
-        .toString(),
-    a,false);
+                                     await order
+                                         .getPlaceOrderId(
+                                         order
+                                             .orderid
+                                             .toString(),
+                                         a,false);
 
-    Navigator.of(context)
-        .pop();
+                                     Navigator.of(context)
+                                         .pop();
 
-    //   else {
+                                     //   else {
 
-    if (order
-        .paymentverify
-        .isNotEmpty) {
-    if (order
-        .paymentverify[
-    "msg"] ==
-    "error") {
-      print("error from api msg error");
-    _key.currentState
-        .showSnackBar(
-    SnackBar(
-    content: Text(
-    '${authProvider.lg[authProvider.language]["error to place order"]}'),
-    ),
-    );
-    } else {
-    setState(() {
-    order.url3ds = order
-        .paymentverify[
-    "msg"];
-    });
-    order.spets++;
-    // _animateToIndex(
-    // orderProvider
-    //     .spets);
-    }
-    } else {
-    _key.currentState
-        .showSnackBar(
-    SnackBar(
-    content: Text(
-    '${authProvider.lg[authProvider.language]["error to place order"]}'),
-    ),
-    );
-    }
-    }
+                                     if (order
+                                         .paymentverify
+                                         .isNotEmpty) {
+                                       if (order
+                                           .paymentverify[
+                                       "msg"] ==
+                                           "error") {
+                                         print("error from api msg error");
+                                         _key.currentState
+                                             .showSnackBar(
+                                           SnackBar(
+                                             content: Text(
+                                                 '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                           ),
+                                         );
+                                       } else {
+                                         setState(() {
+                                           order.url3ds = order
+                                               .paymentverify[
+                                           "msg"];
+                                         });
+                                         order.spets++;
+                                         // _animateToIndex(
+                                         // orderProvider
+                                         //     .spets);
+                                       }
+                                     } else {
+                                       _key.currentState
+                                           .showSnackBar(
+                                         SnackBar(
+                                           content: Text(
+                                               '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                         ),
+                                       );
+                                     }
+                                   }
 
 
-    },
+                                 },child: Container(
+
+                                  height: MediaQuery.of(context).size.height/20,
+                                  width: MediaQuery.of(context).size.width/3,
+
+                                  decoration: BoxDecoration(
+
+                                      border: Border.all(color:!cardselected?Colors.yellow: Colors.black),
+                                      borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                      color: Colors.black
+                                  ),
+                                  child:
 
                                       //ADD THE FUNCTIONS OF THIS BUTTON HERE
 
-                                    child: Directionality(
+                                    Directionality(
 
                                       textDirection: TextDirection.ltr,
                                       child: Row(
@@ -239,59 +288,166 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
                                           Image.asset("images/googlelogo.png",height: 25),
                                           SizedBox(width: 8.0,),
-                                          Text('Pay', style: TextStyle(color: Colors.black),)
+                                          Text('Pay', style: TextStyle(color: Colors.white),),
+                                          SizedBox(width: 8.0,),
+                                          Icon(
+                                            !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                            color:  !cardselected? Colors.yellow:Colors.white,
+                                            size: 20,
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ))
                               :
-                              Container(
+                             GestureDetector(
+                                 onTap: () async{
 
-                                  height: 35.0,
+                                   setState(() {
+                                     cardselected=false;
+                                   });
+                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
+
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+
+                                   String a=await       flutterPay.requestPayment(
+                                     googleParameters: GoogleParameters(
+                                       gatewayName: "example",
+                                       gatewayMerchantId: "01234567890123456789",
+                                     ),
+                                     appleParameters: AppleParameters(
+                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantCapabilities: [
+                                         MerchantCapability.threeDS,
+                                         MerchantCapability.credit,
+                                         MerchantCapability.debit
+                                       ],
+                                     ),
+                                     currencyCode: "SAR",
+                                     countryCode: "SA",
+                                     paymentItems: items,
+                                   );
+
+                                   if(a==""){
+
+                                   }
+                                   else{
+                                     showDialog(
+                                       context: this.context,
+                                       barrierDismissible:
+                                       false,
+                                       builder: (BuildContext
+                                       context) {
+                                         return WillPopScope(
+                                             onWillPop: () =>
+                                             Future<bool>.value(
+                                                 false),
+                                             child:
+                                             AlertDialog(
+                                               title: Text(
+                                                   '${authProvider.lg[authProvider.language]["Loading..."]}'),
+                                               content: Column(
+                                                   mainAxisSize:
+                                                   MainAxisSize.min,
+                                                   children: <Widget>[
+                                                     const CircularProgressIndicator()
+                                                   ]),
+                                             ));
+                                       },
+                                     );
+                                     final _creditCards = Provider
+                                         .of<CreditCardsProvider>(
+                                         context,
+                                         listen: false);
+                                     final orders = Provider.of<
+                                         OrderByIdProvider>(
+                                         context,
+                                         listen: false);
+
+                                     final address = Provider
+                                         .of<AdressProvider>(
+                                         context,
+                                         listen: false);
+
+                                     await order
+                                         .getPlaceOrderId(
+                                         order
+                                             .orderid
+                                             .toString(),
+                                         a,false);
+
+                                     Navigator.of(context)
+                                         .pop();
+
+                                     //   else {
+
+                                     if (order
+                                         .paymentverify
+                                         .isNotEmpty) {
+                                       if (order
+                                           .paymentverify[
+                                       "msg"] ==
+                                           "error") {
+                                         print("error from api msg error");
+                                         _key.currentState
+                                             .showSnackBar(
+                                           SnackBar(
+                                             content: Text(
+                                                 '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                           ),
+                                         );
+                                       } else {
+                                         setState(() {
+                                           order.url3ds = order
+                                               .paymentverify[
+                                           "msg"];
+                                         });
+                                         order.spets++;
+                                         // _animateToIndex(
+                                         // orderProvider
+                                         //     .spets);
+                                       }
+                                     } else {
+                                       _key.currentState
+                                           .showSnackBar(
+                                         SnackBar(
+                                           content: Text(
+                                               '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                         ),
+                                       );
+                                     }
+                                   }
+
+                                   //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                                 },child:  Container(
+
+                                  height: MediaQuery.of(context).size.height/20,
                                   width: MediaQuery.of(context).size.width/3,
                                   decoration: BoxDecoration(
+                                      border: Border.all(color:!cardselected?Colors.yellow: Colors.black),
+
                                       borderRadius: BorderRadius.all(Radius.circular(18.0)),
                                       color: Colors.black
                                   ),
-                                  child: GestureDetector(
-                                    onTap: () async{
 
+                                    child:Directionality(
 
-                                        List<PaymentItem> items = [PaymentItem(name: "Caterme", price: order.totale)];
-
-                                        flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
-
-                                   String a=await     flutterPay.requestPayment(
-
-                                          googleParameters: GoogleParameters(
-                                            gatewayName: "example",
-                                            gatewayMerchantId: "01234567890123456789",
-
+                                      textDirection: TextDirection.ltr,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset("images/applelogo.png"
+                                              ,height: 25),
+                                          SizedBox(width: 8.0,),
+                                          Text('Pay', style: TextStyle(color: Colors.white),),
+                                          SizedBox(width: 8.0,),
+                                          Icon(
+                                            !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                            color:  !cardselected? Colors.yellow:Colors.white,
+                                            size: 20,
                                           ),
-                                          appleParameters: AppleParameters(
-                                            merchantIdentifier: "merchant.caterme.tiaragroup.com",
-                                            merchantCapabilities: [
-                                              MerchantCapability.threeDS,
-                                              MerchantCapability.credit,
-                                              MerchantCapability.debit
-                                            ],
-                                          ),
-                                          currencyCode: "SAR",
-                                          countryCode: "SA",
-                                          paymentItems: items,
-                                        );
-
-
-                                      //ADD THE FUNCTIONS OF THIS BUTTON HERE
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset("images/applelogo.png"
-                                            ,height: 25),
-                                        SizedBox(width: 8.0,),
-                                        Text('Pay', style: TextStyle(color: Colors.white),)
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ))
                               ,),
@@ -324,7 +480,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             //
                             //   )
                             // ),
-                            SliverList(
+                          cardselected?  SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
                                   return Container(
@@ -370,7 +526,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                 },
                                 childCount: _creditCards.list.length,
                               ),
-                            ),
+                            ):SliverToBoxAdapter(child:Container()),
                             // SliverToBoxAdapter(
                             //     child: IconButton(
                             //   onPressed: () {
@@ -406,54 +562,188 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         // }
 
 
-                        Platform.isAndroid?
 
-                        Container(
 
-                            height: 35.0,
+                        GestureDetector(
+
+                            onTap: () async{
+                              setState(() {
+                                cardselected=false;
+                              });
+                              List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
+
+                              flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+
+                              String a=await       flutterPay.requestPayment(
+                                googleParameters: GoogleParameters(
+                                  gatewayName: "example",
+                                  gatewayMerchantId: "01234567890123456789",
+                                ),
+                                appleParameters: AppleParameters(
+                                  merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                  merchantCapabilities: [
+                                    MerchantCapability.threeDS,
+                                    MerchantCapability.credit,
+                                    MerchantCapability.debit
+                                  ],
+                                ),
+                                currencyCode: "SAR",
+                                countryCode: "SA",
+                                paymentItems: items,
+                              );
+
+                              if(a==""){
+
+                              }
+                              else{
+                                showDialog(
+                                  context: this.context,
+                                  barrierDismissible:
+                                  false,
+                                  builder: (BuildContext
+                                  context) {
+                                    return WillPopScope(
+                                        onWillPop: () =>
+                                        Future<bool>.value(
+                                            false),
+                                        child:
+                                        AlertDialog(
+                                          title: Text(
+                                              '${authProvider.lg[authProvider.language]["Loading..."]}'),
+                                          content: Column(
+                                              mainAxisSize:
+                                              MainAxisSize.min,
+                                              children: <Widget>[
+                                                const CircularProgressIndicator()
+                                              ]),
+                                        ));
+                                  },
+                                );
+                                final _creditCards = Provider
+                                    .of<CreditCardsProvider>(
+                                    context,
+                                    listen: false);
+                                final orders = Provider.of<
+                                    OrderByIdProvider>(
+                                    context,
+                                    listen: false);
+
+                                final address = Provider
+                                    .of<AdressProvider>(
+                                    context,
+                                    listen: false);
+
+                                await order
+                                    .getPlaceOrderId(
+                                    order
+                                        .orderid
+                                        .toString(),
+                                    a,false);
+
+                                Navigator.of(context)
+                                    .pop();
+
+                                //   else {
+
+                                if (order
+                                    .paymentverify
+                                    .isNotEmpty) {
+                                  if (order
+                                      .paymentverify[
+                                  "msg"] ==
+                                      "error") {
+                                    print("error from api msg error");
+                                    _key.currentState
+                                        .showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                      ),
+                                    );
+                                  } else {
+                                    setState(() {
+                                      order.url3ds = order
+                                          .paymentverify[
+                                      "msg"];
+                                    });
+                                    order.spets++;
+                                    // _animateToIndex(
+                                    // orderProvider
+                                    //     .spets);
+                                  }
+                                } else {
+                                  _key.currentState
+                                      .showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                    ),
+                                  );
+                                }
+                              }
+
+
+                            },child:  Container(
+
+                            height: MediaQuery.of(context).size.height/20,
                             width: MediaQuery.of(context).size.width/3,
 
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                                borderRadius: BorderRadius.all(Radius.circular(18.0)),
-                                color: Colors.white
-                            ),
-                            child: GestureDetector(
-                              onTap: (){
-                                //ADD THE FUNCTIONS OF THIS BUTTON HERE
-                              },
-                              child: Row(
 
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset("images/googlelogo.png",height: 25),
-                                  SizedBox(width: 8.0,),
-                                  Text('Google Pay', style: TextStyle(color: Colors.black),)
-                                ],
-                              ),
-                            ))
-                        :
-                        Container(
-                            height: 35.0,
-                            width: MediaQuery.of(context).size.width/3,
-                            decoration: BoxDecoration(
+                                border: Border.all(color:!cardselected?Colors.yellow: Colors.black),
                                 borderRadius: BorderRadius.all(Radius.circular(18.0)),
                                 color: Colors.black
                             ),
-                            child: GestureDetector(
-                              onTap: (){
-                                //ADD THE FUNCTIONS OF THIS BUTTON HERE
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset("images/applelogo.png"
-                                      ,height: 25),
-                                  SizedBox(width: 8.0,),
-                                  Text('Apple Pay', style: TextStyle(color: Colors.white),)
-                                ],
+                            child:
+
+                              //ADD THE FUNCTIONS OF THIS BUTTON HERE
+
+                             Directionality(
+
+                                textDirection: TextDirection.ltr,
+                                child: Row(
+
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+
+                                    // Text('Pay with ', style: TextStyle(color: Colors.black),),
+
+                                    Platform.isAndroid? Image.asset("images/googlelogo.png",height: 25):Image.asset("images/applelogo.png"
+                                  ,height: 25),
+                                    SizedBox(width: 8.0,),
+                                    Text('Pay', style: TextStyle(color: Colors.white),),
+                                    SizedBox(width: 8.0,),
+                                    Icon(
+                                      !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                      color:  !cardselected? Colors.yellow:Colors.white,
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
                               ),
                             )),
+
+                        // Container(
+                        //     height: 35.0,
+                        //     width: MediaQuery.of(context).size.width/3,
+                        //     decoration: BoxDecoration(
+                        //         borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                        //         color: Colors.black
+                        //     ),
+                        //     child: GestureDetector(
+                        //       onTap: (){
+                        //         //ADD THE FUNCTIONS OF THIS BUTTON HERE
+                        //       },
+                        //       child: Row(
+                        //         mainAxisAlignment: MainAxisAlignment.center,
+                        //         children: [
+                        //           Image.asset("images/applelogo.png"
+                        //               ,height: 25),
+                        //           SizedBox(width: 8.0,),
+                        //           Text('Apple Pay', style: TextStyle(color: Colors.white),)
+                        //         ],
+                        //       ),
+                        //     )),
                         Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Divider(color: Colors.black,),
