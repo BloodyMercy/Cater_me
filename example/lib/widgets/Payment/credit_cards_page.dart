@@ -306,7 +306,8 @@ SliverToBoxAdapter(child:InkWell(
                                    setState(() {
                                      cardselected=false;
                                    });
-                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
+                                 //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
+                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
 
                                    flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
@@ -327,9 +328,15 @@ SliverToBoxAdapter(child:InkWell(
                                      countryCode: "SA",
                                      paymentItems: items,
                                    );
-
+//tokenpaymentexample
                                    if(a==""){
-
+                                     _key.currentState
+                                         .showSnackBar(
+                                       SnackBar(
+                                         content: Text(
+                                             '${authProvider.lg[authProvider.language]["order not placed"]}'),
+                                       ),
+                                     );
                                    }
                                    else{
                                      showDialog(

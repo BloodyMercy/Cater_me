@@ -336,7 +336,8 @@ class LanguageTr {
       "Update failed":"فشل التحديث",
       "Register":"تسجيل",
       "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
-      "PRICE":"السعر"
+      "PRICE":"السعر",
+      "order not placed":"لم يتم انشاء الطلب"
 
     },
     "en": {
@@ -678,6 +679,7 @@ class LanguageTr {
       "PDF Invoice": "PDF Invoice",
       "PRICE":"PRICE",
       "Event Date:":"Event Date:",
+      "order not placed":"order not place"
     }
   };
 }
