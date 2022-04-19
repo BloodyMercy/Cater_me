@@ -306,10 +306,10 @@ SliverToBoxAdapter(child:InkWell(
                                    setState(() {
                                      cardselected=false;
                                    });
-                                 //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
-                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
+                                   List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
+                                 //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
 
-                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
                                    String a=await       flutterPay.requestPayment(
                                      googleParameters: GoogleParameters(
