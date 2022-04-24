@@ -49,7 +49,7 @@ bool cardselected=true;
 
     });
   }
-
+String msg="no token";
   @override
   void initState() {
     getAllData();
@@ -158,7 +158,7 @@ SliverToBoxAdapter(child:InkWell(
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(
-                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantIdentifier: "merchant.checkout.caterme.online",
                                        merchantCapabilities: [
                                          MerchantCapability.threeDS,
                                          MerchantCapability.credit,
@@ -174,6 +174,9 @@ SliverToBoxAdapter(child:InkWell(
 
                                    }
                                    else{
+                                     setState(() {
+msg=a;
+                                     });
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -244,7 +247,7 @@ SliverToBoxAdapter(child:InkWell(
                                                .paymentverify[
                                            "msg"];
                                          });
-                                         order.spets++;
+                                       //  order.spets++;
                                          // _animateToIndex(
                                          // orderProvider
                                          //     .spets);
@@ -317,7 +320,7 @@ SliverToBoxAdapter(child:InkWell(
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(
-                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantIdentifier: "merchant.checkout.caterme.online",
                                        merchantCapabilities: [
                                          MerchantCapability.threeDS,
                                          MerchantCapability.credit,
@@ -339,6 +342,9 @@ SliverToBoxAdapter(child:InkWell(
                                      );
                                    }
                                    else{
+                                     setState(() {
+                                       msg=a;
+                                     });
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -409,7 +415,7 @@ SliverToBoxAdapter(child:InkWell(
                                                .paymentverify[
                                            "msg"];
                                          });
-                                         order.spets++;
+                                         //order.spets++;
                                          // _animateToIndex(
                                          // orderProvider
                                          //     .spets);
@@ -487,6 +493,12 @@ SliverToBoxAdapter(child:InkWell(
                             //
                             //   )
                             // ),
+                            SliverToBoxAdapter(child: Padding(
+                              padding: const EdgeInsets.all(9.0),
+                              child: !cardselected?  Text("token: $msg \n url : ${order
+                                  .paymentverify[
+                              "msg"]}"):Container(),
+                            ),),
                           cardselected?  SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
@@ -587,7 +599,7 @@ SliverToBoxAdapter(child:InkWell(
                                   gatewayMerchantId: "01234567890123456789",
                                 ),
                                 appleParameters: AppleParameters(
-                                  merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                  merchantIdentifier: "merchant.checkout.caterme.online",
                                   merchantCapabilities: [
                                     MerchantCapability.threeDS,
                                     MerchantCapability.credit,
@@ -600,9 +612,18 @@ SliverToBoxAdapter(child:InkWell(
                               );
 
                               if(a==""){
-
+                                _key.currentState
+                                    .showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                  ),
+                                );
                               }
                               else{
+                                setState(() {
+                                  msg=a;
+                                });
                                 showDialog(
                                   context: this.context,
                                   barrierDismissible:
@@ -751,6 +772,9 @@ SliverToBoxAdapter(child:InkWell(
                         //         ],
                         //       ),
                         //     )),
+            !cardselected?   Text("token: $msg \n url : ${order
+                            .paymentverify[
+                        "msg"]}"):Container(),
                         Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Divider(color: Colors.black,),

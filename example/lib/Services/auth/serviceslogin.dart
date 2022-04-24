@@ -13,7 +13,30 @@ class AuthModelSignin {
   //thread
 
 
+//get
 
+
+
+/*
+{
+[
+{
+},
+
+{
+},
+
+
+
+]
+
+
+}
+
+
+
+
+ */
 
   static Future<ErrorMessage> login(String username, String password) async {
     Users users = Users();
@@ -61,6 +84,7 @@ class AuthModelSignin {
         em.response = true;
         em.message = "";
         em.user = users;
+
         //int id=responseData["id"];
 
         // push()

@@ -52,6 +52,7 @@ orderProvider.checkotp=true;
 
 else
   {
+    orderProvider.checkotp=false;
     print(" error otp");
   }
               //You can do anything
