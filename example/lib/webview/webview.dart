@@ -31,12 +31,13 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
   @override
   Widget build(BuildContext context) {
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
+
     return Scaffold(
         // appBar: AppBar(
         //     title: Text("InAppWebView")
         // ),
         body:  WebView(
-          initialUrl: widget.url,
+          initialUrl: orderProvider.url3ds,
           javascriptMode: JavascriptMode.unrestricted,
 
           onWebViewCreated: (WebViewController webViewController) {

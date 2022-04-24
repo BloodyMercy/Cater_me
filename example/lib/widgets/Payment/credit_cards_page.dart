@@ -171,7 +171,13 @@ SliverToBoxAdapter(child:InkWell(
                                    );
 
                                    if(a==""){
-
+                                     _key.currentState
+                                         .showSnackBar(
+                                       SnackBar(
+                                         content: Text(
+                                             '${authProvider.lg[authProvider.language]["order not placed"]}'),
+                                       ),
+                                     );
                                    }
                                    else{
                                      setState(() {
@@ -247,7 +253,7 @@ msg=a;
                                                .paymentverify[
                                            "msg"];
                                          });
-                                       //  order.spets++;
+                                        order.spets++;
                                          // _animateToIndex(
                                          // orderProvider
                                          //     .spets);
@@ -415,7 +421,7 @@ msg=a;
                                                .paymentverify[
                                            "msg"];
                                          });
-                                         //order.spets++;
+                                         order.spets++;
                                          // _animateToIndex(
                                          // orderProvider
                                          //     .spets);
