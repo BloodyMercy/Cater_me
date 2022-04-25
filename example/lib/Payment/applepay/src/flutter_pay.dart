@@ -49,6 +49,7 @@ class FlutterPay {
   /// * [merchantName] - affects only Google Pay.
   /// Mercant name which will be displayed to customer.
   Future<String> requestPayment({
+    BuildContext context,
     GoogleParameters googleParameters,
     AppleParameters appleParameters,
     List<PaymentNetwork> allowedPaymentNetworks = const [],
@@ -57,6 +58,8 @@ class FlutterPay {
      String currencyCode,
    String countryCode,
   }) async {
+    final _provid = Provider.of<OrderCaterProvider>(context, listen: false);
+    String log="";
     var items = paymentItems.map((item) => item.toJson()).toList();
     var params = <String, dynamic>{
       "currencyCode": currencyCode,
@@ -76,28 +79,42 @@ class FlutterPay {
     }
 
     try {
+      log="call with apple pau \n";
       var response = await _channel.invokeMethod('requestPayment', params);
+     log=log+" done, get from map\n";
       var payResponse = Map<String, String>.from(response);
+      log=log+" done, get from map\n";
       if (payResponse == null) {
         throw FlutterPayError(description: "Pay response cannot be parsed");
       }
-
+      log=log+" $payResponse\n";
       var paymentToken = payResponse["token"];
+      log=log+"token response: $payResponse\n";
       if (paymentToken != null) {
         print("Payment token: $paymentToken");
+        log=log+"try  parse to map\n";
       Map<String,String> map=  json.decode(paymentToken);
+        log=log+"done: $map\n";
+        log=log+"token :${map["data"]}\n";
+        _provid.log=log;
         return map["data"];
       } else {
+        log=log+"token is null\n";
         print("Payment token: null");
+        _provid.log=log;
         return "";
       }
     } on PlatformException catch (error) {
       if (error.code == "userCancelledError") {
+        log=log+"user cancel\n";
         print(error.message);
+        _provid.log=log;
         return "";
       }
       if (error.code == "paymentError") {
+        log=log+"error catch : error.message\n";
         print(error.message);
+        _provid.log=log;
         return "";
       }
       throw FlutterPayError(code: error.code, description: error.message);

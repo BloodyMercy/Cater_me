@@ -26,6 +26,14 @@ class OrderCaterProvider extends ChangeNotifier{
   List<int> _setupItemModelId = [];
 bool already =false;
   bool _adonce=false ;
+  String _log ="";
+
+
+  String get log => _log;
+
+  set log(String value) {
+    _log = value;
+  }
 
   bool get adonce => _adonce;
 

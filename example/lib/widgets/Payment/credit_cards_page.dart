@@ -150,11 +150,12 @@ SliverToBoxAdapter(child:InkWell(
                                    });
                                    //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
                                    List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
-                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
                                    String a=await       flutterPay.requestPayment(
+                                     context: context,
                                      googleParameters: GoogleParameters(
-                                       gatewayName: "example",
+                                       gatewayName: "Example Merchant Name",
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(
@@ -321,6 +322,7 @@ msg=a;
                                    flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
                                    String a=await       flutterPay.requestPayment(
+                                     context: context,
                                      googleParameters: GoogleParameters(
                                        gatewayName: "example",
                                        gatewayMerchantId: "01234567890123456789",
@@ -600,6 +602,7 @@ msg=a;
                               flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
                               String a=await       flutterPay.requestPayment(
+                                context: context,
                                 googleParameters: GoogleParameters(
                                   gatewayName: "example",
                                   gatewayMerchantId: "01234567890123456789",
