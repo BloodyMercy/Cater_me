@@ -99,7 +99,17 @@ class FlutterPay {
         print("Payment token: $paymentToken");
         log=log+"try  parse to map\n";
         _provid.log=log;
-      Map<String,String> map=  json.decode(paymentToken);
+
+        final string2="{data:as}".replaceAll("\"", "");
+
+// now we add quotes to both keys and Strings values
+        final quotedString = string2.replaceAllMapped(RegExp(r'\b\w+\b'), (match) {
+          return '"${match.group(0)}"';
+        });
+
+      Map<String,dynamic> map=  json.decode(quotedString);
+
+
         log=log+"done: $map\n";
         _provid.log=log;
         log=log+"token :${map["data"]}\n";
@@ -130,6 +140,9 @@ class FlutterPay {
       }
       _provid.log=log+"${error.message}";
       throw FlutterPayError(code: error.code, description: error.message);
+    }
+    catch(e){
+      _provid.log=log+e.toString();
     }
   }
 }
