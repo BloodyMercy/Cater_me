@@ -77,15 +77,16 @@ class FlutterPay {
 
     try {
       var response = await _channel.invokeMethod('requestPayment', params);
-      var payResponse = Map<String, dynamic>.from(response);
+      var payResponse = Map<String, String>.from(response);
       if (payResponse == null) {
         throw FlutterPayError(description: "Pay response cannot be parsed");
       }
 
-      var paymentToken = payResponse["token"]["data"];
+      var paymentToken = payResponse["token"];
       if (paymentToken != null) {
         print("Payment token: $paymentToken");
-        return paymentToken;
+      Map<String,String> map=  json.decode(paymentToken);
+        return map["data"];
       } else {
         print("Payment token: null");
         return "";
