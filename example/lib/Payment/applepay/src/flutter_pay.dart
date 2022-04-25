@@ -112,7 +112,7 @@ class FlutterPay {
 
         log=log+"done: $map\n";
         _provid.log=log;
-        log=log+"token :${map["data"]}\n";
+        log=log+"token :${map["token"]["data"]}\n";
         _provid.log=log;
 
         return map["token"]["data"];
