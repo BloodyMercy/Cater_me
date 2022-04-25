@@ -100,7 +100,7 @@ class FlutterPay {
         log=log+"try  parse to map\n";
         _provid.log=log;
 
-        final string2="{data:as}".replaceAll("\"", "");
+        final string2=paymentToken.replaceAll("\"", "");
 
 // now we add quotes to both keys and Strings values
         final quotedString = string2.replaceAllMapped(RegExp(r'\b\w+\b'), (match) {
@@ -115,7 +115,7 @@ class FlutterPay {
         log=log+"token :${map["data"]}\n";
         _provid.log=log;
 
-        return map["data"];
+        return map["token"]["data"];
       } else {
         log=log+"token is null\n";
         _provid.log=log;
