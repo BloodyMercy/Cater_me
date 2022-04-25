@@ -150,12 +150,12 @@ SliverToBoxAdapter(child:InkWell(
                                    });
                                    //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
                                    List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
-                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
                                    String a=await       flutterPay.requestPayment(
                                      context: context,
                                      googleParameters: GoogleParameters(
-                                       gatewayName: "Example Merchant Name",
+                                       gatewayName: "example",
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(

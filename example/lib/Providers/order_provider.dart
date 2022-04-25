@@ -33,6 +33,7 @@ bool already =false;
 
   set log(String value) {
     _log = value;
+    notifyListeners();
   }
 
   bool get adonce => _adonce;

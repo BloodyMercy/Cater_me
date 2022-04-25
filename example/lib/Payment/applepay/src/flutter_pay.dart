@@ -79,44 +79,56 @@ class FlutterPay {
     }
 
     try {
-      log="call with apple pau \n";
+      log="call with apple pay 1 \n";
+      _provid.log="call with apple pay 1 \n";
       var response = await _channel.invokeMethod('requestPayment', params);
-     log=log+" done, get from map\n";
+    // log=log+" done, get from map\n";
       var payResponse = Map<String, String>.from(response);
       log=log+" done, get from map\n";
+      _provid.log=log;
       if (payResponse == null) {
+        _provid.log=log;
         throw FlutterPayError(description: "Pay response cannot be parsed");
       }
       log=log+" $payResponse\n";
+      _provid.log=log;
       var paymentToken = payResponse["token"];
       log=log+"token response: $payResponse\n";
+      _provid.log=log;
       if (paymentToken != null) {
         print("Payment token: $paymentToken");
         log=log+"try  parse to map\n";
+        _provid.log=log;
       Map<String,String> map=  json.decode(paymentToken);
         log=log+"done: $map\n";
+        _provid.log=log;
         log=log+"token :${map["data"]}\n";
         _provid.log=log;
+
         return map["data"];
       } else {
         log=log+"token is null\n";
-        print("Payment token: null");
         _provid.log=log;
+        print("Payment token: null");
+
         return "";
       }
     } on PlatformException catch (error) {
       if (error.code == "userCancelledError") {
-        log=log+"user cancel\n";
-        print(error.message);
+        log=log+"user cancel payment\n";
         _provid.log=log;
+        print(error.message);
+
         return "";
       }
       if (error.code == "paymentError") {
-        log=log+"error catch : error.message\n";
+        log=log+"error catch : ${error.message}\n";
+        _provid.log=log+"error catch : ${error.message}\n";
         print(error.message);
-        _provid.log=log;
+      //  _provid.log=log;
         return "";
       }
+      _provid.log=log+"${error.message}";
       throw FlutterPayError(code: error.code, description: error.message);
     }
   }
