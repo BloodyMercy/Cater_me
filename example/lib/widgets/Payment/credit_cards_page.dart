@@ -503,9 +503,7 @@ msg=a;
                             // ),
                             SliverToBoxAdapter(child: Padding(
                               padding: const EdgeInsets.all(9.0),
-                              child: !cardselected?  Text("token: $msg \n url : ${order
-                                  .paymentverify[
-                              "msg"]}"):Container(),
+                              child: !cardselected?  Text("log: ${order.log}"):Container(),
                             ),),
                           cardselected?  SliverList(
                               delegate: SliverChildBuilderDelegate(
@@ -781,9 +779,7 @@ msg=a;
                         //         ],
                         //       ),
                         //     )),
-            !cardselected?   Text("token: $msg \n url : ${order
-                            .paymentverify[
-                        "msg"]}"):Container(),
+            !cardselected?   Text("log: ${order.log}"):Container(),
                         Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Divider(color: Colors.black,),
