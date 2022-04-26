@@ -48,7 +48,7 @@ class FlutterPay {
   /// * [paymentItems] - affects only Apple Pay. See [PaymentItem]
   /// * [merchantName] - affects only Google Pay.
   /// Mercant name which will be displayed to customer.
-  Future<String> requestPayment({
+  Future< Map<dynamic,dynamic>> requestPayment({
     BuildContext context,
     GoogleParameters googleParameters,
     AppleParameters appleParameters,
@@ -83,7 +83,7 @@ class FlutterPay {
       _provid.log="call with apple pay 1 \n";
       var response = await _channel.invokeMethod('requestPayment', params);
     // log=log+" done, get from map\n";
-      var payResponse = Map<String, String>.from(response);
+      var payResponse =response;
       log=log+" done, get from map\n";
       _provid.log=log;
       if (payResponse == null) {
@@ -92,7 +92,9 @@ class FlutterPay {
       }
       log=log+" $payResponse\n";
       _provid.log=log;
-      var paymentToken = payResponse["token"];
+      var paymentToken = payResponse["token"]["version"];
+
+
       log=log+"token response: $payResponse\n";
       _provid.log=log;
       if (paymentToken != null) {
@@ -113,13 +115,13 @@ class FlutterPay {
 
         _provid.log=log;
 
-        return paymentToken;
+        return payResponse;
       } else {
         log=log+"token is null\n";
         _provid.log=log;
         print("Payment token: null");
 
-        return "";
+        return {};
       }
     } on PlatformException catch (error) {
       if (error.code == "userCancelledError") {
@@ -127,14 +129,14 @@ class FlutterPay {
         _provid.log=log;
         print(error.message);
 
-        return "";
+        return {};
       }
       if (error.code == "paymentError") {
         log=log+"error catch : ${error.message}\n";
         _provid.log=log+"error catch : ${error.message}\n";
         print(error.message);
       //  _provid.log=log;
-        return "";
+        return {};
       }
       _provid.log=log+"${error.message}";
       throw FlutterPayError(code: error.code, description: error.message);

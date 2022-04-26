@@ -152,7 +152,7 @@ SliverToBoxAdapter(child:InkWell(
                                    List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
                                    flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                                   String a=await       flutterPay.requestPayment(
+                                  Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
                                      context: context,
                                      googleParameters: GoogleParameters(
                                        gatewayName: "example",
@@ -181,9 +181,7 @@ SliverToBoxAdapter(child:InkWell(
                                      );
                                    }
                                    else{
-                                     setState(() {
-msg=a;
-                                     });
+
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -226,7 +224,7 @@ msg=a;
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false,   Platform.isIOS);
+                                        "",false,   Platform.isIOS,a);
 
                                      Navigator.of(context)
                                          .pop();
@@ -321,7 +319,7 @@ msg=a;
 
                                    flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                                   String a=await       flutterPay.requestPayment(
+                                   Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
                                      context: context,
                                      googleParameters: GoogleParameters(
                                        gatewayName: "example",
@@ -350,9 +348,7 @@ msg=a;
                                      );
                                    }
                                    else{
-                                     setState(() {
-                                       msg=a;
-                                     });
+
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -395,7 +391,7 @@ msg=a;
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false,Platform.isIOS);
+                                         "",false,Platform.isIOS,a);
 
                                      Navigator.of(context)
                                          .pop();
@@ -599,7 +595,7 @@ msg=a;
 
                               flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                              String a=await       flutterPay.requestPayment(
+                              Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
                                 context: context,
                                 googleParameters: GoogleParameters(
                                   gatewayName: "example",
@@ -618,7 +614,7 @@ msg=a;
                                 paymentItems: items,
                               );
 
-                              if(a==""){
+                              if(a== {}){
                                 _key.currentState
                                     .showSnackBar(
                                   SnackBar(
@@ -628,9 +624,7 @@ msg=a;
                                 );
                               }
                               else{
-                                setState(() {
-                                  msg=a;
-                                });
+
                                 showDialog(
                                   context: this.context,
                                   barrierDismissible:
@@ -673,7 +667,7 @@ msg=a;
                                     order
                                         .orderid
                                         .toString(),
-                                    a,false,Platform.isIOS);
+                                    "",false,Platform.isIOS,a);
 
                                 Navigator.of(context)
                                     .pop();
