@@ -7,9 +7,9 @@ class FlutterPay {
   ///
   /// See [PaymentEnvironment]
   void setEnvironment(
-      {PaymentEnvironment environment = PaymentEnvironment.Test}) {
+      {PaymentEnvironment environment = PaymentEnvironment.Production}) {
     var params = <String, bool>{
-      "isTestEnvironment": environment == PaymentEnvironment.Test,
+      "isTestEnvironment": environment == PaymentEnvironment.Production,
     };
     _channel.invokeMethod('switchEnvironment', params);
   }
@@ -100,14 +100,14 @@ class FlutterPay {
         log=log+"try  parse to map\n";
         _provid.log=log;
 
-        final string2=paymentToken.replaceAll("\"", "");
+//         final string2=paymentToken.replaceAll("\"", "");
+//
+// // now we add quotes to both keys and Strings values
+//         final quotedString = string2.replaceAllMapped(RegExp(r'\b\w+\b'), (match) {
+//           return '"${match.group(0)}"';
+//         });
 
-// now we add quotes to both keys and Strings values
-        final quotedString = string2.replaceAllMapped(RegExp(r'\b\w+\b'), (match) {
-          return '"${match.group(0)}"';
-        });
-
-      Map<String,dynamic> map=  json.decode(quotedString);
+      Map<String,dynamic> map= {};
 
 
         log=log+"done: $map\n";
