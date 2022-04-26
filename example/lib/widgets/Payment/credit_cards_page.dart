@@ -226,7 +226,7 @@ msg=a;
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false);
+                                         a,false,   Platform.isIOS);
 
                                      Navigator.of(context)
                                          .pop();
@@ -395,7 +395,7 @@ msg=a;
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false);
+                                         a,false,Platform.isIOS);
 
                                      Navigator.of(context)
                                          .pop();
@@ -673,7 +673,7 @@ msg=a;
                                     order
                                         .orderid
                                         .toString(),
-                                    a,false);
+                                    a,false,Platform.isIOS);
 
                                 Navigator.of(context)
                                     .pop();

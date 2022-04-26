@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/contact_us_model.dart';
 
 class placeOrderId {
- static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2,bool a)async {
+ static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2,bool a,bool b)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
@@ -19,10 +19,18 @@ if(a) {
   };
 }
 else{
-  request.bodyFields = {
-
-    "token": idPlaceOrder2
-  };
+  if(b) {
+    request.bodyFields = {
+      "type": "applepay",
+      "token": idPlaceOrder2
+    };
+  }
+  else{
+    request.bodyFields = {
+      "type": "googlepay",
+      "token": idPlaceOrder2
+    };
+  }
 }
 
       http.StreamedResponse responses =await request.send();
