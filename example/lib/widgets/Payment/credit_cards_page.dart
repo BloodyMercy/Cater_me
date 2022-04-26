@@ -501,10 +501,10 @@ msg=a;
                             //
                             //   )
                             // ),
-                            SliverToBoxAdapter(child: Padding(
-                              padding: const EdgeInsets.all(9.0),
-                              child: !cardselected?  Text("log: ${order.log}"):Container(),
-                            ),),
+                            // SliverToBoxAdapter(child: Padding(
+                            //   padding: const EdgeInsets.all(9.0),
+                            //   child: !cardselected?  Text("log: ${order.log}"):Container(),
+                            // ),),
                           cardselected?  SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
@@ -779,7 +779,7 @@ msg=a;
                         //         ],
                         //       ),
                         //     )),
-            !cardselected?   Text("log: ${order.log}"):Container(),
+            // !cardselected?   Text("log: ${order.log}"):Container(),
                         Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Divider(color: Colors.black,),

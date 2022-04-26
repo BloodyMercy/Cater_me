@@ -107,15 +107,13 @@ class FlutterPay {
 //           return '"${match.group(0)}"';
 //         });
 
-      Map<String,dynamic> map= {};
 
 
-        log=log+"done: $map\n";
-        _provid.log=log;
-        log=log+"token :${map["token"]["data"]}\n";
+
+
         _provid.log=log;
 
-        return map["token"]["data"];
+        return paymentToken;
       } else {
         log=log+"token is null\n";
         _provid.log=log;
