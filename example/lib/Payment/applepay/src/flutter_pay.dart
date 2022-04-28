@@ -92,7 +92,10 @@ class FlutterPay {
       }
       log=log+" $payResponse\n";
       _provid.log=log;
-      var paymentToken = payResponse["token"]["version"];
+      var paymentTokens = payResponse["token"];
+      json.decode(payResponse["token"]);
+      var paymentToken = json.decode(payResponse["token"]);
+     print( paymentToken["version"]);
 
 
       log=log+"token response: $payResponse\n";
@@ -115,7 +118,7 @@ class FlutterPay {
 
         _provid.log=log;
 
-        return payResponse;
+        return paymentToken;
       } else {
         log=log+"token is null\n";
         _provid.log=log;

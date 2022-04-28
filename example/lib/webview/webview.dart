@@ -45,7 +45,7 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
           },
           navigationDelegate: (NavigationRequest request) {
             print(request.url);
-            if(request.url.startsWith("https://caterme.azurewebsites.net/pay/success")) {
+            if(request.url.startsWith("https://caterme.azurewebsites.net/pay/success") ||request.url.startsWith("https://catermedevelopment.azurewebsites.net/Pay/Success")) {
 
 orderProvider.checkotp=true;
 

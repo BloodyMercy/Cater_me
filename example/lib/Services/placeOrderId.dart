@@ -10,8 +10,12 @@ class placeOrderId {
  //static Future<Map<String,dynamic>> PlaceOrderId(String idPlaceOrder1,String idPlaceOrder2,bool a,bool b)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
-      var headers={'Authorization': 'Bearer ${prefs.getString("token")}'};
-      var request=http.Request('POST',Uri.parse(ApiLink.checkorder+"/$idPlaceOrder1"));
+      var headers={'Authorization': 'Bearer ${prefs.getString("token")}',
+        'Content-Type': 'application/json'
+
+
+      };
+      var request=http.Request('POST',Uri.parse(ApiLink.checkorder));
       request.headers.addAll(headers);
 if(a) {
   request.bodyFields = {
@@ -21,20 +25,20 @@ if(a) {
 }
 else{
   if(b) {
-    request.bodyFields = {
+    request.body=json.encode( {
  "orderid":idPlaceOrder1,
       "type": "applepay",
  "applePayData": {
 
- "version":map["token"]["version"],
- "data":map["token"]["data"],
- "signature":map["token"]["signature"],
- "ephemeralPublicKey":map["token"]["header"]["ephemeralPublicKey"],
- "publicKeyHash":map["token"]["header"]["publicKeyHash"],
- "transactionId":map["token"]["header"]["transactionId"],
+ "version":map["version"],
+ "data":map["data"],
+ "signature":map["signature"],
+ "ephemeralPublicKey":map["header"]["ephemeralPublicKey"],
+ "publicKeyHash":map["header"]["publicKeyHash"],
+ "transactionId":map["header"]["transactionId"],
 
- }.toString()
-    };
+ }
+    });
   }
   else{
     request.bodyFields = {
