@@ -18,10 +18,10 @@ class placeOrderId {
       var request=http.Request('POST',Uri.parse(ApiLink.checkorder));
       request.headers.addAll(headers);
 if(a) {
-  request.bodyFields = {
+  request.body =json.encode( {
 "orderid":idPlaceOrder1,
     "cardId": idPlaceOrder2
-  };
+  });
 }
 else{
   if(b) {
