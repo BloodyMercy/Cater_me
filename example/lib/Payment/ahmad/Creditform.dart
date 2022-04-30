@@ -117,97 +117,284 @@ class _CreditCardFormState extends State<CreditCardForm> {
     themeColor = widget.themeColor ?? Theme.of(context).primaryColor;
     super.didChangeDependencies();
   }
+  TextFormField _customfieldnumberotp(
+      TextEditingController controller, String hint, IconData icon) {
+    return TextFormField(
+      controller: controller,
+      focusNode: cvvFocusNode,
+      textDirection: TextDirection.ltr,
+      keyboardType: TextInputType.number,
 
+      decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Color(0xff00A9A5),
+              width: 2.0,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.transparent,
+              width: 5.0,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: const BorderSide(),
+          ),
+          hintText: hint,
+          hintStyle: const TextStyle(fontSize: 12.0, color: Colors.black),
+
+          suffixIcon: Icon(
+            icon,
+            color: const Color(0xff8792A4),
+            size: 20,
+          )),
+      style: const TextStyle(
+        fontSize: 15,
+        color: Colors.black,
+      ),
+      validator: (value) {
+        if (value == null) {
+          return 'Please Enter $hint';
+        }
+        return null;
+      },
+    );
+  }
+  TextFormField _customfieldnumber(
+      TextEditingController controller, String hint, IconData icon) {
+    return TextFormField(
+      controller: controller,
+
+      textDirection: TextDirection.ltr,
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.next,
+
+      decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Color(0xff00A9A5),
+              width: 2.0,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.transparent,
+              width: 5.0,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: const BorderSide(),
+          ),
+          hintText: hint,
+          hintStyle: const TextStyle(fontSize: 12.0, color: Colors.black),
+
+          suffixIcon: Icon(
+            icon,
+            color: const Color(0xff8792A4),
+            size: 20,
+          )),
+      style: const TextStyle(
+        fontSize: 15,
+        color: Colors.black,
+      ),
+      validator: (value) {
+        if (value == null) {
+          return 'Please Enter $hint';
+        }
+        return null;
+      },
+    );
+  }
+  TextFormField _customfield(
+      TextEditingController controller, String hint, IconData icon) {
+    return TextFormField(
+      controller: controller,
+      textDirection: TextDirection.ltr,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Color(0xff00A9A5),
+              width: 2.0,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.transparent,
+              width: 5.0,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: const BorderSide(),
+          ),
+          hintText: hint,
+          hintStyle: const TextStyle(fontSize: 12.0, color: Colors.black),
+          suffixIcon: Icon(
+            icon,
+            color: const Color(0xff8792A4),
+            size: 20,
+          )),
+      style: const TextStyle(
+        fontSize: 15,
+        color: Colors.black,
+      ),
+      validator: (value) {
+        if (value == null) {
+          return 'Please Enter $hint';
+        }
+        return null;
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final user = Provider.of<UserProvider>(context, listen: true);
-    return Theme(
-      data: ThemeData(
-        primaryColor: themeColor.withOpacity(0.8),
-        primaryColorDark: themeColor,
-      ),
-      child: Form(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 16, right: 16),
-              child: TextFormField(
-                textDirection: TextDirection.ltr,
-                controller: _cardNumberController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '${user.lg[user.language]['Card number']}',
-                  hintText: 'xxxx xxxx xxxx xxxx',
+    return   GestureDetector( behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
 
-                ),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Theme(
+        data: ThemeData(
+          primaryColor: themeColor.withOpacity(0.8),
+          primaryColorDark: themeColor,
+        ),
+        child: Form(
+          child: Column(
+            children: <Widget>[
+          Padding(
+          padding:
+          EdgeInsets.symmetric(vertical: 19,horizontal: 20),
+          child:   _customfieldnumber(_cardNumberController, '${user.lg[user.language]['Card number']}',
+                  Icons.credit_card_outlined)),
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: _customfield(_cardHolderNameController, '${user.lg[user.language]['Card Holder']}',
+                    Icons.person_outline_outlined),
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextFormField(
-                controller: _expiryDateController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      child: _customfieldnumber(_expiryDateController, '${user.lg[user.language]['Expired Date']}',
+                          Icons.calendar_today_outlined),
+                      height: height / 13,
+                      width: width / 2.5,
+                    ),
+                    SizedBox(
+                      child: _customfieldnumberotp(
+                         _cvvCodeController, "CCV", Icons.lock_outline),
+                      height: height / 13,
+                      width: width / 2.5,
+                    ),
+                  ],
                 ),
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText:'${user.lg[user.language]['Expired Date']}',
-                    hintText:user.language=="ar"?'YY/MM': 'MM/YY'),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextField(
-                focusNode: cvvFocusNode,
-                controller: _cvvCodeController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'CVV',
-                  hintText: 'XXX',
-                ),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.done,
-                onChanged: (String text) {
-                  setState(() {
-                    cvvCode = text;
-                  });
-                },
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextFormField(
-                controller: _cardHolderNameController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '${user.lg[user.language]['Card Holder']}',
-                ),
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-              ),
-            ),
-          ],
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 16, right: 16),
+              //   child: TextFormField(
+              //     textDirection: TextDirection.ltr,
+              //     controller: _cardNumberController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: '${user.lg[user.language]['Card number']}',
+              //       hintText: 'xxxx xxxx xxxx xxxx',
+              //
+              //     ),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextFormField(
+              //     controller: _expiryDateController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //         border: OutlineInputBorder(),
+              //         labelText:'${user.lg[user.language]['Expired Date']}',
+              //         hintText:user.language=="ar"?'YY/MM': 'MM/YY'),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextField(
+              //     focusNode: cvvFocusNode,
+              //     controller: _cvvCodeController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: 'CVV',
+              //       hintText: 'XXX',
+              //     ),
+              //     keyboardType: TextInputType.number,
+              //     textInputAction: TextInputAction.done,
+              //     onChanged: (String text) {
+              //       setState(() {
+              //         cvvCode = text;
+              //       });
+              //     },
+              //   ),
+              // ),
+              // Container(
+              //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+              //   margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
+              //   child: TextFormField(
+              //     controller: _cardHolderNameController,
+              //     cursorColor: widget.cursorColor ?? themeColor,
+              //     style: TextStyle(
+              //       color: widget.textColor,
+              //     ),
+              //     decoration: InputDecoration(
+              //       border: OutlineInputBorder(),
+              //       labelText: '${user.lg[user.language]['Card Holder']}',
+              //     ),
+              //     keyboardType: TextInputType.text,
+              //     textInputAction: TextInputAction.next,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

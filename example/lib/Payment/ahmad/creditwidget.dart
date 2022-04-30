@@ -306,6 +306,7 @@ final user = Provider.of<UserProvider>(context, listen:true);
                 Container(
                   height: 16,
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 16,right: 16),
                   child: Text(

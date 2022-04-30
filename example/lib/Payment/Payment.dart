@@ -55,66 +55,75 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
-    return Scaffold(
-      appBar: AppBar(title: Text('${authProvider.lg[authProvider.language]["Add Card"]}'
-        ,style: Theme.of(context).textTheme.headline1,),centerTitle: true,
+    return   GestureDetector( behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text('${authProvider.lg[authProvider.language]["Add Card"]}'
+          ,style: Theme.of(context).textTheme.headline1,),centerTitle: true,
  actions: [
-               IconButton(icon: Icon(Icons.done),onPressed: _cardValidation)
+                 IconButton(icon: Icon(Icons.done),onPressed: _cardValidation)
 
  ]),
-        body: SafeArea(
-          child: Column(
-            children: <Widget>[
-              //SizedBox(height: 10),
-             // Text("Checkout Init: $_isInit", style: TextStyle(fontSize: 18)),
-              CreditCardWidget(
+          body: SafeArea(
+            child: Column(
+              children: <Widget>[
+                //SizedBox(height: 10),
+               // Text("Checkout Init: $_isInit", style: TextStyle(fontSize: 18)),
+                CreditCardWidget(
 
-                cardNumber: cardNumber,
-                expiryDate: expiryDate,
-                cardHolderName: cardNameHolder,
-                cvvCode: cvv,
-                textStyle:TextStyle(color: Colors.white,fontSize: 17,),
-                showBackView: cvvFocused,
-                height: 200,
-                width: 270,
-                animationDuration: Duration(milliseconds: 1000),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: CreditCardForm(onCreditCardModelChange: _onModelChange),
+                  cardNumber: cardNumber,
+                  expiryDate: expiryDate,
+                  cardHolderName: cardNameHolder,
+                  cvvCode: cvv,
+                  textStyle:TextStyle(color: Colors.white,fontSize: 17,),
+                  showBackView: cvvFocused,
+                  height: 200,
+                  width: 270,
+                  animationDuration: Duration(milliseconds: 1000),
                 ),
-              ),
-              // Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-              //   Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-              //     ElevatedButton(
-              //
-              //       child: Text(
-              //         "Add Card",
-              //         style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
-              //       ),
-              //       onPressed: _generateToken,
-              //       style: ElevatedButton.styleFrom(
-              //         // padding: EdgeInsets.symmetric(
-              //         //   horizontal: (MediaQuery.of(context).size.width * 0.2),
-              //         //   vertical: (MediaQuery.of(context).size.height * 0.01),
-              //         // ),
-              //         shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(10),
-              //         ),
-              //         primary: Theme.of(context).primaryColor,
-              //       ),
-              //     ),
-              //
-              //
-              //
-              //
-              //   ]),
-              //
-              //   ]),
-              SizedBox(height: 10)
-            ],
-          ),
-        ));
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: CreditCardForm(onCreditCardModelChange: _onModelChange),
+                  ),
+                ),
+                // Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                //   Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+                //     ElevatedButton(
+                //
+                //       child: Text(
+                //         "Add Card",
+                //         style: TextStyle(fontSize: 14,fontFamily: "BerlinSansFB",fontWeight: FontWeight.bold),
+                //       ),
+                //       onPressed: _generateToken,
+                //       style: ElevatedButton.styleFrom(
+                //         // padding: EdgeInsets.symmetric(
+                //         //   horizontal: (MediaQuery.of(context).size.width * 0.2),
+                //         //   vertical: (MediaQuery.of(context).size.height * 0.01),
+                //         // ),
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10),
+                //         ),
+                //         primary: Theme.of(context).primaryColor,
+                //       ),
+                //     ),
+                //
+                //
+                //
+                //
+                //   ]),
+                //
+                //   ]),
+                SizedBox(height: 10)
+              ],
+            ),
+          )),
+    );
   }
 
   void _onModelChange(CreditCardModel model) {

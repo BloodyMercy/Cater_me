@@ -444,7 +444,7 @@ class _OrderState extends State<Order> {
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height / 1.65,
-                          child: (orderProvider.spets == 1)
+                          child: (orderProvider.spets ==1)
                               ? AddAddressScreen()
                               : (orderProvider.spets == 3)
                                   ? RegularDaberneScreen()

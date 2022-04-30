@@ -193,27 +193,27 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 1.5,
-                      left: 17,
-                      right: 10,
-                    ),
-                    child: Image.asset('assets/icons/Lock.png'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height / 1.5,
-                        left: 35,
-                        right: 10),
-                    child: Text(
-                      "Your payment information is safe with us. We use secure transmission and encrypted storage.",
-                      style: TextStyle(
-                        color: Color(0xff8792a4),
-                        fontSize: 11,
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(
+                  //     top: MediaQuery.of(context).size.height / 1.5,
+                  //     left: 17,
+                  //     right: 10,
+                  //   ),
+                  //   child: Image.asset('assets/icons/Lock.png'),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(
+                  //       top: MediaQuery.of(context).size.height / 1.5,
+                  //       left: 35,
+                  //       right: 10),
+                  //   child: Text(
+                  //     "Your payment information is safe with us. We use secure transmission and encrypted storage.",
+                  //     style: TextStyle(
+                  //       color: Color(0xff8792a4),
+                  //       fontSize: 11,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               Padding(
