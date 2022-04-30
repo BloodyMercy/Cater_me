@@ -976,7 +976,7 @@ class _OrderState extends State<Order> {
                                                                   .toString(),
                                                               _creditCards
                                                                   .credit
-                                                                  .cardId,true);
+                                                                  .cardId,true,false,{});
 
                                                       Navigator.of(context)
                                                           .pop();
@@ -1034,17 +1034,16 @@ class _OrderState extends State<Order> {
                                                   } else if (orderProvider
                                                           .spets ==
                                                       8) {
-                                                    if (_creditCardss
-                                                            .credit.id ==
-                                                        0) {
-                                                      _key.currentState
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                              '${authProvider.lg[authProvider.language]["no credit cards selected"]}'),
-                                                        ),
-                                                      );
-                                                    } else {
+                                                    if (false) {
+                                                    //   _key.currentState
+                                                    //       .showSnackBar(
+                                                    //     SnackBar(
+                                                    //       content: Text(
+                                                    //           '${authProvider.lg[authProvider.language]["no credit cards selected"]}'),
+                                                    //     ),
+                                                    //   );
+                                                  }
+                                                  else {
                                                       showDialog(
                                                         context: this.context,
                                                         barrierDismissible:
@@ -1094,29 +1093,30 @@ class _OrderState extends State<Order> {
                                                                 builder: (context) =>
                                                                     AppointmentSuccess(
                                                                         0)));
-                                                      else if (orderProvider
-                                                          .checkotp) {
-                                                        showDialog(
-                                                          context: this.context,
-                                                          builder: (BuildContext
-                                                              context) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  '${authProvider.lg[authProvider.language]["otp verification"]}'),
-                                                              content: Text(
-                                                                  '${authProvider.lg[authProvider.language]["otp not valid"]}'),
-                                                              actions: <Widget>[
-                                                                TextButton(
-                                                                    child: Text(
-                                                                        '${authProvider.lg[authProvider.language]["Close"]}'),
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            context))
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      } else {
+                                                      // else if (orderProvider
+                                                      //     .checkotp) {
+                                                      //   showDialog(
+                                                      //     context: this.context,
+                                                      //     builder: (BuildContext
+                                                      //         context) {
+                                                      //       return AlertDialog(
+                                                      //         title: Text(
+                                                      //             '${authProvider.lg[authProvider.language]["otp verification"]}'),
+                                                      //         content: Text(
+                                                      //             '${authProvider.lg[authProvider.language]["otp not valid"]}'),
+                                                      //         actions: <Widget>[
+                                                      //           TextButton(
+                                                      //               child: Text(
+                                                      //                   '${authProvider.lg[authProvider.language]["Close"]}'),
+                                                      //               onPressed: () =>
+                                                      //                   Navigator.pop(
+                                                      //                       context))
+                                                      //         ],
+                                                      //       );
+                                                      //     },
+                                                      //   );
+                                                      // }
+    else {
                                                         orderProvider.spets--;
 
                                                         // showDialog(

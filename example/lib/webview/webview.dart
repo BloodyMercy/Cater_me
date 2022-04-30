@@ -31,12 +31,13 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
   @override
   Widget build(BuildContext context) {
     final orderProvider = Provider.of<OrderCaterProvider>(context, listen: true);
+
     return Scaffold(
         // appBar: AppBar(
         //     title: Text("InAppWebView")
         // ),
         body:  WebView(
-          initialUrl: widget.url,
+          initialUrl: orderProvider.url3ds,
           javascriptMode: JavascriptMode.unrestricted,
 
           onWebViewCreated: (WebViewController webViewController) {
@@ -44,7 +45,7 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
           },
           navigationDelegate: (NavigationRequest request) {
             print(request.url);
-            if(request.url.startsWith("https://caterme.azurewebsites.net/pay/success")) {
+            if(request.url.startsWith("https://caterme.azurewebsites.net/pay/success") ||request.url.startsWith("https://catermedevelopment.azurewebsites.net/Pay/Success")) {
 
 orderProvider.checkotp=true;
 
@@ -52,6 +53,7 @@ orderProvider.checkotp=true;
 
 else
   {
+    orderProvider.checkotp=false;
     print(" error otp");
   }
               //You can do anything

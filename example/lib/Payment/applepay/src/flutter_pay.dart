@@ -7,9 +7,9 @@ class FlutterPay {
   ///
   /// See [PaymentEnvironment]
   void setEnvironment(
-      {PaymentEnvironment environment = PaymentEnvironment.Test}) {
+      {PaymentEnvironment environment = PaymentEnvironment.Production}) {
     var params = <String, bool>{
-      "isTestEnvironment": environment == PaymentEnvironment.Test,
+      "isTestEnvironment": environment == PaymentEnvironment.Production,
     };
     _channel.invokeMethod('switchEnvironment', params);
   }
@@ -48,7 +48,8 @@ class FlutterPay {
   /// * [paymentItems] - affects only Apple Pay. See [PaymentItem]
   /// * [merchantName] - affects only Google Pay.
   /// Mercant name which will be displayed to customer.
-  Future<String> requestPayment({
+  Future< Map<dynamic,dynamic>> requestPayment({
+    BuildContext context,
     GoogleParameters googleParameters,
     AppleParameters appleParameters,
     List<PaymentNetwork> allowedPaymentNetworks = const [],
@@ -57,6 +58,8 @@ class FlutterPay {
      String currencyCode,
    String countryCode,
   }) async {
+    final _provid = Provider.of<OrderCaterProvider>(context, listen: false);
+    String log="";
     var items = paymentItems.map((item) => item.toJson()).toList();
     var params = <String, dynamic>{
       "currencyCode": currencyCode,
@@ -76,30 +79,73 @@ class FlutterPay {
     }
 
     try {
+      log="call with apple pay 1 \n";
+      _provid.log="call with apple pay 1 \n";
       var response = await _channel.invokeMethod('requestPayment', params);
-      var payResponse = Map<String, String>.from(response);
+    // log=log+" done, get from map\n";
+      var payResponse =response;
+      log=log+" done, get from map\n";
+      _provid.log=log;
       if (payResponse == null) {
+        _provid.log=log;
         throw FlutterPayError(description: "Pay response cannot be parsed");
       }
+      log=log+" $payResponse\n";
+      _provid.log=log;
+      var paymentTokens = payResponse["token"];
+      json.decode(payResponse["token"]);
+      var paymentToken = json.decode(payResponse["token"]);
+     print( paymentToken["version"]);
 
-      var paymentToken = payResponse["token"];
+
+      log=log+"token response: $payResponse\n";
+      _provid.log=log;
       if (paymentToken != null) {
         print("Payment token: $paymentToken");
+        log=log+"try  parse to map\n";
+        _provid.log=log;
+
+//         final string2=paymentToken.replaceAll("\"", "");
+//
+// // now we add quotes to both keys and Strings values
+//         final quotedString = string2.replaceAllMapped(RegExp(r'\b\w+\b'), (match) {
+//           return '"${match.group(0)}"';
+//         });
+
+
+
+
+
+        _provid.log=log;
+
         return paymentToken;
       } else {
+        log=log+"token is null\n";
+        _provid.log=log;
         print("Payment token: null");
-        return "";
+
+        return {};
       }
     } on PlatformException catch (error) {
       if (error.code == "userCancelledError") {
+        log=log+"user cancel payment\n";
+        _provid.log=log;
         print(error.message);
-        return "";
+
+        return {};
       }
       if (error.code == "paymentError") {
+        log=log+"error catch : ${error.message}\n";
+        _provid.log=log+"error catch : ${error.message}\n";
         print(error.message);
-        return "";
+      //  _provid.log=log;
+        return {};
       }
+      _provid.log=log+"${error.message}";
       throw FlutterPayError(code: error.code, description: error.message);
+    }
+    catch(e){
+      _provid.log=log+e.toString();
     }
   }
 }

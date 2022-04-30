@@ -49,7 +49,7 @@ bool cardselected=true;
 
     });
   }
-
+String msg="no token";
   @override
   void initState() {
     getAllData();
@@ -150,15 +150,16 @@ SliverToBoxAdapter(child:InkWell(
                                    });
                                    //  List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
                                    List<PaymentItem> items = [PaymentItem(name: "Caterme", price:1)];
-                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+                                   flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                                   String a=await       flutterPay.requestPayment(
+                                  Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
+                                     context: context,
                                      googleParameters: GoogleParameters(
                                        gatewayName: "example",
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(
-                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantIdentifier: "merchant.checkout.caterme.online",
                                        merchantCapabilities: [
                                          MerchantCapability.threeDS,
                                          MerchantCapability.credit,
@@ -171,9 +172,16 @@ SliverToBoxAdapter(child:InkWell(
                                    );
 
                                    if(a==""){
-
+                                     _key.currentState
+                                         .showSnackBar(
+                                       SnackBar(
+                                         content: Text(
+                                             '${authProvider.lg[authProvider.language]["order not placed"]}'),
+                                       ),
+                                     );
                                    }
                                    else{
+
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -216,7 +224,7 @@ SliverToBoxAdapter(child:InkWell(
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false);
+                                        "",false,   Platform.isIOS,a);
 
                                      Navigator.of(context)
                                          .pop();
@@ -244,7 +252,7 @@ SliverToBoxAdapter(child:InkWell(
                                                .paymentverify[
                                            "msg"];
                                          });
-                                         order.spets++;
+                                        order.spets++;
                                          // _animateToIndex(
                                          // orderProvider
                                          //     .spets);
@@ -311,13 +319,14 @@ SliverToBoxAdapter(child:InkWell(
 
                                    flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                                   String a=await       flutterPay.requestPayment(
+                                   Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
+                                     context: context,
                                      googleParameters: GoogleParameters(
                                        gatewayName: "example",
                                        gatewayMerchantId: "01234567890123456789",
                                      ),
                                      appleParameters: AppleParameters(
-                                       merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                       merchantIdentifier: "merchant.checkout.caterme.online",
                                        merchantCapabilities: [
                                          MerchantCapability.threeDS,
                                          MerchantCapability.credit,
@@ -339,6 +348,7 @@ SliverToBoxAdapter(child:InkWell(
                                      );
                                    }
                                    else{
+
                                      showDialog(
                                        context: this.context,
                                        barrierDismissible:
@@ -381,7 +391,7 @@ SliverToBoxAdapter(child:InkWell(
                                          order
                                              .orderid
                                              .toString(),
-                                         a,false);
+                                         "",false,Platform.isIOS,a);
 
                                      Navigator.of(context)
                                          .pop();
@@ -487,6 +497,10 @@ SliverToBoxAdapter(child:InkWell(
                             //
                             //   )
                             // ),
+                            // SliverToBoxAdapter(child: Padding(
+                            //   padding: const EdgeInsets.all(9.0),
+                            //   child: !cardselected?  Text("log: ${order.log}"):Container(),
+                            // ),),
                           cardselected?  SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int i) {
@@ -579,15 +593,16 @@ SliverToBoxAdapter(child:InkWell(
                               });
                               List<PaymentItem> items = [PaymentItem(name: "Caterme", price:!order.adonce? order.totale:double.parse(order.controllers[0].text))];
 
-                              flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
+                              flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-                              String a=await       flutterPay.requestPayment(
+                              Map<dynamic,dynamic> a=await       flutterPay.requestPayment(
+                                context: context,
                                 googleParameters: GoogleParameters(
                                   gatewayName: "example",
                                   gatewayMerchantId: "01234567890123456789",
                                 ),
                                 appleParameters: AppleParameters(
-                                  merchantIdentifier: "merchant.caterme.tiaragroup.com",
+                                  merchantIdentifier: "merchant.checkout.caterme.online",
                                   merchantCapabilities: [
                                     MerchantCapability.threeDS,
                                     MerchantCapability.credit,
@@ -599,10 +614,17 @@ SliverToBoxAdapter(child:InkWell(
                                 paymentItems: items,
                               );
 
-                              if(a==""){
-
+                              if(a== {}){
+                                _key.currentState
+                                    .showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        '${authProvider.lg[authProvider.language]["error to place order"]}'),
+                                  ),
+                                );
                               }
                               else{
+
                                 showDialog(
                                   context: this.context,
                                   barrierDismissible:
@@ -645,7 +667,7 @@ SliverToBoxAdapter(child:InkWell(
                                     order
                                         .orderid
                                         .toString(),
-                                    a,false);
+                                    "",false,Platform.isIOS,a);
 
                                 Navigator.of(context)
                                     .pop();
@@ -751,6 +773,7 @@ SliverToBoxAdapter(child:InkWell(
                         //         ],
                         //       ),
                         //     )),
+            // !cardselected?   Text("log: ${order.log}"):Container(),
                         Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Divider(color: Colors.black,),

@@ -17,8 +17,8 @@ class _ApplePaycatermeState extends State<ApplePaycaterme> {
 
   void makePayment() async {
     List<PaymentItem> items = [PaymentItem(name: "T-Shirt", price: 2.98)];
+    flutterPay.setEnvironment(environment: PaymentEnvironment.Production);
 
-    flutterPay.setEnvironment(environment: PaymentEnvironment.Test);
 
     flutterPay.requestPayment(
       googleParameters: GoogleParameters(

@@ -1,8 +1,12 @@
 library flutter_pay;
 
+import 'dart:convert';
 import 'dart:io';
+import 'package:CaterMe/Providers/order_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 part 'src/flutter_pay.dart';
 part 'src/flutter_pay_error.dart';

@@ -26,6 +26,15 @@ class OrderCaterProvider extends ChangeNotifier{
   List<int> _setupItemModelId = [];
 bool already =false;
   bool _adonce=false ;
+  String _log ="";
+
+
+  String get log => _log;
+
+  set log(String value) {
+    _log = value;
+    notifyListeners();
+  }
 
   bool get adonce => _adonce;
 
@@ -370,9 +379,9 @@ orderid=int.parse(i);
     // return 0;
   }
 
-  getPlaceOrderId(String id1,String id2,bool a) async{
+  getPlaceOrderId(String id1,String id2,bool a,bool pay,Map<dynamic,dynamic> map) async{
 
-    paymentverify=await placeOrderId.PlaceOrderId(id1, id2,a);
+    paymentverify=await placeOrderId.PlaceOrderId(id1, id2,a,pay,map);
     notifyListeners();
   }
 
