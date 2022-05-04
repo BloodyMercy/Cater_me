@@ -49,7 +49,7 @@ FriendModel _FriendCreated = FriendModel();
 
     _FriendCreated=await  FriendServices.CreateFriend(
   namecontroller.text.toString(),
-     int.parse(phonecontroller.text.toString()),
+     int.parse(phonecontroller.text.trim().replaceAll(" ", "").toString()),
       emailcontroller.text.toString(),
     );
     namecontroller.text="";
@@ -74,7 +74,7 @@ FriendModel _FriendCreated = FriendModel();
   UpdateFriend(int id) async {
 bool done=
      await  _friendsService.updatefriends(
-        name: namecontroller.text.toString(),
+        name: namecontroller.text.replaceAll(" ", "").toString(),
      phonenumber:
 phonecontroller.text,
     email:   emailcontroller.text,
