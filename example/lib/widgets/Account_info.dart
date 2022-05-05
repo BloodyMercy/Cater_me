@@ -45,11 +45,13 @@ class _AccountInfoState extends State<AccountInfo> {
   }
 
   String validatePass(value) {
+    final user = Provider.of<UserProvider>(context, listen: false);
 
     if (value.isEmpty) {
-      final user = Provider.of<UserProvider>(context, listen: false);
       return '${user.lg[user.language][ "Required"]}';
-    } else {
+    } else if(value.contains(" ")){
+      return '${user.lg[user.language]["your password can only contain letters numbers and some symbols \$ @ #"]}';
+    }else {
       return null;
     }
   }
@@ -310,7 +312,7 @@ class _AccountInfoState extends State<AccountInfo> {
                                     var resetPassword =
                                         await user.ResetPasswordout();
                                     print(resetPassword);
-                                    if (resetPassword) {
+                                    if (resetPassword.response) {
                                       print('${user.lg[user.language]["Reset succeed"]}');
                                       setState(() {
                                         loadingButton = false;
@@ -326,7 +328,9 @@ class _AccountInfoState extends State<AccountInfo> {
                                       // ));
                                       MotionToast.error(
                                         title:  "Cater me",
-                                        titleStyle:  TextStyle(fontWeight:  FontWeight.bold),
+
+                                        titleStyle:  TextStyle(fontWeight:  FontWeight.bold ,),
+                                        descriptionStyle: TextStyle(fontWeight:  FontWeight.bold ,fontSize: 14),
                                         description:  '${user.lg[user.language]["Cannot update! Old password is wrong"]}',
                                         //  animationType: ANIMATION.FROM_LEFT,
                                       ).show(context);

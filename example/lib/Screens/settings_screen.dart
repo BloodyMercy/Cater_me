@@ -225,7 +225,7 @@ class _TABBarState extends State<TABBar> {
                                 child: Container(
                                   color: Colors.white,
                                   child: Image.network(
-                                      personalInfo.imageUrl ,
+                                      personalInfo.personalInfo.imageUrl ,
                                     errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
                                       return Icon(Icons.do_not_disturb,color:Colors.red);
                                     },
@@ -258,7 +258,7 @@ class _TABBarState extends State<TABBar> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  personalInfo.name.text,
+                                  personalInfo.personalInfo.name,
                                   style: TextStyle(
                                       // color: Colors.black,
                                       fontWeight: FontWeight.w400,
@@ -270,7 +270,7 @@ class _TABBarState extends State<TABBar> {
                                 ),
                                 Text.rich(
                                   TextSpan(
-                                    text: personalInfo.phoneNumber.text,
+                                    text: personalInfo.personalInfo.phoneNumber,
                                     style: TextStyle(
                                         //  color: Colors.black,
                                         fontWeight: FontWeight.w400,

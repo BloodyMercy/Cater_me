@@ -45,10 +45,10 @@ class UserProvider with ChangeNotifier {
 
 
   }
-  ResetPasswordout()async{
+  Future<ErrorMessage> ResetPasswordout()async{
     ErrorMessage a;
    a =await  PersonalInfoService().resetPassword(oldPassword.text, password1.text, confirmpassword.text);
-  return a.response;
+  return a;
   }
   // GenerateOTPprovider() async {
   //   _user= await  AuthModelSignUp.GenerateOTPservice(phoneNumber.text) ;

@@ -151,8 +151,7 @@ class LanguageTr {
       "Event Details": "تفاصيل المناسبه",
       "Service": "الخدمة",
       "Password dosen't match": "كلمه السر مو مضبوطه",
-      " Cannot update! Old password is wrong":
-      "مو راضي يحدث،كلمه السر الأولى خطا",
+      "Cannot update! Old password is wrong": "مو راضي يحدث،كلمه السر الأولى خطا",
       "Add-Ons": " إضافات زياده",
       "Checkout": "هنا الدفع",
       "credit card": "بطاقتك",
@@ -337,10 +336,11 @@ class LanguageTr {
       "Register":"تسجيل",
       "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
       "PRICE":"السعر",
-      "order not placed":"لم يتم انشاء الطلب"
-
+      "order not placed":"لم يتم انشاء الطلب",
+"your password can only contain letters numbers and some symbols \$ @ #":"يمكن أن تحتوي كلمة مرورك فقط على أرقام أحرف وبعض الرموز"
     },
     "en": {
+      "your password can only contain letters numbers and some symbols \$ @ #":"your password can only contain letters numbers and some symbols \$ @ #",
       "Update failed":"Update failed",
       "Generate Invoice":"Generate Invoice",
       "Failed to add friend":"Failed to add friend",
