@@ -361,6 +361,15 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                   !loading
                       ? ElevatedButton(
                           onPressed: () async {
+                            bool isNumeric(String s) {
+                              if(s == null) {
+                                return false;
+                              }
+
+                              // TODO according to DartDoc num.parse() includes both (double.parse and int.parse)
+                              return double.parse(s, (e) => null) != null ||
+                                  int.parse(s, onError: (e) => null) != null;
+                            }
                             setState(() {
                               loading = true;
                             });
@@ -372,7 +381,20 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                                 loading = false;
                               });
                               // reset!=null?
-                            } else {
+                            } else if(!isNumeric(friends.phonecontroller.text.replaceAll(" ", ""))){
+                              setState(() {
+                                loading = false;
+                              });
+
+                              MotionToast.error(
+                                  title: "Cater me",
+                                  titleStyle: TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                  description:
+                                  '${authProvider.lg[authProvider.language]["Failed to add friend"]}'  //  animationType: ANIMATION.FROM_LEFT,
+                              )
+                                  .show(context);
+                            }else {
                               if (await friends.createNewFriend()) {
                                 setState(() {
                                   loading = false;
