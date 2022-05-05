@@ -98,7 +98,6 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<UserProvider>(context, listen: true);
 
-    FocusNode focusnode = FocusNode();
     final friends = Provider.of<FriendsProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context);
 
@@ -295,8 +294,10 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
                         controller: friends.phonecontroller,
-                        focusNode: focusnode,
+                        focusNode: FocusNode(),
                         validator: (value) {
+                          value.replaceAll(" ", "");
+
                           if (value.isEmpty) {
                             return '${authProvider.lg[authProvider.language]["Please enter phone number"]}';
                           } else
@@ -317,9 +318,9 @@ class _FreindsTextFieldState extends State<FreindsTextField> {
                             //     left: MediaQuery.of(context).size.width * 0.04),
                             alignLabelWithHint: true,
                             labelStyle: TextStyle(
-                                fontSize: focusnode.hasFocus ? 18 : 16.0,
+                                fontSize: FocusNode().hasFocus ? 18 : 16.0,
                                 //I believe the size difference here is 6.0 to account padding
-                                color: focusnode.hasFocus
+                                color: FocusNode().hasFocus
                                     ? Color(0xFF3F5521)
                                     : Colors.grey),
                             // prefixIcon: CountryPicker(
