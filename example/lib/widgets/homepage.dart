@@ -271,6 +271,8 @@ ratingg();
   }
 
   Future getData() async {
+    final contact = Provider.of<ContactUsProvider>(context, listen: false);
+    await contact.getPersonalInfo();
     final occasion = Provider.of<OccasionProvider>(context, listen: false);
     final gallery = Provider.of<GalleryProvider>(context, listen: false);
     gallery.gethomepage();
@@ -298,6 +300,7 @@ ratingg();
     final gallery = Provider.of<GalleryProvider>(context, listen: true);
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final contact = Provider.of<ContactUsProvider>(context, listen: true);
+
     final mediaQuery = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(

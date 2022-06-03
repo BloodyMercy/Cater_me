@@ -37,7 +37,7 @@ class UserProvider with ChangeNotifier {
   }
   ResetPassword() async {
     ErrorMessage a;
-    a =await  PersonalInfoService().resetPasswordbyphone(phoneNumber.text, password1otp.text, confirmpasswordotp.text);
+    a =await  PersonalInfoService().resetPasswordbyphone(phoneNumber.text, password1otp.text, confirmpasswordotp.text,email.text);
    phoneNumber.clear();
    password1otp.clear();
    confirmpasswordotp.clear();
@@ -391,6 +391,8 @@ language=sh.getString("locale");
  if(
  genderselected.text.contains("F")  || genderselected.text.contains("ب") )i=2;
 
+ if(
+ genderselected.text.contains("R")  || genderselected.text.contains("ع") )i=3;
 
     try {
       notifyListeners();
@@ -400,7 +402,7 @@ language=sh.getString("locale");
           ToEnglishNumbers(phoneNumber.text.toString()),
         password.text.toString(),
         password.text.toString(),
-        b,
+        b.isEmpty  ? DateTime(1996,04,11).toString().split(' ').first : b,
         i.toString(),
         image
       );
@@ -491,7 +493,7 @@ imageUrl=u.message;
   Future ResetPasswordbyphones()async{
     try{
       notifyListeners();
-      ErrorMessage msg = await PersonalInfoService().resetPasswordbyphone(phoneNumber.text.toString(), password1.text.toString(), confirmpassword.text.toString());
+      ErrorMessage msg = await PersonalInfoService().resetPasswordbyphone(phoneNumber.text.toString(), password1.text.toString(), confirmpassword.text.toString(),email.text);
 
       notifyListeners();
       return msg.response;

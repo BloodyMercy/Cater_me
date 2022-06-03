@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           ? Color(0xFF3F5521)
                                           : Colors.grey),
                                   labelText:
-                                      '${authProvider.lg[authProvider.language]["Email or phone number"]}',
+                                      '${authProvider.lg[authProvider.language]["Email or Phone number"]}',
                                   hintStyle: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 15,

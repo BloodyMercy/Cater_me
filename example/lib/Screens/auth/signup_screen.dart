@@ -118,6 +118,7 @@ bool isCheckedcolor =false ;
 
     {"id": 1, "gender": "male"},
     {"id": 2, "gender": "female"},
+    {"id":3,"gender":"Rather not to say" },
 
   ];
 
@@ -548,6 +549,8 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                               items: [
                                 '${authProvider.lg[authProvider.language]["Male"]}',
                                 '${authProvider.lg[authProvider.language]["Female"]}',
+                                '${authProvider.lg[authProvider.language]["Rather"]}',
+
                               ],
                               // events: address.regular.events,
                               selectedValue: 0,
@@ -612,6 +615,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
                                 ),
                                 TextButton(
                                   onPressed: (){
+
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -691,8 +695,7 @@ autovalidateMode:AutovalidateMode.onUserInteraction ,
     authProvider.confirmpassword.text==""||
 
     authProvider.phoneNumber.text==""||
-    authProvider.genderselected.text==""||
-    address.evendatecontroller.text==""
+    authProvider.genderselected.text==""
     )
     {
     _scaffKey.currentState.showSnackBar(

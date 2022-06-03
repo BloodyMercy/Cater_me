@@ -124,11 +124,11 @@ SliverToBoxAdapter(child:InkWell(
             SizedBox(width: 8.0,),
             Text('Credit/Debit Card', style: TextStyle(color: Colors.white),),
             SizedBox(width: 8.0,),
-            Icon(
-             cardselected? Icons.check_circle:Icons.check_circle_outline,
-              color:  cardselected? Colors.yellow:Colors.white,
-              size: 20,
-            ),
+            // Icon(
+            //  cardselected? Icons.check_circle:Icons.check_circle_outline,
+            //   color:  cardselected? Colors.yellow:Colors.white,
+            //   size: 20,
+            // ),
 
           ],
         ),
@@ -295,14 +295,14 @@ SliverToBoxAdapter(child:InkWell(
                                           // Text('Pay with ', style: TextStyle(color: Colors.black),),
 
                                           Image.asset("images/googlelogo.png",height: 25),
-                                          SizedBox(width: 8.0,),
-                                          Text('Pay', style: TextStyle(color: Colors.white),),
-                                          SizedBox(width: 8.0,),
-                                          Icon(
-                                            !cardselected? Icons.check_circle:Icons.check_circle_outline,
-                                            color:  !cardselected? Colors.yellow:Colors.white,
-                                            size: 20,
-                                          ),
+                                          SizedBox(width: 30.0,),
+                                          Text('Apple Pay', style: TextStyle(color: Colors.white),),
+                                          SizedBox(width: 35.0,),
+                                          // Icon(
+                                          //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                          //   color:  !cardselected? Colors.yellow:Colors.white,
+                                          //   size: 20,
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -455,14 +455,14 @@ SliverToBoxAdapter(child:InkWell(
                                         children: [
                                           Image.asset("images/applelogo.png"
                                               ,height: 25),
-                                          SizedBox(width: 8.0,),
-                                          Text('Pay', style: TextStyle(color: Colors.white),),
-                                          SizedBox(width: 8.0,),
-                                          Icon(
-                                            !cardselected? Icons.check_circle:Icons.check_circle_outline,
-                                            color:  !cardselected? Colors.yellow:Colors.white,
-                                            size: 20,
-                                          ),
+                                          SizedBox(width: 30.0,),
+                                          Text('Apple Pay', style: TextStyle(color: Colors.white),),
+                                          SizedBox(width: 35.0,),
+                                          // Icon(
+                                          //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                          //   color:  !cardselected? Colors.yellow:Colors.white,
+                                          //   size: 20,
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -739,14 +739,14 @@ SliverToBoxAdapter(child:InkWell(
 
                                     Platform.isAndroid? Image.asset("images/googlelogo.png",height: 25):Image.asset("images/applelogo.png"
                                   ,height: 25),
-                                    SizedBox(width: 8.0,),
-                                    Text('Pay', style: TextStyle(color: Colors.white),),
-                                    SizedBox(width: 8.0,),
-                                    Icon(
-                                      !cardselected? Icons.check_circle:Icons.check_circle_outline,
-                                      color:  !cardselected? Colors.yellow:Colors.white,
-                                      size: 20,
-                                    ),
+                                    SizedBox(width: 15.0,),
+                                    Text('Apple Pay', style: TextStyle(color: Colors.white,fontSize: 14),),
+                                    SizedBox(width: 35.0,),
+                                    // Icon(
+                                    //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
+                                    //   color:  !cardselected? Colors.yellow:Colors.white,
+                                    //   size: 20,
+                                    // ),
                                   ],
                                 ),
                               ),

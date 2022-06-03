@@ -29,9 +29,10 @@ class PhoneVerification1 extends StatefulWidget {
 bool check ;
   String contact;
   String dialcode;
+  String email;
 
   // const PhoneVerification({Key? key}) : super(key: key);
-  PhoneVerification1({ this.contact ,this.dialcode,this.check});
+  PhoneVerification1({ this.contact ,this.dialcode,this.check,this.email});
 
   @override
   _PhoneVerification1State createState() => _PhoneVerification1State();
@@ -56,6 +57,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
 
   String phoneNo;
   String smsOTP='';
+  String email='';
   String verificationId;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   String errorMessage = '';
@@ -68,12 +70,12 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
     super.initState();
 
     //  widget._contact = '${ModalRoute.of(context)!.settings.arguments as String}';
-    generateOtp(widget.contact);
+    generateOtp(widget.contact,email);
   }
   int _resendToken;
 
 
-  Future<void> generateOtp(String contact) async {
+  Future<void> generateOtp(String contact, String email) async {
 
 
 
@@ -86,7 +88,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
     try {
 
       // await AuthModelSignUp.GenerateOTPservice(widget._contact)
-      await  AuthModelSignUp.GenerateOTPservice(widget.contact);
+      await  AuthModelSignUp.GenerateOTPservice(widget.contact,widget.email);
 
 
       // await _auth.verifyPhoneNumber(
@@ -252,7 +254,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text('${authProvider.lg[authProvider.language]["Please enter the 4-digit code you received via text message"]}'
+                child: Text('${authProvider.lg[authProvider.language]["Please enter the 4-digit code you received via text message or email"]}'
                   ,
                   style: TextStyle(
                     fontSize: 20,
@@ -324,7 +326,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
                       try {
 
 
-                        if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP)){
+                        if( await  AuthModelSignUp.ConfirmOTPservice(widget.contact,smsOTP,widget.email)){
 
                     if(widget.check){
                     Navigator.pushReplacement(
@@ -409,7 +411,7 @@ class _PhoneVerification1State extends State<PhoneVerification1> {
               height: MediaQuery.of(context).size.height/50,
             ),
             TextButton(onPressed: (){
-              generateOtp(widget.contact);
+              generateOtp(widget.contact,email);
 
             },
               child:  Text('${authProvider.lg[authProvider.language]["Resend code"]}',

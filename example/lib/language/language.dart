@@ -1,7 +1,7 @@
 class LanguageTr {
   static Map<String, Map<String, String>> lg = {
     "ar": {
-      "Email or phone number": "ايميلك او جوالك",
+      "phone number": "ايميلك او  رقم جوالك",
       "Please enter the name": "الرجاء إدخال الاسم",
       "Email verification was send": "تم إرسال التحقق من البريد الإلكتروني",
       "Please choose what do you need": "الرجاء اختيار ما تريد",
@@ -261,8 +261,8 @@ class LanguageTr {
       "Setup": "التجهيزات",
       "OTP Verification": "التحقق من الرمز",
       "error to place order": "خطأ في تقديم الطلب",
-      "Please enter the 4-digit code you received via text message":
-      "الرجاء إدخال الرمز المكون من 4 أرقام الذي تلقيته عبر رسالة نصية",
+      "Please enter the 4-digit code you received via text message or email":
+      "الرجاء إدخال الرمز المكون من 4 أرقام الذي تلقيته عبر رسالة نصية او بريد الكتروني",
       "Resend code": "أعادة إرسال الرمز",
       "Password should be at least 6 characters":
       "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
@@ -337,7 +337,8 @@ class LanguageTr {
       "failed ,try again later...":"فشل ، حاول مرة تانية لاحقًا ...",
       "PRICE":"السعر",
       "order not placed":"لم يتم انشاء الطلب",
-"your password can only contain letters numbers and some symbols \$ @ #":"يمكن أن تحتوي كلمة مرورك فقط على أرقام أحرف وبعض الرموز"
+"your password can only contain letters numbers and some symbols \$ @ #":"يمكن أن تحتوي كلمة مرورك فقط على أرقام أحرف وبعض الرموز",
+      "Rather":"عدم التحديد",
     },
     "en": {
       "your password can only contain letters numbers and some symbols \$ @ #":"your password can only contain letters numbers and some symbols \$ @ #",
@@ -652,8 +653,8 @@ class LanguageTr {
       "Close": "Close",
       "OTP Verification": "OTP Verification",
       "error to place order": "error to place order",
-      "Please enter the 4-digit code you received via text message":
-      "Please enter the 4-digit code you received via text message",
+      "Please enter the 4-digit code you received via text message or email":
+      "Please enter the 4-digit code you received via text message or email",
       "Verification": "Verification",
       "Resend code": "Resend code",
       "Password should be at least 6 characters":
@@ -679,7 +680,8 @@ class LanguageTr {
       "PDF Invoice": "PDF Invoice",
       "PRICE":"PRICE",
       "Event Date:":"Event Date:",
-      "order not placed":"order not place"
+      "order not placed":"order not place",
+      "Rather":"Rather not to say",
     }
   };
 }

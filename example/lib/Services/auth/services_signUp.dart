@@ -11,7 +11,7 @@ import '../ApiLink.dart';
 
 class AuthModelSignUp {
 
-  static Future<bool> ConfirmOTPservice(String phoneNumber,String OTP)async {
+  static Future<bool> ConfirmOTPservice(String phoneNumber,String OTP,String email)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
       // var headers={'Content-Type':'application/json'};
@@ -19,11 +19,13 @@ class AuthModelSignUp {
 
       // request.headers.addAll(headers);
       request.fields.addAll({
+        'email':email,
         'phone':phoneNumber.toString(),
         'otp':OTP.toString(),
       });
       print(OTP.toString());
       print(phoneNumber.toString());
+      print(email.toString());
 
 
       http.StreamedResponse responses = await request.send();
@@ -51,7 +53,7 @@ class AuthModelSignUp {
 
 
 
-  static Future<bool> GenerateOTPservice(String phoneNumber)async {
+  static Future<bool> GenerateOTPservice(String phoneNumber, String email)async {
     try{
       SharedPreferences prefs=await SharedPreferences.getInstance();
     //  var headers={'Content-Type':'application/json'};
@@ -59,6 +61,7 @@ class AuthModelSignUp {
 
      // request.headers.addAll(headers);
       request.fields.addAll({
+        'email':email,
         'phone':phoneNumber.toString(),
       });
 
@@ -161,7 +164,7 @@ class AuthModelSignUp {
         'DeviceToken': token,
          'GenderId': gendder,
       });
-
+print("${respons.fields}");
         // open a bytestream
       if(image!=null) {
       //  var stream = new http.ByteStream(image.openRead());

@@ -27,6 +27,7 @@ class PhoneVerification extends StatefulWidget {
 
 
   var _contact;
+  String email;
   String dialcode;
   File image;
  // const PhoneVerification({Key? key}) : super(key: key);
@@ -54,6 +55,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
   }
 
   String phoneNo;
+  String email='';
  String smsOTP='';
  String verificationId;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -67,12 +69,12 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
     super.initState();
 
   //  widget._contact = '${ModalRoute.of(context)!.settings.arguments as String}';
-    generateOtp(widget._contact);
+    generateOtp(widget._contact,email);
   }
   int _resendToken;
 
 
-Future<void> generateOtp(String contact) async {
+Future<void> generateOtp(String contact, String email) async {
 
 
 
@@ -85,7 +87,7 @@ Future<void> generateOtp(String contact) async {
   try {
 
   // await AuthModelSignUp.GenerateOTPservice(widget._contact)
- await  AuthModelSignUp.GenerateOTPservice(widget._contact);
+ await  AuthModelSignUp.GenerateOTPservice(widget._contact,email);
 
 
     // await _auth.verifyPhoneNumber(
@@ -251,7 +253,7 @@ void showAlertDialog(BuildContext context, String message) {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text('${authProvider.lg[authProvider.language]["Please enter the 4-digit code you received via text message"]}'
+                child: Text('${authProvider.lg[authProvider.language]["Please enter the 4-digit code you received via text message or email"]}'
                 ,
                   style: TextStyle(
                     fontSize: 20,
@@ -314,7 +316,7 @@ void showAlertDialog(BuildContext context, String message) {
       return;
     }
     try {
-      if (await AuthModelSignUp.ConfirmOTPservice(widget._contact, smsOTP)) {
+      if (await AuthModelSignUp.ConfirmOTPservice(widget._contact, smsOTP,email)) {
         if (await authProvider.signUp(
             widget.image,
             address.evendatecontroller.text)) {
@@ -403,7 +405,7 @@ void showAlertDialog(BuildContext context, String message) {
               height: MediaQuery.of(context).size.height/50,
             ),
             TextButton(onPressed: (){
-              generateOtp(widget._contact);
+              generateOtp(widget._contact,email);
 
             },
               child:  Text('${authProvider.lg[authProvider.language]["Resend code"]}',

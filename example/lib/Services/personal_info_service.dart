@@ -137,7 +137,7 @@ print(e);
   }
 
 
-  Future<ErrorMessage> resetPasswordbyphone(String phone,String newPassword,String confirmPassword) async{
+  Future<ErrorMessage> resetPasswordbyphone(String phone,String newPassword,String confirmPassword,String email) async{
     ErrorMessage msg=ErrorMessage();
     try{
       print(phone);
@@ -148,6 +148,7 @@ print(e);
       var request = http.MultipartRequest('POST', Uri.parse(ApiLink.ResetPasswordbyphone));
       // request.headers.addAll(headers);
       request.fields.addAll({
+        'email':email,
         'PhoneNumber': phone,
         'NewPassword': newPassword,
         'ConfirmPassword': confirmPassword

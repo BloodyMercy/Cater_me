@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Required background modes </key>
+	<array>
+		<string>App plays audio</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -43,6 +47,8 @@
 	<string>Reason we need access to the contact list</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>this app need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>some message to appease apple</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>this app need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSPhotoLibraryUsageDescription</key>
