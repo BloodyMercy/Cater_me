@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Required background modes </key>
-	<array>
-		<string>App plays audio</string>
-	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Caterme need to access location and contact list </string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -44,18 +44,21 @@
 	<key>NSCameraUsageDescription</key>
 	<string>this app need to access your camera to upload your profile photo</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Reason we need access to the contact list</string>
+	<string>Caterme needs to access your Contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>this app need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>some message to appease apple</string>
+	<string>We need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>this app need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
+	<string>We need to access your location to use your current location to display it on the app, also for directions and estimation of your travel times. It is secure and private</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>CaterMe would like access to your photo gallery to upload your profile photo</string>
+	<key>Required background modes </key>
+	<array>
+		<string>App plays audio</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

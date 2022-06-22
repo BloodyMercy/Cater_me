@@ -85,7 +85,7 @@ maximumYear: DateTime.now().year,
                   widget.controller.text=_dateFormat.format(value).toString();
                   widget.controllerlan.text=_dateFormatlan.format(value).toString();
                 },
-                initialDateTime: beta,
+                // initialDateTime: beta,
               ):                  widget.casee=="order"?
                   CupertinoDatePicker(
 
@@ -109,7 +109,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    initialDateTime: DateTime.now(),
+                    // initialDateTime: DateTime.now(),
                   ):
                   CupertinoDatePicker(
 
@@ -133,7 +133,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    initialDateTime: beta,
+                    // initialDateTime: beta,
                   )
           );
         });
