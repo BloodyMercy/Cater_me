@@ -355,6 +355,8 @@ language=sh.getString("locale");
       //_status = Status.Authenticating;
       notifyListeners();
       print(ConvertDigitsToLatin(email.text.toString()));
+      print( ConvertDigitsToLatin(email.text.toString()));
+      print(  password.text.toString());
       ErrorMessage u = await AuthModelSignin.login(
           ConvertDigitsToLatin(email.text.toString()), password.text.toString());
 

@@ -38,18 +38,20 @@ TextEditingController lol =TextEditingController();
     // TODO: implement initState
     super.initState();
     _dateFormatlan=DateFormat.yMMMd('${widget.lang}');
-    _chosenDate = DateTime.now().add(Duration(hours: 3));
+//    _chosenDate = DateTime.now().add(Duration(hours: 3));
     if(widget.controller.text==""){
-    widget.controller.text=_dateFormat.format(DateTime.now().add(Duration(hours: 3))).toString();}
-    beta =DateTime.parse(widget.controller.text);
+      print('EMMMMMMMMMMPTYYYYYYYYYYYYYYYYY');
+//    widget.controller.text=_dateFormat.format(DateTime.now().add(Duration(hours: 3))).toString();
+    }
+//    beta =DateTime.parse(widget.controller.text);
     if(widget.controllerlan.text==""){
-    widget.controllerlan.text=_dateFormatlan.format(DateTime.now().add(Duration(hours: 3))).toString();
+//    widget.controllerlan.text=_dateFormatlan.format(DateTime.now().add(Duration(hours: 3))).toString();
 
     }
     _chosenMonth = _monthFormat.format(_chosenDate);
     _chosenYear = _yearFormat.format(_chosenDate);
     _chosenDay = _dayFormat.format(_chosenDate);
-    widget.controller.text=_dateFormat.format(_chosenDate);
+//    widget.controller.text=_dateFormat.format(_chosenDate);
   }
 
   @override
@@ -85,7 +87,7 @@ maximumYear: DateTime.now().year,
                   widget.controller.text=_dateFormat.format(value).toString();
                   widget.controllerlan.text=_dateFormatlan.format(value).toString();
                 },
-                // initialDateTime: beta,
+                 initialDateTime: DateTime(1900,1,1),
               ):                  widget.casee=="order"?
                   CupertinoDatePicker(
 
@@ -109,7 +111,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    // initialDateTime: DateTime.now(),
+                    initialDateTime: DateTime(1900,1,1),
                   ):
                   CupertinoDatePicker(
 
@@ -133,7 +135,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    // initialDateTime: beta,
+                    initialDateTime: DateTime(1900,1,1),
                   )
           );
         });
@@ -179,7 +181,7 @@ maximumYear: DateTime.now().year,
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
           readOnly: true,
-          controller: widget.controllerlan,
+          controller: widget.controller,
           focusNode: focusNode,
           onTap: () {
             showPicker(context);
@@ -198,7 +200,7 @@ maximumYear: DateTime.now().year,
                   color: focusNode.hasFocus ? Color(0xFF3F5521) : Colors.grey),
               labelText: widget.label,
               hintStyle: TextStyle(
-                  color: Colors.black87,
+                  color: Colors.red,
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'BerlinSansFB'),

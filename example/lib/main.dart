@@ -81,7 +81,7 @@ void main() async {
   SharedPreferences prefs;
 
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
+  await FirebaseMessaging.instance.subscribeToTopic("allUsers");
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   runApp( MultiProvider(
       providers: [
