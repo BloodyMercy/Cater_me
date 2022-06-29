@@ -111,7 +111,7 @@ maximumYear: DateTime.now().year,
                       widget.controller.text=_dateFormat.format(value).toString();
                       widget.controllerlan.text=_dateFormatlan.format(value).toString();
                     },
-                    initialDateTime: DateTime(1900,1,1),
+                    initialDateTime: DateTime.now(),
                   ):
                   CupertinoDatePicker(
 
