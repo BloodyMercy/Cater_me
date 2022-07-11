@@ -11,7 +11,7 @@ import 'package:CaterMe/SplachScreen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/language_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:device_preview/device_preview.dart';
+//import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -67,13 +67,7 @@ void main() async {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   await FirebaseMessaging.instance.subscribeToTopic("allUsers");
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-  runApp(DevicePreview(
-    availableLocales: [
-      Locale("en", "US"), // OR Locale('ar', 'AE') OR Other RTL locales
-      Locale('ar', 'AE'),
-    ],
-    enabled: true,
-    builder: (context) => MultiProvider(providers: [
+  runApp( MultiProvider(providers: [
       ChangeNotifierProvider.value(value: PersonalInfoProvider()),
       Provider<ChatProvider>(
         create: (_) => ChatProvider(
@@ -99,7 +93,7 @@ void main() async {
       ChangeNotifierProvider.value(value: CreditCardsProvider()),
       ChangeNotifierProvider.value(value: ContactUsProvider()),
     ], child: MyApp()),
-  ));
+  );
 }
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
@@ -163,8 +157,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        builder: DevicePreview.appBuilder,
-        locale: Locale('en', 'US'),
         localizationsDelegates: [
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -174,7 +166,7 @@ class _MyAppState extends State<MyApp> {
           Locale("en", "US"), // OR Locale('ar', 'AE') OR Other RTL locales
           Locale('ar', 'AE')
         ],
-        // locale: _locale,
+        locale: _locale,
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Cater Me',

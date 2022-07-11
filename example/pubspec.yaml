@@ -90,7 +90,7 @@ dependencies:
   motion_toast: ^1.2.0
   multi_select_item:
   flutter_local_notifications: ^9.4.0
-  device_preview: ^0.7.4
+#  device_preview: ^0.7.4
 
 
 
