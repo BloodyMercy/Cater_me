@@ -139,7 +139,7 @@ class _NavigationBarState extends State<Navigationbar> {
     setState(() {
       language = sh.getString("locale");
     });
-    await FlutterContacts.requestPermission();
+//    await FlutterContacts.requestPermission();
     // print(user.lg[user.language]["Home"]);
     //  user.status=Status.Authenticated;
   }

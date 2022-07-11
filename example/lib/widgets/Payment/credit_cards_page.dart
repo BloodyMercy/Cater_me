@@ -290,10 +290,10 @@ SliverToBoxAdapter(child:InkWell(
                                         children: [
 
                                           // Text('Pay with ', style: TextStyle(color: Colors.black),),
-
+Text("Pay with "),
                                           Image.asset("images/googlelogo.png",height: 25),
                                           SizedBox(width: 30.0,),
-                                          Text('Apple Pay', style: TextStyle(color: Colors.white),),
+                                          Text('Pay', style: TextStyle(color: Colors.white),),
                                           SizedBox(width: 35.0,),
                                           // Icon(
                                           //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
@@ -450,10 +450,10 @@ SliverToBoxAdapter(child:InkWell(
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          Image.asset("images/applelogo.png"
-                                              ,height: 25),
+                                          Text("Pay with "),
+                                          Image.asset("images/googlelogo.png",height: 25),
                                           SizedBox(width: 30.0,),
-                                          Text('Apple Pay', style: TextStyle(color: Colors.white),),
+                                          Text('Pay', style: TextStyle(color: Colors.white),),
                                           SizedBox(width: 35.0,),
                                           // Icon(
                                           //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
@@ -711,13 +711,13 @@ SliverToBoxAdapter(child:InkWell(
 
                             },child:  Container(
 
-                            height: MediaQuery.of(context).size.height/20,
-                            width: MediaQuery.of(context).size.width/3,
+                            height: MediaQuery.of(context).size.height/21,
+                            width: MediaQuery.of(context).size.width/2,
 
                             decoration: BoxDecoration(
 
                                 border: Border.all(color:!cardselected?Colors.yellow: Colors.black),
-                                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                 color: Colors.black
                             ),
                             child:
@@ -734,11 +734,13 @@ SliverToBoxAdapter(child:InkWell(
 
                                     // Text('Pay with ', style: TextStyle(color: Colors.black),),
 
-                                    Platform.isAndroid? Image.asset("images/googlelogo.png",height: 25):Image.asset("images/applelogo.png"
-                                  ,height: 25),
-                                    SizedBox(width: 15.0,),
-                                    Text('Apple Pay', style: TextStyle(color: Colors.white,fontSize: 14),),
-                                    SizedBox(width: 35.0,),
+                                    Platform.isAndroid? Image.asset("images/googlelogo.png",height: 25)
+                                        :
+                                    Text("Pay with  ", style: TextStyle(color: Colors.white),),
+                                    Image.asset("images/applelogo.png",height: 15),
+
+                                    Text('Pay', style: TextStyle(color: Colors.white),),
+                                    SizedBox(width: 10.0,),
                                     // Icon(
                                     //   !cardselected? Icons.check_circle:Icons.check_circle_outline,
                                     //   color:  !cardselected? Colors.yellow:Colors.white,

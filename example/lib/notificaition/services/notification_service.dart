@@ -137,15 +137,20 @@ class NotificationServices {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
   Future<void> onSelectNotification(String payload) async {
-    await navigatorKey.currentState
-        ?.push(MaterialPageRoute(builder: (_) {
-          return
-            OrderDetailsView(int.parse(payload));
+    if(payload == '-1'){
 
-
-      //   DetailsPage(payload: payload);
     }
-    ));
+ else {
+      await navigatorKey.currentState
+          ?.push(MaterialPageRoute(builder: (_) {
+        return
+          OrderDetailsView(int.parse(payload));
+
+
+        //   DetailsPage(payload: payload);
+      }
+      ));
+    }
 
 
 
