@@ -1,4 +1,3 @@
-import 'package:CaterMe/Screens/Review/Third_review.dart';
 import 'package:CaterMe/Screens/review/Fourth_review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/surveyProvder.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class SecondReview extends StatefulWidget {
 

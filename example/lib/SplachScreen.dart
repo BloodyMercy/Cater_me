@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:CaterMe/IntroTest/on_boarding_screen.dart';
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
-import 'package:CaterMe/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,7 +95,7 @@ getdata() async{
 }
   @override
   Widget build(BuildContext context) {
-    final user=Provider.of<UserProvider>(context,listen:true);
+    // final user=Provider.of<UserProvider>(context,listen:true);
 Timer(Duration(seconds: 8), (){  getdata(); });
 
 

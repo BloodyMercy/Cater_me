@@ -2,18 +2,12 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/model/packages.dart';
-import 'package:CaterMe/widgets/Packages/order_add_details.dart';
 import 'package:CaterMe/widgets/fake_data.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
 
 import '../Providers/user.dart';
-import '../colors/colors.dart';
-import '../language/language.dart';
 import 'ahmad/My Orders/widgets/test_package_add_details.dart';
 
 class RelatedOffersScreen extends StatefulWidget {

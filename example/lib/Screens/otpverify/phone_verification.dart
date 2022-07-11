@@ -3,24 +3,17 @@
 import 'dart:async';
 import 'dart:io';
 
-
-
-import 'package:CaterMe/Screens/otpverify/phoneverificationplugin.dart';
 import 'package:CaterMe/Services/auth/services_signUp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:motion_toast/motion_toast.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/address.dart';
 import '../../Providers/user.dart';
-import '../../SplachScreen.dart';
-import '../../language/language.dart';
 
 
 class PhoneVerification extends StatefulWidget {

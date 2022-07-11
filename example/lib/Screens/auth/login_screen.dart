@@ -1,14 +1,10 @@
 import 'package:CaterMe/NavigationBar/navigation_bar.dart';
 import 'package:CaterMe/Providers/user.dart';
-import 'package:CaterMe/SplachScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../language/language.dart';
 import 'reset_password_screen.dart';
 import 'signup_screen.dart';
 

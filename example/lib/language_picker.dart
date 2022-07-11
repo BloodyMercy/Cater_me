@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'IntroTest/on_boarding_screen.dart';
 import 'NavigationBar/navigation_bar.dart';
 import 'Providers/user.dart';
-import 'SplachScreen.dart';
 import 'main.dart';
 
 class LanguagePicker extends StatefulWidget {

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
-import '../language/language.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class AddFriendScreen extends StatefulWidget {

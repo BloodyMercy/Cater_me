@@ -3,13 +3,7 @@ import 'package:CaterMe/Screens/auth/separatedotp.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/otpverify/widget/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../language/language.dart';
-import 'confirm_email.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key key}) : super(key: key);

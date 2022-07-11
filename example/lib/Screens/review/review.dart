@@ -2,9 +2,7 @@ import 'package:CaterMe/Screens/Review/First_review.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../Providers/surveyProvder.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class Review extends StatelessWidget {
 

@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Payment/Payment.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class CreditCardsSettings extends StatefulWidget {
   @override

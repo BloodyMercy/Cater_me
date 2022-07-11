@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../NavigationBar/navigation_bar.dart';
-import '../language/language.dart';
 import 'on_boarding_contant.dart';
 
 class  Body extends StatefulWidget {

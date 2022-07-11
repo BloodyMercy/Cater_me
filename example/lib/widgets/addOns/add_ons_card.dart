@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class AddOnsCard extends StatefulWidget {
   final List<AddOnCards> card;

@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import 'addresses_textField.dart';
 
 class AddressesList extends StatefulWidget {

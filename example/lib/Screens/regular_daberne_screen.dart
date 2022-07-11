@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
-import '../language/language.dart';
 
 class RegularDaberneScreen extends StatefulWidget {
   @override

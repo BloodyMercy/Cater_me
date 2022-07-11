@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/surveyProvder.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
-import '../../widgets/homepage.dart';
 
 class FourthReview extends StatefulWidget {
   @override

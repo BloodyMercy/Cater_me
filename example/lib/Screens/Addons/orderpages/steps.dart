@@ -2,16 +2,13 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/widgets/Cuisins/cuisins_card.dart';
 import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Providers/user.dart';
-import '../../../language/language.dart';
 
 class AddonsCardoffer extends StatefulWidget {
   int id;

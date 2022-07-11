@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class DetailsOrder extends StatefulWidget {
   int id;

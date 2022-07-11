@@ -1,13 +1,4 @@
-import 'package:CaterMe/NavigationBar/navigation_bar.dart';
-import 'package:CaterMe/Providers/user.dart';
-import 'package:CaterMe/colors/colors.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../language/language.dart';
 
 class Languages extends StatefulWidget {
   const Languages({Key key}) : super(key: key);

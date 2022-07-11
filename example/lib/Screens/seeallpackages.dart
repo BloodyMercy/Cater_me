@@ -1,12 +1,9 @@
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Providers/user.dart';
-import 'package:CaterMe/widgets/addOns/add_on_list.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skeleton_loader/skeleton_loader.dart';
 
-import '../language/language.dart';
 import '../widgets/Packages/test_package_add_details.dart';
 
 class seeAllPackages extends StatefulWidget {
@@ -123,6 +120,7 @@ class _seeAllPackages extends State<seeAllPackages> {
                       //                     )
                       //                   ],
                       //                 ),
+
                       //               ),
                       //             ),
                       //           ),

@@ -6,13 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import '../add_new_occasion.dart';
 import '../auth/login_screen.dart';
-import '../auth/reset_password_screen.dart';
-import '../auth/signup_screen.dart';
 import '../edit_occasion.dart';
 
 class OccasionListView extends StatefulWidget {

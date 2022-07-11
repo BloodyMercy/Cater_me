@@ -1,6 +1,5 @@
 import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
-import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/chooseadress/confirm_location_view.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
@@ -12,7 +11,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class AddressesListSettings extends StatefulWidget {
   final List<Address> address;

@@ -15,7 +15,6 @@ import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 void main() => runApp(MaterialApp(home: WebViewExample()));
 

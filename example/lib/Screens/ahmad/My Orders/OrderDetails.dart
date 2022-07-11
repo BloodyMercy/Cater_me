@@ -2,23 +2,18 @@
 import 'package:CaterMe/Providers/orderById_provider.dart';
 import 'package:CaterMe/Screens/ahmad/My%20Orders/widgets/FreindList.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Pdf/pdf.dart';
-
-
 import '../../../Providers/address.dart';
 import '../../../Providers/orderStatus_provider.dart';
 import '../../../Providers/user.dart';
 import '../../../colors/colors.dart';
 import '../../orders/order_tracking.dart';
-
 import 'widgets/OrderList.dart';
 
 class OrderDetailsView extends StatefulWidget {

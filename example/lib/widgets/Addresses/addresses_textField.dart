@@ -5,7 +5,6 @@ import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class AddressesTextField extends StatefulWidget {
   final Function addAddress;

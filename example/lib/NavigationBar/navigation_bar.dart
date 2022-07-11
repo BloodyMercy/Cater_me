@@ -6,18 +6,15 @@ import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Providers/user.dart';
-import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/Order.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_listview.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/orders/yourOrders.dart';
-import 'package:CaterMe/Screens/review/review.dart';
 import 'package:CaterMe/Screens/settings_screen.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/intro/flutter_intro.dart';
 import 'package:CaterMe/notificaition/services/notification_service.dart';
-
 import 'package:CaterMe/widgets/homepage.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,22 +22,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_circular_text/circular_text.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../Providers/orderById_provider.dart';
 import '../Providers/user.dart';
-import '../Screens/auth/reset_password_screen.dart';
-import '../Screens/auth/signup_screen.dart';
 import '../SplachScreen.dart';
-import '../language/language.dart';
 
 class Navigationbar extends StatefulWidget {
   int _selectedIndex;
 
-
   Navigationbar(this._selectedIndex);
-
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -49,10 +41,6 @@ class Navigationbar extends StatefulWidget {
 class _NavigationBarState extends State<Navigationbar> {
   NotificationServices notificationService = NotificationServices();
 
-
-
-
-
   //AudioCache _audioCache;
   final List<Widget> _widgetOptions = [
     HomePage(),
@@ -60,10 +48,6 @@ class _NavigationBarState extends State<Navigationbar> {
     YourOrders(),
     TABBar()
   ];
-
-
-
-
 
   Widget customThemeWidgetBuilder(StepWidgetParams stepWidgetParams) {
     List<String> texts = [
@@ -147,24 +131,18 @@ class _NavigationBarState extends State<Navigationbar> {
   );
 
   String language;
-
-
+  var authProvider;
   getLanguage() async {
     final user = Provider.of<UserProvider>(context, listen: false);
     await user.getLanguage();
     SharedPreferences sh = await SharedPreferences.getInstance();
     setState(() {
-
       language = sh.getString("locale");
     });
     await FlutterContacts.requestPermission();
     // print(user.lg[user.language]["Home"]);
     //  user.status=Status.Authenticated;
   }
-
-
-
-
 
   @override
   void initState() {
@@ -176,6 +154,12 @@ class _NavigationBarState extends State<Navigationbar> {
     startinto();
     //   playaudio();
     inAppMessaging(context, SplashScreen());
+  }
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+     authProvider = Provider.of<UserProvider>(context, listen: true);
 
   }
 
@@ -183,7 +167,6 @@ class _NavigationBarState extends State<Navigationbar> {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
 
     final authProvider = Provider.of<UserProvider>(context, listen: false);
-
 
     intro = Intro(
       stepCount: 2,
@@ -242,110 +225,110 @@ class _NavigationBarState extends State<Navigationbar> {
   Future<bool> _onWillPop() async {
     final authProvider = Provider.of<UserProvider>(context, listen: false);
     return (await showDialog(
-            context: context,
-            builder: (context) => Dialog(
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: Stack(
-                  overflow: Overflow.visible,
-                  alignment: Alignment.topCenter,
-                  children: [
-                    Container(
-                      height:MediaQuery.of(context).size.height * 0.30,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.09,
-                            left: MediaQuery.of(context).size.width * 0.05,
-                            right: MediaQuery.of(context).size.width * 0.05),
-                        child: Column(
-                          children: [
-                            Text(
-                              '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.white),
-                              textAlign: TextAlign.center,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: MediaQuery.of(context).size.height * 0.02),
-                              child: Divider(
+        context: context,
+        builder: (context) => Dialog(
+            backgroundColor: Colors.black,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            child: Stack(
+              overflow: Overflow.visible,
+              alignment: Alignment.topCenter,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.30,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.09,
+                        left: MediaQuery.of(context).size.width * 0.05,
+                        right: MediaQuery.of(context).size.width * 0.05),
+                    child: Column(
+                      children: [
+                        Text(
+                          '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.02),
+                          child: Divider(
+                            color: Colors.white,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.01),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.05),
+                                child: TextButton(
+                                  child: Text(
+                                    '${authProvider.lg[authProvider.language]["Yes"]}',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context, true);
+                                  },
+                                ),
+                              ),
+                              Divider(
                                 color: Colors.white,
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: MediaQuery.of(context).size.height * 0.01),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                        MediaQuery.of(context).size.width * 0.05),
-                                    child: TextButton(
-                                      child: Text(
-                                        '${authProvider.lg[authProvider.language]["Yes"]}',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.pop(context,true);
-                                      },
-                                    ),
-                                  ),
-                                  Divider(
-                                    color: Colors.white,
-                                  ),
-                                  TextButton(
-                                    child: Text(
-                                      '${authProvider.lg[authProvider.language]["No"]}',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
+                              TextButton(
+                                child: Text(
+                                  '${authProvider.lg[authProvider.language]["No"]}',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
                               ),
-                            )
-                          ],
-                        ),
-                      ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    Positioned(
-                        top: -MediaQuery.of(context).size.height * 0.06,
-                        child: Image.asset(
-                          'images/Logoicon.png',
-                          height: 100,
-                        )),
-                  ],
-                ))
-            //     CustomDialog(
-            //   title: '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
-            //   description: "",
-            //   button1: ElevatedButton(
-            //       style: ElevatedButton.styleFrom(
-            //         primary: Colors.grey,
-            //       ),
-            //       onPressed: () {
-            //
-            //         Navigator.pop(context,true);
-            //
-            //
-            //       },
-            //       child: Text('${authProvider.lg[authProvider.language]["Yes"]}')),
-            //   oneOrtwo: true,
-            //   button2: ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.of(context).pop();
-            //     },
-            //     child: Text('${authProvider.lg[authProvider.language]["No"]}'),
-            //   ),
-            // ),
-            )) ;
+                  ),
+                ),
+                Positioned(
+                    top: -MediaQuery.of(context).size.height * 0.06,
+                    child: Image.asset(
+                      'images/Logoicon.png',
+                      height: 100,
+                    )),
+              ],
+            ))
+        //     CustomDialog(
+        //   title: '${authProvider.lg[authProvider.language]["Are you sure you want to exit?"]}',
+        //   description: "",
+        //   button1: ElevatedButton(
+        //       style: ElevatedButton.styleFrom(
+        //         primary: Colors.grey,
+        //       ),
+        //       onPressed: () {
+        //
+        //         Navigator.pop(context,true);
+        //
+        //
+        //       },
+        //       child: Text('${authProvider.lg[authProvider.language]["Yes"]}')),
+        //   oneOrtwo: true,
+        //   button2: ElevatedButton(
+        //     onPressed: () {
+        //       Navigator.of(context).pop();
+        //     },
+        //     child: Text('${authProvider.lg[authProvider.language]["No"]}'),
+        //   ),
+        // ),
+        ));
   }
 
   @override
@@ -372,11 +355,11 @@ class _NavigationBarState extends State<Navigationbar> {
           //     opacity: packageprovider.reviewPending ? 1 : 0,
           //     duration: Duration(milliseconds: 500),
           //     child:
-                  // showDialog(
-                  //     context: context,
-                  //     builder: (BuildContext context) {
-                  //       return
-          ],
+          // showDialog(
+          //     context: context,
+          //     builder: (BuildContext context) {
+          //       return
+        ],
       ),
     );
   }
@@ -394,7 +377,6 @@ class _NavigationBarState extends State<Navigationbar> {
   }
 
   Widget buildbody(BuildContext context) {
-    final authProvider = Provider.of<UserProvider>(context, listen: true);
 
     final package = Provider.of<PackagesProvider>(context, listen: true);
     final orderCaterprovider =
@@ -410,9 +392,7 @@ class _NavigationBarState extends State<Navigationbar> {
           index: widget._selectedIndex,
           children: _widgetOptions,
         ),
-        floatingActionButton:
-
-        SizedBox(
+        floatingActionButton: SizedBox(
           key: intro.keys[0],
           height: 55,
           width: 55,
@@ -420,8 +400,7 @@ class _NavigationBarState extends State<Navigationbar> {
             child: FloatingActionButton(
               elevation: 0,
               foregroundColor: Colors.transparent,
-              shape:
-              CircleBorder(
+              shape: CircleBorder(
                 side: BorderSide(
                     color: Theme.of(context).primaryColor, width: 0.5),
               ),
@@ -490,7 +469,7 @@ class _NavigationBarState extends State<Navigationbar> {
                     children:[
 
                       language =="en"?TextItem(
-                          text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
+                          text: Text('${authProvider.lg[language]["Order  Here"]}'
 
                            ,
 
@@ -508,41 +487,41 @@ class _NavigationBarState extends State<Navigationbar> {
                           startAngle: -190,
                           startAngleAlignment: StartAngleAlignment.start,
                           direction: CircularTextDirection.clockwise)
-                      // ):  TextItem(
-                      //     text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
-                      //
-                      //       ,
-                      //
-                      //       style: TextStyle(fontSize: 35,color: colorCustom,fontWeight: FontWeight.bold,),),
-                      //     space:25,
-                      //
-                      //     startAngle: 180,
-                      //     startAngleAlignment: StartAngleAlignment.start,
-                      //     direction: CircularTextDirection.clockwise,
-                      // ),
+                  // ):  TextItem(
+                  //     text: Text('${authProvider.lg[authProvider.language]["Order  Here"]}'
+                  //
+                  //       ,
+                  //
+                  //       style: TextStyle(fontSize: 35,color: colorCustom,fontWeight: FontWeight.bold,),),
+                  //     space:25,
+                  //
+                  //     startAngle: 180,
+                  //     startAngleAlignment: StartAngleAlignment.start,
+                  //     direction: CircularTextDirection.clockwise,
+                  // ),
 
-                      // space: 25,
-                      // startAngle: -200,
-                      // startAngleAlignment: StartAngleAlignment.start,
-                      // direction: CircularTextDirection.clockwise,
-                      // height: 40,
-                      // width: 40,
-                      // decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(50),
-                      //     color: Theme.of(context).primaryColor),
-                      // child: const Icon(Icons.add_rounded,
-                      //     color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
-                    ]),
-                  Center(
-                    child: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Theme.of(context).primaryColor),
-                        child: const Icon(Icons.add_rounded,
-                            color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
-                  ),
+                  // space: 25,
+                  // startAngle: -200,
+                  // startAngleAlignment: StartAngleAlignment.start,
+                  // direction: CircularTextDirection.clockwise,
+                  // height: 40,
+                  // width: 40,
+                  // decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(50),
+                  //     color: Theme.of(context).primaryColor),
+                  // child: const Icon(Icons.add_rounded,
+                  //     color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
+                ]),
+                Center(
+                  child: Container(
+                      height: 35,
+                      width: 35,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Theme.of(context).primaryColor),
+                      child: const Icon(Icons.add_rounded,
+                          color: Color.fromRGBO(253, 202, 29, 1), size: 30)),
+                ),
               ]),
               //
               // child: Container(
@@ -618,4 +597,5 @@ class _NavigationBarState extends State<Navigationbar> {
           ),
         ));
   }
+
 }

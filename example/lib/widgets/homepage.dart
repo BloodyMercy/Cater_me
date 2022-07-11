@@ -3,7 +3,6 @@ import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Providers/packages.dart';
 import 'package:CaterMe/Screens/add_new_occasion.dart';
 import 'package:CaterMe/Screens/auth/login_screen.dart';
-import 'package:CaterMe/Screens/my_favorites.dart';
 import 'package:CaterMe/Screens/notifications.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/Screens/review/review.dart';
@@ -30,10 +29,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../Providers/GalleryProvider.dart';
 import '../Providers/contact_us_provider.dart';
 import '../Providers/user.dart';
-import '../Screens/ahmad/My Orders/OrderDetails.dart';
 import '../Screens/full_photo_page.dart';
-import '../Screens/settings_screen.dart';
-import '../language/language.dart';
 import 'Packages/test_package_add_details.dart';
 
 class HomePage extends StatefulWidget {

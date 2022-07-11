@@ -1,5 +1,4 @@
 import 'package:CaterMe/Providers/friend.dart';
-import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/friend_model.dart';
@@ -10,7 +9,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import 'editfriend.dart';
 
 class FriendsList extends StatefulWidget {

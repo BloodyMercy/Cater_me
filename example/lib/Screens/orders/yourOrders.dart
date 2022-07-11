@@ -1,25 +1,20 @@
 import 'package:CaterMe/Providers/order.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/Screens/orders/widget/slidablewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../NavigationBar/navigation_bar.dart';
 import '../../Providers/address.dart';
 import '../../Providers/credit_card_provider.dart';
 import '../../Providers/orderById_provider.dart';
 import '../../Providers/order_provider.dart';
 import '../../Providers/packages.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import '../Order.dart';
 import '../ahmad/My Orders/OrderDetails.dart';
 import '../auth/login_screen.dart';
-import '../auth/reset_password_screen.dart';
-import '../auth/signup_screen.dart';
 
 class YourOrders extends StatefulWidget {
   const YourOrders({Key key}) : super(key: key);

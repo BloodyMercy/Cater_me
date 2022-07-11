@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:CaterMe/Services/ApiLink.dart';
 import 'package:CaterMe/Services/HomePage/PackageService.dart';
-import 'package:CaterMe/Services/address.dart';
 import 'package:CaterMe/Services/otpVerify.dart';
 import 'package:CaterMe/Services/placeOrderId.dart';
 import 'package:CaterMe/model/ItemsOrder.dart';
@@ -12,7 +11,6 @@ import 'package:CaterMe/model/credit_card_model.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:CaterMe/model/setup_items_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 

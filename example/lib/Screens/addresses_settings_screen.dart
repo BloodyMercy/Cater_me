@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
-import '../language/language.dart';
 import 'chooseadress/confirm_location_view.dart';
 
 class AddAddressSettingsScreen extends StatefulWidget {

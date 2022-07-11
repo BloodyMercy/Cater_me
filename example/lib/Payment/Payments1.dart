@@ -1,5 +1,5 @@
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+
 import 'widgets/payment_bottomsheet.dart';
 
 class Payments extends StatefulWidget {

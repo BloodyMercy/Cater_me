@@ -3,9 +3,7 @@ import 'package:CaterMe/Providers/address.dart';
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/CustomAlert/alert.dart';
 import 'package:CaterMe/Screens/addresses_screen.dart';
-import 'package:CaterMe/Screens/donate/donatesteps.dart';
 import 'package:CaterMe/Screens/order_summery_copy.dart';
 import 'package:CaterMe/Screens/regular_daberne_screen.dart';
 import 'package:CaterMe/Screens/regular_screen.dart';
@@ -18,11 +16,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/orderById_provider.dart';
 import '../Providers/user.dart';
-import '../language/language.dart';
 import '../webview/webview.dart';
 import 'Addons/orderpages/steps.dart';
 import 'CustomAlert3/CustomAlert3.dart';
-import 'check out/SetupItems.dart';
 
 class Order extends StatefulWidget {
   @override

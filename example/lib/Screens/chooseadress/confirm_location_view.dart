@@ -10,11 +10,9 @@ import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 
 class ConfirmLocation extends StatefulWidget {
   //String  idprof;

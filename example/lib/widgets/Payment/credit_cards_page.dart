@@ -1,4 +1,6 @@
 
+import 'dart:io' show Platform;
+
 import 'package:CaterMe/Providers/credit_card_provider.dart';
 import 'package:CaterMe/Providers/order_provider.dart';
 import 'package:CaterMe/colors/colors.dart';
@@ -6,9 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart'as intl;
-import 'dart:io' show Platform;
-
-
 // import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,8 +17,6 @@ import '../../Payment/applepay/flutter_pay.dart';
 import '../../Providers/address.dart';
 import '../../Providers/orderById_provider.dart';
 import '../../Providers/user.dart';
-import '../../Screens/occasion/theme/colors/light_colors.dart';
-import '../../language/language.dart';
 
 class CreditCardsPage extends StatefulWidget {
   @override

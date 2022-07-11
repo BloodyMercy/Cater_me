@@ -1,7 +1,5 @@
 import 'package:CaterMe/Providers/occasion.dart';
 import 'package:CaterMe/Screens/ocassionsScreens/occasion_added.dart';
-import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
-import 'package:CaterMe/Screens/widgets/custom_cupertino_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
 import '../custom_date_picker_form_field.dart';
-import '../language/language.dart';
 
 class AddNewOccasion extends StatefulWidget {
   int getposition = 0;

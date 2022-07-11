@@ -4,7 +4,6 @@ import 'package:CaterMe/widgets/Packages/test_package_add_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skeleton_loader/skeleton_loader.dart';
 
 class PackageCard extends StatefulWidget {
   Package packages;

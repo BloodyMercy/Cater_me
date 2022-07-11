@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../Providers/orderById_provider.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import 'const.dart';
 
 class CustomDialog2 extends StatelessWidget {

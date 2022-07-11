@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 import 'package:CaterMe/Services/address.dart';
 import 'package:CaterMe/Services/timeSpanService.dart';
 import 'package:CaterMe/model/TimeSpanModel.dart';
@@ -10,12 +8,10 @@ import 'package:CaterMe/model/address/country.dart';
 import 'package:CaterMe/model/address/regular.dart';
 import 'package:CaterMe/model/friend_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Services/ApiLink.dart';
-import '../model/RestCallAPi.dart';
-
-import 'package:http/http.dart' as http;
 class AdressProvider extends ChangeNotifier{
 
   // TextEditingController radioButton = TextEditingController();

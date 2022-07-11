@@ -7,11 +7,8 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
-import '../NavigationBar/navigation_bar.dart';
-import '../Screens/otpverify/phone_verification.dart';
 import '../Screens/otpverify/widget/country_picker.dart';
 import '../customBirthdayPicker.dart';
-import '../language/language.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key key}) : super(key: key);

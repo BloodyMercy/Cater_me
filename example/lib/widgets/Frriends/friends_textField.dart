@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:CaterMe/Providers/friend.dart';
 import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
-import 'package:CaterMe/Screens/widgets/Costumtextfield.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +11,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
-import '../../Screens/otpverify/widget/country_picker.dart';
-import '../../language/language.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class FreindsTextField extends StatefulWidget {
   final Function addFriend;

@@ -1,12 +1,9 @@
-import 'package:CaterMe/model/package.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../Providers/user.dart';
 import '../../../../model/orderById.dart';
-import '../../../../model/packages.dart';
-import 'UserOrders.dart';
 
 class OrderCard extends StatefulWidget {
   OrderItems a;

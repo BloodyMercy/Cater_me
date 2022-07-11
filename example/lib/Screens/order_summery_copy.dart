@@ -10,10 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Providers/user.dart';
-import '../language/language.dart';
 import 'cartpage/CartCard.dart';
 import 'occasion/theme/colors/light_colors.dart';
-import 'orders/checkout/carditem.dart';
 
 class OrderSummeryCopy extends StatefulWidget {
   double alpha = 0.0;

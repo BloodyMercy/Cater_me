@@ -1,4 +1,3 @@
-import 'package:CaterMe/Screens/occasion/theme/colors/light_colors.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +7,6 @@ import '../../Providers/address.dart';
 import '../../Providers/occasion.dart';
 import '../../Providers/order_provider.dart';
 import '../../Providers/user.dart';
-import '../../language/language.dart';
 import '../Order.dart';
 
 class OccasionAdded extends StatefulWidget {

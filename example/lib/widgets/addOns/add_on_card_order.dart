@@ -4,13 +4,10 @@ import 'package:CaterMe/colors/colors.dart';
 import 'package:CaterMe/model/packages.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../Providers/user.dart';
 import '../../Screens/ahmad/My Orders/widgets/test_package_add_details.dart';
-import '../../language/language.dart';
 
 class AddOnCardOrder extends StatelessWidget {
   Package addOn;

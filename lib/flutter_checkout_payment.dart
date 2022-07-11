@@ -3,8 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-
-
 part 'package:flutter_checkout_payment/models/billing_model.dart';
 part 'package:flutter_checkout_payment/models/card_tokenisation_response.dart';
 part 'package:flutter_checkout_payment/models/phone_model.dart';

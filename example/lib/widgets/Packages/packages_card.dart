@@ -7,7 +7,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../Providers/user.dart';
 import '../../Screens/seeallpackages.dart';
-import '../../language/language.dart';
 import 'package_card.dart';
 
 class PackagesCard extends StatefulWidget {

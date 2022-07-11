@@ -5,8 +5,6 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:provider/provider.dart';
 
-import '../language/language.dart';
-
 class AccountInfo extends StatefulWidget {
   @override
   State<AccountInfo> createState() => _AccountInfoState();

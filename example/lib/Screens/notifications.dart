@@ -1,16 +1,13 @@
 import 'package:CaterMe/Providers/notification_provider.dart';
 import 'package:CaterMe/Providers/orderStatus_provider.dart';
 import 'package:CaterMe/Providers/packages.dart';
-import 'package:CaterMe/Screens/orders/mainOrderId.dart';
 import 'package:CaterMe/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../NavigationBar/navigation_bar.dart';
 import '../Providers/address.dart';
 import '../Providers/credit_card_provider.dart';
 import '../Providers/order.dart';
@@ -18,12 +15,9 @@ import '../Providers/orderById_provider.dart';
 import '../Providers/order_provider.dart';
 import '../Providers/user.dart';
 import '../chat/pages/chat_page.dart';
-import '../language/language.dart';
 import 'Order.dart';
 import 'ahmad/My Orders/OrderDetails.dart';
 import 'auth/login_screen.dart';
-import 'auth/reset_password_screen.dart';
-import 'auth/signup_screen.dart';
 import 'occasion/theme/colors/light_colors.dart';
 
 class Notifications extends StatefulWidget {
@@ -266,15 +260,7 @@ else       if(       allNotification
                                             : Container(),
                                         Row(
                                           children: [
-                                            // Padding(
-                                            //   padding: const EdgeInsets.only(right: 20.0),
-                                            //   child: CircleAvatar(
-                                            //     minRadius: 16,
-                                            //     maxRadius: screenHeight * 0.04,
-                                            //     backgroundImage:
-                                            //         AssetImage('images/food33.jpg'),
-                                            //   ),
-                                            // ),
+
                                             Expanded(
                                               child: Column(
                                                   crossAxisAlignment:
@@ -310,25 +296,7 @@ else       if(       allNotification
                                         ),
                                       ],
                                     ),
-                                    // child: ListTile(
-                                    //   onTap: () {
-                                    //     Navigator.of(context).push(
-                                    //       MaterialPageRoute(
-                                    //         builder: (builder) => OrderId(index, 1),
-                                    //       ),
-                                    //     );
-                                    //   },
-                                    //   leading: CircleAvatar(
-                                    //     minRadius: 16,
-                                    //     maxRadius: screenHeight * 0.1,
-                                    //     backgroundImage: AssetImage('images/food33.jpg'),
-                                    //   ),
-                                    //
-                                    //   title: Text(allNotification
-                                    //       .notificationlist[index].title),
-                                    //   subtitle: Text(allNotification
-                                    //       .notificationlist[index].description),
-                                    // ),
+
                                   ),
                                 ),
                               );

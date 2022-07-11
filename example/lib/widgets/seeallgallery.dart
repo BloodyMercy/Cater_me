@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../Providers/user.dart';
 import '../Screens/full_photo_page.dart';
-import '../language/language.dart';
 
 class seeAllGallery extends StatefulWidget {
 
